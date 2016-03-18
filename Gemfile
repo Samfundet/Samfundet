@@ -166,9 +166,12 @@ group :development do
   # of our web pages for easy reference.
   #gem 'rails-footnotes'
 
-  # RSpec is a unit testing framework.
-  # rspec-rails integrates RSpec (v2) and Rails (v3).
-  gem 'rspec-rails'
+  # file listener for automatic refresh of webpage on file change
+  gem 'guard-livereload', require: false
+  # livereload injection via rack middleware, no need for browser extesions
+  gem 'rack-livereload'
+  # For better mac filesystem listening performance
+  gem 'rb-fsevent', require: false
 
   # Simple command execution over SSH. Lightweight deployment tool.
   # Using our own version until https://github.com/mina-deploy/mina/pull/361 is merged.
@@ -184,12 +187,16 @@ group :development do
   gem 'railroady'
 end
 
-group :test, :development do
+group :development, :test do
   # Faker is a library that generates fake data (names, email addresses, etc.)
   gem 'faker', '~> 1.6.6'
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+
+  # RSpec is a unit testing framework.
+  # rspec-rails integrates RSpec (v2) and Rails (v3).
+  gem 'rspec-rails'
 end
 
 group :test do
@@ -206,6 +213,9 @@ group :test do
 
   # The RSpec testing framework.
   gem 'rspec'
+
+  # Factories for testing
+  gem 'factory_girl_rails'
 
   # webrat provides functions such as 'visit', 'click_link',
   # 'click_button', etc. for use in integration tests.
