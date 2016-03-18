@@ -22,6 +22,12 @@ FactoryGirl.define do
 			user_priority_deadline 4.days.from_now
 			admin_priority_deadline 5.days.from_now
 		end
+
+		factory :admission_with_jobs do
+			after(:create) do |admission|
+				create_list(:job, 5, admission: admission)
+			end
+		end
 	end
 end
 
