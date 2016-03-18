@@ -10,6 +10,7 @@ FactoryGirl.define do
     default_motivation_text_no 'Standard motivasjonsteks'
     default_motivation_text_en 'Default motivation text'
 		group
+    admission
 		trait :officer do
 			is_officer true
 		end
