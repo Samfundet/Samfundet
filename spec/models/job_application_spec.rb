@@ -7,4 +7,13 @@ describe JobApplication do
 
     expect(job_application.title).to eq job.title
   end
+
+  it 'should remove corresponding interview when destroying itself' do
+    job_application = create(:job_application)
+    interview = job_application.find_or_create_interview
+    job_application.destroy
+
+    expect(JobApplication.find_by_id(interview.id)).to be_nil
+  end
+
 end
