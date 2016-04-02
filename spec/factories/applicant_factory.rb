@@ -3,7 +3,7 @@ FactoryGirl.define do
     firstname 'Test'
     surname 'Testesen'
     sequence(:email) {|n| "test#{n}@test.com"}
-    phone '123456789'
+    sequence(:phone) {|n| "12345678#{n}" }
     password 'password'
     password_confirmation 'password'
     campus 'Gløs'
