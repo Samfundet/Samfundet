@@ -14,6 +14,16 @@ class ApplicationController < ActionController::Base
   # Helper methods that are also used in controllers
   helper_method :current_user, :logged_in?
 
+  def handle_unverified_request
+    raise ActionController::InvalidAuthenticityToken
+  end
+
+  rescue_from ActionController::InvalidAuthenticityToken do |exception|
+    reset_session
+    flash[:error] = "The csrf token for your session was wrong"
+    redirect_to root_path
+  end
+
   extend ControlPanel::ControllerHelpers
 
   def store_location
