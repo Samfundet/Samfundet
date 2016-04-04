@@ -73,8 +73,7 @@
             margin: 0;
             font-weight: bold;
             font-size: 1em;
-            padding: 15px 25px 5px;
-            text-align: center;
+            padding: 15px 0px 5px;
 
             @include media($tablet-desktop) {
                 padding-left: 0;

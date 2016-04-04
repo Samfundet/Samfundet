@@ -60,4 +60,32 @@
     a.current {
         font-weight: bold;
     }
+    ul {
+        display: none;
+    }
+    ul.active {
+        display: block;
+    }
+    h1 {
+        transition: transform 0.3s;
+        cursor: pointer;
+
+        &::before {
+            content: "+";
+            color: $samfundet-black;
+            padding-left: 5px;
+            padding-right: 5px;
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+        &.active::before {
+            display: inline-block;
+            content: "+";
+            color: $samfundet-black;
+            padding-left: 5px;
+            padding-right: 5px;
+            transition: transform 0.3s;
+            transform: rotate(225deg);
+        }
+    }
 }

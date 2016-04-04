@@ -11,6 +11,12 @@ $(function() {
   $('.menu-content a').each(function() {
     if(page_name(window.location.pathname) == page_name($(this).attr('href'))) {
         $(this).addClass('current');
+        $(this).parents('ul').addClass('active');
+        $(this).parents('ul').prev('h1').addClass('active');
     }
+  });
+  $('.menu-content h1').click(function() {
+    $(this).toggleClass('active');
+    $(this).next('ul').toggleClass('active');
   });
 });
