@@ -61,10 +61,16 @@
         font-weight: bold;
     }
     ul {
-        display: none;
+        overflow-y: hidden;
+        opacity: 0.5;
+        max-height: 0px;
+        transition-property: all;
+	    transition-duration: .5s;
+	    transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
     }
     ul.active {
-        display: block;
+        opacity: 1;
+        max-height: 1000px;
     }
     h1 {
         transition: transform 0.3s;
