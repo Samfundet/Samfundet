@@ -92,7 +92,7 @@
     li.submenu {
         color: $samfundet-red;
         font-weight: 400;
-        & > ul > li {
+        & > ul > li:not(.submenu) {
             font-weight: 200;
         }
     }
