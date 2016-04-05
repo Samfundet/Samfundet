@@ -214,8 +214,8 @@ puts "Creating information pages"
 Page.create!(
   name_no: Page::MENU_NAME,
   name_en: Page::MENU_NAME,
-  content_no: Page.all.map { |p| "- [#{p.title_no}](/informasjon/#{p.name_no})" }.join("\n"),
-  content_en: Page.all.map { |p| "- [#{p.title_en}](/en/information/#{p.name_en})" }.join("\n"),
+  content_no: "# Generelt\n#{Page.all.map { |p| "- [#{p.title_no}](/informasjon/#{p.name_no})" }.join("\n")}",
+  content_en: "# General\n#{Page.all.map { |p| "- [#{p.title_en}](/en/information/#{p.name_en})" }.join("\n")}",
   role_id: Role.super_user.id
 )
 
