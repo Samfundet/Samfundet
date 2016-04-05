@@ -58,7 +58,7 @@
 
 .menu-content {
     a.current {
-        font-weight: bold;
+        font-weight: 500;
     }
     ul {
         overflow-y: hidden;
@@ -96,9 +96,9 @@
             font-weight: 200;
         }
     }
-    li.submenu > ul {
+    ul > li {
         padding-left: 10px;
-        & > li > a::before {
+        & > a::before {
             content: '| ';
             color: $samfundet-black;
         }
