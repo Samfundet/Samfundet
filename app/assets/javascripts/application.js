@@ -28,6 +28,7 @@
 //= require "./pages/edit"
 //= require "./pages/history"
 //= require "./pages/pages"
+//= require "./pages/menu"
 //= require_tree "./site"
 //= require_tree "./areas"
 //= require_tree "./images"

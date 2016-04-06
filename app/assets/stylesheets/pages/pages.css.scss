@@ -1,9 +1,10 @@
 @import "forms.css.scss";
 @import "index.css.scss";
+@import "menu.css.scss";
 @import "admin.css.scss";
 @import "history.css.scss";
 
-.pages {
+.pages .content {
     table {
         @extend .table-highlight-rows;
     }
@@ -56,51 +57,4 @@
     }
 }
 
-.menu-content {
-    a.current {
-        font-weight: 500;
-    }
-    ul {
-        overflow-y: hidden;
-        opacity: 0.5;
-        max-height: 0px;
-        @include transition(max-height, 0.7s);
-    }
-    ul.active {
-        opacity: 1;
-        max-height: 1500px;
-    }
-    h1, li.submenu {
-        cursor: pointer;
 
-        &::before {
-            content: "+";
-            color: $samfundet-black;
-            margin-right: 5px;
-            display: inline-block;
-            transition: transform 0.3s;
-        }
-        &.active::before {
-            display: inline-block;
-            content: "+";
-            color: $samfundet-black;
-            margin-right: 5px;
-            transition: transform 0.3s;
-            transform: rotate(225deg);
-        }
-    }
-    li.submenu {
-        color: $samfundet-red;
-        font-weight: 400;
-        & > ul > li:not(.submenu) {
-            font-weight: 200;
-        }
-    }
-    ul > li {
-        padding-left: 10px;
-        & > a::before {
-            content: '| ';
-            color: $samfundet-black;
-        }
-    }
-}

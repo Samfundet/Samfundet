@@ -8,93 +8,17 @@
         color: white;
         text-align: center;
         text-transform: uppercase;
-        margin-bottom: 2em;
         cursor: pointer;
 
         @include span-columns(12);
         @include media($tablet-desktop) {
             display: none;
+            background-color: transparent;
         }
     }
 
     .show-menu-content {
         display: block !important;
-    }
-
-    .menu {
-        padding-bottom: 2em;
-        text-transform: uppercase;
-
-        @include span-columns(12);
-        @include media($tablet-desktop) {
-            border-right: 1px solid #000;
-
-            @include span-columns(3 of 12);
-        }
-
-        @include media($mobile-and-tablet-portrait) {
-            padding-bottom: 0em;
-        }
-
-        .menu-content {
-            display: none;
-
-            @include media($tablet-desktop) {
-                display: block;
-            }
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0 25px;;
-            margin: 0;
-
-            @include media($tablet-desktop) {
-                padding: 0;
-            }
-
-            li {
-                border-bottom: 1px dotted rgba(0, 0, 0, 0.3);
-                list-style: none;
-                margin: 0;
-
-                @include media($tablet-desktop) {
-                    border-bottom: none;
-                }
-
-                &:last-child {
-                    border-bottom: none;
-                }
-            }
-        }
-
-        h1 {
-            color: $samfundet-red;
-            margin: 0;
-            font-weight: bold;
-            font-size: 1em;
-            padding: 15px 0px 5px;
-
-            @include media($tablet-desktop) {
-                padding-left: 0;
-                padding-right: 0;
-                text-align: left;
-            }
-
-            &:first-child {
-                padding-top: 0;
-            }
-        }
-
-        a {
-            display: block;
-            padding: 10px 0;
-            padding-right: 10px;
-            color: black;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            overflow: hidden;
-        }
     }
 
     .content {
