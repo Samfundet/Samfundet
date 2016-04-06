@@ -214,8 +214,12 @@ puts "Creating information pages"
 Page.create!(
   name_no: Page::MENU_NAME,
   name_en: Page::MENU_NAME,
-  content_no: "# Generelt\n#{Page.all.map { |p| "- [#{p.title_no}](/informasjon/#{p.name_no})" }.join("\n")}",
-  content_en: "# General\n#{Page.all.map { |p| "- [#{p.title_en}](/en/information/#{p.name_en})" }.join("\n")}",
+  content_no: "- Generelt\n"\
+              "\t- Gjenger\n#{Group.all.map { |p| "\t\t- [#{p.page.title_no}](/informasjon/#{p.page.name_no})" }.join("\n")}\n"\
+              "\t- Lokaler\n#{Area.all.map { |p|  "\t\t- [#{p.page.title_no}](/informasjon/#{p.page.name_no})" }.join("\n")}\n",
+  content_en: "- General\n"\
+              "\t- Groups\n#{Group.all.map { |p| "\t\t- [#{p.page.title_en}](/informasjon/#{p.page.name_en})" }.join("\n")}\n"\
+              "\t- Areas\n#{Area.all.map { |p|  "\t\t- [#{p.page.title_en}](/informasjon/#{p.page.name_en})" }.join("\n")}\n",
   role_id: Role.super_user.id
 )
 
