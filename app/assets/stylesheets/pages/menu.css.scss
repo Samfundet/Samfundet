@@ -8,7 +8,7 @@
         @include media($tablet-desktop) {
             border-right: 1px solid #000;
             background-color: transparent;
-            @include span-columns(3 of 12);
+            @include span-columns(3.5 of 12);
         }
 
         .menu-content {
@@ -17,7 +17,7 @@
             @include media($tablet-desktop) {
                 display: block;
             }
-        }   
+        }
     }
 }
 .menu-content {
@@ -25,7 +25,7 @@
     ul {
         list-style-type: none;
         margin: 0;
-        
+
         &:not(.menu_root) {
             @include transition(max-height, 0.7s, ease-in-out);
             overflow: hidden;
@@ -35,24 +35,26 @@
 
         &.active {
             opacity: 1;
-            max-height: 1000px;
+            max-height: 1500px;
+        }
+
+        &.menu_root > li {
+            margin: 5px 0px 0px 0px;
         }
     }
     li {
-        margin: 10px 0px 0px 15px;
+        margin: 5px 0px 0px 15px;
         font-weight: 200;
-        
+
         & > a::before {
-            content: '| ';
             color: $samfundet-black;
         }
-        
+
         &:not(.submenu) {
             @include media($mobile) {
                 border-bottom: 1px dotted rgba(0, 0, 0, 0.3);
             }
         }
-
         &:last-child {
             border-bottom: none;
         }
@@ -61,7 +63,7 @@
             cursor: pointer;
             color: $samfundet-red;
             font-weight: 400;
-            
+
             &::before {
                 content: "+";
                 display: inline-block;
