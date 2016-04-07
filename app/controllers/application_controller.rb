@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
 
   rescue_from ActionController::InvalidAuthenticityToken do |exception|
     reset_session
-    flash[:error] = "The csrf token for your session was wrong"
+    flash[:error] = "There was an error processing your request. Please try again."
     redirect_to root_path
   end
 
