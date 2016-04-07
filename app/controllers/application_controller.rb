@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
     raise ActionController::InvalidAuthenticityToken
   end
 
-  rescue_from ActionController::InvalidAuthenticityToken do |exception|
+  rescue_from ActionController::InvalidAuthenticityToken do
     reset_session
     flash[:error] = "There was an error processing your request. Please try again."
     redirect_to root_path
