@@ -44,7 +44,6 @@
     }
     li {
         margin: 5px 0px 0px 15px;
-        font-weight: 200;
 
         & > a::before {
             color: $samfundet-black;
@@ -58,26 +57,22 @@
         &:last-child {
             border-bottom: none;
         }
-
-        &.submenu {
-            cursor: pointer;
+        & > strong {
             color: $samfundet-red;
             font-weight: 400;
-
-            &::before {
-                content: "+";
-                display: inline-block;
-                color: $samfundet-black;
-                margin-right: 5px;
-                @include transition(transform, 0.3s);
-            }
-            &.active::before {
-                content: "+";
-                display: inline-block;
-                color: $samfundet-black;
-                margin-right: 5px;
-                @include transform(rotate(405deg));
-            }
+        }
+    }
+    li.submenu {
+        cursor: pointer;
+        & > strong::before {
+            content: "+";
+            display: inline-block;
+            color: $samfundet-black;
+            margin-right: 5px;
+            @include transition(transform, 0.3s);
+        }
+        &.active > strong::before {
+            @include transform(rotate(405deg));
         }
     }
 

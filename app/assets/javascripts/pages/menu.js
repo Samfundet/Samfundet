@@ -18,15 +18,16 @@ function add_class_to_submenus() {
   });
 }
 function add_click_listener_to_submenus() {
-  $('.menu-content li.submenu').click(function(event) {
+  $('.menu-content li.submenu > strong').click(function(event) {
     event.stopPropagation();
-    if ($(this).hasClass('active')) {
-      $(this).find('li.active').removeClass('active');
-      $(this).find('ul.active').removeClass('active');
+    submenu = $(this).parent();
+    if (submenu.hasClass('active')) {
+      submenu.find('li.active').removeClass('active');
+      submenu.find('ul.active').removeClass('active');
     } else  {
-      $(this).children('ul').toggleClass('active');
+      submenu.children('ul').toggleClass('active');
     }
-    $(this).toggleClass('active');
+    submenu.toggleClass('active');
   });
 }
 
