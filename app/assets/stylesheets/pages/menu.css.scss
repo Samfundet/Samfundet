@@ -62,16 +62,18 @@
             font-weight: 400;
         }
     }
-    li.submenu {
+    li.submenu > strong  {
         cursor: pointer;
-        & > strong::before {
+        &::before {
             content: "+";
             display: inline-block;
             color: $samfundet-black;
             margin-right: 5px;
             @include transition(transform, 0.3s);
         }
-        &.active > strong::before {
+    }
+    li.submenu.active > strong {
+        &::before {
             @include transform(rotate(405deg));
         }
     }
