@@ -1,0 +1,29 @@
+.search {
+	form {
+		input[type='text'] {
+			margin: 0, 10px;
+			padding: 10px;
+			font-size: 1em;
+			width: 250px;
+			border: 1px solid rgba(0,0,0,0.5);
+		}
+	}
+	hr{
+		border: 0;
+		border-bottom: 1px dashed #ccc;
+		background: #999;
+		margin: 1em 0;
+	}
+	.results {
+		.title {
+			a {
+				font-size: 25px;
+				font-weight: 300;
+			}
+			.time_place {
+				width: 100%;
+				color: $samfundet-medium-grey;
+			}
+		}
+	}
+}

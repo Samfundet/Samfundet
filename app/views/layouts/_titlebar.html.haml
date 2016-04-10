@@ -2,6 +2,7 @@
   .container
     = link_to '', root_path, id: 'banner-logo'
     #session-status
+      = link_to t('search.submit'), search_path, class: 'titlebar-search-link'
       = link_to t('layouts.application.menu.change_language'), change_language, class: 'titlebar-change-language-link'
       - if logged_in?
         .username= current_user.full_name
@@ -12,3 +13,8 @@
         = link_to t('layouts.application.menu.logout'), logout_path, method: :post, class: 'login'
       - else
         = link_to t('layouts.application.menu.login'), login_path(redirect_to: request.path), class: 'login'
+.top-bar-search
+  .tts
+    = form_for @search || Search.new, url: search_path, html: {method: :get} do |form|
+      = form.text_field :query
+      = form.submit t('search.submit')

@@ -102,6 +102,14 @@ class Event < ActiveRecord::Base
                     }
                   },
                   associated_against: { area: :name }
+  multisearchable against:
+                    [:non_billig_title_no,
+                     :title_en,
+                     :long_description_en,
+                     :long_description_no,
+                     :age_limit,
+                     :non_billig_start_time],
+                  additional_attributes: -> (record) { { publish_at: record.publication_time } }
 
   # Uses the above defined PgSearch scope to perform search.
   def self.text_search query

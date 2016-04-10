@@ -56,6 +56,14 @@ class Page < ActiveRecord::Base
     end
   end
 
+  include PgSearch
+  multisearchable against: [:title_no,
+                            :title_en,
+                            :content_no,
+                            :content_en],
+                  additional_attributes: -> (record) { { publish_at: record.created_at } },
+                  if: -> (record) { !%w(_menu _index).include? record.name_no }
+
   def self.find_by_name(name)
     if I18n.locale == :no
       find_by_name_no(name.downcase)

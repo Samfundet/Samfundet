@@ -1,4 +1,14 @@
 GIT
+  remote: https://github.com/Casecommons/pg_search.git
+  revision: ff1af346322ca54808b3f53081149b8cac55bb76
+  ref: ff1af34
+  specs:
+    pg_search (1.0.5)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
+      arel
+
+GIT
   remote: https://github.com/Samfundet/SamfundetAuth.git
   revision: 3c9a3851694a22389b554d4182a947587b9c1ad4
   specs:
@@ -210,10 +220,6 @@ GEM
     parser (2.3.0.6)
       ast (~> 2.2)
     pg (0.18.4)
-    pg_search (1.0.5)
-      activerecord (>= 3.1)
-      activesupport (>= 3.1)
-      arel
     polyglot (0.3.5)
     powerpack (0.1.1)
     pry (0.10.3)
@@ -318,7 +324,7 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    tzinfo (0.3.46)
+    tzinfo (0.3.48)
     uglifier (2.7.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
@@ -367,7 +373,7 @@ DEPENDENCIES
   paperclip (~> 4.2.2)
   paperclip-compression (= 0.3.5)
   pg
-  pg_search
+  pg_search!
   rack-livereload
   railroady
   rails (= 3.2.22.2)

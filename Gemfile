@@ -95,7 +95,7 @@ gem 'pg'
 
 # Provides PostgreSQL fulltext search. Contains wrappers for tsvectors
 # and enables searching in nested attributes.
-gem 'pg_search'
+gem 'pg_search', git: 'https://github.com/Casecommons/pg_search.git', ref: 'ff1af34'
 
 # Diff library used in history for information pages
 gem 'diff-lcs'

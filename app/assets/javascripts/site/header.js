@@ -10,4 +10,10 @@ $(function() {
     $(".dropdown-button.menu-items .caret-wrapper").toggleClass('flip');
     event.preventDefault();
   });
+
+  $(".titlebar-search-link").click(function(e){
+    e.preventDefault();
+    $(".top-bar-search").toggle();
+    $(".top-bar-search #search_query").focus();
+  })
 });

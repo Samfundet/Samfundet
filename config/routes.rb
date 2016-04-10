@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get 'contact', to: 'contact#index'
   post 'contact', to: 'contact#create'
 
+  get 'search', to: 'search#search'
+  #resources :search, only: [:new, :create, :search]
   ############################
   ##  Routes for events     ##
   ############################

@@ -1,0 +1,30 @@
+= render 'form'
+
+- if @results.nil? or @results.count == 0
+  %p
+    = t('search.no_results')
+- else
+  %p
+    = t('search.results', count: @results.count)
+  - @results.each do |result|
+    - item = result.searchable
+    .results
+      - if result.searchable_type == 'Event'
+        .event
+          .title
+            = link_to(item.title, item)
+            .time_place
+              = item.start_time
+              = " @ "
+              = item.area
+          .content
+            = truncate(item.short_description, length: 250)
+      - elsif result.searchable_type == 'Page'
+        .page
+          .title
+            = link_to(item.title, item)
+          .content
+            = truncate(item.content, length: 250)
+      %hr
+  .pagination
+    = will_paginate @results

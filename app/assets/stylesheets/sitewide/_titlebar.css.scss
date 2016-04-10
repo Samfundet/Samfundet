@@ -29,7 +29,7 @@ $image-aspect-ratio: 12;
         font-weight: bold;
         font-size: 0.7em;
 
-        .login, .control-panel, .my-applications, .titlebar-change-language-link {
+        .login, .control-panel, .my-applications, .titlebar-change-language-link, .titlebar-search-link {
             text-decoration: none;
             margin: 0 5px;
             color: white;
@@ -44,5 +44,40 @@ $image-aspect-ratio: 12;
         }
 
     }
+}
+.top-bar-search {
+  display: none;
+  max-width: 68em;
+  position: relative;
+  margin: 0 auto;
+  .tts {
 
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+
+    @include media($mobile) {
+      width: 100%;
+    }
+  }
+  form {
+    padding: 0 !important;
+    margin: 0 !important;
+    background-color: $samfundet-red !important;
+
+    input[type='submit'] {
+      border-left: 1px solid black;
+      padding: 5px 10px;
+      font-size: 0.7em;
+      font-weight: 400;
+    }
+    input[type='text'] {
+      max-width: 90%;
+      font-size: 0.7em;
+      padding: 2px 10px;
+      margin: 3px;
+    }
+
+  }
 }

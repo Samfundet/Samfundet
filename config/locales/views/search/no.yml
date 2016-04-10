@@ -1,0 +1,7 @@
+'no':
+  search:
+    results:
+      one: "Ett treff"
+      other: "%{count} treff"
+    no_results: "Ingen resultater"
+    submit: "Søk"

@@ -6,6 +6,9 @@ authorization do
     has_permission_on :member_sessions, to: :create
     has_permission_on :user_sessions, to: :create
 
+    # Search
+    has_permission_on :search, to: [:create, :search]
+
     # Password reset should not be protected.
     has_permission_on :applicants,
       to: [:forgot_password,
