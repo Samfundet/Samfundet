@@ -753,21 +753,6 @@ Style/SpaceAfterComma:
 Style/SpaceAroundEqualsInParameterDefault:
   Enabled: false
 
-# Offense count: 14
-# Cop supports --auto-correct.
-# Configuration parameters: AllowForAlignment.
-Style/SpaceAroundOperators:
-  Exclude:
-    - 'app/controllers/applicants_controller.rb'
-    - 'app/controllers/images_controller.rb'
-    - 'app/models/applicant.rb'
-    - 'app/models/billig_ticket_group.rb'
-    - 'app/models/event.rb'
-    - 'app/models/sulten/reservation.rb'
-    - 'lib/control_panel.rb'
-    - 'spec/helpers/application_helper_spec.rb'
-    - 'spec/models/job_spec.rb'
-
 # Offense count: 2
 # Cop supports --auto-correct.
 Style/SpaceBeforeComma:

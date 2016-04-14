@@ -148,7 +148,7 @@ class Event < ActiveRecord::Base
   # the frontpage based on time until the event, the event type and
   # the area for the event.
   def front_page_weight
-    weight = 50-4*((start_time - Time.current) / 1.day).to_i
+    weight = 50 - 4 * ((start_time - Time.current) / 1.day).to_i
 
     case event_type
     when "concert"
@@ -170,7 +170,7 @@ class Event < ActiveRecord::Base
 
     case purchase_status
     when TICKETS_SOLD_OUT
-      weight += -4*30 # one month's worth of ban
+      weight += -4 * 30 # one month's worth of ban
     end
 
     case few_tickets_left?

@@ -14,6 +14,6 @@ class BilligTicketGroup < ActiveRecord::Base
   end
 
   def few_tickets_left
-    num_sold.between?(num*0.65, num-1)
+    num_sold.between?(num * 0.65, num - 1)
   end
 end

@@ -4,7 +4,7 @@ module ControlPanel
     def initialize(controller, action_name, options)
       @controller = controller
       @action_name = action_name
-      @condition_block  = options[:if] || -> { true }
+      @condition_block = options[:if] || -> { true }
     end
 
     def relevant?

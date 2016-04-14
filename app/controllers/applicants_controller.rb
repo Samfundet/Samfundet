@@ -59,7 +59,7 @@ class ApplicantsController < ApplicationController
     end
 
     if @applicant.update_attributes(params[:applicant])
-      flash[:success] =  t("applicants.update_success")
+      flash[:success] = t("applicants.update_success")
       redirect_to admissions_path
     else
       flash[:error] = t("applicants.update_error")
@@ -109,7 +109,7 @@ class ApplicantsController < ApplicationController
       if @applicant.update_attributes(password: new_data[:password],
                                       password_confirmation: new_data[:password_confirmation])
         PasswordRecovery.destroy_all(applicant_id: @applicant.id)
-        flash[:success] =  t("applicants.password_recovery.change_success")
+        flash[:success] = t("applicants.password_recovery.change_success")
 
         redirect_to login_path
       else

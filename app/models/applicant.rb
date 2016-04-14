@@ -62,7 +62,7 @@ class Applicant < ActiveRecord::Base
 
   def check_hash(hash)
     password_recoveries.each do |recovery_hash|
-      return true if hash == recovery_hash.recovery_hash && recovery_hash.created_at+1.hour > Time.current
+      return true if hash == recovery_hash.recovery_hash && recovery_hash.created_at + 1.hour > Time.current
     end
     false
   end
