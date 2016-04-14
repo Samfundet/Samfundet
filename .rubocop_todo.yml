@@ -541,22 +541,6 @@ Style/IndentationConsistency:
     - 'features/step_definitions/jobs_steps.rb'
     - 'spec/controllers/applicants_controller_spec.rb'
 
-# Offense count: 13
-# Cop supports --auto-correct.
-# Configuration parameters: Width.
-Style/IndentationWidth:
-  Exclude:
-    - 'app/controllers/admissions_admin/admissions_controller.rb'
-    - 'app/controllers/admissions_admin/groups_controller.rb'
-    - 'app/controllers/events_controller.rb'
-    - 'app/models/job_application.rb'
-    - 'features/step_definitions/applications_steps.rb'
-    - 'features/step_definitions/jobs_steps.rb'
-    - 'lib/tasks/cucumber.rake'
-    - 'spec/controllers/applicants_controller_spec.rb'
-    - 'spec/controllers/application_controller_spec.rb'
-    - 'spec/models/job_spec.rb'
-
 # Offense count: 5
 # Cop supports --auto-correct.
 Style/Lambda:

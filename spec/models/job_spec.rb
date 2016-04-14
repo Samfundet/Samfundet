@@ -3,8 +3,8 @@ require 'spec_helper'
 
 describe Job do
   before(:each) do
-      @open_admission   = create_open_admission
-      @closed_admission = create_closed_admission
+    @open_admission = create_open_admission
+    @closed_admission = create_closed_admission
   end
 
   it_should_validate_presence_of :title_no, :description_no, :group

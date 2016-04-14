@@ -24,9 +24,9 @@ class JobApplication < ActiveRecord::Base
     else
       jobs = applicant.jobs.find(:all, conditions: { admission_id: job.admission_id }).collect(&:id)
       if jobs.empty?
-          "0 = 1"
+        "0 = 1"
       else
-          "applicant_id = #{applicant_id} AND job_id IN(#{jobs.join(', ')})"
+        "applicant_id = #{applicant_id} AND job_id IN(#{jobs.join(', ')})"
       end
     end
   end

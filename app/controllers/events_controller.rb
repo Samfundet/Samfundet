@@ -153,7 +153,7 @@ class EventsController < ApplicationController
         @sum += billig_ticket.billig_price_group.price
 
         card_number = if billig_ticket.on_card
-          billig_ticket.billig_purchase.membership_card.card
+                        billig_ticket.billig_purchase.membership_card.card
         end
 
         [billig_ticket,

@@ -200,7 +200,7 @@ describe ApplicantsController do
 
     describe "success" do
       before(:each) do
-         @applicant = mock_model(Applicant)
+        @applicant = mock_model(Applicant)
         Applicant.should_receive(:find_by_email).at_least(:once).and_return(@applicant)
         @applicant.should_receive(:can_recover_password?).and_return(true)
         @applicant.should_receive(:create_recovery_hash).at_least(:once).and_return('hash')
@@ -347,7 +347,7 @@ describe ApplicantsController do
 
   describe :steal_identity do
     it "should set the session value applicant_id to the id of the applicant having the email specified and redirect to home page" do
-	applicant = mock_model(Applicant).as_null_object
+	     applicant = mock_model(Applicant).as_null_object
         Applicant.stub(:find_by_email).with("test@example.com").and_return(applicant)
 	post :steal_identity, applicant_email: "test@example.com"
         session[:applicant_id].should == applicant.id

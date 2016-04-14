@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class AdmissionsAdmin::GroupsController < ApplicationController
-j layout "admissions"
+  j layout "admissions"
 
   filter_access_to [:show, :applications], attribute_check: true
 
@@ -15,7 +15,7 @@ j layout "admissions"
       job_applications.count {|a| a.created_at.to_date === day.to_date}
     end
     admission_day_labels = (admission_start..admission_end).map do |day|
-     day.strftime("%-d.%-m")
+      day.strftime("%-d.%-m")
     end
 
     @applications_per_day_chart = Gchart.bar(

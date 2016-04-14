@@ -17,9 +17,9 @@ Then /^I should see the following:$/ do |expected_table|
 end
 
 When /^I press "(.+)" in the (first|last) row$/ do |link_text, first_or_last|
- within("table tbody tr:#{first_or_last}-child") do
-   click_button link_text
- end
+  within("table tbody tr:#{first_or_last}-child") do
+    click_button link_text
+  end
 end
 
 Given /^my group, "([^\"]*)", has the following jobs: "(.*)"$/ do |group_name, job_titles|

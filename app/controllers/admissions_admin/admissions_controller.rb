@@ -31,7 +31,7 @@ class AdmissionsAdmin::AdmissionsController < ApplicationController
                                         day).count
     end
     admission_day_labels = (admission_start..admission_end).map do |day|
-     day.strftime("%-d.%-m")
+      day.strftime("%-d.%-m")
     end
 
     # The Gchart methods return an external URL to an image of the chart.

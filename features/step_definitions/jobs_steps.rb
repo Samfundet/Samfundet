@@ -26,7 +26,7 @@ Given /^there is a job titled "([^\"]*)" in the group "([^\"]*)" tagged "([^\"]*
   step "there are jobs \"#{job_title}\" for an admission \"Sample Admission\" for the group \"#{group_name}\""
 
   without_access_control do
-  job = Job.find_by_title_no!(job_title)
+    job = Job.find_by_title_no!(job_title)
     tags.split.each do |tag|
       job.tags << JobTag.find_or_create_by_title(tag)
     end
