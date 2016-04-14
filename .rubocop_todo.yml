@@ -804,12 +804,6 @@ Style/SpaceInsideBlockBraces:
 Style/SpaceInsideHashLiteralBraces:
   Enabled: false
 
-# Offense count: 1
-# Cop supports --auto-correct.
-Style/SpaceInsideParens:
-  Exclude:
-    - 'app/mailers/sulten_notification_mailer.rb'
-
 # Offense count: 736
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles, ConsistentQuotesInMultiline.
