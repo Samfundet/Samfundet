@@ -473,18 +473,6 @@ Style/ExtraSpacing:
 Style/For:
   Enabled: false
 
-# Offense count: 10
-# Configuration parameters: MinBodyLength.
-Style/GuardClause:
-  Exclude:
-    - 'app/controllers/application_controller.rb'
-    - 'app/controllers/events_controller.rb'
-    - 'app/controllers/images_controller.rb'
-    - 'app/controllers/jobs_controller.rb'
-    - 'app/controllers/pages_controller.rb'
-    - 'app/controllers/roles_controller.rb'
-    - 'app/models/job_application.rb'
-
 # Offense count: 8
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles, UseHashRocketsWithSymbolValues.
