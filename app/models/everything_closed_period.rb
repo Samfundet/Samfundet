@@ -1,5 +1,4 @@
 class EverythingClosedPeriod < ActiveRecord::Base
-
   attr_accessible :message, :closed_from, :closed_to
 
   validates :message, presence: true
@@ -19,5 +18,4 @@ class EverythingClosedPeriod < ActiveRecord::Base
       errors.add(:closed_to, I18n.t('everything_closed_periods.times_in_valid_order'))
     end
   end
-
 end

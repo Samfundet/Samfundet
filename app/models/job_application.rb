@@ -64,7 +64,6 @@ class JobApplication < ActiveRecord::Base
       admission_id: job.admission.id,
       applicant_id: applicant.id).last
   end
-
 end
 
 # == Schema Information

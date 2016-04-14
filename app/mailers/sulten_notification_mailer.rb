@@ -6,5 +6,4 @@ class SultenNotificationMailer < ActionMailer::Base
     @reservation = reservation
     mail(to: reservation.email, subject: "Din reservasjon er registrert")
   end
-
 end

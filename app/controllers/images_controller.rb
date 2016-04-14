@@ -60,5 +60,4 @@ class ImagesController < ApplicationController
 
   def admin_applet
   end
-
 end

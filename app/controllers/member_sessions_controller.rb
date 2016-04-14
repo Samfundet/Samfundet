@@ -1,6 +1,5 @@
 # -*- encoding : utf-8 -*-
 class MemberSessionsController < UserSessionsController
-
   def new
     @redirect_to = params[:redirect_to]
     @member_login_id = params[:member_login_id]

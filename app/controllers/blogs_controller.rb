@@ -60,5 +60,4 @@ class BlogsController < ApplicationController
 
   def admin_applet
   end
-
 end

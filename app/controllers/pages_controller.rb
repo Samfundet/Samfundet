@@ -189,5 +189,4 @@ class PagesController < ApplicationController
       return url
     end
   end
-
 end

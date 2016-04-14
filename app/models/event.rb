@@ -272,7 +272,6 @@ class Event < ActiveRecord::Base
       .flatten
       .uniq(&:price)
   end
-
 end
 
 # == Schema Information
