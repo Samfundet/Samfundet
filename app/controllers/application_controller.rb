@@ -82,7 +82,7 @@ class ApplicationController < ActionController::Base
       redirect_to path
     end
   end
-  
+
   def request_referer_if_on_current_domain
     if request.referer && request.referer.include?(request.host)
       request.referer

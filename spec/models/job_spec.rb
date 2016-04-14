@@ -19,7 +19,7 @@ describe Job do
 
     Job.all.collect(&:title).should == titles.sort
   end
-  
+
   context "language" do
     before(:each) do
       @job = Job.create(
@@ -58,7 +58,7 @@ describe Job do
         end
       end
     end
-    
+
     context "with :en locale" do
       before(:each) do
         I18n.should_receive(:locale).at_least(:once).and_return(:en)

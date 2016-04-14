@@ -7,11 +7,11 @@ class ApplicantsController < ApplicationController
 
   has_control_panel_applet :steal_identity_applet,
     if: -> { permitted_to? :steal_identity, :applicants }
-  
+
   def new
     @applicant = Applicant.new
   end
-  
+
   def create
     @applicant = Applicant.new(params[:applicant])
 
@@ -29,11 +29,11 @@ class ApplicantsController < ApplicationController
       render :new
     end
   end
-  
+
   def show
     @applicant = Applicant.find(params[:id])
   end
-  
+
   def edit
   end
 
@@ -110,7 +110,7 @@ class ApplicantsController < ApplicationController
                                       password_confirmation: new_data[:password_confirmation])
         PasswordRecovery.destroy_all(applicant_id: @applicant.id)
         flash[:success] =  t("applicants.password_recovery.change_success")
-        
+
         redirect_to login_path
       else
         flash[:error] = t("applicants.password_recovery.change_error")

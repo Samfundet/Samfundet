@@ -11,7 +11,7 @@ module GroupHelper
       html_escape(group.name)
     end
   end
-  
+
   def can_i_manage_admissions_for_at_least_one_group?()
     Group.all.each do |group|
       job = Job.new(group: group)

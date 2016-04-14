@@ -11,7 +11,7 @@ module ModelHelpers
 
     admission = Admission.create!(opts)
   end
-  
+
   def create_open_admission(title = "Open admission")
     create_admission(
       title: title,
@@ -22,11 +22,11 @@ module ModelHelpers
       admin_priority_deadline: 2.weeks.from_now + 1.hour
     )
   end
-  
+
   def create_open_admissions(titles = [])
     titles.map { |title| create_open_admission title }
   end
-  
+
   def create_upcoming_admission(title = "Upcoming admission")
     create_admission(
       title: title,
@@ -37,11 +37,11 @@ module ModelHelpers
       admin_priority_deadline: 2.weeks.from_now + 1.hour
     )
   end
-  
+
   def create_upcoming_admissions(titles = [])
     titles.map { |title| create_upcoming_admission title }
   end
-  
+
   def create_closed_admission(title = "Closed admission")
     create_admission(
       title: title,
@@ -52,7 +52,7 @@ module ModelHelpers
       admin_priority_deadline: 5.weeks.ago + 2.weeks + 1.hour
     )
   end
-  
+
   def create_closed_admissions(titles = [])
     titles.map { |title| create_closed_admission title }
   end
@@ -61,21 +61,21 @@ module ModelHelpers
     type = GroupType.find_or_create_by_description("Dummy group type")
     Group.create!(name: name, group_type: type)
   end
-  
+
   def create_groups(names)
     names.map { |name| create_group name }
   end
-  
+
   def create_role(title)
     Role.create!(title: title,
                  name: "Dummy name",
                  description: "Dummy description.")
   end
-  
+
   def create_roles(titles)
     titles.map { |title| create_role title }
   end
-  
+
   def create_group_type(description)
     GroupType.create!(description: description)
   end
@@ -98,7 +98,7 @@ module ModelHelpers
       passord: "hunter2"
     )
   end
-  
+
   def create_members_role(member, role)
     MembersRole.create!(
       member: member,

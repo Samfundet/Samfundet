@@ -6,7 +6,7 @@ describe JobApplication do
 
   it "should delegate title to job" do
     @title = "Random title"
-    
+
     @job = mock_model(Job)
     @job.should_receive(:title).and_return(@title)
 

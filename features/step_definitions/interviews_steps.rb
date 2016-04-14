@@ -7,7 +7,7 @@ Given /^"([^"]*)" has applied for "([^"]+)" with motivation "([^"]+)"$/ do |appl
   applicant.password = "passord"
   applicant.password_confirmation = "passord"
   applicant.save!
-  
+
   job = Job.find_by_title_no(job_name.strip.gsub(/[\"]/, ''))
   ja = JobApplication.new(job: job,
                           motivation: motivation,
@@ -22,9 +22,9 @@ Given /^There are jobs for "([^"]*)" in "([^"]*)" titled (.+)$/i do |group_name,
     group.group_type = GroupType.create!(description: "Sirkus")
     group.save!
   end
-  
+
   admission = Admission.find_by_title(admission_title)
-  
+
   job_titles.split(/, ?/).each do |job_title|
     Job.create!(title_no: job_title.strip.gsub(/[\"]/, ''),
                 teaser_no: "Dummy teaser",

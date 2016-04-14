@@ -39,7 +39,7 @@ describe Applicant, "when authenticating" do
 
     @applicant = create_applicant(email: @email, password: @password)
   end
-  
+
   it "should return applicant given valid e-mail and password" do
     Applicant.authenticate(@email, @password).should == @applicant
   end

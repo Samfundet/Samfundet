@@ -821,11 +821,6 @@ Style/TrailingCommaInArguments:
     - 'app/controllers/admissions_admin/admissions_controller.rb'
     - 'app/controllers/admissions_admin/groups_controller.rb'
 
-# Offense count: 130
-# Cop supports --auto-correct.
-Style/TrailingWhitespace:
-  Enabled: false
-
 # Offense count: 3
 Style/UnlessElse:
   Exclude:

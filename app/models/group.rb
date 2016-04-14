@@ -1,5 +1,5 @@
 # -*- encoding : utf-8 -*-
-class Group < ActiveRecord::Base  
+class Group < ActiveRecord::Base
   belongs_to :group_type
   belongs_to :page
   has_many :jobs
@@ -28,11 +28,11 @@ class Group < ActiveRecord::Base
   def interviews
     Interview.all.select { |i| self == i.group }
   end
-  
+
   def jobs_in_admission(admission)
     jobs.select { |j| j.admission_id == admission.id }
   end
-  
+
   def job_applications_in_admission(admission)
     job_applications.select { |j| j.job.admission == admission }
   end
@@ -52,13 +52,13 @@ class Group < ActiveRecord::Base
       "#{id}-#{short_name.parameterize}"
     end
   end
-  
+
   # Role symbol generators
-  
+
   def admission_responsible_role
     "#{member_role}_opptaksansvarlig".to_sym
   end
-  
+
   def group_leader_role
     "#{member_role}_gjengsjef".to_sym
   end
@@ -66,7 +66,7 @@ class Group < ActiveRecord::Base
   def event_manager_role
     "#{member_role}_arrangementansvarlig".to_sym
   end
-  
+
   def member_role
     role = "#{short_name.downcase}"
     role.gsub! "æ", "ae"

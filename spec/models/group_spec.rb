@@ -42,7 +42,7 @@ describe Group do
         applicant: @applicant
       )
     end
-    
+
     it "should only return interviews for the group" do
       @interview = Interview.create!(
         time: 2.hours.from_now,

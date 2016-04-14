@@ -17,7 +17,7 @@ class Event < ActiveRecord::Base
                   :short_description_en, :short_description_no, :duration,
                   :long_description_en, :long_description_no, :publication_time,
                   :spotify_uri, :facebook_link, :youtube_link, :youtube_embed, :spotify_link,
-                  :soundcloud_link, :instagram_link, :twitter_link, :lastfm_link, 
+                  :soundcloud_link, :instagram_link, :twitter_link, :lastfm_link,
                   :snapchat_link, :vimeo_link, :general_link, :event_type, :status,
                   :primary_color, :secondary_color, :image_id,
                   :price_groups, :price_type, :banner_alignment, :price_groups_attributes
@@ -153,7 +153,7 @@ class Event < ActiveRecord::Base
     case event_type
     when "concert"
       weight += 7
-    when "theme_party" 
+    when "theme_party"
       weight += 9
     when "football_match", "dj", "quiz"
       weight += -4*60 # two month's worth of ban

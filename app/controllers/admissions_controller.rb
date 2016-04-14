@@ -29,10 +29,10 @@ class AdmissionsController < ApplicationController
       render :new
     end
   end
-  
+
   def edit
   end
-  
+
   def update
     if @admission.update_attributes(params[:admission])
       flash[:success] = "Opptaket er oppdatert."

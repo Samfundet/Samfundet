@@ -6,7 +6,7 @@ class FrontPageLock < ActiveRecord::Base
 
   attr_accessible :lockable_id, :lockable_type, :position, :event_id, :blog_id
   attr_accessor :event_id, :blog_id
-  
+
   validate :check_if_already_locked, on: :update, if: :lockable_type?
   validates :position, presence: true, uniqueness: true
   validates :lockable_id, uniqueness: true, presence: true, if: :lockable_id?
@@ -50,7 +50,7 @@ class FrontPageLock < ActiveRecord::Base
         errors.add(:blog_id, I18n.t("activerecord.models.front_page_lock.blog_empty_choice_error"))
       end
       return
-    
+
     elsif event_or_blog_locked
       if lockable_type == "Event"
         errors.add(:event_id, I18n.t("activerecord.models.front_page_lock.event_already_locked_error"))
@@ -59,7 +59,6 @@ class FrontPageLock < ActiveRecord::Base
       end
     end
   end
-  
 end
 # == Schema Information
 #

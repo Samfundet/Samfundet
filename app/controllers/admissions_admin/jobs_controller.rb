@@ -5,7 +5,6 @@ class AdmissionsAdmin::JobsController < ApplicationController
   filter_access_to [:new, :create, :search, :edit, :update, :show, :destroy], attribute_check: true
 
   def new
-    
   end
 
   def create
@@ -31,7 +30,6 @@ class AdmissionsAdmin::JobsController < ApplicationController
   end
 
   def edit
-    
   end
 
   def update
@@ -49,9 +47,9 @@ class AdmissionsAdmin::JobsController < ApplicationController
     flash[:success] = t('jobs.job_deleted')
     redirect_to admissions_admin_admission_group_path(@job.admission, @job.group)
   end
-  
+
   private
-  
+
   def before_new_and_create_and_search
     @admission = Admission.find(params[:admission_id])
     @group = Group.find(params[:group_id])

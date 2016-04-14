@@ -2,7 +2,7 @@
 class AdmissionsAdmin::JobApplicationsController < ApplicationController
   layout 'admissions'
   filter_access_to :show, attribute_check: true
-  
+
   def show
     @log_entries = LogEntry.find :all, conditions: {
       applicant_id: @job_application.applicant.id,

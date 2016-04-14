@@ -21,7 +21,7 @@ class EventsController < ApplicationController
     params[:event].delete(:organizer_group_id)
     params[:event].delete(:organizer_external_name)
   end
- 
+
   def index
     @events = Event
       .active

@@ -46,18 +46,18 @@ describe Member do
       @member = Member.new
       @engine = mock(Authorization::Engine)
     end
-    
+
     context "with general permission to administrate admissions" do
       before(:each) do
         @engine.should_receive(:permit?).with(:show, {context: :admissions_admin_groups, user: @member}).and_return(true)
         Authorization::Engine.should_receive(:instance).once.and_return(@engine)
       end
-      
+
       it "should return all groups" do
         @member.my_groups.should include(@groups[0], @groups[1], @groups[2], @groups[3], @groups[4], @groups[5])
       end
     end
-    
+
     context "with permission to administrate admissions for a selected subset of groups" do
       before(:each) do
         @engine.should_receive(:permit?).with(:show, { context: :admissions_admin_groups, user: @member }).and_return(false)
@@ -69,11 +69,11 @@ describe Member do
         @engine.should_receive(:permit?).with(:show, { context: :admissions_admin_groups, object: @groups[5], user: @member }).and_return(false)
         Authorization::Engine.should_receive(:instance).exactly(7).times.and_return(@engine)
       end
-      
+
       it "should return the groups in which the user can administrate admissions for" do
         @member.my_groups.should include(@groups[0], @groups[1], @groups[2])
       end
-      
+
       it "should not return groups in which the user cannot administrate admissions for" do
         @member.my_groups.should_not include(@groups[3], @groups[4], @groups[5])
       end

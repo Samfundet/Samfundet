@@ -27,7 +27,7 @@ Given /^my group, "([^\"]*)", has the following jobs: "(.*)"$/ do |group_name, j
     group = Group.create!(name: group_name,
                           abbreviation: group_name,
                           group_type: GroupType.create!(description: "Gruppetype", priority: 1))
-    
+
     job_titles.split(", ").each do |job_title|
       Job.create!(title_no: job_title,
                   teaser_no: "tease",
@@ -41,7 +41,7 @@ end
 
 Given /^the groups (.+) have listed jobs$/ do |groups|
   step 'there are open admissions titled "Høstopptak 2010"'
-  
+
   without_access_control do
     groups.split(", ").each do |name|
       group = Group.create!(
@@ -77,7 +77,7 @@ end
 #     Then 'I should see "John Doe"'
 #   end
 # end
-# 
+#
 # Given /^"([^\" ]+) ([^\"]+)" has registered with phone number "(\d+)" and e\-mail "([^\"]*)"$/ do |firstname, surname, phone, email|
 #   a = Applicant.find_by_firstname_and_surname(firstname, surname)
 #   a.email = email

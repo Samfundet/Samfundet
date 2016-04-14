@@ -1,9 +1,9 @@
 # -*- encoding : utf-8 -*-
 class AdmissionsAdmin::GroupsController < ApplicationController
 j layout "admissions"
-  
+
   filter_access_to [:show, :applications], attribute_check: true
-  
+
   def show
     @admission = Admission.find(params[:admission_id])
     @jobs = @group.jobs.find_all_by_admission_id(@admission.id)

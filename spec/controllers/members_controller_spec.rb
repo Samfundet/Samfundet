@@ -32,7 +32,7 @@ describe MembersController do
     end
   end
 
-  describe :steal_identity do 
+  describe :steal_identity do
     it "should set the session value member_id to the id of the member having the email specified and redirect to home page" do
       member = mock_model(Member).as_null_object
       # There's a lot of stuff going on in ActiveRecord::Base#find,

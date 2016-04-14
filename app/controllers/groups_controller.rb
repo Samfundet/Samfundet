@@ -17,7 +17,7 @@ class GroupsController < ApplicationController
   def new
     @group = Group.new
   end
-  
+
   def create
     @group = Group.new(params[:group])
     if @group.save
@@ -28,10 +28,10 @@ class GroupsController < ApplicationController
       render action: 'new'
     end
   end
-  
+
   def edit
   end
-  
+
   def update
     if @group.update_attributes(params[:group])
       flash[:success] = "Gjengen er oppdatert."

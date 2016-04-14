@@ -123,7 +123,7 @@ class Admission < ActiveRecord::Base
 
     (from..to).to_a
   end
-  
+
   def to_s
     "#{title} (#{I18n.localize shown_application_deadline, format: :short})"
   end

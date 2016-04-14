@@ -40,7 +40,7 @@ class FrontPageLocksController < ApplicationController
     else
       @upcoming_events = Event.active.published.upcoming
       @blogs = Blog.published
-      if not @front_page_lock.errors.include?(:event_id) and 
+      if not @front_page_lock.errors.include?(:event_id) and
         not @front_page_lock.errors.include?(:blog_id)
         flash.now[:error] = t('front_page_lock.update_error')
       end

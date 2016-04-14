@@ -38,7 +38,7 @@ module PagesHelper
       end
     end
   end
-  
+
   def render_page_content(content, content_type)
     text = content
 

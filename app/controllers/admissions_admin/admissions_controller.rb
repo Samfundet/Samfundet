@@ -2,17 +2,17 @@
 class AdmissionsAdmin::AdmissionsController < ApplicationController
   layout 'admissions'
   filter_access_to [:show, :statistics]
-  
+
   def show
     @admission = Admission.find(params[:id])
     @my_groups = current_user.my_groups
     @job_application = JobApplication.new
-    
+
     if @my_groups.length == 1
       redirect_to admissions_admin_admission_group_path(@admission, @my_groups.first)
     end
   end
-  
+
   def statistics
     @admission = Admission.find(params[:id])
 

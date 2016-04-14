@@ -12,7 +12,7 @@ Given /^I am a member in "([^\"]*)" with roles "([^\"]*)"$/ do |group, roles|
       member.roles << role
       member.save
     end
-    
+
     step %(I am logged in as a member with email "valid@user.com" and password "password")
   end
 end

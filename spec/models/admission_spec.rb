@@ -94,7 +94,7 @@ describe Admission do
                                    shown_from: 1.day.ago)
         @admission.appliable?.should be_false
       end
-      
+
       it "should only contain admissions shown on frontpage" do
         @admission = Admission.new(actual_application_deadline: 1.minute.from_now,
                                    shown_from: 1.day.from_now)
@@ -132,7 +132,7 @@ describe Admission do
           Admission.appliable.should include(@current_admission)
           Admission.appliable.should_not include(@old_admission)
         end
-        
+
         it "should not contain admissions that are not shown on front page" do
           Admission.appliable.should_not include(@not_shown_on_frontpage)
         end
