@@ -88,4 +88,3 @@ end
 #  default_motivation_text_no :text
 #  default_motivation_text_en :text
 #
-

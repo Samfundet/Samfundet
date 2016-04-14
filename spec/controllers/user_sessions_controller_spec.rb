@@ -26,4 +26,3 @@ describe UserSessionsController do
     end
   end
 end
-

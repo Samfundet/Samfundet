@@ -296,4 +296,3 @@ end
 #  event_type        :string(255)
 #  status            :string(255)
 #
-

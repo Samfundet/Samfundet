@@ -152,4 +152,3 @@ end
 #  admin_priority_deadline     :datetime
 #  actual_application_deadline :datetime
 #
-

@@ -32,4 +32,3 @@ class Blog < ActiveRecord::Base
     end
   end
 end
-

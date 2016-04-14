@@ -4,4 +4,3 @@ module AuthorizationHelpers
 
 end
 World(AuthorizationHelpers)
-

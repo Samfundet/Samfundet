@@ -89,4 +89,3 @@ end
 #  image_file_file_size    :integer
 #  image_file_updated_at   :datetime
 #
-

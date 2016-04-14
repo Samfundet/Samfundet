@@ -24,4 +24,3 @@ end
 #  updated_at   :datetime         not null
 #  member_id    :integer
 #
-

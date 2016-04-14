@@ -18,4 +18,3 @@ module ModelMacros
     end
   end
 end
-
