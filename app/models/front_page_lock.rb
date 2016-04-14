@@ -23,12 +23,12 @@ class FrontPageLock < ActiveRecord::Base
   # belongs_to touch: true does not currently touch the old associated
   # object when the foreign key is the value that changes.
   # See rails issue #10197 and friends
-  #before_save :update_old_association
-  #def update_old_association
+  # before_save :update_old_association
+  # def update_old_association
   #  if lockable_changed? && lockable_was.present?
   #    lockable_was.touch
   #  end
-  #end
+  # end
 
   def to_param
     position

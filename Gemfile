@@ -50,7 +50,7 @@ gem 'formtastic'
 gem 'googlecharts'
 
 # Haml is a templating language. It compiles to HTML.
-gem 'haml-rails', "~> 0.3.5" #we need to not use a version larger than this becuse we get lazy_require error.
+gem 'haml-rails', "~> 0.3.5" # we need to not use a version larger than this becuse we get lazy_require error.
 
 # icalendar is a library for dealing with iCalendar files.
 gem 'icalendar', '>= 2.2.0'
@@ -78,13 +78,13 @@ gem 'samfundet_auth', '~> 0.0.11', git: "https://github.com/Samfundet/SamfundetA
 # It makes pagination very simple.
 gem 'will_paginate'
 
-#for file uploads, see https://github.com/thoughtbot/paperclip
+# for file uploads, see https://github.com/thoughtbot/paperclip
 gem "paperclip", "~> 4.2.2"
 
 # automatic compression of images uploaded via paperclip
 gem 'paperclip-compression', '0.3.5'
 
-#A simple date validator for Rails 3.
+# A simple date validator for Rails 3.
 gem 'date_validator'
 
 # therubyracer is a Ruby connection to the V8 JavaScript interpreter.

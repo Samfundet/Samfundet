@@ -79,8 +79,8 @@ class Sulten::Reservation < ActiveRecord::Base
   end
 
   def self.lyche_open? from, to
-    #TODO: Change these defaults when admin can set them
-    #The values 16 .. 22 are the openinghours 
+    # TODO: Change these defaults when admin can set them
+    # The values 16 .. 22 are the openinghours
     return (16..22).include?(from.hour..to.hour)
   end
 

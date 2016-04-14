@@ -566,14 +566,6 @@ Style/Lambda:
     - 'app/models/standard_hour.rb'
     - 'app/models/sulten/table.rb'
 
-# Offense count: 8
-# Cop supports --auto-correct.
-Style/LeadingCommentSpace:
-  Exclude:
-    - 'Gemfile'
-    - 'app/models/front_page_lock.rb'
-    - 'app/models/sulten/reservation.rb'
-
 # Offense count: 2
 # Cop supports --auto-correct.
 Style/LineEndConcatenation:
