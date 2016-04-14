@@ -90,7 +90,6 @@ describe GroupsController do
       it "should set success flash" do
         flash[:success].should_not be_nil
       end
-
     end
 
     describe "failure" do

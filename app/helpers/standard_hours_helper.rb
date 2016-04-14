@@ -4,9 +4,9 @@ module StandardHoursHelper
     count          = StandardHour.count
 
     max_updated_at = StandardHour
-      .maximum(:updated_at)
-      .try(:utc)
-      .try(:to_s, :number)
+                     .maximum(:updated_at)
+                     .try(:utc)
+                     .try(:to_s, :number)
     current_day = Time.current.day
 
     closed = EverythingClosedPeriod.current_period

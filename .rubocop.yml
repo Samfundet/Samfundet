@@ -10,3 +10,6 @@ AllCops:
 
 Metrics/LineLength:
   Max: 350
+
+Lint/UnusedBlockArgument:
+    Enabled: false

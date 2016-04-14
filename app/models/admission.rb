@@ -13,9 +13,9 @@ class Admission < ActiveRecord::Base
                       :actual_application_deadline,
                       :user_priority_deadline,
                       :admin_priority_deadline,
-                      with: %r(\A[0-3][0-9].[01][0-9].[0-9]{4,4}  # The date.
+                      with: /\A[0-3][0-9].[01][0-9].[0-9]{4,4}  # The date.
                                \                                  # A space.
-                               [0-2][0-9]:[0-5][0-9]\Z)x          # The time.
+                               [0-2][0-9]:[0-5][0-9]\Z/x # The time.
 
   # An admission has five datetimes associated with it:
   #
@@ -74,8 +74,8 @@ class Admission < ActiveRecord::Base
 
   # We must use lambdas so that the time is not 'cached' on server start.
   scope :current, (lambda do
-    where("user_priority_deadline > ?", 2.weeks.ago).
-    order("user_priority_deadline DESC")
+    where("user_priority_deadline > ?", 2.weeks.ago)
+    .order("user_priority_deadline DESC")
   end)
 
   scope :appliable, (lambda do
@@ -85,7 +85,7 @@ class Admission < ActiveRecord::Base
 
   scope :active, (lambda do
     where("shown_from < ? and admin_priority_deadline > ?",
-      Time.current, Time.current)
+          Time.current, Time.current)
   end)
 
   scope :no_longer_appliable, (lambda do

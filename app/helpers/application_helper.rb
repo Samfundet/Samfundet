@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
-  FLASH_TYPES = [:success, :notice, :error, :message, :warning]
+  FLASH_TYPES = [:success, :notice, :error, :message, :warning].freeze
 
   def set_title(page_title)
     content_for(:title) { page_title }
@@ -46,7 +46,7 @@ module ApplicationHelper
     end
   end
 
-  alias_method :T, :translate_and_capitalize
+  alias T translate_and_capitalize
 
   def display_flash(type = nil)
     if type.nil?
@@ -61,7 +61,7 @@ module ApplicationHelper
 
   def active_page_class(page, css_class = 'active')
     return { class: css_class } if current_page?(page)
-    return {}
+    {}
   end
 
   def stylesheet(*args)
@@ -74,7 +74,7 @@ module ApplicationHelper
 
   def typekit_include_tag apikey
     javascript_include_tag("//use.typekit.net/#{apikey}.js") +
-    javascript_tag("try{Typekit.load()}catch(e){}")
+      javascript_tag("try{Typekit.load()}catch(e){}")
   end
 
   def todays_standard_hours

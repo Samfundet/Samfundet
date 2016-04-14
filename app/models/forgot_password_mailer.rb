@@ -8,6 +8,6 @@ class ForgotPasswordMailer < ActionMailer::Base
   def forgot_password_email(applicant)
     @applicant = applicant
     mail(to: @applicant.email,
-         subject: I18n::t("applicants.password_recovery.email_subject"))
+         subject: I18n.t("applicants.password_recovery.email_subject"))
   end
 end

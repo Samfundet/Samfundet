@@ -3,7 +3,7 @@ Given /^"([^"]*)" has applied for "([^"]+)" with motivation "([^"]+)"$/ do |appl
   first, second = applicant_name.split " "
   applicant = Applicant.find_or_initialize_by_firstname_and_surname(first, second)
   applicant.email = Faker::Internet.free_email
-  applicant.phone = (10000000 + rand * 9000000).to_i.to_s
+  applicant.phone = (10_000_000 + rand * 9_000_000).to_i.to_s
   applicant.password = "passord"
   applicant.password_confirmation = "passord"
   applicant.save!

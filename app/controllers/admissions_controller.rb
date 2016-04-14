@@ -5,7 +5,7 @@ class AdmissionsController < ApplicationController
   filter_access_to [:new, :create, :edit, :update]
 
   has_control_panel_applet :admin_applet,
-    if: -> { permitted_to? :show, :admissions_admin_admissions }
+                           if: -> { permitted_to? :show, :admissions_admin_admissions }
 
   def index
     @open_admissions = Admission.appliable.includes(

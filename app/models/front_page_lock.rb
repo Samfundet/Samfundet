@@ -11,13 +11,14 @@ class FrontPageLock < ActiveRecord::Base
   validates :position, presence: true, uniqueness: true
   validates :lockable_id, uniqueness: true, presence: true, if: :lockable_id?
   validates_inclusion_of :lockable_type,
-    in: [Event.name, Blog.name],
-    message: "Invalid lock type",
-    if: :lockable_type?
+                         in: [Event.name, Blog.name],
+                         message: "Invalid lock type",
+                         if: :lockable_type?
 
   scope :locks_enabled, -> {
     where('lockable_id IS NOT null')
-    .order(:position)}
+      .order(:position)
+  }
 
   # TODO: this might not be an issue in rails 3
   # belongs_to touch: true does not currently touch the old associated
@@ -35,15 +36,15 @@ class FrontPageLock < ActiveRecord::Base
   end
 
   def event_or_blog_exists
-    return !lockable_type.constantize.find_by_id(lockable_id).nil?
+    !lockable_type.constantize.find_by_id(lockable_id).nil?
   end
 
   def event_or_blog_locked
-    return !lockable_type.constantize.find_by_id(lockable_id).front_page_lock.nil?
+    !lockable_type.constantize.find_by_id(lockable_id).front_page_lock.nil?
   end
 
   def check_if_already_locked
-    if not event_or_blog_exists
+    if !event_or_blog_exists
       if lockable_type == "Event"
         errors.add(:event_id, I18n.t("activerecord.models.front_page_lock.event_empty_choice_error"))
       else

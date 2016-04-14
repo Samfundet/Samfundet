@@ -3,7 +3,7 @@ class DocumentsController < ApplicationController
   filter_access_to :admin, require: :manage
 
   has_control_panel_applet :admin_applet,
-    if: -> { permitted_to? :manage, :documents }
+                           if: -> { permitted_to? :manage, :documents }
 
   def admin
     @categories = DocumentCategory.includes(:documents)

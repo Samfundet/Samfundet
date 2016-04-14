@@ -24,14 +24,14 @@ module EventHelper
     case event.price_type
     when 'custom'
       event.price
-        .sort_by(&:price)
-        .map { |p| "#{p.price},- #{p.name}"}
-        .join(" / ")
+           .sort_by(&:price)
+           .map { |p| "#{p.price},- #{p.name}" }
+           .join(" / ")
     when 'billig'
       event.price
-        .sort_by(&:price)
-        .map { |p| "#{p.price},-"}
-        .join(" / ")
+           .sort_by(&:price)
+           .map { |p| "#{p.price},-" }
+           .join(" / ")
     when 'free'
       t('events.ticket_free')
     else

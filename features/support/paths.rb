@@ -66,7 +66,7 @@ module NavigationHelpers
       admissions_admin_admission_group_job_job_application_path(admission, group, job, job_application)
     else
       raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
-        "Now, go and add a mapping in #{__FILE__}"
+            "Now, go and add a mapping in #{__FILE__}"
     end
   end
 end

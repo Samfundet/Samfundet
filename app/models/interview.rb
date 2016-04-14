@@ -1,31 +1,31 @@
 # -*- encoding : utf-8 -*-
 class Interview < ActiveRecord::Base
   belongs_to :job_application
-#  has_one :group, through: :job_application
+  #  has_one :group, through: :job_application
 
   scope :with_time_set, conditions: ["time > 0"]
 
   ACCEPTANCE_STATUSES_NO = { wanted: 'Vil ha',
                              reserved: 'Reservert',
                              not_wanted: 'Vil ikke ha',
-                             nil => 'Ikke satt' }
+                             nil => 'Ikke satt' }.freeze
   ACCEPTANCE_STATUSES_EN = { wanted: 'Wanted',
                              reserved: 'Reserved',
                              not_wanted: 'Not wanted',
-                             nil => 'Not set' }
+                             nil => 'Not set' }.freeze
 
   validates_inclusion_of :acceptance_status,
                          in: ACCEPTANCE_STATUSES_NO.keys,
                          message: "Invalid acceptance status"
 
   def acceptance_status
-    field = read_attribute(:acceptance_status)
+    field = self[:acceptance_status]
     field = nil if field && field.empty?
     return field.to_sym unless field.blank?
   end
 
   def acceptance_status=(value)
-    write_attribute(:acceptance_status, value.to_s)
+    self[:acceptance_status] = value.to_s
   end
 
   def group

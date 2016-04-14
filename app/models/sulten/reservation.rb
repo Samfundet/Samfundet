@@ -3,12 +3,12 @@ class Sulten::Reservation < ActiveRecord::Base
   belongs_to :reservation_type
 
   attr_accessible :reservation_from, :reservation_duration, :reservation_to, :people, :name,
-    :telephone, :email, :allergies, :internal_comment, :table_id, :reservation_type_id, :reservation_duration
+                  :telephone, :email, :allergies, :internal_comment, :table_id, :reservation_type_id, :reservation_duration
 
   attr_accessor :reservation_duration
 
   validates_presence_of :reservation_from, :reservation_to, :reservation_duration, :people,
-    :name, :telephone, :email, :reservation_type
+                        :name, :telephone, :email, :reservation_type
 
   validate :check_opening_hours, :reservation_is_one_day_in_future, :check_amount_of_people, on: :create
 
@@ -17,7 +17,7 @@ class Sulten::Reservation < ActiveRecord::Base
   before_validation(on: :create) do
     should_break = false
 
-    if not [30, 60, 90, 120].include? reservation_duration.to_i
+    unless [30, 60, 90, 120].include? reservation_duration.to_i
       errors.add(:reservation_duration, I18n.t("helpers.models.sulten.reservation.errors.people.check_reservation_duration"))
       should_break = true
     end
@@ -35,7 +35,7 @@ class Sulten::Reservation < ActiveRecord::Base
   after_validation(on: :create) do
     self.table = Sulten::Reservation.find_table(reservation_from, reservation_to, people, reservation_type_id)
 
-    unless self.table
+    unless table
       errors.add(:reservation_from,
                  I18n.t("helpers.models.sulten.reservation.errors.reservation_from.no_table_available"))
     end
@@ -48,7 +48,7 @@ class Sulten::Reservation < ActiveRecord::Base
   end
 
   def check_opening_hours
-    if not Sulten::Reservation.lyche_open?(self.reservation_from, self.reservation_to)
+    unless Sulten::Reservation.lyche_open?(reservation_from, reservation_to)
       errors.add(:reservation_from, I18n.t("helpers.models.sulten.reservation.errors.reservation_from.check_opening_hours"))
     end
   end
@@ -62,7 +62,7 @@ class Sulten::Reservation < ActiveRecord::Base
   end
 
   def first_name
-    self.name.partition(" ").first
+    name.partition(" ").first
   end
 
   def self.find_table from, to, people, reservation_type_id
@@ -75,18 +75,18 @@ class Sulten::Reservation < ActiveRecord::Base
         end
       end
     end
-    return nil
+    nil
   end
 
   def self.lyche_open? from, to
     # TODO: Change these defaults when admin can set them
     # The values 16 .. 22 are the openinghours
-    return (16..22).include?(from.hour..to.hour)
+    (16..22).include?(from.hour..to.hour)
   end
 
   def self.kitchen_open? from, to
-    default_kitchen_opening_hour = Time.new(2015,01,01,16,00,00)
-    default_kitchen_closing_hour = Time.new(2015,01,01,22,00,00)
-    return (16..22).include?(from.hour..to.hour)
+    default_kitchen_opening_hour = Time.new(2015, 01, 01, 16, 00, 00)
+    default_kitchen_closing_hour = Time.new(2015, 01, 01, 22, 00, 00)
+    (16..22).include?(from.hour..to.hour)
   end
 end

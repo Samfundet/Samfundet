@@ -8,11 +8,11 @@ class Role < ActiveRecord::Base
   end)
 
   def members
-    Member.find(self.members_roles.all.collect(&:member_id))
+    Member.find(members_roles.all.collect(&:member_id))
   end
 
   def sub_roles
-    roles + roles.map { |role| role.sub_roles }.flatten
+    roles + roles.map(&:sub_roles).flatten
   end
 
   def self.super_user

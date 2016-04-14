@@ -1,9 +1,9 @@
 # -*- encoding : utf-8 -*-
 module ApplicantsHelper
   def facebook_search_link(applicant)
-    search_url = "https://www.facebook.com/search/results.php?#{{q: applicant.full_name}.to_query}"
+    search_url = "https://www.facebook.com/search/results.php?#{{ q: applicant.full_name }.to_query}"
     link_to t('job_applications.find_on_facebook', name: applicant.full_name), search_url,
-      class: "applicant_facebook"
+            class: "applicant_facebook"
   end
 
   def password_reset_link(args = {})

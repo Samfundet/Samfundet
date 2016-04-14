@@ -6,11 +6,11 @@ require File.dirname(__FILE__) + "/../config/environment"
 require 'rspec/rails'
 
 # Requires shared example groups.
-Dir["#{File.dirname(__FILE__)}/shared/**/*.rb"].each {|f| require f}
+Dir["#{File.dirname(__FILE__)}/shared/**/*.rb"].each { |f| require f }
 
 # Requires supporting files with custom matchers and macros, etc,
 # in ./support/ and its subdirectories.
-Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
+Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 
 Authorization.ignore_access_control(true)
 

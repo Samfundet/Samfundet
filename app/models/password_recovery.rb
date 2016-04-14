@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 class PasswordRecovery < ActiveRecord::Base
-# Dummy model to get on Rails good side.
-# Rails can suck my balls -Stian
+  # Dummy model to get on Rails good side.
+  # Rails can suck my balls -Stian
 end
 
 # == Schema Information

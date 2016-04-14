@@ -2,7 +2,7 @@ class BlogsController < ApplicationController
   filter_access_to [:admin], require: :edit
 
   has_control_panel_applet :admin_applet,
-    if: -> { permitted_to? :edit, :blogs }
+                           if: -> { permitted_to? :edit, :blogs }
 
   def index
     @articles = Blog.published

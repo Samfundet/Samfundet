@@ -31,6 +31,7 @@ class AdmissionsAdmin::JobApplicationsController < ApplicationController
       ]
     end
   end
+
   def hidden_create
     applicant = Applicant.find_by_email(params[:email])
     if applicant.nil?

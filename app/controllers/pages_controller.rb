@@ -2,14 +2,14 @@
 class PagesController < ApplicationController
   filter_access_to [:index, :new, :create]
   filter_access_to [:show, :edit, :update, :destroy, :history], attribute_check: true,
-    load_method: :load_page
+                                                                load_method: :load_page
   filter_access_to [:admin], require: :edit
   filter_access_to [:graph], require: :edit do
     show_admin?
   end
 
   has_control_panel_applet :admin_applet,
-    if: -> { show_admin? }
+                           if: -> { show_admin? }
 
   def index
     @menu = Page.menu
@@ -52,9 +52,7 @@ class PagesController < ApplicationController
     @content = params[:content]
     @content_type = params[:content_type]
 
-    if request.xhr?
-      render layout: false
-    end
+    render layout: false if request.xhr?
   end
 
   def update
@@ -94,9 +92,7 @@ class PagesController < ApplicationController
   def change_language
     new_route = I18n.locale == :no ? { locale: 'en' } : { locale: 'no' }
 
-    if @page
-      new_route[:id] = I18n.locale == :no ? @page.name_en : @page.name_no
-    end
+    new_route[:id] = I18n.locale == :no ? @page.name_en : @page.name_no if @page
 
     new_route
   end
@@ -127,11 +123,11 @@ class PagesController < ApplicationController
       if page.content_no.nil?
         graph[page.name] = []
       else
-        filtered_links = page.content_no.scan(urlRegex).map {|link_str| urlFilter link_str.first}
-        graph[page.name] = filtered_links.reject {|link| link.nil?}
+        filtered_links = page.content_no.scan(urlRegex).map { |link_str| urlFilter link_str.first }
+        graph[page.name] = filtered_links.reject(&:nil?)
       end
     end
-    return graph
+    graph
   end
 
   private
@@ -142,9 +138,7 @@ class PagesController < ApplicationController
     nameRegex = /^#{Page::NAME_FORMAT}$/
 
     # check if link matches name spec already
-    if nameRegex.match url
-      return url
-    end
+    return url if nameRegex.match url
 
     if url.start_with? "/"
       # this is an url that leads to somewhere on samfundet.no
@@ -162,7 +156,7 @@ class PagesController < ApplicationController
     end
 
     # We only handle http, https. We also let uris not specifying protocol go trough, since they probably are http.
-    if !(uri.scheme.nil? || uri.scheme == "http" || uri.scheme == "https")
+    unless uri.scheme.nil? || uri.scheme == "http" || uri.scheme == "https"
       # This is an url, but we a different protocol than http.
       # drop this url
       return nil
@@ -173,7 +167,7 @@ class PagesController < ApplicationController
       begin
         # recognize_path throws 404 if it doesn't find a valid distination
         destination = Rails.application.routes.recognize_path uri.to_s
-        if (destination[:controller] == "pages" && destination[:action] == "show")
+        if destination[:controller] == "pages" && destination[:action] == "show"
           # this is some link that resolves to an info page
           return destination[:id]
         else

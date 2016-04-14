@@ -15,11 +15,11 @@ class AdmissionsAdmin::InterviewsController < ApplicationController
         event = Icalendar::Event.new
         event.start = interview.time.strftime('%Y%m%dT%H%M%S')
         event.end = (interview.time + 30.minutes).strftime('%Y%m%dT%H%M%S')
-        event.summary = I18n::t("interviews.ical_summary",
-                                group: interview.job_application.job.group)
-        event.description = I18n::t("interviews.ical_description",
-                                    job: interview.job_application.job.title,
-                                    group: interview.job_application.job.group)
+        event.summary = I18n.t("interviews.ical_summary",
+                               group: interview.job_application.job.group)
+        event.description = I18n.t("interviews.ical_description",
+                                   job: interview.job_application.job.title,
+                                   group: interview.job_application.job.group)
 
         calendar = Icalendar::Calendar.new
         calendar.add event
@@ -30,46 +30,42 @@ class AdmissionsAdmin::InterviewsController < ApplicationController
   end
 
   def update
-    begin
-      if params[:interview][:time]
-        @interview.time = params[:interview][:time]
-      end
-      if params[:interview][:location]
-        @interview.location = params[:interview][:location]
-      end
-      if params[:interview][:comment]
-        @interview.comment = params[:interview][:comment]
-      end
-      if params[:interview][:acceptance_status]
-        @interview.acceptance_status = params[:interview][:acceptance_status]
-      end
+    @interview.time = params[:interview][:time] if params[:interview][:time]
+    if params[:interview][:location]
+      @interview.location = params[:interview][:location]
+    end
+    if params[:interview][:comment]
+      @interview.comment = params[:interview][:comment]
+    end
+    if params[:interview][:acceptance_status]
+      @interview.acceptance_status = params[:interview][:acceptance_status]
+    end
 
-      if @interview.past_set_status_deadline? && @interview.acceptance_status_changed?
-        raise t('interviews.cannot_set_status_past_deadline')
-      else
-        @interview.save!
+    if @interview.past_set_status_deadline? && @interview.acceptance_status_changed?
+      raise t('interviews.cannot_set_status_past_deadline')
+    else
+      @interview.save!
 
-        @interview_warning = nil
-        show_warning_if_other_interviews_take_place_within_30_minutes
+      @interview_warning = nil
+      show_warning_if_other_interviews_take_place_within_30_minutes
 
-        if request.xhr?
-          render json: { status: @interview.job_application.assignment_status,
-                         warning: @interview_warning }
-        else
-          redirect_to admissions_admin_admission_group_job_path(@interview.job_application.job.admission,
-                                                                @interview.job_application.job.group,
-                                                                @interview.job_application.job)
-        end
-      end
-    rescue Exception => ex
       if request.xhr?
-        render text: ex.to_s, status: 500
+        render json: { status: @interview.job_application.assignment_status,
+                       warning: @interview_warning }
       else
-        flash[:error] = ex.to_s
         redirect_to admissions_admin_admission_group_job_path(@interview.job_application.job.admission,
                                                               @interview.job_application.job.group,
                                                               @interview.job_application.job)
       end
+    end
+  rescue Exception => ex
+    if request.xhr?
+      render text: ex.to_s, status: 500
+    else
+      flash[:error] = ex.to_s
+      redirect_to admissions_admin_admission_group_job_path(@interview.job_application.job.admission,
+                                                            @interview.job_application.job.group,
+                                                            @interview.job_application.job)
     end
   end
 

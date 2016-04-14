@@ -1,6 +1,5 @@
 # -*- encoding : utf-8 -*-
 module UserSessionsHelper
-
   # Returns the text width (in characters) of the username and password fields
   # for both member and applicant login forms.
   def login_text_input_width

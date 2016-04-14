@@ -16,7 +16,7 @@ class Applicant < ActiveRecord::Base
   validates_presence_of :password, :password_confirmation,
                         if: ->(applicant) { applicant.new_record? }
   validates_length_of :password, minimum: 6,
-                        if: ->(applicant) { applicant.new_record? }
+                                 if: ->(applicant) { applicant.new_record? }
   validates_length_of :password, minimum: 6, if: :password_changed?
   validates_confirmation_of :password, if: :password_changed?
   validates_format_of :phone, with: /^[\d\s+]+$/
@@ -32,24 +32,24 @@ class Applicant < ActiveRecord::Base
   end
 
   def hash_new_password
-    if Rails.env == "production"
-      cost = 10
-    else
-      cost = 1
-    end
+    cost = if Rails.env == "production"
+             10
+           else
+             1
+           end
     self.hashed_password = BCrypt::Password.create(@password, cost: cost)
   end
 
   def assigned_job_application(admission)
     job_applications.joins(:interview)
-      .where(interviews: { acceptance_status: %w(wanted reserved) })
-      .find { |application| application.job.admission == admission }
+                    .where(interviews: { acceptance_status: %w(wanted reserved) })
+                    .find { |application| application.job.admission == admission }
   end
 
   # Static because an applicant should be separated from the rest of the system
   def role_symbols
     # Think trice before changing this!
-    return [:soker]
+    [:soker]
   end
 
   def can_recover_password?
@@ -75,7 +75,7 @@ class Applicant < ActiveRecord::Base
     def authenticate(email, password)
       applicant = find_by_email(email.downcase)
       return applicant if applicant &&
-        BCrypt::Password.new(applicant.hashed_password) == password
+                          BCrypt::Password.new(applicant.hashed_password) == password
     end
   end
 

@@ -7,9 +7,7 @@ class Tag < ActiveRecord::Base
     Tag.all.sort_by(&:images_count).reverse
   end
 
-  def images_count
-    images.count
-  end
+  delegate :count, to: :images, prefix: true
 end
 
 # == Schema Information

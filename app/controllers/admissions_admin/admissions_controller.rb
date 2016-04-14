@@ -40,17 +40,17 @@ class AdmissionsAdmin::AdmissionsController < ApplicationController
       encoding: 'text',
       labels: group_labels,
       size: '800x300',
-      custom: 'chco=00FFFF,FF0000,FFFF00,0000FF',  # color scale
+      custom: 'chco=00FFFF,FF0000,FFFF00,0000FF', # color scale
     )
 
     @applications_per_day_chart = Gchart.bar(
       data: applications_per_day,
       encoding: 'text',
       labels: admission_day_labels,
-      axis_with_labels: ['x' ,'y'],
+      axis_with_labels: %w(x y),
       axis_range: [nil, [0, applications_per_day.max, 10]],
       size: '800x350',
-      bar_color: 'A03033',
+      bar_color: 'A03033'
     )
   end
 end

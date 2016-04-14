@@ -68,11 +68,11 @@ class Group < ActiveRecord::Base
   end
 
   def member_role
-    role = "#{short_name.downcase}"
-    role.gsub! "æ", "ae"
-    role.gsub! "ø", "oe"
-    role.gsub! "å", "aa"
-    role.gsub! " ", "_"
+    role = short_name.downcase.to_s
+    role.tr! "æ", "ae"
+    role.tr! "ø", "oe"
+    role.tr! "å", "aa"
+    role.tr! " ", "_"
     role.gsub!(/[^a-zA-Z_0-9]/, "")
     role.to_sym
   end

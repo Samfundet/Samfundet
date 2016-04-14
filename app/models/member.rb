@@ -6,14 +6,14 @@ class Member < ActiveRecord::Base
   has_many :billig_purchase, foreign_key: :owner_member_id
 
   def my_groups
-    if Authorization::Engine.instance.permit?(:show, {:user => self, :context => :admissions_admin_groups})
+    if Authorization::Engine.instance.permit?(:show, { user: self, context: :admissions_admin_groups })
       Group.all
     else
-      Group.all.select { |group| Authorization::Engine.instance.permit?(:show, {:user => self, :context => :admissions_admin_groups, :object => group}) }
+      Group.all.select { |group| Authorization::Engine.instance.permit?(:show, { user: self, context: :admissions_admin_groups, object: group }) }
     end
   end
 
   def sub_roles
-    roles + roles.map { |role| role.sub_roles }.flatten
+    roles + roles.map(&:sub_roles).flatten
   end
 end

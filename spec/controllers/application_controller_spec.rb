@@ -2,7 +2,6 @@
 require 'spec_helper'
 
 describe ApplicationController do
-
   context :authorization do
     before(:each) do
       @member = mock_model(Member)

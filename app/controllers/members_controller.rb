@@ -3,10 +3,10 @@ class MembersController < ApplicationController
   filter_access_to [:search, :control_panel, :steal_identity]
 
   has_control_panel_applet :steal_identity_applet,
-    if: -> { permitted_to? :steal_identity, :members }
+                           if: -> { permitted_to? :steal_identity, :members }
 
   has_control_panel_applet :access_applet,
-    if: -> { true }
+                           if: -> { true }
 
   def search
     @members = Member.where("UPPER(fornavn) || ' ' || UPPER(etternavn) LIKE ?" +

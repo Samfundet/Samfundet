@@ -43,7 +43,6 @@ class Sulten::ReservationsController < ApplicationController
       flash.now[:error] = t("helpers.models.sulten.reservation.errors.update_fail")
       render :edit
     end
-
   end
 
   def destroy

@@ -5,8 +5,8 @@ class Document < ActiveRecord::Base
   belongs_to :uploader, class_name: 'Member'
 
   has_attached_file :file,
-    url: "/upload/:class/:attachment/:id_partition/:filename",
-    path: ":rails_root/public/upload/:class/:attachment/:id_partition/:filename"
+                    url: "/upload/:class/:attachment/:id_partition/:filename",
+                    path: ":rails_root/public/upload/:class/:attachment/:id_partition/:filename"
 
   validates :file, presence: true
   validates_attachment_content_type :file, content_type: /\Aapplication\/pdf\Z/

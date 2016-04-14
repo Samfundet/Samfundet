@@ -49,7 +49,7 @@ describe Member do
 
     context "with general permission to administrate admissions" do
       before(:each) do
-        @engine.should_receive(:permit?).with(:show, {context: :admissions_admin_groups, user: @member}).and_return(true)
+        @engine.should_receive(:permit?).with(:show, { context: :admissions_admin_groups, user: @member }).and_return(true)
         Authorization::Engine.should_receive(:instance).once.and_return(@engine)
       end
 

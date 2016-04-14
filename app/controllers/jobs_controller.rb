@@ -19,8 +19,6 @@ class JobsController < ApplicationController
     flash.now[:notice] = t('jobs.belongs_to_closed_admission') unless @job.admission.appliable?
 
     # Intercept AJAX requests
-    if request.xhr?
-      render layout: false, partial: 'modal'
-    end
+    render layout: false, partial: 'modal' if request.xhr?
   end
 end

@@ -2,7 +2,7 @@ class AreasController < ApplicationController
   filter_access_to :all
 
   has_control_panel_applet :edit_opening_hours_applet,
-    if: -> { permitted_to? :manage, :areas }
+                           if: -> { permitted_to? :manage, :areas }
 
   def edit
     @area = Area.find_by_id params[:id]

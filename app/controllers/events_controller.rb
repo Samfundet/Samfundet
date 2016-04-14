@@ -2,11 +2,11 @@
 class EventsController < ApplicationController
   filter_access_to [:admin], require: :edit
   filter_access_to [:purchase_callback_failure,
-    :purchase_callback_success], require: :buy
+                    :purchase_callback_success], require: :buy
   filter_access_to :rss, require: :read
 
   has_control_panel_applet :admin_applet,
-    if: -> { permitted_to? :edit, :events }
+                           if: -> { permitted_to? :edit, :events }
 
   before_filter :set_organizer_id, only: [:create, :update]
 
@@ -24,20 +24,18 @@ class EventsController < ApplicationController
 
   def index
     @events = Event
-      .active
-      .published
-      .upcoming
+              .active
+              .published
+              .upcoming
   end
 
   def search
     @events = Event
-      .active
-      .published
-      .text_search(params[:search])
+              .active
+              .published
+              .text_search(params[:search])
 
-    if request.xhr?
-      render '_search_results', layout: false
-    end
+    render '_search_results', layout: false if request.xhr?
   end
 
   def show
@@ -46,7 +44,7 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new(
-      non_billig_start_time: Time.current + 1.hours,
+      non_billig_start_time: Time.current + 1.hour,
       publication_time: Time.current)
   end
 
@@ -93,30 +91,26 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
 
     unless @event.purchase_status == Event::TICKETS_AVAILABLE
-      if request.xhr?
-        raise ActionController::RoutingError.new('Not Found')
-      end
+      raise ActionController::RoutingError.new('Not Found') if request.xhr?
 
       flash[:error] = t('events.can_not_purchase_error')
-      redirect_to @event and return
+      redirect_to(@event) && return
     end
 
     @ticket_groups = @event.billig_event.netsale_billig_ticket_groups
 
-    if params.has_key? :bsession
+    if params.key? :bsession
       @payment_error = BilligPaymentError.where(error: params[:bsession]).first
       @payment_error_price_groups =
           Hash[BilligPaymentErrorPriceGroup.where(error: params[:bsession])
-          .map { |bpepg| [bpepg.price_group, bpepg.number_of_tickets]}]
+          .map { |bpepg| [bpepg.price_group, bpepg.number_of_tickets] }]
       flash.now[:error] = @payment_error.message
     else
       @payment_error = nil
       @payment_error_price_groups = {}
     end
 
-    if request.xhr?
-      render layout: false
-    end
+    render layout: false if request.xhr?
   end
 
   def admin
@@ -125,8 +119,8 @@ class EventsController < ApplicationController
 
   def archive
     @events = Event.past
-        .paginate(page: params[:page], per_page: 20)
-        .order("non_billig_start_time DESC")
+                   .paginate(page: params[:page], per_page: 20)
+                   .order("non_billig_start_time DESC")
   end
 
   def admin_applet
@@ -134,9 +128,9 @@ class EventsController < ApplicationController
 
   def purchase_callback_success
     split_tickets = params[:tickets]
-        .split(",")
-        .map(&:to_i)
-        .uniq - [0]
+                    .split(",")
+                    .map(&:to_i)
+                    .uniq - [0]
 
     @references = split_tickets.join(", ") << "."
     @pdf_url = Rails.application.config.billig_ticket_path.dup
@@ -144,24 +138,23 @@ class EventsController < ApplicationController
 
     @ticket_event_price_group_card_no =
         split_tickets.each_with_index.map do |ticket_with_hmac, i|
+          ticket_id = ticket_with_hmac.to_s[0..-6].to_i # First 5 characters are hmac.
+          @pdf_url << "ticket#{i}=#{ticket_with_hmac}&"
+          billig_ticket = BilligTicket.find_by_ticket(ticket_id)
 
-      ticket_id = ticket_with_hmac.to_s[0..-6].to_i # First 5 characters are hmac.
-      @pdf_url << "ticket#{i}=#{ticket_with_hmac}&"
-      billig_ticket = BilligTicket.find_by_ticket(ticket_id)
+          if billig_ticket
+            @sum += billig_ticket.billig_price_group.price
 
-      if billig_ticket
-        @sum += billig_ticket.billig_price_group.price
+            card_number = if billig_ticket.on_card
+                            billig_ticket.billig_purchase.membership_card.card
+                          end
 
-        card_number = if billig_ticket.on_card
-                        billig_ticket.billig_purchase.membership_card.card
-        end
-
-        [billig_ticket,
-          billig_ticket.billig_event,
-          billig_ticket.billig_price_group,
-          card_number]
-      end
-    end.compact
+            [billig_ticket,
+             billig_ticket.billig_event,
+             billig_ticket.billig_price_group,
+             card_number]
+          end
+        end.compact
 
     @pdf_url.chop! # Remove last '&' character.
   end
@@ -191,11 +184,11 @@ class EventsController < ApplicationController
   end
 
   def rss
-    if %w(archive arkiv).include? params[:type]
-      @events = Event.active.published
-    else
-      @events = Event.upcoming.active.published
-    end
+    @events = if %w(archive arkiv).include? params[:type]
+                Event.active.published
+              else
+                Event.upcoming.active.published
+              end
     respond_to do |format|
       format.rss { render layout: false }
     end

@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe OpeningHoursController do
-
   describe "GET 'edit'" do
     it "returns http success" do
       get 'edit'
@@ -15,5 +14,4 @@ describe OpeningHoursController do
       response.should be_success
     end
   end
-
 end

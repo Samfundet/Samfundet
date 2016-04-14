@@ -41,7 +41,6 @@ Given /^"([^\"]*)" is an officer position$/ do |job_title|
   end
 end
 
-
 Given /^there are jobs (.+) for an admission "([^"]+)" for the group "([^"]+)"$/ do |jobs, admission_title, group_name|
   without_access_control do
     group = Group.find_or_initialize_by_name(group_name)
@@ -58,7 +57,7 @@ Given /^there are jobs (.+) for an admission "([^"]+)" for the group "([^"]+)"$/
                                   admin_priority_deadline: 2.weeks.from_now + 1.hour)
 
     jobs.split(", ").each do |quoted_title|
-      title = quoted_title.gsub(/"/, "")
+      title = quoted_title.delete('"')
 
       Job.create!(
         admission: admission,

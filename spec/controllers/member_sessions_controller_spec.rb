@@ -61,7 +61,7 @@ describe MemberSessionsController do
       end
 
       it "should remove applicant id from session" do
-        session[:applicant_id] = 555;
+        session[:applicant_id] = 555
 
         post :create
         session[:applicant_id].should be_nil

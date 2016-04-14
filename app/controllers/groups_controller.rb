@@ -5,7 +5,7 @@ class GroupsController < ApplicationController
   filter_access_to :admin, require: :edit
 
   has_control_panel_applet :admin_applet,
-    if: -> { permitted_to? :edit, :groups }
+                           if: -> { permitted_to? :edit, :groups }
 
   def admin_applet
   end

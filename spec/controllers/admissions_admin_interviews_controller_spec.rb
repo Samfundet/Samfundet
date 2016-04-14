@@ -2,7 +2,6 @@
 require 'spec_helper'
 
 describe AdmissionsAdmin::InterviewsController do
-
   before :each do
     @open_admission = create_open_admission
     @group = Group.create!(name: "Gruppe", group_type: mock_model(GroupType))
@@ -20,7 +19,6 @@ describe AdmissionsAdmin::InterviewsController do
   end
 
   describe :update do
-
     before :each do
       @interview = Interview.create!(
         time: 5.hours.from_now,
@@ -35,13 +33,11 @@ describe AdmissionsAdmin::InterviewsController do
       time = 1.hour.from_now
 
       put :update, admission_id: @open_admission.id, group_id: @group.id,
-        id: @interview.id, time: time, format: 'json'
+                   id: @interview.id, time: time, format: 'json'
 
       @interview.time = time
 
       response.body.should include(@interview.to_json)
     end
-
   end
-
 end

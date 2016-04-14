@@ -327,7 +327,6 @@ describe ApplicantsController do
         PasswordRecovery.create!(applicant_id: @applicant.id)
 
         post :change_password, applicant: {}, id: @applicant.id
-
       end
 
       it "should delete all password_recoveries" do
@@ -344,15 +343,13 @@ describe ApplicantsController do
     end
   end
 
-
   describe :steal_identity do
     it "should set the session value applicant_id to the id of the applicant having the email specified and redirect to home page" do
-	     applicant = mock_model(Applicant).as_null_object
-        Applicant.stub(:find_by_email).with("test@example.com").and_return(applicant)
-	post :steal_identity, applicant_email: "test@example.com"
-        session[:applicant_id].should == applicant.id
-        response.should redirect_to(root_path)
+      applicant = mock_model(Applicant).as_null_object
+      Applicant.stub(:find_by_email).with("test@example.com").and_return(applicant)
+      post :steal_identity, applicant_email: "test@example.com"
+      session[:applicant_id].should == applicant.id
+      response.should redirect_to(root_path)
     end
   end
-
 end

@@ -1,11 +1,11 @@
 # -*- encoding : utf-8 -*-
 class Page < ActiveRecord::Base
   NAME_FORMAT = /_?[0-9]*-?[a-zA-Z][a-zA-Z0-9\-]*/
-  MENU_NAME = "_menu"
-  INDEX_NAME = "_index"
-  TICKETS_NAME = "tickets"
-  HANDICAP_INFO_NAME = 'other-info'
-  REVISION_FIELDS = [:title_no, :title_en, :content_no, :content_en, :content_type]
+  MENU_NAME = "_menu".freeze
+  INDEX_NAME = "_index".freeze
+  TICKETS_NAME = "tickets".freeze
+  HANDICAP_INFO_NAME = 'other-info'.freeze
+  REVISION_FIELDS = [:title_no, :title_en, :content_no, :content_en, :content_type].freeze
 
   extend LocalizedFields
   has_localized_fields :title, :name, :content
@@ -19,8 +19,8 @@ class Page < ActiveRecord::Base
   has_many :revisions, class_name: PageRevision.name
 
   attr_accessible :name_no, :name_en, :title_no, :title_en,
-    :content_no, :content_en, :role, :role_id, :created_at, :updated_at,
-    :content_type
+                  :content_no, :content_en, :role, :role_id, :created_at, :updated_at,
+                  :content_type
 
   default_scope { order(I18n.locale == :no ? :name_no : :name_en) }
 

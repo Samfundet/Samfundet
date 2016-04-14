@@ -4,10 +4,10 @@ class RolesController < ApplicationController
   before_filter :find_by_id, only: [:show, :edit, :update]
 
   has_control_panel_applet :admin_applet,
-    if: -> { Role.with_permissions_to(:manage_members).present? }
+                           if: -> { Role.with_permissions_to(:manage_members).present? }
 
   has_control_panel_applet :pass_applet,
-    if: -> { current_user.roles.passable.present? }
+                           if: -> { current_user.roles.passable.present? }
 
   def index
     # Anyone permitted to edit roles is also allowed to manage members,
@@ -78,8 +78,6 @@ class RolesController < ApplicationController
   def find_by_id
     @role = Role.find_by_id(params[:id].to_i)
 
-    if @role.nil?
-      raise ActiveRecord::RecordNotFound
-    end
+    raise ActiveRecord::RecordNotFound if @role.nil?
   end
 end

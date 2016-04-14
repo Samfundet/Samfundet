@@ -12,18 +12,18 @@ module GroupHelper
     end
   end
 
-  def can_i_manage_admissions_for_at_least_one_group?()
+  def can_i_manage_admissions_for_at_least_one_group?
     Group.all.each do |group|
       job = Job.new(group: group)
       job_application = JobApplication.new(job: job)
       job_interview = Interview.new(job_application: job_application)
-      if permitted_to?(:manage, job) and
-         permitted_to?(:manage, job_application) and
+      if permitted_to?(:manage, job) &&
+         permitted_to?(:manage, job_application) &&
          permitted_to?(:manage, job_interview)
         return true
       end
     end
-    return false
+    false
   end
 
   def group_link(group, options = {})

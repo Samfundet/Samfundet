@@ -1,13 +1,12 @@
 # -*- encoding : utf-8 -*-
 class ImagesController < ApplicationController
   has_control_panel_applet :admin_applet,
-    if: -> { permitted_to? :edit, :images }
+                           if: -> { permitted_to? :edit, :images }
 
   def index
     @images = Image.paginate(page: params[:page], per_page: 10)
-    if request.xhr?
-      render layout: false
-    end
+
+    render layout: false if request.xhr?
   end
 
   def new
@@ -53,9 +52,7 @@ class ImagesController < ApplicationController
 
   def search
     @images = Image.text_search(params[:search])
-    if request.xhr?
-      render '_image_list', layout: false
-    end
+    render '_image_list', layout: false if request.xhr?
   end
 
   def admin_applet
