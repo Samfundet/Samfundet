@@ -69,7 +69,7 @@ class Event < ActiveRecord::Base
     active
     .published
     .upcoming
-    .sort{|a,b| b.front_page_weight <=> a.front_page_weight }}
+    .sort {|a,b| b.front_page_weight <=> a.front_page_weight }}
 
   def title_no
     billig_event.try(:event_name) || non_billig_title_no

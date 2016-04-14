@@ -12,7 +12,7 @@ j layout "admissions"
     admission_start = @admission.shown_from.to_date
     admission_end = @admission.actual_application_deadline.to_date
     applications_per_day = (admission_start..admission_end).map do |day|
-      job_applications.count{|a| a.created_at.to_date === day.to_date}
+      job_applications.count {|a| a.created_at.to_date === day.to_date}
     end
     admission_day_labels = (admission_start..admission_end).map do |day|
      day.strftime("%-d.%-m")

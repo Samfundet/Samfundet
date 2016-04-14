@@ -770,13 +770,6 @@ Style/SpaceAroundOperators:
 
 # Offense count: 2
 # Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-# SupportedStyles: space, no_space
-Style/SpaceBeforeBlockBraces:
-  Enabled: false
-
-# Offense count: 2
-# Cop supports --auto-correct.
 Style/SpaceBeforeComma:
   Exclude:
     - 'app/controllers/admissions_admin/admissions_controller.rb'
