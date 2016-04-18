@@ -10,6 +10,7 @@
 #
 
 class Area < ActiveRecord::Base
+  include Rails.application.routes.url_helpers
   belongs_to :page
 
   has_many :standard_hours
@@ -30,5 +31,9 @@ class Area < ActiveRecord::Base
 
   def to_s
     name
+  end
+
+  def edit_path
+    edit_area_path(self)
   end
 end

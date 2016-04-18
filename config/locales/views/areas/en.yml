@@ -9,6 +9,7 @@ en:
     closing_time: "Closing time"
     open: "Open?"
     save: "save"
+    change_venue: "Change venue"
 
     update_success: "Opening hours have been updated"
     update_failure: "Opening hours have not been updated"

@@ -23,3 +23,5 @@ $(function() {
         toggleInputs(input_siblings, $(this).attr('checked'), false);
     });
 });
+
+$('#area_select').bind('change', function() { window.location.pathname = $(this).val() });

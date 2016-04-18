@@ -1,4 +1,7 @@
 - set_title t('areas.edit_title.generic')
 
+= t('areas.change_venue')
+= select_tag "area_select", options_from_collection_for_select(@areas, "edit_path", "name"), include_blank: true
+
 %h2= t('areas.edit_title.specific', name: @area.name)
 = render 'form'

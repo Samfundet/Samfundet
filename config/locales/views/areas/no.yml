@@ -9,6 +9,7 @@
     closing_time: "Stengetid"
     open: "Åpen?"
     save: "Lagre"
+    change_venue: "Endre lokale"
 
     update_success: "Åpningstidene har blitt oppdatert"
     update_failure: "Åpningstidene ble ikke oppdatert"

@@ -5,6 +5,7 @@ class AreasController < ApplicationController
     if: -> { permitted_to? :manage, :areas }
 
   def edit
+    @areas = Area.all
     @area = Area.find_by_id params[:id]
   end
 
