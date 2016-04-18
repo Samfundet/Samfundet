@@ -18,7 +18,8 @@ en:
             reservation_from:
               no_table_available: "there are no tables available at the the given period of time"
               reservation_is_one_day_in_future: "reservations must be made at least one day in advance"
-              check_opening_hours: "Lyche is closed during the given period of time"
+              check_lyche_opening_hours: "Lyche is closed during the given period of time"
+              check_kitchen_opening_hours: "Lyche's kitchen is closed during the given period of time"
             reservation_type_present: "the occasion field cannot be left empty"
             people:
               too_many_people: "send reservations with more than 12 persons to lyche@samfundet.no"

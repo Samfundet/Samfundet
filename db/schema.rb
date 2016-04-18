@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160314172345) do
+ActiveRecord::Schema.define(:version => 20160314224333) do
 
   create_table "admissions", :force => true do |t|
     t.string   "title"
@@ -398,11 +398,22 @@ ActiveRecord::Schema.define(:version => 20160314172345) do
   add_index "standard_hours", ["area_id"], :name => "index_standard_hours_on_area_id"
   add_index "standard_hours", ["day"], :name => "index_standard_hours_on_day"
 
+  create_table "sulten_lyche_opening_hours", :force => true do |t|
+    t.time     "openLyche"
+    t.time     "closeLyche"
+    t.time     "openKitchen"
+    t.time     "closeKitchen"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "day_number"
+  end
+
   create_table "sulten_reservation_types", :force => true do |t|
     t.string   "name"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.text     "description"
+    t.boolean  "needs_kitchen"
   end
 
   create_table "sulten_reservations", :force => true do |t|

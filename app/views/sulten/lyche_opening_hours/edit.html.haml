@@ -1,0 +1,14 @@
+%h2
+  = @weekdays[@lyche_opening_hours.day_number]
+= semantic_form_for @lyche_opening_hours do |f|
+  = f.inputs do
+    = f.input :openLyche, as: :time_picker
+    = f.input :closeLyche, as: :time_picker
+    = f.input :openKitchen, as: :time_picker
+    = f.input :closeKitchen, as: :time_picker
+
+
+  = f.actions do
+    = f.submit "Oppdater tid"
+
+= link_to "Tilbake", sulten_lyche_opening_hours_path

@@ -183,6 +183,7 @@ Rails.application.routes.draw do
     get :kjempelars, to: "admin#index"
     get "reservations/archive" => "reservations#archive"
 
+    resources :lyche_opening_hours, only: [:index, :edit, :update]
     resources :reservation_types
     resources :reservations do
       get :success, on: :collection

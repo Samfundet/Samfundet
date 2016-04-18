@@ -112,7 +112,8 @@ authorization do
       :sulten_reservations,
       :sulten_reservation_types,
       :sulten_admin,
-      :contact
+      :contact,
+      :sulten_lyche_opening_hours
       ], to: :manage
 
     has_permission_on :admissions_admin_job_applications, to: :hidden_create

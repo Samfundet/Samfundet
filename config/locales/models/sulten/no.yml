@@ -18,7 +18,8 @@
             reservation_from:
               no_table_available: "det er ingen bord ledige for dette tidsrommet"
               reservation_is_one_day_in_future: "reservasjoner må sendes inn senest dagen før"
-              check_opening_hours: "Lyche er lukket under dette tidsrommet"
+              check_lyche_opening_hours: "Lyche er lukket under dette tidsrommet"
+              check_kitchen_opening_hours: "Lyches kjøkken er lukket under dette tidsrommet"
             reservation_type_present: "anledningfeltet kan ikke settes tomt"
             people:
               too_many_people: "bestillinger med flere enn 12 personer må sendes på mail til lyche@samfundet.no"

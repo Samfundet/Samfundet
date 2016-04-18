@@ -1,0 +1,33 @@
+%h1
+  Sulten Admin
+%h3
+  Opening hours the reservation system uses to validate reservations
+
+%table
+  %th
+  %th
+    Lyche opens
+  %th
+    Kitchen opens
+  %th
+    Kitchen closes
+  %th
+    Lyche closes
+  %th
+  - @lyche_opening_hours.each do |f|
+    %tr
+      %td
+        %h3
+          =@weekdays[f.day_number]
+      %td
+        = f.openLyche.strftime("%H:%M")
+      %td
+        = f.openKitchen.strftime("%H:%M")
+      %td
+        = f.closeKitchen.strftime("%H:%M")
+      %td
+        = f.closeLyche.strftime("%H:%M")
+      %td
+        = link_to "Rediger", edit_sulten_lyche_opening_hour_path(f)
+
+= link_to "Tilbake", sulten_admin_path
