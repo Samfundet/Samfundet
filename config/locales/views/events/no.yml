@@ -50,19 +50,6 @@
     adaptation_html: Arrangement på Samfundet kan tilrettelegges for besøkende med bevegelses- og hørselshemminger. Se %{href} for mer informasjon.
     here: her
 
-    title_no: Tittel (Norsk)
-    title_en: Tittel (Engelsk)
-    start_time: Starttidspunkt
-    short_description_no: Kort beskrivelse (Norsk)
-    short_description_en: Kort beskrivelse (Engelsk)
-    long_description_no: Lang beskrivelse (Norsk)
-    long_description_en: Lang beskrivelse (Engelsk)
-    age_limit: Aldersgrense
-    area: Lokale
-    event_type: Type
-    organizer: Arrangør
-    ticket: Billett
-
     social:
         facebook_link_title: Arrangementet på Facebook
         youtube_link_title: Youtube
@@ -140,6 +127,27 @@
 
     forms:
         labels:
+            title_no: Tittel (Norsk)
+            title_en: Tittel (Engelsk)
+            start_time: Starttidspunkt
+            short_description_no: Kort beskrivelse (Norsk)
+            short_description_en: Kort beskrivelse (Engelsk)
+            long_description_no: Lang beskrivelse (Norsk)
+            long_description_en: Lang beskrivelse (Engelsk)
+            age_limit: Aldersgrense
+            area: Lokale
+            event_type: Type
+            organizer: Arrangør
+            ticket: Billett
+            status: Status
+            primary_color: Primærfarge
+            secondary_color: Sekundærfarge
+            banner_alignment: Bannerplassering
+            duration: Varighet
+            publication_time: Publiseringstid
+            free: Gratis
+            included: Inkludert i inngang
+            custom: Tilpasset
             information: Informasjon
             datetime: Tidspunkt
             social: Sosiale medier

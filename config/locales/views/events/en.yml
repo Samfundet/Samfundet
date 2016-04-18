@@ -50,19 +50,6 @@ en:
     adaptation_html: Events at the Student Society can be adapted for visitors with movement og hearing impairment. See %{href} for more information.
     here: here
 
-    title_en: Title (English)
-    title_no: Title (Norwegian)
-    start_time: Start time
-    short_description_en: Short description (English)
-    short_description_no: Short description (Norwegian)
-    long_description_en: Long description (English)
-    long_description_no: Long description (Norwegian)
-    age_limit: Age limit
-    area: Area
-    event_type: Type
-    organizer: Organizer
-    ticket: Ticket
-
     social:
         facebook_link_title: This event on Facebook
         youtube_link_title: Youtube
@@ -140,6 +127,27 @@ en:
 
     forms:
         labels:
+            title_en: Title (English)
+            title_no: Title (Norwegian)
+            start_time: Start time
+            short_description_en: Short description (English)
+            short_description_no: Short description (Norwegian)
+            long_description_en: Long description (English)
+            long_description_no: Long description (Norwegian)
+            age_limit: Age limit
+            area: Area
+            event_type: Type
+            organizer: Organizer
+            ticket: Ticket
+            status: Status
+            primary_color: Primary color
+            secondary_color: Secondary color
+            banner_alignment: Banner alignment
+            duration: Duration
+            publication_time: Publication time
+            free: Free
+            included: Included with entrance
+            custom: Custom
             information: Information
             datetime: Date and time
             social: Social media
