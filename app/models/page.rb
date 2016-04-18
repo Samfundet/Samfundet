@@ -62,7 +62,7 @@ class Page < ActiveRecord::Base
                             :content_no,
                             :content_en],
                   additional_attributes: -> (record) { { publish_at: record.created_at } },
-                  if: -> (record) { !%w(_menu _index).include? record.name_no }
+                  if: -> (record) { %w(_menu _index).exclude? record.name_no }
 
   def self.find_by_name(name)
     if I18n.locale == :no

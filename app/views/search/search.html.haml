@@ -1,6 +1,6 @@
 = render 'form'
 
-- if @results.nil? or @results.count == 0
+- if @results.empty?
   %p
     = t('search.no_results')
 - else

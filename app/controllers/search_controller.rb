@@ -1,15 +1,4 @@
 class SearchController < ApplicationController
-  def new
-    @search = Search.new
-  end
-
-  def create
-    search = Search.new(params[:search])
-
-    @results = search.results
-
-    render :results
-  end
 
   def search
     @search = if params[:search]
