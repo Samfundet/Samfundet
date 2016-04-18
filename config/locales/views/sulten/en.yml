@@ -9,6 +9,7 @@ en:
       time: "Time"
       people: "No. persons"
       reservation_type: "Occasion"
+      placeholder_date: "01.10.1910 12:00"
       table: "Table"
       name: "Name"
       telephone: "Telephone number"

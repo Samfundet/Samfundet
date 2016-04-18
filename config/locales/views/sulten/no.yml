@@ -9,6 +9,7 @@
       time: "Klokkeslett"
       people: "Antall personer"
       reservation_type: "Anledning"
+      placeholder_date: "01.10.1910 12:00"
       table: "Bord"
       name: "Navn"
       telephone: "Telefonnummer"

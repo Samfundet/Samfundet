@@ -7,3 +7,6 @@ AllCops:
     - 'config/**/*'
     - 'script/**/*'
     - 'tmp/**/*'
+
+Metrics/LineLength:
+  Max: 350

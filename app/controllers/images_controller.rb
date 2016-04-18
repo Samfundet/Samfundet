@@ -4,7 +4,8 @@ class ImagesController < ApplicationController
     if: -> { permitted_to? :edit, :images }
 
   def index
-    @images =  Image.all
+    @images = Image.paginate(page: params[:page], per_page: 10)
+
     if request.xhr?
       render layout: false
     end

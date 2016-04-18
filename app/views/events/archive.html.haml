@@ -1,3 +1,7 @@
 - set_title t("events.archive.title")
+= render 'search_form'
+.ajax-search
 
 = render 'admin_list'
+
+= will_paginate @events

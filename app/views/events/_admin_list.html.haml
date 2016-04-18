@@ -1,4 +1,4 @@
-%table
+%table.upcoming-events
   %thead
     %tr
       %th= t("events.title")
@@ -6,8 +6,11 @@
       %th= t("events.event_type")
       %th= t("events.organizer")
       %th= t("events.area")
-      %th
-      %th
+  
+      - if permitted_to? :edit
+        %th
+      - if permitted_to? :destroy
+        %th
 
   %tbody
     - @events.each do |event|
@@ -22,8 +25,8 @@
 
         %td= event.area 
 
-        %td= link_to t("crud.edit"), edit_event_path(event)
+        - if permitted_to? :edit
+          %td= link_to t("crud.edit"), edit_event_path(event)
 
-        %td
-          - if permitted_to? :destroy, event
-            = link_to t("crud.destroy"), event, confirm: t("events.confirm_delete"), method: :delete
+        - if permitted_to? :destroy
+          %td= link_to t("crud.destroy"), event, confirm: t("events.confirm_delete"), method: :delete

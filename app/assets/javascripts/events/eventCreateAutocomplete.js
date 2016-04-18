@@ -9,7 +9,7 @@ $(function() {
 
 	var tokens = $.map(events, function(elm) {
 		var e = elm.event;
-		e.displayName = e.title + " " + e.created_at;
+		e.displayName = e.non_billig_title_no + " " + e.created_at;
 		return e; 
 	});
 
@@ -18,7 +18,7 @@ $(function() {
 		name: "events",
 		local: tokens,
 		valueKey: "displayName"
-	})
+    })
 	.on('typeahead:selected', function(e, event) {
 		fillFormWithEvent(event);
 	});

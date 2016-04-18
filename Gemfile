@@ -69,10 +69,10 @@ gem 'redcarpet'
 gem 'route_downcaser'
 
 # SamfundetDomain is a gem which provides the application with samfundets domain models.
-gem 'samfundet_domain', git: "git://github.com/Samfundet/SamfundetDomain.git"
+gem 'samfundet_domain', git: "https://github.com/Samfundet/SamfundetDomain.git"
 
 # SamfundetAuth is a gem which provides the application with methods for authenticating against mdb2.
-gem 'samfundet_auth', '~> 0.0.11', git: "git://github.com/Samfundet/SamfundetAuth.git"
+gem 'samfundet_auth', '~> 0.0.11', git: "https://github.com/Samfundet/SamfundetAuth.git"
 
 # will_paginate is an adaptive pagination plugin.
 # It makes pagination very simple.
@@ -166,7 +166,7 @@ group :development do
 
   # Simple command execution over SSH. Lightweight deployment tool.
   # Using our own version until https://github.com/mina-deploy/mina/pull/361 is merged.
-  gem 'mina', git: "git://github.com/Samfundet/mina.git"
+  gem 'mina', git: "https://github.com/Samfundet/mina.git"
 
   # A DSL for quickly creating web applications in Ruby with minimal effort.
   gem 'sinatra'

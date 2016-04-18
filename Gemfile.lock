@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/Samfundet/SamfundetAuth.git
+  remote: https://github.com/Samfundet/SamfundetAuth.git
   revision: 3c9a3851694a22389b554d4182a947587b9c1ad4
   specs:
     samfundet_auth (0.0.11)
@@ -8,14 +8,14 @@ GIT
       rails (~> 3.2.8)
 
 GIT
-  remote: git://github.com/Samfundet/SamfundetDomain.git
+  remote: https://github.com/Samfundet/SamfundetDomain.git
   revision: cd5880b506c2c5425f32a09a3956e5b764ed263f
   specs:
     samfundet_domain (0.0.2)
       rails (~> 3.2.8)
 
 GIT
-  remote: git://github.com/Samfundet/mina.git
+  remote: https://github.com/Samfundet/mina.git
   revision: d8449b7b2cf3908361724b527d1ee4a05a698f97
   specs:
     mina (0.3.8)

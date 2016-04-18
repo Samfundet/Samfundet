@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class EventsController < ApplicationController
-  filter_access_to [:admin, :archive], require: :edit
+  filter_access_to [:admin], require: :edit
   filter_access_to [:purchase_callback_failure,
     :purchase_callback_success], require: :buy
   filter_access_to :rss, require: :read
@@ -33,7 +33,6 @@ class EventsController < ApplicationController
     @events = Event
       .active
       .published
-      .upcoming
       .text_search(params[:search])
 
     if request.xhr?
@@ -125,7 +124,9 @@ class EventsController < ApplicationController
   end
 
   def archive
-    @events = Event.past.order("non_billig_start_time DESC")
+    @events = Event.past
+        .paginate(page: params[:page], per_page: 20)
+        .order("non_billig_start_time DESC")
   end
 
   def admin_applet

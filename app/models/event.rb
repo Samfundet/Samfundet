@@ -123,12 +123,6 @@ class Event < ActiveRecord::Base
     end
   end
 
-  def revealed_and_upcoming?
-    status == 'active' &&
-      publication_time < DateTime.current &&
-      start_time >= Date.current
-  end
-
   def purchase_status
     return TICKETS_UNAVAILABLE if (billig_event.nil? || Rails.application.config.billig_offline)
 

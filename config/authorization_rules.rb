@@ -30,7 +30,7 @@ authorization do
     has_permission_on :pages, to: :read
 
     # Explicit read- and buy-privileges
-    has_permission_on :events, to: [:read, :buy, :ical]
+    has_permission_on :events, to: [:read, :buy, :ical, :archive]
 
     has_permission_on :sulten_reservations, to: [:create, :success]
   end

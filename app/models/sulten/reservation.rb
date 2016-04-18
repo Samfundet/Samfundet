@@ -23,7 +23,7 @@ class Sulten::Reservation < ActiveRecord::Base
     end
 
     if reservation_from.nil?
-      errors.add(:reservation_from, 'Invalid date format')
+      errors.add(:reservation_from, I18n.t("helpers.models.sulten.reservation.errors.invalid_reservation_format"))
       should_break = true
     end
 

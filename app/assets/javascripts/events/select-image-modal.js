@@ -11,6 +11,12 @@ $(function () {
     $.modal.close();
   });
 
+  $(document).on('click', '.modal .pagination a', function(e) {
+    e.preventDefault();
+
+    $(".modal").load(this.href).open();
+  });
+
   $('.choose-image-link').on('click', function(e) {
     e.preventDefault();
     $(this).modal();

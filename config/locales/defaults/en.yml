@@ -44,3 +44,6 @@ en:
   search:
     no_results: "No results"
     results_title: "Search results"
+  will_paginate:
+      previous_label: "Previous"
+      next_label: "Next"
