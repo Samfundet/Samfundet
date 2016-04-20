@@ -27,6 +27,11 @@ en:
     add_price_group: Add price group
     remove_price_group: Remove this price group
 
+    age_limit: Age limit
+    area: Area
+    organizer: Organizer
+    ticket: Ticket
+
     concert: Concert
     quiz: Quiz
     theater: Theater
