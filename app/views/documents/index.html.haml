@@ -20,16 +20,26 @@
 
 .content
   %h1= t('documents.index_title')
-
   .category-list
     - @categories.each do |category|
       = link_to category.title, anchor: category.title.parameterize
 
   - @categories.each do |category|
     %h2{ id: category.title.parameterize }= category.title
+    
     - if category.documents.empty?
       %p= t('documents.no_documents')
     - else
-      %ul.document-list
-        - category.documents.each do |document|
-          %li= link_to document.title, document.file.url
+      - category.documents.group_by{|d| d.publication_date.year }.each do |year, docs|
+        %h3= year
+        %table
+          %thead
+            %tr
+              %th= t("documents.title")
+              %th= t("documents.publication_date")
+
+          %tbody
+            - docs.each do |document|
+              %tr
+                %td= link_to document.title, document.file.url
+                %td= document.publication_date
