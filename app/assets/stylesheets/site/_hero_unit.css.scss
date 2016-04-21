@@ -93,6 +93,11 @@
     .opening-hours {
       display: none;
 
+      .everything-closed {
+        margin-left: 10px;
+        padding-bottom: 10px;
+      }
+
       @include media($tablet-desktop) {
         display: block;
       }

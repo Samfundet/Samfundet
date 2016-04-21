@@ -7,7 +7,9 @@
       = t "site.index.opening_hours_today"
 
     - if samfundet_closed?
-      %p= samfundet_closed_message
+      .everything-closed
+        :markdown
+          #{EverythingClosedPeriod.current_period.message}
     - else
       %table.custom-table
         %tbody

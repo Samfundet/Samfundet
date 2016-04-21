@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160408012345) do
+ActiveRecord::Schema.define(:version => 20160421191955) do
 
   create_table "admissions", :force => true do |t|
     t.string   "title"
@@ -197,9 +197,10 @@ ActiveRecord::Schema.define(:version => 20160408012345) do
   add_index "events", ["billig_event_id"], :name => "index_events_on_billig_event_id", :unique => true
 
   create_table "everything_closed_periods", :force => true do |t|
-    t.string   "message"
+    t.text     "message_no"
     t.datetime "closed_from"
     t.datetime "closed_to"
+    t.text     "message_en"
   end
 
   create_table "external_organizers", :force => true do |t|
