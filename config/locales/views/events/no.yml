@@ -29,10 +29,8 @@
 
     age_limit: Aldersgrense
     area: Lokale
-    event_type: Type
     organizer: Arrangør
     ticket: Billett
-    status: Status
 
     concert: Konsert
     quiz: Quiz
