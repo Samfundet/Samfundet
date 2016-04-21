@@ -8,8 +8,9 @@ class Document < ActiveRecord::Base
                     url: "/upload/:class/:attachment/:id_partition/:filename",
                     path: ":rails_root/public/upload/:class/:attachment/:id_partition/:filename"
 
-  validates :file, presence: true
-  validates_attachment_content_type :file, content_type: /\Aapplication\/pdf\Z/
+  validates_attachment :file,
+                       presence: true,
+                       content_type: { content_type: /\Aapplication\/pdf\Z/ }
 
   default_scope { order('publication_date DESC') }
 

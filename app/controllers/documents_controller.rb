@@ -20,7 +20,7 @@ class DocumentsController < ApplicationController
   def create
     @document = Document.create(params[:document])
     @document.uploader_id = current_user.id
-    if @document.save!
+    if @document.save
       flash[:success] = t('documents.create_success')
       redirect_to admin_documents_path
     else

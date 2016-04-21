@@ -5,13 +5,10 @@
 
   = f.inputs :document do
     %li
-      = label_tag :file, t('documents.choose_file')
-      = f.file_field :file
+      = f.input :file, as: :file, label: t('documents.choose_file')
 
     %li
-      = label_tag :publication_date, t('documents.publication_date')
-      = f.date_select :publication_date, start_year: 1910,
-                      order: [:day, :month, :year]
+      = f.input :publication_date, input_html: { class: "datetimepicker" }, as: :string, label: t('documents.publication_date')
 
     %li
       %p.inline-hints
