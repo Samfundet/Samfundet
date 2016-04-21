@@ -1,5 +1,4 @@
 class SearchController < ApplicationController
-
   def search
     @search = if params[:search]
                 Search.new(params[:search])
