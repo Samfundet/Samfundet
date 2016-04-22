@@ -43,6 +43,7 @@ class EventsController < ApplicationController
     @events = Event
               .active
               .published
+              .past
               .text_search(params[:search])
 
     render '_search_results', layout: false if request.xhr?

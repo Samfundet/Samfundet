@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     get :buy, on: :member, action: "buy"
     get :search, on: :collection
     post :search, on: :collection
+    get :archive_search, on: :collection
     post :archive_search, on: :collection
     get :admin, on: :collection
     get :archive, on: :collection
