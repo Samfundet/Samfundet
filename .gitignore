@@ -45,6 +45,7 @@ vendor/plugins/visualize_models/
 vendor/plugins/yUMLmeRails/
 vendor/ruby/
 vendor/bundle/
+coverage
 
 .bundle/
 
