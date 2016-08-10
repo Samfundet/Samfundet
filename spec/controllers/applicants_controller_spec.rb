@@ -11,7 +11,7 @@ describe ApplicantsController do
     it "renders the new template" do
       get :new
 
-      expect(respose).to render_template(:new)
+      expect(response).to render_template(:new)
     end
   end
 
@@ -39,9 +39,11 @@ describe ApplicantsController do
         end
       end
       context "without pending application" do
-        post :create, applicant: valid_attributes
+        it "redirects to admissions path" do
+          post :create, applicant: valid_attributes
 
-        expect(response).to redirect_to admissions_path
+          expect(response).to redirect_to admissions_path
+        end
       end
     end
     context "with invalid attributes" do
