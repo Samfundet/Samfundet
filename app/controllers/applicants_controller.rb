@@ -6,7 +6,7 @@ class ApplicantsController < ApplicationController
   filter_access_to [:show, :edit, :update], attribute_check: true
 
   has_control_panel_applet :steal_identity_applet,
-                           if: -> { permitted_to? :steal_identity, :applicants }
+    if: -> { permitted_to? :steal_identity, :applicants }
 
   def new
     @applicant = Applicant.new
