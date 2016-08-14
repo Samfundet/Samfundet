@@ -1,5 +1,6 @@
 'no':
   admissions_admin:
+    export_to_csv: "Eksporter alle søknader til CSV"
     statistics_page_title: "Statistikk for %{admission}"
     summary: "%{admission} har %{applications} søknader på %{jobs} stillinger."
     applications_by_group: "Fordeling av søkere per gjeng"

@@ -37,5 +37,11 @@ class AdmissionsAdmin::GroupsController < ApplicationController
       job_application.applicant.full_name.downcase
     end
     @job_application_groupings = job_application_groupings.values
+    respond_to do |format|
+      format.html
+      format.csv do
+        response.headers['Content-Disposition'] = "attachment; filename='#{@admission.title}-#{@group.name}-#{DateTime.current.to_date}.csv'"
+      end
+    end
   end
 end

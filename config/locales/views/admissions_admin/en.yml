@@ -1,5 +1,6 @@
 en:
   admissions_admin:
+    export_to_csv: "Export all applications to CSV"
     statistics_page_title: "Statistics for %{admission}"
     summary: "%{admission} has %{applications} applications and %{jobs} jobs."
     applications_by_group: "Distribution of applicants by group"

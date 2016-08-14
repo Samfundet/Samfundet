@@ -10,5 +10,7 @@
 = render 'admissions_admin/jobs/jobs_show', job_application_groupings: @job_application_groupings, show_job_titles: true
 
 %p
+  = link_to(T('admissions_admin.export_to_csv'), applications_admissions_admin_admission_group_path(@admission, @group, format: :csv))
+%p
   - link_to admissions_admin_admission_group_path(@admission, @group) do
     = "« #{T('common.back')}"
