@@ -138,6 +138,8 @@
 
         @include media($not-mobile) {
           @include span-columns(5);
+          margin-right: 0px;
+          width: 50%;
         }
 
         h3 {

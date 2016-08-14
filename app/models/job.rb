@@ -19,11 +19,11 @@ class Job < ActiveRecord::Base
   has_localized_fields :title, :description, :teaser, :default_motivation_text
 
   def available_jobs_in_same_group
-    group.jobs.where("admission_id IN (?) AND id <> ?", appliable_admission_ids, id)
+    group.jobs.where("admission_id = (?) AND id <> ?", admission_id, id)
   end
 
   def similar_available_jobs
-    jobs = Job.where("admission_id IN (?) AND id IN (SELECT DISTINCT job_id FROM job_tags_jobs WHERE job_tag_id IN (?))", appliable_admission_ids, tags.collect(&:id))
+    jobs = Job.where("admission_id = (?) AND id IN (SELECT DISTINCT job_id FROM job_tags_jobs WHERE job_tag_id IN (?))", admission_id, tags.collect(&:id))
 
     # Remove self from similar jobs
     jobs - [self]
