@@ -60,4 +60,90 @@ describe ApplicantsController do
       end
     end
   end
+
+  describe "POST #update" do
+    let(:applicant) { create(:applicant)}
+    before do
+      login_applicant(applicant)
+    end
+    context "with valid attributes" do
+      let(:valid_attributes) { attributes_for(:applicant, firstname: "Foo", surname: "Bar", password: "", password_confirmation: "")}
+      let(:valid_attributes_with_pw) { attributes_for(:applicant, old_password: "password", password: "Foobar", password_confirmation: "Foobar")}
+      it "updates the applicant" do
+        post :update, id: applicant.id, applicant: valid_attributes
+        applicant.reload
+
+        expect(applicant.firstname).to eq "Foo"
+        expect(applicant.surname).to eq "Bar"
+      end
+
+      it "displays flash success" do
+        post :update, id: applicant.id, applicant: valid_attributes
+
+        expect(flash[:success]).to match(I18n.t("applicants.update_success"))
+      end
+
+      it "redirects to admissions path" do
+        post :update, id: applicant.id, applicant: valid_attributes
+
+        expect(response).to redirect_to admissions_path
+      end
+
+      it "changes password" do
+        post :update, id: applicant.id, applicant: valid_attributes_with_pw
+
+        applicant.reload
+
+        expect(Applicant.authenticate(applicant.email, "password")).to eq nil
+        expect(Applicant.authenticate(applicant.email, "Foobar")).to eq applicant
+      end
+    end
+
+    context "with invalid attributes" do
+      let(:invalid_attributes) { attributes_for(:applicant, firstname: " ", password: nil, password_confirmation: nil)}
+      let(:invalid_attributes_with_pw) { attributes_for(:applicant, old_password: "wrongPassword", password: "Foobar", password_confirmation: "Foobar")}
+
+      it "does not update attributes" do
+        post :update, id: applicant.id, applicant: invalid_attributes
+
+        applicant.reload
+
+        expect(applicant.firstname).to eq "Test"
+      end
+
+      it "renders the edit template" do
+        post :update, id: applicant.id, applicant: invalid_attributes
+
+        expect(response).to render_template(:edit)
+      end
+
+      it "displays flash error" do
+        post :update, id: applicant.id, applicant: invalid_attributes
+
+        expect(flash[:error]).to match(I18n.t("applicants.update_error"))
+        puts "test"
+      end
+
+      context "when wrong old password submitted" do
+        it "renders edit" do
+          post :update, id: applicant.id, applicant: invalid_attributes_with_pw
+
+          expect(response).to render_template :edit
+        end
+
+        it "displays flash error" do
+          post :update, id: applicant.id, applicant: invalid_attributes_with_pw
+
+          expect(flash[:error]).to match(I18n.t("applicants.update_error"))
+        end
+
+        it "adds error to old_password field" do
+          post :update, id: applicant.id, applicant: invalid_attributes_with_pw
+
+          expect(assigns(:applicant).errors[:old_password]).to include(I18n.t("applicants.password_missmatch"))
+        end
+
+      end
+    end
+  end
 end
