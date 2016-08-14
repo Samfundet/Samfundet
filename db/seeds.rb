@@ -3,7 +3,7 @@
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
 # Examples:
-#   
+#
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Major.create(name: 'Daley', city: cities.first)
 
@@ -271,7 +271,8 @@ puts "Done creating opening hours"
 
 puts "Creating everything closed periods"
 everything_closed_period = EverythingClosedPeriod.new(
-  message: "Feiring av sommernissen",
+  message_no: "Feiring av sommernissen",
+  message_en: "Celebrate the summer santa",
   closed_from: DateTime.current + 2.weeks,
   closed_to: DateTime.current + 3.weeks )
 everything_closed_period.save!
