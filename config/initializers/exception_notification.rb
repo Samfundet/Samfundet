@@ -18,7 +18,7 @@ ExceptionNotification.configure do |config|
     config.add_notifier :email, {
       email_prefix: "[ERROR] ",
       sender_address: %{"Notifier" <no-reply@samfundet.no>},
-      exception_recipients: %w{mg-web-intern@samfundet.no},
+      exception_recipients: %w{mg-web-error@samfundet.no},
       sections: %w{request backtrace}
     }
 
