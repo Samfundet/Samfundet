@@ -19,6 +19,7 @@
     steal_identity: "Stjel identitet til søker"
     steal_identity_button: "Stjel identitet"
     search_placeholder: "E-post til søker"
+    interested_other_positions_hint: "Er du interessert i andre stillinger utover de du har søkt på?"
     forms:
       register:
         heading: "Registrer meg som søker"
@@ -26,6 +27,7 @@
         personal_information: "Personalia"
         login_information: "Påloggingsinformasjon"
         password_information: "Passordinformasjon"
+        extra_information: "Tilleggsinformasjons"
       edit:
         heading: "Endre mine detaljer"
         submit: "Lagre endringer"
@@ -55,5 +57,5 @@
 
         Har du ikke glemt passordet ditt, kan du bare se bort fra denne eposten.
 
-        -- 
+        --
         samfundet.no/opptak

@@ -19,6 +19,7 @@ en:
     steal_identity: "Steal applicant's identity"
     steal_identity_button: "Steal identity"
     search_placeholder: "Applicant's e-mail"
+    interested_other_positions_hint: "Are you interested in other positions beyond the ones you applied to?"
     forms:
       register:
         heading: "Register me as applicant"
@@ -26,6 +27,7 @@ en:
         personal_information: "Personal information"
         login_information: "Log in information"
         password_information: "Password information"
+        extra_information: "Additional information"
       edit:
         heading: "Change my details"
         submit: "Save changes"
@@ -55,5 +57,5 @@ en:
 
         If you did not forget your password, please disregard this email.
 
-        -- 
+        --
         samfundet.no/opptak

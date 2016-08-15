@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160421191955) do
+ActiveRecord::Schema.define(:version => 20160815191730) do
 
   create_table "admissions", :force => true do |t|
     t.string   "title"
@@ -30,9 +30,10 @@ ActiveRecord::Schema.define(:version => 20160421191955) do
     t.string   "email"
     t.string   "hashed_password"
     t.string   "phone"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
     t.string   "campus"
+    t.boolean  "interested_other_positions"
   end
 
   create_table "areas", :force => true do |t|

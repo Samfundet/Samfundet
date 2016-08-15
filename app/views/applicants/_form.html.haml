@@ -12,5 +12,9 @@
     != form.input :password, input_html: {value: ""}
     != form.input :password_confirmation, input_html: {value: ""}
 
+  = form.inputs name: t("applicants.forms.register.extra_information") do
+    .select
+      != form.input :interested_other_positions, as: :select, hint: t("applicants.interested_other_positions_hint")
+
   = form.actions do
     != submit_tag t("applicants.forms.register.submit")

@@ -1,4 +1,5 @@
 = semantic_form_for applicant, html: { class: 'soon-to-be-default-styling' } do |form|
+  = form.semantic_errors :applicant
   %h4
     = t("applicants.forms.edit.heading")
 
@@ -14,6 +15,10 @@
     != form.input :password, input_html: { value: "" }
     != form.input :password_confirmation, input_html: { value: "" }
     != form.input :old_password, input_html: { value: "" }
+
+  = form.inputs name: t("applicants.forms.register.extra_information") do
+    .select
+      != form.input :interested_other_positions, as: :select, hint: t("applicants.interested_other_positions_hint")
 
   = form.actions do
     != submit_tag t("applicants.forms.edit.submit")

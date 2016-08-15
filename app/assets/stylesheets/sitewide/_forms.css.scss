@@ -168,3 +168,13 @@ form:not(.custom-form) {
     }
   }
 }
+
+.select {
+  select {
+    background-color: white;
+    width: 74.10533%;
+    padding: 10px;
+    margin: 0px !important;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+  }
+}
