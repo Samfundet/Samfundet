@@ -29,7 +29,6 @@
 //= require "./pages/history"
 //= require "./pages/pages"
 //= require "./pages/menu"
-//= require "./job_applications/job_applications"
 //= require_tree "./site"
 //= require_tree "./areas"
 //= require_tree "./images"
