@@ -28,8 +28,8 @@
         heading: "Søk på dette vervet"
         submit: "Søk på dette vervet"
         motivational_question: "Klar til å søke?"
-        application_explanation: "Skriv inn din motivasjon og dine kvalifikasjoner for dette vervet. Ta gjerne med referanser til tidligere relevant arbeid eller relevante verv. Vi gleder oss til å høre fra deg!"
-        prioritation_explanation: "Etter du er registrert som søker, kan du logge inn for å se status på dine søknader. Hvis du har søkt flere verv, kan de prioriteres etter dine ønsker."
+        application_explanation: "Skriv litt om deg selv, din motivasjon for å søke og dine kvalifikasjoner for vervet. Du trenger ikke legge inn full CV og referanser - en kort tekst er nok. Vi gleder oss til å høre fra deg!"
+        prioritation_explanation: "Etter at du er registrert som søker, kan du logge inn for å se status på dine søknader. Hvis du har søkt flere verv, må du også prioritere hvilket du ønsker mest. Du vil kun få tilbud om ett verv."
       edit:
         heading: "Din søknad"
         submit: "Oppdater søknaden"
