@@ -19,7 +19,7 @@
     steal_identity: "Stjel identitet til søker"
     steal_identity_button: "Stjel identitet"
     search_placeholder: "E-post til søker"
-    interested_other_positions_hint: "Er du interessert i andre stillinger utover de du har søkt på?"
+    interested_other_positions_hint: "Er du interessert i andre stillinger utover de du skal søke på?"
     forms:
       register:
         heading: "Registrer meg som søker"
