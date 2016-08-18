@@ -94,9 +94,7 @@ class BilligService < Sinatra::Base
         end
       end
 
-      redirect 'http://localhost:3000/en/events/purchase_callback/' << tickets.map do |ticket|
-        ticket.ticket.to_s << '12345' # Such hmac.
-      end.join(',')
+      redirect 'http://localhost:3000/en/events/purchase_callback/' << tickets.map { |ticket| ticket.ticket.to_s << '12345' }.join(',')
     end
   end
 end
