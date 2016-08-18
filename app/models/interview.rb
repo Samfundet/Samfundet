@@ -6,11 +6,11 @@ class Interview < ActiveRecord::Base
   scope :with_time_set, conditions: ["time > 0"]
 
   ACCEPTANCE_STATUSES_NO = { wanted: 'Vil ha',
-                             reserved: 'Reservert',
+                             reserved: 'Reserve',
                              not_wanted: 'Vil ikke ha',
                              nil => 'Ikke satt' }.freeze
   ACCEPTANCE_STATUSES_EN = { wanted: 'Wanted',
-                             reserved: 'Reserved',
+                             reserved: 'Backup',
                              not_wanted: 'Not wanted',
                              nil => 'Not set' }.freeze
 
