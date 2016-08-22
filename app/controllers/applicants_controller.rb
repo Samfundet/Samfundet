@@ -13,6 +13,7 @@ class ApplicantsController < ApplicationController
   end
 
   def create
+    params[:applicant][:email].downcase!
     @applicant = Applicant.new(params[:applicant])
 
     if @applicant.save
