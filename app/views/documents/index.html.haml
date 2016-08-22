@@ -32,14 +32,10 @@
     - else
       - category.documents.group_by{|d| d.publication_date.year }.each do |year, docs|
         %h3= year
-        %table
-          %thead
-            %tr
-              %th= t("documents.title")
-              %th= t("documents.publication_date")
-
-          %tbody
-            - docs.each do |document|
-              %tr
-                %td= link_to document.title, document.file.url
-                %td= document.publication_date
+        %ul
+          - docs.group_by{|o| o.publication_date.month }.each do |month, doc|
+            %h4= l(doc.first.publication_date, format: :month)
+            - doc.each do |dc|
+              %li
+                = dc.publication_date
+                = link_to dc.title, dc.file.url

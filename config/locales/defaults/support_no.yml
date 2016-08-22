@@ -13,6 +13,7 @@
       medium: "%a %d. %b"
       medium_long: "%A %d. %B"
       long: "%e. %B %Y"
+      month: "%B"
     day_names: [søndag, mandag, tirsdag, onsdag, torsdag, fredag, lørdag]
     abbr_day_names: [søn, man, tir, ons, tor, fre, lør]
     month_names: [~, januar, februar, mars, april, mai, juni, juli, august, september, oktober, november, desember]

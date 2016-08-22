@@ -6,6 +6,7 @@ en:
       medium: "%a %d. %b"
       medium_long: "%A %d. %B"
       long: "%e. %B %Y"
+      month: "%B"
   time:
     formats:
       default: "%e. %B %Y, %H:%M"
