@@ -18,6 +18,10 @@
     twenty: 20 år
     none: Ingen aldersgrense
 
+    title: Tittel
+    start_time: Starttid
+    event_type: Arrangementstype
+
     left: venstre
     right: høyre
 
