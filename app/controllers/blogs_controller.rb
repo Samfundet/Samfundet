@@ -5,7 +5,7 @@ class BlogsController < ApplicationController
                            if: -> { permitted_to? :edit, :blogs }
 
   def index
-    @articles = Blog.published
+    @articles = Blog.published.order('publish_at desc')
   end
 
   def show
