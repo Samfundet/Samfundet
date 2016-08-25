@@ -143,9 +143,6 @@ group :development do
   gem 'better_errors', '~> 1.1'
   gem 'binding_of_caller'
 
-  # Faker is a library that generates fake data (names, email addresses, etc.)
-  gem 'faker'
-
   # magic_encoding adds an 'encoding: utf-8' comment to all .rb files
   gem 'magic_encoding'
 
@@ -178,6 +175,11 @@ group :development do
   gem 'railroady'
 end
 
+group :test, :development do
+  # Faker is a library that generates fake data (names, email addresses, etc.)
+  gem 'faker', '~> 1.6.6'
+end
+
 group :test do
   # Cucumber is a BDD testing framework.
   gem 'cucumber-rails', require: false
@@ -185,9 +187,6 @@ group :test do
   # database_cleaner ensures a clean DB state during tests;
   # we use it with Cucumber.
   gem 'database_cleaner'
-
-  # See above (:development)
-  gem 'faker'
 
   # launchy is an application launcher; it's required for the
   # 'Then show me the page' action in Cucumber

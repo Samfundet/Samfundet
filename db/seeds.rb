@@ -91,7 +91,8 @@ distinct_emails(number_of_applicants).each do |email|
     email: email,
     campus: Faker::Company.name,
     password: 'passord',
-    password_confirmation: 'passord'
+    password_confirmation: 'passord',
+    interested_other_positions: Faker::Boolean.boolean
   )
 
   # Apply jobs
@@ -99,11 +100,17 @@ distinct_emails(number_of_applicants).each do |email|
 
   jobs = Job.all.sample(number_of_job_applications_pr_applicant)
   jobs.each_with_index do |job, priority|
-    JobApplication.create!(
+    job_application = JobApplication.create!(
       motivation: Faker::Lorem.paragraphs(5).join("\n\n"),
       applicant: applicant,
       priority: priority + 1,
       job: job
+    )
+    Interview.create!(
+      time: Faker::Time.between(1.weeks.from_now, 2.weeks.from_now),
+      acceptance_status: Interview::ACCEPTANCE_STATUSES_NO.keys.sample,
+      job_application_id: job_application.id,
+      location: Faker::Address.city
     )
     print "-"
   end

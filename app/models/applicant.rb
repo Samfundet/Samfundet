@@ -40,9 +40,9 @@ class Applicant < ActiveRecord::Base
     self.hashed_password = BCrypt::Password.create(@password, cost: cost)
   end
 
-  def assigned_job_application(admission)
+  def assigned_job_application(admission, acceptance_status: %w(wanted reserved))
     job_applications.joins(:interview)
-                    .where(interviews: { acceptance_status: %w(wanted reserved) })
+                    .where(interviews: { acceptance_status: acceptance_status })
                     .find { |application| application.job.admission == admission }
   end
 
@@ -74,6 +74,14 @@ class Applicant < ActiveRecord::Base
 
   def is_logged?
     LogEntry.where(applicant_id: id).any?
+  end
+
+  def self.interested_other_positions(admission)
+    where(interested_other_positions: true).select do |applicant|
+      # If not wanted by any
+      applicant.assigned_job_application(admission, acceptance_status: %w(wanted)).nil?
+    end
+
   end
 
   class << self

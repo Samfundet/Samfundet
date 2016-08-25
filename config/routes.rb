@@ -28,7 +28,7 @@ Rails.application.routes.draw do
       get 'purchase_callback', to: :purchase_callback_failure
       get 'purchase_callback/:tickets', to: :purchase_callback_success
     end
-  end 
+  end
 
   resources :front_page_locks, only: [:edit, :update] do
     post :clear, on: :member
@@ -144,6 +144,7 @@ Rails.application.routes.draw do
           resources :log_entries, only: [:create, :destroy]
         end
       end
+      get 'show_interested_other_positions', to: 'applicants#show_interested_other_positions'
     end
   end
 

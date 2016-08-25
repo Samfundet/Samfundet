@@ -35,6 +35,8 @@
           = t('interviews.comment')
         %th
           = t('interviews.latest_log_entry')
+        %td
+          Interested other positions
 
       %tbody
         - job_application_groupings.each do |job_applications|
@@ -80,6 +82,14 @@
                 - if job_application.last_log_entry
                   = link_to admissions_admin_admission_group_job_job_application_path(@admission, @group, job_application.job, job_application, anchor: 'new_log_entry') do
                     = job_application.last_log_entry.log
+              %td
+                = semantic_form_for(job_application.applicant, namespace: "interview_#{interview.id}", html: {class: "test custom-form interview"}) do |form|
+                  = form.inputs do
+                    != form.input :interested_other_positions, label: false, as: :select, required: true
+                  %span{ class: "status" }
+                  = form.actions do
+                    != form.action :submit, button_html: { class: "interview_Save", value: 'save'}
+
 
   - if job_application_groupings.empty?
     %p Ingen søknader
