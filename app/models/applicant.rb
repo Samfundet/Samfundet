@@ -81,7 +81,6 @@ class Applicant < ActiveRecord::Base
       # If not wanted by any
       applicant.assigned_job_application(admission, acceptance_status: %w(wanted)).nil?
     end
-
   end
 
   class << self

@@ -15,3 +15,8 @@
         %strong= application.interview.acceptance_status_string
 
   %br
+
+- if @applicants.blank?
+  %p
+    Omprioriteringsfristen er ikke ute enda, kom tilbake etter 
+    = l(@admission.admin_priority_deadline)

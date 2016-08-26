@@ -67,14 +67,6 @@ class ApplicantsController < ApplicationController
     end
   end
 
-  def show_interested_other_positions
-    admission = Admission.find(params[:admission_id])
-    #if admission.admin_priority_deadline < Time.current
-    #  return @applicants = []
-    @params = params
-    @applicants = Applicant.interested_other_positions(admission)
-  end
-
   def forgot_password
   end
 

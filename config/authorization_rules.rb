@@ -94,6 +94,7 @@ authorization do
       :admissions_admin_jobs,
       :admissions_admin_job_applications,
       :admissions_admin_log_entries,
+      :admissions_admin_applicants,
       :applicants,
       :applicant_sessions,
       :areas,
@@ -122,9 +123,9 @@ authorization do
     has_permission_on :admissions_admin_jobs, to: :hidden_create
     has_permission_on :admissions_admin_admissions, to: :statistics
     has_permission_on :admissions_admin_groups, to: :applications
+    has_permission_on :admissions_admin_applicants, to: :show_interested_other_positions
     has_permission_on [:members, :applicants], to: :steal_identity
     has_permission_on :members, to: :search
-    has_permission_on :applicants, to: :show_interested_other_positions
 
     has_permission_on :roles, to: :manage_members
 
@@ -163,7 +164,7 @@ authorization do
 
   role :opptaksansvarlig do
     has_permission_on :admissions_admin_admissions, to: :show
-    has_permission_on :applicants, to: [:update, :show_interested_other_positions]
+    has_permission_on :admissions_admin_applicants, to: [:update, :show_interested_other_positions]
   end
 
   role :gjengsjef do
