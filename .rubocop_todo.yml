@@ -200,6 +200,7 @@ Style/ClassAndModuleChildren:
     - 'app/controllers/admissions_admin/job_applications_controller.rb'
     - 'app/controllers/admissions_admin/jobs_controller.rb'
     - 'app/controllers/admissions_admin/log_entries_controller.rb'
+    - 'app/controllers/admissions_admin/applicants_controller.rb'
     - 'app/controllers/sulten/admin_controller.rb'
     - 'app/controllers/sulten/reservation_types_controller.rb'
     - 'app/controllers/sulten/reservations_controller.rb'
