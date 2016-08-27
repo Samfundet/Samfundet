@@ -2,9 +2,11 @@
   admissions:
     admission_not_yet_open: "Opptaket klargjøres og åpner: "
     admission_promo: |
-      Over 1000 studenter bidrar allerede frivllig! 
-      Du kan være med å jobbe med blant annet lyd, lys, teater, snekring, IT, artistbooking, korsang, musikk og mye annet. 
-      Du kan lære mye av å jobbe på Samfundet, og du blir garantert kjent med mange andre studenter.
+      Over 1000 studenter bidrar allerede frivllig! Du kan være med å jobbe med blant annet lyd, lys, teater, snekring, IT, artistbooking, korsang, musikk og mye annet. Du kan lære mye av å jobbe på Samfundet, og du blir garantert kjent med mange andre studenter.
+      <h2>Åpen dag!</h2>
+
+      Søndag 28. august kl. 16:00 blir det en uformell omvisning på huset for de som måtte ønske. En god anledning for deg som er nysgjerrig på hva som foregår på Samfundet.
+      Etter omvisningen blir det prat og hygge i Edgar.
 
     application_deadline: "Søknadsfrist"
     back_to_overview: "Tilbake til stillingsoversikten"

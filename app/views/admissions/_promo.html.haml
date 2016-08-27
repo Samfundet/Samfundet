@@ -12,7 +12,7 @@
         Utvidet til
         = l admission.actual_application_deadline, format: :short
   %p
-    = t('admissions.admission_promo')
+    = simple_format t('admissions.admission_promo')
     %br
     - if permitted_to?(:manage, :admissions)
       [
