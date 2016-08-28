@@ -17,6 +17,9 @@ en:
     status: "Status"
     interview_time: "Interview time"
     not_set: "Not set"
+    interested_other_positions: "It is registered that you want to be able to be offered positions at jobs you havent applied to."
+    not_interested_other_positions: "It is registered that you do NOT want to be offered positions at jobs you havent applied to."
+    change_interested_other_positions_status: "Click here to change that."
     log_entries:
       log_entries: "Log entries"
       description: "Log entries are tied to the the applicant in question, your group and this admission. This means that other groups will not see the log entries you add, neither will you if the applicant applies again in a later admission. You will, however, see log entries for any other positions this person has applied for within your group in this admission."

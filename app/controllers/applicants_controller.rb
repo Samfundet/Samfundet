@@ -61,7 +61,7 @@ class ApplicantsController < ApplicationController
 
     if @applicant.update_attributes(params[:applicant])
       flash[:success] = t("applicants.update_success")
-      redirect_to admissions_path
+      redirect_to job_applications_path
     else
       flash[:error] = t("applicants.update_error")
       render :edit
