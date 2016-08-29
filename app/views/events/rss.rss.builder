@@ -8,7 +8,7 @@ xml.rss :version => "2.0" do
       xml.item do
         xml.title event.title
         xml.link event_url(event)
-        xml.link rel: :enclosure, title: :image, href: "#{asset_url(event.image.image_file.url(:large))}"
+        xml.link rel: :enclosure, title: :image, href: "#{asset_url(event.image_or_default.url(:large))}"
         xml.location event.area_title
         xml.agelimit t("events.#{event.age_limit}")
         xml.prices do
