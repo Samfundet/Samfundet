@@ -484,19 +484,12 @@ end
 
 puts "Creating documents"
 DocumentCategory.all.each do |category|
-    [
-        ["Dokument 1"],
-        ["Dokument 2"],
-        ["Dokument 3"],
-        ["Dokument 4"],
-        ["Dokument 5"],
-        ["Dokument 6"],
-    ].each do |title|
+    100.times do
         member = Member.order("RANDOM()").first
         file = File.open(Rails.root.join('app', 'assets', 'files', 'dummy.pdf'))
-        publication_date = 2.weeks.ago + (rand 10).days
+        publication_date = 2.weeks.ago + (rand 2000).days
         Document.create!(
-            title: title,
+            title: Faker::Lorem.sentence(2),
             category_id: category.id,
             uploader_id: member.id,
             publication_date: publication_date,

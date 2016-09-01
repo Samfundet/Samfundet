@@ -30,12 +30,16 @@
     - if category.documents.empty?
       %p= t('documents.no_documents')
     - else
-      - category.documents.group_by{|d| d.publication_date.year }.each do |year, docs|
-        %h3= year
+      .documents_list
         %ul
-          - docs.group_by{|o| o.publication_date.month }.each do |month, doc|
-            %h4= l(doc.first.publication_date, format: :month)
-            - doc.each do |dc|
-              %li
-                = dc.publication_date
-                = link_to dc.title, dc.file.url
+          - category.documents.group_by{|d| d.publication_date.year }.each do |year, docs_by_year|
+            %li
+              %strong= year
+              %ul
+                - docs_by_year.group_by{|y| y.publication_date.month }.each do |month, docs|
+                  %li
+                    %strong= l(docs.first.publication_date, format: :month).humanize
+                    %ul
+                      - docs.each do |doc|
+                        %li
+                          = link_to "#{doc.title} (#{doc.publication_date})", doc.file.url
