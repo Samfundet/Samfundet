@@ -127,9 +127,35 @@ class ApplicantsController < ApplicationController
   end
 
   def steal_identity
-    session[:member_id] = nil
-    session[:applicant_id] = Applicant.find_by_email(params[:applicant_email].downcase).id
-    redirect_to root_path
+    applicant = Applicant.find(params[:applicant_id])
+    if applicant.nil?
+      redirect_to members_control_panel_path, notice: "Fant ikke søker"
+    else
+      session[:member_id] = nil
+      session[:applicant_id] = applicant.id
+      redirect_to root_path
+    end
+  end
+
+  def search
+    @applicants = Applicant.where(
+      "UPPER(firstname) || ' ' || UPPER(surname) LIKE UPPER(?)" \
+      " OR UPPER(email) LIKE UPPER(?) OR id = ?",
+      "%#{params[:term].upcase}%",
+      "%#{params[:term].upcase}%",
+      params[:term].to_i
+    )
+
+    respond_to do |format|
+      format.json do
+        # Note the parentheses; they're necessary to achieve
+        # the correct precedence for the do-block.
+        render json: (@applicants.map do |applicant|
+          { value: "#{applicant.id} - #{applicant.full_name}",
+            label: "#{applicant.full_name} (#{applicant.email})" }
+        end)
+      end
+    end
   end
 
   private

@@ -18,7 +18,7 @@
     suspicious_phone_number_html: "Du oppgav <strong>%{phone}</strong> som ditt telefonnummer. Dette nummeret har et format vi ikke gjenkjenner; vennligst sjekk at det er riktig. <a href='%{url}'>Klikk her for å endre nummeret.</a>"
     steal_identity: "Stjel identitet til søker"
     steal_identity_button: "Stjel identitet"
-    search_placeholder: "E-post til søker"
+    search_placeholder: "Navn/ID/Epost"
     interested_other_positions_hint: "Er du interessert i å få tilbud om andre stillinger enn de du søker på?"
     forms:
       register:

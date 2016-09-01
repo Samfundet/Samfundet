@@ -100,6 +100,8 @@ Rails.application.routes.draw do
     match "reset_password" => "applicants#reset_password"
   end
 
+  match "applicants/search" => "applicants#search",
+        as: :applicant_search
   resources :applicants
   resources :groups, only: [:new, :create, :edit, :update] do
     get :admin, on: :collection

@@ -18,7 +18,7 @@ en:
     suspicious_phone_number_html: "You entered<strong>%{phone}</strong> as your phone number. This number has a format we don't recognize; please ensure that it's correct. <a href='%{url}'>Click here to change your phone number.</a>"
     steal_identity: "Steal applicant's identity"
     steal_identity_button: "Steal identity"
-    search_placeholder: "Applicant's e-mail"
+    search_placeholder: "Name/ID/Email"
     interested_other_positions_hint: "Are you interested in being offered other positions beyond the ones you will apply to?"
     forms:
       register:
