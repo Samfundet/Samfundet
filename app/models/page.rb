@@ -10,8 +10,8 @@ class Page < ActiveRecord::Base
   extend LocalizedFields
   has_localized_fields :title, :name, :content
 
-  validates_format_of :name_no, with: /^#{NAME_FORMAT}$/
-  validates_format_of :name_en, with: /^#{NAME_FORMAT}$/
+  validates_format_of :name_no, with: /\A#{NAME_FORMAT}\z/
+  validates_format_of :name_en, with: /\A^#{NAME_FORMAT}\z/
   validates_presence_of :role
   validates :name_no, uniqueness: true
   validates :name_en, uniqueness: true
