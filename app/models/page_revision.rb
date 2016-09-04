@@ -8,5 +8,5 @@ class PageRevision < ActiveRecord::Base
   belongs_to :page
   belongs_to :member
 
-  default_scope order(:version)
+  default_scope { order(:version) }
 end

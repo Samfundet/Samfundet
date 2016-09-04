@@ -24,10 +24,10 @@ Rails.application.routes.draw do
     get :ical, on: :collection, defaults: { format: 'ics' }
     get :rss, on: :collection, defaults: { format: 'rss' }
 
-    collection do
-      get 'purchase_callback', to: :purchase_callback_failure
-      get 'purchase_callback/:tickets', to: :purchase_callback_success
-    end
+    #collection do
+    #  get 'purchase_callback', to: :purchase_callback_failure
+  #    get 'purchase_callback/:tickets', to: :purchase_callback_success
+    #end
   end
 
   resources :front_page_locks, only: [:edit, :update] do
@@ -89,15 +89,15 @@ Rails.application.routes.draw do
           as: :applicants_login,
           via: :get
     match "login" => "applicant_sessions#create",
-          as: :connect,
+          as: :connect_applicant,
           via: :post
 
     # ApplicantsController
-    match "change_password/:id" => "applicants#change_password", as: :change_password
-    match "forgot_password" => "applicants#forgot_password"
+    match "change_password/:id" => "applicants#change_password", as: :change_password, via: :get
+    match "forgot_password" => "applicants#forgot_password", via: :get
     match "generate_forgot_password_email" => "applicants#generate_forgot_password_email",
           via: :post
-    match "reset_password" => "applicants#reset_password"
+    match "reset_password" => "applicants#reset_password", via: :get
   end
 
   match "applicants/search" => "applicants#search",
@@ -154,7 +154,8 @@ Rails.application.routes.draw do
         as: :applicants_steal_identity,
         via: :post
   match "konsert-og-uteliv" => "site#concert",
-        as: :concert
+        as: :concert,
+        via: :get
   match "login" => "user_sessions#new",
         as: :login,
         via: :get
@@ -162,9 +163,11 @@ Rails.application.routes.draw do
         as: :logout,
         via: :post
   match "members/control_panel" => "members#control_panel",
-        as: :members_control_panel
+        as: :members_control_panel,
+        via: :get
   match "members/search.:format" => "members#search",
-        as: :members_search
+        as: :members_search,
+        via: :get
   match "members/steal_identity" => "members#steal_identity",
         as: :members_steal_identity,
         via: :post
