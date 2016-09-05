@@ -1,12 +1,12 @@
-@import "forms.css.scss";
-@import "index.css.scss";
-@import "menu.css.scss";
-@import "admin.css.scss";
-@import "history.css.scss";
+@import "forms";
+@import "index";
+@import "menu";
+@import "admin";
+@import "history";
 
 .pages .content {
     table {
-        @extend .table-highlight-rows;
+        @extend .table-highlight-rows !optional;
     }
 
     ul, ol {
@@ -56,5 +56,3 @@
         font-size: 0.9em;
     }
 }
-
-

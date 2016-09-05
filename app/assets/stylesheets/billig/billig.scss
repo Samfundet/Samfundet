@@ -4,7 +4,7 @@
     @include span-columns(12);
 
     table {
-        @extend .table-highlight-rows;
+        @extend .table-highlight-rows !optional;
 
         font-size: 1.15em;
         width: 100%;

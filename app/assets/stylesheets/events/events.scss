@@ -1,6 +1,6 @@
 .events.purchase_callback_success {
     table {
-        @extend .table-highlight-rows;
+        @extend .table-highlight-rows !optional;
 
         tfoot tr {
             td:first-child {
