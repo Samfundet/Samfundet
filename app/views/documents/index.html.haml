@@ -36,10 +36,10 @@
             %li
               %strong= year
               %ul
-                - docs_by_year.group_by{|y| y.publication_date.month }.each do |month, docs|
+                - docs_by_year.group_by{|y| y.publication_date.month }.reverse_each do |month, docs|
                   %li
                     %strong= l(docs.first.publication_date, format: :month).humanize
                     %ul
-                      - docs.each do |doc|
+                      - docs.reverse_each do |doc|
                         %li
                           = link_to "#{doc.title} (#{doc.publication_date})", doc.file.url
