@@ -1,6 +1,6 @@
 .documents {
     table {
-        @extend .table-highlight-rows;
+        @extend .table-highlight-rows !optional;
 
         tr.category {
             font-weight: $font-weight-bold;
