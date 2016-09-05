@@ -1,6 +1,6 @@
-.documents {
+.documents_list {
     padding: 0 5px 5px 5px;
-    .documents_list ul {
+    .menu_root ul {
         list-style-type: none;
         margin: 0;
 
@@ -16,7 +16,7 @@
             max-height: 1500px;
         }
 
-        &.documents_list > li {
+        &.menu_root > li {
             margin: 5px 0px 0px 0px;
         }
     }
@@ -57,10 +57,13 @@
         }
     }
 
+    li:last-child {
+      margin-bottom: 10px;
+    }
+
     a {
         display: block;
         color: black;
-        text-decoration: underline;
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
