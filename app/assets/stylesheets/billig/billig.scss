@@ -4,7 +4,7 @@
     @include span-columns(12);
 
     table {
-        @extend .table-highlight-rows;
+        @extend .table-highlight-rows !optional;
 
         font-size: 1.15em;
         width: 100%;
@@ -89,7 +89,7 @@
     .payment-wrapper {
         @include span-columns(12);
     }
-    
+
     .payment-choice {
         #email_feedback {
             margin: 2px;
@@ -108,7 +108,7 @@
         }
     }
     .custom-form input[type='submit']:disabled {
-      background-color: grey; 
+      background-color: grey;
     }
 
     .payment-info {

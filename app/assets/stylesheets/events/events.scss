@@ -1,6 +1,6 @@
 .events.purchase_callback_success {
     table {
-        @extend .table-highlight-rows;
+        @extend .table-highlight-rows !optional;
 
         tfoot tr {
             td:first-child {
@@ -173,7 +173,7 @@
         height: 40px;
         width: 40px;
 
-        background-position: center; 
+        background-position: center;
         background-repeat: no-repeat;
         background-size: 40px;
 
@@ -184,7 +184,7 @@
         &.ical-icon {
           background-image: url(calendar.svg);
         }
-        
+
         &.archive-icon {
           background-image: url(archive.svg);
         }
