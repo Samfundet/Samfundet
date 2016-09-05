@@ -1,5 +1,5 @@
 .documents_list {
-    padding: 0 5px 5px 5px;
+    padding: 0 5px 15px 5px;
     .menu_root ul {
         list-style-type: none;
         margin: 0;
@@ -55,10 +55,6 @@
         &::before {
             @include transform(rotate(405deg));
         }
-    }
-
-    li:last-child {
-      margin-bottom: 10px;
     }
 
     a {
