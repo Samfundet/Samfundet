@@ -7,8 +7,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Major.create(name: 'Daley', city: cities.first)
 
-require 'declarative_authorization'
-require Rails.root.join('lib', 'generate_roles')
+#require 'declarative_authorization'
+#require Rails.root.join('lib', 'generate_roles')
 
 raise "Not allowed to seed a production database!" if Rails.env.production?
 
@@ -22,7 +22,7 @@ end
 
 # Invoke gem seedscripts
 Rake::Task['samfundet_auth_engine:db:seed'].invoke
-Authorization.ignore_access_control(true)
+#Authorization.ignore_access_control(true)
 Rake::Task['samfundet_domain_engine:db:seed'].invoke
 
 # Create Organizers
@@ -34,7 +34,7 @@ ExternalOrganizer.create([
 puts "Done creating external organizers"
 
 # This is a separate task, using a method in lib/generate_roles.rb
-generate_roles
+#generate_roles
 
 # TOOD: Create extraordinary admission
 
@@ -132,7 +132,7 @@ image_list.each do |image|
   Image.create!(
       title: image,
       image_file: File.open(Rails.root.join('app', 'assets', 'images', image)),
-      uploader: Member.find_by_mail('myrlund@gmail')
+      uploader: Member.find_by(mail: 'myrlund@gmail')
     )
   puts "Image #{image} created"
 end
@@ -177,7 +177,7 @@ Group.all.each do |group|
     title_en: group.name,
     content_no: content,
     content_en: content,
-    role: Role.find_by_title(group.member_role) || Role.super_user
+    role: Role.find_by(title: group.member_role) || Role.super_user
   )
 
   puts "Created page for: #{group.name.parameterize}"
@@ -440,7 +440,7 @@ possible_payment_errors.each do |error_message|
 
   BilligPaymentError.create!(
     error: bsession,
-    failed: rand(1.years.to_i).ago,
+    failed: rand(1.years.to_i).second.ago,
     owner_cardno: on_card ? rand(10000..999999) : nil,
     owner_email: on_card ? nil : Faker::Internet.email,
     message: error_message

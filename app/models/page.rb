@@ -18,9 +18,9 @@ class Page < ActiveRecord::Base
   belongs_to :role
   has_many :revisions, class_name: PageRevision.name
 
-  attr_accessible :name_no, :name_en, :title_no, :title_en,
-                  :content_no, :content_en, :role, :role_id, :created_at, :updated_at,
-                  :content_type
+  #attr_accessible :name_no, :name_en, :title_no, :title_en,
+  #                :content_no, :content_en, :role, :role_id, :created_at, :updated_at,
+  #                :content_type
 
   default_scope { order(I18n.locale == :no ? :name_no : :name_en) }
 
@@ -47,8 +47,9 @@ class Page < ActiveRecord::Base
       previous_version = revisions.last.try(:version) || 0
       field_values = Hash[REVISION_FIELDS.map { |field| [field, send(field)] }]
 
-      author = Authorization.current_user
-      author = nil unless author.is_a? Member
+      # TODO: Fix correct author
+      #author = Authorization.current_user
+      author = nil# unless author.is_a? Member
 
       revisions.create!(field_values.merge(member: author, version: previous_version + 1))
 
@@ -81,19 +82,31 @@ class Page < ActiveRecord::Base
   end
 
   def self.index
-    find_or_create_by_name_en(name_no: INDEX_NAME, name_en:  INDEX_NAME, role_id: Role.super_user.id)
+    find_or_create_by(name_en: INDEX_NAME) do | page|
+      page.name_no = INDEX_NAME
+      page.role = Role.super_user
+    end
   end
 
   def self.menu
-    find_or_create_by_name_en(name_no: MENU_NAME, name_en: MENU_NAME, role_id: Role.super_user.id)
+    find_or_create_by(name_en: MENU_NAME) do | page| 
+      page.name_no = MENU_NAME
+      page.role = Role.super_user
+    end
   end
 
   def self.tickets
-    find_or_create_by_name_en(name_no: TICKETS_NAME, name_en: TICKETS_NAME, role_id: Role.super_user.id)
+    find_or_create_by(name_en: TICKETS_NAME) do | page|
+      page.name_no = TICKETS_NAME
+      page.role = Role.super_user
+    end
   end
 
   def self.handicap_info
-    find_or_create_by_name_en(name_no: HANDICAP_INFO_NAME, name_en: HANDICAP_INFO_NAME, role_id: Role.super_user.id)
+    find_or_create_by(name_en: HANDICAP_INFO_NAME) do | page|
+      page.name_no = HANDICAP_INFO_NAME
+      page.role = Role.super_user
+    end
   end
 
   def to_param

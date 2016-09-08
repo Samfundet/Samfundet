@@ -12,18 +12,17 @@
     = f.input :short_description_en, label: t('events.forms.labels.short_description_en'), input_html: { rows: 2 }
     = f.input :long_description_no, label: t('events.forms.labels.long_description_no'), hint: t('common.markdown_hint').html_safe
     = f.input :long_description_en, label: t('events.forms.labels.long_description_no'), hint: t('common.markdown_hint').html_safe
-    = f.input :event_type, label: t('events.forms.labels.event_type'), as: :select, collection: Event::EVENT_TYPE.map { |k| [t("events.#{k}"), k] }, include_blank: false
-    = f.input :age_limit, label: t('events.forms.labels.age_limit'), as: :select, collection: Event::AGE_LIMIT.map { |k| [t("events.#{k}").html_safe, k] }, include_blank: false
-    = f.input :area, label: t('events.forms.labels.area'), include_blank: false
-    = f.input :status, label: t('events.forms.labels.status'), as: :select, collection: Event::STATUS.map { |k| [t("events.#{k}"), k]}, include_blank: false
-
+    = f.input :event_type, label: t('events.forms.labels.event_type'), as: :select, collection: Event::EVENT_TYPE.map { |k| [t("events.#{k}"), k] }
+    = f.input :age_limit, label: t('events.forms.labels.age_limit'), as: :select, collection: Event::AGE_LIMIT.map { |k| [t("events.#{k}").html_safe, k] }
+    = f.input :area, label: t('events.forms.labels.area')
+    = f.input :status, label: t('events.forms.labels.status'), as: :select, collection: Event::STATUS.map { |k| [t("events.#{k}"), k]}
   = render 'images/imagepicker', f: f
 
   = f.inputs name: t('events.forms.labels.banner_styling') do
     = f.input :primary_color, label: t('events.forms.labels.primary_color'), as: :color, input_html: { value: f.object.primary_color || '#000000' }
     = f.input :secondary_color, label: t('events.forms.labels.secondary_color'), as: :color, input_html: { value: f.object.secondary_color || '#ffffff' }
 
-    = f.input :banner_alignment, label: t('events.forms.labels.banner_alignment'), as: :select, collection: Event::BANNER_ALIGNMENT.map { |k| [t("events.#{k}"), k]}, include_blank: false
+    = f.input :banner_alignment, label: t('events.forms.labels.banner_alignment'), as: :select, collection: Event::BANNER_ALIGNMENT.map { |k| [t("events.#{k}"), k]}
 
   = f.inputs name: t('events.organizer') do
     %li
@@ -83,4 +82,4 @@
       = f.input :billig_event_id, as: :select, collection: BilligEvent.sale_applicable.sort_by(&:event_time).map { |e| [e.describe, e.id] }, include_blank: false
 
   = f.actions do
-    = f.action :submit 
+    = f.action :submit

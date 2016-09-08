@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 
 class Applicant < ActiveRecord::Base
-  has_many :job_applications, order: 'priority', dependent: :destroy, conditions: { withdrawn: false }
+  has_many :job_applications, -> { where(withdrawn: false).order(:priority) }, dependent: :destroy
   has_many :jobs, through: :job_applications
   has_many :password_recoveries
   has_many :log_entries
@@ -19,7 +19,7 @@ class Applicant < ActiveRecord::Base
                                  if: ->(applicant) { applicant.new_record? }
   validates_length_of :password, minimum: 6, if: :password_changed?
   validates_confirmation_of :password, if: :password_changed?
-  validates_format_of :phone, with: /^[\d\s+]+$/
+  validates_format_of :phone, with: /\A[\d\s+]+\z/
 
   before_save :hash_new_password, if: :password_changed?
 

@@ -22,7 +22,7 @@ class StandardHour < ActiveRecord::Base
   validates_presence_of :open_time, :close_time, if: :open?
   validates :day, uniqueness: { scope: :area_id }
 
-  attr_accessible :close_time, :open_time, :day, :open
+  #attr_accessible :close_time, :open_time, :day, :open
 
   scope :open_today, -> { today.where(open: true) }
 

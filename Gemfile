@@ -9,7 +9,7 @@ ruby '2.3.0'
 source 'https://rubygems.org'
 
 # Rails. Duh.
-gem 'rails', '5.0.0.1'
+gem 'rails', '5.0.0'
 
 # acts_as_list provides the means to sort and reorder a list of objects
 # with respect to a column in the database, e.g. to sort and reorder a list
@@ -49,7 +49,8 @@ gem 'uglifier'
 
 # declarative_authorization provides a DSL for role-based access control.
 # See: config/authorization_rules.rb
-#gem 'declarative_authorization'
+gem 'declarative_authorization', git: "https://github.com/Samfundet/declarative_authorization.git", branch: "rails5"
+#gem 'cancancan', '~> 1.15'
 
 # ActiveRecord manages referential integrity at the application level,
 # not the database level. Therefore, there are no methods for explicitly

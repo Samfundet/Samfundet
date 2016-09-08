@@ -3,7 +3,7 @@ class Interview < ActiveRecord::Base
   belongs_to :job_application
   #  has_one :group, through: :job_application
 
-  scope :with_time_set, conditions: ["time > 0"]
+  scope :with_time_set, -> { where("time > 0") }
 
   ACCEPTANCE_STATUSES_NO = { wanted: 'Vil ha',
                              reserved: 'Reserve',

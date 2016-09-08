@@ -207,4 +207,4 @@ end
 
 # Add Norwegian routes and prefix English ones with /en; this is handled
 # by the 'rails-translate-routes' gem
-ActionController::Routing::Translator.translate_from_file('config/locales/routes/i18n-routes.yml')
+#ActionController::Routing::Translator.translate_from_file('config/locales/routes/i18n-routes.yml')

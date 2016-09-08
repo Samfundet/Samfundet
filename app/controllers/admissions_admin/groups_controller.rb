@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class AdmissionsAdmin::GroupsController < ApplicationController
-  j layout "admissions"
+  layout "admissions"
 
   filter_access_to [:show, :applications], attribute_check: true
 
