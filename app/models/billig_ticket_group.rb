@@ -2,7 +2,7 @@ class BilligTicketGroup < ActiveRecord::Base
   DEFAULT_TICKET_LIMIT = 9
 
   self.primary_key = :ticket_group
-  attr_accessible :event, :is_theater_ticket_group, :num, :num_sold, :ticket_group, :ticket_group_name, :ticket_limit
+  #attr_accessible :event, :is_theater_ticket_group, :num, :num_sold, :ticket_group, :ticket_group_name, :ticket_limit
 
   belongs_to :billig_event, foreign_key: :event
   has_many :billig_price_groups, foreign_key: :ticket_group

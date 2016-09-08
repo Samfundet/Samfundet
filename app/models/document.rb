@@ -1,5 +1,5 @@
 class Document < ActiveRecord::Base
-  attr_accessible :title, :category_id, :uploader_id, :publication_date, :file
+  #attr_accessible :title, :category_id, :uploader_id, :publication_date, :file
 
   belongs_to :category, class_name: 'DocumentCategory'
   belongs_to :uploader, class_name: 'Member'
@@ -12,7 +12,7 @@ class Document < ActiveRecord::Base
                        presence: true,
                        content_type: { content_type: /\Aapplication\/pdf\Z/ }
 
-  default_scope { order('publication_date DESC') }
+  default_scope { order(publication_date: :desc) }
 
   after_initialize do
     self.publication_date ||= Date.today

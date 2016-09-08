@@ -3,7 +3,7 @@ class Image < ActiveRecord::Base
   DEFAULT_TITLE = 'Default image'.freeze
   DEFAULT_PATH = Rails.root.join('app', 'assets', 'images',
                                  'banner-images', 'kitteh.jpeg')
-  attr_accessible :title, :image_file, :uploader_id, :tagstring, :uploader
+  #attr_accessible :title, :image_file, :uploader_id, :tagstring, :uploader
 
   has_attached_file :image_file,
                     styles: { medium: "x180>", large: "x400>" },
@@ -19,11 +19,11 @@ class Image < ActiveRecord::Base
 
   has_and_belongs_to_many :tags, uniq: true
   has_many :events
-  belongs_to :uploader, class_name: 'Member', foreign_key: :responsible_id
+  belongs_to :uploader, class_name: 'Member', foreign_key: :uploader_id
 
   before_destroy { |image| image.events.clear }
 
-  default_scope { order("image_file_updated_at DESC") }
+  default_scope { order(image_file_updated_at: :desc) }
 
   include PgSearch
   pg_search_scope :search,

@@ -1,9 +1,9 @@
 # -*- encoding : utf-8 -*-
 class Admission < ActiveRecord::Base
   has_many :jobs
-  has_many :job_applications, through: :jobs
-  has_many :groups, through: :jobs, uniq: true
-  has_many :group_types, through: :groups, uniq: true
+  has_many :job_applications, -> { uniq }, through: :jobs
+  has_many :groups, -> { uniq }, through: :jobs
+  has_many :group_types,-> { uniq }, through: :groups
 
   validates_presence_of :title, :shown_from, :shown_application_deadline,
                         :actual_application_deadline, :user_priority_deadline,
@@ -76,7 +76,7 @@ class Admission < ActiveRecord::Base
     end
   end
 
-  default_scope order: "shown_application_deadline DESC"
+  default_scope { order(shown_application_deadline: :desc)  }
 
   # We must use lambdas so that the time is not 'cached' on server start.
   scope :current, (lambda do
@@ -104,7 +104,7 @@ class Admission < ActiveRecord::Base
 
   # Remember that scopes are composable, meaning that one could
   # call "Admission.appliable.with_relations".
-  scope :with_relations, include: { jobs: { group: :group_type } }
+  scope :with_relations, -> { includes(jobs: { group: :group_type } ) }
 
   def self.has_open_admissions?
     !Admission.appliable.empty?

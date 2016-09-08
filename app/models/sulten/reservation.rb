@@ -2,8 +2,8 @@ class Sulten::Reservation < ActiveRecord::Base
   belongs_to :table
   belongs_to :reservation_type
 
-  attr_accessible :reservation_from, :reservation_duration, :reservation_to, :people, :name,
-                  :telephone, :email, :allergies, :internal_comment, :table_id, :reservation_type_id, :reservation_duration
+  #attr_accessible :reservation_from, :reservation_duration, :reservation_to, :people, :name,
+  #                :telephone, :email, :allergies, :internal_comment, :table_id, :reservation_type_id, :reservation_duration
 
   attr_accessor :reservation_duration, :admin_access
 

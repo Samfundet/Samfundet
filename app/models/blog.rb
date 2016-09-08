@@ -3,7 +3,7 @@ class Blog < ActiveRecord::Base
   belongs_to :image
   has_one :front_page_lock, as: :lockable
 
-  attr_accessible :title_no, :title_en, :lead_paragraph_no, :lead_paragraph_en, :content_no, :content_en, :publish_at, :published, :author_id, :image_id
+  #attr_accessible :title_no, :title_en, :lead_paragraph_no, :lead_paragraph_en, :content_no, :content_en, :publish_at, :published, :author_id, :image_id
 
   validates_presence_of :title_no, :title_en, :lead_paragraph_no, :lead_paragraph_en, :content_no, :content_en, :publish_at, :author_id, :image_id
 
