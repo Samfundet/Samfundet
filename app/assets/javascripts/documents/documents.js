@@ -29,7 +29,6 @@ function open_most_recent() {
 
 $(function() {
     open_most_recent();
-    set_active_menu_item();
     add_class_to_document_submenus();
     add_click_listener_to_document_submenus();
     $('.documents_list > ul').addClass('menu_root')
