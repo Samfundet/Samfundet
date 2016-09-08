@@ -1,11 +1,6 @@
 function add_class_to_document_submenus() {
-  $('.documents_list li > ul').each(function(index) {
+  $('.documents_list li > ul').each(function() {
     $(this).parent().addClass('submenu');
-    if (index < 2){
-      //Set the first year and most recent month active on load.
-      $(this).parent().addClass('active');
-      $(this).addClass('active');
-    }
   });
 }
 function add_click_listener_to_document_submenus() {
@@ -20,8 +15,20 @@ function add_click_listener_to_document_submenus() {
     submenu.toggleClass('active');
   });
 }
+function open_most_recent() {
+  $('.documents_list').each(function() {
+    $(this).find('li > ul').each(function(index) {
+      if (index < 2){
+        //Set the first year and most recent month active on load.
+        $(this).parent().addClass('active');
+        $(this).addClass('active');
+      }
+    });
+  });
+}
 
 $(function() {
+    open_most_recent();
     set_active_menu_item();
     add_class_to_document_submenus();
     add_click_listener_to_document_submenus();
