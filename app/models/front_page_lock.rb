@@ -4,7 +4,7 @@ class FrontPageLock < ActiveRecord::Base
 
   belongs_to :lockable, polymorphic: true, touch: true
 
-  attr_accessible :lockable_id, :lockable_type, :position, :event_id, :blog_id
+  #attr_accessible :lockable_id, :lockable_type, :position, :event_id, :blog_id
   attr_accessor :event_id, :blog_id
 
   validate :check_if_already_locked, on: :update, if: :lockable_type?

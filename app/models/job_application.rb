@@ -15,20 +15,6 @@ class JobApplication < ActiveRecord::Base
 
   # named_scope :with_interviews, { conditions: ['interview.time > 0'] }
 
-  # scope_condition for acts_as_list
-  def scope_condition
-    if Rails.env == "test"
-      "1 = 1"
-    else
-      jobs = applicant.jobs.find(:all, conditions: { admission_id: job.admission_id }).collect(&:id)
-      if jobs.empty?
-        "0 = 1"
-      else
-        "applicant_id = #{applicant_id} AND job_id IN(#{jobs.join(', ')})"
-      end
-    end
-  end
-
   def find_or_create_interview
     interview || create_interview
   end

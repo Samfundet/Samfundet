@@ -12,16 +12,16 @@ class Event < ActiveRecord::Base
   TICKETS_AVAILABLE = :tickets_available
   TICKETS_SOLD_OUT = :tickets_sold_out
 
-  attr_accessible :area_id, :billig_event_id, :title_en, :non_billig_title_no,
-                  :non_billig_start_time, :age_limit, :organizer_id, :organizer_type,
-                  :short_description_en, :short_description_no, :duration,
-                  :long_description_en, :long_description_no, :publication_time,
-                  :spotify_uri, :facebook_link, :youtube_link, :youtube_embed, :spotify_link,
-                  :soundcloud_link, :instagram_link, :twitter_link, :lastfm_link,
-                  :snapchat_link, :vimeo_link, :general_link, :event_type, :status,
-                  :primary_color, :secondary_color, :image_id,
-                  :price_groups, :price_type, :banner_alignment, :price_groups_attributes,
-                  :codeword
+  # attr_accessible :area_id, :billig_event_id, :title_en, :non_billig_title_no,
+  #                 :non_billig_start_time, :age_limit, :organizer_id, :organizer_type,
+  #                 :short_description_en, :short_description_no, :duration,
+  #                 :long_description_en, :long_description_no, :publication_time,
+  #                 :spotify_uri, :facebook_link, :youtube_link, :youtube_embed, :spotify_link,
+  #                 :soundcloud_link, :instagram_link, :twitter_link, :lastfm_link,
+  #                 :snapchat_link, :vimeo_link, :general_link, :event_type, :status,
+  #                 :primary_color, :secondary_color, :image_id,
+  #                 :price_groups, :price_type, :banner_alignment, :price_groups_attributes,
+  #                 :codeword
 
   extend LocalizedFields
   has_localized_fields :title, :short_description, :long_description
@@ -46,7 +46,7 @@ class Event < ActiveRecord::Base
   belongs_to :billig_event
   belongs_to :image
   has_one :front_page_lock, as: :lockable
-  has_many :price_groups, uniq: true
+  has_many :price_groups, -> { uniq }
 
   accepts_nested_attributes_for :price_groups, allow_destroy: true
 

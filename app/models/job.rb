@@ -3,7 +3,7 @@ class Job < ActiveRecord::Base
   belongs_to :admission, touch: true
   belongs_to :group
 
-  has_one :group_type, through: :group, order: 'description'
+  has_one :group_type, -> { order(:description) }, through: :group
   has_many :job_applications
   has_many :interviews, through: :job_applications
   has_many :applicants, through: :job_applications
@@ -13,7 +13,7 @@ class Job < ActiveRecord::Base
   validates_presence_of :title_no, :teaser_no, :description_no, :admission, :group
   validates :teaser_no, :teaser_en, length: { maximum: 75 }
 
-  scope :appliable
+  #scope :appliable
 
   extend LocalizedFields
   has_localized_fields :title, :description, :teaser, :default_motivation_text

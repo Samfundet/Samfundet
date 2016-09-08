@@ -7,7 +7,7 @@ class LogEntry < ActiveRecord::Base
   belongs_to :group
   belongs_to :member
 
-  default_scope order: "created_at ASC"
+  default_scope { order(created_at: :asc) }
 end
 
 # == Schema Information
