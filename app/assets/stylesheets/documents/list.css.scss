@@ -1,10 +1,10 @@
 .documents_list {
     padding: 0 5px 15px 5px;
-    .document_root ul {
+    .documents_list_root ul {
         list-style-type: none;
         margin: 0;
 
-        &:not(.document_root) {
+        &:not(.documents_list_root) {
             @include transition(max-height, 0.7s, ease-in-out);
             overflow: hidden;
             opacity: 0.5;
@@ -16,7 +16,7 @@
             max-height: 1500px;
         }
 
-        &.document_root > li {
+        &.documents_list_root > li {
             margin: 5px 0px 0px 0px;
         }
     }
