@@ -1,10 +1,10 @@
 .documents_list {
     padding: 0 5px 15px 5px;
-    .menu_root ul {
+    .document_root ul {
         list-style-type: none;
         margin: 0;
 
-        &:not(.menu_root) {
+        &:not(.document_root) {
             @include transition(max-height, 0.7s, ease-in-out);
             overflow: hidden;
             opacity: 0.5;
@@ -16,7 +16,7 @@
             max-height: 1500px;
         }
 
-        &.menu_root > li {
+        &.document_root > li {
             margin: 5px 0px 0px 0px;
         }
     }
@@ -27,7 +27,7 @@
             color: $samfundet-black;
         }
 
-        &:not(.submenu) {
+        &:not(.sublist) {
             @include media($mobile) {
                 border-bottom: 1px dotted rgba(0, 0, 0, 0.3);
             }
@@ -41,7 +41,7 @@
             display: block;
         }
     }
-    li.submenu > strong  {
+    li.sublist > strong  {
         cursor: pointer;
         &::before {
             content: "+";
@@ -51,7 +51,7 @@
             @include transition(transform, 0.3s);
         }
     }
-    li.submenu.active > strong {
+    li.sublist.active > strong {
         &::before {
             @include transform(rotate(405deg));
         }
