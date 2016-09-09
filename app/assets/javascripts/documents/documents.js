@@ -17,11 +17,14 @@ function add_click_listener_to_document_sublists() {
 }
 function open_most_recent() {
   $('ul.documents_list_root > li:first-child').each(function() {
+    $(this).addClass('active');
     // Set ul inside of first li-element as active
     $(this).children('ul').first().addClass('active');
 
     // Find all ul children (1 or more levels down) from the first li element, which of the last is the one we want to to set as active
     $(this).find('ul').last().addClass('active');
+    // Add active to the parent li element
+    $(this).find('ul').last().parent().addClass('active');
   });
 }
 
