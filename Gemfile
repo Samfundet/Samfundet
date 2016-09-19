@@ -3,7 +3,7 @@
 ###########################################
 
 # Specify ruby version that we use. Bundler gives an error when a different ruby is used.
-ruby '2.3.0'
+ruby '2.3.1'
 
 # The repository from which we're fetching our rubygems.
 source 'https://rubygems.org'
@@ -49,7 +49,7 @@ gem 'uglifier'
 
 # declarative_authorization provides a DSL for role-based access control.
 # See: config/authorization_rules.rb
-gem 'declarative_authorization', git: "https://github.com/Samfundet/declarative_authorization.git", branch: "rails5"
+gem 'declarative_authorization', git: "git@github.com:Samfundet/declarative_authorization.git", branch: "rails5"
 #gem 'cancancan', '~> 1.15'
 
 # ActiveRecord manages referential integrity at the application level,

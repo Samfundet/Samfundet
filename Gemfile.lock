@@ -1,4 +1,12 @@
 GIT
+  remote: git@github.com:Samfundet/declarative_authorization.git
+  revision: 52748a204fdaabf519d9085e6e3ec187b5a0c5c4
+  branch: rails5
+  specs:
+    declarative_authorization (1.0.0.pre)
+      rails (>= 4.0.0, < 5.2.0)
+
+GIT
   remote: https://github.com/Casecommons/pg_search.git
   revision: ff1af346322ca54808b3f53081149b8cac55bb76
   ref: ff1af34
@@ -25,13 +33,6 @@ GIT
   specs:
     samfundet_domain (0.1.0)
       rails (~> 5.0.0)
-
-GIT
-  remote: https://github.com/Samfundet/declarative_authorization.git
-  revision: f1f6517e09b432d0280dabefac27c586302a19c0
-  branch: rails5
-  specs:
-    declarative_authorization (1.0.0.pre)
 
 GIT
   remote: https://github.com/Samfundet/mina.git
