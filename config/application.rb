@@ -26,10 +26,11 @@ module Samfundet
     config.time_zone = 'Stockholm'
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
-    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '{defaults,models,views,navigation}', '**', '*.yml').to_s]
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '{defaults,models,views,navigation,routes}', '**', '*.yml').to_s]
     config.i18n.available_locales = [:no, :en]
     config.i18n.enforce_available_locales = true
     config.i18n.default_locale = :no
+    config.i18n.fallbacks = false
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
