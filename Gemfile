@@ -76,7 +76,7 @@ gem 'icalendar'
 # For example, we can replace the path '/groups' with the paths
 # '/gjenger' and '/en/groups' which both point to the same page.
 # See: config/locales/routes/i18n-routes.yml
-gem 'rails-translate-routes'
+gem 'route_translator'
 
 # RedCarpet renders Markdown, a light-weight markup language, to HTML.
 # See: config/initializers/haml_markdown.rb
