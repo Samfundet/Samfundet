@@ -14,7 +14,7 @@ class ImagesController < ApplicationController
   end
 
   def create
-    @image = Image.create(params[:image])
+    @image = Image.create(image_params)
     if @image.save
       flash[:success] = t('images.create_success')
       redirect_to @image
@@ -34,7 +34,7 @@ class ImagesController < ApplicationController
 
   def update
     @image = Image.find(params[:id])
-    if @image.update_attributes(params[:image])
+    if @image.update_attributes(image_params)
       flash[:success] = t('common.update_success')
       redirect_to @image
     else
@@ -56,5 +56,11 @@ class ImagesController < ApplicationController
   end
 
   def admin_applet
+  end
+
+  private
+
+  def image_params
+    params.require(:image).permit(:title, :tagstring, :image_file)
   end
 end

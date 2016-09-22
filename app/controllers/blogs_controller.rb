@@ -17,7 +17,7 @@ class BlogsController < ApplicationController
   end
 
   def create
-    @article = Blog.new(params[:blog])
+    @article = Blog.new(blog_params)
     @article.author = current_user
 
     if @article.save
@@ -45,7 +45,7 @@ class BlogsController < ApplicationController
   def update
     @article = Blog.find(params[:id])
 
-    if @article.update_attributes(params[:blog])
+    if @article.update_attributes(blog_params)
       flash[:success] = t('events.update_success')
       redirect_to @article
     else
@@ -59,5 +59,11 @@ class BlogsController < ApplicationController
   end
 
   def admin_applet
+  end
+
+  private
+
+  def blog_params
+    params.require(:blog).permit(:title_no, :title_en, :lead_paragraph_no, :lead_paragraph_en, :content_no, :content_en, :published, :publish_at, :image_id)
   end
 end
