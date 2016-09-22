@@ -34,7 +34,7 @@ class PagesController < ApplicationController
   end
 
   def create
-    @page = Page.new(params[:page])
+    @page = Page.new(page_params)
     if @page.save
       flash[:success] = t("pages.create_success")
       redirect_to @page
@@ -62,7 +62,7 @@ class PagesController < ApplicationController
       params[:page].slice!(:title_no, :title_en, :content_no, :content_en)
     end
 
-    if @page.update_attributes(params[:page])
+    if @page.update_attributes(page_params)
       flash[:success] = t('pages.edit_success')
       redirect_to page_url @page
     else
@@ -98,6 +98,10 @@ class PagesController < ApplicationController
   end
 
   private
+
+  def page_params
+    params.require(:page).permit(:name_no, :name_en, :title_no, :title_en, :content_no, :content_en, :content_type, :role_id)
+  end
 
   def load_page
     Page.find_by_param(params[:id])
