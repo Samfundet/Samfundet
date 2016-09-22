@@ -85,7 +85,7 @@ class Applicant < ActiveRecord::Base
 
   class << self
     def authenticate(email, password)
-      applicant = where(disabled: false).find_by_email(email.downcase)
+      applicant = where(disabled: false).find_by(email: email.downcase)
       return applicant if applicant &&
                           BCrypt::Password.new(applicant.hashed_password) == password
     end

@@ -9,7 +9,7 @@ class JobApplicationsController < ApplicationController
   end
 
   def create
-    @job_application = JobApplication.new(params[:job_application])
+    @job_application = JobApplication.new(job_application_params)
 
     if @job_application.job && @job_application.job.admission.actual_application_deadline > Time.current
       if logged_in? && permitted_to?(:create, :job_applications)
@@ -33,7 +33,7 @@ class JobApplicationsController < ApplicationController
   end
 
   def update
-    if @job_application.update_attributes(params[:job_application])
+    if @job_application.update(job_application_params)
       @job_application.update_attribute(:withdrawn, false)
       flash[:success] = t('job_applications.application_updated')
       redirect_to job_applications_path
@@ -105,5 +105,9 @@ class JobApplicationsController < ApplicationController
   def render_application_form_with_errors
     flash[:error] = @job_application.errors.full_messages.first
     redirect_to @job_application.job
+  end
+
+  def job_application_params
+    params.require(:job_application).permit(:job_id, :motivation)
   end
 end

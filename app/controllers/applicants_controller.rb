@@ -14,7 +14,7 @@ class ApplicantsController < ApplicationController
 
   def create
     params[:applicant][:email].downcase!
-    @applicant = Applicant.new(params[:applicant])
+    @applicant = Applicant.new(applicant_params)
 
     if @applicant.save
       login_applicant @applicant
@@ -59,7 +59,7 @@ class ApplicantsController < ApplicationController
       end
     end
 
-    if @applicant.update_attributes(params[:applicant])
+    if @applicant.update_attributes(applicant_params)
       flash[:success] = t("applicants.update_success")
       redirect_to job_applications_path
     else
@@ -72,7 +72,7 @@ class ApplicantsController < ApplicationController
   end
 
   def generate_forgot_password_email
-    @applicant = Applicant.find_by_email(params[:email])
+    @applicant = Applicant.find_by(email: params[:email])
     if !@applicant
       flash[:error] = t("applicants.password_recovery.email_unknown")
     elsif !@applicant.can_recover_password?
@@ -94,7 +94,7 @@ class ApplicantsController < ApplicationController
   end
 
   def reset_password
-    @applicant = Applicant.find_by_email(params[:email])
+    @applicant = Applicant.find_by(email: params[:email])
     if !@applicant || !@applicant.check_hash(params[:hash])
       flash[:error] = t("applicants.password_recovery.hash_error")
       @applicant = nil
@@ -167,6 +167,10 @@ class ApplicantsController < ApplicationController
     flash[:success] = t("applicants.registration_success")
 
     invalidate_cached_current_user
+  end
+
+  def applicant_params
+    params.require(:applicant).permit(:firstname, :surname, :phone, :campus, :email, :password, :password_confirmation, :interested_other_positions)
   end
 
   include PendingApplications

@@ -4,11 +4,11 @@ class AdmissionsAdmin::JobApplicationsController < ApplicationController
   filter_access_to :show, attribute_check: true
 
   def show
-    @log_entries = LogEntry.find :all, conditions: {
+    @log_entries = LogEntry.where(
       applicant_id: @job_application.applicant.id,
       admission_id: @job_application.job.admission.id,
       group_id: @job_application.job.group.id
-    }
+    )
     if I18n.locale == :no
       @possible_log_entries = [
         "Forsøkt ringt, tok ikke telefonen",
@@ -33,7 +33,7 @@ class AdmissionsAdmin::JobApplicationsController < ApplicationController
   end
 
   def hidden_create
-    applicant = Applicant.find_by_email(params[:email])
+    applicant = Applicant.find_by(email: params[:email])
     if applicant.nil?
       flash[:error] = "Fant ikke søker"
       redirect_to admissions_admin_admission_group_job_path(admission_id: params[:admission_id], id: params[:job_id], group_id: params[:group_id])
