@@ -13,7 +13,7 @@
     != f.hidden_field :job_id, value: @job_application.job_id
     .textarea-wrapper
       %p
-        = f.text_area :motivation, id: "motivation", value: (@already_applied ? nil : @job.default_motivation_text)
+        = f.text_area :motivation, id: "motivation"#, value: (@already_applied ? nil : @job.default_motivation_text)
       %p.submit-button-container
         = submit_tag (@already_applied and !@job_application.withdrawn) ? t('job_applications.forms.edit.submit') : t('job_applications.forms.new.submit')
 

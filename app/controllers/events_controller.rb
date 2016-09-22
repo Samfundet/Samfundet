@@ -175,7 +175,7 @@ class EventsController < ApplicationController
         split_tickets.each_with_index.map do |ticket_with_hmac, i|
           ticket_id = ticket_with_hmac.to_s[0..-6].to_i # First 5 characters are hmac.
           @pdf_url << "ticket#{i}=#{ticket_with_hmac}&"
-          billig_ticket = BilligTicket.find_by_ticket(ticket_id)
+          billig_ticket = BilligTicket.find(ticket_id)
 
           if billig_ticket
             @sum += billig_ticket.billig_price_group.price
