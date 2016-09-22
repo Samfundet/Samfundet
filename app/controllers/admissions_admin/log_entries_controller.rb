@@ -4,7 +4,7 @@ class AdmissionsAdmin::LogEntriesController < ApplicationController
   filter_access_to [:create, :destroy], attribute_check: true
 
   def create
-    @log_entry.attributes = params[:log_entry]
+    @log_entry.log = params[:log_entry][:log]
     if @log_entry.save
       flash[:success] = "Loggføringen er lagt til."
     else

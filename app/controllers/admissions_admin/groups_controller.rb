@@ -6,7 +6,7 @@ class AdmissionsAdmin::GroupsController < ApplicationController
 
   def show
     @admission = Admission.find(params[:admission_id])
-    @jobs = @group.jobs.find_all_by_admission_id(@admission.id)
+    @jobs = @group.jobs.where(admission: @admission)
     job_applications = @jobs.map(&:job_applications).flatten
 
     admission_start = @admission.shown_from.to_date
@@ -32,7 +32,7 @@ class AdmissionsAdmin::GroupsController < ApplicationController
   def applications
     @admission = Admission.find(params[:admission_id])
 
-    job_applications = @admission.job_applications.find(:all, conditions: ['group_id = ?', @group.id])
+    job_applications = @admission.job_applications.includes(:job).where("jobs.group_id": @group.id)
     job_application_groupings = job_applications.group_by do |job_application|
       job_application.applicant.full_name.downcase
     end
