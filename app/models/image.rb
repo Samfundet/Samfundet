@@ -35,7 +35,7 @@ class Image < ActiveRecord::Base
 
   def tagstring=(new_tagstring)
     new_tags = new_tagstring.split(", ").map do |tag|
-      Tag.find_or_create_by_name(tag.downcase)
+      Tag.find_or_create_by(name: tag.downcase)
     end
 
     self.tags = new_tags
@@ -54,8 +54,9 @@ class Image < ActiveRecord::Base
   end
 
   def self.default_image
-    find_or_create_by_title(title: DEFAULT_TITLE,
-                            image_file: File.open(DEFAULT_PATH))
+    find_or_create_by title: DEFAULT_TITLE do |image|
+      image.image_file = File.open(DEFAULT_PATH)
+    end
   end
 
   def to_s
