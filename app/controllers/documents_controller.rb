@@ -18,7 +18,7 @@ class DocumentsController < ApplicationController
   end
 
   def create
-    @document = Document.create(params[:document])
+    @document = Document.new(document_param)
     @document.uploader_id = current_user.id
     if @document.save
       flash[:success] = t('documents.create_success')
@@ -53,5 +53,11 @@ class DocumentsController < ApplicationController
   end
 
   def admin_applet
+  end
+
+  private
+
+  def document_param
+    params.require(:document).permit(:title, :category_id, :file, :publication_date)
   end
 end
