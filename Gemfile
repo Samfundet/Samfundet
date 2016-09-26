@@ -31,6 +31,9 @@ gem 'jquery-rails'
 # jquery ui for datepicker etc.
 gem 'jquery-ui-rails'
 
+# jquery support for turbolinks
+gem 'jquery-turbolinks'
+
 # used for sorting tables in the admission
 gem "jquery-tablesorter"
 
@@ -166,7 +169,6 @@ group :development do
   # RSpec is a unit testing framework.
   # rspec-rails integrates RSpec (v2) and Rails (v3).
   gem 'rspec-rails'
-
 
   # Simple command execution over SSH. Lightweight deployment tool.
   # Using our own version until https://github.com/mina-deploy/mina/pull/361 is merged.
