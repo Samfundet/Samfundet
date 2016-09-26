@@ -20,7 +20,7 @@ class AdmissionsController < ApplicationController
   end
 
   def create
-    @admission = Admission.new(params[:admission])
+    @admission = Admission.new(admission_params)
     if @admission.save
       flash[:success] = t("admissions.registration_success")
       redirect_to admissions_path
@@ -34,7 +34,7 @@ class AdmissionsController < ApplicationController
   end
 
   def update
-    if @admission.update_attributes(params[:admission])
+    if @admission.update_attributes(admission_params)
       flash[:success] = "Opptaket er oppdatert."
       redirect_to admissions_path
     else
@@ -51,5 +51,9 @@ class AdmissionsController < ApplicationController
 
   def find_by_id
     @admission = Admission.find(params[:id])
+  end
+
+  def admission_params
+    params.require(:admission).permit(:title, :shown_from, :shown_application_deadline, :actual_application_deadline, :user_priority_deadline, :admin_priority_deadline)
   end
 end
