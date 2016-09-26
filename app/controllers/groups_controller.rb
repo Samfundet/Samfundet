@@ -19,7 +19,7 @@ class GroupsController < ApplicationController
   end
 
   def create
-    @group = Group.new(params[:group])
+    @group = Group.new(group_params)
     if @group.save
       flash[:success] = "Gjengen er opprettet."
       redirect_to admin_groups_path
@@ -33,12 +33,18 @@ class GroupsController < ApplicationController
   end
 
   def update
-    if @group.update_attributes(params[:group])
+    if @group.update_attributes(group_params)
       flash[:success] = "Gjengen er oppdatert."
       redirect_to admin_groups_path
     else
       flash[:error] = t('common.fields_missing_error')
       render action: 'edit'
     end
+  end
+
+  private
+
+  def group_params
+    params.require(:group).permit(:name, :abbreviation, :page_id, :website, :group_type_id)
   end
 end
