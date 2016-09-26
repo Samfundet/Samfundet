@@ -15,7 +15,7 @@ class EventsController < ApplicationController
     when Group.name
       params[:event][:organizer_id] = params[:event][:organizer_group_id]
     when ExternalOrganizer.name
-      params[:event][:organizer_id] = ExternalOrganizer.find_or_create_by_name(params[:event][:organizer_external_name]).id
+      params[:event][:organizer_id] = ExternalOrganizer.find_or_create_by(name: params[:event][:organizer_external_name]).id
     end
 
     params[:event].delete(:organizer_group_id)
@@ -74,7 +74,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(params[:event])
+    @event = Event.new(event_params)
     if @event.save
       if @event.non_billig_start_time < Time.current
         flash[:message] = t('events.time_of_start_has_passed')
@@ -82,6 +82,7 @@ class EventsController < ApplicationController
       flash[:success] = t('events.create_success')
       redirect_to @event
     else
+      byebug
       flash.now[:error] = t('events.create_error')
       render :new
     end
@@ -93,13 +94,14 @@ class EventsController < ApplicationController
 
   def update
     @event = Event.find params[:id]
-    if @event.update_attributes(params[:event])
+    if @event.update_attributes(event_params)
       if @event.non_billig_start_time < Time.current
         flash[:message] = t('events.time_of_start_has_passed')
       end
       flash[:success] = t('events.update_success')
       redirect_to @event
     else
+      byebug
       flash.now[:error] = t('events.update_error')
       render :edit
     end
@@ -227,5 +229,44 @@ class EventsController < ApplicationController
     respond_to do |format|
       format.rss { render layout: false }
     end
+  end
+
+  private
+
+  def event_params
+    params.require(:event).permit(
+      :non_billig_title_no,
+      :title_en,
+      :short_description_en,
+      :short_description_no,
+      :long_description_en,
+      :long_description_no,
+      :event_type,
+      :age_limit,
+      :area_id,
+      :status,
+      :image_id,
+      :primary_color,
+      :secondary_color,
+      :banner_alignment,
+      :organizer_type,
+      :non_billig_start_time,
+      :duration,
+      :publication_time,
+      :spotify_uri,
+      :facebook_link,
+      :youtube_link,
+      :youtube_embed,
+      :soundcloud_link,
+      :instagram_link,
+      :twitter_link,
+      :lastfm_link,
+      :vimeo_link,
+      :general_link,
+      :price_type,
+      :billig_event_id,
+      :organizer_id,
+      price_groups_attributes: [:name, :price, :_destroy]
+    )
   end
 end
