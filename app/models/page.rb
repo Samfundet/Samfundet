@@ -16,7 +16,7 @@ class Page < ActiveRecord::Base
   validates :name_no, uniqueness: true
   validates :name_en, uniqueness: true
   belongs_to :role
-  has_many :revisions, class_name: PageRevision.name
+  has_many :revisions, class_name: PageRevision.name, dependent: :destroy
 
   default_scope { order(I18n.locale == :no ? :name_no : :name_en) }
 
