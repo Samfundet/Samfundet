@@ -12,7 +12,7 @@ class AreasController < ApplicationController
   def update
     @area = Area.find_by_id params[:id]
 
-    if @area.update_attributes params[:area]
+    if @area.update(area_params)
       flash[:success] = t 'areas.update_success'
       redirect_to edit_area_path @area
     else
@@ -23,5 +23,11 @@ class AreasController < ApplicationController
 
   def edit_opening_hours_applet
     @areas = Area.all
+  end
+
+  private
+
+  def area_params
+    params.require(:area).permit(:page_id, standard_hours_attributes: [:open, :open_time, :close_time, :day, :id])
   end
 end
