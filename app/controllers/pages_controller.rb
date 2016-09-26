@@ -76,10 +76,10 @@ class PagesController < ApplicationController
   end
 
   def destroy
-    @page = Page.find(params[:id])
-    @page.destroy
+    @page = Page.find_by_param(params[:id])
+    @page.destroy # TODO: Should perhaps set a deleted flag instead of deleting
     flash[:success] = t("pages.destroy_success")
-    redirect_to pages_path
+    redirect_to admin_pages_path
   end
 
   def graph
