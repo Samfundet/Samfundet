@@ -16,7 +16,7 @@ class Page < ActiveRecord::Base
   validates :name_no, uniqueness: true
   validates :name_en, uniqueness: true
   belongs_to :role
-  has_many :revisions, class_name: PageRevision.name
+  has_many :revisions, class_name: PageRevision.name, dependent: :destroy
 
   #attr_accessible :name_no, :name_en, :title_no, :title_en,
   #                :content_no, :content_en, :role, :role_id, :created_at, :updated_at,
@@ -89,7 +89,7 @@ class Page < ActiveRecord::Base
   end
 
   def self.menu
-    find_or_create_by(name_en: MENU_NAME) do | page| 
+    find_or_create_by(name_en: MENU_NAME) do | page|
       page.name_no = MENU_NAME
       page.role = Role.super_user
     end
