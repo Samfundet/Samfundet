@@ -1,6 +1,6 @@
-namespace :db do
+namespace :admission do
   desc "This task removes all data from the database that can be associated with an applicant."
-  task anonymize_admissions: :environment do
+  task anonymize: :environment do
     Applicant.where(disabled: false).each do |applicant|
       password = Faker::Internet.password
 
@@ -17,12 +17,12 @@ namespace :db do
       applicant.save(validate: false)
     end
 
-    Interview.where(comment: "").each do |interview|
+    Interview.all.each do |interview|
       interview.assign_attributes(comment: "")
       interview.save(validate: false)
     end
 
-    JobApplication.where(motivation: "").each do |job_application|
+    JobApplication.all.each do |job_application|
       job_application.assign_attributes(motivation: "")
       job_application.save(validate: false)
     end
