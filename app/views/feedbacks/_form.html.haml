@@ -1,0 +1,7 @@
+
+- @feedback.questions.each do |question|
+  %h2= question.text
+  
+  = semantic_form_for question, html: { multipart: true } do |f|
+    = f.inputs
+    = f.actions

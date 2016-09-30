@@ -1,4 +1,4 @@
-class Feedback::Feedback < ActiveRecord::Base
+class Feedback < ActiveRecord::Base
    has_many :questions
 
    belongs_to :event

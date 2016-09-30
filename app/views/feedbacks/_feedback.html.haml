@@ -1,0 +1,10 @@
+
+- @feedback.questions.each do |question|
+  %h2= question.text
+  
+  = semantic_form_for question, html: { multipart: true } do |f|
+    = f.input :alternative_1, as: 'radio', name: 'alternative', value: 1
+    = f.input :alternative_2, as: 'radio', name: 'alternative', value: 2
+    = f.input :alternative_3, as: 'radio', name: 'alternative', value: 3
+    = f.input :alternative_4, as: 'radio', name: 'alternative', value: 4
+    = f.actions

@@ -47,7 +47,7 @@ class Event < ActiveRecord::Base
   has_one :front_page_lock, as: :lockable
   has_many :price_groups, uniq: true
 
-  has_one :feedback, class_name: "Feedback::Feedback"
+  has_one :feedback
 
   accepts_nested_attributes_for :price_groups, allow_destroy: true
 

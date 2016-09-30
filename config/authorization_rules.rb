@@ -36,6 +36,8 @@ authorization do
     has_permission_on :events, to: [:read, :buy, :ical, :archive, :archive_search]
 
     has_permission_on :sulten_reservations, to: [:create, :success]
+
+    has_permission_on :feedbacks, to: :show
   end
 
   role :medlem do
@@ -115,7 +117,8 @@ authorization do
       :sulten_reservations,
       :sulten_reservation_types,
       :sulten_admin,
-      :contact
+      :contact,
+      :feedbacks
       ], to: :manage
 
     has_permission_on :admissions_admin_job_applications, to: :hidden_create

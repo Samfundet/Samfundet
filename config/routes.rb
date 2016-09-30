@@ -35,6 +35,15 @@ Rails.application.routes.draw do
   end
 
   ############################
+  ##  Routes for feedback   ##
+  ############################
+
+  resources :feedbacks do
+
+    get :feedback
+  end
+
+  ############################
   ##  Routes for pages      ##
   ############################
 

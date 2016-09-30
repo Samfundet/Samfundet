@@ -308,6 +308,37 @@ price_group_names.each do |group|
     PriceGroup.create(name: group, price: price)
   end
 end
+feedbacks = Array.new rand(1..5)
+feedbacks.length.times.each do |k|
+  questions = Array.new rand(1..4)
+  puts "Creating #{questions.length} feedback questions"
+
+  questions.length.times.each do |j|
+    answers = Array.new rand(1..15)
+
+    puts "Creating #{answers.length} feedback answers"
+
+    answers.length.times.each do |i|
+        answers[i] = Feedback::Answer.create!(
+          alternative: rand(1..4)
+        )
+    end
+
+    questions[j] = Feedback::Question.create!(
+      text: Faker::Lorem.sentence(5),
+      alternative_1: Faker::Lorem.sentence(5),
+      alternative_2: Faker::Lorem.sentence(5),
+      alternative_3: Faker::Lorem.sentence(5),
+      alternative_4: Faker::Lorem.sentence(5),
+      answers: answers
+    )
+  end
+
+  puts "Creating feedback"
+  feedbacks[k] = Feedback::Feedback.create!(
+    questions: questions
+  )
+end
 
 puts "Creating events and billig tables"
 Area.all.each do |area|
@@ -391,28 +422,7 @@ Area.all.each do |area|
       organizer = rand > 0.7 ? Group.order("RANDOM()").first : ExternalOrganizer.order("RANDOM()").first
       chosen_colors = colors.sample(2)
 
-      questions = []
-      15.times.each do
-        answers = []
-        rand(1..15).times.each do
-            answers.push Feedback::Answer.create!(
-              alternative: rand(1..4)
-            )
-        end
-
-        questions.push Feedback::Question.create!(
-          text: Faker::Lorem.sentence(5),
-          alternative_1: Faker::Lorem.sentence(5),
-          alternative_2: Faker::Lorem.sentence(5),
-          alternative_3: Faker::Lorem.sentence(5),
-          alternative_4: Faker::Lorem.sentence(5),
-          answers: answers
-        )
-      end
-
-      feedback = Feedback::Feedback.create!(
-        questions: questions
-      )
+      feedback = feedbacks.sample
 
       Event.create!(
         feedback: feedback,
