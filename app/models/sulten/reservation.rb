@@ -12,7 +12,7 @@ class Sulten::Reservation < ActiveRecord::Base
 
   validate :check_opening_hours, :reservation_is_one_day_in_future, :check_amount_of_people, on: :create
 
-  validate :email, email: true
+  validates :email, email: true
 
   before_validation(on: :create) do
     should_break = false
@@ -29,6 +29,10 @@ class Sulten::Reservation < ActiveRecord::Base
 
     return false if should_break
 
+    self.reservation_to = reservation_from + reservation_duration.to_i.minutes
+  end
+
+  before_validation(on: :update) do
     self.reservation_to = reservation_from + reservation_duration.to_i.minutes
   end
 
