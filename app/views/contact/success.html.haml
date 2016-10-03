@@ -2,7 +2,6 @@
   =t('contact.email_sent')
 %p
   =t('contact.success_message')
-  =t('contact.copy_text')
 .success-box
   %h2 
     =@contact_form.subject
@@ -11,8 +10,9 @@
     <br>
   %p
     =@contact_form.name 
-  %p 
+    &#40;
     =@contact_form.email 
+    &#41;
 
 %p
   = link_to root_path do
