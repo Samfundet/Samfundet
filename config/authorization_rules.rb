@@ -64,7 +64,7 @@ authorization do
     end
 
     has_permission_on :roles, to: [:read, :manage_members] do
-      if_attribute role: is_in { user.roles }
+      if_attribute role_id: is_in { user.roles.select(:id) }
     end
 
     has_permission_on :members_roles, to: :manage do
