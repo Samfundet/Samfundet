@@ -31,7 +31,7 @@ class RolesController < ApplicationController
   end
 
   def create
-    @role = Role.new(params[:role])
+    @role = Role.new(role_params)
     if @role.save
       flash[:success] = t('roles.role_created')
       redirect_to role_url @role
@@ -45,7 +45,7 @@ class RolesController < ApplicationController
   end
 
   def update
-    if @role.update_attributes(params[:role])
+    if @role.update_attributes(role_params)
       flash[:success] = "Rollen er oppdatert."
       redirect_to role_url @role
     else
@@ -83,5 +83,9 @@ class RolesController < ApplicationController
     @role = Role.find_by_id(params[:id].to_i)
 
     raise ActiveRecord::RecordNotFound if @role.nil?
+  end
+
+  def role_params
+    params.require(:role).permit(:title, :name, :description, :passable, :role_id, :group_id)
   end
 end
