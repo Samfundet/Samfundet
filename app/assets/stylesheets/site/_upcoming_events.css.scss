@@ -61,7 +61,7 @@
 
         a { @include emph-link($samfundet-red); }
 
-        @include media($mobile){
+        @include media($mobile) {
           word-break: break-all;
         }
 
