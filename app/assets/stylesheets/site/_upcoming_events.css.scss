@@ -61,6 +61,10 @@
 
         a { @include emph-link($samfundet-red); }
 
+        @include media($mobile){
+          word-break: break-all;
+        }
+
         @include media($tablet-desktop) {
           white-space: nowrap;
           overflow: hidden;
