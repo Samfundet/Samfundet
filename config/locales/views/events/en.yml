@@ -20,6 +20,7 @@ en:
 
     left: left
     right: right
+    hide: hide text
 
     yes: yes
     no: no
@@ -148,7 +149,7 @@ en:
             status: Status
             primary_color: Primary color
             secondary_color: Secondary color
-            banner_alignment: Banner alignment
+            banner_alignment: Text alignment
             duration: Duration
             publication_time: Publication time
             free: Free
