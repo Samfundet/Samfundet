@@ -31,7 +31,7 @@ class FrontPageLock < ActiveRecord::Base
   end
 
   def to_param
-    position
+    position.to_s
   end
 
   def event_or_blog_exists
