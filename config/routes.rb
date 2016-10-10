@@ -183,7 +183,6 @@ Rails.application.routes.draw do
     post :search, on: :collection
   end
 
-
   namespace :sulten, path: "lyche" do
     get "/reservasjon" => "reservations#new"
     get :admin, to: "admin#index"
@@ -200,6 +199,9 @@ Rails.application.routes.draw do
 
   get ":id" => "pages#show", :id => Page::NAME_FORMAT
 
+  resources :campus, path: 'campus' do
+    get :index, on: :collection
+  end
 end
 
 # Add Norwegian routes and prefix English ones with /en; this is handled
