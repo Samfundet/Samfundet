@@ -1,0 +1,28 @@
+'no':
+  feedbacks:
+    create_success: Tilbakemeldingen er opprettet.
+    create_error: Tilbakemeldingen ble ikke opprettet.
+    update_success: Tilbakemeldingen er oppdatert.
+    update_error: Tilbakemeldingen ble ikke oppdatert.
+    confirm_delete: Er du sikker på at du vil slette denne tilbakemeldingen?
+    destroy_success: Tilbakemeldingen er slettet.
+    title: Tittel på feedback
+
+    left: venstre
+    right: høyre
+
+    yes: ja
+    no: nei
+
+    action:
+        new: Opprett tilbakemelding
+        delete: Slett tilbakemelding
+        edit: Rediger tilbakemelding
+
+    admin:
+      title: Administrer tilbakemelding
+      edit: Rediger tilbakemelding
+      new: Ny tilbakemelding
+
+    admin_applet:
+      title: Tilbakemeldinger

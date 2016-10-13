@@ -1,0 +1,16 @@
+en:
+  helpers:
+    models:
+      feedback:
+        one: "feedback"
+        other: "feedbacks"
+  activerecords:
+    models:
+      feedback:
+        one: "feedback"
+        other: "feedbacks"
+    label:
+      feedback:
+        title_en: Title (English)
+        title_no: Title (Norwegian)
+        time: Time

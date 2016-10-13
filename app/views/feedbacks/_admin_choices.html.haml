@@ -1,0 +1,14 @@
+- if permitted_to? :manage, :events
+  .admin-choices
+    %ul
+      %li
+        = link_to t("events.admin.new_page"), new_event_path
+
+      %li
+        = link_to t("crud.edit"), edit_event_path(@event)
+
+      %li
+        = link_to t("crud.destroy"), @page, confirm: t("events.confirm_delete"), method: :delete
+
+      %li
+        = link_to t("event.admin"), admin_events_path

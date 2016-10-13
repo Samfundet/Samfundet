@@ -1,0 +1,20 @@
+%table.upcoming-feedbacks
+  %thead
+    %tr
+      %th= t("feedbacks.title")
+  
+      - if permitted_to? :edit
+        %th
+      - if permitted_to? :destroy
+        %th
+
+  %tbody
+    - @feedbacks.each do |feedback|
+      %tr
+        %td= link_to feedback.title, feedback
+
+        - if permitted_to? :edit
+          %td= link_to t("crud.edit"), edit_feedback_path(feedback)
+
+        - if permitted_to? :destroy
+          %td= link_to t("crud.destroy"), feedback, confirm: t("feedbacks.confirm_delete"), method: :delete

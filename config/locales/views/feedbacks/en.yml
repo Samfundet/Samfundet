@@ -1,0 +1,26 @@
+en:
+  feedbacks:
+    create_success: Successfully created the feedback.
+    create_error: Could not create feedback.
+    update_success: Successfully updated the feedback.
+    update_error: Could not update the feedback.
+    confirm_delete: Are you sure you want to delete this feedback?
+    destroy_success: Successfully deleted the feedback.
+    left: left
+    right: right
+    title: Title of feedback
+
+    yes: yes
+    no: no
+
+    action:
+        new: Create feedback
+        delete: Delete feedback
+        edit: Edit feedback
+
+    admin:
+      title: Manage feedbacks
+      new: New feedback
+
+    admin_applet:
+      title: feedbacks

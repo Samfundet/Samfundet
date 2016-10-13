@@ -39,8 +39,8 @@ Rails.application.routes.draw do
   ############################
 
   resources :feedbacks do
-
-    get :feedback
+    get :admin, on: :collection
+    post :answer, to: "feedbacks#answer"
   end
 
   ############################

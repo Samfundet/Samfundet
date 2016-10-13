@@ -1,10 +1,48 @@
 
-- @feedback.questions.each do |question|
-  %h2= question.text
-  
-  = semantic_form_for question, html: { multipart: true } do |f|
-    = f.input :alternative_1, as: 'radio', name: 'alternative', value: 1
-    = f.input :alternative_2, as: 'radio', name: 'alternative', value: 2
-    = f.input :alternative_3, as: 'radio', name: 'alternative', value: 3
-    = f.input :alternative_4, as: 'radio', name: 'alternative', value: 4
-    = f.actions
+%h2= @feedback.title
+
+
+- semantic_form_for @feedback do |f|
+  = f.inputs :questions do |question|
+    %h3= question.text
+    %ul
+      %li
+        %input{ type: 'radio', id: "#{i}alternative_1", name: "alternative[#{i}]", value: 1 }
+        %label{ for: "#{i}alternative_1" }
+          = question.alternative_1
+      %li
+        %input{ type: 'radio', id: "#{i}alternative_2", name: "alternative[#{i}]", value: 2 }
+        %label{ for: "#{i}alternative_2" }
+          = question.alternative_2
+      %li
+        %input{ type: 'radio', id: "#{i}alternative_3", name: "alternative[#{i}]", value: 3 }
+        %label{ for: "#{i}alternative_3" }
+          = question.alternative_3
+      %li
+        %input{ type: 'radio', id: "#{i}alternative_4", name: "alternative[#{i}]", value: 4 }
+        %label{ for: "#{i}alternative_4" }
+          = question.alternative_4
+        
+
+%form{ action: feedback_answer_path(@feedback), method: 'post' }
+  - @feedback.questions.each_with_index do |question, i|
+    %h3= question.text
+ 
+    %ul
+      %li
+        %input{ type: 'radio', id: "#{i}alternative_1", name: "alternative[#{i}]", value: 1 }
+        %label{ for: "#{i}alternative_1" }
+          = question.alternative_1
+      %li
+        %input{ type: 'radio', id: "#{i}alternative_2", name: "alternative[#{i}]", value: 2 }
+        %label{ for: "#{i}alternative_2" }
+          = question.alternative_2
+      %li
+        %input{ type: 'radio', id: "#{i}alternative_3", name: "alternative[#{i}]", value: 3 }
+        %label{ for: "#{i}alternative_3" }
+          = question.alternative_3
+      %li
+        %input{ type: 'radio', id: "#{i}alternative_4", name: "alternative[#{i}]", value: 4 }
+        %label{ for: "#{i}alternative_4" }
+          = question.alternative_4
+  %input{ type: 'submit' }

@@ -336,6 +336,7 @@ feedbacks.length.times.each do |k|
 
   puts "Creating feedback"
   feedbacks[k] = Feedback::Feedback.create!(
+    title: Faker::Lorem.word,
     questions: questions
   )
 end

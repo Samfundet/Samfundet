@@ -1,0 +1,13 @@
+'no':
+  helpers:
+    models:
+      feedback:
+        one: "tilbakemelding"
+        other: "tilbakemelding"
+  activerecords:
+    models:
+      feedback:
+        one: "tilbakemelding"
+        other: "tilbakemelding"
+    label:
+      time: Tidspunkt

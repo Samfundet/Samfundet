@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160930092001) do
+ActiveRecord::Schema.define(:version => 20161006185117) do
 
   create_table "admissions", :force => true do |t|
     t.string   "title"
@@ -193,6 +193,8 @@ ActiveRecord::Schema.define(:version => 20160930092001) do
     t.string   "banner_alignment"
     t.integer  "duration",              :default => 120
     t.string   "youtube_embed"
+    t.integer  "feedback_id"
+    t.boolean  "has_feedback"
   end
 
   add_index "events", ["billig_event_id"], :name => "index_events_on_billig_event_id", :unique => true
@@ -228,9 +230,9 @@ ActiveRecord::Schema.define(:version => 20160930092001) do
   end
 
   create_table "feedbacks", :force => true do |t|
-    t.integer  "event_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "title"
   end
 
   create_table "front_page_locks", :force => true do |t|

@@ -1,0 +1,7 @@
+- set_title t("feedbacks.admin.title")
+
+- if permitted_to? :new, :feedbacks
+  %p.new
+    = link_to t("feedbacks.action.new"), new_feedback_path
+
+= render 'admin_list'
