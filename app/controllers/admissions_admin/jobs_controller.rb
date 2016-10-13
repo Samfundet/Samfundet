@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 class AdmissionsAdmin::JobsController < ApplicationController
   layout "admissions"
-  before_filter :before_new_and_create_and_search, only: [:new, :create, :search]
+  before_action :before_new_and_create_and_search, only: [:new, :create, :search]
   filter_access_to [:new, :create, :search, :edit, :update, :show, :destroy], attribute_check: true
 
   def new

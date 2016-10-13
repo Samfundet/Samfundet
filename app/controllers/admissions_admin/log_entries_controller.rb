@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class AdmissionsAdmin::LogEntriesController < ApplicationController
-  before_filter :new_log_entry, only: :create
+  before_action :new_log_entry, only: :create
   filter_access_to [:create, :destroy], attribute_check: true
 
   def create

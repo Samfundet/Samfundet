@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 class AdmissionsController < ApplicationController
   layout 'admissions'
-  before_filter :find_by_id, only: [:edit, :update]
+  before_action :find_by_id, only: [:edit, :update]
   filter_access_to [:new, :create, :edit, :update]
 
   has_control_panel_applet :admin_applet,
