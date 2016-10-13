@@ -8,7 +8,7 @@ class EventsController < ApplicationController
   has_control_panel_applet :admin_applet,
                            if: -> { permitted_to? :edit, :events }
 
-  before_filter :set_organizer_id, only: [:create, :update]
+  before_action :set_organizer_id, only: [:create, :update]
 
   def set_organizer_id
     case params[:event][:organizer_type]

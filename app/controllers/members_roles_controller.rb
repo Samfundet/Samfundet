@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class MembersRolesController < ApplicationController
-  before_filter :before_create, only: :create
+  before_action :before_create, only: :create
   filter_access_to [:create, :destroy], attribute_check: true
 
   def destroy

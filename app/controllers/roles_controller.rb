@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 class RolesController < ApplicationController
   filter_access_to [:pass], attribute_check: true
-  before_filter :find_by_id, only: [:show, :edit, :update]
+  before_action :find_by_id, only: [:show, :edit, :update]
 
   has_control_panel_applet :admin_applet,
                            if: -> { permitted_to?(:manage, Role) }

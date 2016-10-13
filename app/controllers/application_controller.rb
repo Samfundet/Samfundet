@@ -7,9 +7,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
   filter_access_to :all
 
-  before_filter :store_location
-  before_filter :set_locale
-  before_filter :set_current_user_for_model_layer_access_control
+  before_action :store_location
+  before_action :set_locale
+  before_action :set_current_user_for_model_layer_access_control
 
   # Helper methods that are also used in controllers
   helper_method :current_user, :logged_in?
