@@ -128,7 +128,7 @@ h3 {
             }
 
             &.opening-hours.max-height {
-                max-height: $locales-with-opening-hours * 25px + 20px;
+                max-height: $locales-with-opening-hours * 25px + 115px;
             }
 
             &.menu-items.max-height {
@@ -162,7 +162,7 @@ h3 {
 
             .date-today {
               h2 {
-                margin: 1em 0px 0px;
+                margin: 0.5em 0px 0px;
                 font-size: 1.2em;
                 text-align: center;
                 text-transform: initial;
