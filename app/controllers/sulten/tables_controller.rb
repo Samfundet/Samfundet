@@ -15,7 +15,7 @@ class Sulten::TablesController < ApplicationController
 
   def update
     @table = Sulten::Table.find(params[:id])
-    if @table.update_attributes(params[:sulten_table])
+    if @table.update_attributes(table_params)
       redirect_to sulten_tables_path
     else
       render :edit
@@ -33,7 +33,7 @@ class Sulten::TablesController < ApplicationController
 
   def create
     puts params
-    @table = Sulten::Table.new(params[:sulten_table])
+    @table = Sulten::Table.new(table_params)
     if @table.save
       flash[:success] = t("helpers.models.sulten.table.success.create")
       redirect_to @table
@@ -41,5 +41,11 @@ class Sulten::TablesController < ApplicationController
       flash.now[:error] = t("helpers.models.sulten.table.errors.create")
       render :new
     end
+  end
+
+  private
+
+  def table_params
+    params.require(:sulten_table).permit(:number, :capacity, :comment, :available, reservation_type_ids: [])
   end
 end

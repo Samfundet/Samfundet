@@ -69,6 +69,10 @@ class Sulten::Reservation < ActiveRecord::Base
     name.partition(" ").first
   end
 
+  def reservation_duration
+    ((reservation_to - reservation_from)/60).to_i
+  end
+
   def self.find_table from, to, people, reservation_type_id
     for i in 1..Sulten::ReservationType.all.length
       Sulten::Table.where("capacity >= ? and available = ?", people, true).order("capacity ASC").tables_with_i_reservation_types(i).find do |t|

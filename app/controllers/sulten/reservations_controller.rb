@@ -14,7 +14,7 @@ class Sulten::ReservationsController < ApplicationController
   end
 
   def create
-    @reservation = Sulten::Reservation.new(params[:sulten_reservation])
+    @reservation = Sulten::Reservation.new(reservation_params)
     if @reservation.save
       SultenNotificationMailer.send_reservation_email(@reservation).deliver
       flash[:success] = t("helpers.models.sulten.reservation.success.create")
@@ -36,7 +36,7 @@ class Sulten::ReservationsController < ApplicationController
   def update
     @reservation = Sulten::Reservation.find params[:id]
 
-    if @reservation.update_attributes(params[:sulten_reservation])
+    if @reservation.update_attributes(reservation_params)
       flash[:success] = t("helpers.models.sulten.reservation.success.update")
       redirect_to @reservation
     else
@@ -52,5 +52,20 @@ class Sulten::ReservationsController < ApplicationController
   end
 
   def success
+  end
+
+  private
+
+  def reservation_params
+    params.require(:sulten_reservation).permit(
+      :people,
+      :reservation_from,
+      :reservation_duration,
+      :name,
+      :reservation_type_id,
+      :telephone,
+      :email,
+      :allergies
+    )
   end
 end
