@@ -6,7 +6,6 @@
     != form.input :surname
     != form.input :phone
     != form.input :campus_id, as: :select, collection: Campus.all
-    /!= form.input :event_type, label: t('events.forms.labels.event_type'), as: :select, collection: Event::EVENT_TYPE.map { |k| [t("events.#{k}"), k] }, include_blank: false
 
   = form.inputs name: t("applicants.forms.register.login_information") do
     != form.input :email

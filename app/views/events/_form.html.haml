@@ -11,7 +11,7 @@
     = f.input :short_description_no, label: t('events.forms.labels.short_description_no'), input_html: { rows: 2 }
     = f.input :short_description_en, label: t('events.forms.labels.short_description_en'), input_html: { rows: 2 }
     = f.input :long_description_no, label: t('events.forms.labels.long_description_no'), hint: t('common.markdown_hint').html_safe
-    = f.input :long_description_en, label: t('events.forms.labels.long_description_en'), hint: t('common.markdown_hint').html_safe
+    = f.input :long_description_en, label: t('events.forms.labels.long_description_no'), hint: t('common.markdown_hint').html_safe
     = f.input :event_type, label: t('events.forms.labels.event_type'), as: :select, collection: Event::EVENT_TYPE.map { |k| [t("events.#{k}"), k] }, include_blank: false
     = f.input :age_limit, label: t('events.forms.labels.age_limit'), as: :select, collection: Event::AGE_LIMIT.map { |k| [t("events.#{k}").html_safe, k] }, include_blank: false
     = f.input :area, label: t('events.forms.labels.area'), include_blank: false
