@@ -102,7 +102,8 @@ Rails.application.routes.draw do
     end
 
     match "applicants/search" => "applicants#search",
-          as: :applicant_search
+          as: :applicant_search,
+          via: :get
     resources :applicants
     resources :groups, only: [:new, :create, :edit, :update] do
       get :admin, on: :collection
