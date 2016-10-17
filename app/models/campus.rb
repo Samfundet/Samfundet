@@ -5,4 +5,9 @@ class Campus < ActiveRecord::Base
   def to_s
     name
   end
+
+  def number_of_applicants
+    applicants.count
+  end
+
 end
