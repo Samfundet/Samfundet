@@ -23,7 +23,7 @@
 
         %td= event.organizer.name
 
-        %td= event.area 
+        %td= event.area
 
         - if permitted_to? :edit
           %td= link_to t("crud.edit"), edit_event_path(event)

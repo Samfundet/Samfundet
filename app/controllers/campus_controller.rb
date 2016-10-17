@@ -29,4 +29,22 @@ class CampusController < ApplicationController
     @campus = Campus.find(params[:id])
   end
 
+  def destroy
+    @campus = Campus.find(params[:id])
+    @campus.destroy
+    flash[:success] = "Slettet. Husk translation"
+    redirect_to action: :admin
+  end
+
+  def update
+    @campus = Campus.find params[:id]
+    if @campus.update_attributes(params[:campus])
+      flash[:success] = "Success! Husk translation"
+      redirect_to action: :admin
+    else
+      flash.now[:error] = "Ai, noe gikk galt. Husk translation"
+      render :edit
+    end
+  end
+
 end
