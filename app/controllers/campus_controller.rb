@@ -1,5 +1,4 @@
 class CampusController < ApplicationController
-
   filter_access_to [:admin], require: :edit
 
   def admin
@@ -46,5 +45,4 @@ class CampusController < ApplicationController
       render :edit
     end
   end
-
 end
