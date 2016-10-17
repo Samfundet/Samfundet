@@ -1,0 +1,21 @@
+%table.campus
+  %thead
+    %tr
+      %th= t("campus.name")
+      %th= t("crud.created_at")
+      %th= t("crud.updated_at")
+      - if permitted_to? :edit
+        %th
+      - if permitted_to? :destroy
+        %th
+
+  %tbody
+    - @campuses.each do |campus|
+      %tr
+        %td= link_to campus.name, campus
+        %td= campus.created_at
+        %td= campus.updated_at
+        - if permitted_to? :edit
+          %td= link_to t("crud.edit"), edit_campus_path(campus)
+        - if permitted_to? :destroy
+          %td= link_to t("crud.destroy"), campus, confirm: "Sikker? Husk å legge inn translation", method: :delete

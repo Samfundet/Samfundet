@@ -200,7 +200,7 @@ Rails.application.routes.draw do
   get ":id" => "pages#show", :id => Page::NAME_FORMAT
 
   resources :campus, path: 'campus' do
-    get :index, on: :collection
+    get :admin, on: :collection
   end
 end
 
