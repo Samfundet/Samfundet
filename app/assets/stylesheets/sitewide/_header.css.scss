@@ -128,11 +128,11 @@ h3 {
             }
 
             &.opening-hours.max-height {
-                max-height: $locales-with-opening-hours * 25px + 20px;
+                max-height: $locales-with-opening-hours * 30px + 20px;
             }
 
             &.menu-items.max-height {
-                max-height: $menu-items-per-column * 25px + 20px;
+                max-height: $menu-items-per-column * 30px + 20px;
             }
         }
 
