@@ -114,6 +114,7 @@ class Event < ActiveRecord::Base
   # Uses the above defined PgSearch scope to perform search.
   def self.text_search query
     if query.present?
+      query.sub! 'samfundet_meeting', 'meeting'
       published.includes(:area).search(query)
     else
       []
