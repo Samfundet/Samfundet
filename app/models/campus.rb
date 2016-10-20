@@ -10,4 +10,10 @@ class Campus < ActiveRecord::Base
     applicants.count
   end
 
+  def number_of_applicants_current_admission
+    Admission.current.first.job_applications.map { |application| \
+        application.applicant }.uniq{|applicant| applicant.email\
+    }.group_by{ |applicant| applicant.campus }.values[self.name.to_i].count
+  end
+
 end

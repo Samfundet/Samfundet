@@ -5,6 +5,7 @@
       %th= t("crud.created_at")
       %th= t("crud.updated_at")
       %th= "Antall Søkere"
+      %th= "Søkere dette opptaket"
       - if permitted_to? :edit
         %th
       - if permitted_to? :destroy
@@ -17,6 +18,7 @@
         %td= campus.created_at
         %td= campus.updated_at
         %td= campus.number_of_applicants
+        %td= campus.number_of_applicants_current_admission
         - if permitted_to? :edit
           %td= link_to t("crud.edit"), edit_campus_path(campus)
         - if permitted_to? :destroy

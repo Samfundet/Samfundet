@@ -5,7 +5,7 @@ class Applicant < ActiveRecord::Base
   has_many :jobs, through: :job_applications
   has_many :password_recoveries
   has_many :log_entries
-  has_one :campus
+  belongs_to :campus
 
   attr_accessor :password, :password_confirmation, :old_password
 
