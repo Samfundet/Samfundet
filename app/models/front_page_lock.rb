@@ -15,6 +15,11 @@ class FrontPageLock < ActiveRecord::Base
                          message: "Invalid lock type",
                          if: :lockable_type?
 
+  scope :locks_enabled, -> {
+    where('lockable_id IS NOT null')
+      .order(:position)
+  }
+
   # TODO: this might not be an issue in rails 3
   # belongs_to touch: true does not currently touch the old associated
   # object when the foreign key is the value that changes.
@@ -25,10 +30,6 @@ class FrontPageLock < ActiveRecord::Base
   #    lockable_was.touch
   #  end
   # end
-
-  def self.locks_enabled
-    where('lockable_id IS NOT null').reject { |a| a.lockable_type == "Event" && a.lockable.end_time < DateTime.current - 2.hours.from_now }
-  end
 
   def to_param
     position
