@@ -84,10 +84,10 @@ end
 # Create campuses
 number_of_campuses = 10
 
-puts "Creating  #{number_of_campuses} "
-
-for i in 0..number_of_campuses
-  Campus.create(name: Faker::Company.name)
+number_of_campuses.times do
+  campus_name = Faker::Company.name
+  puts "Creating campus #{campus_name}"
+  Campus.create(name: campus_name)
 end
 
 # Create a number of applicants
