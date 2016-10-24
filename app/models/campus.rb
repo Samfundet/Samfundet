@@ -11,6 +11,10 @@ class Campus < ActiveRecord::Base
   end
 
   def number_of_applicants_current_admission
-    Admission.current.first.job_applications.map(&:applicant).uniq(&:email).group_by(&:campus).values[name.to_i].count
+    #Find all job applications of the current admission, get the unique user and group by campus.
+    campus_hash = Admission.current.first.job_applications.map(&:applicant).uniq.map(&:campus).group_by(&:name)
+
+    #Count how many applicant belong to this campus
+    campus_hash[self.name].length
   end
 end
