@@ -21,9 +21,5 @@
     - feedback.questions.each do |question|
       %h2= question.text
       %ul
-        %li= question.alternative_1
-        %li= question.alternative_2
-        %li= question.alternative_3
-        %li= question.alternative_4
-
-        
+        - question.alternatives do |alternative|
+          %li= alternative.text

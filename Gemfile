@@ -176,6 +176,13 @@ group :development do
 
   # Generate diagrams of models and controllers. Usage: Install graphviz and run 'rake diagram:all'.
   gem 'railroady'
+  
+  # Debugging tools
+  gem 'pry'
+  gem 'pry-remote'
+  gem 'pry-stack_explorer'
+  gem 'pry-rails'
+  #gem 'pry-debugger'
 end
 
 group :test do

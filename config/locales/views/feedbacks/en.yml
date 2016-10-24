@@ -13,6 +13,10 @@ en:
     yes: yes
     no: no
 
+    question:
+        delete: Delete question
+        add: Add question
+
     action:
         new: Create feedback
         delete: Delete feedback

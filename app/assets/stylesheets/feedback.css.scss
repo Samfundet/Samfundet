@@ -1,0 +1,29 @@
+// Place all the styles related to the Feedback controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+form.feedback-form {
+    
+    ul.feedback-alternatives {
+        margin: auto;
+        display: block;
+        width: 80%;
+        input[type="radio"]:checked+label {
+            font-size: 30px;
+            border: solid 1px #000;
+        }
+
+        label {
+            height: 30px;
+            cursor: pointer;
+        }
+
+        label:hover {
+            background: #aaa;
+        }
+
+        input {
+            display: none;
+        }
+    }
+}

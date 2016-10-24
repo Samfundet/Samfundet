@@ -105,7 +105,11 @@ class EventsController < ApplicationController
       raise ActionController::RoutingError.new('Not Found') if request.xhr?
 
       flash[:error] = t('events.can_not_purchase_error')
-      redirect_to(@event) && return
+      if @event.has_feedback
+        redirect_to(@event.feedback)
+      else
+        redirect_to(@event) && return
+      end
     end
 
     @ticket_groups = @event.billig_event.netsale_billig_ticket_groups

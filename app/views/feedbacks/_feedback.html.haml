@@ -1,48 +1,12 @@
 
 %h2= @feedback.title
-
-
-- semantic_form_for @feedback do |f|
-  = f.inputs :questions do |question|
-    %h3= question.text
-    %ul
-      %li
-        %input{ type: 'radio', id: "#{i}alternative_1", name: "alternative[#{i}]", value: 1 }
-        %label{ for: "#{i}alternative_1" }
-          = question.alternative_1
-      %li
-        %input{ type: 'radio', id: "#{i}alternative_2", name: "alternative[#{i}]", value: 2 }
-        %label{ for: "#{i}alternative_2" }
-          = question.alternative_2
-      %li
-        %input{ type: 'radio', id: "#{i}alternative_3", name: "alternative[#{i}]", value: 3 }
-        %label{ for: "#{i}alternative_3" }
-          = question.alternative_3
-      %li
-        %input{ type: 'radio', id: "#{i}alternative_4", name: "alternative[#{i}]", value: 4 }
-        %label{ for: "#{i}alternative_4" }
-          = question.alternative_4
-        
-
-%form{ action: feedback_answer_path(@feedback), method: 'post' }
+= form_tag feedback_answer_path(@feedback), method: 'post', class: 'feedback-form' do
   - @feedback.questions.each_with_index do |question, i|
-    %h3= question.text
- 
-    %ul
-      %li
-        %input{ type: 'radio', id: "#{i}alternative_1", name: "alternative[#{i}]", value: 1 }
-        %label{ for: "#{i}alternative_1" }
-          = question.alternative_1
-      %li
-        %input{ type: 'radio', id: "#{i}alternative_2", name: "alternative[#{i}]", value: 2 }
-        %label{ for: "#{i}alternative_2" }
-          = question.alternative_2
-      %li
-        %input{ type: 'radio', id: "#{i}alternative_3", name: "alternative[#{i}]", value: 3 }
-        %label{ for: "#{i}alternative_3" }
-          = question.alternative_3
-      %li
-        %input{ type: 'radio', id: "#{i}alternative_4", name: "alternative[#{i}]", value: 4 }
-        %label{ for: "#{i}alternative_4" }
-          = question.alternative_4
-  %input{ type: 'submit' }
+    %h3= question.text  
+    %ul.feedback-alternatives
+      - question.alternatives.each_with_index do |alternative, j|
+        %li
+          = radio_button_tag "alternative[#{i}]", j
+          = label_tag "alternative_#{i}_#{j}", alternative.text
+  = submit_tag()
+

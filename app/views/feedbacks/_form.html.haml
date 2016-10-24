@@ -1,15 +1,7 @@
-
--#- @feedback.questions.each do |question|
--#  %h2= question.text
-  
 = semantic_form_for @feedback, html: { multipart: true } do |f|
-  = f.inputs
-  = f.semantic_fields_for :questions do |question|
-    = question.inputs do
-      = question.input :text
-      = question.input :alternative_1
-      = question.input :alternative_2
-      = question.input :alternative_3
-      = question.input :alternative_4
-
+  = f.inputs do
+    = f.semantic_fields_for :questions do |q|
+      = render 'question_fields', q: q
+ 
+    = link_to_add_association t('feedbacks.questions.add'), f, :questions
   = f.actions

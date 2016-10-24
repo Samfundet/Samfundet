@@ -3,11 +3,11 @@
     models:
       feedback:
         one: "tilbakemelding"
-        other: "tilbakemelding"
+        other: "tilbakemeldinger"
   activerecords:
     models:
       feedback:
         one: "tilbakemelding"
-        other: "tilbakemelding"
+        other: "tilbakemeldinger"
     label:
-      time: Tidspunkt
+        title: Tittel

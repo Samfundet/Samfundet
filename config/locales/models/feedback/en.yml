@@ -11,6 +11,5 @@ en:
         other: "feedbacks"
     label:
       feedback:
-        title_en: Title (English)
-        title_no: Title (Norwegian)
+        title: Title 
         time: Time

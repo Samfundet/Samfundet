@@ -97,5 +97,4 @@
 
     %p
       = render partial: "shared/disqus", locals: { title: @event.title }
-= link_to @event.feedback
-%p = "Hello"
+= link_to "Feedback", feedback_path(@event.feedback)

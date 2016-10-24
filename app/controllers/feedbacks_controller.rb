@@ -37,11 +37,12 @@ class FeedbacksController < ApplicationController
     else
       flash.now[:error] = t('feedbacks.create_error')
     end
-    redirect_to action: :admin
+    redirect_to action: :edit
   end
 
   def answer
     binding.pry
+    puts params
 
     @question = Feedback::Question.find(params[:id])
     Feedback::Answer.create(
@@ -64,6 +65,6 @@ class FeedbacksController < ApplicationController
 
   def destroy
     Feedback.find(params[:id]).destroy
-    redirect_to feedback_admin_url
+    redirect_to action: :admin
   end
 end

@@ -1,12 +1,12 @@
 'no':
   feedbacks:
-    create_success: Tilbakemeldingen er opprettet.
-    create_error: Tilbakemeldingen ble ikke opprettet.
-    update_success: Tilbakemeldingen er oppdatert.
-    update_error: Tilbakemeldingen ble ikke oppdatert.
-    confirm_delete: Er du sikker på at du vil slette denne tilbakemeldingen?
-    destroy_success: Tilbakemeldingen er slettet.
-    title: Tittel på feedback
+    create_success: Undersøkelsen er opprettet.
+    create_error: Undersøkelsen ble ikke opprettet.
+    update_success: Undersøkelsen er oppdatert.
+    update_error: Undersøkelsen ble ikke oppdatert.
+    confirm_delete: Er du sikker på at du vil slette denne undersøkelsen?
+    destroy_success: Undersøkelsen er slettet.
+    title: Tittel på undersøkelsen
 
     left: venstre
     right: høyre
@@ -14,15 +14,19 @@
     yes: ja
     no: nei
 
+    question:
+        delete: Slett spørsmål
+        add: Legg til spørsmål
+
     action:
-        new: Opprett tilbakemelding
-        delete: Slett tilbakemelding
-        edit: Rediger tilbakemelding
+        new: Opprett undersøkelse
+        delete: Slett undersøkelse
+        edit: Rediger undersøkelse
 
     admin:
-      title: Administrer tilbakemelding
-      edit: Rediger tilbakemelding
-      new: Ny tilbakemelding
+      title: Administrer undersøkelse
+      edit: Rediger undersøkelse
+      new: Ny undersøkelse
 
     admin_applet:
-      title: Tilbakemeldinger
+      title: Undersøkelser

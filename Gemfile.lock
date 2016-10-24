@@ -226,6 +226,14 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-rails (0.3.4)
+      pry (>= 0.9.10)
+    pry-remote (0.1.8)
+      pry (~> 0.9)
+      slop (~> 3.0)
+    pry-stack_explorer (0.4.9.2)
+      binding_of_caller (>= 0.7)
+      pry (>= 0.9.11)
     rack (1.4.7)
     rack-cache (1.6.1)
       rack (>= 0.4)
@@ -373,6 +381,10 @@ DEPENDENCIES
   paperclip-compression (= 0.3.5)
   pg
   pg_search!
+  pry
+  pry-rails
+  pry-remote
+  pry-stack_explorer
   rack-livereload
   railroady
   rails (= 3.2.22.2)
@@ -396,5 +408,8 @@ DEPENDENCIES
   webrat
   will_paginate
 
+RUBY VERSION
+   ruby 2.1.5p273
+
 BUNDLED WITH
-   1.11.2
+   1.13.1

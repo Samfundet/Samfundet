@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20161006185117) do
+ActiveRecord::Schema.define(:version => 20161024194422) do
 
   create_table "admissions", :force => true do |t|
     t.string   "title"
@@ -210,6 +210,13 @@ ActiveRecord::Schema.define(:version => 20161006185117) do
     t.string "name"
   end
 
+  create_table "feedback_alternatives", :force => true do |t|
+    t.string   "text"
+    t.integer  "question_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "feedback_answers", :force => true do |t|
     t.integer  "feedback_question_id"
     t.datetime "created_at",           :null => false
@@ -219,13 +226,9 @@ ActiveRecord::Schema.define(:version => 20161006185117) do
   end
 
   create_table "feedback_questions", :force => true do |t|
-    t.string   "alternative_1"
-    t.string   "alternative_2"
-    t.string   "alternative_3"
-    t.string   "alternative_4"
     t.string   "text"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.integer  "feedback_id"
   end
 
