@@ -11,9 +11,6 @@ class Campus < ActiveRecord::Base
   end
 
   def number_of_applicants_current_admission
-    Admission.current.first.job_applications.map { |application| \
-        application.applicant }.uniq{|applicant| applicant.email\
-    }.group_by{ |applicant| applicant.campus }.values[self.name.to_i].count
+    Admission.current.first.job_applications.map(&:applicant).uniq(&:email).group_by(&:campus).values[name.to_i].count
   end
-
 end
