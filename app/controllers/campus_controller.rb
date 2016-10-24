@@ -12,7 +12,7 @@ class CampusController < ApplicationController
   def create
     @campus = Campus.new(params[:campus])
     if @campus.save
-      flash[:success] = 'Lagret. Husk å lage translation'
+      flash[:success] = t("campus.campus_save")
       redirect_to action: :admin
     else
       flash[:message] = 'Oh shit, something wong'

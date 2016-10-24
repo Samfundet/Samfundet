@@ -142,8 +142,9 @@ ActiveRecord::Schema.define(:version => 20161117204249) do
 
   create_table "campus", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+    t.boolean  "active",     :default => true
   end
 
   create_table "document_categories", :force => true do |t|
