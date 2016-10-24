@@ -30,11 +30,8 @@ class FrontPageLock < ActiveRecord::Base
     locks = self.where('lockable_id IS NOT null')
     enabled_locks = Set.new []
     for lock in locks
-      puts "LOLOL"
-      puts DayTime
-      puts lock.lockable.end_time
-      puts DayTime < lock.lockable.end_time
-      if lock.lockable_type == "Event" && DayTime < lock.lockable.end_time
+      #Removes the lock if the event end time + 2 hours has passed
+      if lock.lockable_type == "Event" && (DateTime.now-2/24.0) < lock.lockable.end_time
         enabled_locks.add(lock)
       end
     end
