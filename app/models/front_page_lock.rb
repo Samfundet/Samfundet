@@ -28,7 +28,7 @@ class FrontPageLock < ActiveRecord::Base
 
   def self.locks_enabled
     # Returns locks where the event has not ended two hours ago
-    return locks = where('lockable_id IS NOT null').reject { |a| a.lockable.end_time < DateTime.current - 2 / 24.0 }
+    where('lockable_id IS NOT null').reject { |a| a.lockable.end_time < DateTime.current - 2.hours.from_now }
   end
 
   def to_param
