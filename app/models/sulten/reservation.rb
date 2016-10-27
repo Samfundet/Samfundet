@@ -2,12 +2,7 @@ class Sulten::Reservation < ActiveRecord::Base
   belongs_to :table
   belongs_to :reservation_type
 
-  #attr_accessible :reservation_from, :reservation_duration, :reservation_to, :people, :name,
-  #                :telephone, :email, :allergies, :internal_comment, :table_id, :reservation_type_id, :reservation_duration
-
-  attr_accessor :reservation_duration
-
-  validates_presence_of :reservation_from, :reservation_to, :reservation_duration, :people,
+  validates_presence_of :reservation_from, :reservation_to, :people,
                         :name, :telephone, :email, :reservation_type
 
   validate :check_opening_hours, :reservation_is_one_day_in_future, :check_amount_of_people, on: :create
@@ -15,25 +10,16 @@ class Sulten::Reservation < ActiveRecord::Base
   validates :email, email: true
 
   before_validation(on: :create) do
-    should_break = false
-
     unless [30, 60, 90, 120].include? reservation_duration.to_i
-      errors.add(:reservation_duration, I18n.t("helpers.models.sulten.reservation.errors.people.check_reservation_duration"))
-      should_break = true
+      errors.add(:reservation_duration, I18n.t("helpers.models.sulten.reservation.errors.check_reservation_duration"))
+      throw(:abort)
     end
 
     if reservation_from.nil?
       errors.add(:reservation_from, I18n.t("helpers.models.sulten.reservation.errors.invalid_reservation_format"))
-      should_break = true
+      throw(:abort)
     end
 
-    return false if should_break
-
-    self.reservation_to = reservation_from + reservation_duration.to_i.minutes
-  end
-
-  before_validation(on: :update) do
-    self.reservation_to = reservation_from + reservation_duration.to_i.minutes
   end
 
   after_validation(on: :create) do
@@ -69,8 +55,13 @@ class Sulten::Reservation < ActiveRecord::Base
     name.partition(" ").first
   end
 
+  def reservation_duration=(duration)
+    puts "RESERVATION DURATION"
+    self.reservation_to = self.reservation_from + duration.to_i.minutes if self.reservation_from.present?
+  end
+
   def reservation_duration
-    ((reservation_to - reservation_from)/60).to_i
+    @reservation_duration ||= ((reservation_to - reservation_from)/60).to_i unless reservation_to.nil? or reservation_from.nil?
   end
 
   def self.find_table from, to, people, reservation_type_id
