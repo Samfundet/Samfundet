@@ -1,0 +1,6 @@
+.search-results
+  %h3= t('search.results_title')
+  - if @events.present?
+    = render 'archive_list'
+  - else
+    %p= t('search.no_results')

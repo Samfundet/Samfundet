@@ -1,0 +1,23 @@
+.event-group
+  %table
+    %thead
+      %tr
+        %th= t("events.title")
+        %th= t("events.start_time")
+        %th= t("events.event_type")
+        %th= t("events.organizer")
+        %th= t("events.area")
+      %tbody
+        - @events.sort_by { |event| event.start_time }.reverse.each do |event|
+          %tr
+            %td= link_to event.title, event
+
+            %td= l(event.start_time)
+
+            %td= t_event_type(event)
+
+            %td= event.organizer.name
+
+            %td= event.area 
+
+= will_paginate @events

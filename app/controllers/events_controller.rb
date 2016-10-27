@@ -45,8 +45,9 @@ class EventsController < ApplicationController
               .published
               .past
               .text_search(params[:search])
+              .paginate(:page => params[:page])
 
-    render '_search_results', layout: false if request.xhr?
+    render '_search_results_archive', layout: false if request.xhr?
   end
 
   def show
