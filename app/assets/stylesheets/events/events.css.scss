@@ -78,17 +78,16 @@
         }
 
         .description-short {
-          font-weight: 500;
+          font-weight: $font-weight-bold;
         }
 
         .description-long {
-          font-weight: lighter;
+          font-weight: $font-weight-normal;
           margin-bottom: 20px;
         }
 
         p.adaptation {
-          font-style: italic;
-          font-size: 17px;
+          font-weight: $font-weight-bold;
         }
 
         .social {
@@ -135,12 +134,12 @@
             padding: 5px 8px;
 
             &:first-child {
-              font-weight: lighter;
+              font-weight: $font-weight-normal;
               border-right: 1px solid #333;
             }
 
             &:last-child {
-              font-weight: 500;
+              font-weight: $font-weight-bold;
             }
           }
         }
@@ -235,7 +234,7 @@
                         text-decoration: none;
                         text-transform: uppercase;
                         color: $samfundet-black;
-                        font-weight: 300;
+                        font-weight: $font-weight-normal;
                     }
 
                     &.event-area-start-time {
@@ -247,7 +246,7 @@
                     }
 
                     &.event-start-time, &.event-price {
-                        font-weight: lighter;
+                        font-weight: $font-weight-normal;
                     }
 
                     &.event-area, &.event-start-time, &.event-price {

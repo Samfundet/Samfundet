@@ -5,12 +5,12 @@ h2 {
   color: #a03033;
   margin: 0;
   text-transform: uppercase;
-  font-weight: 300;
+  font-weight: $font-weight-normal;
 }
 
 h3 {
   font-size: 25px;
-  font-weight: 300;
+  font-weight: $font-weight-normal;
 }
 
 #header {
@@ -51,7 +51,7 @@ h3 {
                 color: #000;
 
                 text-transform: uppercase;
-                font-weight: 500;
+                font-weight: $font-weight-medium;
 
                 @include media($mobile-and-tablet-portrait) {
                     width: 100%;
@@ -108,7 +108,7 @@ h3 {
             }
 
             .dropdown-button {
-                font-weight: 500;
+                font-weight: $font-weight-medium;
                 font-size: 1.2em;
                 text-transform: uppercase;
                 color: $samfundet-black;
