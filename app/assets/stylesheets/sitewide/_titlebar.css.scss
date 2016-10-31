@@ -26,7 +26,7 @@ $image-aspect-ratio: 12;
     #session-status {
         float: right;
         margin-top: 9px;
-        font-weight: bold;
+        font-weight: $font-weight-bold;
         font-size: 0.7em;
 
         .login, .control-panel, .my-applications, .titlebar-change-language-link, .titlebar-search-link {
@@ -72,7 +72,7 @@ $image-aspect-ratio: 12;
       border-left: 1px solid black;
       padding: 5px 10px;
       font-size: 0.7em;
-      font-weight: 400;
+      font-weight: $font-weight-normal;
     }
 
     input[type='text'] {

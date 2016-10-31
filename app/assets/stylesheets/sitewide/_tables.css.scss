@@ -5,7 +5,7 @@ table:not(.custom-table):not(.ui-datepicker-calendar) {
   border: 1px solid $border-color;
   width: 100%;
   font-size: 17px;
-  font-weight: 100;
+  font-weight: $font-weight-normal;
   margin-bottom: 20px;
 
   tr {
@@ -16,7 +16,7 @@ table:not(.custom-table):not(.ui-datepicker-calendar) {
   th, td {
     border-right: 1px solid $border-color;
     padding: 10px 5px;
-    font-weight: 100;
+    font-weight: $font-weight-normal;
     text-align: left;
 
     &:last-child {

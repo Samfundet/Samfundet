@@ -72,7 +72,7 @@
 .jobs {
   #job-search-query {
     float: right;
-    font-weight: bold; }
+    font-weight: $font-weight-bold; }
   table#jobs {
     td:last-child {
       white-space: nowrap;

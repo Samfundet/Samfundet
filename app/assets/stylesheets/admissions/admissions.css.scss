@@ -27,7 +27,7 @@ td.link {
   h2, h3 {
     text-align: center;
     text-transform: uppercase;
-    font-weight: normal;
+    font-weight: $font-weight-normal;
   }
 }
 
@@ -77,59 +77,9 @@ td.link {
     a {
       color: $samfundet-black;
       text-transform: uppercase;
-      font-weight: bold;
+      font-weight: $font-weight-bold;
       margin-right: 10px;
     }
   }
 }
 
-/*
-.admissions {
-  // reset browser css
-  // @import "reset";
-
-  // Variables and mixins
-  // @import "colors";
-  // @import "mixins";
-
-  // Element styling
-  // @import "layout";
-  // @import "typography";
-  // @import "forms";
-  // @import "modal";
-  // @import "tooltip";
-  // @import "flash_message";
-  // @import "promo";
-
-  // Language selector
-  // @import "language";
-
-  // Tablesorter
-  // @import "tablesorter";
-
-  // Module specific
-  // @import "modules/admissions";
-  // @import "modules/jobs";
-  // @import "modules/job_applications";
-  // @import "modules/user_sessions";
-  // @import "modules/interviews";
-  // @import "modules/google-visualization-orgchart-table";
-  // @import "modules/members";
-
-  // Print styling
-  @media print {
-    #header, #footer {
-      display: none; }
-    html {
-      background-color: #ffffff; }
-    #content {
-      padding: 10px;
-      font-size: 0.7em;
-      .section {
-        width: auto !important;
-      }
-      select, textarea, input {
-        border: none !important;
-        background-color: transparent !important; } } }
-}
-*/
