@@ -78,16 +78,17 @@
         }
 
         .description-short {
-          font-weight: $font-weight-bold;
+          font-weight: $font-weight-medium;
         }
 
         .description-long {
-          font-weight: $font-weight-normal;
+          font-weight: lighter;
           margin-bottom: 20px;
         }
 
         p.adaptation {
-          font-weight: $font-weight-bold;
+          font-style: italic;
+          font-size: 17px;
         }
 
         .social {
@@ -134,12 +135,12 @@
             padding: 5px 8px;
 
             &:first-child {
-              font-weight: $font-weight-normal;
+              font-weight: lighter;
               border-right: 1px solid #333;
             }
 
             &:last-child {
-              font-weight: $font-weight-bold;
+              font-weight: $font-weight-medium;
             }
           }
         }
@@ -246,7 +247,7 @@
                     }
 
                     &.event-start-time, &.event-price {
-                        font-weight: $font-weight-normal;
+                        font-weight: lighter;
                     }
 
                     &.event-area, &.event-start-time, &.event-price {
