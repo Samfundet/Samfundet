@@ -82,7 +82,7 @@
         }
 
         .description-long {
-          font-weight: $font-weight-normal;
+          font-weight: lighter;
           margin-bottom: 20px;
         }
 
@@ -134,7 +134,7 @@
             padding: 5px 8px;
 
             &:first-child {
-              font-weight: $font-weight-normal;
+              font-weight: lighter;
               border-right: 1px solid #333;
             }
 
@@ -246,7 +246,7 @@
                     }
 
                     &.event-start-time, &.event-price {
-                        font-weight: $font-weight-normal;
+                        font-weight: lighter;
                     }
 
                     &.event-area, &.event-start-time, &.event-price {
