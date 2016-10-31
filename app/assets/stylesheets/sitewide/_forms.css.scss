@@ -86,7 +86,7 @@ form:not(.custom-form) {
         }
 
         .inline-errors {
-          font-weight: bold;
+          font-weight: $font-weight-bold;
           color: $samfundet-white;
           background-color: $samfundet-red;
 

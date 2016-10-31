@@ -23,7 +23,7 @@
       div {
         display: inline;
         color: $samfundet-red;
-        font-weight: bold;
+        font-weight: $font-weight-bold;
       }
     }
   }
@@ -105,7 +105,7 @@
       .time { text-align: right; }
       .area { 
         @include emph-link($samfundet-red);
-        font-weight: 400;
+        font-weight: $font-weight-normal;
       }
       .date-today {
         @include media($tablet-desktop) {
@@ -119,7 +119,7 @@
         word-break: break-word;
         a {
           @include emph-link($samfundet-red);
-          font-weight: 400;
+          font-weight: $font-weight-normal;
         }
       }
       .area { text-transform: uppercase; }
