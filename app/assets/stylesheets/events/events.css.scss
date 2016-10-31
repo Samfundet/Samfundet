@@ -78,7 +78,7 @@
         }
 
         .description-short {
-          font-weight: $font-weight-bold;
+          font-weight: $font-weight-medium;
         }
 
         .description-long {
@@ -140,7 +140,7 @@
             }
 
             &:last-child {
-              font-weight: $font-weight-bold;
+              font-weight: $font-weight-medium;
             }
           }
         }
