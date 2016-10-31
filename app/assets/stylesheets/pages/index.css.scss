@@ -1,5 +1,5 @@
 .pages, .documents {
-    font-weight: $font-weight-normal;
+    font-weight: $font-weight-bold;
 
     .menu-button {
         display: block;
@@ -35,7 +35,7 @@
             margin: 0;
             padding-top: 15px;
             text-transform: uppercase;
-            font-weight: $font-weight-normal;
+            font-weight: $font-weight-bold;
 
             &:first-child {
                 padding-top: 0;
