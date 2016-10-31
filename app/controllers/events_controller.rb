@@ -40,14 +40,69 @@ class EventsController < ApplicationController
   end
 
   def archive_search
-    @events = Event
+    # Save the search parameters as instance variables
+    @search = params[:search]
+    @event_type = params[:event_type]
+    @event_area = params[:event_area]
+
+    events = Event
               .active
               .published
               .past
-              .text_search(params[:search])
-              .paginate(:page => params[:page])
+              .order('non_billig_start_time DESC')
+              .text_search(@search + ' ' + @event_type + ' ' + @event_area)
 
-    render '_search_results_archive', layout: false if request.xhr?
+    # If only event type OR event area has been specified,
+    # display all options for that parameter
+    if !@search.present? && !(@event_type.present? && @event_area.present?)
+      if @event_type.present?
+        @event_types = Event
+                        .all
+                        .map { |e| [t("events.#{e.event_type}"), e.event_type] }
+                        .uniq
+                        .sort
+
+        @event_areas = events
+                        .map { |e| e.area }
+                        .uniq
+                        .sort
+      else
+        @event_areas = Area
+                        .all
+                        .map { |e| e.name }
+                        .uniq
+                        .sort
+
+        @event_types = events
+                        .map { |e| [t("events.#{e.event_type}"), e.event_type]}
+                        .uniq
+                        .sort
+      end
+    else
+      @event_types = events
+                      .map { |e| [t("events.#{e.event_type}"), e.event_type]}
+                      .uniq
+                      .sort
+
+      @event_areas = events
+                      .map { |e| e.area}
+                      .uniq
+                      .sort
+    end
+
+
+    if events.empty?
+      redirect_to archive_events_path
+
+      # Only display error message if one or more search parameters are present
+      if @search.present? || @event_type.present? || @event_area.present?
+        flash[:error] = t('search.no_results')
+      end
+    else
+      # Only paginate if there are results to display
+      @events = events.paginate(page: params[:page], per_page: 20)
+      render '_archive_list', locals: { search_active: true }
+    end
   end
 
   def show
@@ -130,9 +185,23 @@ class EventsController < ApplicationController
   end
 
   def archive
-    @events = Event.past
-                   .paginate(page: params[:page], per_page: 20)
-                   .order("non_billig_start_time DESC")
+    events = Event
+              .active
+              .published
+              .past
+              .order('non_billig_start_time DESC')
+
+    @event_types = events
+                    .map { |e| [t("events.#{e.event_type}"), e.event_type] }
+                    .uniq
+                    .sort
+
+    @event_areas = events
+                    .map { |e| e.area.name }
+                    .uniq
+                    .sort
+
+    @events = events.paginate(page: params[:page], per_page: 20)
   end
 
   def admin_applet
