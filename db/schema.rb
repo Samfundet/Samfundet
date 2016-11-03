@@ -114,6 +114,7 @@ ActiveRecord::Schema.define(:version => 20170126195339) do
     t.string   "ticket_group_name"
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false
+    t.integer  "ticket_limit"
   end
 
   create_table "billig_tickets", :primary_key => "ticket", :force => true do |t|

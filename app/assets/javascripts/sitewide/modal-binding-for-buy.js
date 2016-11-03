@@ -14,13 +14,16 @@ $(function() {
         element = this;
       }
     });
-
     return element;
   }
 
   // Chrome fires the onpopstate even on regular page loads,
   // so we need to detect that and ignore it.
   var popped = ('state' in window.history && window.history.state !== null), initialURL = location.href;
+
+  // Keep track of ticket groups and their ticket limits
+  var ticketGroups = getTicketGroups();
+  var ticketLimits = getTicketLimits(ticketGroups);
 
   function openPurchaseModal(url, source) {
     ga('send', 'pageview', {
@@ -106,27 +109,118 @@ $(function() {
     }
   });
 
-  $(document).on('change', '.ticket-table select', function(e) {
-    var sum = 0;
-    var amount = 0;
+  function getTicketGroups(){
+    var ticketGroupOverview = {};
 
-    $('.ticket-table-row').each(function() {
+    $('.ticket-group-row').each(function() {
+      ticketGroup = $(this).attr('id');
+      ticketGroupOverview[ticketGroup] = $('.price-group-row select').find('.'+ticketGroup).map(function(){
+      return $(this);
+      }).get();
+    });
+
+    return Object.keys(ticketGroupOverview);
+  }
+
+  function getTicketLimits(ticketGroups){
+    var ticketLimits = [];
+
+    $.each(ticketGroups, function(i, group) {
+      var classPattern = /ticket-limit-\d+/;
+      var textPattern = /\D/g;
+      var ticketGroupClass = $('#'+group).attr('class').match(classPattern)[0];
+      var ticketGroupLimit = ticketGroupClass.replace(textPattern, '');
+      ticketLimits.push(parseInt(ticketGroupLimit));
+    });
+
+    return ticketLimits;
+  };
+
+  function showLimitReachedAnimation(ticketGroupId) {
+    var ticketLimitHeader = $('#' + ticketGroupId).find('.ticket-limit-hd');
+    console.log(ticketLimitHeader);
+    var repeats = 2;
+    for (var i = 0; i < repeats; i++) {
+      ticketLimitHeader.animate( { fontSize: '+=.15em' }, 'normal');
+      ticketLimitHeader.animate( { fontSize: '-=.15em' }, 'normal');
+    }
+  }
+
+  $('.ticket-table select').change(function() {
+    // Keep track of sums related to ALL ticket groups
+    var totalTickets = 0;
+    var totalCost = 0;
+
+    // Variables that relate to the ticket group that fired the change event
+    var ticketGroupId = $(this).attr('class');
+    var ticketGroupIndex = parseInt(ticketGroupId.match(/\d+/g)[0]);
+    var ticketGroupTickets = 0;
+    var ticketGroupLimit = ticketLimits[ticketGroupIndex];
+    var ticketGroupHeader = $('#' + ticketGroupId).find('.ticket-limit-hd');
+
+    // Get the number of tickets chosen in current ticket group
+    $('select.'+ticketGroupId).each(function() {
+      ticketGroupTickets += parseInt($(this).val());
+    });
+
+    // Show limit reached animation if ticket group has a ticket limit and
+    // the ticket limit has been reached
+    if (ticketGroupTickets > 0 && ticketGroupTickets === ticketGroupLimit) {
+      showLimitReachedAnimation(ticketGroupId);
+    }
+
+    // Match translation in ticket limit header
+    // 'billett(er)' or 'ticket(s)'
+    var ticketTranslation = ticketGroupHeader.text().match(/[aA-zZ]+.[aA-zZ]+./g);
+    ticketGroupHeader.text(ticketGroupTickets + '/' + ticketGroupLimit + ' ' + ticketTranslation);
+
+    // Empty dropdowns and populate them with legal options
+    $('select.' + ticketGroupId).each(function(){
+
+      var chosenValue = parseInt($(this).val());
+      var legalOptions = chosenValue + (ticketGroupLimit-ticketGroupTickets);
+      var selectLimit = ticketGroupLimit; 
+
+      if (ticketGroupLimit === 18){
+        selectLimit = ticketGroupLimit/2;
+      }
+
+      $(this).empty();
+
+      for (var i = 0; i <= selectLimit; i++) {
+        if (i <= legalOptions) {
+          $(this).append($("<option></option>").attr("value",i).text(i));
+        } else {
+          $(this).append($("<option disabled></option>").attr("value",i).text(i));
+        }
+      }
+
+      $(this).val(chosenValue);
+
+      // Disable/enable dropdown based on number of legal options
+      // $(this).prop("disabled", !legalOptions);
+
+    });
+
+    // Set the cost of the tickets in each price group's html
+    $('.price-group-row').each(function() {
       $(this).find('.sum').html($(this).find('select').val() * $(this).find('.price').data('price'));
     });
 
-    $('.ticket-table-row .sum').each(function() {
-      sum += (+$(this).html());
+    // Get the total cost of all tickets
+    $('.price-group-row .sum').each(function() {
+      totalCost += (+$(this).html());
     });
 
-    $('.ticket-table-row select').each(function() {
-      amount += (+$(this).val());
+    // Get the total number of tickets chosen
+    $('.price-group-row select').each(function() {
+      totalTickets += (+$(this).val());
     });
 
-    $('.ticket-table .totalAmount').html(amount);
-    $('.ticket-table .totalSum').html(sum);
+    // Set the total cost and total tickets in the summary's html
+    $('.ticket-table .totalAmount').html(totalTickets + "/" + ticketLimits.reduce(function(a,b){return a+b},0));
+    $('.ticket-table .totalSum').html(totalCost);
   });
-
-  $('.ticket-table select').change();
 
   function validateCardChecksum(value, pattern) {
     var sum = 0;
@@ -232,7 +326,7 @@ $(function() {
     var validEmail = validateEmail();
 
     if (info && info['type'] !== 'error' &&
-        (!$('#ticket_type_paper').prop('checked') || 
+        (!$('#ticket_type_paper').prop('checked') ||
         validEmail)) {
 
       $('.billig-buy .custom-form [name="commit"]').prop('disabled', false);
@@ -243,6 +337,6 @@ $(function() {
   }
 
   $(document).on('focus keyup', '#ccno', cardEditingFeedback);
-  $(document).on('blur', '#ccno', finalCardFeedback); 
+  $(document).on('blur', '#ccno', finalCardFeedback);
   $(document).on('blur focus keyup change', '.billig-buy .custom-form input', checkValidForm);
 });

@@ -84,8 +84,11 @@
 
     index_title:  Kommende arrangementer
     information: Informasjon
+    ticket_limit: 0/%{ticket_limit} billett(er)
+    ticket_unit: stk.
     purchase: Kjøp billett
     sold_out: Utsolgt
+    currency_unit: ",-"
 
     buy_title: Kjøp billett til %{event_title}
     ticketless: "Billettløst på medlemskortet ditt:"

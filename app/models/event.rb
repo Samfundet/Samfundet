@@ -286,6 +286,12 @@ class Event < ActiveRecord::Base
     end
   end
 
+  def has_ticket_limit?
+    if billig_event.present?
+      billig_event.has_ticket_limit?
+    end
+  end
+
   def cache_key
     "#{super}-#{purchase_status}-#{few_tickets_left?}"
   end
