@@ -1,8 +1,8 @@
 .nested-fields
-  = q.inputs do
-    = q.input :text
-    = q.input :alternative_1
-    = q.input :alternative_2
-    = q.input :alternative_3
-    = q.input :alternative_4
-    = link_to_remove_association t("feedbacks.question.delete"), q 
+  = f.inputs do
+    = f.input :text
+    = "Hello"
+    = f.semantic_fields_for :alternatives do |a|
+      = render "alternative_fields", f: a
+  = link_to_add_association t("crud.add"), f, :alternatives
+  = link_to_remove_association t("feedbacks.question.delete"), f

@@ -18,11 +18,7 @@ form.feedback-form {
             cursor: pointer;
         }
 
-        label:hover {
-            background: #aaa;
-        }
-
-        input {
+        input[type="radio"] {
             display: none;
         }
     }

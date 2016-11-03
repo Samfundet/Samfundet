@@ -42,13 +42,14 @@ class FeedbacksController < ApplicationController
 
   def answer
     binding.pry
-    puts params
-
-    @question = Feedback::Question.find(params[:id])
-    Feedback::Answer.create(
-        alternative: params[:alternative],
-        question: @question
-    )
+    @feedback = Feedback.find params[:id]
+    for id, alternative in params[:alternative]
+        @question = @feedback.questions[id]
+        Feedback::Answer.create(
+            alternative: alternative,
+            question: @question
+        )
+    end
     redirect_to :root_path
   end
 
