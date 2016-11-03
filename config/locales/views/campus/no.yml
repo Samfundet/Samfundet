@@ -1,3 +1,10 @@
 'no':
-  campus:
-    campus_save: "Campus lagret!"
+  save_success: "Campus lagret!"
+  save_error: "Kunne ikke lagre campus"
+  update_success: "Campus oppdatert!"
+  update_error: "Kunne ikke oppdatere campus"
+  number_of_applicants: "Antall søkere totalt"
+  number_of_current_applicants: "Antall søkere dette opptaket"
+  activate: "Aktiver"
+  deactivate: "Deaktiver"
+  edit: "Endre campus"

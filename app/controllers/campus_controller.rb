@@ -12,10 +12,10 @@ class CampusController < ApplicationController
   def create
     @campus = Campus.new(params[:campus])
     if @campus.save
-      flash[:success] = "This should work"
+      flash[:success] = t("save_success")
       redirect_to action: :admin
     else
-      flash[:message] = 'Oh shit, something wong'
+      flash[:message] = t("save_error")
       render :new
     end
   end
@@ -31,10 +31,10 @@ class CampusController < ApplicationController
   def update
     @campus = Campus.find params[:id]
     if @campus.update_attributes(params[:campus])
-      flash[:success] = "Success! Husk translation"
+      flash[:success] = t("update_success")
       redirect_to action: :admin
     else
-      flash.now[:error] = "Ai, noe gikk galt. Husk translation"
+      flash.now[:error] = t("update_error")
       render :edit
     end
   end

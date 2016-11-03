@@ -4,8 +4,8 @@
       %th= t("campus.name")
       %th= t("crud.created_at")
       %th= t("crud.updated_at")
-      %th= "Antall Søkere"
-      %th= "Søkere dette opptaket"
+      %th= t("number_of_applicants")
+      %th= t("number_of_current_applicants")
       - if permitted_to? :edit
         %th
       - if permitted_to? :destroy
@@ -22,7 +22,7 @@
         - if permitted_to? :edit
           %td= link_to t("crud.edit"), edit_campus_path(campus)
           - if campus.active?
-            %td= link_to t("Deaktiver"), campus_deactivate_path(campus)
+            %td= link_to t("dectivate"), campus_deactivate_path(campus)
           - else
-            %td= link_to t("Aktiver"), campus_activate_path(campus)
+            %td= link_to t("activate"), campus_activate_path(campus)
 
