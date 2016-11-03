@@ -120,6 +120,7 @@ authorization do
       :campus
       ], to: :manage
 
+    has_permission_on :campus, to: [:activate, :deactivate]
     has_permission_on :admissions_admin_job_applications, to: :hidden_create
     has_permission_on :admissions_admin_jobs, to: :hidden_create
     has_permission_on :admissions_admin_admissions, to: :statistics

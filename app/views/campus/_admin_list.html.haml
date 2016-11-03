@@ -17,9 +17,13 @@
         %td= link_to campus.name, campus
         %td= campus.created_at
         %td= campus.updated_at
+        %td= campus.active
         %td= campus.number_of_applicants
         %td= campus.number_of_applicants_current_admission
         - if permitted_to? :edit
           %td= link_to t("crud.edit"), edit_campus_path(campus)
-        - if permitted_to? :destroy
-          %td= link_to t("crud.destroy"), campus, confirm: "Sikker? Husk å legge inn translation", method: :delete
+          - if campus.active?
+            %td= link_to t("Deaktiver"), campus_deactivate_path(campus)
+          - else
+            %td= link_to t("Aktiver"), campus_activate_path(campus)
+

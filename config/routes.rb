@@ -201,6 +201,8 @@ Rails.application.routes.draw do
 
   resources :campus, path: 'campus' do
     get :admin, on: :collection
+    get :deactivate, to: "campus#deactivate"
+    get :activate, to: "campus#activate"
   end
 end
 
