@@ -44,7 +44,7 @@ class Job < ActiveRecord::Base
   # Virtual tags attribute
   def tag_titles=(titles)
     old_tags = tags
-    new_tags = titles.split(/[,\s]+/).map { |title| JobTag.find_or_create_by_title(title) }
+    new_tags = titles.split(/[,\s]+/).map { |title| JobTag.find_or_create_by(title: title) }
     tags.delete(tags - old_tags)
     self.tags = new_tags
   end

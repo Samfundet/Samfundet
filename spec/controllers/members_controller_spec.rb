@@ -13,13 +13,13 @@ describe MembersController do
     end
 
     it "assigns @members" do
-      get :search, term: "Foobar", format: :json
+      get :search, params: { term: "Foobar" }, format: :json
 
       expect(assigns(:members)).to eq @members
     end
 
     it "responds with json" do
-      get :search, term: "Foobar", format: :json
+      get :search, params: { term: "Foobar" }, format: :json
 
       expect(response.content_type).to eq("application/json")
     end
@@ -28,13 +28,13 @@ describe MembersController do
   describe "POST #steal_identity" do
     let(:member) {create(:member)}
     xit "changes current user to the given member" do
-      post :steal_identity, member_id: member.id
+      post :steal_identity, params: { member_id: member.id }
 
       expect(controller.current_user).to eq member
     end
 
     it "redirects to root" do
-      post :steal_identity, member_id: member.id
+      post :steal_identity, params: { member_id: member.id }
 
       expect(response).to redirect_to root_path
     end

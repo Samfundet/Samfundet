@@ -45,6 +45,8 @@ RSpec.configure do |config|
     end
   end
 
+  config.include Rails.application.routes.url_helpers
+
   config.include(SpecTestHelper, type: :controller)
 
   # RSpec Rails can automatically mix in different behaviours to your tests
@@ -61,17 +63,5 @@ RSpec.configure do |config|
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
-end
 
-class ActionController::TestCase
-  module Behavior
-    def process_with_default_locale(action, parameters = nil, session = nil,
-                                    flash = nil, http_method = 'GET')
-      parameters = { locale: "en" }.merge(parameters || {})
-      process_without_default_locale(action, parameters, session, flash,
-                                     http_method)
-    end
-
-    alias_method_chain :process, :default_locale
-  end
 end
