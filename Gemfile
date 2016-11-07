@@ -197,6 +197,7 @@ group :development, :test do
   # RSpec is a unit testing framework.
   # rspec-rails integrates RSpec (v2) and Rails (v3).
   gem 'rspec-rails'
+  gem 'rails-controller-testing'
 end
 
 group :test do

@@ -9,7 +9,7 @@ describe ApplicantSessionsController do
 
     it "sets redirect path when specified" do
       redirect_to = "/some/redirect/path"
-      get :new, redirect_to: redirect_to
+      get :new, params: { redirect_to: redirect_to }
       expect(assigns(:redirect_to)).to eq redirect_to
     end
   end
@@ -20,8 +20,10 @@ describe ApplicantSessionsController do
       it "sets the current user and redirect to admissions path" do
         post(
           :create,
-          applicant_login_email: user.email,
-          applicant_login_password: "password"
+          params: {
+            applicant_login_email: user.email,
+            applicant_login_password: "password"
+          }
         )
 
         expect(response).to redirect_to admissions_path
@@ -34,11 +36,11 @@ describe ApplicantSessionsController do
         application = create(:job_application, applicant: user)
         post(
           :create,
-          {
+          params: {
             applicant_login_email: user.email,
             applicant_login_password: "password"
           },
-          {
+          session: {
             pending_application: application
           }
         )
@@ -53,8 +55,10 @@ describe ApplicantSessionsController do
       it "renders the page with error" do
         post(
           :create,
-          applicant_login_email: user.email,
-          applicant_login_password: "invalid"
+          params: {
+            applicant_login_email: user.email,
+            applicant_login_password: "invalid"
+          }
         )
         expect(response).to render_template(:new)
         expect(flash[:error]).to match(I18n.t("applicants.login_error"))
@@ -62,4 +66,3 @@ describe ApplicantSessionsController do
     end
   end
 end
-

@@ -44,15 +44,15 @@ describe GroupsController do
     context "with valid attributes" do
       it "saves the new group" do
         expect{
-          post :create, group: valid_attributes
+          post :create, params: { group: valid_attributes }
         }.to change(Group, :count).by(1)
       end
       it "redirects to the group index" do
-        post :create, group: valid_attributes
-        expect(response).to redirect_to groups_url
+        post :create, params: { group: valid_attributes }
+        expect(response).to redirect_to admin_groups_path
       end
       it "displays flash success" do
-        post :create, group: valid_attributes
+        post :create, params: { group: valid_attributes }
         expect(flash[:success]).to match("Gjengen er opprettet")
       end
     end
@@ -60,15 +60,15 @@ describe GroupsController do
     context "with invalid attributes" do
       it "does not save the new group" do
         expect{
-          post :create, group: invalid_attributes
+          post :create, params: { group: invalid_attributes }
         }.to_not change(Group, :count)
       end
       it "re-renders the new template" do
-        post :create, group: invalid_attributes
+        post :create, params: { group: invalid_attributes }
         expect(response).to render_template :new
       end
       it "displays flash error" do
-        post :create, group: invalid_attributes
+        post :create, params: { group: invalid_attributes }
         expect(flash[:error]).to match(I18n.t('common.fields_missing_error'))
       end
     end
@@ -78,13 +78,13 @@ describe GroupsController do
     let(:group) { create(:group)}
 
     it "renders the edit view" do
-      get :edit, id: group.id
+      get :edit, params: { id: group.id }
 
       expect(response).to render_template(:edit)
     end
 
     it "assigns @group" do
-      get :edit, id: group.id
+      get :edit, params: { id: group.id }
 
       expect(assigns(:group)).to eq group
     end
@@ -97,45 +97,45 @@ describe GroupsController do
     let(:invalid_attributes) { attributes_for(:group, name: '', group_type_id: group_type.id)}
     context "with valid attributes" do
       it "assigns @group" do
-        put :update, id: group.id, group: valid_attributes
+        put :update, params: { id: group.id, group: valid_attributes }
 
         expect(assigns(:group)).to eq group
       end
       it "updates group's attributes" do
         attributes = attributes_for(:group, name: "Some name", abbreviation: "sm")
-        post :update, id: group.id, group: attributes
+        post :update, params: { id: group.id, group: attributes }
         group.reload
         expect(group.name).to eq "Some name"
         expect(group.abbreviation).to eq "sm"
       end
       it "redirects to the group index" do
-        post :update, id: group.id, group: valid_attributes
-        expect(response).to redirect_to groups_url
+        post :update, params: { id: group.id, group: valid_attributes }
+        expect(response).to redirect_to admin_groups_path
       end
       it "displays flash success" do
-        post :update, id: group.id, group: valid_attributes
+        post :update, params: { id: group.id, group: valid_attributes }
         expect(flash[:success]).to match("Gjengen er oppdatert")
       end
     end
 
     context "with invalid attributes" do
       it "assigns @group" do
-        post :update, id: group.id, group: invalid_attributes
+        post :update, params: { id: group.id, group: invalid_attributes }
         expect(assigns(:group)).to eq group
       end
       it "does not save the new group" do
         attributes = attributes_for(:group, name: "", abbreviation: "sm")
-        post :update, id: group.id, group: attributes
+        post :update, params: { id: group.id, group: attributes }
         group.reload
         expect(group.name).to_not eq ""
         expect(group.abbreviation).to_not eq "sm"
       end
       it "re-renders the new template" do
-        post :update, id: group.id, group: invalid_attributes
+        post :update, params: { id: group.id, group: invalid_attributes }
         expect(response).to render_template :edit
       end
       it "displays flash error" do
-        post :create, id: group.id, group: invalid_attributes
+        post :create, params: { id: group.id, group: invalid_attributes }
         expect(flash[:error]).to match(I18n.t('common.fields_missing_error'))
       end
     end

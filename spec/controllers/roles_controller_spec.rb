@@ -29,7 +29,7 @@ describe RolesController do
 
     describe "GET #show" do
       it "renders the show layout" do
-        get :show, id: @parent_role.id
+        get :show, params: { id: @parent_role.id, locale: 'en' }
 
         expect(response).to render_template(:show)
       end
@@ -58,18 +58,18 @@ describe RolesController do
         let(:valid_attributes) { attributes_for(:role)}
         it "saves the new role" do
           expect{
-            post :create, role: valid_attributes
+            post :create, params: { role: valid_attributes }
           }.to change(Role, :count).by(1)
         end
 
-        it "redirects to role url" do
-          post :create, role: valid_attributes
+        it "redirects to role path" do
+          post :create, params: { role: valid_attributes }
 
-          expect(response).to redirect_to(role_url(assigns(:role).id))
+          expect(response).to redirect_to(role_path(assigns(:role).id))
         end
 
         it "displays flash success" do
-          post :create, role: valid_attributes
+          post :create, params: { role: valid_attributes }
 
           expect(flash[:success]).to match(I18n.t('roles.role_created'))
         end
@@ -78,18 +78,18 @@ describe RolesController do
         let(:invalid_attributes) { attributes_for(:role, name: '')}
         it "saves the new role" do
           expect{
-            post :create, role: invalid_attributes
+            post :create, params: { role: invalid_attributes }
           }.to_not change(Role, :count)
         end
 
-        it "redirects to role url" do
-          post :create, role: invalid_attributes
+        it "render the new template" do
+          post :create, params: { role: invalid_attributes }
 
           expect(response).to render_template(:new)
         end
 
         it "displays flash success" do
-          post :create, role: invalid_attributes
+          post :create, params: { role: invalid_attributes }
 
           expect(flash[:error]).to match(I18n.t('common.fields_missing_error'))
         end
@@ -99,13 +99,13 @@ describe RolesController do
     describe "GET #edit" do
       let(:role) { create(:role)}
       it "renders the edit template" do
-        get :edit, id: role.id
+        get :edit, params: { id: role.id }
 
         expect(response).to render_template(:edit)
       end
 
       it "assigns @role" do
-        get :edit, id: role.id
+        get :edit, params: { id: role.id }
 
         expect(assigns(:role)).to eq role
       end
@@ -117,26 +117,26 @@ describe RolesController do
         let(:valid_attributes) { attributes_for(:role, name: "foobar")}
 
         it "assigns @role" do
-          post :update, id: role.id, role: valid_attributes
+          post :update, params: { id: role.id, role: valid_attributes }
 
           expect(assigns(:role)).to eq role
         end
 
         it "updates role attributes" do
-          post :update, id: role.id, role: valid_attributes
+          post :update, params: { id: role.id, role: valid_attributes }
 
           role.reload
           expect(role.name).to eq "foobar"
         end
 
         it "redirects to the role path" do
-          post :update, id: role.id, role: valid_attributes
+          post :update, params: { id: role.id, role: valid_attributes }
 
-          expect(response).to redirect_to(role_url(role))
+          expect(response).to redirect_to(role_path(role))
         end
 
         it "displays flash success" do
-          post :update, id: role.id, role: valid_attributes
+          post :update, params: { id: role.id, role: valid_attributes }
 
           expect(flash[:success]).to eq "Rollen er oppdatert."
         end
@@ -145,13 +145,13 @@ describe RolesController do
         let(:invalid_attributes) { attributes_for(:role, name: "", description: "This is a desc")}
 
         it "assigns @role" do
-          post :update, id: role.id, role: invalid_attributes
+          post :update, params: { id: role.id, role: invalid_attributes }
 
           expect(assigns(:role)).to eq role
         end
 
         it "does not updates role attributes" do
-          post :update, id: role.id, role: invalid_attributes
+          post :update, params: { id: role.id, role: invalid_attributes }
 
           role.reload
           expect(role.name).to_not eq "foobar"
@@ -159,13 +159,13 @@ describe RolesController do
         end
 
         it "redirects to the role path" do
-          post :update, id: role.id, role: invalid_attributes
+          post :update, params: { id: role.id, role: invalid_attributes }
 
           expect(response).to render_template(:edit)
         end
 
         it "displays flash error" do
-          post :update, id: role.id, role: invalid_attributes
+          post :update, params: { id: role.id, role: invalid_attributes }
 
           expect(flash[:error]).to eq I18n.t('common.fields_missing_error')
         end
@@ -182,25 +182,25 @@ describe RolesController do
 
     describe "POST #pass" do
       it "assigns @role" do
-        post :pass, id: @role.id, member_id: member.id
+        post :pass, params: { id: @role.id, member_id: member.id }
 
         expect(assigns(:role)).to eq @role
       end
 
       it "redirects to members controll panel" do
-        post :pass, id: @role.id, member_id: member.id
+        post :pass, params: { id: @role.id, member_id: member.id }
 
         expect(response).to redirect_to members_control_panel_path
       end
 
       it "passes the role" do
-        post :pass, id: @role.id, member_id: member.id
+        post :pass, params: { id: @role.id, member_id: member.id }
 
         expect(member.roles).to include(@role)
       end
 
       it "removes the role from the current user" do
-        post :pass, id: @role.id, member_id: member.id
+        post :pass, params: { id: @role.id, member_id: member.id }
         user.reload
 
         expect(user.roles).not_to include(@role)
