@@ -10,16 +10,12 @@ class Campus < ActiveRecord::Base
     applicants.count
   end
 
-  def number_of_applicants_current_admission
-    # Find all job applications of the current admission, get the unique user and group by campus.
-    campus_hash = Admission.current.first.job_applications.map(&:applicant).uniq.map(&:campus).group_by(&:name)
-
-    # Count how many applicants belong to this campus.
-    # If the list is Nil then there are no applicants from this campus during the current admission.
-    begin
-      campus_hash[name].length
-    rescue
-      0
-    end
+  def self.number_of_applicants_current_admission
+    # Find all job applications of the current admission, get the unique user_id and group by campus_id.
+    applicant_ids = Admission.current.first.job_applications.pluck(:applicant_id)
+    campus_count = {}
+    Applicant.where(id:applicant_ids).pluck(:campus_id).group_by{|i| i}.each{ |k,v| campus_count[k] = v.length}
+    campus_count.default = 0
+    campus_count
   end
 end

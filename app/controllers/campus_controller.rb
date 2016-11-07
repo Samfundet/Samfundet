@@ -3,6 +3,7 @@ class CampusController < ApplicationController
 
   def admin
     @campuses = Campus.all
+    @campus_count = Campus.number_of_applicants_current_admission
   end
 
   def new
