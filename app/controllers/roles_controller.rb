@@ -62,7 +62,7 @@ class RolesController < ApplicationController
   end
 
   def pass
-    @members_role = MembersRole.find :first, conditions: ["member_id = ? and role_id = ?", @current_user.id, @role.id]
+    @members_role = MembersRole.find_by(member_id: @current_user.id, role_id: @role.id)
     @members_role.destroy
     @member = Member.find params[:member_id].to_i
     MembersRole.create!(

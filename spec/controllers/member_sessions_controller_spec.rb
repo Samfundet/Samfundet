@@ -9,7 +9,7 @@ describe MemberSessionsController do
 
     it "sets redirect path when specified" do
       redirect_to = "/some/redirect/path"
-      get :new, redirect_to: redirect_to
+      get :new, params: { redirect_to: redirect_to }
       expect(assigns(:redirect_to)).to eq redirect_to
     end
   end
@@ -20,8 +20,10 @@ describe MemberSessionsController do
       it "sets the current user and redirect to root" do
         post(
           :create,
-          member_login_id: user.mail,
-          member_password: "password"
+          params: {
+            member_login_id: user.mail,
+            member_password: "password"
+          }
         )
 
         expect(response).to redirect_to root_path
@@ -33,8 +35,10 @@ describe MemberSessionsController do
       it "renders the page with error" do
         post(
           :create,
-          member_login_id: user.mail,
-          member_password: "invalid"
+          params: {
+            member_login_id: user.mail,
+            member_password: "invalid"
+          }
         )
 
         expect(response).to render_template(:new)
@@ -43,4 +47,3 @@ describe MemberSessionsController do
     end
   end
 end
-
