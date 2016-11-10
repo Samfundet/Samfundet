@@ -2,12 +2,12 @@ require 'rails_helper'
 
 describe JobsController do
   describe "GET #show" do
-    let(:job) { create(:job)}
-    let(:similar_job) { create(:job)}
+    let(:job) { create(:job) }
+    let(:similar_job) { create(:job) }
 
     before do
-      #@job = create(:job)
-      #@similar_job = create(:job)
+      # @job = create(:job)
+      # @similar_job = create(:job)
       allow(Job).to receive(:find) { job }
       allow(job).to receive(:similar_available_jobs) { [similar_job] }
       allow(job).to receive(:available_jobs_in_same_group) { [similar_job] }
@@ -36,13 +36,12 @@ describe JobsController do
     end
 
     context "when logged in as an applicant" do
-      let(:applicant) { create(:applicant)}
+      let(:applicant) { create(:applicant) }
       before do
         login_applicant(applicant)
       end
       context "the applicant has already applied to this job" do
-
-        let(:application) {create(:job_application, applicant: applicant, job: job)}
+        let(:application) { create(:job_application, applicant: applicant, job: job) }
 
         it "assigns job_application returns existing applicaion" do
           get :show, params: { id: application.job.id }
@@ -85,6 +84,5 @@ describe JobsController do
         expect(assigns(:already_applied)).to be false
       end
     end
-
   end
 end

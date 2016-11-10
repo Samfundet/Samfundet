@@ -2,9 +2,8 @@
 require 'rails_helper'
 
 describe ApplicationController do
-
-  let(:member) { create(:member)}
-  let(:applicant) { create(:applicant)}
+  let(:member) { create(:member) }
+  let(:applicant) { create(:applicant) }
 
   before(:each) do
     session[:member_id] = nil

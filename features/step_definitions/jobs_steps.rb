@@ -17,7 +17,8 @@ Given /^There are jobs titled (.+)$/i do |jobs|
         title_no: title.strip.gsub(/[\"]/, ''),
         description_no: "This job is really cool.",
         teaser_no: "TEASE ME!",
-        group: group)
+        group: group
+      )
     end
   end
 end
@@ -64,7 +65,8 @@ Given /^there are jobs (.+) for an admission "([^"]+)" for the group "([^"]+)"$/
         title_no: title,
         description_no: "Fancy description",
         teaser_no: "Fancier teaser",
-        group: group)
+        group: group
+      )
     end
   end
 end

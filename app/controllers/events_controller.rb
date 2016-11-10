@@ -70,7 +70,8 @@ class EventsController < ApplicationController
   def new
     @event = Event.new(
       non_billig_start_time: Time.current + 1.hour,
-      publication_time: Time.current)
+      publication_time: Time.current
+    )
   end
 
   def create
@@ -82,7 +83,6 @@ class EventsController < ApplicationController
       flash[:success] = t('events.create_success')
       redirect_to @event
     else
-      byebug
       flash.now[:error] = t('events.create_error')
       render :new
     end
@@ -101,7 +101,6 @@ class EventsController < ApplicationController
       flash[:success] = t('events.update_success')
       redirect_to @event
     else
-      byebug
       flash.now[:error] = t('events.update_error')
       render :edit
     end
@@ -140,7 +139,7 @@ class EventsController < ApplicationController
       @payment_error = BilligPaymentError.where(error: params[:bsession]).first
       @payment_error_price_groups =
           Hash[BilligPaymentErrorPriceGroup.where(error: params[:bsession])
-          .map { |bpepg| [bpepg.price_group, bpepg.number_of_tickets] }]
+                                           .map { |bpepg| [bpepg.price_group, bpepg.number_of_tickets] }]
       flash.now[:error] = @payment_error.message
     else
       @payment_error = nil

@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 describe RolesController do
-  let(:user) { create(:member)}
-  #let(:parent_role) { create(:role)}
-  #let(:child_role) { create(:role, role_id: parent_role.id)}
+  let(:user) { create(:member) }
+  # let(:parent_role) { create(:role)}
+  # let(:child_role) { create(:role, role_id: parent_role.id)}
   context "logged in as regular user with some roles" do
     before do
       @parent_role = create(:role)
@@ -15,7 +15,6 @@ describe RolesController do
     describe "GET #index" do
       it "renders the index layout" do
         get :index
-
 
         expect(response).to render_template(:index)
       end
@@ -55,11 +54,11 @@ describe RolesController do
     end
     describe "POST #create" do
       context "with valid attributes" do
-        let(:valid_attributes) { attributes_for(:role)}
+        let(:valid_attributes) { attributes_for(:role) }
         it "saves the new role" do
-          expect{
+          expect do
             post :create, params: { role: valid_attributes }
-          }.to change(Role, :count).by(1)
+          end.to change(Role, :count).by(1)
         end
 
         it "redirects to role path" do
@@ -75,11 +74,11 @@ describe RolesController do
         end
       end
       context "with invalid attributes" do
-        let(:invalid_attributes) { attributes_for(:role, name: '')}
+        let(:invalid_attributes) { attributes_for(:role, name: '') }
         it "saves the new role" do
-          expect{
+          expect do
             post :create, params: { role: invalid_attributes }
-          }.to_not change(Role, :count)
+          end.to_not change(Role, :count)
         end
 
         it "render the new template" do
@@ -97,7 +96,7 @@ describe RolesController do
     end
 
     describe "GET #edit" do
-      let(:role) { create(:role)}
+      let(:role) { create(:role) }
       it "renders the edit template" do
         get :edit, params: { id: role.id }
 
@@ -112,9 +111,9 @@ describe RolesController do
     end
 
     describe "POST #update" do
-      let(:role) { create(:role)}
+      let(:role) { create(:role) }
       context "with valid attributes" do
-        let(:valid_attributes) { attributes_for(:role, name: "foobar")}
+        let(:valid_attributes) { attributes_for(:role, name: "foobar") }
 
         it "assigns @role" do
           post :update, params: { id: role.id, role: valid_attributes }
@@ -142,7 +141,7 @@ describe RolesController do
         end
       end
       context "without valid attributes" do
-        let(:invalid_attributes) { attributes_for(:role, name: "", description: "This is a desc")}
+        let(:invalid_attributes) { attributes_for(:role, name: "", description: "This is a desc") }
 
         it "assigns @role" do
           post :update, params: { id: role.id, role: invalid_attributes }
@@ -173,7 +172,7 @@ describe RolesController do
     end
   end
   context "logged in as regular user with passable role" do
-    let(:member) { create(:member)}
+    let(:member) { create(:member) }
     before do
       @role = create(:role, :passable)
       user.roles << @role

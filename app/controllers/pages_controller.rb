@@ -113,7 +113,7 @@ class PagesController < ApplicationController
 
   def show_admin?
     can_create = permitted_to?(:new, :pages)
-    can_edit   = permitted_to?(:edit, :pages)# && Page.with_permissions_to(:edit).present?
+    can_edit   = permitted_to?(:edit, :pages) # && Page.with_permissions_to(:edit).present?
     # TODO: Create role for editing group pages
     can_create || can_edit
   end

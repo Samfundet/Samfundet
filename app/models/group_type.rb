@@ -6,8 +6,6 @@ class GroupType < ActiveRecord::Base
   validates_presence_of :description
   validates :description, uniqueness: true
 
-  
-
   def <=>(other)
     priority <=> other.priority
   end

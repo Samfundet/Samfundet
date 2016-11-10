@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class Tag < ActiveRecord::Base
-  #attr_accessible :name
+  # attr_accessible :name
   has_and_belongs_to_many :images, uniq: true
 
   def self.by_images_count

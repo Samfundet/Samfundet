@@ -12,7 +12,6 @@ describe Group, 'short_name' do
   end
 end
 
-
 describe Group, '#interviews' do
   xit 'should maybe be rewritten'
 end

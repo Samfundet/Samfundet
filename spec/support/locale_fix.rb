@@ -1,17 +1,15 @@
 module FixLocalesSpecs
   module ::ActionController::TestCase::Behavior
-    alias_method :process_without_logging, :process
+    alias process_without_logging process
 
     def process(action, method = "SOMETHING", **args)
-      if args.has_key?(:params)
-        args[:params].merge!({locale: "en"})
+      if args.key?(:params)
+        args[:params][:locale] = "en"
       else
-        args[:params] = {locale: "en"}
+        args[:params] = { locale: "en" }
       end
 
-      if method != "SOMETHING"
-        args[:method] = method
-      end
+      args[:method] = method if method != "SOMETHING"
       process_without_logging(action, **args)
     end
   end

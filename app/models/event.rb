@@ -13,15 +13,15 @@ class Event < ActiveRecord::Base
   TICKETS_SOLD_OUT = :tickets_sold_out
 
   # attr_accessible :area_id, :billig_event_id, :title_en, :non_billig_title_no,
-  #                 :non_billig_start_time, :age_limit, :organizer_id, :organizer_type,
-  #                 :short_description_en, :short_description_no, :duration,
-  #                 :long_description_en, :long_description_no, :publication_time,
-  #                 :spotify_uri, :facebook_link, :youtube_link, :youtube_embed, :spotify_link,
-  #                 :soundcloud_link, :instagram_link, :twitter_link, :lastfm_link,
-  #                 :snapchat_link, :vimeo_link, :general_link, :event_type, :status,
-  #                 :primary_color, :secondary_color, :image_id,
-  #                 :price_groups, :price_type, :banner_alignment, :price_groups_attributes,
-  #                 :codeword
+  #                :non_billig_start_time, :age_limit, :organizer_id, :organizer_type,
+  #                :short_description_en, :short_description_no, :duration,
+  #                :long_description_en, :long_description_no, :publication_time,
+  #                :spotify_uri, :facebook_link, :youtube_link, :youtube_embed, :spotify_link,
+  #                :soundcloud_link, :instagram_link, :twitter_link, :lastfm_link,
+  #                :snapchat_link, :vimeo_link, :general_link, :event_type, :status,
+  #                :primary_color, :secondary_color, :image_id,
+  #                :price_groups, :price_type, :banner_alignment, :price_groups_attributes,
+  #                :codeword
 
   extend LocalizedFields
   has_localized_fields :title, :short_description, :long_description
@@ -63,7 +63,8 @@ class Event < ActiveRecord::Base
       .published
       .where(
         non_billig_start_time:
-          (DateTime.current - 4.hours).change(hour: 4)..20.hours.from_now.change(hour: 4))
+          (DateTime.current - 4.hours).change(hour: 4)..20.hours.from_now.change(hour: 4)
+      )
       .order(:non_billig_start_time)
   }
   scope :by_frontpage_weight, -> {
@@ -190,7 +191,7 @@ class Event < ActiveRecord::Base
     when "theme_party"
       weight += 9
     when "football_match", "dj", "quiz"
-      weight += -4*60 # two month's worth of ban
+      weight += -4 * 60 # two month's worth of ban
     else
       weight += 0
     end
