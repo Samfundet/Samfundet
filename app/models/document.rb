@@ -1,5 +1,5 @@
 class Document < ActiveRecord::Base
-  #attr_accessible :title, :category_id, :uploader_id, :publication_date, :file
+  # attr_accessible :title, :category_id, :uploader_id, :publication_date, :file
 
   belongs_to :category, class_name: 'DocumentCategory'
   belongs_to :uploader, class_name: 'Member'

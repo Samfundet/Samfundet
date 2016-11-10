@@ -44,8 +44,8 @@ class Page < ActiveRecord::Base
       field_values = Hash[REVISION_FIELDS.map { |field| [field, send(field)] }]
 
       # TODO: Fix correct author
-      #author = Authorization.current_user
-      author = nil# unless author.is_a? Member
+      # author = Authorization.current_user
+      author = nil # unless author.is_a? Member
 
       revisions.create!(field_values.merge(member: author, version: previous_version + 1))
 
@@ -78,28 +78,28 @@ class Page < ActiveRecord::Base
   end
 
   def self.index
-    find_or_create_by(name_en: INDEX_NAME) do | page|
+    find_or_create_by(name_en: INDEX_NAME) do |page|
       page.name_no = INDEX_NAME
       page.role = Role.super_user
     end
   end
 
   def self.menu
-    find_or_create_by(name_en: MENU_NAME) do | page|
+    find_or_create_by(name_en: MENU_NAME) do |page|
       page.name_no = MENU_NAME
       page.role = Role.super_user
     end
   end
 
   def self.tickets
-    find_or_create_by(name_en: TICKETS_NAME) do | page|
+    find_or_create_by(name_en: TICKETS_NAME) do |page|
       page.name_no = TICKETS_NAME
       page.role = Role.super_user
     end
   end
 
   def self.handicap_info
-    find_or_create_by(name_en: HANDICAP_INFO_NAME) do | page|
+    find_or_create_by(name_en: HANDICAP_INFO_NAME) do |page|
       page.name_no = HANDICAP_INFO_NAME
       page.role = Role.super_user
     end

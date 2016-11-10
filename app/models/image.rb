@@ -3,7 +3,7 @@ class Image < ActiveRecord::Base
   DEFAULT_TITLE = 'Default image'.freeze
   DEFAULT_PATH = Rails.root.join('app', 'assets', 'images',
                                  'banner-images', 'kitteh.jpeg')
-  #attr_accessible :title, :image_file, :uploader_id, :tagstring, :uploader
+  # attr_accessible :title, :image_file, :uploader_id, :tagstring, :uploader
 
   has_attached_file :image_file,
                     styles: { medium: "x180>", large: "x400>" },

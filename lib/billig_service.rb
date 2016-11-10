@@ -82,7 +82,8 @@ class BilligService < Sinatra::Base
 
             bp = BilligPurchase.create!(
               owner_member_id: member_id,
-              owner_email: params[:email].present? ? params[:email] : nil)
+              owner_email: params[:email].present? ? params[:email] : nil
+            )
 
             tickets << BilligTicket.create!(
               ticket: ticket_id,

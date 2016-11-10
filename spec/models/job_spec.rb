@@ -35,8 +35,6 @@ describe Job, '#tag_titles=' do
     job = create(:job)
     job.tag_titles = 'one two three four'
 
-    expect(job.tags.pluck(:title)).to match_array(['one', 'two', 'three', 'four'])
+    expect(job.tags.pluck(:title)).to match_array(%w(one two three four))
   end
 end
-
-

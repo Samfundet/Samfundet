@@ -1,7 +1,7 @@
 require SamfundetAuth::Engine.root.join('app', 'models', 'role')
 
 class Role < ActiveRecord::Base
-  #attr_accessible :group_id, :role_id, :passable
+  # attr_accessible :group_id, :role_id, :passable
 
   scope :passable, (lambda do
     Role.where("passable = ?", true)
@@ -18,7 +18,7 @@ class Role < ActiveRecord::Base
   def self.super_user
     Role.find_or_create_by(title: "lim_web") do |role|
       role.name = "Superuser",
-      role.description = "Superrolle for alle i MG::Web."
+                  role.description = "Superrolle for alle i MG::Web."
     end
   end
 end

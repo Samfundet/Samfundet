@@ -91,7 +91,8 @@ module ApplicationHelper
     capture_haml do
       haml_tag :div, {
           class: css_class,
-          style: "background-image: url(#{asset_path(image.url(options[:size]))})" } do
+          style: "background-image: url(#{asset_path(image.url(options[:size]))})"
+} do
         yield if block_given?
       end
     end

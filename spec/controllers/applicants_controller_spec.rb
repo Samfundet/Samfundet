@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe ApplicantsController do
-
   describe "GET #new" do
     it "assigns @applicant to a new record" do
       get :new
@@ -17,11 +16,11 @@ describe ApplicantsController do
 
   describe "POST #create" do
     context "with valid attributes" do
-      let(:valid_attributes) { attributes_for(:applicant)}
+      let(:valid_attributes) { attributes_for(:applicant) }
       it "saves the applicant" do
-        expect{
+        expect do
           post :create, params: { applicant: valid_attributes }
-        }.to change(Applicant, :count).by(1)
+        end.to change(Applicant, :count).by(1)
       end
       it "logs in the created applicant" do
         post :create, params: { applicant: valid_attributes }
@@ -30,9 +29,9 @@ describe ApplicantsController do
       end
 
       context "with pending application" do
-        let(:application) { create(:job_application)}
+        let(:application) { create(:job_application) }
         it "saves the pending application" do
-          post :create, params: { applicant: valid_attributes }, session: { pending_application: application}
+          post :create, params: { applicant: valid_attributes }, session: { pending_application: application }
 
           expect(assigns(:applicant).job_applications).to include(application)
           expect(response).to redirect_to job_applications_path
@@ -47,11 +46,11 @@ describe ApplicantsController do
       end
     end
     context "with invalid attributes" do
-      let(:invalid_attributes) { attributes_for(:applicant, firstname: '')}
+      let(:invalid_attributes) { attributes_for(:applicant, firstname: '') }
       it "does not save the applicant" do
-        expect{
+        expect do
           post :create, params: { applicant: invalid_attributes }
-        }.to_not change(Applicant, :count)
+        end.to_not change(Applicant, :count)
       end
       it "renders the new template" do
         post :create, params: { applicant: invalid_attributes }
@@ -62,13 +61,13 @@ describe ApplicantsController do
   end
 
   describe "POST #update" do
-    let(:applicant) { create(:applicant)}
+    let(:applicant) { create(:applicant) }
     before do
       login_applicant(applicant)
     end
     context "with valid attributes" do
-      let(:valid_attributes) { attributes_for(:applicant, firstname: "Foo", surname: "Bar", password: "", password_confirmation: "")}
-      let(:valid_attributes_with_pw) { attributes_for(:applicant, old_password: "password", password: "Foobar", password_confirmation: "Foobar")}
+      let(:valid_attributes) { attributes_for(:applicant, firstname: "Foo", surname: "Bar", password: "", password_confirmation: "") }
+      let(:valid_attributes_with_pw) { attributes_for(:applicant, old_password: "password", password: "Foobar", password_confirmation: "Foobar") }
       it "updates the applicant" do
         post :update, params: { id: applicant.id, applicant: valid_attributes }
         applicant.reload
@@ -100,8 +99,8 @@ describe ApplicantsController do
     end
 
     context "with invalid attributes" do
-      let(:invalid_attributes) { attributes_for(:applicant, firstname: " ", password: nil, password_confirmation: nil)}
-      let(:invalid_attributes_with_pw) { attributes_for(:applicant, old_password: "wrongPassword", password: "Foobar", password_confirmation: "Foobar")}
+      let(:invalid_attributes) { attributes_for(:applicant, firstname: " ", password: nil, password_confirmation: nil) }
+      let(:invalid_attributes_with_pw) { attributes_for(:applicant, old_password: "wrongPassword", password: "Foobar", password_confirmation: "Foobar") }
 
       it "does not update attributes" do
         post :update, params: { id: applicant.id, applicant: invalid_attributes }
@@ -141,7 +140,6 @@ describe ApplicantsController do
 
           expect(assigns(:applicant).errors[:old_password]).to include(I18n.t("applicants.password_missmatch"))
         end
-
       end
     end
   end

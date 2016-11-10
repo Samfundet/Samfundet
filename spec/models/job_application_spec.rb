@@ -15,5 +15,4 @@ describe JobApplication do
 
     expect(JobApplication.find_by_id(interview.id)).to be_nil
   end
-
 end

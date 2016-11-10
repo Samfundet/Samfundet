@@ -15,11 +15,10 @@ describe UserSessionsController do
   end
 
   describe "GET #destroy" do
-    let(:applicant) { create(:applicant)}
-    let(:user) { create(:member)}
+    let(:applicant) { create(:applicant) }
+    let(:user) { create(:member) }
 
     context "logged in as member" do
-
       before do
         login_member(user)
       end
@@ -31,7 +30,6 @@ describe UserSessionsController do
     end
 
     context "logged in as a applicant" do
-
       before do
         login_applicant(applicant)
       end

@@ -13,7 +13,7 @@ class Job < ActiveRecord::Base
   validates_presence_of :title_no, :teaser_no, :description_no, :admission, :group
   validates :teaser_no, :teaser_en, length: { maximum: 75 }
 
-  #scope :appliable
+  # scope :appliable
 
   extend LocalizedFields
   has_localized_fields :title, :description, :teaser, :default_motivation_text
