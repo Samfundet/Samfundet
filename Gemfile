@@ -53,7 +53,7 @@ gem 'uglifier'
 # declarative_authorization provides a DSL for role-based access control.
 # See: config/authorization_rules.rb
 gem 'declarative_authorization', git: "git@github.com:Samfundet/declarative_authorization.git", branch: "rails5"
-#gem 'cancancan', '~> 1.15'
+# gem 'cancancan', '~> 1.15'
 
 # ActiveRecord manages referential integrity at the application level,
 # not the database level. Therefore, there are no methods for explicitly
@@ -129,11 +129,7 @@ gem 'slack-notifier'
 # Cocoon makes nested forms for price groups under events a lot easier. Adds some buttons and stuff
 gem 'cocoon'
 
-
-
-
 group :development do
-
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console'
   gem 'listen', '~> 3.0.5'
@@ -164,7 +160,7 @@ group :development do
 
   # rails-footnotes adds information useful for debugging to the bottom
   # of our web pages for easy reference.
-  #gem 'rails-footnotes'
+  # gem 'rails-footnotes'
 
   # file listener for automatic refresh of webpage on file change
   gem 'guard-livereload', require: false
@@ -178,7 +174,7 @@ group :development do
   gem 'mina', git: "https://github.com/Samfundet/mina.git"
 
   # A DSL for quickly creating web applications in Ruby with minimal effort.
-  #gem 'sinatra'
+  # gem 'sinatra'
 
   # Turns objects into nicely formatted columns for easy reading.
   gem 'table_print'

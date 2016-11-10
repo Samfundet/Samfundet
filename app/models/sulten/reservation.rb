@@ -19,7 +19,6 @@ class Sulten::Reservation < ActiveRecord::Base
       errors.add(:reservation_from, I18n.t("helpers.models.sulten.reservation.errors.invalid_reservation_format"))
       throw(:abort)
     end
-
   end
 
   after_validation(on: :create) do
@@ -57,11 +56,11 @@ class Sulten::Reservation < ActiveRecord::Base
 
   def reservation_duration=(duration)
     puts "RESERVATION DURATION"
-    self.reservation_to = self.reservation_from + duration.to_i.minutes if self.reservation_from.present?
+    self.reservation_to = reservation_from + duration.to_i.minutes if reservation_from.present?
   end
 
   def reservation_duration
-    @reservation_duration ||= ((reservation_to - reservation_from)/60).to_i unless reservation_to.nil? or reservation_from.nil?
+    @reservation_duration ||= ((reservation_to - reservation_from) / 60).to_i unless reservation_to.nil? || reservation_from.nil?
   end
 
   def self.find_table from, to, people, reservation_type_id
@@ -84,8 +83,8 @@ class Sulten::Reservation < ActiveRecord::Base
   end
 
   def self.kitchen_open? from, to
-    default_kitchen_opening_hour = Time.new(2015, 01, 01, 16, 00, 00)
-    default_kitchen_closing_hour = Time.new(2015, 01, 01, 22, 00, 00)
+    default_kitchen_opening_hour = Time.new(2015, 0o1, 0o1, 16, 0o0, 0o0)
+    default_kitchen_closing_hour = Time.new(2015, 0o1, 0o1, 22, 0o0, 0o0)
     (16..22).include?(from.hour..to.hour)
   end
 end

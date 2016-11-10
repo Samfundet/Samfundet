@@ -1,7 +1,7 @@
 require "rails_helper"
 
 describe GroupsController do
-  let(:user) { create(:member)}
+  let(:user) { create(:member) }
   before do
     role = Role.super_user
     user.roles << role
@@ -38,14 +38,14 @@ describe GroupsController do
   end
 
   describe "POST #create" do
-    let(:group_type) { create(:group_type)}
-    let(:valid_attributes) { attributes_for(:group, group_type_id: group_type.id)}
-    let(:invalid_attributes) { attributes_for(:group, name: '', group_type_id: group_type.id)}
+    let(:group_type) { create(:group_type) }
+    let(:valid_attributes) { attributes_for(:group, group_type_id: group_type.id) }
+    let(:invalid_attributes) { attributes_for(:group, name: '', group_type_id: group_type.id) }
     context "with valid attributes" do
       it "saves the new group" do
-        expect{
+        expect do
           post :create, params: { group: valid_attributes }
-        }.to change(Group, :count).by(1)
+        end.to change(Group, :count).by(1)
       end
       it "redirects to the group index" do
         post :create, params: { group: valid_attributes }
@@ -59,9 +59,9 @@ describe GroupsController do
 
     context "with invalid attributes" do
       it "does not save the new group" do
-        expect{
+        expect do
           post :create, params: { group: invalid_attributes }
-        }.to_not change(Group, :count)
+        end.to_not change(Group, :count)
       end
       it "re-renders the new template" do
         post :create, params: { group: invalid_attributes }
@@ -75,7 +75,7 @@ describe GroupsController do
   end
 
   describe "GET #edit" do
-    let(:group) { create(:group)}
+    let(:group) { create(:group) }
 
     it "renders the edit view" do
       get :edit, params: { id: group.id }
@@ -91,10 +91,10 @@ describe GroupsController do
   end
 
   describe "POST #update" do
-    let(:group) { create(:group)}
-    let(:group_type) { create(:group_type)}
-    let(:valid_attributes) { attributes_for(:group, group_type_id: group_type.id)}
-    let(:invalid_attributes) { attributes_for(:group, name: '', group_type_id: group_type.id)}
+    let(:group) { create(:group) }
+    let(:group_type) { create(:group_type) }
+    let(:valid_attributes) { attributes_for(:group, group_type_id: group_type.id) }
+    let(:invalid_attributes) { attributes_for(:group, name: '', group_type_id: group_type.id) }
     context "with valid attributes" do
       it "assigns @group" do
         put :update, params: { id: group.id, group: valid_attributes }

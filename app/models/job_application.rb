@@ -46,7 +46,8 @@ class JobApplication < ActiveRecord::Base
   def last_log_entry
     LogEntry.where(
       admission_id: job.admission.id,
-      applicant_id: applicant.id).last
+      applicant_id: applicant.id
+    ).last
   end
 end
 
