@@ -49,6 +49,14 @@
         p {
             margin-top: 0;
             margin-bottom: 20px;
+
+            iframe.youtube-embed {
+              p > & {
+                text-align: center;
+              }
+              width: 75vw;
+              height: 75vh;
+            }
         }
     }
 

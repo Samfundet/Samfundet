@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160922182658) do
+ActiveRecord::Schema.define(:version => 20161117204249) do
 
   create_table "admissions", :force => true do |t|
     t.string   "title"
@@ -31,10 +31,10 @@ ActiveRecord::Schema.define(:version => 20160922182658) do
     t.string   "hashed_password"
     t.string   "phone"
     t.boolean  "interested_other_positions"
-    t.datetime "created_at",                         :null => false
-    t.datetime "updated_at",                         :null => false
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
     t.string   "campus"
-    t.boolean  "disabled",        :default => false
+    t.boolean  "disabled",                   :default => false
   end
 
   create_table "areas", :force => true do |t|
@@ -341,11 +341,12 @@ ActiveRecord::Schema.define(:version => 20160922182658) do
   add_index "page_revisions", ["page_id", "version"], :name => "index_page_revisions_on_page_id_and_version", :unique => true
 
   create_table "pages", :force => true do |t|
-    t.string   "name_no",    :limit => 60, :null => false
-    t.integer  "role_id",                  :null => false
-    t.datetime "created_at",               :null => false
-    t.datetime "updated_at",               :null => false
-    t.string   "name_en",                  :null => false
+    t.string   "name_no",    :limit => 60,                    :null => false
+    t.integer  "role_id",                                     :null => false
+    t.datetime "created_at",                                  :null => false
+    t.datetime "updated_at",                                  :null => false
+    t.string   "name_en",                                     :null => false
+    t.boolean  "hide_menu",                :default => false
   end
 
   add_index "pages", ["name_en"], :name => "index_documents_on_name_en", :unique => true

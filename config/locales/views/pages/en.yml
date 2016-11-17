@@ -26,3 +26,4 @@ en:
     owner: "Eier"
     updated_at: "Last updated"
     history_for: "Revision history for %{name}"
+    hide_menu: "Hide menu"
