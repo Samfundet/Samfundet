@@ -5,9 +5,10 @@
 .menu-button
   = t('layouts.application.menu.menu')
 
-.menu
-  .menu-content
-    = render_page_content(@menu.content, @menu.content_type)
+- if !@page.hide_menu
+  .menu
+    .menu-content
+      = render_page_content(@menu.content, @menu.content_type)
 
 .content
   = render_page_content(@page.content, @page.content_type)
