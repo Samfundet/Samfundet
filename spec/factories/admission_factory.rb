@@ -1,6 +1,7 @@
+# frozen_string_literal: true
 FactoryGirl.define do
   factory :admission do
-    title "Opptak"
+    title 'Opptak'
     shown_from 1.week.ago
     shown_application_deadline 1.week.from_now
     actual_application_deadline 1.week.from_now + 2.hours

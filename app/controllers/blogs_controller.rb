@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class BlogsController < ApplicationController
   filter_access_to [:admin], require: :edit
 

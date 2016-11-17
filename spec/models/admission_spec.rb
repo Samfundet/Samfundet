@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'rails_helper'
 
 describe Admission, '.has_open_admissions?' do
@@ -41,19 +42,19 @@ end
 
 describe Admission, '#appliable?' do
   # (actual_application_deadline > Time.current) && (shown_from < Time.current)
-  it "returns true if actual deadline in the future and shown from in the past" do
+  it 'returns true if actual deadline in the future and shown from in the past' do
     admission = create(:admission)
     expect(admission.appliable?).to eq true
   end
 
-  it "should be true just after the shown application deadline" do
+  it 'should be true just after the shown application deadline' do
     admission = create(:admission,
                        shown_application_deadline: 1.minute.ago,
                        actual_application_deadline: 1.hour.from_now)
     expect(admission.appliable?).to eq true
   end
 
-  it "should be false some time after the shown application deadline" do
+  it 'should be false some time after the shown application deadline' do
     admission = create(:admission,
                        shown_application_deadline: 1.hour.ago,
                        actual_application_deadline: 1.minute.ago)

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class AreasController < ApplicationController
   filter_access_to :all
 
@@ -6,11 +7,11 @@ class AreasController < ApplicationController
 
   def edit
     @areas = Area.all
-    @area = Area.find_by_id params[:id]
+    @area = Area.find_by(params[:id])
   end
 
   def update
-    @area = Area.find_by_id params[:id]
+    @area = Area.find_by(params[:id])
 
     if @area.update(area_params)
       flash[:success] = t 'areas.update_success'

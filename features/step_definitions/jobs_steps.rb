@@ -1,4 +1,5 @@
 # -*- encoding : utf-8 -*-
+# frozen_string_literal: true
 Given /^There are jobs titled (.+)$/i do |jobs|
   step "There are open admissions titled Sample Admission"
 
@@ -9,7 +10,7 @@ Given /^There are jobs titled (.+)$/i do |jobs|
       group.save!
     end
 
-    admission = Admission.find_by_title("Sample Admission")
+    admission = Admission.find_by(title: "Sample Admission")
 
     jobs.split(",").each do |title|
       Job.create!(
@@ -27,7 +28,7 @@ Given /^there is a job titled "([^\"]*)" in the group "([^\"]*)" tagged "([^\"]*
   step "there are jobs \"#{job_title}\" for an admission \"Sample Admission\" for the group \"#{group_name}\""
 
   without_access_control do
-    job = Job.find_by_title_no!(job_title)
+    job = Job.find_by!(title_no: job_title)
     tags.split.each do |tag|
       job.tags << JobTag.find_or_create_by_title(tag)
     end
@@ -36,7 +37,7 @@ end
 
 Given /^"([^\"]*)" is an officer position$/ do |job_title|
   without_access_control do
-    job = Job.find_by_title_no!(job_title)
+    job = Job.find_by!(title_no: job_title)
     job.is_officer = true
     job.save!
   end
@@ -73,7 +74,7 @@ end
 
 Given /^the job "([^\"]*)" has tags (.+)$/ do |title, tags|
   without_access_control do
-    job = Job.find_by_title_no(title)
+    job = Job.find_by(title_no: title)
     tags.split(",").each do |quoted_title|
       title = quoted_title.gsub(/\w*"\w*/, "")
       job.tags << JobTag.find_or_create_by_title(title)

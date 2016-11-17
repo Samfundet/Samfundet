@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Sulten::ReservationTypesController < ApplicationController
   def index
     @types = Sulten::ReservationType.all
@@ -32,10 +33,10 @@ class Sulten::ReservationTypesController < ApplicationController
   def create
     @type = Sulten::ReservationType.new(reservation_type_params)
     if @type.save
-      flash[:success] = t("helpers.models.sulten.reservation_type.success.create")
+      flash[:success] = t('helpers.models.sulten.reservation_type.success.create')
       redirect_to @type
     else
-      flash.now[:error] = t("helpers.models.sulten.reservation_type.errors.create")
+      flash.now[:error] = t('helpers.models.sulten.reservation_type.errors.create')
       render :new
     end
   end

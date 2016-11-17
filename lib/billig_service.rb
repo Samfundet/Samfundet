@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'sinatra'
 require 'pp'
 
@@ -7,15 +8,14 @@ class BilligService < Sinatra::Base
     puts
 
     tp params.map { |key, value|
-      if /price_(\d+)_count/ =~ key
-        price_group = BilligPriceGroup.find $1
+      next unless /price_(\d+)_count/ =~ key
+      price_group = BilligPriceGroup.find Regexp.last_match(1)
 
-        {
-          event: price_group.billig_ticket_group.billig_event.event_name,
-          group: price_group.price_group_name,
-          count: value
-        }
-      end
+      {
+        event: price_group.billig_ticket_group.billig_event.event_name,
+        group: price_group.price_group_name,
+        count: value
+      }
     }.compact
 
     puts
@@ -49,15 +49,14 @@ class BilligService < Sinatra::Base
         )
 
         params.each do |key, value|
-          if /price_(\d+)_count/ =~ key
-            price_group_id = $1
+          next unless /price_(\d+)_count/ =~ key
+          price_group_id = Regexp.last_match(1)
 
-            BilligPaymentErrorPriceGroup.create!(
-              error: bsession,
-              price_group: price_group_id,
-              number_of_tickets: value
-            )
-          end
+          BilligPaymentErrorPriceGroup.create!(
+            error: bsession,
+            price_group: price_group_id,
+            number_of_tickets: value
+          )
         end
 
         redirect 'http://localhost:3000/en/events/purchase_callback?bsession=' << bsession
@@ -68,30 +67,29 @@ class BilligService < Sinatra::Base
       tickets = []
 
       params.each do |key, value|
-        if /price_(\d+)_count/ =~ key
-          price_group_id = $1
+        next unless /price_(\d+)_count/ =~ key
+        price_group_id = Regexp.last_match(1)
 
-          value.to_i.times do
-            ticket_id = (BilligTicket.pluck(:ticket).max || 0) + 1
+        value.to_i.times do
+          ticket_id = (BilligTicket.pluck(:ticket).max || 0) + 1
 
-            # This allows for all tickets on membership cards, while in reality,
-            # only one ticket will be on the card.
-            member_id = if params[:cardnumber].present?
-                          BilligTicketCard.where(card: params[:cardnumber]).first.try(:owner_member_id)
-                        end
+          # This allows for all tickets on membership cards, while in reality,
+          # only one ticket will be on the card.
+          member_id = if params[:cardnumber].present?
+                        BilligTicketCard.where(card: params[:cardnumber]).first.try(:owner_member_id)
+                      end
 
-            bp = BilligPurchase.create!(
-              owner_member_id: member_id,
-              owner_email: params[:email].present? ? params[:email] : nil
-            )
+          bp = BilligPurchase.create!(
+            owner_member_id: member_id,
+            owner_email: params[:email].present? ? params[:email] : nil
+          )
 
-            tickets << BilligTicket.create!(
-              ticket: ticket_id,
-              on_card: member_id.present?,
-              price_group: price_group_id,
-              purchase: bp.id
-            )
-          end
+          tickets << BilligTicket.create!(
+            ticket: ticket_id,
+            on_card: member_id.present?,
+            price_group: price_group_id,
+            purchase: bp.id
+          )
         end
       end
 

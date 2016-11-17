@@ -1,8 +1,9 @@
+# frozen_string_literal: true
 require 'rails_helper'
 
 describe JobApplication do
   it 'should delegate title to job' do
-    job = create(:job, title_no: "Tittel", title_en: "Title")
+    job = create(:job, title_no: 'Tittel', title_en: 'Title')
     job_application = create(:job_application, job: job)
 
     expect(job_application.title).to eq job.title
@@ -13,6 +14,6 @@ describe JobApplication do
     interview = job_application.find_or_create_interview
     job_application.destroy
 
-    expect(JobApplication.find_by_id(interview.id)).to be_nil
+    expect(JobApplication.find_by(id: interview.id)).to be_nil
   end
 end

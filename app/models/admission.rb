@@ -1,21 +1,22 @@
 # -*- encoding : utf-8 -*-
+# frozen_string_literal: true
 class Admission < ActiveRecord::Base
   has_many :jobs
   has_many :job_applications, -> { uniq }, through: :jobs
   has_many :groups, -> { uniq }, through: :jobs
   has_many :group_types, -> { uniq }, through: :groups
 
-  validates_presence_of :title, :shown_from, :shown_application_deadline,
-                        :actual_application_deadline, :user_priority_deadline,
-                        :admin_priority_deadline
-  validates_format_of :shown_from,
-                      :shown_application_deadline,
-                      :actual_application_deadline,
-                      :user_priority_deadline,
-                      :admin_priority_deadline,
-                      with: /\A[0-3][0-9].[01][0-9].[0-9]{4,4}  # The date.
-                               \                                  # A space.
-                               [0-2][0-9]:[0-5][0-9]\Z/x # The time.
+  validates :title, :shown_from, :shown_application_deadline,
+            :actual_application_deadline, :user_priority_deadline,
+            :admin_priority_deadline, presence: true
+  validates :shown_from,
+            :shown_application_deadline,
+            :actual_application_deadline,
+            :user_priority_deadline,
+            :admin_priority_deadline,
+            format: { with: /\A[0-3][0-9].[01][0-9].[0-9]{4,4}  # The date.
+                     \                                  # A space.
+                     [0-2][0-9]:[0-5][0-9]\Z/x } # The time.
 
   validates :promo_video, url: true, if: :promo_video_empty?
 
@@ -41,7 +42,7 @@ class Admission < ActiveRecord::Base
     if objects_exist && value < record.shown_from
       record.errors.add(
         attr,
-        I18n.t("helpers.models.admission.errors.deadline_before_visible")
+        I18n.t('helpers.models.admission.errors.deadline_before_visible')
       )
     end
   end
@@ -51,7 +52,7 @@ class Admission < ActiveRecord::Base
     if objects_exist && value < record.shown_application_deadline
       record.errors.add(
         attr,
-        I18n.t("helpers.models.admission.errors.deadline_before_shown_deadline")
+        I18n.t('helpers.models.admission.errors.deadline_before_shown_deadline')
       )
     end
   end
@@ -61,7 +62,7 @@ class Admission < ActiveRecord::Base
     if objects_exist && value < record.actual_application_deadline
       record.errors.add(
         attr,
-        I18n.t("helpers.models.admission.errors.priority_before_application")
+        I18n.t('helpers.models.admission.errors.priority_before_application')
       )
     end
   end
@@ -71,7 +72,7 @@ class Admission < ActiveRecord::Base
     if objects_exist && value < record.user_priority_deadline
       record.errors.add(
         attr,
-        I18n.t("helpers.models.admission.errors.admin_deadline_before_user")
+        I18n.t('helpers.models.admission.errors.admin_deadline_before_user')
       )
     end
   end
@@ -80,26 +81,26 @@ class Admission < ActiveRecord::Base
 
   # We must use lambdas so that the time is not 'cached' on server start.
   scope :current, (lambda do
-    where("user_priority_deadline > ?", 2.weeks.ago)
-    .order("user_priority_deadline DESC")
+    where('user_priority_deadline > ?', 2.weeks.ago)
+    .order('user_priority_deadline DESC')
   end)
 
   scope :appliable, (lambda do
-    where("shown_from < ? and actual_application_deadline > ?",
+    where('shown_from < ? and actual_application_deadline > ?',
           Time.current, Time.current)
   end)
 
   scope :active, (lambda do
-    where("shown_from < ? and admin_priority_deadline > ?",
+    where('shown_from < ? and admin_priority_deadline > ?',
           Time.current, Time.current)
   end)
 
   scope :no_longer_appliable, (lambda do
-    where("actual_application_deadline < ?", Time.current)
+    where('actual_application_deadline < ?', Time.current)
   end)
 
   scope :upcoming, (lambda do
-    where("shown_from > ?", Time.current)
+    where('shown_from > ?', Time.current)
   end)
 
   # Remember that scopes are composable, meaning that one could

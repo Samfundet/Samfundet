@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 ###########################################
 # NOTHING GOES IN HERE WITHOUT A COMMENT! #
 ###########################################
@@ -35,7 +36,7 @@ gem 'jquery-ui-rails'
 gem 'jquery-turbolinks'
 
 # used for sorting tables in the admission
-gem "jquery-tablesorter"
+gem 'jquery-tablesorter'
 
 # CoffeeScript is a scripting language. It compiles to JavaScript.
 gem 'coffee-rails'
@@ -52,7 +53,7 @@ gem 'uglifier'
 
 # declarative_authorization provides a DSL for role-based access control.
 # See: config/authorization_rules.rb
-gem 'declarative_authorization', git: "git@github.com:Samfundet/declarative_authorization.git", branch: "rails5"
+gem 'declarative_authorization', git: 'git@github.com:Samfundet/declarative_authorization.git', branch: 'rails5'
 # gem 'cancancan', '~> 1.15'
 
 # ActiveRecord manages referential integrity at the application level,
@@ -89,17 +90,17 @@ gem 'redcarpet'
 gem 'route_downcaser'
 
 # SamfundetDomain is a gem which provides the application with samfundets domain models.
-gem 'samfundet_domain', '~> 0.1.0', git: "https://github.com/Samfundet/SamfundetDomain.git", branch: "rails5"
+gem 'samfundet_domain', '~> 0.1.0', git: 'https://github.com/Samfundet/SamfundetDomain.git', branch: 'rails5'
 
 # SamfundetAuth is a gem which provides the application with methods for authenticating against mdb2.
-gem 'samfundet_auth', '~> 0.1.0', git: "https://github.com/Samfundet/SamfundetAuth.git", branch: "rails5"
+gem 'samfundet_auth', '~> 0.1.0', git: 'https://github.com/Samfundet/SamfundetAuth.git', branch: 'rails5'
 
 # will_paginate is an adaptive pagination plugin.
 # It makes pagination very simple.
 gem 'will_paginate'
 
 # for file uploads, see https://github.com/thoughtbot/paperclip
-gem "paperclip"
+gem 'paperclip'
 
 # automatic compression of images uploaded via paperclip
 gem 'paperclip-compression'
@@ -171,7 +172,7 @@ group :development do
 
   # Simple command execution over SSH. Lightweight deployment tool.
   # Using our own version until https://github.com/mina-deploy/mina/pull/361 is merged.
-  gem 'mina', git: "https://github.com/Samfundet/mina.git"
+  gem 'mina', git: 'https://github.com/Samfundet/mina.git'
 
   # A DSL for quickly creating web applications in Ruby with minimal effort.
   # gem 'sinatra'

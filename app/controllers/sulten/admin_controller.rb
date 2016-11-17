@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Sulten::AdminController < ApplicationController
   filter_access_to [:admin], require: :read
 

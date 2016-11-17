@@ -1,4 +1,5 @@
 # -*- encoding : utf-8 -*-
+# frozen_string_literal: true
 Given /^I have applied for jobs titled (.+)$/ do |jobs|
   step "There are jobs titled #{jobs}"
 
@@ -61,7 +62,7 @@ Given /^"([^\"]*)" has applied for "([^\"]*)" in "([^\"]*)" with phone number "(
                                  email: email,
                                  phone: phone)
 
-    job = Admission.first.jobs.find_by_title_no(job_title)
+    job = Admission.first.jobs.find_by(title_no: job_title)
     JobApplication.create!(applicant: applicant, job: job, motivation: "I want it!!!")
   end
 end

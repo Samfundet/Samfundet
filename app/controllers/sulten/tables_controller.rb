@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Sulten::TablesController < ApplicationController
   filter_access_to [:index, :new, :export], require: :read
 
@@ -35,10 +36,10 @@ class Sulten::TablesController < ApplicationController
     puts params
     @table = Sulten::Table.new(table_params)
     if @table.save
-      flash[:success] = t("helpers.models.sulten.table.success.create")
+      flash[:success] = t('helpers.models.sulten.table.success.create')
       redirect_to @table
     else
-      flash.now[:error] = t("helpers.models.sulten.table.errors.create")
+      flash.now[:error] = t('helpers.models.sulten.table.errors.create')
       render :new
     end
   end

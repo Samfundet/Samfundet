@@ -1,4 +1,5 @@
 # -*- encoding : utf-8 -*-
+# frozen_string_literal: true
 Samfundet::Application.configure do
   # Settings specified here will take precedence over those in config/environment.rb
 
@@ -11,7 +12,7 @@ Samfundet::Application.configure do
   config.eager_load = false
 
   # Show full error reports and disable caching
-  config.consider_all_requests_local        = true
+  config.consider_all_requests_local = true
 
   # Enable/disable caching. By default caching is disabled.
   if Rails.root.join('tmp/caching-dev.txt').exist?
@@ -26,7 +27,6 @@ Samfundet::Application.configure do
 
     config.cache_store = :null_store
   end
-
 
   # Print deprecation warnings to the log
   config.active_support.deprecation = :log
@@ -48,8 +48,8 @@ Samfundet::Application.configure do
   # set delivery method to :smtp, :sendmail or :test
   config.action_mailer.delivery_method = :letter_opener
 
-  config.billig_path = "http://localhost:4567/pay".freeze
-  config.billig_ticket_path = 'https://billig.samfundet.no/pdf?'.freeze
+  config.billig_path = 'http://localhost:4567/pay'
+  config.billig_ticket_path = 'https://billig.samfundet.no/pdf?'
 
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.

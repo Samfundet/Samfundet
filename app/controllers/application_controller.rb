@@ -1,4 +1,5 @@
 # -*- encoding : utf-8 -*-
+# frozen_string_literal: true
 # Filters added to this controller apply to all controllers in the application.
 # Likewise, all the methods added will be available for all controllers.
 
@@ -20,7 +21,7 @@ class ApplicationController < ActionController::Base
 
   rescue_from ActionController::InvalidAuthenticityToken do
     reset_session
-    flash[:error] = "There was an error processing your request. Please try again."
+    flash[:error] = 'There was an error processing your request. Please try again.'
     redirect_to root_path
   end
 
@@ -56,10 +57,10 @@ class ApplicationController < ActionController::Base
       if request.get? # Regular GET
         redirect_to login_path(redirect_to: request.path)
       else # POST, PUT, DELETE
-        unless request.referer.nil?
-          redirect_to login_path(redirect_to: request_referer_if_on_current_domain)
-        else
+        if request.referer.nil?
           redirect_to root_path
+        else
+          redirect_to login_path(redirect_to: request_referer_if_on_current_domain)
         end
       end
     end
