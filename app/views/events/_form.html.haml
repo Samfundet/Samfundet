@@ -61,15 +61,15 @@
     %li
       = f.label :price_type, value: "free" do
         = t('events.forms.labels.free')
-        = f.radio_button :price_type, "free", checked: true
+        = f.radio_button :price_type, "free", checked: @event.price_type == "free"
     %li
       = f.label :price_type, value: "included" do
         = t('events.forms.labels.included')
-        = f.radio_button :price_type, "included", checked: true
+        = f.radio_button :price_type, "included", checked: @event.price_type == "included"
     %li
       = f.label :price_type, value: "custom" do
         = t('events.forms.labels.custom')
-        = f.radio_button :price_type, "custom"
+        = f.radio_button :price_type, "custom", checked: @event.price_type == "custom"
       .nested-fields
         = f.semantic_fields_for :price_groups do |pg|
           = pg.inputs do
@@ -79,8 +79,8 @@
     %li
       = f.label :price_type, value: "billig" do
         = "billig"
-        = f.radio_button :price_type, "billig"
+        = f.radio_button :price_type, "billig", checked: @event.price_type == "billig"
       = f.input :billig_event_id, as: :select, collection: BilligEvent.sale_applicable.sort_by(&:event_time).map { |e| [e.describe, e.id] }, include_blank: false
 
   = f.actions do
-    = f.action :submit 
+    = f.action :submit
