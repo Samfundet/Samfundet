@@ -1,4 +1,5 @@
 # -*- encoding : utf-8 -*-
+# frozen_string_literal: true
 class AdmissionsAdmin::LogEntriesController < ApplicationController
   before_action :new_log_entry, only: :create
   filter_access_to [:create, :destroy], attribute_check: true
@@ -6,9 +7,9 @@ class AdmissionsAdmin::LogEntriesController < ApplicationController
   def create
     @log_entry.log = params[:log_entry][:log]
     if @log_entry.save
-      flash[:success] = "Loggføringen er lagt til."
+      flash[:success] = 'Loggføringen er lagt til.'
     else
-      flash[:error] = "Du er nødt til å fylle ut loggfeltet."
+      flash[:error] = 'Du er nødt til å fylle ut loggfeltet.'
     end
 
     redirect_back
@@ -16,7 +17,7 @@ class AdmissionsAdmin::LogEntriesController < ApplicationController
 
   def destroy
     @log_entry.destroy
-    flash[:success] = "Loggføringen er slettet."
+    flash[:success] = 'Loggføringen er slettet.'
 
     redirect_back
   end

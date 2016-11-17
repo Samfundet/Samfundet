@@ -1,6 +1,7 @@
 # -*- encoding : utf-8 -*-
+# frozen_string_literal: true
 class JobApplicationsController < ApplicationController
-  layout "admissions"
+  layout 'admissions'
   filter_access_to [:index]
   filter_access_to [:update, :destroy, :up, :down], attribute_check: true
 

@@ -1,4 +1,5 @@
 # -*- encoding : utf-8 -*-
+# frozen_string_literal: true
 class Group < ActiveRecord::Base
   belongs_to :group_type
   belongs_to :page
@@ -8,7 +9,7 @@ class Group < ActiveRecord::Base
   has_many :interviews, through: :job_applications
   has_many :events, as: :organizer
 
-  validates_presence_of :name, :group_type
+  validates :name, :group_type, presence: true
   validates :name, uniqueness: :true
 
   default_scope { order(:name).includes(:page) }
@@ -18,10 +19,10 @@ class Group < ActiveRecord::Base
   end
 
   def short_name
-    unless abbreviation.blank?
-      abbreviation
-    else
+    if abbreviation.blank?
       name
+    else
+      abbreviation
     end
   end
 
@@ -69,11 +70,11 @@ class Group < ActiveRecord::Base
 
   def member_role
     role = short_name.downcase.to_s
-    role.tr! "æ", "ae"
-    role.tr! "ø", "oe"
-    role.tr! "å", "aa"
-    role.tr! " ", "_"
-    role.gsub!(/[^a-zA-Z_0-9]/, "")
+    role.tr! 'æ', 'ae'
+    role.tr! 'ø', 'oe'
+    role.tr! 'å', 'aa'
+    role.tr! ' ', '_'
+    role.gsub!(/[^a-zA-Z_0-9]/, '')
     role.to_sym
   end
 

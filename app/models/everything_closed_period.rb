@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class EverythingClosedPeriod < ActiveRecord::Base
   # attr_accessible :message_no, :message_en, :event_message_no, :event_message_en, :closed_from, :closed_to
 
@@ -9,8 +10,8 @@ class EverythingClosedPeriod < ActiveRecord::Base
   validates :closed_to, presence: true
   validate :times_in_valid_order
 
-  scope :active_closed_periods, -> { where("closed_from <= ? AND closed_to >= ?", DateTime.current, DateTime.current) }
-  scope :current_and_future_closed_times, -> { where("closed_to >= ?", DateTime.current) }
+  scope :active_closed_periods, -> { where('closed_from <= ? AND closed_to >= ?', DateTime.current, DateTime.current) }
+  scope :current_and_future_closed_times, -> { where('closed_to >= ?', DateTime.current) }
 
   extend LocalizedFields
   has_localized_fields :message

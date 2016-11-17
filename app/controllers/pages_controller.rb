@@ -1,4 +1,5 @@
 # -*- encoding : utf-8 -*-
+# frozen_string_literal: true
 class PagesController < ApplicationController
   filter_access_to [:index, :new, :create]
   filter_access_to [:show, :edit, :update, :destroy], attribute_check: true,
@@ -36,10 +37,10 @@ class PagesController < ApplicationController
   def create
     @page = Page.new(page_params)
     if @page.save
-      flash[:success] = t("pages.create_success")
+      flash[:success] = t('pages.create_success')
       redirect_to @page
     else
-      flash.now[:error] = t("common.fields_missing_error")
+      flash.now[:error] = t('common.fields_missing_error')
       render :new
     end
   end
@@ -78,7 +79,7 @@ class PagesController < ApplicationController
   def destroy
     @page = Page.find_by_param(params[:id])
     @page.destroy # TODO: Should perhaps set a deleted flag instead of deleting
-    flash[:success] = t("pages.destroy_success")
+    flash[:success] = t('pages.destroy_success')
     redirect_to admin_pages_path
   end
 
@@ -145,7 +146,7 @@ class PagesController < ApplicationController
     # check if link matches name spec already
     return url if nameRegex.match url
 
-    if url.start_with? "/"
+    if url.start_with? '/'
       # this is an url that leads to somewhere on samfundet.no
       begin
         uri = URI.join(request.protocol + request.host, url)
@@ -161,7 +162,7 @@ class PagesController < ApplicationController
     end
 
     # We only handle http, https. We also let uris not specifying protocol go trough, since they probably are http.
-    unless uri.scheme.nil? || uri.scheme == "http" || uri.scheme == "https"
+    unless uri.scheme.nil? || uri.scheme == 'http' || uri.scheme == 'https'
       # This is an url, but we a different protocol than http.
       # drop this url
       return nil
@@ -172,7 +173,7 @@ class PagesController < ApplicationController
       begin
         # recognize_path throws 404 if it doesn't find a valid distination
         destination = Rails.application.routes.recognize_path uri.to_s
-        if destination[:controller] == "pages" && destination[:action] == "show"
+        if destination[:controller] == 'pages' && destination[:action] == 'show'
           # this is some link that resolves to an info page
           return destination[:id]
         else

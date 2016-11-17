@@ -1,7 +1,8 @@
 # -*- encoding : utf-8 -*-
+# frozen_string_literal: true
 Given /^the member "([^\"]*)" has the role of "([^\"]*)"$/ do |first_name, role|
   without_access_control do
-    member = Member.find_by_fornavn(first_name)
+    member = Member.find_by(fornavn: first_name)
     role = Role.find_or_create_by_title(
       title: role,
       name: "Dummy name",

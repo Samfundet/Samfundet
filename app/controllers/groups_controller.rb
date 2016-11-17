@@ -1,4 +1,5 @@
 # -*- encoding : utf-8 -*-
+# frozen_string_literal: true
 class GroupsController < ApplicationController
   filter_access_to [:new, :create]
   filter_access_to [:edit, :update], attribute_check: true
@@ -21,7 +22,7 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     if @group.save
-      flash[:success] = "Gjengen er opprettet."
+      flash[:success] = 'Gjengen er opprettet.'
       redirect_to admin_groups_path
     else
       flash[:error] = t('common.fields_missing_error')
@@ -34,7 +35,7 @@ class GroupsController < ApplicationController
 
   def update
     if @group.update_attributes(group_params)
-      flash[:success] = "Gjengen er oppdatert."
+      flash[:success] = 'Gjengen er oppdatert.'
       redirect_to admin_groups_path
     else
       flash[:error] = t('common.fields_missing_error')

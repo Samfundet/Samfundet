@@ -1,4 +1,5 @@
 # -*- encoding : utf-8 -*-
+# frozen_string_literal: true
 class JobApplication < ActiveRecord::Base
   belongs_to :applicant
   belongs_to :job
@@ -7,9 +8,9 @@ class JobApplication < ActiveRecord::Base
 
   has_one :interview, dependent: :destroy
 
-  validates_presence_of :job, :motivation
-  validates_presence_of :applicant, if: :validate_applicant?
-  validates_uniqueness_of :applicant_id, scope: :job_id, message: I18n.t('jobs.already_applied')
+  validates :job, :motivation, presence: true
+  validates :applicant, presence: { if: :validate_applicant? }
+  validates :applicant_id, uniqueness: { scope: :job_id, message: I18n.t('jobs.already_applied') }
 
   delegate :title, to: :job
 

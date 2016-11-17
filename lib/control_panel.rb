@@ -1,4 +1,5 @@
 # -*- encoding : utf-8 -*-
+# frozen_string_literal: true
 module ControlPanel
   class Applet
     def initialize(controller, action_name, options)
@@ -42,7 +43,7 @@ module ControlPanel
   end
 
   def self.applets(request)
-    Dir[Rails.root.join("app", "controllers", "**/*_controller.rb")].flat_map do |path|
+    Dir[Rails.root.join('app', 'controllers', '**/*_controller.rb')].flat_map do |path|
       controller_from_path(path).control_panel_applets.map do |create_applet|
         create_applet.call(request)
       end
@@ -54,9 +55,9 @@ module ControlPanel
   # "/path/to/foo_controller.rb" => FooController
   def self.controller_from_path(path)
     if path.split('/')[-2] != 'controllers'
-      (path.split('/')[-2].camelize + '::' + File.basename(path, ".rb").camelize).constantize
+      (path.split('/')[-2].camelize + '::' + File.basename(path, '.rb').camelize).constantize
     else
-      File.basename(path, ".rb").camelize.constantize
+      File.basename(path, '.rb').camelize.constantize
     end
   end
 end

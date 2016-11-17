@@ -1,4 +1,5 @@
 # -*- encoding : utf-8 -*-
+# frozen_string_literal: true
 class FrontPageLocksController < ApplicationController
   filter_access_to :all
 
@@ -9,7 +10,7 @@ class FrontPageLocksController < ApplicationController
   end
 
   def clear
-    @front_page_lock = FrontPageLock.find_by_position(params[:id])
+    @front_page_lock = FrontPageLock.find_by(position: params[:id])
     @front_page_lock.lockable = nil
 
     if @front_page_lock.save
@@ -23,7 +24,7 @@ class FrontPageLocksController < ApplicationController
   end
 
   def update
-    @front_page_lock = FrontPageLock.find_by_position(params[:id])
+    @front_page_lock = FrontPageLock.find_by(position: params[:id])
 
     @front_page_lock.lockable_type = params[:front_page_lock][:lockable_type]
     @front_page_lock.lockable_id =

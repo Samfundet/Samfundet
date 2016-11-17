@@ -1,4 +1,5 @@
 # -*- encoding : utf-8 -*-
+# frozen_string_literal: true
 require 'uri'
 
 class UserSessionsController < ApplicationController
@@ -12,7 +13,7 @@ class UserSessionsController < ApplicationController
     session[:member_id]    = nil
     cookies.delete :signed_in
 
-    flash[:success] = t("sessions.logout_success")
+    flash[:success] = t('sessions.logout_success')
     redirect_to root_path
   end
 

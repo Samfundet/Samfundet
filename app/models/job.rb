@@ -1,4 +1,5 @@
 # -*- encoding : utf-8 -*-
+# frozen_string_literal: true
 class Job < ActiveRecord::Base
   belongs_to :admission, touch: true
   belongs_to :group
@@ -10,7 +11,7 @@ class Job < ActiveRecord::Base
 
   has_and_belongs_to_many :tags, class_name: 'JobTag'
 
-  validates_presence_of :title_no, :teaser_no, :description_no, :admission, :group
+  validates :title_no, :teaser_no, :description_no, :admission, :group, presence: true
   validates :teaser_no, :teaser_en, length: { maximum: 75 }
 
   # scope :appliable
@@ -19,11 +20,11 @@ class Job < ActiveRecord::Base
   has_localized_fields :title, :description, :teaser, :default_motivation_text
 
   def available_jobs_in_same_group
-    group.jobs.where("admission_id = (?) AND id <> ?", admission_id, id)
+    group.jobs.where('admission_id = (?) AND id <> ?', admission_id, id)
   end
 
   def similar_available_jobs
-    jobs = Job.where("admission_id = (?) AND id IN (SELECT DISTINCT job_id FROM job_tags_jobs WHERE job_tag_id IN (?))", admission_id, tags.collect(&:id))
+    jobs = Job.where('admission_id = (?) AND id IN (SELECT DISTINCT job_id FROM job_tags_jobs WHERE job_tag_id IN (?))', admission_id, tags.collect(&:id))
 
     # Remove self from similar jobs
     jobs - [self]
@@ -50,7 +51,7 @@ class Job < ActiveRecord::Base
   end
 
   def tag_titles
-    tags.map(&:title).join(", ")
+    tags.map(&:title).join(', ')
   end
 
   def job_applications_with_interviews

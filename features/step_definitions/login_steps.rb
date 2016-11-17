@@ -1,4 +1,5 @@
 # -*- encoding : utf-8 -*-
+# frozen_string_literal: true
 Given /^I am a member in "([^\"]*)" with roles "([^\"]*)"$/ do |group, roles|
   without_access_control do
     # TODO: ALlow acces to RSpec helpers
@@ -6,7 +7,7 @@ Given /^I am a member in "([^\"]*)" with roles "([^\"]*)"$/ do |group, roles|
     # Even better... User factorygirl and shit.
     step %(there is a member with email "valid@user.com" and password "password")
 
-    member = Member.find_by_mail('valid@user.com')
+    member = Member.find_by(mail: 'valid@user.com')
     roles.split(", ").each do |role_name|
       role = Role.find_or_create_by_title(title: role_name.strip, name: "Dummy name", description: "Dummy description")
       member.roles << role
@@ -41,12 +42,12 @@ Then /^I should be logged in$/ do
 end
 
 Then /^I should be logged in as a member with email "([^\"]*)"$/ do |email|
-  member = Member.find_by_mail email
+  member = Member.find_by mail: email
   step %(I should be logged in as "#{member.full_name}")
 end
 
 Then /^I should be logged in as an applicant with email "([^\"]*)"$/ do |email|
-  applicant = Applicant.find_by_email email
+  applicant = Applicant.find_by email: email
   step %(I should be logged in as "#{applicant.full_name}")
 end
 

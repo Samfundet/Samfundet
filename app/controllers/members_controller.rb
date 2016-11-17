@@ -1,4 +1,5 @@
 # -*- encoding : utf-8 -*-
+# frozen_string_literal: true
 class MembersController < ApplicationController
   filter_access_to [:search, :control_panel, :steal_identity]
 
@@ -11,7 +12,7 @@ class MembersController < ApplicationController
   def search
     @members = Member.where(
       "UPPER(fornavn) || ' ' || UPPER(etternavn) LIKE UPPER(?)" \
-      " OR UPPER(mail) LIKE UPPER(?) OR medlem_id = ?",
+      ' OR UPPER(mail) LIKE UPPER(?) OR medlem_id = ?',
       "%#{params[:term].upcase}%",
       "%#{params[:term].upcase}%",
       params[:term].to_i

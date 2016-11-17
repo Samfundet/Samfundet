@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Sulten::Table < ActiveRecord::Base
   has_many :reservation_types, through: :table_reservation_types
   has_many :table_reservation_types
@@ -5,10 +6,10 @@ class Sulten::Table < ActiveRecord::Base
 
   # attr_accessible :number, :capacity, :available, :comment, :reservation_type_ids
 
-  validates_presence_of :number, :capacity
-  validates_uniqueness_of :number
+  validates :number, :capacity, presence: true
+  validates :number, uniqueness: true
 
-  scope :tables_with_i_reservation_types, lambda { |i| select { |t| t.reservation_types.size == i } }
+  scope :tables_with_i_reservation_types, ->(i) { select { |t| t.reservation_types.size == i } }
 
   def to_s
     number

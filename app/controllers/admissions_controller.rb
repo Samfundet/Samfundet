@@ -1,4 +1,5 @@
 # -*- encoding : utf-8 -*-
+# frozen_string_literal: true
 class AdmissionsController < ApplicationController
   layout 'admissions'
   before_action :find_by_id, only: [:edit, :update]
@@ -22,10 +23,10 @@ class AdmissionsController < ApplicationController
   def create
     @admission = Admission.new(admission_params)
     if @admission.save
-      flash[:success] = t("admissions.registration_success")
+      flash[:success] = t('admissions.registration_success')
       redirect_to admissions_path
     else
-      flash[:error] = t("admissions.registration_error")
+      flash[:error] = t('admissions.registration_error')
       render :new
     end
   end
@@ -35,7 +36,7 @@ class AdmissionsController < ApplicationController
 
   def update
     if @admission.update_attributes(admission_params)
-      flash[:success] = "Opptaket er oppdatert."
+      flash[:success] = 'Opptaket er oppdatert.'
       redirect_to admissions_path
     else
       flash[:error] = t('common.fields_missing_error')

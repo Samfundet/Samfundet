@@ -1,4 +1,5 @@
 # -*- encoding : utf-8 -*-
+# frozen_string_literal: true
 Then /^I should see an error message$/ do
   selector = ".flash-error"
 
