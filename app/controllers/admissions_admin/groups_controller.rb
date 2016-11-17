@@ -32,7 +32,7 @@ class AdmissionsAdmin::GroupsController < ApplicationController
   def applications
     @admission = Admission.find(params[:admission_id])
 
-    job_applications = @admission.job_applications.includes(:job).where("jobs.group_id": @group.id)
+    job_applications = @admission.job_applications.includes(:job).where(jobs.group_id: @group.id)
     job_application_groupings = job_applications.group_by do |job_application|
       job_application.applicant.full_name.downcase
     end

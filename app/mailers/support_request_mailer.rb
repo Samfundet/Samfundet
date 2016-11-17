@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class SupportRequestMailer < ActionMailer::Base
   require 'mail'
   def send_request(form_data)

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Document < ActiveRecord::Base
   # attr_accessible :title, :category_id, :uploader_id, :publication_date, :file
 
@@ -5,8 +6,8 @@ class Document < ActiveRecord::Base
   belongs_to :uploader, class_name: 'Member'
 
   has_attached_file :file,
-                    url: "/upload/:class/:attachment/:id_partition/:filename",
-                    path: ":rails_root/public/upload/:class/:attachment/:id_partition/:filename"
+                    url: '/upload/:class/:attachment/:id_partition/:filename',
+                    path: ':rails_root/public/upload/:class/:attachment/:id_partition/:filename'
 
   validates_attachment :file,
                        presence: true,

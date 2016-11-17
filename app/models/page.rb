@@ -1,18 +1,19 @@
 # -*- encoding : utf-8 -*-
+# frozen_string_literal: true
 class Page < ActiveRecord::Base
   NAME_FORMAT = /_?[0-9]*-?[a-zA-Z][a-zA-Z0-9\-]*/
-  MENU_NAME = "_menu".freeze
-  INDEX_NAME = "_index".freeze
-  TICKETS_NAME = "tickets".freeze
-  HANDICAP_INFO_NAME = 'other-info'.freeze
+  MENU_NAME = '_menu'
+  INDEX_NAME = '_index'
+  TICKETS_NAME = 'tickets'
+  HANDICAP_INFO_NAME = 'other-info'
   REVISION_FIELDS = [:title_no, :title_en, :content_no, :content_en, :content_type].freeze
 
   extend LocalizedFields
   has_localized_fields :title, :name, :content
 
-  validates_format_of :name_no, with: /\A#{NAME_FORMAT}\z/
-  validates_format_of :name_en, with: /\A^#{NAME_FORMAT}\z/
-  validates_presence_of :role
+  validates :name_no, format: { with: /\A#{NAME_FORMAT}\z/ }
+  validates :name_en, format: { with: /\A^#{NAME_FORMAT}\z/ }
+  validates :role, presence: true
   validates :name_no, uniqueness: true
   validates :name_en, uniqueness: true
   belongs_to :role
@@ -62,14 +63,14 @@ class Page < ActiveRecord::Base
                             :title_en,
                             :content_no,
                             :content_en],
-                  additional_attributes: -> (record) { { publish_at: record.created_at } },
-                  if: -> (record) { %w(_menu _index).exclude? record.name_no }
+                  additional_attributes: ->(record) { { publish_at: record.created_at } },
+                  if: ->(record) { %w(_menu _index).exclude? record.name_no }
 
   def self.find_by_name(name)
     if I18n.locale == :no
-      find_by_name_no(name.downcase)
+      find_by(name_no: name.downcase)
     else
-      find_by_name_en(name.downcase)
+      find_by(name_en: name.downcase)
     end
   end
 

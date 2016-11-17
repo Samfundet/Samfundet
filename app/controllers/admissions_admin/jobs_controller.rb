@@ -1,6 +1,7 @@
 # -*- encoding : utf-8 -*-
+# frozen_string_literal: true
 class AdmissionsAdmin::JobsController < ApplicationController
-  layout "admissions"
+  layout 'admissions'
   before_action :before_new_and_create_and_search, only: [:new, :create, :search]
   filter_access_to [:new, :create, :search, :edit, :update, :show, :destroy], attribute_check: true
 
@@ -25,7 +26,7 @@ class AdmissionsAdmin::JobsController < ApplicationController
 
   def search
     @query = "%#{params[:q]}%"
-    @jobs = @group.jobs.where("title_no LIKE ? OR teaser_no LIKE ? OR description_no LIKE ? OR title_en LIKE ? OR teaser_en LIKE ? OR description_en LIKE ?", @query, @query, @query, @query, @query, @query).limit(10)
+    @jobs = @group.jobs.where('title_no LIKE ? OR teaser_no LIKE ? OR description_no LIKE ? OR title_en LIKE ? OR teaser_en LIKE ? OR description_en LIKE ?', @query, @query, @query, @query, @query, @query).limit(10)
     render layout: false
   end
 

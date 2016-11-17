@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class BilligTicket < ActiveRecord::Base
   self.primary_key = :ticket
   # attr_accessible :ticket, :price_group, :purchase,

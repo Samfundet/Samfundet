@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'exception_notification/rails'
 
 ExceptionNotification.configure do |config|
@@ -7,27 +8,23 @@ ExceptionNotification.configure do |config|
 
   # Adds a condition to decide when an exception must be ignored or not.
   # The ignore_if method can be invoked multiple times to add extra conditions.
-  #config.ignore_if do |exception, options|
+  # config.ignore_if do |exception, options|
   #  Rails.env.development?
-  #end
+  # end
 
   # Notifiers =================================================================
 
   # Email notifier sends notifications by email.
   unless Rails.env.development?
-    config.add_notifier :email, {
-      email_prefix: "[ERROR] ",
-      sender_address: %{"Notifier" <no-reply@samfundet.no>},
-      exception_recipients: %w{mg-web-error@samfundet.no},
-      sections: %w{request backtrace}
-    }
+    config.add_notifier :email,       email_prefix: '[ERROR] ',
+                                      sender_address: %("Notifier" <no-reply@samfundet.no>),
+                                      exception_recipients: %w(mg-web-error@samfundet.no),
+                                      sections: %w(request backtrace)
 
-    config.add_notifier :slack, {
-      webhook_url: ENV["SLACK_WEBHOOK_URL"],
-      additional_parameters: {
-        color: "#A03033"
-      }
-    }
+    config.add_notifier :slack,       webhook_url: ENV['SLACK_WEBHOOK_URL'],
+                                      additional_parameters: {
+                                        color: '#A03033'
+                                      }
   end
 
   # Campfire notifier sends notifications to your Campfire room. Requires 'tinder' gem.
@@ -48,5 +45,4 @@ ExceptionNotification.configure do |config|
   #   :url => 'http://example.com:5555/hubot/path',
   #   :http_method => :post
   # }
-
 end

@@ -1,16 +1,17 @@
 # -*- encoding : utf-8 -*-
+# frozen_string_literal: true
 class Image < ActiveRecord::Base
-  DEFAULT_TITLE = 'Default image'.freeze
+  DEFAULT_TITLE = 'Default image'
   DEFAULT_PATH = Rails.root.join('app', 'assets', 'images',
                                  'banner-images', 'kitteh.jpeg')
   # attr_accessible :title, :image_file, :uploader_id, :tagstring, :uploader
 
   has_attached_file :image_file,
-                    styles: { medium: "x180>", large: "x400>" },
-                    convert_options: { medium: "-quality 80", large: "-quality 80" },
+                    styles: { medium: 'x180>', large: 'x400>' },
+                    convert_options: { medium: '-quality 80', large: '-quality 80' },
                     processors: [:thumbnail, :compression],
-                    url: "/upload/:class/:attachment/:id_partition/:style/:filename",
-                    path: ":rails_root/public/upload/:class/:attachment/:id_partition/:style/:filename",
+                    url: '/upload/:class/:attachment/:id_partition/:style/:filename',
+                    path: ':rails_root/public/upload/:class/:attachment/:id_partition/:style/:filename',
                     default_url: '/home/aleksanb/Projects/Samfundet3/app/assets/images/banner-images/kitteh.jpeg'
 
   validates :title, uniqueness: true, presence: true
@@ -34,7 +35,7 @@ class Image < ActiveRecord::Base
                   associated_against: { tags: :name }
 
   def tagstring=(new_tagstring)
-    new_tags = new_tagstring.split(", ").map do |tag|
+    new_tags = new_tagstring.split(', ').map do |tag|
       Tag.find_or_create_by(name: tag.downcase)
     end
 
@@ -42,10 +43,10 @@ class Image < ActiveRecord::Base
   end
 
   def tagstring
-    tags.map(&:name).join ", "
+    tags.map(&:name).join ', '
   end
 
-  def self.text_search query
+  def self.text_search(query)
     if query.present?
       search(query)
     else
@@ -71,7 +72,7 @@ class Image < ActiveRecord::Base
     end
   end
 
-  def self.image_for o
+  def self.image_for(o)
     o.try(:image) || Image.default_image
   end
 end

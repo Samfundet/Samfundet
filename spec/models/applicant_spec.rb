@@ -1,9 +1,10 @@
+# frozen_string_literal: true
 require 'rails_helper'
 
 describe Applicant, '#full_name' do
   it 'should be a combination of firstname and surname' do
     applicant = create(:applicant, firstname: 'Ola', surname: 'Norman')
-    expect(applicant.full_name).to eq "Ola Norman"
+    expect(applicant.full_name).to eq 'Ola Norman'
   end
 end
 
@@ -19,7 +20,7 @@ describe Applicant, '.authenticate' do
   end
 
   it 'should return nil given incorrect password' do
-    expect(Applicant.authenticate(@email, "wrong_password")).to be_nil
+    expect(Applicant.authenticate(@email, 'wrong_password')).to be_nil
   end
 
   it 'should return nil given incorrect email' do

@@ -1,21 +1,21 @@
 # -*- encoding : utf-8 -*-
+# frozen_string_literal: true
 Rails.application.routes.draw do
   localized do
-
-    root to: "site#index"
+    root to: 'site#index'
     get 'rss(/:type)', to: 'events#rss', defaults: { format: 'rss' }
 
     get 'contact', to: 'contact#index'
     post 'contact', to: 'contact#create'
 
     get 'search', to: 'search#search'
-    #resources :search, only: [:new, :create, :search]
+    # resources :search, only: [:new, :create, :search]
     ############################
     ##  Routes for events     ##
     ############################
 
     resources :events do
-      get :buy, on: :member, action: "buy"
+      get :buy, on: :member, action: 'buy'
       get :search, on: :collection
       post :search, on: :collection
       get :archive_search, on: :collection
@@ -25,10 +25,10 @@ Rails.application.routes.draw do
       get :ical, on: :collection, defaults: { format: 'ics' }
       get :rss, on: :collection, defaults: { format: 'rss' }
 
-      #collection do
+      # collection do
       #  get 'purchase_callback', to: :purchase_callback_failure
-    #    get 'purchase_callback/:tickets', to: :purchase_callback_success
-      #end
+      #    get 'purchase_callback/:tickets', to: :purchase_callback_success
+      # end
     end
 
     resources :front_page_locks, only: [:edit, :update] do
@@ -39,15 +39,15 @@ Rails.application.routes.draw do
     ##  Routes for pages      ##
     ############################
 
-    resources :pages, path: "information" do
+    resources :pages, path: 'information' do
       collection do
-        get "admin"
-        get "admin/graph", to:"pages#graph"
-        post "preview"
+        get 'admin'
+        get 'admin/graph', to: 'pages#graph'
+        post 'preview'
       end
 
       member do
-        get "history"
+        get 'history'
       end
     end
 
@@ -84,24 +84,24 @@ Rails.application.routes.draw do
     # Has to be above "resources :applicants" to get higher priority
     # because "/applicants/login" should match applicant_sessions#new
     # instead of applicants#show(login).
-    scope "/applicants" do
+    scope '/applicants' do
       # ApplicantSessionsController
-      match "login" => "applicant_sessions#new",
+      match 'login' => 'applicant_sessions#new',
             as: :applicants_login,
             via: :get
-      match "login" => "applicant_sessions#create",
+      match 'login' => 'applicant_sessions#create',
             as: :connect_applicant,
             via: :post
 
       # ApplicantsController
-      match "change_password/:id" => "applicants#change_password", as: :change_password, via: :get
-      match "forgot_password" => "applicants#forgot_password", via: :get
-      match "generate_forgot_password_email" => "applicants#generate_forgot_password_email",
+      match 'change_password/:id' => 'applicants#change_password', as: :change_password, via: :get
+      match 'forgot_password' => 'applicants#forgot_password', via: :get
+      match 'generate_forgot_password_email' => 'applicants#generate_forgot_password_email',
             via: :post
-      match "reset_password" => "applicants#reset_password", via: :get
+      match 'reset_password' => 'applicants#reset_password', via: :get
     end
 
-    match "applicants/search" => "applicants#search",
+    match 'applicants/search' => 'applicants#search',
           as: :applicant_search,
           via: :get
     resources :applicants
@@ -152,33 +152,33 @@ Rails.application.routes.draw do
       end
     end
 
-    match "applicant/steal_identity" => "applicants#steal_identity",
+    match 'applicant/steal_identity' => 'applicants#steal_identity',
           as: :applicants_steal_identity,
           via: :post
-    match "konsert-og-uteliv" => "site#concert",
+    match 'konsert-og-uteliv' => 'site#concert',
           as: :concert,
           via: :get
-    match "login" => "user_sessions#new",
+    match 'login' => 'user_sessions#new',
           as: :login,
           via: :get
-    match "logout" => "user_sessions#destroy",
+    match 'logout' => 'user_sessions#destroy',
           as: :logout,
           via: :post
-    match "members/control_panel" => "members#control_panel",
+    match 'members/control_panel' => 'members#control_panel',
           as: :members_control_panel,
           via: :get
-    match "members/search.:format" => "members#search",
+    match 'members/search.:format' => 'members#search',
           as: :members_search,
           via: :get
-    match "members/steal_identity" => "members#steal_identity",
+    match 'members/steal_identity' => 'members#steal_identity',
           as: :members_steal_identity,
           via: :post
 
-    scope "/medlem" do
-      match "login" => "member_sessions#new",
+    scope '/medlem' do
+      match 'login' => 'member_sessions#new',
             as: :members_login,
             via: :get
-      match "login" => "member_sessions#create",
+      match 'login' => 'member_sessions#create',
             as: :connect,
             via: :post
     end
@@ -188,12 +188,11 @@ Rails.application.routes.draw do
       post :search, on: :collection
     end
 
-
-    namespace :sulten, path: "lyche" do
-      get "/reservasjon" => "reservations#new"
-      get :admin, to: "admin#index"
-      get :kjempelars, to: "admin#index"
-      get "reservations/archive" => "reservations#archive"
+    namespace :sulten, path: 'lyche' do
+      get '/reservasjon' => 'reservations#new'
+      get :admin, to: 'admin#index'
+      get :kjempelars, to: 'admin#index'
+      get 'reservations/archive' => 'reservations#archive'
 
       resources :reservation_types
       resources :reservations do
@@ -203,11 +202,10 @@ Rails.application.routes.draw do
       resources :tables
     end
 
-    get ":id" => "pages#show", :id => Page::NAME_FORMAT
+    get ':id' => 'pages#show', :id => Page::NAME_FORMAT
   end
-
 end
 
 # Add Norwegian routes and prefix English ones with /en; this is handled
 # by the 'rails-translate-routes' gem
-#ActionController::Routing::Translator.translate_from_file('config/locales/routes/i18n-routes.yml')
+# ActionController::Routing::Translator.translate_from_file('config/locales/routes/i18n-routes.yml')

@@ -1,4 +1,5 @@
 # -*- encoding : utf-8 -*-
+# frozen_string_literal: true
 class RolesController < ApplicationController
   filter_access_to [:pass], attribute_check: true
   before_action :find_by_id, only: [:show, :edit, :update]
@@ -46,7 +47,7 @@ class RolesController < ApplicationController
 
   def update
     if @role.update_attributes(role_params)
-      flash[:success] = "Rollen er oppdatert."
+      flash[:success] = 'Rollen er oppdatert.'
       redirect_to role_url @role
     else
       flash[:error] = t('common.fields_missing_error')
@@ -69,14 +70,14 @@ class RolesController < ApplicationController
       member: @member,
       role: @role
     )
-    flash[:success] = t("roles.pass_success", role: @role.title, member: @member.full_name)
+    flash[:success] = t('roles.pass_success', role: @role.title, member: @member.full_name)
     redirect_to members_control_panel_path
   end
 
   protected
 
   def find_by_id
-    @role = Role.find_by_id(params[:id].to_i)
+    @role = Role.find_by(id: params[:id].to_i)
 
     raise ActiveRecord::RecordNotFound if @role.nil?
   end

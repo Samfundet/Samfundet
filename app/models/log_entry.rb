@@ -1,6 +1,7 @@
 # -*- encoding : utf-8 -*-
+# frozen_string_literal: true
 class LogEntry < ActiveRecord::Base
-  validates_presence_of :log, :admission, :group, :applicant, :member
+  validates :log, :admission, :group, :applicant, :member, presence: true
 
   belongs_to :applicant
   belongs_to :admission

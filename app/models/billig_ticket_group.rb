@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class BilligTicketGroup < ActiveRecord::Base
   self.primary_key = :ticket_group
   # attr_accessible :event, :is_theater_ticket_group, :num, :num_sold, :ticket_group, :ticket_group_name

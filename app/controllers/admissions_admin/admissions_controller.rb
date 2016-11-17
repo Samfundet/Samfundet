@@ -1,4 +1,5 @@
 # -*- encoding : utf-8 -*-
+# frozen_string_literal: true
 class AdmissionsAdmin::AdmissionsController < ApplicationController
   layout 'admissions'
   filter_access_to [:show, :statistics]
@@ -27,11 +28,11 @@ class AdmissionsAdmin::AdmissionsController < ApplicationController
     admission_start = @admission.shown_from.to_date
     admission_end = @admission.actual_application_deadline.to_date
     applications_per_day = (admission_start..admission_end).map do |day|
-      @admission.job_applications.where("DATE(job_applications.created_at) = ?",
+      @admission.job_applications.where('DATE(job_applications.created_at) = ?',
                                         day).count
     end
     admission_day_labels = (admission_start..admission_end).map do |day|
-      day.strftime("%-d.%-m")
+      day.strftime('%-d.%-m')
     end
 
     # The Gchart methods return an external URL to an image of the chart.

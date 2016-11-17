@@ -1,9 +1,10 @@
 # -*- encoding : utf-8 -*-
+# frozen_string_literal: true
 Samfundet::Application.configure do
   # Settings specified here will take precedence over those in config/environment.rb
 
   # Define our logger and set it to rotate the log monthly
-  config.logger = Logger.new(Rails.root.join('log/production.log'), shift_age='monthly')
+  config.logger = Logger.new(Rails.root.join('log/production.log'), shift_age = 'monthly')
 
   # The production environment is meant for finished, "live" apps.
   # Code is not reloaded between requests
@@ -53,7 +54,7 @@ Samfundet::Application.configure do
   Haml::Template.options[:ugly] = :true
 
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = { host: 'samfundet.no', protocol: 'https'  }
+  config.action_mailer.default_url_options = { host: 'samfundet.no', protocol: 'https' }
 
   # set delivery method to :smtp, :sendmail or :test
   config.action_mailer.delivery_method = :sendmail
@@ -64,11 +65,11 @@ Samfundet::Application.configure do
     arguments: '-i'
   }
 
-  config.billig_path = "https://billettsalg.samfundet.no/pay".freeze
-  config.billig_ticket_path = 'https://billig.samfundet.no/pdf?'.freeze
+  config.billig_path = 'https://billettsalg.samfundet.no/pay'
+  config.billig_ticket_path = 'https://billig.samfundet.no/pdf?'
 
   config.after_initialize do
-    billig_table_prefix = "billig."
+    billig_table_prefix = 'billig.'
     billig_tables = [BilligEvent, BilligTicketGroup, BilligPriceGroup, BilligPaymentError, BilligPaymentErrorPriceGroup, BilligTicket, BilligPurchase, BilligTicketCard]
 
     billig_tables.each do |table|

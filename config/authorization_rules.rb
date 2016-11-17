@@ -1,4 +1,5 @@
 # -*- encoding : utf-8 -*-
+# frozen_string_literal: true
 authorization do
   role :guest do
     # Login is not protected, and should not be!
@@ -11,10 +12,10 @@ authorization do
 
     # Password reset should not be protected.
     has_permission_on :applicants,
-      to: [:forgot_password,
-        :generate_forgot_password_email,
-        :reset_password,
-        :change_password]
+                      to: [:forgot_password,
+                           :generate_forgot_password_email,
+                           :reset_password,
+                           :change_password]
 
     # Explicit read-privileges
     has_permission_on :site, to: :read
@@ -55,12 +56,12 @@ authorization do
     # page_admin rolle, en slags redaktør.
     has_permission_on :pages, to: :preview
     has_permission_on :pages, to: [:edit, :update] do
-      if_attribute role: is_in {user.sub_roles}
+      if_attribute role: is_in { user.sub_roles }
     end
 
     has_permission_on :roles, to: :pass do
       if_attribute passable: true,
-        members: contains { user }
+                   members: contains { user }
     end
 
     has_permission_on :roles, to: [:read, :manage_members] do
@@ -78,7 +79,7 @@ authorization do
       :sulten_reservations,
       :sulten_reservation_types,
       :sulten_admin
-      ], to: :manage
+    ], to: :manage
   end
 
   role :lim_web do
@@ -117,7 +118,7 @@ authorization do
       :sulten_reservation_types,
       :sulten_admin,
       :contact
-      ], to: :manage
+    ], to: :manage
 
     has_permission_on :admissions_admin_job_applications, to: :hidden_create
     has_permission_on :admissions_admin_jobs, to: :hidden_create
@@ -140,7 +141,7 @@ authorization do
       :admissions_admin_interviews,
       :admissions_admin_jobs,
       :admissions_admin_job_applications,
-      :admissions_admin_log_entries,
+      :admissions_admin_log_entries
     ], to: :manage
 
     has_permission_on :admissions_admin_job_applications, to: :hidden_create
@@ -158,7 +159,7 @@ authorization do
       if_attribute applicant: is { user }
     end
     has_permission_on :applicants, to: [:update] do
-      if_attribute id: is {user.id}
+      if_attribute id: is { user.id }
     end
   end
 

@@ -1,4 +1,5 @@
 # -*- encoding : utf-8 -*-
+# frozen_string_literal: true
 
 class Applicant < ActiveRecord::Base
   has_many :job_applications, -> { where(withdrawn: false).order(:priority) }, dependent: :destroy
@@ -8,18 +9,18 @@ class Applicant < ActiveRecord::Base
 
   attr_accessor :password, :password_confirmation, :old_password
 
-  validates_presence_of :firstname, :surname, :email, :phone, :campus
-  validates_uniqueness_of :email, :phone
+  validates :firstname, :surname, :email, :phone, :campus, presence: true
+  validates :email, :phone, uniqueness: true
 
   validates :email, email: true
 
-  validates_presence_of :password, :password_confirmation,
-                        if: ->(applicant) { applicant.new_record? }
-  validates_length_of :password, minimum: 6,
-                                 if: ->(applicant) { applicant.new_record? }
-  validates_length_of :password, minimum: 6, if: :password_changed?
-  validates_confirmation_of :password, if: :password_changed?
-  validates_format_of :phone, with: /\A[\d\s+]+\z/
+  validates :password, :password_confirmation,
+            presence: { if: ->(applicant) { applicant.new_record? } }
+  validates :password, length: { minimum: 6,
+                                 if: ->(applicant) { applicant.new_record? } }
+  validates :password, length: { minimum: 6, if: :password_changed? }
+  validates :password, confirmation: { if: :password_changed? }
+  validates :phone, format: { with: /\A[\d\s+]+\z/ }
 
   before_save :hash_new_password, if: :password_changed?
 
@@ -32,7 +33,7 @@ class Applicant < ActiveRecord::Base
   end
 
   def hash_new_password
-    cost = if Rails.env == "production"
+    cost = if Rails.env == 'production'
              10
            else
              1
@@ -58,7 +59,7 @@ class Applicant < ActiveRecord::Base
   end
 
   def can_recover_password?
-    password_recoveries.where("created_at > ?", Time.current - 1.day).count < 5
+    password_recoveries.where('created_at > ?', Time.current - 1.day).count < 5
   end
 
   def create_recovery_hash

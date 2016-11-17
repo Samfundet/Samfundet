@@ -1,4 +1,5 @@
 # -*- encoding : utf-8 -*-
+# frozen_string_literal: true
 class EventsController < ApplicationController
   filter_access_to [:admin], require: :edit
   filter_access_to [:purchase_callback_failure,
@@ -114,8 +115,8 @@ class EventsController < ApplicationController
     if params.key? :bsession
       @payment_error = BilligPaymentError.where(error: params[:bsession]).first
       @payment_error_price_groups =
-          Hash[BilligPaymentErrorPriceGroup.where(error: params[:bsession])
-                                           .map { |bpepg| [bpepg.price_group, bpepg.number_of_tickets] }]
+        Hash[BilligPaymentErrorPriceGroup.where(error: params[:bsession])
+                                         .map { |bpepg| [bpepg.price_group, bpepg.number_of_tickets] }]
       flash.now[:error] = @payment_error.message
     else
       @payment_error = nil
@@ -132,7 +133,7 @@ class EventsController < ApplicationController
   def archive
     @events = Event.past
                    .paginate(page: params[:page], per_page: 20)
-                   .order("non_billig_start_time DESC")
+                   .order('non_billig_start_time DESC')
   end
 
   def admin_applet
@@ -140,33 +141,32 @@ class EventsController < ApplicationController
 
   def purchase_callback_success
     split_tickets = params[:tickets]
-                    .split(",")
+                    .split(',')
                     .map(&:to_i)
                     .uniq - [0]
 
-    @references = split_tickets.join(", ") << "."
+    @references = split_tickets.join(', ') << '.'
     @pdf_url = Rails.application.config.billig_ticket_path.dup
     @sum = 0
 
     @ticket_event_price_group_card_no =
-        split_tickets.each_with_index.map do |ticket_with_hmac, i|
-          ticket_id = ticket_with_hmac.to_s[0..-6].to_i # First 5 characters are hmac.
-          @pdf_url << "ticket#{i}=#{ticket_with_hmac}&"
-          billig_ticket = BilligTicket.find(ticket_id)
+      split_tickets.each_with_index.map do |ticket_with_hmac, i|
+        ticket_id = ticket_with_hmac.to_s[0..-6].to_i # First 5 characters are hmac.
+        @pdf_url << "ticket#{i}=#{ticket_with_hmac}&"
+        billig_ticket = BilligTicket.find(ticket_id)
 
-          if billig_ticket
-            @sum += billig_ticket.billig_price_group.price
+        next unless billig_ticket
+        @sum += billig_ticket.billig_price_group.price
 
-            card_number = if billig_ticket.on_card
-                            billig_ticket.billig_purchase.membership_card.card
-                          end
+        card_number = if billig_ticket.on_card
+                        billig_ticket.billig_purchase.membership_card.card
+                      end
 
-            [billig_ticket,
-             billig_ticket.billig_event,
-             billig_ticket.billig_price_group,
-             card_number]
-          end
-        end.compact
+        [billig_ticket,
+         billig_ticket.billig_event,
+         billig_ticket.billig_price_group,
+         card_number]
+      end.compact
 
     @pdf_url.chop! # Remove last '&' character.
   end

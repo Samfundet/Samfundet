@@ -1,4 +1,5 @@
 # -*- encoding : utf-8 -*-
+# frozen_string_literal: true
 Samfundet::Application.configure do
   # Settings specified here will take precedence over those in config/environment.rb
 
@@ -57,11 +58,11 @@ Samfundet::Application.configure do
     arguments: '-i'
   }
 
-  config.billig_path = "https://billettsalg-test.uka.no/pay".freeze
-  config.billig_ticket_path = 'https://billig.samfundet.no/pdf?'.freeze
+  config.billig_path = 'https://billettsalg-test.uka.no/pay'
+  config.billig_ticket_path = 'https://billig.samfundet.no/pdf?'
 
   config.after_initialize do
-    billig_table_prefix = "billig."
+    billig_table_prefix = 'billig.'
     billig_tables = [BilligEvent, BilligTicketGroup, BilligPriceGroup, BilligPaymentError, BilligPaymentErrorPriceGroup, BilligTicket, BilligPurchase, BilligTicketCard]
 
     billig_tables.each do |table|

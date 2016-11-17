@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class BilligPurchase < ActiveRecord::Base
   self.primary_key = :purchase
 
@@ -6,7 +7,7 @@ class BilligPurchase < ActiveRecord::Base
   # attr_accessible :owner_member_id, :owner_email
 
   belongs_to :member, foreign_key: :owner_member_id
-  has_one :membership_card, class_name: "BilligTicketCard", foreign_key: :owner_member_id, primary_key: :owner_member_id
+  has_one :membership_card, class_name: 'BilligTicketCard', foreign_key: :owner_member_id, primary_key: :owner_member_id
 
   has_one :billig_ticket
 end

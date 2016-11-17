@@ -1,4 +1,5 @@
 # -*- encoding : utf-8 -*-
+# frozen_string_literal: true
 class Event < ActiveRecord::Base
   AGE_LIMIT = %w(eighteen eighteen_twenty twenty none).freeze
   EVENT_TYPE = %w(art concert course dj excenteraften football_match happening
@@ -25,14 +26,14 @@ class Event < ActiveRecord::Base
   extend LocalizedFields
   has_localized_fields :title, :short_description, :long_description
 
-  validates_presence_of :title_en, :non_billig_title_no, :non_billig_start_time, :age_limit,
-                        :event_type, :status, :area, :organizer, :price_type, :banner_alignment, :image_id
-  validates_inclusion_of :age_limit, in: AGE_LIMIT, message: "Invalid age limit"
-  validates_inclusion_of :event_type, in: EVENT_TYPE, message: "Invalid type"
-  validates_inclusion_of :status, in: STATUS, message: "Invalid status"
-  validates_inclusion_of :price_type, in: PRICE_TYPE, message: "Invalid price type"
-  validates_inclusion_of :banner_alignment, in: BANNER_ALIGNMENT, message: "Invalid banner alignment"
-  validates_inclusion_of :organizer_type, in: [Group.name, ExternalOrganizer.name], message: "Invalid organizer type"
+  validates :title_en, :non_billig_title_no, :non_billig_start_time, :age_limit,
+            :event_type, :status, :area, :organizer, :price_type, :banner_alignment, :image_id, presence: true
+  validates :age_limit, inclusion: { in: AGE_LIMIT, message: 'Invalid age limit' }
+  validates :event_type, inclusion: { in: EVENT_TYPE, message: 'Invalid type' }
+  validates :status, inclusion: { in: STATUS, message: 'Invalid status' }
+  validates :price_type, inclusion: { in: PRICE_TYPE, message: 'Invalid price type' }
+  validates :banner_alignment, inclusion: { in: BANNER_ALIGNMENT, message: 'Invalid banner alignment' }
+  validates :organizer_type, inclusion: { in: [Group.name, ExternalOrganizer.name], message: 'Invalid organizer type' }
   validates :duration, numericality: { greater_than: 0 }
 
   validates :primary_color, css_hex_color: true, presence: true
@@ -49,14 +50,14 @@ class Event < ActiveRecord::Base
 
   accepts_nested_attributes_for :price_groups, allow_destroy: true
 
-  validates_presence_of :price_groups, if: -> { price_type.eql? 'custom' }
+  validates :price_groups, presence: { if: -> { price_type.eql? 'custom' } }
 
   before_save :enforce_price_choice
 
   scope :active, -> { where(status: 'active') }
-  scope :published, -> { where("publication_time < ?", DateTime.current) }
-  scope :upcoming, -> { where("non_billig_start_time >= ?", Date.current) }
-  scope :past, -> { where("non_billig_start_time < ?", Date.current) }
+  scope :published, -> { where('publication_time < ?', DateTime.current) }
+  scope :upcoming, -> { where('non_billig_start_time >= ?', Date.current) }
+  scope :past, -> { where('non_billig_start_time < ?', Date.current) }
   scope :today, -> {
     active
       .published
@@ -98,7 +99,7 @@ class Event < ActiveRecord::Base
                             :event_type],
                   using: {
                     tsearch: {
-                      dictionary: "english",
+                      dictionary: 'english',
                       prefix: true
                     }
                   },
@@ -110,10 +111,10 @@ class Event < ActiveRecord::Base
                      :long_description_no,
                      :age_limit,
                      :non_billig_start_time],
-                  additional_attributes: -> (record) { { publish_at: record.publication_time } }
+                  additional_attributes: ->(record) { { publish_at: record.publication_time } }
 
   # Uses the above defined PgSearch scope to perform search.
-  def self.text_search query
+  def self.text_search(query)
     if query.present?
       published.includes(:area).search(query)
     else
@@ -161,17 +162,17 @@ class Event < ActiveRecord::Base
     weight = 50 - 4 * ((start_time - Time.current) / 1.day).to_i
 
     case event_type
-    when "concert"
+    when 'concert'
       weight += 7
-    when "theme_party"
+    when 'theme_party'
       weight += 9
-    when "football_match", "dj", "quiz"
+    when 'football_match', 'dj', 'quiz'
       weight += -4 * 60 # two month's worth of ban
     else
       weight += 0
     end
 
-    weight += 6 if area.name == "Storsalen"
+    weight += 6 if area.name == 'Storsalen'
 
     case purchase_status
     when TICKETS_SOLD_OUT
@@ -215,7 +216,7 @@ class Event < ActiveRecord::Base
     end
   end
 
-  def self.front_page_events n_front_page_events
+  def self.front_page_events(n_front_page_events)
     locks = FrontPageLock.locks_enabled
     locks_map = Hash[locks.map { |l| [l.position, l.lockable] }]
 
