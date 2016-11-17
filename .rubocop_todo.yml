@@ -8,6 +8,7 @@
 AllCops:
   Exclude:
     - 'features/**/*'
+    - 'db/migrate/*'
 
 # Offense count: 36
 Metrics/AbcSize:
@@ -36,6 +37,29 @@ Metrics/ModuleLength:
 Metrics/PerceivedComplexity:
   Max: 15
 
+Metrics/BlockLength:
+  Exclude:
+    - 'config/authorization_rules.rb'
+    - 'config/routes.rb'
+    - 'db/seeds.rb'
+    - 'db/schema.rb'
+    - 'spec/**/*'
+    - 'config/environments/production.rb'
+    - 'config/environments/staging.rb'
+    - 'lib/billig_service.rb'
+    - 'lib/generate_roles.rb'
+    - 'lib/tasks/admission.rake'
+
+Rails/Output:
+  Exclude:
+    - 'db/seeds.rb'
+    - 'config/deploy.rb'
+    - 'lib/billig_service.rb'
+
+Lint/UselessAssignment:
+  Exclude:
+    - 'spec/**/*'
+    - 'lib/generate_roles.rb'
 
 # Offense count: 97
 Style/Documentation:
