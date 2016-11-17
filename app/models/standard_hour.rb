@@ -27,7 +27,5 @@ class StandardHour < ActiveRecord::Base
 
   scope :open_today, -> { today.where(open: true) }
 
-  scope :today, -> do
-    where(day: Time.current.strftime('%A').downcase)
-  end
+  scope :today, -> { where(day: Time.current.strftime('%A').downcase) }
 end

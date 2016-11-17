@@ -269,8 +269,8 @@ puts 'Creating opening hours'
 Area.all.each do |area|
   StandardHour::WEEKDAYS.each do |weekday|
     standard_hour = area.standard_hours.build(
-      open_time: Time.new(2014, 1, 27, 5 + rand(8), 0, 0),
-      close_time: Time.new(2014, 1, 27, 13 + rand(8), 0, 0),
+      open_time: Time.zone.local(2014, 1, 27, 5 + rand(8), 0, 0),
+      close_time: Time.zone.local(2014, 1, 27, 13 + rand(8), 0, 0),
       day: weekday,
       open: [true, false].sample
     )
@@ -378,7 +378,7 @@ Area.all.each do |area|
         price_group_name: 'Not member',
         netsale: true
       )
-      if rand(2) == 0
+      if rand(2).zero?
         extra_billig_ticket_group = BilligTicketGroup.create!(
           event: billig_event.event,
           num: number_of_available_tickets + 100,
@@ -539,7 +539,7 @@ tables = [table1.id, table2.id]
 types = [type1.id, type2.id]
 
 15.times.each do
-  now = DateTime.now
+  now = DateTime.current
   date = (now + rand(1..25).days).change(hour: rand(16..20))
   Sulten::Reservation.create(
     name: Faker::Name.first_name,
