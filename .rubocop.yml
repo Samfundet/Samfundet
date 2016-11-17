@@ -17,3 +17,6 @@ Lint/UnusedBlockArgument:
 
 AllCops:
   TargetRubyVersion: 2.3
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact

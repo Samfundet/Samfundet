@@ -136,8 +136,6 @@ class PagesController < ApplicationController
     graph
   end
 
-  private
-
   # urlFilter takes something that is supposed to be a link from an infopage
   # It then tries to sanitize and check what it points to and return the best guess.
   def urlFilter(url)

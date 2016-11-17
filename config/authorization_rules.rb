@@ -49,12 +49,9 @@ authorization do
     has_permission_on :members, to: :search do
       if_permitted_to :pass, :roles
     end
-    # kommentere på events osv.
-    # kommer seff etterhvert :)
-    #
-    # denne permissionen på sider vil vi etterhvert flytte over til en egen
-    # page_admin rolle, en slags redaktør.
+
     has_permission_on :pages, to: :preview
+
     has_permission_on :pages, to: [:edit, :update] do
       if_attribute role: is_in { user.sub_roles }
     end

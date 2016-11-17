@@ -11,7 +11,7 @@ class Document < ActiveRecord::Base
 
   validates_attachment :file,
                        presence: true,
-                       content_type: { content_type: /\Aapplication\/pdf\Z/ }
+                       content_type: { content_type: "application/pdf" }
 
   default_scope { order(publication_date: :desc) }
 
