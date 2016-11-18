@@ -53,13 +53,18 @@
         p {
             margin-top: 0;
             margin-bottom: 20px;
+        }
+        .youtube-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
 
             iframe.youtube-embed {
-              p > & {
-                text-align: center;
-              }
+              position: absolute;
+              top: 0;
+              left: 0;
               width: 100%;
-              height: 75vh;
+              height: 100%;
             }
         }
     }
