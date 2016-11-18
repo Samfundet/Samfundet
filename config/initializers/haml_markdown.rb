@@ -5,7 +5,7 @@ require 'redcarpet'
 class CustomRenderer < Redcarpet::Render::HTML
   def link(link, title, content)
     if content == "youtube-embed"
-      %(<iframe class="youtube-embed" src="#{link}" frameborder="0" allowfullscreen></iframe>)
+      %(<div class="youtube-wrapper"><iframe class="youtube-embed" src="#{link}" frameborder="0" allowfullscreen></iframe></div>)
     else
       %(<a href="#{link}">#{content}</a>)
     end
