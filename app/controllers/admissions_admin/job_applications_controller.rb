@@ -37,7 +37,6 @@ class AdmissionsAdmin::JobApplicationsController < ApplicationController
     applicant = Applicant.find_by(email: params[:email])
     if applicant.nil?
       flash[:error] = 'Fant ikke søker'
-      redirect_to admissions_admin_admission_group_job_path(admission_id: params[:admission_id], id: params[:job_id], group_id: params[:group_id])
     else
       job_application = JobApplication.new(applicant_id: applicant.id, motivation: 'Manuelt lagt til av Web', job_id: params[:job_id])
       if job_application.save
@@ -45,7 +44,7 @@ class AdmissionsAdmin::JobApplicationsController < ApplicationController
       else
         flash[:error] = 'Noe gikk galt. Søknad ikke lagt til'
       end
-      redirect_to admissions_admin_admission_group_job_path(admission_id: params[:admission_id], id: params[:job_id], group_id: params[:group_id])
     end
+    redirect_to admissions_admin_admission_group_job_path(admission_id: params[:admission_id], id: params[:job_id], group_id: params[:group_id])
   end
 end

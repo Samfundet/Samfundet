@@ -59,7 +59,7 @@ class AdmissionsAdmin::InterviewsController < ApplicationController
                                                               @interview.job_application.job)
       end
     end
-  rescue Exception => ex
+  rescue StandardError => ex
     if request.xhr?
       render text: ex.to_s, status: 500
     else

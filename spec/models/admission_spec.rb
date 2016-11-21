@@ -1,42 +1,29 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-describe Admission, '.has_open_admissions?' do
+describe Admission, '.open_admissions?' do
   it 'returns true if open admissions' do
     admission = create(:admission)
-    expect(Admission.has_open_admissions?).to eq true
+    expect(Admission.open_admissions?).to eq true
   end
 
   it 'returns false if no open admissions' do
     admission = create(:admission, shown_from: 2.days.from_now)
     admission2 = create(:admission, :past)
-    expect(Admission.has_open_admissions?).to eq false
+    expect(Admission.open_admissions?).to eq false
   end
 end
 
-describe Admission, '.has_active_admissions?' do
+describe Admission, '.active_admissions?' do
   # Defined as at admin priority deadline not passed
   it 'returns true if active admissions' do
     admission = create(:admission)
-    expect(Admission.has_active_admissions?).to eq true
+    expect(Admission.active_admissions?).to eq true
   end
 
   it 'returns false if no active admissions' do
     admission = create(:admission, :past)
-    expect(Admission.has_active_admissions?).to eq false
-  end
-end
-
-describe Admission, '#has_jobs?' do
-  it 'returns true if any jobs are found' do
-    admission = create(:admission)
-    jobs = create_list(:job, 5, admission: admission)
-    expect(admission.has_jobs?).to eq true
-  end
-
-  it 'returns false if no jobs are found' do
-    admission = create(:admission)
-    expect(admission.has_jobs?).to eq false
+    expect(Admission.active_admissions?).to eq false
   end
 end
 

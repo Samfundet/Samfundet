@@ -13,6 +13,6 @@ class BilligEvent < ActiveRecord::Base
   end
 
   def netsale_billig_ticket_groups
-    billig_ticket_groups.select { |btg| btg.billig_price_groups.any? &:netsale }
+    billig_ticket_groups.select { |btg| btg.billig_price_groups.any?(&:netsale) }
   end
 end

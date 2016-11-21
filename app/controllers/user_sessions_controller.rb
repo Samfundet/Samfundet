@@ -5,7 +5,7 @@ require 'uri'
 class UserSessionsController < ApplicationController
   def new
     @redirect_to = params[:redirect_to]
-    @active_admissions_exist = Admission.has_active_admissions?
+    @active_admissions_exist = Admission.active_admissions?
   end
 
   def destroy

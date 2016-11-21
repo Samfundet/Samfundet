@@ -11,12 +11,12 @@ class Document < ActiveRecord::Base
 
   validates_attachment :file,
                        presence: true,
-                       content_type: { content_type: "application/pdf" }
+                       content_type: { content_type: 'application/pdf' }
 
   default_scope { order(publication_date: :desc) }
 
   after_initialize do
-    self.publication_date ||= Date.today
+    self.publication_date ||= Time.zone.today
   end
 
   def to_param

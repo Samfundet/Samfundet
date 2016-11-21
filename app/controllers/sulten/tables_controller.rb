@@ -33,7 +33,6 @@ class Sulten::TablesController < ApplicationController
   end
 
   def create
-    puts params
     @table = Sulten::Table.new(table_params)
     if @table.save
       flash[:success] = t('helpers.models.sulten.table.success.create')

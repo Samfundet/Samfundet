@@ -129,16 +129,16 @@ class PagesController < ApplicationController
       if page.content_no.nil?
         graph[page.name] = []
       else
-        filtered_links = page.content_no.scan(urlRegex).map { |link_str| urlFilter link_str.first }
+        filtered_links = page.content_no.scan(urlRegex).map { |link_str| url_filter(link_str.first) }
         graph[page.name] = filtered_links.reject(&:nil?)
       end
     end
     graph
   end
 
-  # urlFilter takes something that is supposed to be a link from an infopage
+  # url_filter takes something that is supposed to be a link from an infopage
   # It then tries to sanitize and check what it points to and return the best guess.
-  def urlFilter(url)
+  def url_filter(url)
     nameRegex = /^#{Page::NAME_FORMAT}$/
 
     # check if link matches name spec already

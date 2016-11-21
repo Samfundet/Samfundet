@@ -4,7 +4,7 @@ Samfundet::Application.configure do
   # Settings specified here will take precedence over those in config/environment.rb
 
   # Define our logger and set it to rotate the log monthly
-  config.logger = Logger.new(Rails.root.join('log/production.log'), shift_age = 'monthly')
+  config.logger = Logger.new(Rails.root.join('log/production.log'), shift_age: 'monthly')
 
   # The production environment is meant for finished, "live" apps.
   # Code is not reloaded between requests

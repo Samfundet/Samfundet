@@ -24,7 +24,7 @@ class Event < ActiveRecord::Base
   #                :price_groups, :price_type, :banner_alignment, :price_groups_attributes
 
   extend LocalizedFields
-  has_localized_fields :title, :short_description, :long_description
+  localized_fields :title, :short_description, :long_description
 
   validates :title_en, :non_billig_title_no, :non_billig_start_time, :age_limit,
             :event_type, :status, :area, :organizer, :price_type, :banner_alignment, :image_id, presence: true
@@ -58,7 +58,8 @@ class Event < ActiveRecord::Base
   scope :published, -> { where('publication_time < ?', DateTime.current) }
   scope :upcoming, -> { where('non_billig_start_time >= ?', Date.current) }
   scope :past, -> { where('non_billig_start_time < ?', Date.current) }
-  scope :today, -> {
+
+  def self.today
     active
       .published
       .where(
@@ -66,13 +67,14 @@ class Event < ActiveRecord::Base
           (DateTime.current - 4.hours).change(hour: 4)..20.hours.from_now.change(hour: 4)
       )
       .order(:non_billig_start_time)
-  }
-  scope :by_frontpage_weight, -> {
+  end
+
+  def self.by_frontpage_weight
     active
       .published
       .upcoming
       .sort { |a, b| b.front_page_weight <=> a.front_page_weight }
-  }
+  end
 
   def title_no
     billig_event.try(:event_name) || non_billig_title_no
@@ -142,7 +144,7 @@ class Event < ActiveRecord::Base
 
     netsale_ticket_groups = billig_event.netsale_billig_ticket_groups
 
-    tickets_available = netsale_ticket_groups.any? &:tickets_left?
+    tickets_available = netsale_ticket_groups.any?(&:tickets_left?)
 
     if within_sale_period && netsale_ticket_groups.any?
       if tickets_available
@@ -260,7 +262,7 @@ class Event < ActiveRecord::Base
 
   def few_tickets_left?
     if billig_event.present?
-      billig_event.billig_ticket_groups.any? &:few_tickets_left
+      billig_event.billig_ticket_groups.any?(&:few_tickets_left)
     end
   end
 
@@ -271,8 +273,7 @@ class Event < ActiveRecord::Base
   private
 
   def unique_price_groups
-    unique_price_groups =
-      billig_event
+    billig_event
       .billig_ticket_groups
       .map(&:netsale_billig_price_groups)
       .flatten

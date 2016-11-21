@@ -73,10 +73,6 @@ class Applicant < ActiveRecord::Base
     false
   end
 
-  def is_logged?
-    LogEntry.where(applicant_id: id).any?
-  end
-
   def self.interested_other_positions(admission)
     where(interested_other_positions: true).select do |applicant|
       # If not wanted by any

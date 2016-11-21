@@ -13,12 +13,11 @@ class MembersRolesController < ApplicationController
   def create
     if @members_role.role.members.include? @members_role.member
       flash[:error] = 'Medlemmet har allerede denne rollen.'
-      redirect_to role_path(@members_role.role)
     else
       @members_role.save!
       flash[:success] = 'Medlemmet er lagt til.'
-      redirect_to role_path(@members_role.role)
     end
+    redirect_to role_path(@members_role.role)
   end
 
   private
