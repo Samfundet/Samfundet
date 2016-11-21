@@ -1,3 +1,10 @@
+%h1 Campus
+
+%table.new_campus
+  %thead
+    %tr
+      %th= link_to "Legg til nytt campus", new_campus_path()
+
 %table.campus
   %thead
     %tr
@@ -14,7 +21,7 @@
   %tbody
     - @campuses.each do |campus|
       %tr
-        %td= link_to campus.name, campus
+        %td= campus.name
         %td= campus.created_at
         %td= campus.updated_at
         %td= campus.number_of_applicants
