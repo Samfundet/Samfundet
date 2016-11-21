@@ -308,34 +308,35 @@ price_group_names.each do |group|
     PriceGroup.create(name: group, price: price)
   end
 end
-feedbacks = Array.new rand(3..5)
+feedbacks = Array.new 5
 feedbacks.length.times.each do |k|
   questions = Array.new rand(1..4)
   puts "Creating #{questions.length} feedback questions"
 
   questions.length.times.each do |j|
+    alternatives = Array.new rand(3..8)
+    alternatives.length.times.each do |i|
+        alternatives[i] = Feedback::Alternative.create!(
+            text: Faker::Lorem.sentence(5)
+        )
+    end
+
+    questions[j] = Feedback::Question.create!(
+      text: Faker::Lorem.sentence(5),
+      alternatives: alternatives
+    )
+    
     answers = Array.new rand(1..15)
 
     puts "Creating #{answers.length} feedback answers"
 
     answers.length.times.each do |i|
         answers[i] = Feedback::Answer.create!(
-          alternative: rand(1..4)
+          alternative: rand(1..alternatives.length),
+          question: questions[j]
         )
     end
 
-   alternatives = Array.new rand(3..8)
-   alternatives.length.times.each do |i|
-        alternatives[i] = Feedback::Alternative.create(
-            text: Faker::Lorem.sentence(5)
-        )
-   end
-
-    questions[j] = Feedback::Question.create!(
-      text: Faker::Lorem.sentence(5),
-      alternatives: alternatives,
-      answers: answers
-    )
   end
 
   puts "Creating feedback"

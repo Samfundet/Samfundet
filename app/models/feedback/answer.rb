@@ -1,5 +1,5 @@
 class Feedback::Answer < ActiveRecord::Base
-   attr_accessible :question, :alternative
+   attr_accessible :question, :alternative, :client
 
    belongs_to :question
 

@@ -41,6 +41,9 @@ Rails.application.routes.draw do
   resources :feedbacks do
     get :admin, on: :collection
     post :answer, to: "feedbacks#answer"
+    collection do
+        resources :feeback_questions
+    end
   end
 
   ############################

@@ -1,8 +1,13 @@
 class FeedbacksController < ApplicationController
 
-  filter_access_to [:admin], require: :edit
+  filter_access_to [:admin, :answers], require: :edit
   has_control_panel_applet :admin_applet,
                            if: -> { permitted_to? :edit, :feedbacks }
+
+  def answers
+    @feedback = Feedback.find(params[:id])
+    @answers = @feedback.questions.each{ |q| q.answers }.flatten
+  end
 
   def admin_applet
   end
@@ -16,9 +21,7 @@ class FeedbacksController < ApplicationController
   end
 
   def new
-    @feedback = Feedback.new(
-        questions: [Feedback::Question.new]
-    )
+    @feedback = Feedback.new
   end
   
   def show
@@ -27,7 +30,6 @@ class FeedbacksController < ApplicationController
 
   def edit
     @feedback = Feedback.find(params[:id])
-    @feedback.questions << Feedback::Question.new
   end
 
   def create
@@ -41,25 +43,25 @@ class FeedbacksController < ApplicationController
   end
 
   def answer
-    binding.pry
-    @feedback = Feedback.find params[:id]
-    for id, alternative in params[:alternative]
-        @question = @feedback.questions[id]
-        Feedback::Answer.create(
+    @feedback = Feedback.find params[:feedback_id]
+    params[:alternative].each_with_index do |alternative, i|
+        @question = @feedback.questions[i]
+        Feedback::Answer.where(client: params[:client]).first_or_create(
             alternative: alternative,
             question: @question
         )
     end
-    redirect_to :root_path
+    flash[:success] = t("feedback.complete")
+    redirect_to :root
   end
 
   def update
     @feedback = Feedback.find(params[:id])
 
     if @feedback.update_attributes(params[:feedback])
-      flash[:success] = t("helpers.models.feedback.success.update")
+      flash[:success] = t("helpers.models.feedbacks.success.update")
     else
-      flash.now[:error] = t("helpers.models.feedback.errors.update_fail")
+      flash.now[:error] = t("helpers.models.feedbacks.errors.update_fail")
     end
     redirect_to action: :edit
   end
