@@ -39,7 +39,6 @@ class BilligService < Sinatra::Base
           message: 'Some error occurred.'
         )
 
-        redirect 'http://localhost:3000/en/events/purchase_callback?bsession=' << bsession
       when 2
         BilligPaymentError.create!(
           error: bsession,
@@ -58,11 +57,8 @@ class BilligService < Sinatra::Base
             number_of_tickets: value
           )
         end
-
-        redirect 'http://localhost:3000/en/events/purchase_callback?bsession=' << bsession
-      else
-        redirect 'http://localhost:3000/en/events/purchase_callback?bsession=' << bsession
       end
+      redirect 'http://localhost:3000/en/events/purchase_callback?bsession=' << bsession
     else
       tickets = []
 

@@ -11,7 +11,7 @@ class Blog < ActiveRecord::Base
   scope :published, -> { where('publish_at < ?', DateTime.current).where(published: true) }
 
   extend LocalizedFields
-  has_localized_fields :title, :lead_paragraph, :content
+  localized_fields :title, :lead_paragraph, :content
 
   def image_or_default
     if image.present?

@@ -17,7 +17,7 @@ class AdmissionsAdmin::AdmissionsController < ApplicationController
   def statistics
     @admission = Admission.find(params[:id])
 
-    applications_count = @admission.job_applications.count
+    # applications_count = @admission.job_applications.count
     applications_per_group = @admission.groups.map do |group|
       group.jobs.where(admission_id: @admission.id).map do |job|
         job.job_applications.count

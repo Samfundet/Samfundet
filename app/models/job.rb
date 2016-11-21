@@ -17,7 +17,7 @@ class Job < ActiveRecord::Base
   # scope :appliable
 
   extend LocalizedFields
-  has_localized_fields :title, :description, :teaser, :default_motivation_text
+  localized_fields :title, :description, :teaser, :default_motivation_text
 
   def available_jobs_in_same_group
     group.jobs.where('admission_id = (?) AND id <> ?', admission_id, id)

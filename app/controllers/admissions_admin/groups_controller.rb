@@ -1,6 +1,7 @@
 # -*- encoding : utf-8 -*-
+# frozen_string_literal: true
 class AdmissionsAdmin::GroupsController < ApplicationController
-  layout "admissions"
+  layout 'admissions'
 
   filter_access_to [:show, :applications, :reject_calls], attribute_check: true
 
@@ -12,10 +13,10 @@ class AdmissionsAdmin::GroupsController < ApplicationController
     admission_start = @admission.shown_from.to_date
     admission_end = @admission.actual_application_deadline.to_date
     applications_per_day = (admission_start..admission_end).map do |day|
-      job_applications.count { |a| a.created_at.to_date === day.to_date }
+      job_applications.count { |a| a.created_at.to_date == day.to_date }
     end
     admission_day_labels = (admission_start..admission_end).map do |day|
-      day.strftime("%-d.%-m")
+      day.strftime('%-d.%-m')
     end
 
     @applications_per_day_chart = Gchart.bar(
@@ -32,7 +33,7 @@ class AdmissionsAdmin::GroupsController < ApplicationController
   def applications
     @admission = Admission.find(params[:admission_id])
 
-    job_applications = @admission.job_applications.includes(:job).where(jobs.group_id: @group.id)
+    job_applications = @admission.job_applications.includes(:job).where("jobs.group_id": @group.id)
     job_application_groupings = job_applications.group_by do |job_application|
       job_application.applicant.full_name.downcase
     end

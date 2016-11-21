@@ -107,21 +107,17 @@ class Admission < ActiveRecord::Base
   # call "Admission.appliable.with_relations".
   scope :with_relations, -> { includes(jobs: { group: :group_type }) }
 
-  def self.has_open_admissions?
+  def self.open_admissions?
     !Admission.appliable.empty?
   end
 
   # Defined as at admin priority deadline not passed
-  def self.has_active_admissions?
+  def self.active_admissions?
     Admission.active.any?
   end
 
   def appliable?
     (actual_application_deadline > Time.current) && (shown_from < Time.current)
-  end
-
-  def has_jobs?
-    !jobs.empty?
   end
 
   def interview_dates
