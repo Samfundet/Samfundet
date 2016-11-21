@@ -31,7 +31,7 @@ class MembersController < ApplicationController
   end
 
   def control_panel
-    @applets = ControlPanel.applets(request).select &:relevant?
+    @applets = ControlPanel.applets(request).select(&:relevant?)
   end
 
   def steal_identity_applet

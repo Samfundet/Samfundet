@@ -129,8 +129,6 @@ class Sulten::Reservation < ActiveRecord::Base
   end
 
   def self.kitchen_open?(from, to)
-    default_kitchen_opening_hour = Time.new(2015, 0o1, 0o1, 16, 0o0, 0o0)
-    default_kitchen_closing_hour = Time.new(2015, 0o1, 0o1, 22, 0o0, 0o0)
     (16..22).cover?(from.hour..to.hour)
   end
 end

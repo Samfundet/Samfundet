@@ -71,13 +71,11 @@ class JobApplicationsController < ApplicationController
     if @job_application && @job_application.job.admission.user_priority_deadline > Time.current
       @job_application.send "move_#{direction}"
       @job_application.save!
+    elsif request.xhr?
+      render text: t('job_applications.cannot_prioritize_after_deadline'), status: 500
+      return
     else
-      if request.xhr?
-        render text: t('job_applications.cannot_prioritize_after_deadline'), status: 500
-        return
-      else
-        flash[:error] = t('job_applications.cannot_prioritize_after_deadline')
-      end
+      flash[:error] = t('job_applications.cannot_prioritize_after_deadline')
     end
     redirect_to_applications
   end

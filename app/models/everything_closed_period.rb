@@ -14,8 +14,8 @@ class EverythingClosedPeriod < ActiveRecord::Base
   scope :current_and_future_closed_times, -> { where('closed_to >= ?', DateTime.current) }
 
   extend LocalizedFields
-  has_localized_fields :message
-  has_localized_fields :event_message
+  localized_fields :message
+  localized_fields :event_message
 
   def self.current_period
     active_closed_periods.first

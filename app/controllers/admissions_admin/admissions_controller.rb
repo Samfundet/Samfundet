@@ -19,7 +19,7 @@ class AdmissionsAdmin::AdmissionsController < ApplicationController
     @campuses = Campus.order(:name)
     @campus_count = Campus.number_of_applicants_given_admission(@admission)
 
-    applications_count = @admission.job_applications.count
+    # applications_count = @admission.job_applications.count
     applications_per_group = @admission.groups.map do |group|
       group.jobs.where(admission_id: @admission.id).map do |job|
         job.job_applications.count

@@ -41,7 +41,7 @@ class Interview < ActiveRecord::Base
     end
   end
 
-  def ACCEPTANCE_STATUSES
+  def acceptance_statuses
     if I18n.locale == :no
       ACCEPTANCE_STATUSES_NO
     elsif I18n.locale == :en

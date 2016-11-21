@@ -9,7 +9,7 @@ class Page < ActiveRecord::Base
   REVISION_FIELDS = [:title_no, :title_en, :content_no, :content_en, :content_type].freeze
 
   extend LocalizedFields
-  has_localized_fields :title, :name, :content
+  localized_fields :title, :name, :content
 
   validates :name_no, format: { with: /\A#{NAME_FORMAT}\z/ }
   validates :name_en, format: { with: /\A^#{NAME_FORMAT}\z/ }
