@@ -1,5 +1,6 @@
 'no':
   feedbacks:
+    feedback: undersøkelse
     create_success: Undersøkelsen er opprettet.
     create_error: Undersøkelsen ble ikke opprettet.
     update_success: Undersøkelsen er oppdatert.
@@ -14,9 +15,7 @@
     yes: ja
     no: nei
 
-    question:
-        delete: Slett spørsmål
-        add: Legg til spørsmål
+    question: spørsmål
 
     action:
         new: Opprett undersøkelse

@@ -5,6 +5,12 @@
     destroy: "slett"
     edit: "rediger"
     confirm: "Er du sikker?"
+    some:
+      show: "vis %{type}"
+      create: "opprett %{type}"
+      destroy: "slett %{type}"
+      edit: "rediger %{type}"
+      add: "legg til %{type}"
   common:
     markdown_hint: "Denne teksten formateres med <a href=/informasjon/markdown target=blank>Markdown</a>."
     fields_missing_error: "Vennligst fyll ut alle feltene."

@@ -41,9 +41,10 @@ Rails.application.routes.draw do
   resources :feedbacks do
     get :admin, on: :collection
     post :answer, to: "feedbacks#answer"
-    collection do
-        resources :feeback_questions
-    end
+  end
+
+  namespace :feedbacks do
+     resources :questions, only: [:edit, :update, :new, :create, :destroy]
   end
 
   ############################

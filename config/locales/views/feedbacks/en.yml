@@ -1,5 +1,6 @@
 en:
   feedbacks:
+    feedback: feedback
     create_success: Successfully created the feedback.
     create_error: Could not create feedback.
     update_success: Successfully updated the feedback.
@@ -13,9 +14,7 @@ en:
     yes: yes
     no: no
 
-    question:
-        delete: Delete question
-        add: Add question
+    question: question
 
     action:
         new: Create feedback

@@ -4,5 +4,5 @@
     = f.input :questions
     -#= f.semantic_fields_for :questions do |q|
     -#  = render 'question_fields', f: q
-    = link_to_add_association t('feedbacks.questions.add'), f, :questions
+    = link_to_add_association t('crud.some.add', type: t('feedbacks.question')), f, :questions
   = f.actions :submit

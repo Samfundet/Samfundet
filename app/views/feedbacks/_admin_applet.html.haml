@@ -5,5 +5,7 @@
   - if permitted_to? :create, :feedbacks
     %li
       = link_to t("feedbacks.action.new"), new_feedback_path
+    %li
+      = link_to t("crud.some.create", type: t("feedbacks.question")), new_feedbacks_question_path
   %li
     = link_to t("feedbacks.admin.title"), admin_feedbacks_path
