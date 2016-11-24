@@ -6,7 +6,7 @@
       %th= t("events.event_type")
       %th= t("events.organizer")
       %th= t("events.area")
-  
+
       - if permitted_to? :edit
         %th
       - if permitted_to? :destroy
@@ -23,7 +23,7 @@
 
         %td= event.organizer.name
 
-        %td= event.area 
+        %td= event.area
 
         - if permitted_to? :edit
           %td= link_to t("crud.edit"), edit_event_path(event)

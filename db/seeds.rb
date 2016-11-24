@@ -81,6 +81,15 @@ def phone_number
   (10000000 + rand * 9000000).to_i.to_s
 end
 
+# Create campuses
+number_of_campuses = 10
+
+number_of_campuses.times do
+  campus_name = Faker::Company.name
+  puts "Creating campus #{campus_name}"
+  Campus.create(name: campus_name)
+end
+
 # Create a number of applicants
 puts "Creating #{number_of_applicants} applicants, and makes them apply for #{number_of_job_applications_pr_applicant} jobs"
 distinct_emails(number_of_applicants).each do |email|
@@ -89,7 +98,7 @@ distinct_emails(number_of_applicants).each do |email|
     surname: Faker::Name.last_name,
     phone: phone_number,
     email: email,
-    campus: Faker::Company.name,
+    campus: Campus.order("RANDOM()").first,
     password: 'passord',
     password_confirmation: 'passord',
     interested_other_positions: Faker::Boolean.boolean
@@ -484,7 +493,7 @@ end
 
 puts "Creating documents"
 DocumentCategory.all.each do |category|
-    100.times do
+    25.times do
         member = Member.order("RANDOM()").first
         file = File.open(Rails.root.join('app', 'assets', 'files', 'dummy.pdf'))
         publication_date = 2.weeks.ago + (rand 2000).days

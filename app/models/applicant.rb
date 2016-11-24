@@ -5,10 +5,11 @@ class Applicant < ActiveRecord::Base
   has_many :jobs, through: :job_applications
   has_many :password_recoveries
   has_many :log_entries
+  belongs_to :campus
 
   attr_accessor :password, :password_confirmation, :old_password
 
-  validates_presence_of :firstname, :surname, :email, :phone, :campus
+  validates_presence_of :firstname, :surname, :email, :phone, :campus_id
   validates_uniqueness_of :email, :phone
 
   validates :email, email: true
