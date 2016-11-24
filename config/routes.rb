@@ -129,6 +129,11 @@ Rails.application.routes.draw do
   # If a resource is logically nested within another, the routes should
   # reflect that
   namespace :admissions_admin do
+    resources :campus, path: 'campus' do
+      get :admin, on: :collection
+      get :deactivate, to: "campus#deactivate"
+      get :activate, to: "campus#activate"
+    end
     resources :admissions, only: :show do
       get :statistics, on: :member
       resources :groups, only: :show do
@@ -198,12 +203,6 @@ Rails.application.routes.draw do
   end
 
   get ":id" => "pages#show", :id => Page::NAME_FORMAT
-
-  resources :campus, path: 'campus' do
-    get :admin, on: :collection
-    get :deactivate, to: "campus#deactivate"
-    get :activate, to: "campus#activate"
-  end
 end
 
 # Add Norwegian routes and prefix English ones with /en; this is handled

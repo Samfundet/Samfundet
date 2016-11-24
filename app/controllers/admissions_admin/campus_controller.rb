@@ -1,8 +1,8 @@
-class CampusController < ApplicationController
+class AdmissionsAdmin::CampusController < ApplicationController
   filter_access_to [:admin], require: :edit
 
   def admin
-    @campuses = Campus.all
+    @campuses = Campus.order(:name)
     @campus_count = Campus.number_of_applicants_current_admission
   end
 

@@ -3,7 +3,7 @@
 %table.new_campus
   %thead
     %tr
-      %th= link_to "Legg til nytt campus", new_campus_path()
+      %th= link_to "Legg til nytt campus", new_admissions_admin_campus_path
 
 %table.campus
   %thead
@@ -27,9 +27,9 @@
         %td= campus.number_of_applicants
         %td= @campus_count[campus.id]
         - if permitted_to? :edit
-          %td= link_to t("crud.edit"), edit_campus_path(campus)
+          %td= link_to t("crud.edit"), edit_admissions_admin_campus_path(campus)
           - if campus.active?
-            %td= link_to t("dectivate"), campus_deactivate_path(campus)
+            %td= link_to t("deactivate"), admissions_admin_campus_deactivate_path(campus)
           - else
-            %td= link_to t("activate"), campus_activate_path(campus)
+            %td= link_to t("activate"), admissions_admin_campus_activate_path(campus)
 
