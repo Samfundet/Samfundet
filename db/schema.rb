@@ -30,11 +30,11 @@ ActiveRecord::Schema.define(:version => 20161117204249) do
     t.string   "email"
     t.string   "hashed_password"
     t.string   "phone"
-    t.boolean  "interested_other_positions"
     t.datetime "created_at",                                    :null => false
     t.datetime "updated_at",                                    :null => false
-    t.string   "campus"
+    t.boolean  "interested_other_positions"
     t.boolean  "disabled",                   :default => false
+    t.integer  "campus_id"
   end
 
   create_table "areas", :force => true do |t|
@@ -138,6 +138,13 @@ ActiveRecord::Schema.define(:version => 20161117204249) do
     t.string   "title_en"
     t.text     "lead_paragraph_en"
     t.text     "content_en"
+  end
+
+  create_table "campus", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+    t.boolean  "active",     :default => true
   end
 
   create_table "document_categories", :force => true do |t|

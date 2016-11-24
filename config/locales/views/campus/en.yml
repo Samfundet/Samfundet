@@ -1,0 +1,10 @@
+en:
+  save_success: "Campus saved!"
+  save_error: "Something went wrong. Could not save campus"
+  update_success: "Campus updated"
+  update_error: "Something went wrong. Could not update campus"
+  number_of_applicants: "Number of applicants"
+  number_of_current_applicants: "Number of applicants this admission"
+  activate: "Activate"
+  deactivate: "Deactivate"
+  edit: "Edit campus"
