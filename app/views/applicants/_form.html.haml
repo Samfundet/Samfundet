@@ -5,7 +5,7 @@
     != form.input :firstname
     != form.input :surname
     != form.input :phone
-    != form.input :campus_id, as: :select, collection: Campus.all
+    != form.input :campus_id, as: :select, collection: Campus.order(:name)
 
   = form.inputs name: t("applicants.forms.register.login_information") do
     != form.input :email
