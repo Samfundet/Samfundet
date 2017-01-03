@@ -45,7 +45,11 @@ class JobApplicationsController < ApplicationController
   def destroy
     JobApplication.find(params[:id]).update_attribute(:withdrawn, true)
     flash[:success] = t('job_applications.application_deleted')
-    redirect_to job_applications_path
+    if current_user.class == Applicant
+      redirect_to job_applications_path
+    else
+      redirect_to admissions_admin_admission_group_job_job_application_path(@job_application.job.admission, @job_application.job.group, @job_application.job, @job_application)
+    end
   end
 
   def up
