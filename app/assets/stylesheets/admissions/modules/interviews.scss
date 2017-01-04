@@ -75,6 +75,10 @@
     background-color: lightgrey;
   }
 
+  tr.display-none {
+    display: none;
+  }
+
   // This overrides hover styles for assigned by jquery-tablesorter. We don't want the background
   // color to change as the color indicates the status of the applicant.
   tr {
