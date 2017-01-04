@@ -36,7 +36,11 @@ class JobApplicationsController < ApplicationController
     if @job_application.update_attributes(params[:job_application])
       @job_application.update_attribute(:withdrawn, false)
       flash[:success] = t('job_applications.application_updated')
-      redirect_to job_applications_path
+      if current_user.class == Applicant
+        redirect_to job_applications_path
+      else
+        redirect_to admissions_admin_admission_group_job_job_application_path(@job_application.job.admission, @job_application.job.group, @job_application.job, @job_application)
+      end
     else
       render_application_form_with_errors
     end

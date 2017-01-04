@@ -26,8 +26,11 @@
     %h3= t('job_applications.application')
     != simple_format(html_escape(@job_application.motivation))
 
-    - if !@job_application.withdrawn && permitted_to?(:withdraw_job_application)
-      %h3= link_to 'Trekk søknad', job_application_path(@job_application), method: :delete, confirmation: "Er du sikker?"
+    - if permitted_to?(:withdraw_job_application)
+      - if !@job_application.withdrawn
+        %h3= link_to 'Trekk søknad', job_application_path(@job_application), method: :delete, confirm: "Er du sikker?"
+      - else
+        %h3= link_to 'Aktiver søknad', job_application_path(@job_application), method: :put, confirm: "Er du sikker?"
 
   .log
     %h3= t('job_applications.log_entries.log_entries')
