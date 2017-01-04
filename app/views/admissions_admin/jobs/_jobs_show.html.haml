@@ -1,3 +1,4 @@
+= javascript_include_tag 'job_applications/admissions_admin_job_applications', defer: true
 .section
   .block
     %p
@@ -12,6 +13,9 @@
       %span{ style: "color: #CEC000"}= t('interviews.yellow_explanation')
       %br
       %span{ style: "color: grey"}= t('interviews.grey_explanation')
+    %p
+      %input#hide_withdrawn{type:"checkbox", checked: true}
+        =t('interviews.hide_withdrawn_applications')
     %table.applications.custom-table.sorted
       %thead
         %th
@@ -41,7 +45,7 @@
       %tbody
         - job_application_groupings.each do |job_applications|
           - job_applications.each do |job_application|
-            %tr{id: "application-#{job_application.id}", class: job_application.assignment_status }
+            %tr{id: "application-#{job_application.id}", class: "#{job_application.assignment_status} #{job_application.withdrawn ? 'display-none' : ''}"}
               %td
                 = link_to admissions_admin_admission_group_job_job_application_path(@admission, @group, job_application.job, job_application) do
                   = job_application.applicant.full_name
