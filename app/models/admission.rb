@@ -17,6 +17,8 @@ class Admission < ActiveRecord::Base
                                \                                  # A space.
                                [0-2][0-9]:[0-5][0-9]\Z/x # The time.
 
+  validates :promo_video, url: true
+
   # An admission has five datetimes associated with it:
   #
   #   shown_from                  - The admission is shown on the front page
