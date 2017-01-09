@@ -50,7 +50,8 @@ admission = Admission.create!(
   shown_application_deadline: 2.weeks.from_now,
   actual_application_deadline: 2.weeks.from_now + 4.hours,
   user_priority_deadline: 3.weeks.from_now,
-  admin_priority_deadline: 3.weeks.from_now + 1.hour
+  admin_priority_deadline: 3.weeks.from_now + 1.hour,
+  promo_video: "https://www.youtube.com/embed/T8MjwROd0dc"
 )
 puts "Done creating admission"
 
