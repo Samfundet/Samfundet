@@ -1,5 +1,4 @@
 class UrlValidator < ActiveModel::EachValidator
-
   def self.compliant?(value)
     uri = URI.parse(value)
     !uri.host.nil?
@@ -12,5 +11,4 @@ class UrlValidator < ActiveModel::EachValidator
       record.errors.add(attribute, "is not a valid URL")
     end
   end
-
 end
