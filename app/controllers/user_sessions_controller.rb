@@ -10,6 +10,7 @@ class UserSessionsController < ApplicationController
   def destroy
     session[:applicant_id] = nil
     session[:member_id]    = nil
+    cookies.delete :signed_in
 
     flash[:success] = t("sessions.logout_success")
     redirect_to root_path

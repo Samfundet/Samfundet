@@ -163,6 +163,7 @@ class ApplicantsController < ApplicationController
   def login_applicant(applicant)
     session[:applicant_id] = applicant.id
     session[:member_id] = nil
+    cookies[:signed_in] = 1
 
     flash[:success] = t("applicants.registration_success")
 
