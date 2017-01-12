@@ -53,7 +53,7 @@ gem 'uglifier'
 
 # declarative_authorization provides a DSL for role-based access control.
 # See: config/authorization_rules.rb
-gem 'declarative_authorization', git: 'git@github.com:Samfundet/declarative_authorization.git', branch: 'rails5'
+gem 'declarative_authorization', git: 'https://github.com/Samfundet/declarative_authorization.git', branch: 'rails5'
 # gem 'cancancan', '~> 1.15'
 
 # ActiveRecord manages referential integrity at the application level,
