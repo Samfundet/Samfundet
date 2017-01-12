@@ -25,6 +25,7 @@ class MemberSessionsController < UserSessionsController
   def login_member(member)
     session[:applicant_id] = nil
     session[:member_id] = member.id
+    cookies[:signed_in] = 1
     flash[:success] = t("sessions.login_success", name: CGI.escapeHTML(member.full_name))
   end
 end
