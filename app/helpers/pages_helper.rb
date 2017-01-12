@@ -18,6 +18,12 @@ module PagesHelper
     end.join.html_safe
   end
 
+  def page_by_name(name)
+    page_url Page.find_by_name(name)
+  rescue
+    ""
+  end
+
   def expand_includes(text, seen = Set.new)
     text.gsub(/%include (#{Page::NAME_FORMAT})%/) do
       name = $1

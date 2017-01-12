@@ -1,5 +1,7 @@
 %h1
   = set_and_return_title t("members.control_panel")
+#faq
+  = link_to t('navigation.admin.faq'), page_by_name("intern-faq")
 
 #applets
   - @applets.each do |applet|
