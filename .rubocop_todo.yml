@@ -89,3 +89,22 @@ Style/VariableName:
 
 Style/GuardClause:
     Enabled: false
+
+Style/AccessorMethodName:
+  Exclude:
+    - 'app/helpers/application_helper.rb'
+
+Rails/HasAndBelongsToMany:
+  Exclude:
+    - 'app/models/tag.rb'
+    - 'app/models/image.rb'
+    - 'app/models/job.rb'
+
+Style/ClassAndModuleChildren:
+  Exclude:
+    - 'spec/support/locale_fix.rb'
+
+Style/PredicateName:
+  Exclude:
+    - 'lib/control_panel.rb'
+    - 'app/helpers/application_helper.rb'

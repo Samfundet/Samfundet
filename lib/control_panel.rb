@@ -12,7 +12,7 @@ module ControlPanel
       # uses instance_exec because instance_eval tries to pass self as a
       # parameter, so lambdas without arguments complain when using
       # instance_eval
-      @controller.instance_exec &@condition_block
+      @controller.instance_exec(&@condition_block)
     end
 
     def render
@@ -43,7 +43,6 @@ module ControlPanel
   end
 
   class << self
-
     def applets(request)
       Dir[Rails.root.join('app', 'controllers', '**/*_controller.rb')].flat_map do |path|
         controller_from_path(path).control_panel_applets.map do |create_applet|

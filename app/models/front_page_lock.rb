@@ -15,10 +15,7 @@ class FrontPageLock < ActiveRecord::Base
                          message: 'Invalid lock type',
                          if: :lockable_type? }
 
-  scope :locks_enabled, -> {
-    where('lockable_id IS NOT null')
-      .order(:position)
-  }
+  scope :locks_enabled, -> { where('lockable_id IS NOT null').order(:position) }
 
   # TODO: this might not be an issue in rails 3
   # belongs_to touch: true does not currently touch the old associated

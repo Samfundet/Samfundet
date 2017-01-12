@@ -16,7 +16,10 @@ class Image < ActiveRecord::Base
 
   validates :title, uniqueness: true, presence: true
   validates :image_file, presence: true
-  validates_attachment_content_type :image_file, content_type: /\Aimage\/.*\Z/
+
+  validates_attachment :image_file,
+                       presence: true,
+                       content_type: { content_type: ['image/jpeg', 'image/jpg', 'image/gif', 'image/png'] }
 
   has_and_belongs_to_many :tags, uniq: true
   has_many :events
