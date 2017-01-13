@@ -5,11 +5,11 @@
     = t('events.buy_title', event_title: @event.title)
 
   = form_tag Rails.application.config.billig_path, method: "post", class: 'custom-form' do
-    -# Set default ticket limits
-    - default_ticket_limit = 18
-    - default_price_group_ticket_limit = default_ticket_limit/2
+    -# Set default price group ticket limit
+    - default_price_group_ticket_limit = 9
 
-    %table.ticket-table{data: {default_ticket_limit: default_ticket_limit}}
+    %table.ticket-table{data: {default: default_price_group_ticket_limit}}
+      -# Keep track of total number of tickets in all ticket groups
       - total_ticket_limit = 0
 
       -# Translate currency and ticket unit in billig.css.scss
@@ -19,18 +19,22 @@
       -# Iterate through all the ticket groups
       - @ticket_groups.each_with_index do |ticket_group, i|
 
-        -# Set ticket limit variables
-        - ticket_limit = 0
-        - if ticket_group.tickets_left?
-          - ticket_limit = ticket_group.has_ticket_limit? ? ticket_group.ticket_limit : default_ticket_limit
-        - total_ticket_limit += ticket_limit
+        -# The price groups in the current ticket group
+        - price_groups = ticket_group.netsale_billig_price_groups
 
-        -# Set ticket group variables
+        -# Set current ticket group's ticket limit variables
+        - ticket_group_ticket_limit = 0
+        - default_ticket_group_ticket_limit = price_groups.length * default_price_group_ticket_limit
+        - if ticket_group.tickets_left?
+          - ticket_group_ticket_limit = ticket_group.has_ticket_limit? ? ticket_group.ticket_limit : default_ticket_group_ticket_limit
+        - total_ticket_limit += ticket_group_ticket_limit
+
+        -# Set current ticket group's variables
         - ticket_group_name = @ticket_groups.length > 1 ? ticket_group.ticket_group_name : t('events.price_group')
         - ticket_group_id = "tg#{i}"
-        - ticket_group_class = "ticket-limit-#{ticket_limit}"
+        - ticket_group_class = "ticket-limit-#{ticket_group_ticket_limit}"
 
-        -# Set ticket group row ( type | ticket limit)
+        -# Set ticket group row ( ticket group | ticket limit)
         %tr.ticket-group-row{id: ticket_group_id, class: ticket_group_class}
           %th
             = ticket_group_name
@@ -38,12 +42,18 @@
           -# Only iterate populate price group rows if ticket group has tickets left
           - if ticket_group.tickets_left?
             %th.ticket-limit-hd{colspan: 3}
-              = t('events.ticket_limit', ticket_limit: ticket_limit)
+              = t('events.ticket_limit', ticket_limit: ticket_group_ticket_limit)
 
             -# Iterate thorugh all the price groups
-            - ticket_group.netsale_billig_price_groups.each_with_index do |price_group, j|
+            - price_groups.each_with_index do |price_group, j|
+              -# Set number of ticket options for current price group
+              -# If the default ticket limit is used, then the options for the price group
+              -# may not exceed the default price group ticket limit.
+              - price_group_options = ticket_group_ticket_limit
+              - if ticket_group_ticket_limit == default_ticket_group_ticket_limit
+                - price_group_options = default_price_group_ticket_limit
 
-              -# Set price group row (type | price | dropdown | temp. sum)
+              -# Set price group row (price group | price | dropdown | temp. sum)
               %tr.price-group-row
                 %td
                   = price_group.price_group_name
@@ -51,7 +61,7 @@
                   = "#{price_group.price}"
                 %td{class: ticket_unit_class}
                   = select_tag "price_#{price_group.price_group.to_s}_count",
-                    options_for_select((0 .. (ticket_limit == default_ticket_limit ? default_price_group_ticket_limit : ticket_limit)),
+                    options_for_select((0 .. price_group_options),
                       @payment_error_price_groups[price_group.price_group]), class: ticket_group_id, tabindex: 1
                 %td.sum{class: currency_unit_class}
                   = "0"

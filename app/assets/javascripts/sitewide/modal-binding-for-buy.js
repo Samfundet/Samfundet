@@ -25,6 +25,9 @@ $(function() {
   var ticketGroups = getTicketGroups();
   var ticketLimits = getTicketLimits(ticketGroups);
 
+  // Get the default price group ticket limit
+  var defaultPriceGroupTicketLimit = getDefaultTicketLimit();
+
   function openPurchaseModal(url, source) {
     ga('send', 'pageview', {
       'page': url,
@@ -109,6 +112,10 @@ $(function() {
     }
   });
 
+  function getDefaultTicketLimit() {
+    return parseInt($('.ticket-table').data('default'));
+  }
+
   function getTicketGroups(){
     var ticketGroupOverview = {};
 
@@ -138,7 +145,6 @@ $(function() {
 
   function showLimitReachedAnimation(ticketGroupId) {
     var ticketLimitHeader = $('#' + ticketGroupId).find('.ticket-limit-hd');
-    console.log(ticketLimitHeader);
     var repeats = 2;
     for (var i = 0; i < repeats; i++) {
       ticketLimitHeader.animate( { fontSize: '+=.15em' }, 'normal');
@@ -157,10 +163,12 @@ $(function() {
     var ticketGroupTickets = 0;
     var ticketGroupLimit = ticketLimits[ticketGroupIndex];
     var ticketGroupHeader = $('#' + ticketGroupId).find('.ticket-limit-hd');
+    var numberOfPriceGroups = 0;
 
     // Get the number of tickets chosen in current ticket group
     $('select.'+ticketGroupId).each(function() {
       ticketGroupTickets += parseInt($(this).val());
+      numberOfPriceGroups += 1;
     });
 
     // Show limit reached animation if ticket group has a ticket limit and
@@ -179,15 +187,19 @@ $(function() {
 
       var chosenValue = parseInt($(this).val());
       var legalOptions = chosenValue + (ticketGroupLimit-ticketGroupTickets);
-      var selectLimit = ticketGroupLimit; 
+      var optionsLimit = ticketGroupLimit;
+      var defaultTicketGroupLimit = defaultPriceGroupTicketLimit * numberOfPriceGroups;
 
-      if (ticketGroupLimit === 18){
-        selectLimit = ticketGroupLimit/2;
+      // If the default price group ticket limit is used, then the limit
+      // for each price group is the default price group ticket limit
+      // and not the ticket group ticket limit
+      if (ticketGroupLimit === defaultTicketGroupLimit){
+        optionsLimit = Math.floor(ticketGroupLimit/numberOfPriceGroups);
       }
 
       $(this).empty();
 
-      for (var i = 0; i <= selectLimit; i++) {
+      for (var i = 0; i <= optionsLimit; i++) {
         if (i <= legalOptions) {
           $(this).append($("<option></option>").attr("value",i).text(i));
         } else {
