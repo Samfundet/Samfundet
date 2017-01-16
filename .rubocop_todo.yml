@@ -194,12 +194,14 @@ Style/CaseIndentation:
 # SupportedStyles: nested, compact
 Style/ClassAndModuleChildren:
   Exclude:
+    - 'app/controllers/admissions_admin/campus_controller.rb'
     - 'app/controllers/admissions_admin/admissions_controller.rb'
     - 'app/controllers/admissions_admin/groups_controller.rb'
     - 'app/controllers/admissions_admin/interviews_controller.rb'
     - 'app/controllers/admissions_admin/job_applications_controller.rb'
     - 'app/controllers/admissions_admin/jobs_controller.rb'
     - 'app/controllers/admissions_admin/log_entries_controller.rb'
+    - 'app/controllers/admissions_admin/applicants_controller.rb'
     - 'app/controllers/sulten/admin_controller.rb'
     - 'app/controllers/sulten/reservation_types_controller.rb'
     - 'app/controllers/sulten/reservations_controller.rb'

@@ -62,6 +62,11 @@ $(function() { // Called when document is fully loaded
     source: "/en/members/search.json",
     minChars: 3
   });
+
+  $("input.applicant_autocomplete").autocomplete({
+    source: "/en/applicants/search.json",
+    minChars: 3
+  });
 });
 
 // Tablesorter

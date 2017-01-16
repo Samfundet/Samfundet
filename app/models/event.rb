@@ -3,7 +3,7 @@ class Event < ActiveRecord::Base
   AGE_LIMIT = %w(eighteen eighteen_twenty twenty none).freeze
   EVENT_TYPE = %w(art concert course dj excenteraften football_match happening
                   luka_event meeting movie music performance quiz
-                  samfundet_meeting party_meeting show theater theme_party uka_event).freeze
+                  samfundet_meeting party_meeting show theater theme_party uka_event debate_event).freeze
   STATUS = %w(active archived canceled).freeze
   PRICE_TYPE = %w(included custom billig free).freeze
   BANNER_ALIGNMENT = %w(left right hide).freeze
@@ -116,6 +116,7 @@ class Event < ActiveRecord::Base
   # Uses the above defined PgSearch scope to perform search.
   def self.text_search query
     if query.present?
+      query.sub! 'samfundet_meeting', 'meeting'
       published.includes(:area).search(query)
     else
       []

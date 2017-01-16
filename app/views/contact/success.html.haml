@@ -1,0 +1,18 @@
+%h1
+  =t('contact.email_sent')
+%p
+  =t('contact.success_message')
+.success-box
+  %h2
+    =@contact_form.subject
+  %p
+    =@contact_form.description
+    <br>
+  %p
+    =@contact_form.name
+    (
+    =@contact_form.email 
+    )
+%p
+  = link_to root_path do
+    =t('contact.back')

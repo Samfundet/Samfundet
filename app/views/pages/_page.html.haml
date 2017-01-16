@@ -5,11 +5,13 @@
 .menu-button
   = t('layouts.application.menu.menu')
 
-.menu
-  .menu-content
-    = render_page_content(@menu.content, @menu.content_type)
+- if !@page.hide_menu
+  .menu
+    .menu-content
+      = render_page_content(@menu.content, @menu.content_type)
 
-.content
+
+.content{class: ("wide" if @page.hide_menu)}
   = render_page_content(@page.content, @page.content_type)
 
   - if permitted_to? :edit, :pages

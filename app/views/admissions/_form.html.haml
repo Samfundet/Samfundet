@@ -26,5 +26,7 @@
                   input_html: { class: "datetimepicker",
                                 value: admission.admin_priority_deadline ? admission.admin_priority_deadline : '',
                                 placeholder: "DD.MM.YYYY HH:MM" }
+    != form.input :promo_video,
+                  as: :string
   = form.actions do
     != form.action :submit

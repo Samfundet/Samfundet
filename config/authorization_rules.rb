@@ -96,6 +96,7 @@ authorization do
       :admissions_admin_jobs,
       :admissions_admin_job_applications,
       :admissions_admin_log_entries,
+      :admissions_admin_applicants,
       :applicants,
       :applicant_sessions,
       :areas,
@@ -118,13 +119,16 @@ authorization do
       :sulten_reservation_types,
       :sulten_admin,
       :contact,
-      :feedbacks
+      :feedbacks,
+      :admissions_admin_campus
       ], to: :manage
 
-    has_permission_on :admissions_admin_job_applications, to: :hidden_create
+    has_permission_on :admissions_admin_campus, to: [:activate, :deactivate]
+    has_permission_on :admissions_admin_job_applications, to: [:hidden_create, :withdraw_job_application]
     has_permission_on :admissions_admin_jobs, to: :hidden_create
     has_permission_on :admissions_admin_admissions, to: :statistics
     has_permission_on :admissions_admin_groups, to: :applications
+    has_permission_on :admissions_admin_applicants, to: :show_interested_other_positions
     has_permission_on [:members, :applicants], to: :steal_identity
     has_permission_on :members, to: :search
 
@@ -144,7 +148,7 @@ authorization do
       :admissions_admin_log_entries,
     ], to: :manage
 
-    has_permission_on :admissions_admin_job_applications, to: :hidden_create
+    has_permission_on :admissions_admin_job_applications, to: [:hidden_create, :withdraw_job_application]
     has_permission_on :admissions_admin_jobs, to: :hidden_create
     has_permission_on :admissions_admin_groups, to: :applications
     has_permission_on :admissions_admin_admissions, to: :statistics
@@ -165,6 +169,7 @@ authorization do
 
   role :opptaksansvarlig do
     has_permission_on :admissions_admin_admissions, to: :show
+    has_permission_on :admissions_admin_applicants, to: [:update, :show_interested_other_positions]
   end
 
   role :gjengsjef do

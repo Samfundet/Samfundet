@@ -28,7 +28,7 @@ Rails.application.routes.draw do
       get 'purchase_callback', to: :purchase_callback_failure
       get 'purchase_callback/:tickets', to: :purchase_callback_success
     end
-  end 
+  end
 
   resources :front_page_locks, only: [:edit, :update] do
     post :clear, on: :member
@@ -113,6 +113,8 @@ Rails.application.routes.draw do
     match "reset_password" => "applicants#reset_password"
   end
 
+  match "applicants/search" => "applicants#search",
+        as: :applicant_search
   resources :applicants
   resources :groups, only: [:new, :create, :edit, :update] do
     get :admin, on: :collection
@@ -140,6 +142,11 @@ Rails.application.routes.draw do
   # If a resource is logically nested within another, the routes should
   # reflect that
   namespace :admissions_admin do
+    resources :campus, path: 'campus' do
+      get :admin, on: :collection
+      get :deactivate, to: "campus#deactivate"
+      get :activate, to: "campus#activate"
+    end
     resources :admissions, only: :show do
       get :statistics, on: :member
       resources :groups, only: :show do
@@ -157,6 +164,7 @@ Rails.application.routes.draw do
           resources :log_entries, only: [:create, :destroy]
         end
       end
+      get 'show_interested_other_positions', to: 'applicants#show_interested_other_positions'
     end
   end
 
@@ -193,7 +201,6 @@ Rails.application.routes.draw do
     post :search, on: :collection
   end
 
-
   namespace :sulten, path: "lyche" do
     get "/reservasjon" => "reservations#new"
     get :admin, to: "admin#index"
@@ -209,7 +216,6 @@ Rails.application.routes.draw do
   end
 
   get ":id" => "pages#show", :id => Page::NAME_FORMAT
-
 end
 
 # Add Norwegian routes and prefix English ones with /en; this is handled

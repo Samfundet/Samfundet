@@ -14,7 +14,7 @@
       padding: 10px;
       font-size: 2.5em;
       color: white;
-      font-weight: normal;
+      font-weight: $font-weight-normal;
       @include border-radius; }
     img {
       margin-bottom: 5px;
@@ -81,7 +81,7 @@
       margin: 0 0 5px 0; }
     h3 {
       color: #666666;
-      font-weight: normal;
+      font-weight: $font-weight-normal;
       font-size: 1em;
       text-transform: uppercase;
       padding: 5px 0 5px 0;
@@ -101,7 +101,7 @@
       font-size: 1em;
       color: #999999;
       a {
-        font-weight: bold; } }
+        font-weight: $font-weight-bold; } }
     img.photo {
       @include border-radius; }
     .col.large {
@@ -146,7 +146,7 @@
         padding: 2px 0; }
       .lh {
         text-transform: uppercase;
-        font-weight: bold;
+        font-weight: $font-weight-bold;
         color: black; } } }
   #additional-activity {
     ul {

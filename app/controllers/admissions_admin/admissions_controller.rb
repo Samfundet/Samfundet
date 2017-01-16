@@ -48,7 +48,7 @@ class AdmissionsAdmin::AdmissionsController < ApplicationController
       encoding: 'text',
       labels: admission_day_labels,
       axis_with_labels: %w(x y),
-      axis_range: [nil, [0, applications_per_day.max, 10]],
+      axis_range: [nil, [0, applications_per_day.max, [applications_per_day.max / 10, 1].max]],
       size: '800x350',
       bar_color: 'A03033'
     )

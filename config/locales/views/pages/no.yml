@@ -26,3 +26,4 @@
     owner: "Eier"
     updated_at: "Sist oppdatert"
     history_for: "Historikk for %{name}"
+    hide_menu: "Skjul meny"

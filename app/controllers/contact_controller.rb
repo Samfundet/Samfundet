@@ -8,7 +8,7 @@ class ContactController < ApplicationController
     if @contact_form.valid?
       SupportRequestMailer.send_request(@contact_form).deliver
       flash[:success] = t('contact.success_message')
-      redirect_to contact_path
+      render :success
     else
       flash.now[:error] = t('contact.error_message')
       render :index

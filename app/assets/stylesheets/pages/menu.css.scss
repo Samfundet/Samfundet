@@ -59,7 +59,7 @@
         }
         & > strong {
             color: $samfundet-red;
-            font-weight: 400;
+            font-weight: $font-weight-medium;
             display: block;
         }
     }
@@ -88,7 +88,7 @@
     }
 
     a.current {
-        font-weight: 500;
+        font-weight: $font-weight-medium;
     }
 }
 

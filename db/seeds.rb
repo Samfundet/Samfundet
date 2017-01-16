@@ -50,7 +50,8 @@ admission = Admission.create!(
   shown_application_deadline: 2.weeks.from_now,
   actual_application_deadline: 2.weeks.from_now + 4.hours,
   user_priority_deadline: 3.weeks.from_now,
-  admin_priority_deadline: 3.weeks.from_now + 1.hour
+  admin_priority_deadline: 3.weeks.from_now + 1.hour,
+  promo_video: "https://www.youtube.com/embed/T8MjwROd0dc"
 )
 puts "Done creating admission"
 
@@ -81,6 +82,15 @@ def phone_number
   (10000000 + rand * 9000000).to_i.to_s
 end
 
+# Create campuses
+number_of_campuses = 10
+
+number_of_campuses.times do
+  campus_name = Faker::Company.name
+  puts "Creating campus #{campus_name}"
+  Campus.create(name: campus_name)
+end
+
 # Create a number of applicants
 puts "Creating #{number_of_applicants} applicants, and makes them apply for #{number_of_job_applications_pr_applicant} jobs"
 distinct_emails(number_of_applicants).each do |email|
@@ -89,9 +99,10 @@ distinct_emails(number_of_applicants).each do |email|
     surname: Faker::Name.last_name,
     phone: phone_number,
     email: email,
-    campus: Faker::Company.name,
+    campus: Campus.order("RANDOM()").first,
     password: 'passord',
-    password_confirmation: 'passord'
+    password_confirmation: 'passord',
+    interested_other_positions: Faker::Boolean.boolean
   )
 
   # Apply jobs
@@ -99,11 +110,17 @@ distinct_emails(number_of_applicants).each do |email|
 
   jobs = Job.all.sample(number_of_job_applications_pr_applicant)
   jobs.each_with_index do |job, priority|
-    JobApplication.create!(
+    job_application = JobApplication.create!(
       motivation: Faker::Lorem.paragraphs(5).join("\n\n"),
       applicant: applicant,
       priority: priority + 1,
       job: job
+    )
+    Interview.create!(
+      time: Faker::Time.between(1.weeks.from_now, 2.weeks.from_now),
+      acceptance_status: Interview::ACCEPTANCE_STATUSES_NO.keys.sample,
+      job_application_id: job_application.id,
+      location: Faker::Address.city
     )
     print "-"
   end
@@ -215,9 +232,11 @@ Page.create!(
   name_no: Page::MENU_NAME,
   name_en: Page::MENU_NAME,
   content_no: "- **Generelt**\n"\
+              "\t- [Saksdokumenter](/saksdokumenter)\n"\
               "\t- **Gjenger**\n#{Group.all.map { |p| "\t\t- [#{p.page.title_no}](/informasjon/#{p.page.name_no})" }.join("\n")}\n"\
               "\t- **Lokaler**\n#{Area.all.map { |p|  "\t\t- [#{p.page.title_no}](/informasjon/#{p.page.name_no})" }.join("\n")}\n",
   content_en: "- **General**\n"\
+              "\t- [Documents](/dokuments)\n"\
               "\t- **Groups**\n#{Group.all.map { |p| "\t\t- [#{p.page.title_en}](/informasjon/#{p.page.name_en})" }.join("\n")}\n"\
               "\t- **Areas**\n#{Area.all.map { |p|  "\t\t- [#{p.page.title_en}](/informasjon/#{p.page.name_en})" }.join("\n")}\n",
   role_id: Role.super_user.id
@@ -511,6 +530,22 @@ puts "Creating document categories"
     title_no: title_no,
     title_en: title_en,
   )
+end
+
+puts "Creating documents"
+DocumentCategory.all.each do |category|
+    25.times do
+        member = Member.order("RANDOM()").first
+        file = File.open(Rails.root.join('app', 'assets', 'files', 'dummy.pdf'))
+        publication_date = 2.weeks.ago + (rand 2000).days
+        Document.create!(
+            title: Faker::Lorem.sentence(2),
+            category_id: category.id,
+            uploader_id: member.id,
+            publication_date: publication_date,
+            file: file
+        )
+    end
 end
 
 puts "Creating blog articles"

@@ -3,7 +3,7 @@
         @extend .table-highlight-rows;
 
         tr.category {
-            font-weight: bold;
+            font-weight: $font-weight-bold;
         }
 
         tr.empty {

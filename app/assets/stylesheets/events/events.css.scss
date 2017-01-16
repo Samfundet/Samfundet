@@ -78,7 +78,7 @@
         }
 
         .description-short {
-          font-weight: 500;
+          font-weight: $font-weight-medium;
         }
 
         .description-long {
@@ -87,7 +87,8 @@
         }
 
         p.adaptation {
-          font-weight: 500;
+          font-style: italic;
+          font-size: 17px;
         }
 
         .social {
@@ -139,7 +140,7 @@
             }
 
             &:last-child {
-              font-weight: 500;
+              font-weight: $font-weight-medium;
             }
           }
         }
@@ -234,7 +235,7 @@
                         text-decoration: none;
                         text-transform: uppercase;
                         color: $samfundet-black;
-                        font-weight: 300;
+                        font-weight: $font-weight-normal;
                     }
 
                     &.event-area-start-time {

@@ -18,8 +18,13 @@
     twenty: 20 år
     none: Ingen aldersgrense
 
+    title: Tittel
+    start_time: Starttid
+    event_type: Arrangementstype
+
     left: venstre
     right: høyre
+    hide: skjul
 
     yes: ja
     no: nei
@@ -51,6 +56,7 @@
     luka_event: LUKA-Arrangement
     uka_event: UKE-Arrangement
     happening: Happening
+    debate_event: Onsdagsdebatt
 
     adaptation_html: Arrangement på Samfundet kan tilrettelegges for besøkende med bevegelses- og hørselshemminger. Se %{href} for mer informasjon.
     here: her
@@ -147,7 +153,7 @@
             status: Status
             primary_color: Primærfarge
             secondary_color: Sekundærfarge
-            banner_alignment: Bannerplassering
+            banner_alignment: Tekstplassering
             duration: Varighet
             publication_time: Publiseringstid
             free: Gratis

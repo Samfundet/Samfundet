@@ -3,16 +3,22 @@
     .banner.ribbon-image-wrapper
       - cache cache_key_for_banner_event(banner_event) do
         = link_to banner_event, id: 'banner-image-link' do
-          = render 'events/corner_ribbon', event: banner_event
+          - if banner_event.is_a?(Event)
+            = render 'events/corner_ribbon', event: banner_event
+          - else
+            .ribbon-text-wrapper
+              .ribbon.blue
+                = t('layouts.application.menu.blog')
           = background_image_helper "banner-image", banner_event.image_or_default, size: :large do
-            .container
-              .image-text{ class: banner_event.banner_alignment }
-                .wrapper
-                  .font-elem.date{ style: "color: #{banner_event.primary_color}" }
-                    = l banner_event.start_time, format: :short_date
-                .wrapper
-                  .front-elem.where{ style: "color: #{banner_event.primary_color}" }
-                    = "%s @ %s" % [t_event_type(banner_event), banner_event.area_title]
-                .wrapper
-                  .front-elem.title{ style: "color: #{banner_event.secondary_color}" }
-                    = banner_event.title
+            - if banner_event.is_a?(Event)
+              .container
+                .image-text{ class: banner_event.banner_alignment }
+                  .wrapper
+                    .font-elem.date{ style: "color: #{banner_event.primary_color}" }
+                      = l banner_event.start_time, format: :short_date
+                  .wrapper
+                    .front-elem.where{ style: "color: #{banner_event.primary_color}" }
+                      = "%s @ %s" % [t_event_type(banner_event), banner_event.area_title]
+                  .wrapper
+                    .front-elem.title{ style: "color: #{banner_event.secondary_color}" }
+                      = banner_event.title

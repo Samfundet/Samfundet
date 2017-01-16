@@ -17,11 +17,12 @@ ActiveRecord::Schema.define(:version => 20170109205441) do
     t.string   "title"
     t.datetime "shown_application_deadline"
     t.datetime "user_priority_deadline"
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
+    t.datetime "created_at",                                                                           :null => false
+    t.datetime "updated_at",                                                                           :null => false
     t.datetime "shown_from"
     t.datetime "admin_priority_deadline"
     t.datetime "actual_application_deadline"
+    t.string   "promo_video",                 :default => "https://www.youtube.com/embed/T8MjwROd0dc"
   end
 
   create_table "applicants", :force => true do |t|
@@ -30,10 +31,11 @@ ActiveRecord::Schema.define(:version => 20170109205441) do
     t.string   "email"
     t.string   "hashed_password"
     t.string   "phone"
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
-    t.string   "campus"
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
     t.boolean  "interested_other_positions"
+    t.boolean  "disabled",                   :default => false
+    t.integer  "campus_id"
   end
 
   create_table "areas", :force => true do |t|
@@ -137,6 +139,13 @@ ActiveRecord::Schema.define(:version => 20170109205441) do
     t.string   "title_en"
     t.text     "lead_paragraph_en"
     t.text     "content_en"
+  end
+
+  create_table "campus", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+    t.boolean  "active",     :default => true
   end
 
   create_table "document_categories", :force => true do |t|
@@ -371,11 +380,12 @@ ActiveRecord::Schema.define(:version => 20170109205441) do
   add_index "page_revisions", ["page_id", "version"], :name => "index_page_revisions_on_page_id_and_version", :unique => true
 
   create_table "pages", :force => true do |t|
-    t.string   "name_no",    :limit => 60, :null => false
-    t.integer  "role_id",                  :null => false
-    t.datetime "created_at",               :null => false
-    t.datetime "updated_at",               :null => false
-    t.string   "name_en",                  :null => false
+    t.string   "name_no",    :limit => 60,                    :null => false
+    t.integer  "role_id",                                     :null => false
+    t.datetime "created_at",                                  :null => false
+    t.datetime "updated_at",                                  :null => false
+    t.string   "name_en",                                     :null => false
+    t.boolean  "hide_menu",                :default => false
   end
 
   add_index "pages", ["name_en"], :name => "index_documents_on_name_en", :unique => true

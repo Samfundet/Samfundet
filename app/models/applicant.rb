@@ -5,10 +5,11 @@ class Applicant < ActiveRecord::Base
   has_many :jobs, through: :job_applications
   has_many :password_recoveries
   has_many :log_entries
+  belongs_to :campus
 
   attr_accessor :password, :password_confirmation, :old_password
 
-  validates_presence_of :firstname, :surname, :email, :phone, :campus
+  validates_presence_of :firstname, :surname, :email, :phone, :campus_id
   validates_uniqueness_of :email, :phone
 
   validates :email, email: true
@@ -40,9 +41,9 @@ class Applicant < ActiveRecord::Base
     self.hashed_password = BCrypt::Password.create(@password, cost: cost)
   end
 
-  def assigned_job_application(admission)
+  def assigned_job_application(admission, acceptance_status: %w(wanted reserved))
     job_applications.joins(:interview)
-                    .where(interviews: { acceptance_status: %w(wanted reserved) })
+                    .where(interviews: { acceptance_status: acceptance_status })
                     .find { |application| application.job.admission == admission }
   end
 
@@ -76,9 +77,16 @@ class Applicant < ActiveRecord::Base
     LogEntry.where(applicant_id: id).any?
   end
 
+  def self.interested_other_positions(admission)
+    where(interested_other_positions: true).select do |applicant|
+      # If not wanted by any
+      applicant.assigned_job_application(admission, acceptance_status: %w(wanted)).nil?
+    end
+  end
+
   class << self
     def authenticate(email, password)
-      applicant = find_by_email(email.downcase)
+      applicant = where(disabled: false).find_by_email(email.downcase)
       return applicant if applicant &&
                           BCrypt::Password.new(applicant.hashed_password) == password
     end

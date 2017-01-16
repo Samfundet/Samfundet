@@ -52,8 +52,10 @@ $(function () {
       $.post(element.attr("action"), element.serialize())
       .success(function (data) {
           $status.stop().text("Lagret!").animate({opacity: 0}, 1500);
-          $tr.removeClass().addClass(data["status"]);
-          refreshTitles();
+          if (typeof data["status"] != "undefined") {
+            $tr.removeClass().addClass(data["status"]);
+            refreshTitles();
+          }
 
           if (data["warning"]) {
             $('div.flash.message').html(data["warning"])

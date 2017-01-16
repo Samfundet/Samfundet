@@ -5,8 +5,8 @@
     = f.input :name, as: :string, label: t('contact.name')
     = f.input :email, as: :email, label: t('contact.email')
     = f.input :problem_type, as: :select, collection: [[t('contact.general_questions'), 0], [t('contact.content_problem'), 1],
-    [t('contact.payment_problem'), 2], [t('contact.tech_problem'), 3]], label: t('contact.problem_type')
-    = f.input :subject, as: :string, label: t('contact.subject'), hint: t('contact.subject_hint')
+    [t('contact.payment_problem'), 2], [t('contact.tech_problem'), 3]], label: t('contact.problem_type'), hint: t('contact.subject_hint')
+    = f.input :subject, as: :string, label: t('contact.subject')
     = f.input :description, as: :text, label: t('contact.description'), hint: t('contact.description_min')
 
   = f.actions do
