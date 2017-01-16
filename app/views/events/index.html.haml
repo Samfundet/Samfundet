@@ -11,13 +11,10 @@
           %tbody
             = render events.sort_by{|event| event.start_time}
 
-    .bottom-links
-      %table.custom-table
-        %tbody
-          %tr
-            %td.archive
-              = link_to t('events.archive.title'), archive_events_path
-            %td.rss
-              = link_to t('events.rss_alt_text'), '/rss'
-            %td.calendar
-              = link_to t('events.ical_alt_text'), '/arrangement/ical'
+  .bottom-links
+    %span.archive
+      = link_to t('events.archive.title'), archive_events_path
+    %span.rss
+      = link_to t('events.rss_short_text'), '/rss'
+    %span.calendar
+      = link_to t('events.ical_short_text'), '/arrangement/ical'
