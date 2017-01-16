@@ -164,15 +164,13 @@
     }
 
     .bottom-links {
-        table {
-            width: 100%;
-            text-align: center;
-            tr {
-                td {
-                    text-align: center;
-                    font-weight: bold;
-                }
-            }
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+        span {
+          display: table-cell;
+          text-align: center;
+          font-weight: bold;
         }
     }
 
