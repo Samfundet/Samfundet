@@ -1,3 +1,10 @@
+// How to make modal work in dev:
+//
+// You must put the ga-function (google analytics) in a comment.
+// It is important to not include this change before pushing  when adding changes with
+// git add -p
+// when you see this change, enter 'n' to not include it.
+
 $(function() {
   function fragmentToBuyLink(fragment) {
     var routes = {
@@ -29,10 +36,15 @@ $(function() {
   var defaultPriceGroupTicketLimit = getDefaultTicketLimit();
 
   function openPurchaseModal(url, source) {
+
+    //-- -Hide ga-function in comment to make modal work in dev ---//
+
     ga('send', 'pageview', {
       'page': url,
       'title': 'Purchase event - Virtual'
     });
+
+    //---End comment here ---//
 
     $.get(url, function(html) {
     $("html, body").animate({ scrollTop: 0 }, "slow");
