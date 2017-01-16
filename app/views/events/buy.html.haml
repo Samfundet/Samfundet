@@ -34,7 +34,7 @@
           -# Only iterate populate price group rows if ticket group has tickets left
           - if ticket_group.tickets_left?
             %th.ticket-limit-hd{colspan: 3}
-              = t('events.ticket_limit', ticket_limit: ticket_group.ticket_limit)
+              = t('events.ticket_limit', ticket_limit: ticket_group_ticket_limit)
 
             -# Iterate thorugh all the price groups
             - price_groups.each_with_index do |price_group, j|
