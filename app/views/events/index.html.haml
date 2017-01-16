@@ -11,13 +11,13 @@
           %tbody
             = render events.sort_by{|event| event.start_time}
 
-    %table{style:'border:none !important; cellspacing:0; cellpadding:0'}
-      %tbody
-        %tr
-          .links
-            %td.archive{style:'text-align:center; font-weight:bold; border:none'}
+    .bottom-links
+      %table.custom-table
+        %tbody
+          %tr
+            %td.archive
               = link_to t('events.archive.title'), archive_events_path
-            %td.rss{style:'text-align:center; font-weight:bold; border:none'}
+            %td.rss
               = link_to t('events.rss_alt_text'), '/rss'
-            %td.calendar{style:'text-align:center; font-weight:bold'}
+            %td.calendar
               = link_to t('events.ical_alt_text'), '/arrangement/ical'
