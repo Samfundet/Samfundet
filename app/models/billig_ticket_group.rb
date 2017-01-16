@@ -1,4 +1,6 @@
 class BilligTicketGroup < ActiveRecord::Base
+  DEFAULT_TICKET_LIMIT = 18
+
   self.primary_key = :ticket_group
   attr_accessible :event, :is_theater_ticket_group, :num, :num_sold, :ticket_group, :ticket_group_name, :ticket_limit
 
@@ -20,4 +22,14 @@ class BilligTicketGroup < ActiveRecord::Base
   def has_ticket_limit?
     !ticket_limit.nil? && ticket_limit > 0
   end
+
+  def price_group_ticket_limit
+    if !has_ticket_limit?
+      DEFAULT_TICKET_LIMIT/netsale_billig_price_groups.length
+    else
+      ticket_limit
+    end
+  end
+
 end
+
