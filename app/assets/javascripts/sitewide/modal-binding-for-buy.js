@@ -37,12 +37,10 @@ $(function() {
 
     //-- -Hide ga-function in comment to make modal work in dev ---//
 
-    /*
     ga('send', 'pageview', {
       'page': url,
       'title': 'Purchase event - Virtual'
     });
-    */
 
     //---End comment here ---//
 
