@@ -38,13 +38,13 @@ Rails.application.routes.draw do
   ##  Routes for feedback   ##
   ############################
 
-  resources :feedbacks do
+  resources :feedbacks, except: [:index] do
     get :admin, on: :collection
     post :answer, to: "feedbacks#answer"
   end
 
   namespace :feedbacks do
-     resources :questions, only: [:edit, :update, :new, :create, :destroy]
+    resources :questions, only: [:edit, :update, :new, :create, :destroy]
   end
 
   ############################

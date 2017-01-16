@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20161024194422) do
+ActiveRecord::Schema.define(:version => 20170109205441) do
 
   create_table "admissions", :force => true do |t|
     t.string   "title"
@@ -223,6 +223,7 @@ ActiveRecord::Schema.define(:version => 20161024194422) do
     t.datetime "updated_at",           :null => false
     t.decimal  "alternative"
     t.integer  "question_id"
+    t.string   "token"
   end
 
   create_table "feedback_questions", :force => true do |t|

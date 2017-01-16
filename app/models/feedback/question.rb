@@ -10,4 +10,7 @@ class Feedback::Question < ActiveRecord::Base
    
   accepts_nested_attributes_for :alternatives, allow_destroy: true, reject_if: :all_blank
 
+  def to_s
+      text
+  end
 end
