@@ -6,6 +6,10 @@
 // when you see this change, enter 'n' to not include it.
 
 $(function() {
+  // This method is run twice to make sure the ticket form works both when the
+  // form appears on a standalone page or when it appears in a modal
+  ticketFormLoaded();
+
   function fragmentToBuyLink(fragment) {
     var routes = {
       'en': '/en/events/',
@@ -28,21 +32,17 @@ $(function() {
   // so we need to detect that and ignore it.
   var popped = ('state' in window.history && window.history.state !== null), initialURL = location.href;
 
-  // Keep track of ticket groups and their ticket limits
-  var ticketGroups = getTicketGroups();
-  var ticketLimits = getTicketLimits(ticketGroups);
-
-  // Get the default price group ticket limit
-  var defaultPriceGroupTicketLimit = getDefaultTicketLimit();
 
   function openPurchaseModal(url, source) {
 
     //-- -Hide ga-function in comment to make modal work in dev ---//
 
+    /*
     ga('send', 'pageview', {
       'page': url,
       'title': 'Purchase event - Virtual'
     });
+    */
 
     //---End comment here ---//
 
@@ -60,7 +60,11 @@ $(function() {
           scrollTop: $(findParentEvent(source)).offset().top
         }, 1000);
       });
+
+      // Run this after the modal has been loaded
+      ticketFormLoaded();
     });
+
   }
 
   function openPurchaseModalBasedOnHash() {
@@ -124,127 +128,129 @@ $(function() {
     }
   });
 
-  function getDefaultTicketLimit() {
-    return parseInt($('.ticket-table').data('default'));
-  }
+  function ticketFormLoaded() {
+    // Keep track of ticket groups and their ticket limits
+    var ticketGroups = getTicketGroups();
+    var ticketLimits = getTicketLimits(ticketGroups);
 
-  function getTicketGroups(){
-    var ticketGroupOverview = {};
+    // Get the default ticket group ticket limit
+    var defaultTicketLimit = getDefaultTicketLimit();
 
-    $('.ticket-group-row').each(function() {
-      ticketGroup = $(this).attr('id');
-      ticketGroupOverview[ticketGroup] = $('.price-group-row select').find('.'+ticketGroup).map(function(){
-      return $(this);
-      }).get();
-    });
-
-    return Object.keys(ticketGroupOverview);
-  }
-
-  function getTicketLimits(ticketGroups){
-    var ticketLimits = [];
-
-    $.each(ticketGroups, function(i, group) {
-      var classPattern = /ticket-limit-\d+/;
-      var textPattern = /\D/g;
-      var ticketGroupClass = $('#'+group).attr('class').match(classPattern)[0];
-      var ticketGroupLimit = ticketGroupClass.replace(textPattern, '');
-      ticketLimits.push(parseInt(ticketGroupLimit));
-    });
-
-    return ticketLimits;
-  };
-
-  function showLimitReachedAnimation(ticketGroupId) {
-    var ticketLimitHeader = $('#' + ticketGroupId).find('.ticket-limit-hd');
-    var repeats = 2;
-    for (var i = 0; i < repeats; i++) {
-      ticketLimitHeader.animate( { fontSize: '+=.15em' }, 'normal');
-      ticketLimitHeader.animate( { fontSize: '-=.15em' }, 'normal');
-    }
-  }
-
-  $('.ticket-table select').change(function() {
-    // Keep track of sums related to ALL ticket groups
-    var totalTickets = 0;
-    var totalCost = 0;
-
-    // Variables that relate to the ticket group that fired the change event
-    var ticketGroupId = $(this).attr('class');
-    var ticketGroupIndex = parseInt(ticketGroupId.match(/\d+/g)[0]);
-    var ticketGroupTickets = 0;
-    var ticketGroupLimit = ticketLimits[ticketGroupIndex];
-    var ticketGroupHeader = $('#' + ticketGroupId).find('.ticket-limit-hd');
-    var numberOfPriceGroups = 0;
-
-    // Get the number of tickets chosen in current ticket group
-    $('select.'+ticketGroupId).each(function() {
-      ticketGroupTickets += parseInt($(this).val());
-      numberOfPriceGroups += 1;
-    });
-
-    // Show limit reached animation if ticket group has a ticket limit and
-    // the ticket limit has been reached
-    if (ticketGroupTickets > 0 && ticketGroupTickets === ticketGroupLimit) {
-      showLimitReachedAnimation(ticketGroupId);
+    function getDefaultTicketLimit() {
+      return parseInt($('.ticket-table').data('default'));
     }
 
-    // Match translation in ticket limit header
-    // 'billett(er)' or 'ticket(s)'
-    var ticketTranslation = ticketGroupHeader.text().match(/[aA-zZ]+.[aA-zZ]+./g);
-    ticketGroupHeader.text(ticketGroupTickets + '/' + ticketGroupLimit + ' ' + ticketTranslation);
+    function getTicketGroups(){
+      var ticketGroupOverview = {};
 
-    // Empty dropdowns and populate them with legal options
-    $('select.' + ticketGroupId).each(function(){
+      $('.ticket-group-row').each(function() {
+        ticketGroup = $(this).attr('id');
+        ticketGroupOverview[ticketGroup] = $('.price-group-row select').find('.'+ticketGroup).map(function(){
+        return $(this);
+        }).get();
+      });
 
-      var chosenValue = parseInt($(this).val());
-      var legalOptions = chosenValue + (ticketGroupLimit-ticketGroupTickets);
-      var optionsLimit = ticketGroupLimit;
-      var defaultTicketGroupLimit = defaultPriceGroupTicketLimit * numberOfPriceGroups;
+      return Object.keys(ticketGroupOverview);
+    }
 
-      // If the default price group ticket limit is used, then the limit
-      // for each price group is the default price group ticket limit
-      // and not the ticket group ticket limit
-      if (ticketGroupLimit === defaultTicketGroupLimit){
-        optionsLimit = Math.floor(ticketGroupLimit/numberOfPriceGroups);
+    function getTicketLimits(ticketGroups){
+      var ticketLimits = [];
+
+      $.each(ticketGroups, function(i, group) {
+        var classPattern = /ticket-limit-\d+/;
+        var textPattern = /\D/g;
+        var ticketGroupClass = $('#'+group).attr('class').match(classPattern)[0];
+        var ticketGroupLimit = ticketGroupClass.replace(textPattern, '');
+        ticketLimits.push(parseInt(ticketGroupLimit));
+      });
+
+      return ticketLimits;
+    };
+
+    function showLimitReachedAnimation(ticketGroupId) {
+      var ticketLimitHeader = $('#' + ticketGroupId).find('.ticket-limit-hd');
+      var repeats = 2;
+      for (var i = 0; i < repeats; i++) {
+        ticketLimitHeader.animate( { fontSize: '+=.15em' }, 'normal');
+        ticketLimitHeader.animate( { fontSize: '-=.15em' }, 'normal');
+      }
+    }
+
+    $('.ticket-table select').change(function() {
+      // Keep track of sums related to ALL ticket groups
+      var totalTickets = 0;
+      var totalCost = 0;
+
+      // Variables that relate to the ticket group that fired the change event
+      var ticketGroupId = $(this).attr('class');
+      var ticketGroupIndex = parseInt(ticketGroupId.match(/\d+/g)[0]);
+      var ticketGroupTickets = 0;
+      var ticketGroupLimit = ticketLimits[ticketGroupIndex];
+      var ticketGroupHeader = $('#' + ticketGroupId).find('.ticket-limit-hd');
+      var numberOfPriceGroups = 0;
+
+      // Get the number of tickets chosen in current ticket group
+      $('select.'+ticketGroupId).each(function() {
+        ticketGroupTickets += parseInt($(this).val());
+        numberOfPriceGroups += 1;
+      });
+
+      // Show limit reached animation if ticket group has a ticket limit and
+      // the ticket limit has been reached
+      if (ticketGroupTickets > 0 && ticketGroupTickets === ticketGroupLimit) {
+        showLimitReachedAnimation(ticketGroupId);
       }
 
-      $(this).empty();
+      // Match translation in ticket limit header
+      // 'billett(er)' or 'ticket(s)'
+      var ticketTranslation = ticketGroupHeader.text().match(/[aA-zZ]+.[aA-zZ]+./g);
+      ticketGroupHeader.text(ticketGroupTickets + '/' + ticketGroupLimit + ' ' + ticketTranslation);
 
-      for (var i = 0; i <= optionsLimit; i++) {
-        if (i <= legalOptions) {
-          $(this).append($("<option></option>").attr("value",i).text(i));
-        } else {
-          $(this).append($("<option disabled></option>").attr("value",i).text(i));
+      // Empty dropdowns and populate them with legal options
+      $('select.' + ticketGroupId).each(function(){
+
+        var chosenValue = parseInt($(this).val());
+        var legalOptions = chosenValue + (ticketGroupLimit-ticketGroupTickets);
+        var optionsLimit = $(this).children('option').length;
+
+        $(this).empty();
+
+        for (var i = 0; i < optionsLimit; i++) {
+          if (i <= legalOptions) {
+            $(this).append($("<option></option>").attr("value",i).text(i));
+          } else {
+            $(this).append($("<option disabled></option>").attr("value",i).text(i));
+          }
         }
-      }
 
-      $(this).val(chosenValue);
+        $(this).val(chosenValue);
 
-      // Disable/enable dropdown based on number of legal options
-      // $(this).prop("disabled", !legalOptions);
+        // Disable/enable dropdown based on number of legal options
+        // $(this).prop("disabled", !legalOptions);
 
+      });
+
+      // Set the cost of the tickets in each price group's html
+      $('.price-group-row').each(function() {
+        $(this).find('.sum').html($(this).find('select').val() * $(this).find('.price').data('price'));
+      });
+
+      // Get the total cost of all tickets
+      $('.price-group-row .sum').each(function() {
+        totalCost += (+$(this).html());
+      });
+
+      // Get the total number of tickets chosen
+      $('.price-group-row select').each(function() {
+        totalTickets += (+$(this).val());
+      });
+
+      // Set the total cost and total tickets in the summary's html
+      $('.ticket-table .totalAmount').html(totalTickets + "/" + ticketLimits.reduce(function(a,b){return a+b},0));
+      $('.ticket-table .totalSum').html(totalCost);
     });
+  }
 
-    // Set the cost of the tickets in each price group's html
-    $('.price-group-row').each(function() {
-      $(this).find('.sum').html($(this).find('select').val() * $(this).find('.price').data('price'));
-    });
-
-    // Get the total cost of all tickets
-    $('.price-group-row .sum').each(function() {
-      totalCost += (+$(this).html());
-    });
-
-    // Get the total number of tickets chosen
-    $('.price-group-row select').each(function() {
-      totalTickets += (+$(this).val());
-    });
-
-    // Set the total cost and total tickets in the summary's html
-    $('.ticket-table .totalAmount').html(totalTickets + "/" + ticketLimits.reduce(function(a,b){return a+b},0));
-    $('.ticket-table .totalSum').html(totalCost);
-  });
 
   function validateCardChecksum(value, pattern) {
     var sum = 0;
