@@ -221,21 +221,24 @@ class EventsController < ApplicationController
   private
 
   def get_archived_events
-    session[:archived_events] ||= Event
-                                  .active
-                                  .published
-                                  .past
-                                  .order('non_billig_start_time DESC')
-    session[:event_types] ||= Event::EVENT_TYPE
-                              .map { |e| [t("events.#{e}"), e] }
-                              .uniq
-                              .sort
-    session[:event_areas] ||= Area
-                              .all
-                              .map { |a| a.name }
-                              .uniq
-                              .sort
-    return session[:archived_events], session[:event_types], session[:event_areas]
+    events = Event
+              .active
+              .published
+              .past
+              .order('non_billig_start_time DESC')
+
+    event_types = Event::EVENT_TYPE
+                  .map { |e| [t("events.#{e}"), e] }
+                  .uniq
+                  .sort
+
+    event_areas = Area
+                  .all
+                  .map { |a| a.name }
+                  .uniq
+                  .sort
+
+    return events, event_types, event_areas
   end
 
 end
