@@ -45,16 +45,10 @@ class EventsController < ApplicationController
     @event_type = params[:event_type]
     @event_area = params[:event_area]
 
-    events = Event
-             .active
-             .published
-             .past
-             .order('non_billig_start_time DESC')
-             .text_search(@search + ' ' + @event_type + ' ' + @event_area)
+    @events, @event_types, @event_areas = get_archived_events
+    @events = @events.text_search(@search + ' ' + @event_type + ' ' + @event_area)
 
-    display_all_parameter_options(events)
-
-    if events.empty?
+    if @events.empty?
       redirect_to archive_events_path
 
       # Only display error message if one or more search parameters are present
@@ -63,7 +57,7 @@ class EventsController < ApplicationController
       end
     else
       # Only paginate if there are results to display
-      @events = events.paginate(page: params[:page], per_page: 20)
+      @events = @events.paginate(page: params[:page], per_page: 20)
       render '_archive_list', locals: { search_active: true }
     end
   end
@@ -148,23 +142,9 @@ class EventsController < ApplicationController
   end
 
   def archive
-    events = Event
-             .active
-             .published
-             .past
-             .order('non_billig_start_time DESC')
+    @events, @event_types, @event_areas = get_archived_events
 
-    @event_types = events
-                   .map { |e| [t("events.#{e.event_type}"), e.event_type] }
-                   .uniq
-                   .sort
-
-    @event_areas = events
-                   .map { |e| e.area.name }
-                   .uniq
-                   .sort
-
-    @events = events.paginate(page: params[:page], per_page: 20)
+    @events = @events.paginate(page: params[:page], per_page: 20)
   end
 
   def admin_applet
@@ -240,43 +220,22 @@ class EventsController < ApplicationController
 
   private
 
-  def display_all_parameter_options(events)
-    # If only event type OR event area has been specified,
-    # display all options for that parameter
-    if !@search.present? && !(@event_type.present? && @event_area.present?)
-      if @event_type.present?
-        @event_types = Event
-                       .all
-                       .map { |e| [t("events.#{e.event_type}"), e.event_type] }
-                       .uniq
-                       .sort
-
-        @event_areas = events
-                       .map { |e| e.area.name }
-                       .uniq
-                       .sort
-      else
-        @event_areas = Area
-                       .all
-                       .map(&:name)
-                       .uniq
-                       .sort
-
-        @event_types = events
-                       .map { |e| [t("events.#{e.event_type}"), e.event_type] }
-                       .uniq
-                       .sort
-      end
-    else
-      @event_types = events
-                     .map { |e| [t("events.#{e.event_type}"), e.event_type] }
-                     .uniq
-                     .sort
-
-      @event_areas = events
-                     .map { |e| e.area.name }
-                     .uniq
-                     .sort
-    end
+  def get_archived_events
+    session[:archived_events] ||= Event
+                                  .active
+                                  .published
+                                  .past
+                                  .order('non_billig_start_time DESC')
+    session[:event_types] ||= Event::EVENT_TYPE
+                              .map { |e| [t("events.#{e}"), e] }
+                              .uniq
+                              .sort
+    session[:event_areas] ||= Area
+                              .all
+                              .map { |a| a.name }
+                              .uniq
+                              .sort
+    return session[:archived_events], session[:event_types], session[:event_areas]
   end
+
 end
