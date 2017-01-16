@@ -45,7 +45,7 @@ class EventsController < ApplicationController
     @event_type = params[:event_type]
     @event_area = params[:event_area]
 
-    @events, @event_types, @event_areas = get_archived_events
+    @events, @event_types, @event_areas = archived_events
     @events = @events.text_search(@search + ' ' + @event_type + ' ' + @event_area)
 
     if @events.empty?
@@ -142,7 +142,7 @@ class EventsController < ApplicationController
   end
 
   def archive
-    @events, @event_types, @event_areas = get_archived_events
+    @events, @event_types, @event_areas = archived_events
 
     @events = @events.paginate(page: params[:page], per_page: 20)
   end
@@ -220,12 +220,12 @@ class EventsController < ApplicationController
 
   private
 
-  def get_archived_events
+  def archived_events
     events = Event
-              .active
-              .published
-              .past
-              .order('non_billig_start_time DESC')
+             .active
+             .published
+             .past
+             .order('non_billig_start_time DESC')
 
     event_types = Event::EVENT_TYPE
                   .map { |e| [t("events.#{e}"), e] }
@@ -234,11 +234,10 @@ class EventsController < ApplicationController
 
     event_areas = Area
                   .all
-                  .map { |a| a.name }
+                  .map(&:name)
                   .uniq
                   .sort
 
-    return events, event_types, event_areas
+    [events, event_types, event_areas]
   end
-
 end
