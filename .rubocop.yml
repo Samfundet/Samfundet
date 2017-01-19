@@ -2,8 +2,8 @@ inherit_from:
   .rubocop_todo.yml
 
 AllCops:
-  Exclude:
-    - 'db/**/*'
+  Excludes:
+    - 'db/**'
     - 'config/**/*'
     - 'script/**/*'
     - 'tmp/**/*'
