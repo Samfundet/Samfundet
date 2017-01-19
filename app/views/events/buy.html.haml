@@ -20,7 +20,11 @@
 
         -# Set current ticket group's variables
         - ticket_group_name = @ticket_groups.length > 1 ? ticket_group.ticket_group_name : t('events.price_group')
-        - ticket_group_ticket_limit = ticket_group.has_ticket_limit? ? ticket_group.ticket_limit : default_ticket_group_ticket_limit 
+
+        -# Only use ticket limit if there are tickets left
+        - ticket_group_ticket_limit = 0
+        - if ticket_group.tickets_left?
+          - ticket_group_ticket_limit = ticket_group.has_ticket_limit? ? ticket_group.ticket_limit : default_ticket_group_ticket_limit
 
         -# HTML attributes for use in the javascript
         - ticket_group_id = "tg#{i}"
