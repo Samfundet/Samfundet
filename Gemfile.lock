@@ -433,7 +433,6 @@ DEPENDENCIES
   exception_notification
   factory_girl_rails
   faker (~> 1.6.6)
-  foreigner
   formtastic
   googlecharts
   guard-livereload
