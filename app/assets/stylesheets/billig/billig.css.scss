@@ -10,11 +10,11 @@
         width: 100%;
         margin-bottom: 20px;
         table-layout: fixed;
-        word-break: break-all;
+        word-wrap: break-word;
+        overflow: scroll;
  
         th {
           text-align: left;
-          //font-size: 1.4em !important; 
           font-weight: $font-weight-normal !important;
           color: #888;
           color: black;
@@ -50,11 +50,13 @@
         }
 
         .td-currency-unit-no::after {
+          position: absolute;
           content: " ,-";
         }
 
         .td-currency-unit-en::after {
           content: " NOK";
+          text-align: center;
         }
 
         .td-ticket-unit-no::after {
@@ -65,6 +67,25 @@
           content: " pcs.";
         }
 
+      }
+
+      // Make the ticket table more responsive for small screens
+      @media screen and (max-width: 736px) {
+        table {
+
+          th {
+            padding: 0.1em !important;
+            width: 50%;
+          }
+
+          td {
+            padding: 0.1em !important; 
+          }
+
+          select {
+            width: auto;
+          }
+        }
       }
 
     p {
