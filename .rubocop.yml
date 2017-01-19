@@ -2,21 +2,19 @@ inherit_from:
   .rubocop_todo.yml
 
 AllCops:
-  Excludes:
-    - 'db/**'
+  Exclude:
+    - 'db/**/*'
     - 'config/**/*'
     - 'script/**/*'
     - 'tmp/**/*'
     - 'features/**/*'
+  TargetRubyVersion: 2.3
 
 Metrics/LineLength:
   Max: 350
 
 Lint/UnusedBlockArgument:
     Enabled: false
-
-AllCops:
-  TargetRubyVersion: 2.3
 
 Style/ClassAndModuleChildren:
   EnforcedStyle: compact
