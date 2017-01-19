@@ -39,6 +39,7 @@
       capacity: "Antall plasser"
       comment: "Kommentar"
       available: "Tilgjengelig"
+      next: "Neste reservasjon"
     reservation_type:
       name: "Navn"
       description: "Beskrivelse"
