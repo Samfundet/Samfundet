@@ -5,6 +5,11 @@
 # one by one as the offenses are removed from the code base.
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
+AllCops:
+  Exclude:
+    - 'features/**/*'
+    - 'db/migrate/*'
+
 
 # Offense count: 89
 Lint/AmbiguousRegexpLiteral:
@@ -217,3 +222,102 @@ Style/VariableName:
 Style/WordArray:
   EnforcedStyle: percent
   MinSize: 3
+
+# Offense count: 36
+Metrics/AbcSize:
+  Max: 63
+
+# Offense count: 4
+# Configuration parameters: CountComments.
+Metrics/ClassLength:
+  Max: 228
+
+# Offense count: 6
+Metrics/CyclomaticComplexity:
+  Max: 23
+
+# Offense count: 39
+# Configuration parameters: CountComments.
+Metrics/MethodLength:
+  Max: 59
+
+# Offense count: 1
+# Configuration parameters: CountComments.
+Metrics/ModuleLength:
+  Max: 105
+
+# Offense count: 6
+Metrics/PerceivedComplexity:
+  Max: 15
+
+Metrics/BlockLength:
+  Exclude:
+    - 'config/authorization_rules.rb'
+    - 'config/routes.rb'
+    - 'db/seeds.rb'
+    - 'db/schema.rb'
+    - 'spec/**/*'
+    - 'config/environments/production.rb'
+    - 'config/environments/staging.rb'
+    - 'lib/billig_service.rb'
+    - 'lib/generate_roles.rb'
+    - 'lib/tasks/admission.rake'
+
+Rails/Output:
+  Exclude:
+    - 'db/seeds.rb'
+    - 'config/deploy.rb'
+    - 'lib/billig_service.rb'
+
+Lint/UselessAssignment:
+  Exclude:
+    - 'spec/**/*'
+    - 'lib/generate_roles.rb'
+
+# Offense count: 97
+Style/Documentation:
+  Enabled: false
+
+# Offense count: 2
+# Configuration parameters: SupportedStyles.
+# SupportedStyles: compact, exploded
+Style/RaiseArgs:
+  EnforcedStyle: compact
+
+
+Rails/DynamicFindBy:
+  Exclude:
+    - 'app/controllers/pages_controller.rb'
+    - 'app/models/page.rb'
+
+# Stupid rule
+Rails/OutputSafety:
+  Exclude:
+    - '**/*'
+# Offense count: 2
+# Configuration parameters: EnforcedStyle, SupportedStyles.
+# SupportedStyles: snake_case, camelCase
+Style/VariableName:
+  Enabled: false
+
+Style/GuardClause:
+    Enabled: false
+
+Style/AccessorMethodName:
+  Exclude:
+    - 'app/helpers/application_helper.rb'
+
+Rails/HasAndBelongsToMany:
+  Exclude:
+    - 'app/models/tag.rb'
+    - 'app/models/image.rb'
+    - 'app/models/job.rb'
+
+Style/ClassAndModuleChildren:
+  Exclude:
+    - 'spec/support/locale_fix.rb'
+
+Style/PredicateName:
+  Exclude:
+    - 'lib/control_panel.rb'
+    - 'app/helpers/application_helper.rb'
