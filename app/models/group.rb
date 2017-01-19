@@ -76,6 +76,11 @@ class Group < ActiveRecord::Base
     role.gsub!(/[^a-zA-Z_0-9]/, "")
     role.to_sym
   end
+
+  def self.reject_calls
+    # TODO implement actual query
+    return ["Bob", "Tom"]
+  end
 end
 
 # == Schema Information

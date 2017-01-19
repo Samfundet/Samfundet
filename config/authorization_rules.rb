@@ -120,6 +120,7 @@ authorization do
       :admissions_admin_campus
       ], to: :manage
 
+    has_permission_on :admissions_admin_groups, to: :reject_calls
     has_permission_on :admissions_admin_campus, to: [:activate, :deactivate]
     has_permission_on :admissions_admin_job_applications, to: [:hidden_create, :withdraw_job_application]
     has_permission_on :admissions_admin_jobs, to: :hidden_create
