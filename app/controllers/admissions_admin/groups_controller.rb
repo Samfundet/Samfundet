@@ -47,6 +47,6 @@ class AdmissionsAdmin::GroupsController < ApplicationController
 
   def reject_calls
     # group -> has job -> has application ->
-    'this is to call'
+    @applicants_to_call = Group.reject_calls
   end
 end
