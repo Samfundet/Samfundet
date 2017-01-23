@@ -19,17 +19,15 @@ class BilligTicketGroup < ActiveRecord::Base
     num_sold.between?(num * 0.65, num - 1)
   end
 
-  def has_ticket_limit?
+  def ticket_limit?
     !ticket_limit.nil? && ticket_limit > 0
   end
 
   def price_group_ticket_limit
-    if !has_ticket_limit?
-      DEFAULT_TICKET_LIMIT/netsale_billig_price_groups.length
+    if !ticket_limit?
+      DEFAULT_TICKET_LIMIT / netsale_billig_price_groups.length
     else
       ticket_limit
     end
   end
-
 end
-

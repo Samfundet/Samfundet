@@ -286,17 +286,15 @@ class Event < ActiveRecord::Base
     end
   end
 
-  def has_ticket_limit?
-    if billig_event.present?
-      billig_event.has_ticket_limit?
-    end
+  def ticket_limit?
+    billig_event.present? && billig_event.ticket_limit?
   end
 
   def total_ticket_limit
     ticket_groups = billig_event.netsale_billig_ticket_groups
     total_ticket_limit = 0
     ticket_groups.each do |t|
-      if t.has_ticket_limit? && t.tickets_left?
+      if t.ticket_limit? && t.tickets_left?
         total_ticket_limit += t.ticket_limit
       end
     end
