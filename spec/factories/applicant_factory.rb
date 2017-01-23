@@ -7,6 +7,6 @@ FactoryGirl.define do
     sequence(:phone) { |n| "12345678#{n}" }
     password 'password'
     password_confirmation 'password'
-    campus 'Gløs'
+    association :campus, factory: :campus
   end
 end
