@@ -72,7 +72,7 @@ gem 'route_downcaser'
 gem 'samfundet_domain', git: "https://github.com/Samfundet/SamfundetDomain.git"
 
 # SamfundetAuth is a gem which provides the application with methods for authenticating against mdb2.
-gem 'samfundet_auth', '~> 0.0.11', git: "https://github.com/Samfundet/SamfundetAuth.git"
+gem 'samfundet_auth', '~> 0.0.12', git: "https://github.com/Samfundet/SamfundetAuth.git"
 
 # will_paginate is an adaptive pagination plugin.
 # It makes pagination very simple.
