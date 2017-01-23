@@ -1,7 +1,7 @@
 = semantic_form_for @feedback do |f|
   = f.inputs do
     = f.input :title
-    = f.input :questions
+    = f.input :questions, as: :select
     -#= f.semantic_fields_for :questions do |q|
     -#  = render 'question_fields', f: q
     -#= link_to_add_association t('crud.some.add', type: t('feedbacks.question')), f, :questions

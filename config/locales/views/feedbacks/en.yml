@@ -16,6 +16,9 @@ en:
 
     question: question
 
+    questions:
+        text: Text
+
     action:
         new: Create feedback
         delete: Delete feedback

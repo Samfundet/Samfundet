@@ -8,5 +8,6 @@
         %li
           = radio_button_tag "alternative[#{i}]", j
           = label_tag "alternative_#{i}_#{j}", alternative.text
+    = hidden_field_tag(@token)
     = submit_tag("Innsending")
 

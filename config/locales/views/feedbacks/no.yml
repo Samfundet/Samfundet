@@ -17,6 +17,9 @@
 
     question: spørsmål
 
+    questions:
+        text: Tekst
+
     action:
         new: Opprett undersøkelse
         delete: Slett undersøkelse

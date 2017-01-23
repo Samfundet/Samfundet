@@ -14,6 +14,7 @@ class FeedbacksController < ApplicationController
 
   def admin
     @feedbacks = Feedback.all
+    @questions = Feedback::Question.all
   end
 
   def index
@@ -26,6 +27,7 @@ class FeedbacksController < ApplicationController
   
   def show
     @feedback = Feedback.find(params[:id])
+    @token = [DateTime.now, request.session_options[:id]].join
   end
 
   def edit
@@ -44,15 +46,18 @@ class FeedbacksController < ApplicationController
 
   def answer
     @feedback = Feedback.find params[:feedback_id]
-    params[:alternative].each_with_index do |alternative, i|
-        @question = @feedback.questions[i]
-        Feedback::Answer.where(client: params[:client]).first_or_create(
-            alternative: alternative,
-            question: @question
+    questions = @feedback.questions
+    
+    unless params[:alternative].nil?
+      params[:alternative].each_with_index do |alternative, i|
+        @question = questions[i]
+        Feedback::Answer.where(token: params[:token]).first_or_create(
+          alternative: alternative,
+          question: @question
         )
+      end
     end
-    flash[:success] = t("feedback.complete")
-    redirect_to :root
+    render json: { token: params[:token], alternative: params[:alternative] }
   end
 
   def update
