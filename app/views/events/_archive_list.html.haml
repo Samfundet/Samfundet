@@ -1,0 +1,29 @@
+= render 'search_form_archive', post_path: archive_search_events_path
+
+-# Display search results header if a search has been performed
+- if local_assigns[:search_active]
+  %h3= t('search.results_title')
+
+.event-group
+  %table
+    %thead
+      %tr
+        %th= t("events.title")
+        %th= t("events.start_time")
+        %th= t("events.event_type")
+        %th= t("events.organizer")
+        %th= t("events.area")
+      %tbody
+        - @events.each do |event|
+          %tr
+            %td= link_to event.title, event
+
+            %td= l(event.start_time)
+
+            %td= t_event_type(event)
+
+            %td= event.organizer.name
+
+            %td= event.area 
+
+= will_paginate @events

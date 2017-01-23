@@ -1,0 +1,10 @@
+-# Create search form
+= form_tag post_path, method: :get, class: 'custom-form archive-search-form', autocomplete: 'off' do
+  -# Create text input field
+  = search_field_tag 'search', nil, placeholder: t('events.search.title'), value: @search
+
+  -# Create a dropdown menu of the different event categories
+  = select_tag 'event_type', options_for_select(@event_types, selected: @event_type), onchange: 'this.form.submit()', prompt: t('events.search.type'), class: 'search-constraints'
+
+  -# Create a dropdown menu of the different event areas
+  = select_tag 'event_area', options_for_select(@event_areas, selected: @event_area), onchange: 'this.form.submit()', prompt: t('events.search.area'), class: 'search-constraints'
