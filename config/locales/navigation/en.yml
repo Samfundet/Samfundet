@@ -25,3 +25,5 @@ en:
       show_applications: Your applications
       faq: F.A.Q
       my_group: My group
+    admin:
+      faq: Frequently Asked Questions
