@@ -17,7 +17,8 @@ describe ApplicantsController do
 
   describe 'POST #create' do
     context 'with valid attributes' do
-      let(:valid_attributes) { attributes_for(:applicant) }
+      let(:campus) { create(:campus)}
+      let(:valid_attributes) { attributes_for(:applicant, campus_id: campus.id) }
       it 'saves the applicant' do
         expect do
           post :create, params: { applicant: valid_attributes }

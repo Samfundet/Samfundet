@@ -172,7 +172,7 @@ class ApplicantsController < ApplicationController
   end
 
   def applicant_params
-    params.require(:applicant).permit(:firstname, :surname, :phone, :campus, :email, :password, :password_confirmation, :interested_other_positions)
+    params.require(:applicant).permit(:firstname, :surname, :phone, :campus_id, :email, :password, :password_confirmation, :interested_other_positions)
   end
 
   include PendingApplications
