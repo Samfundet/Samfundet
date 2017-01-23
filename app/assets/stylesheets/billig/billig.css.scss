@@ -35,6 +35,10 @@
           font-weight: $font-weight-normal;
         }
 
+        .ticket-limit-reached {
+          color: red;
+        }
+
         .price-group-row td:nth-child(1) {
           padding-left: 1em;
         }

@@ -187,16 +187,23 @@ $(function() {
       var ticketGroupHeader = $('#' + ticketGroupId).find('.ticket-limit-hd');
       var numberOfPriceGroups = 0;
 
+      var ticketLimitHeader = $('#' + ticketGroupId).find('.ticket-limit-hd');
+      var limitReachedClass = 'ticket-limit-reached';
+
       // Get the number of tickets chosen in current ticket group
       $('select.'+ticketGroupId).each(function() {
         ticketGroupTickets += parseInt($(this).val());
         numberOfPriceGroups += 1;
       });
 
-      // Show limit reached animation if ticket group has a ticket limit and
-      // the ticket limit has been reached
-      if (ticketGroupTickets > 0 && ticketGroupTickets === ticketGroupLimit) {
-        showLimitReachedAnimation(ticketGroupId);
+      // Change the color of the ticket limit
+      // only if the ticket group has tickets left
+      if (ticketGroupTickets > 0) {
+        if (ticketGroupTickets === ticketGroupLimit) {
+          ticketLimitHeader.addClass('ticket-limit-reached');
+        } else {
+          ticketLimitHeader.removeClass('ticket-limit-reached');
+        }
       }
 
       // Match translation in ticket limit header
