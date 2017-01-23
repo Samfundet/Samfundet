@@ -294,8 +294,12 @@ class Event < ActiveRecord::Base
     ticket_groups = billig_event.netsale_billig_ticket_groups
     total_ticket_limit = 0
     ticket_groups.each do |t|
-      if t.ticket_limit? && t.tickets_left?
-        total_ticket_limit += t.ticket_limit
+      if t.tickets_left?
+        if t.ticket_limit?
+          total_ticket_limit += t.ticket_limit
+        else
+          total_ticket_limit += BilligTicketGroup::DEFAULT_TICKET_LIMIT
+        end
       end
     end
     return total_ticket_limit
