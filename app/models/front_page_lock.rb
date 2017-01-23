@@ -33,11 +33,11 @@ class FrontPageLock < ActiveRecord::Base
   end
 
   def event_or_blog_exists
-    !lockable_type.constantize.find_by(lockable_id).nil?
+    !lockable_type.constantize.find_by(id: lockable_id).nil?
   end
 
   def event_or_blog_locked
-    !lockable_type.constantize.find_by(lockable_id).front_page_lock.nil?
+    !lockable_type.constantize.find_by(id: lockable_id).front_page_lock.nil?
   end
 
   def check_if_already_locked
