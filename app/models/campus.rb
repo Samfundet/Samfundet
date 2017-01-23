@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Campus < ActiveRecord::Base
   has_many :applicants
 
