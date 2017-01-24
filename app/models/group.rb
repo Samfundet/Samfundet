@@ -78,8 +78,7 @@ class Group < ActiveRecord::Base
   end
 
   def self.reject_calls
-    # TODO implement actual query
-    return ["Bob", "Tom"]
+    # TODO implement query
   end
 end
 

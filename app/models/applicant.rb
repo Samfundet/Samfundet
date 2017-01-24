@@ -97,6 +97,17 @@ class Applicant < ActiveRecord::Base
   def lowercase_email
     self.email = email.downcase unless email.nil?
   end
+
+  def is_unwanted
+    JobApplication.where(applicant_id: self.id).each do |application|
+      if !application.withdrawn
+        if Interview.where(job_application_id: application.id).first.acceptance_status != "not_wanted"
+          return false
+        end
+      end
+    end
+    return true
+  end
 end
 
 # == Schema Information
