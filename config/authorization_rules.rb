@@ -147,6 +147,7 @@ authorization do
     ], to: :manage
 
     has_permission_on :admissions_admin_job_applications, to: [:hidden_create, :withdraw_job_application]
+    has_permission_on :job_applications, to: [:update, :delete]
     has_permission_on :admissions_admin_jobs, to: :hidden_create
     has_permission_on :admissions_admin_groups, to: :applications
     has_permission_on :admissions_admin_admissions, to: :statistics
