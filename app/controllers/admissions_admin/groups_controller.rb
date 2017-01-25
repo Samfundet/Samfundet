@@ -46,7 +46,6 @@ class AdmissionsAdmin::GroupsController < ApplicationController
   end
 
   def reject_calls
-    # group -> has job -> has application ->
-    @applicants_to_call = Group.reject_calls
+    @applicants_to_call = Group.find(params[:id]).reject_calls(Admission.find(params[:admission_id]))
   end
 end

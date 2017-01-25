@@ -77,8 +77,9 @@ class Group < ActiveRecord::Base
     role.to_sym
   end
 
-  def self.reject_calls
-    # TODO implement query
+  def reject_calls(admission)
+    job_applications = admission.job_applications.select{ | job_application | job_application.job.group_id == self.id}
+    job_applications.select{ | job_application | job_application.applicant.lowest_priority_group(admission) == self.id }.map{ |job_application| job_application.applicant }.uniq.select{ |applicant| applicant.is_unwanted?(admission)}
   end
 end
 

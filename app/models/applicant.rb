@@ -92,22 +92,20 @@ class Applicant < ActiveRecord::Base
     end
   end
 
+  def lowest_priority_group(admission)
+    self.job_applications.select { |application| application.job.admission == admission }.max_by(&:priority).job.group.id
+  end
+
+  def is_unwanted?(admission)
+    self.assigned_job_application(admission, acceptance_status: ["wanted", "reserved", ""]).nil?
+  end
+
   private
 
   def lowercase_email
     self.email = email.downcase unless email.nil?
   end
 
-  def is_unwanted
-    JobApplication.where(applicant_id: self.id).each do |application|
-      if !application.withdrawn
-        if Interview.where(job_application_id: application.id).first.acceptance_status != "not_wanted"
-          return false
-        end
-      end
-    end
-    return true
-  end
 end
 
 # == Schema Information

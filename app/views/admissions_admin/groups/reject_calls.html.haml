@@ -1,2 +1,25 @@
-- @applicants_to_call.each do |applicant|
-  = applicant
+%table.custom-table.sorted
+  %thead
+    %th
+      = t('interviews.applicant_name')
+    %th
+      = t('interviews.applicant_phone_number')
+    %th
+      = t('interviews.applicant_email_address')
+    %th
+      = t('interviews.latest_log_entry')
+    %th
+      = t('interviews.interested_other_positions')
+  %tbody
+  - @applicants_to_call.each do |applicant|
+    %tr
+      %td
+        = applicant.full_name
+      %td
+        = applicant.phone
+      %td
+        = applicant.email
+      %td
+        = applicant.log_entries.last
+      %td
+        = applicant.interested_other_positions
