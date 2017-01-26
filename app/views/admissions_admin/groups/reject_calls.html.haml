@@ -1,0 +1,45 @@
+= javascript_include_tag 'old_samfundet/interviews', defer: true
+= javascript_include_tag 'job_applications/admissions_admin_job_applications', defer: true
+
+%h2=t('admissions_admin.reject_calls', group_name: @group.name)
+%p=t('admissions_admin.reject_calls_title', group_name: @group.name)
+
+%table.applications.custom-table.sorted
+  %thead
+    %th
+      = t('interviews.applicant_name')
+    %th
+      = t('interviews.applicant_phone_number')
+    %th
+      = t('interviews.applicant_email_address')
+    %th
+      = t('interviews.latest_log_entry')
+    %th
+      = t('interviews.interested_other_positions')
+    %th
+      = t('interviews.jobs_applicant_has_applied_to')
+  %tbody
+  - @applicants_to_call.each do |applicant|
+    %tr
+      %td
+        - job_application = applicant.job_applications_at_group(@admission, @group).first
+        = link_to admissions_admin_admission_group_job_job_application_path(@admission, @group, job_application.job, job_application) do
+          = applicant.full_name
+      %td
+        = applicant.phone
+      %td
+        = applicant.email
+      %td
+        - if applicant.log_entries.empty?
+          %b=t('admissions_admin.remember_to_call')
+        - else
+          = applicant.log_entries.last.log
+      %td
+        = applicant.interested_other_positions ? "Ja" : "Nei"
+      %td
+        %ul
+          - applicant.jobs_applied_to(@admission).each do |job|
+            %li
+              = job.title
+              hos
+              = job.group.abbreviation

@@ -76,6 +76,11 @@ class Group < ActiveRecord::Base
     role.gsub!(/[^a-zA-Z_0-9]/, "")
     role.to_sym
   end
+
+  def applicants_to_call(admission)
+    job_applications = admission.job_applications.select { |job_application| job_application.job.group_id == id }
+    job_applications.select { |job_application| job_application.applicant.lowest_priority_group(admission) == id }.map(&:applicant).uniq.select { |applicant| applicant.is_unwanted?(admission) }
+  end
 end
 
 # == Schema Information

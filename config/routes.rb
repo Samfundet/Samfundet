@@ -138,6 +138,7 @@ Rails.application.routes.draw do
       get :statistics, on: :member
       resources :groups, only: :show do
         get :applications, on: :member
+        get :reject_calls, on: :member
         resources :jobs, only: [:show, :new, :create, :edit, :update, :destroy] do
           get :search, on: :collection
           resources :job_applications, only: :show do

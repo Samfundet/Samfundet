@@ -92,6 +92,22 @@ class Applicant < ActiveRecord::Base
     end
   end
 
+  def lowest_priority_group(admission)
+    job_applications.select { |application| application.job.admission == admission }.max_by(&:priority).job.group.id
+  end
+
+  def is_unwanted?(admission)
+    assigned_job_application(admission, acceptance_status: ["wanted", "reserved", ""]).nil?
+  end
+
+  def jobs_applied_to(admission)
+    job_applications.select { |application| application.job.admission == admission }.map(&:job)
+  end
+
+  def job_applications_at_group(admission, group)
+    group.job_applications_in_admission(admission).select { |ja| ja.applicant == self }
+  end
+
   private
 
   def lowercase_email
