@@ -78,7 +78,7 @@ class Group < ActiveRecord::Base
   end
 
   def applicants_to_call(admission)
-    job_applications = admission.job_applications.select { |job_application| job_application.job.group_id == id }
+    job_applications = admission.job_applications.select { |job_application| job_application.job.group_id == id && job_application.withdrawn == false }
     job_applications.select { |job_application| job_application.applicant.lowest_priority_group(admission) == id }.map(&:applicant).uniq.select { |applicant| applicant.is_unwanted?(admission) }
   end
 end
