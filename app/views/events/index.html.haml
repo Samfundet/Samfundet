@@ -11,10 +11,7 @@
           %tbody
             = render events.sort_by{|event| event.start_time}
 
-  .bottom-links
-    %span.archive
-      = link_to t('events.archive.title'), archive_events_path
-    %span.rss
-      = link_to t('events.rss_short_text'), '/rss'
-    %span.calendar
-      = link_to t('events.ical_short_text'), '/arrangement/ical'
+  .links
+    %a.rss-icon{ href: '/rss', title: t('events.rss_alt_text')}
+    %a.ical-icon{ href: '/arrangement/ical', title: t('events.ical_alt_text')}
+    %a.archive-icon{ href: archive_events_path, title: t('events.archive.title')}    

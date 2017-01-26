@@ -163,15 +163,33 @@
         }
     }
 
-    .bottom-links {
-        display: table;
-        width: 100%;
-        table-layout: fixed;
-        span {
-          display: table-cell;
-          text-align: center;
-          font-weight: bold;
+    .links {
+      text-align: center;
+      a {
+        display: inline-block;
+
+        margin: auto;
+        padding: 40px;
+
+        height: 40px;
+        width: 40px;
+
+        background-position: center; 
+        background-repeat: no-repeat;
+        background-size: 40px;
+
+        &.rss-icon {
+          background-image: url(rss.svg);
         }
+
+        &.ical-icon {
+          background-image: url(calendar.svg);
+        }
+        
+        &.archive-icon {
+          background-image: url(archive.svg);
+        }
+      }
     }
 
     .event-group {
