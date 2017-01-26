@@ -79,7 +79,7 @@ gem 'samfundet_auth', '~> 0.0.12', git: "https://github.com/Samfundet/SamfundetA
 gem 'will_paginate'
 
 # for file uploads, see https://github.com/thoughtbot/paperclip
-gem "paperclip", "~> 4.2.2"
+gem "paperclip", "~> 4.3.7"
 
 # automatic compression of images uploaded via paperclip
 gem 'paperclip-compression', '0.3.5'
@@ -126,7 +126,7 @@ end
 
 group :development do
   # Gem to detect ruby style guide violations
-  gem 'rubocop', require: false
+  gem 'rubocop', '0.37.2', require: false
 
   # annotate adds schema information from the database, in the form of
   # Ruby comments, to model files so that we can see which columns
