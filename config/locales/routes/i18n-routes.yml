@@ -41,6 +41,7 @@
     blogs: blogg
     contact: kontakt
     contactinfo: kontaktinfo
+    reject_calls: sokere-dere-skal-ringe
 
 en:
   routes:

@@ -15,7 +15,7 @@
     %th
       = t('interviews.interested_other_positions')
     %th
-      = "Stillinger denne søkeren har søkt"
+      = t('interviews.jobs_applicant_has_applied_to')
   %tbody
   - @applicants_to_call.each do |applicant|
     %tr
@@ -29,7 +29,7 @@
         = applicant.email
       %td
         - if applicant.log_entries.empty?
-          %b="INGEN LOGGFØRING, HUSK Å RING!"
+          %b=t('admissions_admin.remember_to_call')
         - else
           = applicant.log_entries.last.log
       %td
@@ -41,4 +41,3 @@
               = job.title
               hos
               = job.group.abbreviation
-              %br

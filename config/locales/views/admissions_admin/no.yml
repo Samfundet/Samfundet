@@ -8,3 +8,5 @@
     applications_by_day_for_group: "Antall søknader per dag for %{group}"
     show_interested_other_positions: 'Show applicants that are interested in other positions'
     show_interested_other_positions: 'Vis søkere som er interesert i andre stillinger men som ikke er tildelt stillinger'
+    reject_calls: "Søkere uten tilbud %{group_name} må ringe."
+    remember_to_call: "INGEN LOGGFØRINGER, HUSK Å RING!"

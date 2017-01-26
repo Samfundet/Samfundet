@@ -7,3 +7,5 @@ en:
     applications_by_day: "Number of applications per day"
     applications_by_day_for_group: "Number of applications per day for %{group}"
     show_interested_other_positions: 'Show applicants that are interested in other positions'
+    reject_calls: "Applicants without any offers that %{group_name} has to call."
+    remember_to_call: "NO LOG ENTRIES, REMEMBER TO CALL!"
