@@ -197,13 +197,11 @@ $(function() {
       });
 
       // Change the color of the ticket limit
-      // only if the ticket group has tickets left
-      if (ticketGroupTickets > 0) {
-        if (ticketGroupTickets === ticketGroupLimit) {
-          ticketLimitHeader.addClass('ticket-limit-reached');
-        } else {
-          ticketLimitHeader.removeClass('ticket-limit-reached');
-        }
+      // if the ticket limit is reached
+      if (ticketGroupTickets === ticketGroupLimit) {
+        ticketLimitHeader.addClass('ticket-limit-reached');
+      } else {
+        ticketLimitHeader.removeClass('ticket-limit-reached');
       }
 
       // Match translation in ticket limit header
