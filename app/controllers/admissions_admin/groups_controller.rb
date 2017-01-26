@@ -2,7 +2,7 @@
 class AdmissionsAdmin::GroupsController < ApplicationController
   j layout "admissions"
 
-  filter_access_to [:show, :applications], attribute_check: true
+  filter_access_to [:show, :applications, :reject_calls], attribute_check: true
 
   def show
     @admission = Admission.find(params[:admission_id])
