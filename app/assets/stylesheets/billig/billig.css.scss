@@ -12,20 +12,14 @@
         table-layout: fixed;
         word-wrap: break-word;
         overflow: scroll;
- 
-        th {
-          text-align: left;
-          font-weight: $font-weight-normal !important;
-          color: #888;
-          color: black;
+        color: $samfundet-black;
+
+        tr .ticket-limit-hd {
+          text-align: center;
         }
 
-        th, td {
-          padding: 10px 0;
-        }
-
-        .price-group-row td {
-          font-size: 1em !important;
+        .price-group-row td:nth-child(1) {
+          padding-left: 1em;
         }
 
         select {
@@ -35,22 +29,14 @@
           font-weight: $font-weight-normal;
         }
 
-        .ticket-limit-reached {
-          color: red;
-        }
-
-        .price-group-row td:nth-child(1) {
-          padding-left: 1em;
-        }
-
         .ticket-group-row:not(:first-child) th, .ticket-summary-row td {
           border-top: solid 1px;
           border-top-color: $samfundet-black;
         }
 
-        tr .ticket-limit-hd {
-          text-align: center;
-          font-weight: $font-weight-normal !important;
+        .ticket-limit-reached {
+          color: $samfundet-orange;
+          font-weight: bolder !important;
         }
 
         .td-currency-unit-no::after {
@@ -60,7 +46,6 @@
 
         .td-currency-unit-en::after {
           content: " NOK";
-          text-align: center;
         }
 
         .td-ticket-unit-no::after {
@@ -77,13 +62,9 @@
       @media screen and (max-width: 736px) {
         table {
 
-          th {
+          th, td {
             padding: 0.1em !important;
             width: 50%;
-          }
-
-          td {
-            padding: 0.1em !important; 
           }
 
           select {
