@@ -100,6 +100,14 @@ class Applicant < ActiveRecord::Base
     self.assigned_job_application(admission, acceptance_status: ["wanted", "reserved", ""]).nil?
   end
 
+  def jobs_applied_to(admission)
+    self.job_applications.select{ |application| application.job.admission == admission }.map(&:job)
+  end
+
+  def job_applications_at_group(admission, group)
+    group.job_applications_in_admission(admission).select{|ja| ja.applicant == self}
+  end
+
   private
 
   def lowercase_email
