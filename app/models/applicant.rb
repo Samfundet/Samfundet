@@ -78,8 +78,7 @@ class Applicant < ActiveRecord::Base
   end
 
   def self.interested_other_positions(admission)
-    where(disabled: false).
-    where(interested_other_positions: true).select do |applicant|
+    where(disabled: false).where(interested_other_positions: true).select do |applicant|
       # If not wanted by any
       applicant.assigned_job_application(admission, acceptance_status: %w(wanted)).nil?
     end
