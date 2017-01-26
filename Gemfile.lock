@@ -10,9 +10,9 @@ GIT
 
 GIT
   remote: https://github.com/Samfundet/SamfundetAuth.git
-  revision: 3c9a3851694a22389b554d4182a947587b9c1ad4
+  revision: 40e1b2c8243dd6a7027c57966bc0fa4317c22ec9
   specs:
-    samfundet_auth (0.0.11)
+    samfundet_auth (0.0.12)
       declarative_authorization
       foreigner
       rails (~> 3.2.8)
@@ -384,7 +384,7 @@ DEPENDENCIES
   rspec
   rspec-rails
   rubocop
-  samfundet_auth (~> 0.0.11)!
+  samfundet_auth (~> 0.0.12)!
   samfundet_domain!
   sass (~> 3.2.16)
   sass-rails
@@ -396,5 +396,8 @@ DEPENDENCIES
   webrat
   will_paginate
 
+RUBY VERSION
+   ruby 2.1.5p273
+
 BUNDLED WITH
-   1.11.2
+   1.13.1
