@@ -1,8 +1,10 @@
 en:
   events:
     rss_title: Events at Studentersamfundet in Trondheim
-    rss_alt_text: Samfundets rss strøm.
-    ical_alt_text: Samfundets ical strøm.
+    rss_alt_text: Samfundet's rss feed.
+    rss_short_text: RSS
+    ical_alt_text: Samfundet's ical feed.
+    ical_short_text: iCal
     create_success: Successfully created the event.
     create_error: Could not create event.
     update_success: Successfully updated the event.
