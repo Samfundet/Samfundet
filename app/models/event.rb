@@ -312,12 +312,15 @@ class Event < ActiveRecord::Base
   private
 
   def unique_price_groups
-    unique_price_groups =
+    if billig_event.nil?
+      []
+    else
       billig_event
       .billig_ticket_groups
       .map(&:netsale_billig_price_groups)
       .flatten
       .uniq(&:price)
+    end
   end
 end
 
