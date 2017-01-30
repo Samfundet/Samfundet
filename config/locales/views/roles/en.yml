@@ -12,6 +12,8 @@ en:
     member_name: "Name"
     remove_member: "Remove member"
     add_member: "Add a member"
+    date_assigned: "Role assigned at"
+    one_year_old: "Have had role for more than one year"
     member_autocomplete_label: "Name / ID / User name / E-mail address"
     add_member_submit: "Add member"
     pass: "Pass role"

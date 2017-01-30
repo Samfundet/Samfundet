@@ -12,6 +12,8 @@
     member_name: "Navn"
     remove_member: "Fjern medlem"
     add_member: "Legg til medlem"
+    date_assigned: "Dato tildelt rollen"
+    one_year_old: "Har hatt rollen i mer enn ett år"
     member_autocomplete_label: "Navn / ID / Brukernavn / E-postadresse"
     add_member_submit: "Legg til medlem"
     pass: "Viderefør rolle"
