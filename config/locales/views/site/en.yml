@@ -13,6 +13,7 @@ en:
       clear_lock: "Remove lock"
 
       few_tickets_left: "Few tickets left"
+      ticket_limit_max: "MAX"
 
       events_today: "Events"
       no_events_because_closed: "Samfundet is closed today"

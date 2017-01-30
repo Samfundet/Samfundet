@@ -16,6 +16,7 @@
         .locked-border
           = image_tag "fontawesome/lock24.svg", alt: "Padlock"
       = render 'events/corner_ribbon', event: event
+      = render 'events/ticket_limit_icon', event: event
 
   .description
     = render "events/buy_button", event: event

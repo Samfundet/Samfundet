@@ -1,0 +1,14 @@
+- if event.ticket_limit?
+  .ticket_limit_wrapper
+    - if event.total_ticket_limit < 10
+      - if I18n.locale == :no
+        .ticket_limit_icon_medium
+      - else
+        .ticket_limit_icon_small
+    - else
+      - if I18n.locale == :no
+        .ticket_limit_icon_big
+      - else
+        .ticket_limit_icon_medium
+    .total_ticket_limit
+      = t('site.index.ticket_limit_max') + ". " + event.total_ticket_limit.to_s

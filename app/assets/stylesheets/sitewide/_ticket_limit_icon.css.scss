@@ -1,0 +1,56 @@
+.ticket_limit_wrapper{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  margin: 5px;
+  width: 100px;
+  height: 41px;
+}
+
+.ticket_limit_icon_small{
+  width: 85px;
+  height: 41px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-size: 15;
+  color: #FFFFFF;
+  content: url("fontawesome/ticketLimitSmall.png");
+  padding: 3px;
+
+}
+
+.ticket_limit_icon_medium{
+  width: 90px;
+  height: 41px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-size: 15;
+  color: #FFFFFF;
+  content: url("fontawesome/ticketLimitMedium.png");
+  padding: 3px;
+
+}
+
+.ticket_limit_icon_big{
+  width: 100px;
+  height: 41px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-size: 15;
+  color: #FFFFFF;
+  content: url("fontawesome/ticketLimitLarge.png");
+  padding: 3px;
+
+}
+
+.total_ticket_limit {
+  position: absolute;
+  color: white;
+  z-index: 100;
+  bottom: 10px;
+  left: 18px;
+  font-size: 15.5px;
+}
