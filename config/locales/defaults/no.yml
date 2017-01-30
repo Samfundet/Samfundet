@@ -1,4 +1,6 @@
 'no':
+  'true': "Ja"
+  'false': "Nei"
   crud:
     show: "vis"
     create: "opprett"

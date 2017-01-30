@@ -25,6 +25,8 @@
     %table
       %tr
         %th= t('roles.member_name')
+        %th= t('roles.date_created')
+        %th= t('roles.one_year_old')
         %th &nbsp;
       - @role.members_roles.each do |members_role|
         %tr
@@ -32,6 +34,8 @@
             = members_role.member.full_name
           %td
             = members_role.created_at
+          %td
+            = t((members_role.created_at < 1.year.ago).to_s)
           %td
             = link_to t('roles.remove_member'),
                       [@role, members_role],
