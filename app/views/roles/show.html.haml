@@ -31,6 +31,8 @@
           %td
             = members_role.member.full_name
           %td
+            = members_role.created_at
+          %td
             = link_to t('roles.remove_member'),
                       [@role, members_role],
                       method: :delete,
