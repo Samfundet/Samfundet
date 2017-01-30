@@ -1,4 +1,4 @@
-class Feedbacks::QuestionsController < ApplicationController
+class Feedback::QuestionsController < ApplicationController
      
   def new
     @question = Feedback::Question.new

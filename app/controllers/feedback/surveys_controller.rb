@@ -1,42 +1,42 @@
-class FeedbacksController < ApplicationController
+class Feedback::SurveysController < ApplicationController
 
   filter_access_to [:admin, :answers], require: :edit
   has_control_panel_applet :admin_applet,
-                           if: -> { permitted_to? :edit, :feedbacks }
+                           if: -> { permitted_to? :edit, :surveys }
 
   def answers
-    @feedback = Feedback.find(params[:id])
-    @answers = @feedback.questions.each{ |q| q.answers }.flatten
+    @survey = Feedback::Survey.find(params[:id])
+    @answers = @survey.questions.each{ |q| q.answers }.flatten
   end
 
   def admin_applet
   end
 
   def admin
-    @feedbacks = Feedback.all
+    @surveys = Feedback::Survey.all
     @questions = Feedback::Question.all
   end
 
   def index
-    @feedbacks = Feedback.all
+    @surveys = Feedback::Survey.all
   end
 
   def new
-    @feedback = Feedback.new
+    @survey = Feedback::Survey.new
   end
   
   def show
-    @feedback = Feedback.find(params[:id])
+    @survey = Feedback::Survey.find(params[:id])
     @token = [DateTime.now, request.session_options[:id]].join
   end
 
   def edit
-    @feedback = Feedback.find(params[:id])
+    @survey = Feedback::Survey.find(params[:id])
   end
 
   def create
-    @feedback = Feedback.new(params[:feedback])
-    if @feedback.save
+    @survey = Feedback::Survey.new(params[:survey])
+    if @survey.save
       flash[:success] = t('feedbacks.create_success')
     else
       flash.now[:error] = t('feedbacks.create_error')
@@ -45,8 +45,8 @@ class FeedbacksController < ApplicationController
   end
 
   def answer
-    @feedback = Feedback.find params[:feedback_id]
-    questions = @feedback.questions
+    @survey = Feedback::Survey.find params[:survey_id]
+    questions = @survey.questions
     
     unless params[:alternative].nil?
       params[:alternative].each_with_index do |alternative, i|
@@ -61,9 +61,9 @@ class FeedbacksController < ApplicationController
   end
 
   def update
-    @feedback = Feedback.find(params[:id])
+    @survey = Feedback::Survey.find(params[:id])
 
-    if @feedback.update_attributes(params[:feedback])
+    if @survey.update_attributes(params[:survey])
       flash[:success] = t("helpers.models.feedbacks.success.update")
     else
       flash.now[:error] = t("helpers.models.feedbacks.errors.update_fail")
@@ -72,7 +72,7 @@ class FeedbacksController < ApplicationController
   end
 
   def destroy
-    Feedback.find(params[:id]).destroy
+    Feedback::Survey.find(params[:id]).destroy
     redirect_to action: :admin
   end
 end

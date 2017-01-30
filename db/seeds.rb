@@ -359,7 +359,7 @@ feedbacks.length.times.each do |k|
   end
 
   puts "Creating feedback"
-  feedbacks[k] = Feedback::Feedback.create!(
+  feedbacks[k] = Feedback::Survey.create!(
     title: Faker::Lorem.word,
     questions: questions
   )
@@ -447,10 +447,10 @@ Area.all.each do |area|
       organizer = rand > 0.7 ? Group.order("RANDOM()").first : ExternalOrganizer.order("RANDOM()").first
       chosen_colors = colors.sample(2)
 
-      feedback = feedbacks.sample
+      survey = feedbacks.sample
 
       Event.create!(
-        feedback: feedback,
+        survey: survey,
         area_id: area.id,
         organizer_id: organizer.id,
         organizer_type: organizer.class.name,

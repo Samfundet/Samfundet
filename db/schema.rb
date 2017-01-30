@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170109205441) do
+ActiveRecord::Schema.define(:version => 20170130203500) do
 
   create_table "admissions", :force => true do |t|
     t.string   "title"
@@ -220,32 +220,30 @@ ActiveRecord::Schema.define(:version => 20170109205441) do
   end
 
   create_table "feedback_alternatives", :force => true do |t|
+    t.decimal  "feedback_question_id"
     t.string   "text"
-    t.integer  "question_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
   end
 
   create_table "feedback_answers", :force => true do |t|
-    t.integer  "feedback_question_id"
+    t.decimal  "feedback_question_id"
+    t.decimal  "alternative"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
-    t.decimal  "alternative"
-    t.integer  "question_id"
-    t.string   "token"
   end
 
   create_table "feedback_questions", :force => true do |t|
+    t.decimal  "feedback_survey_id"
     t.string   "text"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.integer  "feedback_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
-  create_table "feedbacks", :force => true do |t|
+  create_table "feedback_surveys", :force => true do |t|
+    t.string   "title"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "title"
   end
 
   create_table "front_page_locks", :force => true do |t|

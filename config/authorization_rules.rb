@@ -120,7 +120,7 @@ authorization do
       :sulten_admin,
       :contact,
       :feedbacks,
-      :feedback_questions,
+      :feedbacks_questions,
       :admissions_admin_campus
       ], to: :manage
 

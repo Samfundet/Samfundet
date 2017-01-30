@@ -1,12 +1,10 @@
 class Feedback::Question < ActiveRecord::Base
-  attr_accessible :text, :feedback, :answers, :alternatives, :index
+  attr_accessible :text, :survey, :alternatives, :index
   
-  has_many :answers
   has_many :alternatives
-  belongs_to :feedback
+  belongs_to :survey
 
   validates_presence_of :text
-  #validates :index, uniqueness: { scope: :feedback }
    
   accepts_nested_attributes_for :alternatives, allow_destroy: true, reject_if: :all_blank
 
