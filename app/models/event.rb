@@ -298,7 +298,9 @@ class Event < ActiveRecord::Base
         if t.ticket_limit?
           total_ticket_limit += t.ticket_limit
         else
-          total_ticket_limit += BilligTicketGroup::DEFAULT_TICKET_LIMIT
+          t.netsale_billig_price_groups.each do |price_group|
+            total_ticket_limit += BilligTicketGroup::DEFAULT_TICKET_LIMIT
+          end
         end
       end
     end
