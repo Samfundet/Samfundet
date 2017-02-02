@@ -6,9 +6,13 @@
 
   = form_tag Rails.application.config.billig_path, method: "post", class: 'custom-form' do
     -# Get default limit from ticket group model
-    - default_ticket_group_ticket_limit = BilligTicketGroup::DEFAULT_TICKET_LIMIT
+    - default_price_group_ticket_limit = BilligTicketGroup::DEFAULT_TICKET_LIMIT
 
-    %table.ticket-table{data: {default: default_ticket_group_ticket_limit}}
+    -# Data fields to extract in JavaScript
+    - ticket_table_data = "data-default-ticket-limit"
+    - ticket_group_data = ["data-has-ticket-limit", "data-ticket-limit"]
+
+    %table.ticket-table{ticket_table_data => "#{BilligTicketGroup::DEFAULT_TICKET_LIMIT}"}
       -# Translate currency and ticket unit in billig.css.scss
       - currency_unit_class = "td-currency-unit-#{I18n.locale}"
       - ticket_unit_class = "td-ticket-unit-#{I18n.locale}"
@@ -17,6 +21,8 @@
       - @ticket_groups.each_with_index do |ticket_group, i|
         -# The price groups in the current ticket group
         - price_groups = ticket_group.netsale_billig_price_groups
+
+        - default_ticket_group_ticket_limit = default_price_group_ticket_limit * price_groups.length
 
         -# Set current ticket group's variables
         - ticket_group_name = @ticket_groups.length > 1 ? ticket_group.ticket_group_name : t('events.price_group')
@@ -31,7 +37,7 @@
         - ticket_group_class = "ticket-limit-#{ticket_group_ticket_limit}"
 
         -# Set ticket group row ( ticket group | ticket limit)
-        %tr.ticket-group-row{id: ticket_group_id, class: ticket_group_class}
+        %tr.ticket-group-row{id: ticket_group_id, ticket_group_data[0] => "#{ticket_group.ticket_limit?}", ticket_group_data[1] => "#{ticket_group_ticket_limit}"}
           %th
             = ticket_group_name
 
