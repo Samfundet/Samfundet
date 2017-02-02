@@ -19,6 +19,8 @@
     eighteen_twenty: 18 år&nbsp;(student), 20 år&nbsp;(ikke-student)
     twenty: 20 år
     none: Ingen aldersgrense
+    ticket_limit_event_show: Billettbegrensning
+    tickets: billetter
 
     title: Tittel
     start_time: Starttid

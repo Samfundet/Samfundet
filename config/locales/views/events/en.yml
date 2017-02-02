@@ -19,6 +19,8 @@ en:
     eighteen_twenty: 18&nbsp;(student), 20&nbsp;(non-student)
     twenty: 20 years
     none: No age limit
+    ticket_limit_event_show: Ticket limit
+    tickets: Tickets
 
     left: left
     right: right

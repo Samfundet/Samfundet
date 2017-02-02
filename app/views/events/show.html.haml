@@ -35,6 +35,11 @@
         %td= t('events.ticket')
         %td= inline_event_price @event
 
+      - if @event.ticket_limit?
+        %tr
+          %td= t('events.ticket_limit_event_show')
+          %td= @event.total_ticket_limit.to_s + ' ' + t('events.tickets')
+
       %tr
         %td= t('events.age_limit')
         %td= t_event_age_limit(@event)
