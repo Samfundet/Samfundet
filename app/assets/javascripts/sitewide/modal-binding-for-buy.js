@@ -128,17 +128,17 @@ $(function() {
 
   function ticketFormLoaded() {
     // Keep track of ticket groups and their ticket limits
-    var ticketGroups = getTicketGroups();
-    var ticketLimits = getTicketLimits(ticketGroups);
+    var ticketGroupIds= getTicketGroupsIds();
+    var ticketLimits = getTicketLimits(ticketGroupIds);
 
-    // Get the default ticket group ticket limit
+    // Get the default price group ticket limit
     var defaultTicketLimit = getDefaultTicketLimit();
 
     function getDefaultTicketLimit() {
-      return parseInt($('.ticket-table').data('default'));
+      return parseInt($('.ticket-table').data('default-ticket-limit'));
     }
 
-    function getTicketGroups(){
+    function getTicketGroupsIds(){
       var ticketGroupOverview = {};
 
       $('.ticket-group-row').each(function() {
@@ -154,25 +154,13 @@ $(function() {
     function getTicketLimits(ticketGroups){
       var ticketLimits = [];
 
-      $.each(ticketGroups, function(i, group) {
-        var classPattern = /ticket-limit-\d+/;
-        var textPattern = /\D/g;
-        var ticketGroupClass = $('#'+group).attr('class').match(classPattern)[0];
-        var ticketGroupLimit = ticketGroupClass.replace(textPattern, '');
+      $.each(ticketGroups, function(i, groupId) {
+        var ticketGroupLimit = $('#' + groupId).data('ticket-limit');
         ticketLimits.push(parseInt(ticketGroupLimit));
       });
 
       return ticketLimits;
     };
-
-    function showLimitReachedAnimation(ticketGroupId) {
-      var ticketLimitHeader = $('#' + ticketGroupId).find('.ticket-limit-hd');
-      var repeats = 2;
-      for (var i = 0; i < repeats; i++) {
-        ticketLimitHeader.animate( { fontSize: '+=.15em' }, 'normal');
-        ticketLimitHeader.animate( { fontSize: '-=.15em' }, 'normal');
-      }
-    }
 
     $('.ticket-table select').change(function() {
       // Keep track of sums related to ALL ticket groups
@@ -187,11 +175,11 @@ $(function() {
       var ticketGroupHeader = $('#' + ticketGroupId).find('.ticket-limit-hd');
       var numberOfPriceGroups = 0;
 
-      var ticketLimitHeader = $('#' + ticketGroupId).find('.ticket-limit-hd');
+      // Class used to stylize table header when ticket limit is reached
       var limitReachedClass = 'ticket-limit-reached';
 
       // Get the number of tickets chosen in current ticket group
-      $('select.'+ticketGroupId).each(function() {
+      $('select.' + ticketGroupId).each(function() {
         ticketGroupTickets += parseInt($(this).val());
         numberOfPriceGroups += 1;
       });
@@ -199,9 +187,9 @@ $(function() {
       // Change the color of the ticket limit
       // if the ticket limit is reached
       if (ticketGroupTickets === ticketGroupLimit) {
-        ticketLimitHeader.addClass('ticket-limit-reached');
+        ticketGroupHeader.addClass(limitReachedClass);
       } else {
-        ticketLimitHeader.removeClass('ticket-limit-reached');
+        ticketGroupHeader.removeClass(limitReachedClass);
       }
 
       // Match translation in ticket limit header
@@ -227,9 +215,6 @@ $(function() {
         }
 
         $(this).val(chosenValue);
-
-        // Disable/enable dropdown based on number of legal options
-        // $(this).prop("disabled", !legalOptions);
 
       });
 
