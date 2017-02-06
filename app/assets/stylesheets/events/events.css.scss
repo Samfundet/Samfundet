@@ -166,12 +166,19 @@
     .bottom-links {
         display: table;
         width: 100%;
+        text-align: center;
         table-layout: fixed;
-        span {
+
+        white-space: nowrap;
+        text-align: center;
+        span{
           display: table-cell;
-          text-align: center;
-          font-weight: bold;
         }
+
+        img{
+          width: 40px;
+        }
+
     }
 
     .event-group {
