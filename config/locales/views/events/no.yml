@@ -1,9 +1,9 @@
 'no':
   events:
     rss_title: Arrangementer på Studentersamfundet i Trondhjem
-    rss_alt_text: Samfundets rss feed.
+    rss_alt_text: Samfundets RSS feed.
     rss_short_text: RSS
-    ical_alt_text: Samfundets ical feed.
+    ical_alt_text: Samfundets iCal feed.
     ical_short_text: iCal
     create_success: Arrangementet er opprettet.
     create_error: Arrangementet ble ikke opprettet.
