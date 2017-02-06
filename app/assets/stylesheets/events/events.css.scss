@@ -177,9 +177,10 @@
         }
 
         img{
-          width: 40px;
+          width: 2em;
           position: relative;
-          top: 9px;
+          top: 0.5em;
+          right: 0.5em;
         }
 
         @include media($mobile-and-tablet-portrait) {
