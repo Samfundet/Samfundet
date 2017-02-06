@@ -1,7 +1,7 @@
 
-%h2= @feedback.title
-- @feedback.questions.each_with_index do |question, i|
-  = form_tag feedback_answer_path(@feedback), method: 'post', class: 'feedback-form' do
+%h2= @survey.title
+- @survey.questions.each_with_index do |question, i|
+  = form_tag feedback_survey_answer_path(@survey), method: 'post', class: 'feedback-form' do
     %h3= question.text  
     %ul.feedback-alternatives
       - question.alternatives.each_with_index do |alternative, j|

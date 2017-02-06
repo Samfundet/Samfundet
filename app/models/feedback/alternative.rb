@@ -3,5 +3,4 @@ class Feedback::Alternative < ActiveRecord::Base
 
   belongs_to :question
   validates_presence_of :text
-  #validates :index, uniqueness: { scope: :question }
 end

@@ -119,8 +119,9 @@ authorization do
       :sulten_reservation_types,
       :sulten_admin,
       :contact,
-      :feedbacks,
-      :feedbacks_questions,
+      :feedback_admin,
+      :feedback_surveys,
+      :feedback_questions,
       :admissions_admin_campus
       ], to: :manage
 

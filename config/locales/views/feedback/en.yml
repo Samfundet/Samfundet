@@ -1,0 +1,32 @@
+en:
+  feedback:
+    survey: survey
+    create_success: Successfully created the survey.
+    create_error: Could not create survey.
+    update_success: Successfully updated the survey.
+    update_error: Could not update the survey.
+    confirm_delete: Are you sure you want to delete this survey?
+    destroy_success: Successfully deleted the survey.
+    left: left
+    right: right
+    title: Title of survey
+
+    yes: yes
+    no: no
+
+    question: question
+
+    questions:
+        text: Text
+
+    action:
+        new: Create survey
+        delete: Delete survey
+        edit: Edit survey
+
+    admin:
+      title: Feedback admin
+      new: New survey
+
+    admin_applet:
+      title: surveys

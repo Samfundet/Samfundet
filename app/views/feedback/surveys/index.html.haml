@@ -1,24 +1,24 @@
-- set_title t('feedbacks.index_title')
+- set_title t('feedback.index_title')
 
 .cover-photo
 
-- if permitted_to? :manage, :feedbacks
+- if permitted_to? :manage, :feedback
   .admin-choices
     %ul
-      - if permitted_to? :new, :feedbacks
+      - if permitted_to? :new, :feedback
         %li
-          = link_to t("feedbacks.admin.new"), new_feedback_path
+          = link_to t("feedback.admin.new"), new_feedback_survey_path
       %li
-        = link_to t("feedbacks.admin.title"), admin_feedbacks_path
+        = link_to t("feedback.admin.title"), feedback_admin_path
 
 
 .content
-  %h1= t('feedbacks.index_title')
+  %h1= t('feedback.index_title')
 
   .category-list
 
-  - @feedbacks.each do |feedback|
-    - feedback.questions.each do |question|
+  - @surveys.each do |survey|
+    - survey.questions.each do |question|
       %h2= question.text
       %ul
         - question.alternatives do |alternative|

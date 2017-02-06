@@ -327,10 +327,12 @@ price_group_names.each do |group|
     PriceGroup.create(name: group, price: price)
   end
 end
-feedbacks = Array.new 5
-feedbacks.length.times.each do |k|
-  questions = Array.new rand(1..4)
-  puts "Creating #{questions.length} feedback questions"
+
+# Create feedback
+surveys = Array.new 5
+surveys.length.times.each do |k|
+  questions = Array.new rand(8..10)
+  puts "Creating #{questions.length} questions"
 
   questions.length.times.each do |j|
     alternatives = Array.new rand(3..8)
@@ -342,12 +344,13 @@ feedbacks.length.times.each do |k|
 
     questions[j] = Feedback::Question.create!(
       text: Faker::Lorem.sentence(5),
-      alternatives: alternatives
+      alternatives: alternatives,
+      index: j
     )
     
     answers = Array.new rand(1..15)
 
-    puts "Creating #{answers.length} feedback answers"
+    puts "Creating #{answers.length} answers"
 
     answers.length.times.each do |i|
         answers[i] = Feedback::Answer.create!(
@@ -358,8 +361,8 @@ feedbacks.length.times.each do |k|
 
   end
 
-  puts "Creating feedback"
-  feedbacks[k] = Feedback::Survey.create!(
+  puts "Creating survey"
+  surveys[k] = Feedback::Survey.create!(
     title: Faker::Lorem.word,
     questions: questions
   )
@@ -447,7 +450,7 @@ Area.all.each do |area|
       organizer = rand > 0.7 ? Group.order("RANDOM()").first : ExternalOrganizer.order("RANDOM()").first
       chosen_colors = colors.sample(2)
 
-      survey = feedbacks.sample
+      survey = surveys.sample
 
       Event.create!(
         survey: survey,

@@ -1,6 +1,6 @@
 'no':
-  feedbacks:
-    feedback: undersøkelse
+  feedback:
+    survey: undersøkelse
     create_success: Undersøkelsen er opprettet.
     create_error: Undersøkelsen ble ikke opprettet.
     update_success: Undersøkelsen er oppdatert.
@@ -26,7 +26,7 @@
         edit: Rediger undersøkelse
 
     admin:
-      title: Administrer undersøkelse
+      title: Administrer undersøkelser
       edit: Rediger undersøkelse
       new: Ny undersøkelse
 

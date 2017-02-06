@@ -1,7 +1,7 @@
-%table.upcoming-feedbacks
+%table
   %thead
     %tr
-      %th= t("feedbacks.title")
+      %th= t("feedback.title")
   
       - if permitted_to? :edit
         %th
@@ -9,12 +9,12 @@
         %th
 
   %tbody
-    - @feedbacks.each do |feedback|
+    - @surveys.each do |survey|
       %tr
-        %td= link_to feedback.title, feedback
+        %td= link_to survey.title, survey
 
         - if permitted_to? :edit
-          %td= link_to t("crud.edit"), edit_feedback_path(feedback)
+          %td= link_to t("crud.edit"), edit_feedback_survey_path(survey)
 
         - if permitted_to? :destroy
-          %td= link_to t("crud.destroy"), feedback, confirm: t("feedbacks.confirm_delete"), method: :delete
+          %td= link_to t("crud.destroy"), survey, confirm: t("feedback.confirm_delete"), method: :delete

@@ -220,24 +220,26 @@ ActiveRecord::Schema.define(:version => 20170130203500) do
   end
 
   create_table "feedback_alternatives", :force => true do |t|
-    t.decimal  "feedback_question_id"
+    t.decimal  "question_id"
+    t.decimal  "index"
     t.string   "text"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "feedback_answers", :force => true do |t|
-    t.decimal  "feedback_question_id"
+    t.decimal  "question_id"
     t.decimal  "alternative"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "feedback_questions", :force => true do |t|
-    t.decimal  "feedback_survey_id"
+    t.decimal  "survey_id"
+    t.decimal  "index"
     t.string   "text"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "feedback_surveys", :force => true do |t|

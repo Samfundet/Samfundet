@@ -1,0 +1,17 @@
+%h1= set_and_return_title t("feedback.admin.title")
+
+%h2= t("feedback.survey")
+
+- if permitted_to? :new, :feedback_surveys
+  %p.new
+    = link_to t("feedback.action.new"), new_feedback_survey_path
+
+= render 'feedback/surveys/admin_list'
+
+%h2= t("feedback.question")
+
+- if permitted_to? :new, :feedback_questions
+  %p.new
+    = link_to [t("crud.create"), t("feedback.question")].join(' '), new_feedback_question_path
+
+= render 'feedback/questions/admin_list'

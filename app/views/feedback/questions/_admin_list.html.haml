@@ -1,7 +1,7 @@
 %table.upcoming-feedbacks
   %thead
     %tr
-      %th= t("feedbacks.questions.text")
+      %th= t("feedback.questions.text")
   
       - if permitted_to? :edit
         %th
@@ -14,7 +14,7 @@
         %td= question.text
 
         - if permitted_to? :edit
-          %td= link_to t("crud.edit"), edit_feedbacks_question_path(question)
+          %td= link_to t("crud.edit"), edit_feedback_question_path(question)
 
         - if permitted_to? :destroy
-          %td= link_to t("crud.destroy"), feedbacks_question_path(question), confirm: t("feedbacks.confirm_delete"), method: :delete
+          %td= link_to t("crud.destroy"), feedback_question_path(question), confirm: t("feedback.confirm_delete"), method: :delete

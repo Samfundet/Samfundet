@@ -3,5 +3,6 @@
     = f.input :text
     = f.semantic_fields_for :alternatives do |a|
       = render "alternative_fields", f: a
-  = link_to_add_association t("crud.add"), f, :alternatives
-  = link_to_remove_association t("feedbacks.question.delete"), f
+    = link_to_add_association t("crud.add"), f, :alternatives
+  = link_to_remove_association t("feedback.question.delete"), f
+  = f.actions
