@@ -171,14 +171,22 @@
 
         white-space: nowrap;
         text-align: center;
-        span{
+
+        a{
           display: table-cell;
         }
 
         img{
           width: 40px;
+          position: relative;
+          top: 9px;
         }
 
+        @include media($mobile-and-tablet-portrait) {
+          a{
+            display: table-row;
+          }
+        }
     }
 
     .event-group {
