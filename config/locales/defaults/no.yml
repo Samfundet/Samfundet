@@ -50,3 +50,7 @@
   will_paginate:
       previous_label: "Forrige"
       next_label: "Neste"
+  error:
+      update_error: "Oppdatering mislykket"
+  success:
+      update: "Oppdatert"

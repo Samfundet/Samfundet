@@ -54,3 +54,7 @@ en:
       previous_label: "Previous"
       next_label: "Next"
       page_gap: "&hellip;"
+  error:
+      update_error: "Update failed"
+  success:
+      update: "Updated"

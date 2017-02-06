@@ -22,9 +22,9 @@ class Feedback::QuestionsController < ApplicationController
     @question = Feedback::Question.find(params[:id])
 
     if @question.update_attributes(params[:question])
-      flash[:success] = t("helpers.models.feedback.success.update")
+      flash[:success] = t("success.update")
     else
-      flash.now[:error] = t("helpers.models.feedback.errors.update_fail")
+      flash.now[:error] = t("errors.update_fail")
     end
     redirect_to action: :edit
   end
