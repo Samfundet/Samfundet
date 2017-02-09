@@ -5,9 +5,6 @@
     = t('events.buy_title', event_title: @event.title)
 
   = form_tag Rails.application.config.billig_path, method: "post", class: 'custom-form' do
-    -# Get default limit from ticket group model
-    - default_price_group_ticket_limit = BilligTicketGroup::DEFAULT_TICKET_LIMIT
-
     -# Data fields to extract in JavaScript
     - ticket_table_data = "data-default-ticket-limit"
     - ticket_group_data = ["data-has-ticket-limit", "data-ticket-limit"]
@@ -19,13 +16,14 @@
 
       -# Iterate through all the ticket groups
       - @ticket_groups.each_with_index do |ticket_group, i|
+        -# Only use ticket group name if there are multiple ticket groups
+        - ticket_group_name = @ticket_groups.length > 1 ? ticket_group.ticket_group_name : t('events.price_group')
+
         -# The price groups in the current ticket group
         - price_groups = ticket_group.netsale_billig_price_groups
 
-        - default_ticket_group_ticket_limit = default_price_group_ticket_limit * price_groups.length
-
-        -# Set current ticket group's variables
-        - ticket_group_name = @ticket_groups.length > 1 ? ticket_group.ticket_group_name : t('events.price_group')
+        -# The ticket limit to use if the ticket group has no ticket limit
+        - default_ticket_group_ticket_limit = BilligTicketGroup::DEFAULT_TICKET_LIMIT * price_groups.length
 
         -# Only use ticket limit if there are tickets left
         - ticket_group_ticket_limit = 0
