@@ -2,7 +2,11 @@
 
 .section
   %h2= t('roles.heading')
-  = link_to "Link", one_year_old_roles_path
+  %br
+  = link_to t('roles.one_year_old_title'), one_year_old_roles_path
+  %br
+  %br
+
   %table.table-highlight-rows
     %tr
       %th= t('roles.role_title')
