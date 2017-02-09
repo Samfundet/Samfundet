@@ -27,7 +27,7 @@ class BilligTicketGroup < ActiveRecord::Base
     if !ticket_limit?
       DEFAULT_TICKET_LIMIT
     else
-      ticket_limit 
+      ticket_limit
     end
   end
 end
