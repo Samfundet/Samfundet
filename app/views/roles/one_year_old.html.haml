@@ -1,1 +1,18 @@
-%h2 "Hello"
+= javascript_include_tag 'old_samfundet/interviews', defer: true
+= javascript_include_tag 'job_applications/admissions_admin_job_applications', defer: true
+%h2 List of members that have had their role for more than one year
+
+%table.applications.custom-table.sorted
+  %thead
+    %th
+      = "Name"
+    %th
+      = "Role"
+
+  %tbody
+  - @older_than_one_year.each do |members_role|
+    %tr
+      %td
+        = members_role.member.fornavn
+      %td
+        = members_role.role.name
