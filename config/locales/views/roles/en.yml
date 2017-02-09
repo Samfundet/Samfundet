@@ -21,3 +21,4 @@ en:
     pass_success: "You passed the role %{role} to %{member}"
     admin_applet_title: "Roles"
     admin_applet_description: "Manage roles"
+    one_year_old_title: "Members that have had their role for more than one year"

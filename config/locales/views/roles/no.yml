@@ -21,3 +21,4 @@
     pass_success: "Rollen %{role} ble videreført til %{member}."
     admin_applet_title: "Roller"
     admin_applet_description: "Administrer roller"
+    one_year_old_title: "Medlemmer som har hatt rollen sin i over ett år"
