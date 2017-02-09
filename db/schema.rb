@@ -202,7 +202,7 @@ ActiveRecord::Schema.define(:version => 20170130203500) do
     t.string   "banner_alignment"
     t.integer  "duration",              :default => 120
     t.string   "youtube_embed"
-    t.integer  "feedback_id"
+    t.integer  "feedback_survey_id"
     t.boolean  "has_feedback"
   end
 
@@ -360,8 +360,10 @@ ActiveRecord::Schema.define(:version => 20170130203500) do
   end
 
   create_table "members_roles", :force => true do |t|
-    t.integer "member_id"
-    t.integer "role_id"
+    t.integer  "member_id"
+    t.integer  "role_id"
+    t.datetime "created_at", :default => '2017-02-09 17:45:13', :null => false
+    t.datetime "updated_at", :default => '2017-02-09 17:45:13', :null => false
   end
 
   create_table "page_revisions", :force => true do |t|

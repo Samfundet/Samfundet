@@ -1,5 +1,5 @@
 class Feedback::Question < ActiveRecord::Base
-  attr_accessible :text, :survey, :alternatives, :index
+  attr_accessible :text, :survey, :alternatives_attributes, :index
   
   has_many :alternatives
   belongs_to :survey

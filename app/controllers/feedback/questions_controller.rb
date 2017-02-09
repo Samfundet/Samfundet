@@ -9,19 +9,21 @@ class Feedback::QuestionsController < ApplicationController
   end
 
   def create
-    @question = Feedback::Question.new(params[:question])
+    puts "HEI"
+    @question = Feedback::Question.new(params[:feedback_question])
     if @question.save
       flash[:success] = t('feedback.create_success')
+      redirect_to action: :admin, controller: "feedback/admin"
     else
       flash.now[:error] = t('feedback.create_error')
+      render :new
     end
-    redirect_to action: :admin, controller: "feedback/admin"
   end
 
   def update
     @question = Feedback::Question.find(params[:id])
 
-    if @question.update_attributes(params[:question])
+    if @question.update_attributes(params[:feedback_question])
       flash[:success] = t("success.update")
     else
       flash.now[:error] = t("errors.update_fail")
