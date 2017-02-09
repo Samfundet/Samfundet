@@ -6,10 +6,6 @@
 // when you see this change, enter 'n' to not include it.
 
 $(function() {
-  // This method is run twice to make sure the ticket form works both when the
-  // form appears on a standalone page or when it appears in a modal
-  ticketFormLoaded();
-
   function fragmentToBuyLink(fragment) {
     var routes = {
       'en': '/en/events/',
@@ -34,15 +30,10 @@ $(function() {
 
 
   function openPurchaseModal(url, source) {
-
-    //-- -Hide ga-function in comment to make modal work in dev ---//
-
     ga('send', 'pageview', {
       'page': url,
       'title': 'Purchase event - Virtual'
     });
-
-    //---End comment here ---//
 
     $.get(url, function(html) {
     $("html, body").animate({ scrollTop: 0 }, "slow");
@@ -59,7 +50,7 @@ $(function() {
         }, 1000);
       });
 
-      // Run this after the modal has been loaded
+      // Run the ticket limit validation after the modal has been loaded
       ticketFormLoaded();
     });
 
