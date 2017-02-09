@@ -318,10 +318,10 @@ class Event < ActiveRecord::Base
       []
     else
       billig_event
-      .billig_ticket_groups
-      .map(&:netsale_billig_price_groups)
-      .flatten
-      .uniq(&:price)
+        .billig_ticket_groups
+        .map(&:netsale_billig_price_groups)
+        .flatten
+        .uniq(&:price)
     end
   end
 end

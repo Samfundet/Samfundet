@@ -16,6 +16,6 @@ class BilligEvent < ActiveRecord::Base
   end
 
   def ticket_limit?
-    billig_ticket_groups.any? { |t| t.ticket_limit? }
+    billig_ticket_groups.any? &:ticket_limit?
   end
 end
