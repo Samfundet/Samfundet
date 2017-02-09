@@ -173,6 +173,7 @@ authorization do
   end
 
   role :gjengsjef do
+    has_permission_on :roles, to: :one_year_old
   end
 
   role :arrangementansvarlig do
