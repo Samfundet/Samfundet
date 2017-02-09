@@ -124,6 +124,7 @@ Rails.application.routes.draw do
   resources :roles, only: [:index, :show, :new, :create, :edit, :update] do
     post :pass, on: :member
     resources :members_roles, only: [:create, :destroy]
+    get :one_year_old, on: :collection
   end
 
   # If a resource is logically nested within another, the routes should

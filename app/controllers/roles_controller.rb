@@ -73,6 +73,9 @@ class RolesController < ApplicationController
     redirect_to members_control_panel_path
   end
 
+  def one_year_old
+  end
+
   protected
 
   def find_by_id
