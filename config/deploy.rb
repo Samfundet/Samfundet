@@ -39,8 +39,8 @@ set :keep_releases, 3
 namespace :environment do
   desc 'Set up staging-specific variables'
   task :staging do set :rails_env, 'staging'
-    set :user, 'samfundet-web-deploy'
     set :deploy_to, '/var/www/samfundet.no/www-beta'
+    queue %{umask 002}
   end
 
   desc 'Set up production-specific variables'
