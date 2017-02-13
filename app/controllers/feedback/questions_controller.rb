@@ -9,7 +9,6 @@ class Feedback::QuestionsController < ApplicationController
   end
 
   def create
-    puts "HEI"
     @question = Feedback::Question.new(params[:feedback_question])
     if @question.save
       flash[:success] = t('feedback.create_success')

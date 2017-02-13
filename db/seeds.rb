@@ -354,8 +354,8 @@ questions.length.times.each do |j|
 
   answers.length.times.each do |i|
       answers[i] = Feedback::Answer.create!(
-        alternative: rand(1..alternatives.length),
-        question: questions[j]
+        answer: alternatives.sample.text,
+        question_id: questions[j].id
       )
   end
 end

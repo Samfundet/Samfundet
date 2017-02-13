@@ -3,21 +3,27 @@ class CreateFeedbacks < ActiveRecord::Migration
 
     create_table :feedback_surveys do |t|
       t.string :title
+      t.boolean :open
       
       t.timestamps
     end
 
     create_table :feedback_answers do |t|
+      t.integer :survey_id
       t.integer :question_id
-      t.integer :alternative
+      t.integer :event_id
+      t.string :answer
+      t.string :token
       
-      t.timestamps
+      t.datetime :date
     end
     
     create_table :feedback_questions do |t|
+      t.integer :survey_id
       t.integer :index
       t.string :text
-
+      t.boolean :has_text_input
+      
       t.timestamps
     end
 

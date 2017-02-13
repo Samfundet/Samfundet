@@ -6,7 +6,7 @@ class Feedback::SurveysController < ApplicationController
   
   def show
     @survey = Feedback::Survey.find(params[:id])
-    @token = [DateTime.now, request.session_options[:id]].join
+    @token = request.session_options[:id]
   end
 
   def edit
@@ -16,16 +16,18 @@ class Feedback::SurveysController < ApplicationController
   def create
     @survey = Feedback::Survey.new(params[:survey])
     if @survey.save
-      flash[:success] = t('feedbacks.create_success')
+      flash[:success] = t('feedback.create_success')
     else
-      flash.now[:error] = t('feedbacks.create_error')
+      flash.now[:error] = t('feedback.create_error')
     end
     redirect_to action: :edit
   end
 
   def answer
+    #binding.pry
     @survey = Feedback::Survey.find params[:survey_id]
     questions = @survey.questions
+    params[:date] = DateTime.now
     
     unless params[:alternative].nil?
       params[:alternative].each_with_index do |alternative, i|

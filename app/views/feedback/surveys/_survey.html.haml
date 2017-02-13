@@ -6,8 +6,6 @@
     %ul.feedback-alternatives
       - question.alternatives.each_with_index do |alternative, j|
         %li
-          = radio_button_tag "alternative[#{i}]", j
+          = radio_button_tag "alternative[#{i}]", alternative.index
           = label_tag "alternative_#{i}_#{j}", alternative.text
     = hidden_field_tag(@token)
-    = submit_tag("Innsending")
-

@@ -1,7 +1,6 @@
 class Feedback::Answer < ActiveRecord::Base
-   attr_accessible :question, :alternative, :client
+   attr_accessible :question_id, :answer, :token,
+                   :date, :event_id, :survey_id
 
-   belongs_to :question
-
-   validates_presence_of :alternative
+   validates_presence_of :answer
 end

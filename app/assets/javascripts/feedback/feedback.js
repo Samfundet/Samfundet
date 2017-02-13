@@ -2,12 +2,13 @@
 (function () {
    $('form.feedback-form').submit(function (event) {
     var form = $(this);
+    console.log(form.serialize());
     $.ajax({
       type: "POST",
       url: form.attr('action'),
       data: form.serialize(),
       success: function (data) {
-        //form.hide();
+        alert(data.alternative);
         alert(data.token);
       },
       dataType: 'json'
@@ -17,7 +18,8 @@
    }).find("input[type='submit']").hide();
    
    $('form.feedback-form label').click(function () {
-    $('form.feedback-form').submit();
+     $(this).parent().find('input').attr('checked', 'checked');
+     $(this).parent().submit();
    });
 
 })();
