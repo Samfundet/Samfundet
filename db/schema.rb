@@ -220,23 +220,22 @@ ActiveRecord::Schema.define(:version => 20170130203500) do
   end
 
   create_table "feedback_alternatives", :force => true do |t|
-    t.decimal  "question_id"
-    t.decimal  "index"
+    t.integer  "question_id"
+    t.integer  "index"
     t.string   "text"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
 
   create_table "feedback_answers", :force => true do |t|
-    t.decimal  "question_id"
-    t.decimal  "alternative"
+    t.integer  "question_id"
+    t.integer  "alternative"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
 
   create_table "feedback_questions", :force => true do |t|
-    t.decimal  "survey_id"
-    t.decimal  "index"
+    t.integer  "index"
     t.string   "text"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -246,6 +245,11 @@ ActiveRecord::Schema.define(:version => 20170130203500) do
     t.string   "title"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "feedback_surveys_questions", :force => true do |t|
+    t.integer "question_id"
+    t.integer "survey_id"
   end
 
   create_table "front_page_locks", :force => true do |t|
@@ -360,10 +364,8 @@ ActiveRecord::Schema.define(:version => 20170130203500) do
   end
 
   create_table "members_roles", :force => true do |t|
-    t.integer  "member_id"
-    t.integer  "role_id"
-    t.datetime "created_at", :default => '2017-02-09 17:45:13', :null => false
-    t.datetime "updated_at", :default => '2017-02-09 17:45:13', :null => false
+    t.integer "member_id"
+    t.integer "role_id"
   end
 
   create_table "page_revisions", :force => true do |t|

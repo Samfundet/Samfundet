@@ -1,11 +1,10 @@
 class Feedback::Survey < ActiveRecord::Base
-   has_many :questions
+  has_and_belongs_to_many :questions, join_table: "feedback_surveys_questions"
+  has_many :events
 
-   has_many :events
+  attr_accessible :questions, :questions_attributes, :events, :title
 
-   attr_accessible :questions, :questions_attributes, :events, :title
+  validates_presence_of :title
 
-   validates_presence_of :title
-
-   accepts_nested_attributes_for :questions, allow_destroy: true, reject_if: :all_blank
+  accepts_nested_attributes_for :questions, allow_destroy: true, reject_if: :all_blank
 end

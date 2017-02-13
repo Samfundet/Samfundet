@@ -328,43 +328,44 @@ price_group_names.each do |group|
   end
 end
 
+
 # Create feedback
-surveys = Array.new 5
-surveys.length.times.each do |k|
-  questions = Array.new rand(8..10)
-  puts "Creating #{questions.length} questions"
 
-  questions.length.times.each do |j|
-    alternatives = Array.new rand(3..8)
-    alternatives.length.times.each do |i|
-        alternatives[i] = Feedback::Alternative.create!(
-            text: Faker::Lorem.sentence(5)
-        )
-    end
+questions = Array.new rand(40..50)
+puts "Creating #{questions.length} questions"
 
-    questions[j] = Feedback::Question.create!(
-      text: Faker::Lorem.sentence(5),
-      alternatives: alternatives,
-      index: j
-    )
-    
-    answers = Array.new rand(1..15)
-
-    puts "Creating #{answers.length} answers"
-
-    answers.length.times.each do |i|
-        answers[i] = Feedback::Answer.create!(
-          alternative: rand(1..alternatives.length),
-          question: questions[j]
-        )
-    end
-
+questions.length.times.each do |j|
+  alternatives = Array.new rand(3..8)
+  alternatives.length.times.each do |i|
+      alternatives[i] = Feedback::Alternative.create!(
+          text: Faker::Lorem.sentence(5)
+      )
   end
 
+  questions[j] = Feedback::Question.create!(
+    text: Faker::Lorem.sentence(5),
+    alternatives: alternatives,
+    index: j,
+  )
+
+  answers = Array.new rand(1..15)
+
+  puts "Creating #{answers.length} answers"
+
+  answers.length.times.each do |i|
+      answers[i] = Feedback::Answer.create!(
+        alternative: rand(1..alternatives.length),
+        question: questions[j]
+      )
+  end
+end
+
+surveys = Array.new 5
+surveys.length.times.each do |k|
   puts "Creating survey"
   surveys[k] = Feedback::Survey.create!(
     title: Faker::Lorem.word,
-    questions: questions
+    questions: questions.sample(rand(8..10))
   )
 end
 

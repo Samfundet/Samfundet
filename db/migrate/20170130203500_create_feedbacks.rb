@@ -8,27 +8,30 @@ class CreateFeedbacks < ActiveRecord::Migration
     end
 
     create_table :feedback_answers do |t|
-      t.decimal :question_id
-      t.decimal :alternative
+      t.integer :question_id
+      t.integer :alternative
       
       t.timestamps
     end
     
     create_table :feedback_questions do |t|
-      t.decimal :survey_id
-      t.decimal :index
+      t.integer :index
       t.string :text
-      
-      
+
       t.timestamps
     end
 
     create_table :feedback_alternatives do |t|
-      t.decimal :question_id
-      t.decimal :index
+      t.integer :question_id
+      t.integer :index
       t.string :text
       
       t.timestamps
+    end
+
+    create_table :feedback_surveys_questions do |t|
+      t.integer :question_id
+      t.integer :survey_id
     end
 
   end
