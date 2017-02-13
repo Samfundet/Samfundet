@@ -10,7 +10,7 @@
     child_role_of: "Denne rollen er en barnerolle av %{role}."
     has_child_roles: "Denne rollen har følgende underroller: %{roles}."
     member_name: "Navn"
-    remove_member: "Fjern medlem"
+    remove_member: "Fjern rolle"
     add_member: "Legg til medlem"
     date_assigned: "Dato tildelt rollen"
     one_year_old: "Har hatt rollen i mer enn ett år"
@@ -21,3 +21,4 @@
     pass_success: "Rollen %{role} ble videreført til %{member}."
     admin_applet_title: "Roller"
     admin_applet_description: "Administrer roller"
+    one_year_old_title: "Medlemmer som har hatt rollen sin i over ett år"

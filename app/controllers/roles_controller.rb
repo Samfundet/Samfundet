@@ -73,6 +73,10 @@ class RolesController < ApplicationController
     redirect_to members_control_panel_path
   end
 
+  def one_year_old
+    @older_than_one_year = MembersRole.joins(:member, :role).where("members_roles.created_at < ?", 1.year.ago)
+  end
+
   protected
 
   def find_by_id
