@@ -39,12 +39,12 @@ Rails.application.routes.draw do
   ############################
 
   namespace :feedback do
-    
+
     get :admin, to: "admin#admin"
-    get :answers, to: "admin#answers"
 
     resources :surveys, except: [:index] do
       post :answer, to: "surveys#answer"
+      get :answers, to: "surveys#answers"
     end
 
     resources :questions, only: [:edit, :update, :new, :create, :destroy]

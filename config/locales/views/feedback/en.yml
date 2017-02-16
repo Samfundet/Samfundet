@@ -1,5 +1,6 @@
 en:
   feedback:
+    answers: Answers to survey
     survey: survey
     create_success: Successfully created the survey.
     create_error: Could not create survey.

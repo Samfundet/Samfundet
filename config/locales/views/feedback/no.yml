@@ -1,5 +1,6 @@
 'no':
   feedback:
+    answers: Svar på undersøkelsen
     survey: undersøkelse
     create_success: Undersøkelsen er opprettet.
     create_error: Undersøkelsen ble ikke opprettet.

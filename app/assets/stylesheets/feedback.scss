@@ -6,6 +6,7 @@ form.feedback-form {
 
     background-color: #fff;
     padding: 15px;
+    text-align: center;
 
     h3 {
         padding: 5px 10px 5px 10px;
@@ -19,7 +20,7 @@ form.feedback-form {
         width: 80%;
         font-size: 20px;
         font-weight: 300;
-        color: #888;
+        color: #333;
 
         input[type="radio"]:checked+label {
             font-size: 30px;
@@ -29,8 +30,8 @@ form.feedback-form {
         }
 
         li {
-            height: 30px;
             margin: 10px;
+            text-align: left;
         }
 
         label {

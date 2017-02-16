@@ -1,9 +1,10 @@
 class Feedback::SurveysController < ApplicationController
+  filter_access_to :answers, require: :edit
 
   def new
     @survey = Feedback::Survey.new
   end
-  
+
   def show
     @survey = Feedback::Survey.find(params[:id])
     @token = request.session_options[:id]
@@ -24,30 +25,34 @@ class Feedback::SurveysController < ApplicationController
   end
 
   def answer
-    #binding.pry
     @survey = Feedback::Survey.find params[:survey_id]
-    questions = @survey.questions
-    params[:date] = DateTime.now
-    
-    unless params[:alternative].nil?
-      params[:alternative].each_with_index do |alternative, i|
-        @question = questions[i]
-        Feedback::Answer.where(token: params[:token]).first_or_create(
-          alternative: alternative,
-          question: @question
-        )
-      end
-    end
-    render json: { token: params[:token], alternative: params[:alternative] }
+
+    Feedback::Answer.create(
+      token: params[:token],
+      answer: params[:answer].first,
+      question_id: params[:question_id],
+      survey_id: params[:survey_id],
+      event_id: params[:event_id],
+      date: DateTime.now
+    )
+
+    render json: { success: true, message: "Success" }
+  #rescue
+  #  render json: { success: false, message: "Error" }
+  end
+
+  def answers
+    @survey = Feedback::Survey.find(params[:survey_id])
+    @answers = Feedback::Answer.where survey_id: @survey.id
   end
 
   def update
     @survey = Feedback::Survey.find(params[:id])
 
     if @survey.update_attributes(params[:survey])
-      flash[:success] = t("helpers.models.feedbacks.success.update")
+      flash[:success] = t("success.update")
     else
-      flash.now[:error] = t("helpers.models.feedbacks.errors.update_fail")
+      flash.now[:error] = t("errors.update_fail")
     end
     redirect_to action: :edit
   end

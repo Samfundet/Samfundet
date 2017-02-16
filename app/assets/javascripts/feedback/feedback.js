@@ -8,16 +8,15 @@
       url: form.attr('action'),
       data: form.serialize(),
       success: function (data) {
-        alert(data.alternative);
-        alert(data.token);
+        alert(data.message);
       },
       dataType: 'json'
     });
 
     return false;
    }).find("input[type='submit']").hide();
-   
-   $('form.feedback-form label').click(function () {
+
+  $('form.feedback-form label').click(function () {
      $(this).parent().find('input').attr('checked', 'checked');
      $(this).parent().submit();
    });

@@ -37,7 +37,7 @@ authorization do
 
     has_permission_on :sulten_reservations, to: [:create, :success]
 
-    has_permission_on :feedback_surveys, to: [:show, :answer]
+    has_permission_on :feedbacks, to: [:show, :answer]
   end
 
   role :medlem do
