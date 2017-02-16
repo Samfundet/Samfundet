@@ -2,7 +2,7 @@
 class MembersRole < ActiveRecord::Base
   validates_presence_of :member_id
   validates_presence_of :role_id
-  attr_accessible :created_at
+  attr_accessible :created_at, :member, :role
 
   belongs_to :member, touch: true
   belongs_to :role
