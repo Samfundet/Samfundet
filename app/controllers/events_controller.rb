@@ -40,13 +40,26 @@ class EventsController < ApplicationController
   end
 
   def archive_search
-    @events = Event
-              .active
-              .published
-              .past
-              .text_search(params[:search])
+    # Save the search parameters as instance variables
+    @search = params[:search]
+    @event_type = params[:event_type]
+    @event_area = params[:event_area]
 
-    render '_search_results', layout: false if request.xhr?
+    @events, @event_types, @event_areas = archived_events
+    @events = @events.text_search(@search + ' ' + @event_type + ' ' + @event_area)
+
+    if @events.empty?
+      redirect_to archive_events_path
+
+      # Only display error message if one or more search parameters are present
+      if @search.present? || @event_type.present? || @event_area.present?
+        flash[:error] = t('search.no_results')
+      end
+    else
+      # Only paginate if there are results to display
+      @events = @events.paginate(page: params[:page], per_page: 20)
+      render '_archive_list', locals: { search_active: true }
+    end
   end
 
   def show
@@ -129,12 +142,35 @@ class EventsController < ApplicationController
   end
 
   def archive
-    @events = Event.past
-                   .paginate(page: params[:page], per_page: 20)
-                   .order("non_billig_start_time DESC")
+    @events, @event_types, @event_areas = archived_events
+
+    @events = @events.paginate(page: params[:page], per_page: 20)
   end
 
   def admin_applet
+  end
+
+  private
+
+  def archived_events
+    events = Event
+            .active
+            .published
+            .past
+            .order('non_billig_start_time DESC')
+
+    event_types = Event::EVENT_TYPE
+                  .map { |e| [t("events.#{e}"), e] }
+                  .uniq
+                  .sort
+
+    event_areas = Area
+                  .all
+                  .map(&:name)
+                  .uniq
+                  .sort
+
+    [events, event_types, event_areas]
   end
 
   def purchase_callback_success

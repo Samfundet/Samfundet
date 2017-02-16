@@ -178,3 +178,23 @@ form:not(.custom-form) {
     }
   }
 }
+.archive-search-form {
+  margin-bottom: 16px;
+
+  input {
+    padding: 10px;
+      border: 1px solid rgba(0, 0, 0, 0.5);
+      font-size: 20px;
+    width: 100%;
+  }
+
+  select {
+    margin: 10px 3px 0 0;
+    font-size: 16px;
+      background-color: white;
+
+    &:last-child {
+      margin-right: 0;
+      }
+  }
+}
