@@ -154,10 +154,10 @@ class EventsController < ApplicationController
 
   def archived_events
     events = Event
-            .active
-            .published
-            .past
-            .order('non_billig_start_time DESC')
+             .active
+             .published
+             .past
+             .order('non_billig_start_time DESC')
 
     event_types = Event::EVENT_TYPE
                   .map { |e| [t("events.#{e}"), e] }
