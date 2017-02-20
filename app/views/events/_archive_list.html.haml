@@ -1,0 +1,15 @@
+.events
+  .event-group
+    %table.custom-table
+      %tbody
+        - events.each do |event|
+          %tr
+            %td.event-title
+              = link_to event.title, event
+
+            %td.event-start-time
+              = l(event.start_time, format: :long)
+
+            %td.event-area-archive
+              = area_link event.area, event.area_title
+

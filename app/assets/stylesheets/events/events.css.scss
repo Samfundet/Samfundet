@@ -254,6 +254,16 @@
                         }
                     }
 
+                    &.event-area-archive {
+                        display: none;
+                        border-left: 1px solid #333 !important;
+
+                        @include media($tablet-desktop) {
+                            display: table-cell;
+                            width: 16%;
+                        }
+                    }
+
                     &.event-buy {
                         width: 33%;
                         @include media($tablet-desktop) {

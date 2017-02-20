@@ -44,5 +44,6 @@
     no_results: "Ingen resultater"
     results_title: "Søkeresultater"
   will_paginate:
-      previous_label: "Forrige"
-      next_label: "Neste"
+    previous_label: "Forrige"
+    next_label: "Neste"
+    page_gap: "&hellip;"

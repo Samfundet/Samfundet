@@ -1,7 +1,8 @@
 - set_title t("events.archive.title")
+%h2=t("events.archive.title")
 = render 'search_form', post_path: archive_search_events_path
 .ajax-search
 
-= render 'admin_list'
+= render 'archive_list', events: @events
 
 = will_paginate @events
