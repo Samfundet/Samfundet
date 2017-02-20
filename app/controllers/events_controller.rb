@@ -150,8 +150,6 @@ class EventsController < ApplicationController
   def admin_applet
   end
 
-  private
-
   def purchase_callback_success
     split_tickets = params[:tickets]
                     .split(",")
