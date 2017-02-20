@@ -131,7 +131,7 @@ class Event < ActiveRecord::Base
              .order('non_billig_start_time DESC')
 
     event_types = Event::EVENT_TYPE
-      .map { |e| [I18n.t("events.#{e}"), e] }
+                  .map { |e| [I18n.t("events.#{e}"), e] }
                   .uniq
                   .sort
 
