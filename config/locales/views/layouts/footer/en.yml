@@ -6,3 +6,5 @@ en:
       festivals: "Festivals"
       othersponsors: "Sponsors"
       top: "top"
+      cookies: "We use cookies to give you the best experience on Samfundet.no.
+      Read more about cookies <a href=\"%{path}\" target='_blank'>here</a>."

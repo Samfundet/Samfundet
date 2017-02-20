@@ -34,6 +34,12 @@
     font-weight: $font-weight-normal;
     font-size: 20px;
 
+    #cookies {
+      text-align: center;
+      font-size: 16px;
+      margin-top: 1.5rem;
+    }
+
     a {
         text-decoration: none;
         color: #777;
@@ -82,7 +88,9 @@
                 margin-bottom: 8px;
             }
         }
-    }
+
+
+        }
 }
 
 #sponsors{
