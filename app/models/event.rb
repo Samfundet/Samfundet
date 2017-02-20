@@ -121,6 +121,29 @@ class Event < ActiveRecord::Base
     end
   end
 
+  # Get all archived events, event types and event areas
+  # Used in event archive search
+  def self.archived_events_types_areas
+    events = Event
+             .active
+             .published
+             .past
+             .order('non_billig_start_time DESC')
+
+    event_types = Event::EVENT_TYPE
+                  .map { |e| [I18n.t("events.#{e}"), e] }
+                  .uniq
+                  .sort
+
+    event_areas = Area
+                  .all
+                  .map(&:name)
+                  .uniq
+                  .sort
+
+    [events, event_types, event_areas]
+  end
+
   def to_s
     title
   end
