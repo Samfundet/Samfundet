@@ -41,9 +41,10 @@ class EventsController < ApplicationController
 
   def archive_search
     # Save the search parameters as instance variables
-    @search = params[:search]
-    @event_type = params[:event_type]
-    @event_area = params[:event_area]
+    # Convert each param to string in case it is nil
+    @search = params[:search].to_s
+    @event_type = params[:event_type].to_s
+    @event_area = params[:event_area].to_s
 
     @events, @event_types, @event_areas = Event.archived_events_types_areas
     @events = @events.text_search(@search + ' ' + @event_type + ' ' + @event_area)
