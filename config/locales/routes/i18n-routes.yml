@@ -43,6 +43,7 @@
     contactinfo: kontaktinfo
     reject_calls: sokere-dere-skal-ringe
     one_year_old: mer-enn-ett-aar-gamle-roller
+    archive_search: arkivsok
 
 en:
   routes:
