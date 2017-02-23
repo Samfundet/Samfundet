@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170126195339) do
+ActiveRecord::Schema.define(:version => 20170204193734) do
 
   create_table "admissions", :force => true do |t|
     t.string   "title"
@@ -332,8 +332,8 @@ ActiveRecord::Schema.define(:version => 20170126195339) do
   create_table "members_roles", :force => true do |t|
     t.integer  "member_id"
     t.integer  "role_id"
-    t.datetime "created_at", :default => '2017-01-26 21:50:05', :null => false
-    t.datetime "updated_at", :default => '2017-01-26 21:50:05', :null => false
+    t.datetime "created_at", :default => '2017-02-04 19:41:44', :null => false
+    t.datetime "updated_at", :default => '2017-02-04 19:41:44', :null => false
   end
 
   create_table "page_revisions", :force => true do |t|
@@ -462,6 +462,14 @@ ActiveRecord::Schema.define(:version => 20170126195339) do
 
   create_table "tags", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "login"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
