@@ -2,45 +2,71 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-form.feedback-form {
+.feedback-wrapper {
 
-    background-color: #fff;
-    padding: 15px;
-    text-align: center;
+    form.feedback-form, .feedback-start-message,
+    .feedback-end-message {
 
-    h3 {
-        padding: 5px 10px 5px 10px;
-        font-size: 32px;
-        font-weight: 500;
+        background-color: #fff;
+        padding: 15px;
+        text-align: center;
+
+        h3 {
+            padding: 5px 10px 5px 10px;
+            font-size: 32px;
+            font-weight: 500;
+        }
+
     }
 
-    ul.feedback-alternatives {
-        margin: auto;
-        display: block;
-        width: 80%;
-        font-size: 20px;
-        font-weight: 300;
-        color: #333;
+    form.feedback-form {
 
-        //input[type="radio"]:checked+label {
-        .feedback-sucess {
-            border: solid 1px #319432;
-            border-radius: 5px;
-            background-color: #319432;
+        ul.feedback-alternatives {
+            margin: auto;
+            display: block;
+            width: 80%;
+            font-size: 20px;
+            font-weight: 300;
+            color: #333;
+
+            input[type="radio"]:checked+label {
+                border: solid 1px #319432;
+                border-radius: 5px;
+            }
+
+            li {
+                margin: 10px;
+                text-align: left;
+            }
+
+            label {
+                cursor: pointer;
+                padding: 10px;
+            }
+
+            input[type="radio"] {
+                //display: none;
+            }
+        }
+    }
+    .pagination {
+        display: inline-block;
+
+        .button {
+            background-color: #fff;
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
         }
 
-        li {
-            margin: 10px;
-            text-align: left;
+        .button.active {
+            background-color: #4CAF50;
+            color: white;
         }
 
-        label {
-            cursor: pointer;
-            padding: 10px;
-        }
-
-        input[type="radio"] {
-            display: none;
+        .button:hover:not(.active) {
+            background-color: #ddd;
         }
     }
 }

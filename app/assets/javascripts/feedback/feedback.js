@@ -2,49 +2,57 @@
 (function () {
 
   var forms = $('form.feedback-form'),
-      index = 0;
+      index = 0,
+      stack = [$('.feedback-start-message')].concat(forms.toArray(), [$('.feedback-end-message')]);
 
-  forms.submit(function (event) {
-  var form = $(this);
-  $.ajax({
-    type: "POST",
-    url: form.attr('action'),
-    data: form.serialize(),
-    error: function (j, message, e) {
-      alert(message+e);
-    },
-    success: function (data) {
-      if (data.message == "Success") {
-        index++;
-        hideForms();
+  function ajaxSubmit (form) {
+    var form = $(form);
+    $.ajax({
+      type: "POST",
+      url: form.attr('action'),
+      data: form.serialize(),
+      error: function (j, m, e) {
+        alert('Noe gikk galt: ' + e);
+      },
+      success: function (data) {
+        if (data.success) {
+          //updateStack();
+        }
+      },
+      dataType: 'json'
+    });
+
+  }
+
+  function updateStack() {
+    $.each(stack, function (i, e) {
+      if (i != index) {
+        $(e).hide();
+        $('#feedback-index-'+i).removeClass("active");
+      } else {
+        $(e).show();
+        $('#feedback-index-'+i).addClass("active");
       }
-    },
-    dataType: 'json'
-  });
+    });
+  }
 
-  return false;
-  });
+  updateStack();
 
-  function hideForms() {
-    forms.hide();
-    $(forms.get(index)).show();
-    if (index => forms.length) {
-      surveyDone();
+  $('.feedback-wrapper .feedback-previous').click(function (e) {
+    if (index > 0) {
+      index--;
+      updateStack();
     }
-  }
-  hideForms();
-
-  function surveyDone() {
-    $('.feedback-end-message').show();
-  }
-  $('form.feedback-form label').click(function () {
-    var form = $(this).parent();
-    form.find('input').attr('checked', 'checked');
-    form.find("label").removeClass("feedback-sucess");
-    form.find("input:checked").parent().addClass("feedback-sucess");
-
   });
 
-  $('form.feedback-form ')
+  $('.feedback-wrapper .feedback-next').click(function (e) {
+    if (index < stack.length-1) {
+      if (index > 0) {
+        ajaxSubmit(stack[index]);
+      }
+      index++;
+      updateStack();
+    }
+  });
 
 })();

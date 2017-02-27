@@ -29,7 +29,7 @@ class Feedback::SurveysController < ApplicationController
 
     Feedback::Answer.create!(
       token: params[:token],
-      answer: params[:answer].first,
+      answer: params[:answer],
       question_id: params[:question_id],
       survey_id: params[:survey_id],
       event_id: params[:event_id],
