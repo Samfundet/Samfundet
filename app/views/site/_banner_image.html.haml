@@ -5,7 +5,6 @@
         = link_to banner_event, id: 'banner-image-link' do
           - if banner_event.is_a?(Event)
             = render 'events/corner_ribbon', event: banner_event
-            = render 'events/ticket_limit_icon', event: banner_event
           - else
             .ribbon-long-wrapper
               .ribbon.blue
