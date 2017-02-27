@@ -1,7 +1,7 @@
 .ribbon-image-wrapper {
   position: relative;
 
-  .ribbon-text-wrapper {
+  .ribbon-long-wrapper {
     width: 185px;
     height: 188px;
     overflow: hidden;
@@ -12,7 +12,7 @@
     .ribbon {
       @include transform(rotate(45deg));
 
-      font-size: 16px;
+      font-size: 18px;
       color: #FFFFFF;
       text-transform: uppercase;
       text-align: center;
@@ -32,7 +32,7 @@
     }
   }
 
-  .ribbon-max-ticket-wrapper {
+  .ribbon-short-wrapper {
     width: 100px;
     height: 102px;
     overflow: hidden;
@@ -43,13 +43,10 @@
     .ribbon {
       @include transform(rotate(45deg));
 
-      border: 3px dotted black;
-
-      font-size: 16px;
+      font-size: 18px;
       color: #FFFFFF;
       text-transform: uppercase;
       text-align: center;
-      //text-indent: 4.1rem;
       position: relative;
       padding: 8px 0;
       left: -8px;
