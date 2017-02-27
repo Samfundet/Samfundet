@@ -1,24 +1,50 @@
 
 (function () {
-   $('form.feedback-form').submit(function (event) {
-    var form = $(this);
-    console.log(form.serialize());
-    $.ajax({
-      type: "POST",
-      url: form.attr('action'),
-      data: form.serialize(),
-      success: function (data) {
-        alert(data.message);
-      },
-      dataType: 'json'
-    });
 
-    return false;
-   }).find("input[type='submit']").hide();
+  var forms = $('form.feedback-form'),
+      index = 0;
 
+  forms.submit(function (event) {
+  var form = $(this);
+  $.ajax({
+    type: "POST",
+    url: form.attr('action'),
+    data: form.serialize(),
+    error: function (j, message, e) {
+      alert(message+e);
+    },
+    success: function (data) {
+      if (data.message == "Success") {
+        index++;
+        hideForms();
+      }
+    },
+    dataType: 'json'
+  });
+
+  return false;
+  });
+
+  function hideForms() {
+    forms.hide();
+    $(forms.get(index)).show();
+    if (index => forms.length) {
+      surveyDone();
+    }
+  }
+  hideForms();
+
+  function surveyDone() {
+    $('.feedback-end-message').show();
+  }
   $('form.feedback-form label').click(function () {
-     $(this).parent().find('input').attr('checked', 'checked');
-     $(this).parent().submit();
-   });
+    var form = $(this).parent();
+    form.find('input').attr('checked', 'checked');
+    form.find("label").removeClass("feedback-sucess");
+    form.find("input:checked").parent().addClass("feedback-sucess");
+
+  });
+
+  $('form.feedback-form ')
 
 })();

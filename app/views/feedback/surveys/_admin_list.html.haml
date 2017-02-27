@@ -2,7 +2,7 @@
   %thead
     %tr
       %th= t("feedback.title")
-  
+
       - if permitted_to? :edit
         %th
       - if permitted_to? :destroy
@@ -14,6 +14,7 @@
         %td= link_to survey.title, survey
 
         - if permitted_to? :edit
+          %td= link_to t("feedback.answers"), feedback_survey_answers_path(survey)
           %td= link_to t("crud.edit"), edit_feedback_survey_path(survey)
 
         - if permitted_to? :destroy

@@ -13,7 +13,7 @@ form.feedback-form {
         font-size: 32px;
         font-weight: 500;
     }
-    
+
     ul.feedback-alternatives {
         margin: auto;
         display: block;
@@ -22,8 +22,8 @@ form.feedback-form {
         font-weight: 300;
         color: #333;
 
-        input[type="radio"]:checked+label {
-            font-size: 30px;
+        //input[type="radio"]:checked+label {
+        .feedback-sucess {
             border: solid 1px #319432;
             border-radius: 5px;
             background-color: #319432;

@@ -27,7 +27,7 @@ class Feedback::SurveysController < ApplicationController
   def answer
     @survey = Feedback::Survey.find params[:survey_id]
 
-    Feedback::Answer.create(
+    Feedback::Answer.create!(
       token: params[:token],
       answer: params[:answer].first,
       question_id: params[:question_id],
@@ -37,13 +37,13 @@ class Feedback::SurveysController < ApplicationController
     )
 
     render json: { success: true, message: "Success" }
-  #rescue
-  #  render json: { success: false, message: "Error" }
   end
 
   def answers
     @survey = Feedback::Survey.find(params[:survey_id])
-    @answers = Feedback::Answer.where survey_id: @survey.id
+    @answers = Feedback::Answer.where(survey_id: @survey.id)
+                   .paginate(page: params[:page], per_page: 80)
+                   .order(:date)
   end
 
   def update

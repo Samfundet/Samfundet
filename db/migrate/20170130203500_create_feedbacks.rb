@@ -4,7 +4,9 @@ class CreateFeedbacks < ActiveRecord::Migration
     create_table :feedback_surveys do |t|
       t.string :title
       t.boolean :open
-      
+      t.text :start_message
+      t.text :end_message
+
       t.timestamps
     end
 
@@ -14,16 +16,15 @@ class CreateFeedbacks < ActiveRecord::Migration
       t.integer :event_id
       t.string :answer
       t.string :token
-      
+
       t.datetime :date
     end
-    
+
     create_table :feedback_questions do |t|
-      t.integer :survey_id
       t.integer :index
       t.string :text
       t.boolean :has_text_input
-      
+
       t.timestamps
     end
 
@@ -31,7 +32,6 @@ class CreateFeedbacks < ActiveRecord::Migration
       t.integer :question_id
       t.integer :index
       t.string :text
-      
       t.timestamps
     end
 

@@ -237,7 +237,6 @@ ActiveRecord::Schema.define(:version => 20170130203500) do
   end
 
   create_table "feedback_questions", :force => true do |t|
-    t.integer  "survey_id"
     t.integer  "index"
     t.string   "text"
     t.boolean  "has_text_input"
@@ -248,8 +247,10 @@ ActiveRecord::Schema.define(:version => 20170130203500) do
   create_table "feedback_surveys", :force => true do |t|
     t.string   "title"
     t.boolean  "open"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.text     "start_message"
+    t.text     "end_message"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "feedback_surveys_questions", :force => true do |t|

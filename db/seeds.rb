@@ -348,16 +348,6 @@ questions.length.times.each do |j|
     index: j,
   )
 
-  answers = Array.new rand(1..15)
-
-  puts "Creating #{answers.length} answers"
-
-  answers.length.times.each do |i|
-      answers[i] = Feedback::Answer.create!(
-        answer: alternatives.sample.text,
-        question_id: questions[j].id
-      )
-  end
 end
 
 surveys = Array.new 5
@@ -365,7 +355,9 @@ surveys.length.times.each do |k|
   puts "Creating survey"
   surveys[k] = Feedback::Survey.create!(
     title: Faker::Lorem.word,
-    questions: questions.sample(rand(8..10))
+    questions: questions.sample(rand(8..10)),
+    start_message: "Start message",
+    end_message: "End message"
   )
 end
 
@@ -505,6 +497,26 @@ possible_payment_errors.each do |error_message|
     price_group: BilligPriceGroup.all.sample.price_group,
     number_of_tickets: rand(1..10)
   )
+end
+
+questions.reject{ |q| q.surveys.empty? }.group_by{ |q| q.surveys.first.id }.each do |survey_id, qs|
+  events = Event.where(feedback_survey_id: survey_id)
+  puts "Creating answers for Survey##{survey_id}"
+
+  qs.each do |question|
+    alternatives = question.alternatives
+
+    rand(10..15).times do |i|
+        Feedback::Answer.create!(
+          answer: alternatives.sample.text,
+          question_id: question.id,
+          token: "Sample token##{i}",
+          date: DateTime.now,
+          event_id: (unless events.empty? then events.sample.id else nil end),
+          survey_id: survey_id
+        )
+    end
+  end
 end
 
 puts "Creating successfull purchases"
