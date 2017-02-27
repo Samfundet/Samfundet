@@ -1,0 +1,18 @@
+%h2= set_and_return_title t("feedback.answers")
+
+%table
+  %tr
+    %th= "Event"
+    %th= "Token"
+    %th= "Answer"
+    %th= "Date"
+    %th= "Question"
+  - @answers.each do |answer|
+    %tr
+      %td= if answer.event_id.nil? then "None" else Event.find(answer.event_id).title end
+      %td= answer.token
+      %td= answer.answer
+      %td= answer.date
+      %td= Feedback::Question.find(answer.question_id).text
+
+= will_paginate @answers
