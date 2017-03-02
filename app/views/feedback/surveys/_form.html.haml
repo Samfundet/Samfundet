@@ -2,6 +2,8 @@
   = f.inputs do
     = f.input :title
     = f.input :questions, as: :select
+    = f.input :start_message
+    = f.input :end_message
     -#= f.semantic_fields_for :questions do |q|
     -#  = render 'question_fields', f: q
     -#= link_to_add_association t('crud.some.add', type: t('feedbacks.question')), f, :questions
