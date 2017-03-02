@@ -20,7 +20,8 @@
     twenty: 20 år
     none: Ingen aldersgrense
     ticket_limit_event_show: Billettbegrensning
-    tickets: "%{total_ticket_limit} billett(er)"
+    tickets_single: "%{total_ticket_limit} billett"
+    tickets_multiple: "%{total_ticket_limit} billetter"
 
     title: Tittel
     start_time: Starttid
@@ -86,7 +87,8 @@
 
     index_title:  Kommende arrangementer
     information: Informasjon
-    ticket_limit: 0/%{ticket_limit} billett(er)
+    ticket_limit_single: "0/%{ticket_limit} billett"
+    ticket_limit_multiple: "0/%{ticket_limit} billetter"
     ticket_unit: stk.
     purchase: Kjøp billett
     sold_out: Utsolgt

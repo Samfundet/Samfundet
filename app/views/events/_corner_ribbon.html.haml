@@ -13,7 +13,7 @@
       = t('site.index.few_tickets_left')
 
 - elsif event.ticket_limit?
+  - pluralize = event.total_ticket_limit > 1 ? 'multiple' : 'single'
   .ribbon-long-wrapper
     .ribbon.blue
-      = t('site.index.max_ticket_limit_long', total_ticket_limit: event.total_ticket_limit)
-
+      = t("site.index.max_ticket_limit_#{pluralize}_long", total_ticket_limit: event.total_ticket_limit)

@@ -37,8 +37,9 @@
 
       - if @event.ticket_limit?
         %tr
+          - pluralize = @event.total_ticket_limit > 1 ? 'multiple' : 'single'
           %td= t('events.ticket_limit_event_show')
-          %td= t('events.tickets', total_ticket_limit: @event.total_ticket_limit)
+          %td= t("events.tickets_#{pluralize}", total_ticket_limit: @event.total_ticket_limit)
 
       %tr
         %td= t('events.age_limit')

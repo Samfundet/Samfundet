@@ -20,7 +20,8 @@ en:
     twenty: 20 years
     none: No age limit
     ticket_limit_event_show: Ticket limit
-    tickets: "%{total_ticket_limit} ticket(s)"
+    tickets_single: "%{total_ticket_limit} ticket"
+    tickets_multiple: "%{total_ticket_limit} tickets"
 
     left: left
     right: right
@@ -82,7 +83,8 @@ en:
 
     index_title:  Upcoming events
     information: Information
-    ticket_limit: 0/%{ticket_limit} ticket(s)
+    ticket_limit_single: "0/%{ticket_limit} ticket"
+    ticket_limit_multiple: "0/%{ticket_limit} tickets"
     ticket_unit: pcs.
     purchase: Purchase ticket
     sold_out: Sold out
