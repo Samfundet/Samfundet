@@ -20,7 +20,7 @@ en:
     twenty: 20 years
     none: No age limit
     ticket_limit_event_show: Ticket limit
-    tickets: Tickets
+    tickets: "%{total_ticket_limit} ticket(s)"
 
     left: left
     right: right

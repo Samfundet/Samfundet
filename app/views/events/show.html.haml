@@ -38,7 +38,7 @@
       - if @event.ticket_limit?
         %tr
           %td= t('events.ticket_limit_event_show')
-          %td= @event.total_ticket_limit.to_s + ' ' + t('events.tickets')
+          %td= t('events.tickets', total_ticket_limit: @event.total_ticket_limit)
 
       %tr
         %td= t('events.age_limit')

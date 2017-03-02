@@ -20,7 +20,7 @@
     twenty: 20 år
     none: Ingen aldersgrense
     ticket_limit_event_show: Billettbegrensning
-    tickets: billetter
+    tickets: "%{total_ticket_limit} billett(er)"
 
     title: Tittel
     start_time: Starttid
