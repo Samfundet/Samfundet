@@ -291,15 +291,19 @@ class Event < ActiveRecord::Base
   end
 
   def total_ticket_limit
-    ticket_groups = billig_event.netsale_billig_ticket_groups
-    total_ticket_limit = 0
-    ticket_groups.each do |t|
-      default_price_group_ticket_limit = t.netsale_billig_price_groups.length * BilligTicketGroup::DEFAULT_TICKET_LIMIT
-      if t.tickets_left?
-        total_ticket_limit += t.ticket_limit? ? t.ticket_limit : default_price_group_ticket_limit
+    if ticket_limit?
+      ticket_groups = billig_event.netsale_billig_ticket_groups
+      total_ticket_limit = 0
+      ticket_groups.each do |t|
+        default_price_group_ticket_limit = t.netsale_billig_price_groups.length * BilligTicketGroup::DEFAULT_TICKET_LIMIT
+        if t.tickets_left?
+          total_ticket_limit += t.ticket_limit? ? t.ticket_limit : default_price_group_ticket_limit
+        end
       end
+      total_ticket_limit
+    else
+      0
     end
-    total_ticket_limit
   end
 
   def cache_key
