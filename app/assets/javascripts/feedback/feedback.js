@@ -16,7 +16,8 @@
       },
       success: function (data) {
         if (data.success) {
-          //updateStack();
+          index++;
+          updateStack();
         }
       },
       dataType: 'json'
@@ -49,9 +50,10 @@
     if (index < stack.length-1) {
       if (index > 0) {
         ajaxSubmit(stack[index]);
+      } else {
+        index++;
+        updateStack();
       }
-      index++;
-      updateStack();
     }
   });
 
