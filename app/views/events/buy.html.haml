@@ -84,10 +84,6 @@
       = radio_button_tag "ticket_type", "paper", @payment_error.try(:owner_email).present?
       = label_tag "ticket_type_paper", t('events.paperticket'), class: 'radio-label'
       = email_field_tag :email, @payment_error.try(:owner_email), tabindex: 2
-      = label_tag "email_confirmation", t('events.confirm_email')
-      = email_field_tag :email_confirmation, @payment_error.try(:owner_email), tabindex: 3
-      %span#email_feedback
-        &nbsp;
 
     %h4
       = t('events.about_ticket')
