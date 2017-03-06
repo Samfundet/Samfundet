@@ -83,7 +83,7 @@ $(function() {
     openPurchaseModalBasedOnHash();
   });
 
-  $(document).on('keyup blur', '#cardnumber, #email, #email_confirmation',
+  $(document).on('keyup blur', '#cardnumber, #email',
       function clearOtherInputOnType() {
 
     // Only clear other form if we've written something
@@ -97,7 +97,7 @@ $(function() {
       .prop('checked', true);
 
     if (id === '#cardnumber') {
-      $('#email, #email_confirmation').val('');
+      $('#email').val('');
     } else {
       $('#cardnumber').val('');
     }
@@ -111,7 +111,7 @@ $(function() {
 
     var id = '#' + textfield.attr('id');
     if (id === '#cardnumber') {
-      $('#email, #email_confirmation').val('');
+      $('#email').val('');
     } else {
       $('#cardnumber').val('');
     }
@@ -266,29 +266,6 @@ $(function() {
     }
   }
 
-  function validateEmail() {
-    var feedback = $('#email_feedback');
-    var email1 = $('#email').val();
-    var email2 = $('#email_confirmation').val();
-
-    var text = {
-        "no": ["Epostene er like", "Epostene er ikke like"],
-        "en": ["Emails are equal", "Emails are not equal"]
-    }
-
-    if ($('#ticket_type_card').prop('checked')) {
-        feedback.text('');
-        feedback.attr('class', '');
-    } else if (email1 === email2 && email1 != '') {
-      feedback.text(text[$('html').attr('lang')][0]);
-      feedback.attr('class', 'email_equal');
-      return true;
-    } else {
-      feedback.text(text[$('html').attr('lang')][1]);
-      feedback.attr('class', 'email_error');
-    }
-  }
-
   function cardEditingFeedback() {
     var input = $(this);
     var value = input.val();
@@ -331,13 +308,11 @@ $(function() {
   function checkValidForm() {
     var input = $('#ccno');
     var info = getCardInformation(input.val());
+    var email = $('#email').val();
+    var cardnumber = $('#cardnumber').val();
+    var cvc2 = $('#cvc2').val();
 
-    var validEmail = validateEmail();
-
-    if (info && info['type'] !== 'error' &&
-        (!$('#ticket_type_paper').prop('checked') ||
-        validEmail)) {
-
+    if (info && info['type'] !== 'error' && (($('#ticket_type_paper').prop('checked') && email != '') || ($('#ticket_type_card').prop('checked') && cardnumber != '')) && cvc2 != '') {
       $('.billig-buy .custom-form [name="commit"]').prop('disabled', false);
     }
     else {
