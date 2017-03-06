@@ -19,6 +19,9 @@
     eighteen_twenty: 18 år&nbsp;(student), 20 år&nbsp;(ikke-student)
     twenty: 20 år
     none: Ingen aldersgrense
+    ticket_limit_event_show: Billettbegrensning
+    tickets_single: "%{total_ticket_limit} billett"
+    tickets_multiple: "%{total_ticket_limit} billetter"
 
     title: Tittel
     start_time: Starttid
@@ -84,8 +87,12 @@
 
     index_title:  Kommende arrangementer
     information: Informasjon
+    ticket_limit_single: "0/%{ticket_limit} billett"
+    ticket_limit_multiple: "0/%{ticket_limit} billetter"
+    ticket_unit: stk.
     purchase: Kjøp billett
     sold_out: Utsolgt
+    currency_unit: ",-"
 
     buy_title: Kjøp billett til %{event_title}
     ticketless: "Billettløst på medlemskortet ditt:"

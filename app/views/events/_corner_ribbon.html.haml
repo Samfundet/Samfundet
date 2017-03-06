@@ -1,4 +1,19 @@
-- if event.few_tickets_left?
-  .ribbon-text-wrapper
+- if event.few_tickets_left? && event.ticket_limit?
+  .ribbon-long-wrapper
     .ribbon.red
       = t('site.index.few_tickets_left')
+
+  .ribbon-short-wrapper
+    .ribbon.blue
+      = t('site.index.max_ticket_limit_short', total_ticket_limit: event.total_ticket_limit)
+
+- elsif event.few_tickets_left?
+  .ribbon-long-wrapper
+    .ribbon.red
+      = t('site.index.few_tickets_left')
+
+- elsif event.ticket_limit?
+  - pluralize = event.total_ticket_limit > 1 ? 'multiple' : 'single'
+  .ribbon-long-wrapper
+    .ribbon.blue
+      = t("site.index.max_ticket_limit_#{pluralize}_long", total_ticket_limit: event.total_ticket_limit)

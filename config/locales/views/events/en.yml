@@ -19,6 +19,9 @@ en:
     eighteen_twenty: 18&nbsp;(student), 20&nbsp;(non-student)
     twenty: 20 years
     none: No age limit
+    ticket_limit_event_show: Ticket limit
+    tickets_single: "%{total_ticket_limit} ticket"
+    tickets_multiple: "%{total_ticket_limit} tickets"
 
     left: left
     right: right
@@ -80,8 +83,12 @@ en:
 
     index_title:  Upcoming events
     information: Information
+    ticket_limit_single: "0/%{ticket_limit} ticket"
+    ticket_limit_multiple: "0/%{ticket_limit} tickets"
+    ticket_unit: pcs.
     purchase: Purchase ticket
     sold_out: Sold out
+    currency_unit: " NOK"
 
     buy_title: Buy ticket for %{event_title}
     ticketless: "Ticketless on your membership card:"

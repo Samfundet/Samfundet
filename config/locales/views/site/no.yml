@@ -13,6 +13,9 @@
       clear_lock: "Fjern lås"
 
       few_tickets_left: "Få billetter igjen"
+      max_ticket_limit_short: "Maks %{total_ticket_limit}"
+      max_ticket_limit_single_long: "Maks %{total_ticket_limit} billett"
+      max_ticket_limit_multiple_long: "Maks %{total_ticket_limit} billetter"
 
       events_today: "Hendelser"
       no_events_because_closed: "Samfundet er stengt"
