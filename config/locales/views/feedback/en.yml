@@ -31,3 +31,5 @@ en:
 
     admin_applet:
       title: surveys
+    event:
+        has_survey: Has survey

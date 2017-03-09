@@ -33,3 +33,5 @@
 
     admin_applet:
       title: Undersøkelser
+    event:
+        has_survey: Har undersøkelse

@@ -82,5 +82,11 @@
         = f.radio_button :price_type, "billig", checked: @event.price_type == "billig"
       = f.input :billig_event_id, as: :select, collection: BilligEvent.sale_applicable.sort_by(&:event_time).map { |e| [e.describe, e.id] }, include_blank: false
 
+  = f.inputs name: t('feedback.survey') do
+    %li
+      = f.input :has_survey, label: t('feedback.event.has_survey')
+    %li
+      = f.input :feedback_survey, as: :select, label: t('feedback.survey')
+
   = f.actions do
     = f.action :submit

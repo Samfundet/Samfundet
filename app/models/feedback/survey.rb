@@ -8,4 +8,8 @@ class Feedback::Survey < ActiveRecord::Base
   validates_presence_of :title
 
   accepts_nested_attributes_for :questions, allow_destroy: true, reject_if: :all_blank
+
+  def to_s
+    title
+  end
 end

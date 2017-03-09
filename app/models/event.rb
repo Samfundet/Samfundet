@@ -19,8 +19,8 @@ class Event < ActiveRecord::Base
                   :spotify_uri, :facebook_link, :youtube_link, :youtube_embed, :spotify_link,
                   :soundcloud_link, :instagram_link, :twitter_link, :lastfm_link,
                   :snapchat_link, :vimeo_link, :general_link, :event_type, :status,
-                  :primary_color, :secondary_color, :image_id, :survey, :has_feedback,
-                  :price_groups, :price_type, :banner_alignment, :price_groups_attributes
+                  :primary_color, :secondary_color, :image_id, :feedback_survey, :feedback_survey_id,
+                  :has_survey, :price_groups, :price_type, :banner_alignment, :price_groups_attributes
 
   extend LocalizedFields
   has_localized_fields :title, :short_description, :long_description
@@ -47,7 +47,7 @@ class Event < ActiveRecord::Base
   has_one :front_page_lock, as: :lockable
   has_many :price_groups, uniq: true
 
-  belongs_to :survey, class_name: "Feedback::Survey"
+  belongs_to :feedback_survey, class_name: "Feedback::Survey"
 
   accepts_nested_attributes_for :price_groups, allow_destroy: true
 

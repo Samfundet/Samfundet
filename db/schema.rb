@@ -203,7 +203,7 @@ ActiveRecord::Schema.define(:version => 20170130203500) do
     t.integer  "duration",              :default => 120
     t.string   "youtube_embed"
     t.integer  "feedback_survey_id"
-    t.boolean  "has_feedback"
+    t.boolean  "has_survey"
   end
 
   add_index "events", ["billig_event_id"], :name => "index_events_on_billig_event_id", :unique => true
