@@ -1,9 +1,8 @@
 
 (function () {
 
-  var forms = $('form.feedback-form'),
-      index = 0,
-      stack = [$('.feedback-start-message')].concat(forms.toArray(), [$('.feedback-end-message')]);
+  var index = 0,
+      stack = [$('.feedback-start-message')].concat($('form.feedback-form').toArray(), [$('.feedback-end-message')]);
 
   function ajaxSubmit (form) {
     var form = $(form);

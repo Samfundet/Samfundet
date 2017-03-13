@@ -8,6 +8,8 @@ class Feedback::SurveysController < ApplicationController
   def show
     @survey = Feedback::Survey.find(params[:id])
     @token = request.session_options[:id]
+
+    render layout: false if request.xhr?
   end
 
   def edit
@@ -15,7 +17,7 @@ class Feedback::SurveysController < ApplicationController
   end
 
   def create
-    @survey = Feedback::Survey.new(params[:survey])
+    @survey = Feedback::Survey.new(params[:feedback_survey])
     if @survey.save
       flash[:success] = t('feedback.create_success')
     else
@@ -37,6 +39,8 @@ class Feedback::SurveysController < ApplicationController
     )
 
     render json: { success: true, message: "Success" }
+  rescue ActiveRecord::ActiveRecordError
+    render json: { success: false, message: "Error" }
   end
 
   def answers
@@ -49,7 +53,7 @@ class Feedback::SurveysController < ApplicationController
   def update
     @survey = Feedback::Survey.find(params[:id])
 
-    if @survey.update_attributes(params[:survey])
+    if @survey.update_attributes(params[:feedback_survey])
       flash[:success] = t("success.update")
     else
       flash.now[:error] = t("errors.update_fail")
