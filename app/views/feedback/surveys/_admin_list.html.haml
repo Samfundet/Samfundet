@@ -2,6 +2,9 @@
   %thead
     %tr
       %th= t("feedback.title")
+      %th= "Endret"
+      %th= "Opprettet"
+      %th
 
       - if permitted_to? :edit
         %th
@@ -12,6 +15,8 @@
     - @surveys.each do |survey|
       %tr
         %td= link_to survey.title, survey
+        %td= survey.updated_at
+        %td= survey.created_at
 
         - if permitted_to? :edit
           %td= link_to t("feedback.answers"), feedback_survey_answers_path(survey)

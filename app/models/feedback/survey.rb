@@ -9,6 +9,8 @@ class Feedback::Survey < ActiveRecord::Base
 
   accepts_nested_attributes_for :questions, allow_destroy: true, reject_if: :all_blank
 
+  default_scope order("updated_at DESC")
+
   def to_s
     title
   end
