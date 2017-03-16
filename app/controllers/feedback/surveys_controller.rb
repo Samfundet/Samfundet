@@ -23,7 +23,7 @@ class Feedback::SurveysController < ApplicationController
     else
       flash.now[:error] = t('feedback.create_error')
     end
-    redirect_to action: :edit
+    render :edit
   end
 
   def answer
