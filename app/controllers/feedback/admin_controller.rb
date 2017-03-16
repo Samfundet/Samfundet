@@ -8,7 +8,7 @@ class Feedback::AdminController < ApplicationController
 
   def admin
     @surveys = Feedback::Survey.all
-    @questions = Feedback::Question.all
+    @questions = Feedback::Question.order("updated_at DESC")
   end
 
   def index

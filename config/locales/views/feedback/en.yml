@@ -19,6 +19,8 @@ en:
 
     questions:
         text: Text
+        create_success: Successfully created the question
+        create_error: Could not create question
 
     action:
         new: Create survey

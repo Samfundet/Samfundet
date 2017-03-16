@@ -1,5 +1,5 @@
 class Feedback::Survey < ActiveRecord::Base
-  has_and_belongs_to_many :questions, join_table: "feedback_surveys_questions"
+  has_and_belongs_to_many :questions, join_table: "feedback_surveys_questions", order: 'feedback_questions.index'
   has_many :events
 
   attr_accessible :questions, :question_ids, :questions_attributes, :events, :title,

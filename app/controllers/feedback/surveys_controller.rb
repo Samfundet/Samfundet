@@ -63,6 +63,6 @@ class Feedback::SurveysController < ApplicationController
 
   def destroy
     Feedback::Survey.find(params[:id]).destroy
-    redirect_to action: :admin
+    redirect_to controller: 'feedback/admin', action: :admin
   end
 end

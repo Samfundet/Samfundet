@@ -20,6 +20,8 @@
 
     questions:
         text: Tekst
+        create_success: Spørsmålet ble opprettet
+        create_error: Spørsmålet ble ikke opprettet
 
     action:
         new: Opprett undersøkelse

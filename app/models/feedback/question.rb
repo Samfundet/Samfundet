@@ -1,5 +1,5 @@
 class Feedback::Question < ActiveRecord::Base
-  has_many :alternatives
+  has_many :alternatives, order: 'feedback_alternatives.index'
   has_and_belongs_to_many :surveys, join_table: "feedback_surveys_questions"
 
   attr_accessible :text, :surveys, :alternatives, :alternatives_attributes, :index
@@ -8,7 +8,7 @@ class Feedback::Question < ActiveRecord::Base
 
   accepts_nested_attributes_for :alternatives, allow_destroy: true, reject_if: :all_blank
 
-  default_scope order("index ASC")
+  scope :by_index, -> { order("index ASC") }
 
   def to_s
       text
