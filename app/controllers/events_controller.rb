@@ -170,6 +170,7 @@ class EventsController < ApplicationController
              card_number]
           end
         end.compact
+    @event = @ticket_event_price_group_card_no.first[1].samfundet_event
 
     @pdf_url.chop! # Remove last '&' character.
   end

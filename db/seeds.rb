@@ -447,6 +447,7 @@ Area.all.each do |area|
 
       Event.create!(
         feedback_survey: survey,
+        has_survey: true,
         area_id: area.id,
         organizer_id: organizer.id,
         organizer_type: organizer.class.name,

@@ -33,3 +33,9 @@
 
 %p
   = t('events.purchase_callback_success.confirmation_mail_confirmation')
+
+- if @event.has_survey and not @event.feedback_survey.nil?
+  %p
+    :markdown
+      #Bli med på spørreundersøkelse
+    = link_to "Spørreundersøkelse", feedback_survey_path(@event.feedback_survey)
