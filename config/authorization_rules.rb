@@ -133,7 +133,7 @@ authorization do
 
     has_permission_on :roles, to: :manage_members
 
-    has_permission_on :pages, to: [:new, :create, :destroy, :edit_non_content_fields, :graph]
+    has_permission_on :pages, to: [:new, :create, :destroy, :edit_non_content_fields, :graph, :history]
   end
 
   role :mg_nestleder do
