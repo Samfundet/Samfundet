@@ -70,3 +70,20 @@
         }
     }
 }
+
+.left-check-box {
+  & ol {
+    margin-left: 20px !important;
+  }
+  & li {
+    padding: 0 !important;
+  }
+  & label {
+    width: 100% !important;
+    padding-top: 0 !important;
+    text-align: left !important;
+    & input {
+      width: 5% !important;
+    }
+  }
+}
