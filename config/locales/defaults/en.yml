@@ -1,4 +1,6 @@
 en:
+  'true': "Yes"
+  'false': "No"
   crud:
     show: "show"
     create: "create"
@@ -28,7 +30,7 @@ en:
     time: "Time"
     at_time: "at %{time}"
     formats:
-        formtastic: 
+        formtastic:
   days:
     monday: "Monday"
     tuesday: "Tuesday"

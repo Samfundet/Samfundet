@@ -14,4 +14,8 @@ class BilligEvent < ActiveRecord::Base
   def netsale_billig_ticket_groups
     billig_ticket_groups.select { |btg| btg.billig_price_groups.any? &:netsale }
   end
+
+  def ticket_limit?
+    billig_ticket_groups.any? { |t| t.ticket_limit? && t.tickets_left? }
+  end
 end

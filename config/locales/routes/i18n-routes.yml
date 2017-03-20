@@ -20,7 +20,7 @@
     down: ned
     roles: roller
     admissions_admin: opptak-administrasjon
-    forgot_password: glemt-passord 
+    forgot_password: glemt-passord
     reset_password: tilbakestill-passord
     entry: innlegg
     entries: innlegg
@@ -42,6 +42,9 @@
     blogs: blogg
     contact: kontakt
     contactinfo: kontaktinfo
+    reject_calls: sokere-dere-skal-ringe
+    one_year_old: mer-enn-ett-aar-gamle-roller
+    archive_search: arkivsok
 
 en:
   routes:

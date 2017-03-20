@@ -72,14 +72,14 @@ gem 'route_downcaser'
 gem 'samfundet_domain', git: "https://github.com/Samfundet/SamfundetDomain.git"
 
 # SamfundetAuth is a gem which provides the application with methods for authenticating against mdb2.
-gem 'samfundet_auth', '~> 0.0.11', git: "https://github.com/Samfundet/SamfundetAuth.git"
+gem 'samfundet_auth', '~> 0.0.12', git: "https://github.com/Samfundet/SamfundetAuth.git"
 
 # will_paginate is an adaptive pagination plugin.
 # It makes pagination very simple.
 gem 'will_paginate'
 
 # for file uploads, see https://github.com/thoughtbot/paperclip
-gem "paperclip", "~> 4.2.2"
+gem "paperclip", "~> 4.3.7"
 
 # automatic compression of images uploaded via paperclip
 gem 'paperclip-compression', '0.3.5'
@@ -126,7 +126,7 @@ end
 
 group :development do
   # Gem to detect ruby style guide violations
-  gem 'rubocop', require: false
+  gem 'rubocop', '0.37.2', require: false
 
   # annotate adds schema information from the database, in the form of
   # Ruby comments, to model files so that we can see which columns

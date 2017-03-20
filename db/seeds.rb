@@ -403,7 +403,8 @@ Area.all.each do |area|
           event: billig_event.event,
           num: number_of_available_tickets,
           ticket_group_name: 'Boys',
-          num_sold: rand(number_of_available_tickets+1)
+          num_sold: rand(number_of_available_tickets+1),
+          ticket_limit: rand(10) < 5 ? nil : rand(1..10)
         )
         BilligPriceGroup.create!(
           ticket_group: billig_ticket_group.ticket_group,
@@ -421,8 +422,9 @@ Area.all.each do |area|
           extra_billig_ticket_group = BilligTicketGroup.create!(
             event: billig_event.event,
             num: number_of_available_tickets+100,
-          ticket_group_name: 'Girls',
-            num_sold: rand(number_of_available_tickets+1)+100
+            ticket_group_name: 'Girls',
+            num_sold: rand(number_of_available_tickets+1)+100,
+            ticket_limit: rand(10) < 5 ? nil : rand(1..10)
           )
           BilligPriceGroup.create!(
             ticket_group: extra_billig_ticket_group.ticket_group,

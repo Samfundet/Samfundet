@@ -39,6 +39,7 @@ class ApplicantSessionsController < UserSessionsController
   def login_applicant(applicant)
     session[:applicant_id] = applicant.id
     session[:member_id] = nil
+    cookies[:signed_in] = 1
 
     invalidate_cached_current_user
   end

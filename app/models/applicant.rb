@@ -78,7 +78,7 @@ class Applicant < ActiveRecord::Base
   end
 
   def self.interested_other_positions(admission)
-    where(interested_other_positions: true).select do |applicant|
+    where(disabled: false).where(interested_other_positions: true).select do |applicant|
       # If not wanted by any
       applicant.assigned_job_application(admission, acceptance_status: %w(wanted)).nil?
     end
@@ -90,6 +90,22 @@ class Applicant < ActiveRecord::Base
       return applicant if applicant &&
                           BCrypt::Password.new(applicant.hashed_password) == password
     end
+  end
+
+  def lowest_priority_group(admission)
+    job_applications.select { |application| application.job.admission == admission }.max_by(&:priority).job.group.id
+  end
+
+  def is_unwanted?(admission)
+    assigned_job_application(admission, acceptance_status: ["wanted", "reserved", ""]).nil?
+  end
+
+  def jobs_applied_to(admission)
+    job_applications.select { |application| application.job.admission == admission }.map(&:job)
+  end
+
+  def job_applications_at_group(admission, group)
+    group.job_applications_in_admission(admission).select { |ja| ja.applicant == self }
   end
 
   private

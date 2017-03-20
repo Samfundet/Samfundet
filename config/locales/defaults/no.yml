@@ -1,4 +1,6 @@
 'no':
+  'true': "Ja"
+  'false': "Nei"
   crud:
     show: "vis"
     create: "opprett"
@@ -50,6 +52,7 @@
   will_paginate:
       previous_label: "Forrige"
       next_label: "Neste"
+      page_gap: "&hellip;"
   error:
       update_error: "Oppdatering mislykket"
   success:

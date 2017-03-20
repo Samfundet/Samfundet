@@ -9,18 +9,65 @@
         font-size: 1.15em;
         width: 100%;
         margin-bottom: 20px;
+        table-layout: fixed;
+        word-wrap: break-word;
+        overflow: scroll;
+        color: $samfundet-black;
 
-        th {
-            font-weight: $font-weight-normal;
-            font-size: 1.2em;
-            text-align: left;
-            color: #888;
+        tr .ticket-limit-hd {
+          text-align: center;
         }
 
-        th, td {
-            padding: 10px 0;
+        select {
+          width: 2.8em;
+          font-size: 0.9em;
+          font-family: "futura-pt", "Lato", sans-serif;
+          font-weight: $font-weight-normal;
         }
-    }
+
+        .ticket-group-row:not(:first-child) th, .ticket-summary-row td {
+          border-top: solid 1px;
+          border-top-color: $samfundet-black;
+        }
+
+        .ticket-limit-reached {
+          color: $samfundet-orange;
+          font-weight: bolder !important;
+        }
+
+        .td-currency-unit-no::after {
+          position: absolute;
+          content: " ,-";
+        }
+
+        .td-currency-unit-en::after {
+          content: " NOK";
+        }
+
+        .td-ticket-unit-no::after {
+          content: " stk.";
+        }
+
+        .td-ticket-unit-en::after {
+          content: " pcs.";
+        }
+
+      }
+
+      // Make the ticket table more responsive for small screens
+      @media screen and (max-width: 736px) {
+        table {
+
+          th, td {
+            padding: 0.1em !important;
+            width: 50%;
+          }
+
+          select {
+            width: auto;
+          }
+        }
+      }
 
     p {
         display: block;
@@ -83,13 +130,12 @@
     select {
         border-radius: 3px;
         border: 1px solid #777;
-        margin: 0 5px;
     }
 
     .payment-wrapper {
         @include span-columns(12);
     }
-    
+
     .payment-choice {
         #email_feedback {
             margin: 2px;
@@ -108,7 +154,7 @@
         }
     }
     .custom-form input[type='submit']:disabled {
-      background-color: grey; 
+      background-color: grey;
     }
 
     .payment-info {

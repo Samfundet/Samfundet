@@ -125,6 +125,8 @@ authorization do
       :admissions_admin_campus
       ], to: :manage
 
+    has_permission_on :admissions_admin_groups, to: :reject_calls
+    has_permission_on :roles, to: :one_year_old
     has_permission_on :admissions_admin_campus, to: [:activate, :deactivate]
     has_permission_on :admissions_admin_job_applications, to: [:hidden_create, :withdraw_job_application]
     has_permission_on :admissions_admin_jobs, to: :hidden_create
@@ -151,8 +153,9 @@ authorization do
     ], to: :manage
 
     has_permission_on :admissions_admin_job_applications, to: [:hidden_create, :withdraw_job_application]
+    has_permission_on :job_applications, to: [:update, :delete]
     has_permission_on :admissions_admin_jobs, to: :hidden_create
-    has_permission_on :admissions_admin_groups, to: :applications
+    has_permission_on :admissions_admin_groups, to: [:applications, :reject_calls]
     has_permission_on :admissions_admin_admissions, to: :statistics
   end
 
@@ -175,6 +178,7 @@ authorization do
   end
 
   role :gjengsjef do
+    has_permission_on :roles, to: :one_year_old
   end
 
   role :arrangementansvarlig do
@@ -227,7 +231,7 @@ authorization do
     role group.admission_responsible_role do
       includes :opptaksansvarlig
       includes group.member_role
-      has_permission_on :admissions_admin_groups, to: [:show, :applications] do
+      has_permission_on :admissions_admin_groups, to: [:show, :applications, :reject_calls] do
         if_attribute id: is { group.id }
       end
       has_permission_on :admissions_admin_jobs, to: [:new, :create, :search, :edit, :update, :show, :delete] do

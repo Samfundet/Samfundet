@@ -23,6 +23,10 @@
     }
 }
 
+.limit-exceeded {
+    background:#ff4040;
+}
+
 .embed-container {
   position: relative;
   padding-bottom: 56.25%;
@@ -163,33 +167,28 @@
         }
     }
 
-    .links {
-      text-align: center;
-      a {
-        display: inline-block;
+    .bottom-links {
+        display: table;
+        width: 100%;
+        text-align: center;
+        table-layout: fixed;
 
-        margin: auto;
-        padding: 40px;
-
-        height: 40px;
-        width: 40px;
-
-        background-position: center; 
-        background-repeat: no-repeat;
-        background-size: 40px;
-
-        &.rss-icon {
-          background-image: url(rss.svg);
+        a{
+          display: table-cell;
         }
 
-        &.ical-icon {
-          background-image: url(calendar.svg);
+        img{
+          width: 2em;
+          position: relative;
+          top: 0.5em;
+          right: 0.5em;
         }
-        
-        &.archive-icon {
-          background-image: url(archive.svg);
+
+        @include media($mobile-and-tablet-portrait) {
+          a{
+            display: table-row;
+          }
         }
-      }
     }
 
     .event-group {

@@ -1,0 +1,25 @@
+= javascript_include_tag 'old_samfundet/interviews', defer: true
+= javascript_include_tag 'job_applications/admissions_admin_job_applications', defer: true
+%h2= t('roles.one_year_old_title')
+%br
+
+%table.applications.custom-table.sorted
+  %thead
+    %th= t('roles.member_name')
+    %th= t('roles.title')
+    %th= t('roles.date_assigned')
+
+  %tbody
+  - @older_than_one_year.each do |members_role|
+    %tr
+      %td
+        = members_role.member.full_name
+      %td
+        = members_role.role.name
+      %td
+        = members_role.created_at
+      %td
+        = link_to t('roles.remove_member'),
+                  [members_role.role, members_role],
+                  method: :delete,
+                  confirm: t('crud.confirm')

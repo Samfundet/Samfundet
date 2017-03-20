@@ -6,7 +6,7 @@
           - if banner_event.is_a?(Event)
             = render 'events/corner_ribbon', event: banner_event
           - else
-            .ribbon-text-wrapper
+            .ribbon-long-wrapper
               .ribbon.blue
                 = t('layouts.application.menu.blog')
           = background_image_helper "banner-image", banner_event.image_or_default, size: :large do

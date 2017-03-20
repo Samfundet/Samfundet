@@ -114,6 +114,7 @@ ActiveRecord::Schema.define(:version => 20170130203500) do
     t.string   "ticket_group_name"
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false
+    t.integer  "ticket_limit"
   end
 
   create_table "billig_tickets", :primary_key => "ticket", :force => true do |t|
@@ -370,8 +371,10 @@ ActiveRecord::Schema.define(:version => 20170130203500) do
   end
 
   create_table "members_roles", :force => true do |t|
-    t.integer "member_id"
-    t.integer "role_id"
+    t.integer  "member_id"
+    t.integer  "role_id"
+    t.datetime "created_at", :default => '2017-01-26 21:50:05', :null => false
+    t.datetime "updated_at", :default => '2017-01-26 21:50:05', :null => false
   end
 
   create_table "page_revisions", :force => true do |t|

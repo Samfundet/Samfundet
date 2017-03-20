@@ -123,6 +123,29 @@ class Event < ActiveRecord::Base
     end
   end
 
+  # Get all archived events, event types and event areas
+  # Used in event archive search
+  def self.archived_events_types_areas
+    events = Event
+             .active
+             .published
+             .past
+             .order('non_billig_start_time DESC')
+
+    event_types = Event::EVENT_TYPE
+                  .map { |e| [I18n.t("events.#{e}"), e] }
+                  .uniq
+                  .sort
+
+    event_areas = Area
+                  .all
+                  .map(&:name)
+                  .uniq
+                  .sort
+
+    [events, event_types, event_areas]
+  end
+
   def to_s
     title
   end
@@ -265,6 +288,26 @@ class Event < ActiveRecord::Base
     end
   end
 
+  def ticket_limit?
+    billig_event.present? && billig_event.ticket_limit?
+  end
+
+  def total_ticket_limit
+    if ticket_limit?
+      ticket_groups = billig_event.netsale_billig_ticket_groups
+      total_ticket_limit = 0
+      ticket_groups.each do |t|
+        default_price_group_ticket_limit = t.netsale_billig_price_groups.length * BilligTicketGroup::DEFAULT_TICKET_LIMIT
+        if t.tickets_left?
+          total_ticket_limit += t.ticket_limit? ? t.ticket_limit : default_price_group_ticket_limit
+        end
+      end
+      total_ticket_limit
+    else
+      0
+    end
+  end
+
   def cache_key
     "#{super}-#{purchase_status}-#{few_tickets_left?}"
   end
@@ -272,12 +315,15 @@ class Event < ActiveRecord::Base
   private
 
   def unique_price_groups
-    unique_price_groups =
+    if billig_event.nil?
+      []
+    else
       billig_event
-      .billig_ticket_groups
-      .map(&:netsale_billig_price_groups)
-      .flatten
-      .uniq(&:price)
+        .billig_ticket_groups
+        .map(&:netsale_billig_price_groups)
+        .flatten
+        .uniq(&:price)
+    end
   end
 end
 

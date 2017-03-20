@@ -5,53 +5,75 @@
     = t('events.buy_title', event_title: @event.title)
 
   = form_tag Rails.application.config.billig_path, method: "post", class: 'custom-form' do
-    %table.ticket-table
-      %tr
-        %th
-          = t('events.price_group')
-        %th
-          = t('events.price')
-        %th
-          = t('events.amount')
-        %th
-          = t('events.sum')
-      - @ticket_groups.each do |ticket_group|
-        - if @ticket_groups.length > 1
-          %tr
-            %th
-              = ticket_group.ticket_group_name
-            %th
-            %th
-            %th
-        - if ticket_group.tickets_left?
-          - ticket_group.netsale_billig_price_groups.each do |price_group|
-            %tr.ticket-table-row
-              %td
-                = price_group.price_group_name
-              %td.price{data: {price: price_group.price}}
-                = price_group.price
-              %td
-                = select_tag "price_#{price_group.price_group.to_s}_count",
-                  options_for_select(0..9,
-                    @payment_error_price_groups[price_group.price_group]), tabindex: 1
-              %td.sum
-                = 0
-        - else 
-          %tr
-            %td
-              = t('events.sold_out')
-            %td
-            %td
-            %td
+    -# Data fields to extract in JavaScript
+    - ticket_table_data = "data-default-ticket-limit"
+    - ticket_group_data = ["data-has-ticket-limit", "data-ticket-limit"]
 
-      %tr
+    %table.ticket-table{ticket_table_data => "#{BilligTicketGroup::DEFAULT_TICKET_LIMIT}"}
+      -# Translate currency and ticket unit in billig.css.scss
+      - currency_unit_class = "td-currency-unit-#{I18n.locale}"
+      - ticket_unit_class = "td-ticket-unit-#{I18n.locale}"
+
+      -# Iterate through all the ticket groups
+      - @ticket_groups.each_with_index do |ticket_group, i|
+        -# Only use ticket group name if there are multiple ticket groups
+        - ticket_group_name = @ticket_groups.length > 1 ? ticket_group.ticket_group_name : t('events.price_group')
+
+        -# The price groups in the current ticket group
+        - price_groups = ticket_group.netsale_billig_price_groups
+
+        -# The ticket limit to use if the ticket group has no ticket limit
+        - default_ticket_group_ticket_limit = BilligTicketGroup::DEFAULT_TICKET_LIMIT * price_groups.length
+
+        -# Only use ticket limit if there are tickets left
+        - ticket_group_ticket_limit = 0
+        - if ticket_group.tickets_left?
+          - ticket_group_ticket_limit = ticket_group.ticket_limit? ? ticket_group.ticket_limit : default_ticket_group_ticket_limit
+
+        -# HTML attributes for use in the javascript
+        - ticket_group_id = "tg#{i}"
+        - ticket_group_class = "ticket-limit-#{ticket_group_ticket_limit}"
+
+        -# Set ticket group row ( ticket group | ticket limit)
+        %tr.ticket-group-row{id: ticket_group_id, ticket_group_data[0] => "#{ticket_group.ticket_limit?}", ticket_group_data[1] => "#{ticket_group_ticket_limit}"}
+          %th
+            = ticket_group_name
+
+          -# Only iterate populate price group rows if ticket group has tickets left
+          - if ticket_group.tickets_left?
+            %th.ticket-limit-hd{colspan: 3}
+              - pluralize = ticket_group_ticket_limit > 1 ? 'multiple' : 'single'
+              = t("events.ticket_limit_#{pluralize}", ticket_limit: ticket_group_ticket_limit)
+
+            -# Iterate thorugh all the price groups
+            - price_groups.each_with_index do |price_group, j|
+              - price_group_options = ticket_group.price_group_ticket_limit
+
+              -# Set price group row (price group | price | dropdown | temp. sum)
+              %tr.price-group-row
+                %td
+                  = price_group.price_group_name
+                %td.price{data: {price: price_group.price}, class: currency_unit_class}
+                  = "#{price_group.price}"
+                %td{class: ticket_unit_class}
+                  = select_tag "price_#{price_group.price_group.to_s}_count",
+                    options_for_select((0 .. price_group_options),
+                      @payment_error_price_groups[price_group.price_group]), class: ticket_group_id, tabindex: 1
+                %td.sum{class: currency_unit_class}
+                  = "0"
+          - else
+            %th.ticket-limit-hd{colspan: 3}
+              = t('events.sold_out')
+
+      -# Order summary for all ticket groups
+      %tr.ticket-summary-row
         %td
           = t('events.total')
         %td
-        %td.totalAmount
-          = 0
-        %td.totalSum
-          = 0
+        %td.totalAmount.ticket-data{class: ticket_unit_class}
+          = "0/#{@event.total_ticket_limit}"
+        %td.totalSum.ticket-data{class: currency_unit_class}
+          = "0"
 
     %p.payment-choice
       = radio_button_tag "ticket_type", "card", @payment_error.try(:owner_cardno).present?, checked: true
@@ -62,10 +84,6 @@
       = radio_button_tag "ticket_type", "paper", @payment_error.try(:owner_email).present?
       = label_tag "ticket_type_paper", t('events.paperticket'), class: 'radio-label'
       = email_field_tag :email, @payment_error.try(:owner_email), tabindex: 2
-      = label_tag "email_confirmation", t('events.confirm_email')
-      = email_field_tag :email_confirmation, @payment_error.try(:owner_email), tabindex: 3
-      %span#email_feedback
-        &nbsp;
 
     %h4
       = t('events.about_ticket')

@@ -35,6 +35,12 @@
         %td= t('events.ticket')
         %td= inline_event_price @event
 
+      - if @event.ticket_limit?
+        %tr
+          - pluralize = @event.total_ticket_limit > 1 ? 'multiple' : 'single'
+          %td= t('events.ticket_limit_event_show')
+          %td= t("events.tickets_#{pluralize}", total_ticket_limit: @event.total_ticket_limit)
+
       %tr
         %td= t('events.age_limit')
         %td= t_event_age_limit(@event)

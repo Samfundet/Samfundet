@@ -2,7 +2,7 @@
 class AdmissionsAdmin::GroupsController < ApplicationController
   j layout "admissions"
 
-  filter_access_to [:show, :applications], attribute_check: true
+  filter_access_to [:show, :applications, :reject_calls], attribute_check: true
 
   def show
     @admission = Admission.find(params[:admission_id])
@@ -43,5 +43,11 @@ class AdmissionsAdmin::GroupsController < ApplicationController
         response.headers['Content-Disposition'] = "attachment; filename='#{@admission.title}-#{@group.name}-#{DateTime.current.to_date}.csv'"
       end
     end
+  end
+
+  def reject_calls
+    @admission = Admission.find(params[:admission_id])
+    @group = Group.find(params[:id])
+    @applicants_to_call = @group.applicants_to_call(@admission).sort_by(&:full_name)
   end
 end
