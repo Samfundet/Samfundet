@@ -7,7 +7,6 @@ class Feedback::SurveysController < ApplicationController
 
   def show
     @survey = Feedback::Survey.find(params[:id])
-    @token = request.session_options[:id]
 
     render layout: false if request.xhr?
   end
@@ -39,7 +38,8 @@ class Feedback::SurveysController < ApplicationController
     )
 
     render json: { success: true, message: "Success" }
-  rescue ActiveRecord::ActiveRecordError
+  rescue ActiveRecord::ActiveRecordError => e
+    puts e
     render json: { success: false, message: "Error" }
   end
 

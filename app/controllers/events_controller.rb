@@ -171,6 +171,7 @@ class EventsController < ApplicationController
           end
         end.compact
     @event = @ticket_event_price_group_card_no.first[1].samfundet_event
+    @survey = @event.feedback_survey
 
     @pdf_url.chop! # Remove last '&' character.
   end
