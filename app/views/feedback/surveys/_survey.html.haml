@@ -10,6 +10,7 @@
           %li
             = radio_button_tag "answer", alternative.text, false, id: "alternative_#{i}_#{j}"
             = label_tag "alternative_#{i}_#{j}", alternative.text
+      = csrf_meta_tag
       = hidden_field_tag :token, feedback_token
       = hidden_field_tag :event_id, @event.id unless @event.nil?
       = hidden_field_tag :question_id, question.id
