@@ -1,6 +1,5 @@
 class Feedback::SurveysController < ApplicationController
   filter_access_to :answers, require: :edit
-  filter_access_to :answer
 
   def new
     @survey = Feedback::Survey.new

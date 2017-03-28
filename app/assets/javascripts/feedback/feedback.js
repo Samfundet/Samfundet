@@ -17,9 +17,10 @@
         if (data.success) {
           index++;
           updateStack();
+        } else {
+          alert('Noe gikk galt: ' + data);
         }
-      },
-      dataType: 'json'
+      }
     });
 
   }
