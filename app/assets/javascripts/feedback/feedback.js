@@ -9,6 +9,9 @@
     $.ajax({
       type: "POST",
       url: form.attr('action'),
+        beforeSend: function(xhr) {
+          xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+        },
       data: form.serialize(),
       error: function (j, m, e) {
         alert('Noe gikk galt: ' + e);
