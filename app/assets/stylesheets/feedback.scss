@@ -4,12 +4,13 @@
 
 .feedback-wrapper {
 
+    text-align: center;
+
     form.feedback-form, .feedback-start-message,
     .feedback-end-message {
 
         background-color: #fff;
         padding: 15px;
-        text-align: center;
 
         h3 {
             padding: 5px 10px 5px 10px;
@@ -43,14 +44,12 @@
                 cursor: pointer;
                 padding: 10px;
             }
-
-            input[type="radio"] {
-                //display: none;
-            }
         }
     }
+
     .pagination {
         display: inline-block;
+        align-self: center;
 
         .button {
             background-color: #fff;
@@ -67,6 +66,23 @@
 
         .button:hover:not(.active) {
             background-color: #ddd;
+        }
+    }
+    .action-button {
+        display: inline-block;
+        border-radius: 3px;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 25px;
+        color: #fff;
+        font-weight: 300;
+
+        &.accept {
+            background-color: #97bf2d;
+        }
+
+        &.decline {
+            background-color: #A03035;
         }
     }
 }
