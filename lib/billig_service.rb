@@ -5,6 +5,7 @@ class BilligService < Sinatra::Base
   callback_path = if I18n.locale == :en
                     then 'http://localhost:3000/en/events/purchase_callback' 
                     else 'http://localhost:3000/arrangement/purchase_callback' end
+  always_accept = false
   post '/pay' do
     puts 'A payment request has been received, consisting of the following tickets.'
     puts
@@ -24,7 +25,7 @@ class BilligService < Sinatra::Base
     puts
     print 'Accept payment? (Y/n) '
 
-    if $stdin.gets.chomp == 'n'
+    if !always_accept and $stdin.gets.chomp == 'n'
       puts
       puts 'Due to what kind of error?'
       puts '0. No error.'

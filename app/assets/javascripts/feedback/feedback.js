@@ -1,6 +1,11 @@
 
 $(function () {
 
+  var surveyProperties = {
+    autoSubmit: true,
+    hidePaginationInitially: true,
+  };
+
   var popped = false;
 
   function openInModal(url, callback) {
@@ -33,8 +38,17 @@ $(function () {
     var stack = [$('.feedback-start-message')].concat($('form.feedback-form').toArray(),
           [$('.feedback-end-message')]);
 
+    function showMessage(m) {
+      $('.feedback-wrapper .message-box').text(m).show().delay(1500).slideUp();
+    }
+
     function ajaxSubmit (form) {
       var form = $(form);
+
+      if (form.find('input[type="radio"]:checked').length == 0) {
+        return;
+      }
+
       $.ajax({
         type: "POST",
         url: form.attr('action'),
@@ -43,14 +57,13 @@ $(function () {
         },
         data: form.serialize(),
         error: function (j, m, e) {
-          alert('Noe gikk galt: ' + e);
+          showMessage('Noe gikk galt: ' + e);
         },
         success: function (data) {
           if (data.success) {
-            index++;
-            updateStack();
+            next();
           } else {
-            alert('Noe gikk galt: ' + (data.message ? data.message : data));
+            showMessage('Noe gikk galt: ' + (data.message ? data.message : data));
           }
         }
       });
@@ -68,33 +81,31 @@ $(function () {
         }
       });
 
-      if (index == 0 || index == stack.length-1) {
+      if (index == 0) {
         $('.feedback-wrapper .pagination').hide();
       } else {
         $('.feedback-wrapper .pagination').show();
+
+        if (index < stack.length-1) {
+          $('.feedback-wrapper .feedback-next').show();
+        } else {
+          $('.feedback-wrapper .feedback-next').hide();
+        }
+
+        if (index > 1) {
+          $('.feedback-wrapper .feedback-previous').show();
+        } else {
+          $('.feedback-wrapper .feedback-previous').hide();
+        }
       }
     }
 
-    $('.feedback-wrapper .pagination').hide();
-    updateStack();
-
-    $('.feedback-wrapper .feedback-previous').click(function (e) {
-      if (index > 1) {
-        index--;
-        updateStack();
-      }
-    });
-
-    $('.feedback-wrapper #feedback-start-survey').click(function (e) {
+    function next(e) {
       index++;
       updateStack();
-    });
+    }
 
-    $('.feedback-wrapper #feedback-skip-survey').click(function (e) {
-      modal.find('.close-modal').click();
-    });
-
-    $('.feedback-wrapper .feedback-next').click(function (e) {
+    function submitAndNext() {
       if (index < stack.length-1) {
         if (index > 0) {
           ajaxSubmit(stack[index]);
@@ -102,15 +113,48 @@ $(function () {
             $('.feedback-wrapper .pagination').hide();
           }
         } else {
-          index++;
-          updateStack();
+          next();
         }
       }
-    });
+    }
+
+    function previous(e) {
+      if (index > 1) {
+        index--;
+        updateStack();
+      }
+    }
+
+    function quitSurvey(e) {
+      modal.find('.close-modal').click();
+    }
+
+    if (surveyProperties.hidePaginationInitially) {
+      $('.feedback-wrapper .pagination').hide();
+    }
+
+    updateStack();
+
+    $('.feedback-wrapper .feedback-previous').click(previous);
+
+    $('.feedback-wrapper #feedback-start-survey').click(next);
+
+    $('.feedback-wrapper #feedback-skip-survey').click(quitSurvey);
+
+    if (surveyProperties.autoSubmit) {
+      $('.feedback-wrapper form input[type="radio"]').on('change', submitAndNext);
+    }
+
+    $('.feedback-wrapper .feedback-next').click(submitAndNext);
+
+    $('.feedback-wrapper #feedback-end-survey').click(quitSurvey);
   }
 
-  if (surveyPath) {
+  if (typeof surveyPath !== 'undefined') {
     openInModal(surveyPath, setUp);
+  }
+  else if (!$('.feedback-wrapper').length == 0) {
+    setUp($('.feedback-wrapper'));
   }
 
 });
