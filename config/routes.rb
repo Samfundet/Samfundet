@@ -203,8 +203,10 @@ Rails.application.routes.draw do
 
     resources :tables
   end
-
+  
+  #UKA 17 boksalg 
   match '/bokhandel' => redirect('http://samfundetbok.tabetalt.no/') 
+  
   get ":id" => "pages#show", :id => Page::NAME_FORMAT
 end
 
