@@ -1,6 +1,7 @@
 class Feedback::Question < ActiveRecord::Base
   has_many :alternatives, order: 'feedback_alternatives.index'
   has_and_belongs_to_many :surveys, join_table: "feedback_surveys_questions"
+  has_many :answers
 
   attr_accessible :text, :surveys, :alternatives, :alternatives_attributes, :index
 

@@ -46,6 +46,7 @@ class Event < ActiveRecord::Base
   belongs_to :image
   has_one :front_page_lock, as: :lockable
   has_many :price_groups, uniq: true
+  has_one :feedback_survey
 
   belongs_to :feedback_survey, class_name: "Feedback::Survey"
 

@@ -1,5 +1,16 @@
 %h2= set_and_return_title t("feedback.answers")
 
+%p
+  = link_to "Eksporter alle svar som CSV", feedback_survey_answers_path(@survey, format: :csv)
+
+%p="Eksporter svar tilknyttet denne surveyen"
+%ul
+  - @survey.events.each do |event|
+    %li
+      = link_to event.title, survey_answers_event_path(event, format: :csv)
+
+%h3
+  Alle svar på denne spørreundersøkelsen
 %table
   %tr
     %th= "Event"

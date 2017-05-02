@@ -48,6 +48,13 @@ class Feedback::SurveysController < ApplicationController
     @answers = Feedback::Answer.where(survey_id: @survey.id)
                    .paginate(page: params[:page], per_page: 80)
                    .order(:date)
+
+    respond_to do |format|
+      format.html
+      format.csv do
+        response.headers['Content-Disposition'] = "attachment; filename='#{@survey.title}-#{DateTime.current.to_date}.csv'"
+      end
+    end
   end
 
   def update

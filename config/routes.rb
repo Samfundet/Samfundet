@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     get :archive, on: :collection
     get :ical, on: :collection, defaults: { format: 'ics' }
     get :rss, on: :collection, defaults: { format: 'rss' }
+    get :survey_answers, on: :member
 
     collection do
       get 'purchase_callback', to: :purchase_callback_failure
