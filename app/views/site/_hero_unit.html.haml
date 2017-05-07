@@ -1,7 +1,7 @@
 .hero-unit
   .date-today
     %h2
-      = I18n.l(Date.current, format: :short)
+      = I18n.l(DateTime.current-4.hours, format: "%-d. %b")
   .events-today
     %h2= t 'site.index.events_today'
     - if @todays_events.present?
