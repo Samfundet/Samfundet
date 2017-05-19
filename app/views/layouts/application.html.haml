@@ -3,6 +3,7 @@
   %head
     %meta{ charset: "UTF-8" }
     %meta{ name: "viewport", content: "width=device-width, initial-scale=1.0" }
+    != yield :head
     %title
       - unless (yield :title).blank?
         #{yield(:title)} - 
@@ -20,7 +21,6 @@
     %meta{ name:"twitter:site", content:"@Samfundet"}
     %meta{ name:"twitter:creator", content:"@Samfundet"}
     = yield :twitter
-    != yield :head
 
   %body{ class: ('dev-filter' unless Rails.env.production?) }
     #sticky-footer-wrapper
