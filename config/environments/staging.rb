@@ -62,8 +62,12 @@ Samfundet::Application.configure do
 
   config.after_initialize do
     billig_table_prefix = "billig."
-    billig_tables = [BilligEvent, BilligTicketGroup, BilligPriceGroup, BilligPaymentError, BilligPaymentErrorPriceGroup, BilligTicket, BilligPurchase, BilligTicketCard]
 
+    # manually set BilligEvent table_name so it uses db view instead of std table
+    BilligEvent.establish_connection(:billig)
+    BilligEvent.table_name = billig_table_prefix + 'event_lim_web'
+
+    billig_tables = [BilligTicketGroup, BilligPriceGroup, BilligPaymentError, BilligPaymentErrorPriceGroup, BilligTicket, BilligPurchase, BilligTicketCard]
     billig_tables.each do |table|
       table.establish_connection(:billig)
       table.table_name = billig_table_prefix + table.name.gsub(/Billig/, '').underscore
