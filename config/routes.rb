@@ -205,7 +205,7 @@ Rails.application.routes.draw do
   end
   
   #UKA 17 boksalg 
-  match '/bokhandel' => redirect('http://samfundetbok.tabetalt.no/') 
+  match '/bokhandel' => redirect('https://samfundetbok.tabetalt.no/') 
   
   get ":id" => "pages#show", :id => Page::NAME_FORMAT
 end
