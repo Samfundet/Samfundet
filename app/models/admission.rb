@@ -17,7 +17,11 @@ class Admission < ActiveRecord::Base
                                \                                  # A space.
                                [0-2][0-9]:[0-5][0-9]\Z/x # The time.
 
-  validates :promo_video, url: true
+  validates :promo_video, url: true, if: :promo_video_empty?
+
+  def promo_video_empty?
+    !promo_video.empty?
+  end
 
   # An admission has five datetimes associated with it:
   #
