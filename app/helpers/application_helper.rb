@@ -3,6 +3,12 @@
 module ApplicationHelper
   FLASH_TYPES = [:success, :notice, :error, :message, :warning].freeze
 
+  def disable_robots
+    content_for(:head) do
+      haml_tag :meta, { name: 'robots', content: 'noindex' }
+    end
+  end
+
   def set_title(page_title)
     content_for(:title) { page_title }
   end

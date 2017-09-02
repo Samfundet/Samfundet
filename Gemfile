@@ -3,7 +3,7 @@
 ###########################################
 
 # Specify ruby version that we use. Bundler gives an error when a different ruby is used.
-ruby '2.1.5'
+ruby '2.3.3'
 
 # The repository from which we're fetching our rubygems.
 source 'https://rubygems.org'

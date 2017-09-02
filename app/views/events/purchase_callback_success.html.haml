@@ -1,6 +1,8 @@
+- disable_robots
 - if @event.has_survey and not @survey.nil?
   :javascript
     var surveyPath = "#{feedback_survey_path(@survey)}";
+
 %h2
   = t('events.purchase_callback_success.title')
 

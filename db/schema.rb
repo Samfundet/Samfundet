@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170130203500) do
+ActiveRecord::Schema.define(:version => 20170817174432) do
 
   create_table "admissions", :force => true do |t|
     t.string   "title"
@@ -373,8 +373,8 @@ ActiveRecord::Schema.define(:version => 20170130203500) do
   create_table "members_roles", :force => true do |t|
     t.integer  "member_id"
     t.integer  "role_id"
-    t.datetime "created_at", :default => '2017-01-26 21:50:05', :null => false
-    t.datetime "updated_at", :default => '2017-01-26 21:50:05', :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "page_revisions", :force => true do |t|

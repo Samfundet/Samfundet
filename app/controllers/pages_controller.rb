@@ -1,10 +1,10 @@
 # -*- encoding : utf-8 -*-
 class PagesController < ApplicationController
   filter_access_to [:index, :new, :create]
-  filter_access_to [:show, :edit, :update, :destroy, :history], attribute_check: true,
-                                                                load_method: :load_page
+  filter_access_to [:show, :edit, :update, :destroy], attribute_check: true,
+                                                      load_method: :load_page
   filter_access_to [:admin], require: :edit
-  filter_access_to [:graph], require: :edit do
+  filter_access_to [:graph, :history], require: :edit do
     show_admin?
   end
 
