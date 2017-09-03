@@ -57,7 +57,8 @@ $(function () {
         },
         data: form.serialize(),
         error: function (j, m, e) {
-          showMessage('Noe gikk galt: ' + e);
+          showMessage('Noe gikk galt: ' + m);
+          console.log(e);
         },
         success: function (data) {
           if (data.success) {
