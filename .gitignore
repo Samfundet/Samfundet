@@ -50,3 +50,5 @@ vendor/bundle/
 .loadpath
 
 webrat-*.html
+
+react/node_modules
