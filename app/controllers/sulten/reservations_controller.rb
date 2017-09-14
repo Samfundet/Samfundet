@@ -1,6 +1,5 @@
 class Sulten::ReservationsController < ApplicationController
-  filter_access_to :archive, require: :manage
-
+  filter_access_to [:archive, :admin_new, :admin_create], require: :manage
   def index
     @reservations = Sulten::Reservation.where(reservation_from: Time.now.beginning_of_week..Time.now.end_of_week).order("reservation_from")
   end
@@ -10,6 +9,10 @@ class Sulten::ReservationsController < ApplicationController
   end
 
   def new
+    @reservation = Sulten::Reservation.new
+  end
+
+  def admin_new
     @reservation = Sulten::Reservation.new
   end
 
@@ -24,6 +27,19 @@ class Sulten::ReservationsController < ApplicationController
       render :new
     end
   end
+
+  def admin_create
+    @reservation = Sulten::Reservation.new(params[:sulten_reservation])
+    if @reservation.save
+      SultenNotificationMailer.send_reservation_email(@reservation).deliver
+      flash[:success] = t("helpers.models.sulten.reservation.success.create")
+      redirect_to sulten_reservations_archive_path
+    else
+      flash.now[:error] = t("helpers.models.sulten.reservation.errors.creation_fail")
+      render :admin_new
+    end
+  end
+
 
   def show
     @reservation = Sulten::Reservation.find(params[:id])
@@ -48,7 +64,7 @@ class Sulten::ReservationsController < ApplicationController
   def destroy
     Sulten::Reservation.find(params[:id]).destroy
     flash[:success] = t("helpers.models.sulten.reservation.success.delete")
-    redirect_to sulten_reservations_path
+    redirect_to x_sulten_reservations_path
   end
 
   def success
