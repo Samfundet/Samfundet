@@ -21,7 +21,7 @@
               check_opening_hours: "Lyche er lukket under dette tidsrommet"
             reservation_type_present: "anledningfeltet kan ikke settes tomt"
             people:
-              too_many_people: "bestillinger med flere enn 12 personer må sendes på mail til lyche@samfundet.no"
+              too_many_people: "bestillinger med flere enn 12 personer må sendes på mail til lyche@uka.no"
               too_few_people: "det må være minst én person på en reservasjon"
             check_reservation_duration: "reservasjonslengden må velges blant de angitte tidene"
             invalid_reservation_format: "Feil format. Prøv formatet: 20.10.2016 16:00"
