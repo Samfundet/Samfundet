@@ -30,6 +30,7 @@ class Sulten::ReservationsController < ApplicationController
 
   def admin_create
     @reservation = Sulten::Reservation.new(params[:sulten_reservation])
+    @reservation.admin_access = true
     if @reservation.save
       SultenNotificationMailer.send_reservation_email(@reservation).deliver
       flash[:success] = t("helpers.models.sulten.reservation.success.create")
