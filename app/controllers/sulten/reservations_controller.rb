@@ -1,11 +1,15 @@
 class Sulten::ReservationsController < ApplicationController
-  filter_access_to :archive, require: :manage
+  filter_access_to :archive, :export, require: :manage
 
   def index
     @reservations = Sulten::Reservation.where(reservation_from: Time.now.beginning_of_week..Time.now.end_of_week).order("reservation_from")
   end
 
   def archive
+    @reservations = Sulten::Reservation.where(reservation_from: Time.now.beginning_of_week..Time.now.next_year).order("reservation_from ASC")
+  end
+
+  def export
     @reservations = Sulten::Reservation.where(reservation_from: Time.now.beginning_of_week..Time.now.next_year).order("reservation_from ASC")
   end
 

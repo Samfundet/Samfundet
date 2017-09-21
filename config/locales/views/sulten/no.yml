@@ -7,6 +7,8 @@
       show_all: "Vis alle"
       name: "Navn"
       time: "Klokkeslett"
+      from: "Fra"
+      to: "Til"
       people: "Antall personer"
       reservation_type: "Anledning"
       placeholder_date: "01.10.1910 12:00"
@@ -16,6 +18,7 @@
       email: "Epost"
       allergies: "Allergier / andre beskjeder"
       internal_comment: "Intern kommentar"
+      export_to_csv: "Eksporter alle reservasjoner til CSV"
       form:
         title: "lyche reservasjon"
         intro1: "For å lage en reservasjon hos Lyche, vennligst fyll ut og send inn skjemaet under."
