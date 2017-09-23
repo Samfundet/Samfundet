@@ -328,6 +328,39 @@ price_group_names.each do |group|
   end
 end
 
+
+# Create feedback
+
+questions = Array.new rand(40..50)
+puts "Creating #{questions.length} questions"
+
+questions.length.times.each do |j|
+  alternatives = Array.new rand(3..8)
+  alternatives.length.times.each do |i|
+      alternatives[i] = Feedback::Alternative.create!(
+          text: Faker::Lorem.sentence(5)
+      )
+  end
+
+  questions[j] = Feedback::Question.create!(
+    text: Faker::Lorem.sentence(5),
+    alternatives: alternatives,
+    index: j,
+  )
+
+end
+
+surveys = Array.new 5
+surveys.length.times.each do |k|
+  puts "Creating survey"
+  surveys[k] = Feedback::Survey.create!(
+    title: Faker::Lorem.word,
+    questions: questions.sample(rand(8..10)),
+    start_message: "Start message",
+    end_message: "End message"
+  )
+end
+
 puts "Creating events and billig tables"
 Area.all.each do |area|
   age_limit = Event::AGE_LIMIT
@@ -412,7 +445,11 @@ Area.all.each do |area|
       organizer = rand > 0.7 ? Group.order("RANDOM()").first : ExternalOrganizer.order("RANDOM()").first
       chosen_colors = colors.sample(2)
 
+      survey = surveys.sample
+
       Event.create!(
+        feedback_survey: survey,
+        has_survey: true,
         area_id: area.id,
         organizer_id: organizer.id,
         organizer_type: organizer.class.name,
@@ -463,6 +500,26 @@ possible_payment_errors.each do |error_message|
     price_group: BilligPriceGroup.all.sample.price_group,
     number_of_tickets: rand(1..10)
   )
+end
+
+questions.reject{ |q| q.surveys.empty? }.group_by{ |q| q.surveys.first.id }.each do |survey_id, qs|
+  events = Event.where(feedback_survey_id: survey_id)
+  puts "Creating answers for Survey##{survey_id}"
+
+  qs.each do |question|
+    alternatives = question.alternatives
+
+    rand(10..15).times do |i|
+        Feedback::Answer.create!(
+          answer: alternatives.sample.text,
+          question_id: question.id,
+          token: "Sample token##{i}",
+          date: DateTime.now,
+          event_id: (unless events.empty? then events.sample.id else nil end),
+          survey_id: survey_id
+        )
+    end
+  end
 end
 
 puts "Creating successfull purchases"

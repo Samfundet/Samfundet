@@ -1,0 +1,15 @@
+- require 'csv'
+
+= CSV.generate(headers: true) do |csv|
+  - csv << ["Event", "Token", "Answer", "Date", "Question"]
+
+  - @survey.answers.each do |answer|
+    - csv_array = [if answer.event_id.nil? then "None" else Event.find(answer.event_id).title end,
+      answer.token,
+      answer.answer,
+      answer.date,
+      Feedback::Question.find(answer.question_id).text]
+
+    - csv << csv_array
+
+- end.html_safe  # Turn quot into "

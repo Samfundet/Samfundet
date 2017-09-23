@@ -1,0 +1,29 @@
+.feedback-wrapper
+  .flash.message-box.error{ style: "display:none;" }
+  .feedback-start-message
+    :markdown
+      #{@survey.start_message}
+    .action-button.accept{ id: "feedback-start-survey" }= "Start undersøkelse"
+    .action-button.decline{ id: "feedback-skip-survey" }= "Nei takk"
+  - @survey.questions.each_with_index do |question, i|
+    = form_tag feedback_survey_answer_path(@survey), method: 'post', class: 'feedback-form' do
+      %h3= question.text
+      %ul.feedback-alternatives
+        - question.alternatives.each_with_index do |alternative, j|
+          %li
+            = radio_button_tag "answer", alternative.text, false, id: "alternative_#{i}_#{j}"
+            = label_tag "alternative_#{i}_#{j}", alternative.text
+      = csrf_meta_tag
+      = hidden_field_tag :token, feedback_token
+      = hidden_field_tag :event_id, @event.id unless @event.nil?
+      = hidden_field_tag :question_id, question.id
+  .feedback-end-message
+    :markdown
+      #{@survey.end_message}
+    .action-button.accept{ id: "feedback-end-survey" }= "Avslutt undersøkelse"
+  .pagination
+    .button.feedback-previous= t("will_paginate.previous_label")
+    - @survey.questions.length.times.each do |i|
+      .button{ id: "feedback-index-#{i+1}"}= i+1
+    .button.feedback-next= t("will_paginate.next_label")
+

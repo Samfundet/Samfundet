@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     get :archive, on: :collection
     get :ical, on: :collection, defaults: { format: 'ics' }
     get :rss, on: :collection, defaults: { format: 'rss' }
+    get :survey_answers, on: :member
 
     collection do
       get 'purchase_callback', to: :purchase_callback_failure
@@ -32,6 +33,22 @@ Rails.application.routes.draw do
 
   resources :front_page_locks, only: [:edit, :update] do
     post :clear, on: :member
+  end
+
+  ############################
+  ##  Routes for feedback   ##
+  ############################
+
+  namespace :feedback do
+
+    get :admin, to: "admin#admin"
+
+    resources :surveys, except: [:index] do
+      post :answer, to: "surveys#answer"
+      get :answers, to: "surveys#answers"
+    end
+
+    resources :questions, only: [:edit, :update, :new, :create, :destroy]
   end
 
   ############################

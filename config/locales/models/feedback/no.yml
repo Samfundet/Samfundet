@@ -1,0 +1,13 @@
+'no':
+  helpers:
+    models:
+      feedback:
+        one: "tilbakemelding"
+        other: "tilbakemeldinger"
+  activerecords:
+    models:
+      feedback:
+        one: "tilbakemelding"
+        other: "tilbakemeldinger"
+    label:
+        title: Tittel

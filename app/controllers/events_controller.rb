@@ -180,6 +180,8 @@ class EventsController < ApplicationController
              card_number]
           end
         end.compact
+    @event = @ticket_event_price_group_card_no.first[1].samfundet_event
+    @survey = @event.feedback_survey
 
     @pdf_url.chop! # Remove last '&' character.
   end
@@ -216,6 +218,22 @@ class EventsController < ApplicationController
               end
     respond_to do |format|
       format.rss { render layout: false }
+    end
+  end
+
+  def survey_answers
+    @event = Event.find(params[:id])
+
+    if !@event.has_survey
+      flash[:error] = "Dette arrangementet er ikke tilknyttet et arrangement."
+      redirect_to :back
+    end
+
+    @survey = @event.feedback_survey
+    respond_to do |format|
+      format.csv do
+        response.headers['Content-Disposition'] = "attachment; filename='#{@survey.title}-#{DateTime.current.to_date}.csv'"
+      end
     end
   end
 end

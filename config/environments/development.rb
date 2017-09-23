@@ -43,4 +43,5 @@ Samfundet::Application.configure do
 
   # Enable livereload injection in development
   config.middleware.use Rack::LiveReload
+  config.middleware.delete Rack::Lock
 end

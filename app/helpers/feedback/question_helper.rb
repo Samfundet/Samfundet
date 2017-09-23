@@ -1,0 +1,2 @@
+module Feedback::QuestionHelper
+end

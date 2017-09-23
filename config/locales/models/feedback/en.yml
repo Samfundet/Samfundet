@@ -1,0 +1,15 @@
+en:
+  helpers:
+    models:
+      feedback:
+        one: "feedback"
+        other: "feedbacks"
+  activerecords:
+    models:
+      feedback:
+        one: "feedback"
+        other: "feedbacks"
+    label:
+      feedback:
+        title: Title 
+        time: Time

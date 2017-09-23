@@ -1,0 +1,105 @@
+// Place all the styles related to the Feedback controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.feedback-wrapper {
+
+    text-align: center;
+
+    form.feedback-form, .feedback-start-message,
+    .feedback-end-message {
+
+        background-color: #fff;
+        padding: 15px;
+
+        h3 {
+            padding: 5px 10px 5px 10px;
+            font-size: 32px;
+            font-weight: 500;
+        }
+
+    }
+
+    form.feedback-form {
+
+        ul.feedback-alternatives {
+            margin: auto;
+            display: block;
+            width: 80%;
+            font-size: 20px;
+            font-weight: 300;
+            color: #333;
+
+            input[type="radio"]:checked+label {
+                border: solid 1px #319432;
+                border-radius: 5px;
+            }
+
+            li {
+                margin: 10px;
+                text-align: left;
+            }
+
+            label {
+                cursor: pointer;
+                padding: 10px;
+            }
+        }
+    }
+
+    .pagination {
+        display: inline-block;
+        align-self: center;
+
+        .button {
+            background-color: #fff;
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+        }
+
+        .button.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .button:hover:not(.active) {
+            background-color: #ddd;
+        }
+    }
+    .action-button {
+        display: inline-block;
+        border-radius: 3px;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 25px;
+        color: #fff;
+        font-weight: 300;
+
+        &.accept {
+            background-color: #97bf2d;
+        }
+
+        &.decline {
+            background-color: #A03035;
+        }
+    }
+}
+
+.left-check-box {
+  & ol {
+    margin-left: 20px !important;
+  }
+  & li {
+    padding: 0 !important;
+  }
+  & label {
+    width: 100% !important;
+    padding-top: 0 !important;
+    text-align: left !important;
+    & input {
+      width: 5% !important;
+    }
+  }
+}

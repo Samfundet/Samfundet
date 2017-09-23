@@ -36,6 +36,8 @@ authorization do
     has_permission_on :events, to: [:read, :buy, :ical, :archive, :archive_search]
 
     has_permission_on :sulten_reservations, to: [:create, :success]
+
+    has_permission_on :feedback_surveys, to: [:show, :answer]
   end
 
   role :medlem do
@@ -117,6 +119,9 @@ authorization do
       :sulten_reservation_types,
       :sulten_admin,
       :contact,
+      :feedback_admin,
+      :feedback_surveys,
+      :feedback_questions,
       :admissions_admin_campus
       ], to: :manage
 
@@ -134,6 +139,7 @@ authorization do
     has_permission_on :roles, to: :manage_members
 
     has_permission_on :pages, to: [:new, :create, :destroy, :edit_non_content_fields, :graph, :history]
+    has_permission_on :events, to: :survey_answers
   end
 
   role :mg_nestleder do

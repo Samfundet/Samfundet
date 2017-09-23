@@ -1,0 +1,9 @@
+= semantic_form_for @question do |f|
+  = f.inputs "Question" do
+    = f.input :text
+    .alternatives
+      = f.semantic_fields_for :alternatives do |a|
+        = render "alternative_fields", f: a
+      .links
+        = link_to_add_association t("crud.add"), f, :alternatives
+  = f.actions

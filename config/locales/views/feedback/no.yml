@@ -1,0 +1,39 @@
+'no':
+  feedback:
+    answers: Resultat av undersøkelsen
+    survey: undersøkelse
+    create_success: Undersøkelsen er opprettet.
+    create_error: Undersøkelsen ble ikke opprettet.
+    update_success: Undersøkelsen er oppdatert.
+    update_error: Undersøkelsen ble ikke oppdatert.
+    confirm_delete: Er du sikker på at du vil slette denne undersøkelsen?
+    destroy_success: Undersøkelsen er slettet.
+    title: Tittel på undersøkelsen
+
+    left: venstre
+    right: høyre
+
+    yes: ja
+    no: nei
+
+    question: spørsmål
+
+    questions:
+        text: Tekst
+        create_success: Spørsmålet ble opprettet
+        create_error: Spørsmålet ble ikke opprettet
+
+    action:
+        new: Opprett undersøkelse
+        delete: Slett undersøkelse
+        edit: Rediger undersøkelse
+
+    admin:
+      title: Administrer undersøkelser
+      edit: Rediger undersøkelse
+      new: Ny undersøkelse
+
+    admin_applet:
+      title: Undersøkelser
+    event:
+        has_survey: Har undersøkelse

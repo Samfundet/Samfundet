@@ -1,0 +1,26 @@
+%table
+  %thead
+    %tr
+      %th= t("feedback.title")
+      %th= "Endret"
+      %th= "Opprettet"
+      %th
+
+      - if permitted_to? :edit
+        %th
+      - if permitted_to? :destroy
+        %th
+
+  %tbody
+    - @surveys.each do |survey|
+      %tr
+        %td= link_to survey.title, survey
+        %td= survey.updated_at
+        %td= survey.created_at
+
+        - if permitted_to? :edit
+          %td= link_to t("feedback.answers"), feedback_survey_answers_path(survey)
+          %td= link_to t("crud.edit"), edit_feedback_survey_path(survey)
+
+        - if permitted_to? :destroy
+          %td= link_to t("crud.destroy"), survey, confirm: t("feedback.confirm_delete"), method: :delete

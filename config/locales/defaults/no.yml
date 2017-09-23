@@ -7,6 +7,12 @@
     destroy: "slett"
     edit: "rediger"
     confirm: "Er du sikker?"
+    some:
+      show: "Vis %{type}"
+      create: "Opprett %{type}"
+      destroy: "Slett %{type}"
+      edit: "Rediger %{type}"
+      add: "Legg til %{type}"
   common:
     markdown_hint: "Denne teksten formateres med <a href=/informasjon/markdown target=blank>Markdown</a>."
     fields_missing_error: "Vennligst fyll ut alle feltene."
@@ -47,3 +53,7 @@
       previous_label: "Forrige"
       next_label: "Neste"
       page_gap: "&hellip;"
+  error:
+      update_error: "Oppdatering mislykket"
+  success:
+      update: "Oppdatert"

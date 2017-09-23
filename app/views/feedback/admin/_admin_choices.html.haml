@@ -1,0 +1,11 @@
+- if permitted_to? :manage, :feedback_admin
+  .admin-choices
+    %ul
+      %li
+        = link_to t("crud.edit"), edit_feedback_survey_path(@survey)
+
+      %li
+        = link_to t("crud.destroy"), @page, confirm: t("events.confirm_delete"), method: :delete
+
+      %li
+        = link_to t("event.admin"), admin_events_path

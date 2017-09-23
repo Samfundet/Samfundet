@@ -74,6 +74,7 @@ $(function() {
     e.preventDefault();
   });
 
+
   $(window).bind('popstate', function (e) {
     var initialPop = !popped && location.href == initialURL;
     popped = true;

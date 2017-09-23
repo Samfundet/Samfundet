@@ -1,0 +1,11 @@
+%h2
+  = t("feedback.admin_applet.title")
+
+%ul
+  - if permitted_to? :create, :feedback_surveys
+    %li
+      = link_to t("feedback.action.new"), new_feedback_survey_path
+    %li
+      = link_to t("crud.some.create", type: t("feedback.question")), new_feedback_question_path
+  %li
+    = link_to t("feedback.admin.title"), feedback_admin_path
