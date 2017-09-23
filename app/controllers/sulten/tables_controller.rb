@@ -1,5 +1,5 @@
 class Sulten::TablesController < ApplicationController
-  filter_access_to [:index, :new], require: :read
+  filter_access_to [:index, :new, :export], require: :read
 
   def index
     @tables = Sulten::Table.order(:number).all

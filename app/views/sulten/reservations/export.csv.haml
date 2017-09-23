@@ -18,7 +18,7 @@
               reservation.reservation_to,
               reservation.people,
               reservation.reservation_type,
-              reservation.table_id,
+              @tables.find(reservation.table_id).number,
               reservation.telephone,
               reservation.email,
               reservation.allergies,
