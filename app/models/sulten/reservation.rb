@@ -8,12 +8,13 @@ class Sulten::Reservation < ActiveRecord::Base
   attr_accessor :reservation_duration, :admin_access
 
   validates_presence_of :reservation_from, :reservation_to, :reservation_duration, :people,
-                        :name, :telephone, :email, :reservation_type
+                        :name, :reservation_type
+  validate :email, :telephone, presence: true, unless: :admin_access
 
   validate :check_opening_hours, :check_amount_of_people, on: :create
-  validate :reservation_is_one_day_in_future, :unless => :admin_access
+  validate :reservation_is_one_day_in_future, :email, unless: :admin_access
 
-  validates :email, email: true
+  validates :email, email: true, unless: :admin_access
 
   before_validation(on: :create) do
     should_break = false
@@ -28,7 +29,7 @@ class Sulten::Reservation < ActiveRecord::Base
       should_break = true
     end
 
-    return false if should_break
+    return false if should_break unless :admin_access
 
     self.reservation_to = reservation_from + reservation_duration.to_i.minutes
   end
@@ -59,6 +60,7 @@ class Sulten::Reservation < ActiveRecord::Base
   end
 
   def check_amount_of_people
+    return if :admin_access
     if people > 12
       errors.add(:people, I18n.t("helpers.models.sulten.reservation.errors.people.too_many_people"))
     elsif people < 1
