@@ -28,7 +28,7 @@ en:
     hide: hide text
 
     yes: yes
-    no: no
+    nei: 'No'
 
     add_price_group: Add price group
     remove_price_group: Remove this price group
