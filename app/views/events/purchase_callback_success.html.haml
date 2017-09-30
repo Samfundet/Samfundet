@@ -21,7 +21,10 @@
         %td= event.event_name
         %td= l(event.event_time, format: :long)
         %td= price_group.price_group_name
-        %td= card_no
+        -if card_no
+          %td#on-card &#10003;
+        -else
+          %td#not-on-card &#10007;
         %td= price_group.price
   %tfoot
     %tr
