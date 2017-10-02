@@ -87,14 +87,14 @@ class Sulten::Reservation < ActiveRecord::Base
     default_open = now.change(hour: 16, min: 0, sec: 0)
     default_close = now.change(hour: 22, min: 0, sec: 0)
     possible_times = []
-    times_to_check = (default_open.to_i .. default_close.to_i).step(30.minute).to_a
+    time_frame = default_open.to_i..default_close.to_i
+    times_to_check = time_frame.step(30.minutes).to_a
     for i in 1..Sulten::ReservationType.all.length
       Sulten::Table.where("capacity >= ? and available = ?", people, true).order("capacity ASC").tables_with_i_reservation_types(i).find do |t|
         if t.reservation_types.pluck(:id).include? type_id
-          (default_open.to_i .. default_close.to_i).step(30.minute) do |time_step|
+          time_frame.step(30.minutes) do |time_step|
             return possible_times if times_to_check.empty?
             next if times_to_check.exclude? time_step
-            puts Time.at(time_step)
             reservation_from = Time.at(time_step)
             reservation_to = Time.at(time_step + duration.minutes)
 
@@ -103,8 +103,8 @@ class Sulten::Reservation < ActiveRecord::Base
                                               reservation_to).any?
 
             busy_end = t.reservations.where("reservation_to > ? and reservation_to < ?",
-                                              reservation_from,
-                                              reservation_to).any?
+                                            reservation_from,
+                                            reservation_to).any?
 
             busy_table = busy_start || busy_end
             unless busy_table
@@ -114,7 +114,7 @@ class Sulten::Reservation < ActiveRecord::Base
           end
         end
       end
-    return possible_times
+      possible_times
     end
   end
 
