@@ -45,6 +45,9 @@
       @include media($tablet-desktop){
         @include span-columns(12);
       }
+    .display-none{
+        display:none;
+      }
     }
   }
 }

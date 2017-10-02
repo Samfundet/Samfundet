@@ -1,6 +1,7 @@
 en:
   job_applications:
     mine: "My applications"
+    hide_withdrawn_applications: "Hide withdrawn applications"
     applications_for_group: "Applications for %{group_name}"
     title_with_applicant_and_job: "%{applicant_name}'s application for %{job_title}"
     cannot_apply_after_deadline: "You cannot apply for a position after the deadline for this admission."
