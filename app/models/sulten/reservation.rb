@@ -82,6 +82,45 @@ class Sulten::Reservation < ActiveRecord::Base
     nil
   end
 
+  def self.find_available_times(duration, people, reservation_type_id)
+    now = DateTime.now
+    default_open = now.change(hour: 16)
+    default_close = now.change(hour: 22)
+    possible_times = []
+    times_to_check = (default_open.to_i .. default_close.to_i).step(30.minute).to_a
+    for i in 1..Sulten::ReservationType.all.length
+      Sulten::Table.where("capacity >= ? and available = ?", people, true).order("capacity ASC").tables_with_i_reservation_types(i).find do |t|
+        if t.reservation_types.pluck(:id).include? reservation_type_id
+          (default_open.to_i .. default_close.to_i).step(30.minute) do |time_step|
+            return possible_times if times_to_check.empty?
+            next if times_to_check.exclude? time_step
+            puts Time.at(time_step)
+            reservation_from = Time.at(time_step)
+            reservation_to = Time.at(time_step + duration.minutes)
+
+            busy_start = t.reservations.where("reservation_from >= ? and reservation_from < ?",
+                                              reservation_from,
+                                              reservation_to).any?
+
+            busy_end = t.reservations.where("reservation_to > ? and reservation_to < ?",
+                                              reservation_from,
+                                              reservation_to).any?
+
+            busy_table = busy_start || busy_end
+            unless busy_table
+              possible_times.push(reservation_from)
+              times_to_check.delete(time_step)
+            end
+          end
+        end
+      end
+      possible_times.each do |key,time|
+        puts "#{key}#{time}\n"
+      end
+    return possible_times
+    end
+  end
+
   def self.lyche_open? from, to
     # TODO: Change these defaults when admin can set them
     # The values 16 .. 22 are the openinghours

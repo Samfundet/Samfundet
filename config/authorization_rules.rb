@@ -35,7 +35,7 @@ authorization do
     # Explicit read- and buy-privileges
     has_permission_on :events, to: [:read, :buy, :ical, :archive, :archive_search]
 
-    has_permission_on :sulten_reservations, to: [:create, :success]
+    has_permission_on :sulten_reservations, to: [:create, :success, :available]
   end
 
   role :medlem do
