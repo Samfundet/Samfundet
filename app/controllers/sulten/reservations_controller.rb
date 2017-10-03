@@ -29,6 +29,11 @@ class Sulten::ReservationsController < ApplicationController
     end
   end
 
+  def available
+    available_times = Sulten::Reservation.find_available_times(params[:date], params[:duration].to_i, params[:people].to_i, params[:type_id].to_i)
+    render json: available_times
+  end
+
   def show
     @reservation = Sulten::Reservation.find(params[:id])
   end
