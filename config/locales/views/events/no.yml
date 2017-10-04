@@ -32,7 +32,7 @@
     hide: skjul
 
     yes: ja
-    no: nei
+    nei: Nei
 
     add_price_group: Legg til prisgruppe
     remove_price_group: Slett denne prisgruppen
