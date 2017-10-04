@@ -1,15 +1,36 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import './sulten.css'
+import axios from 'axios'
+import moment from 'moment'
 
 class SultenForm extends Component {
   constructor () {
     super()
     this.state = {
       step: 0,
-      available_times: ['16:00', '16:30', '17:00', '17:30'],
+      available_times: [],
       duration: 30,
       type: 'drikke'
+    }
+  }
+
+  async getAvailableTimes () {
+    try {
+      console.log(moment(this.state.date));
+      const res = await axios.get('/lyche/available', {
+        params: {
+          date: moment(this.state.date, "Europe/Oslo").toJSON(),
+          duration: this.state.duration,
+          people: this.state.people,
+          type_id: 1
+        }
+      })
+      console.log(res)
+      this.setState({available_times: res.data.map(time => moment(time))})
+      this.nextStep()
+    } catch (err) {
+      console.log(err)
     }
   }
 
@@ -55,15 +76,19 @@ class SultenForm extends Component {
         <h2>
           Fyll inn skjemaet for å gå videre i bestillingen
         </h2>
-        <form onSubmit={() => this.validInput() ? this.nextStep() : console.log("badForm")}>
+        <form onSubmit={e => e.preventDefault()}>
           <ul id='sulten-form-flex'>
+            <li>
+              <label for='name'>Navn</label>
+              <input type='text' name='name' value={this.state.name} onChange={e => this.handleFormChange('name', e.target.value)} required />
+            </li>
             <li>
               <label for='email'>E-post</label>
               <input type='email' name='email' value={this.state.email} onChange={e => this.handleFormChange('email', e.target.value)} required />
             </li>
             <li>
-              <label for='participants'>Antall</label>
-              <input type='number' name='participants' value={this.state.participants} onChange={e => this.handleFormChange('participants', e.target.value)} required min="1" step="1" max="12" />
+              <label for='people'>Antall</label>
+              <input type='number' name='people' value={this.state.people} onChange={e => this.handleFormChange('people', e.target.value)} required min="1" step="1" max="12" />
             </li>
             <li>
               <label for='date'>Dato</label>
@@ -71,7 +96,7 @@ class SultenForm extends Component {
             </li>
             <li>
               <label for='duration'>Varighet</label>
-              <select name='duration' onChange={e => this.handleFormChange('duration', e.target.duration)} required >
+              <select name='duration' onChange={e => this.handleFormChange('duration', e.target.value)} required >
                 <option value='30'>30m</option>
                 <option value='60'>1t</option>
                 <option value='90'>1t 30m</option>
@@ -88,7 +113,7 @@ class SultenForm extends Component {
           </ul>
           <div id='sulten-actions'>
             <input type='submit' value='Forrige' onClick={() => this.prevStep()} />
-            <input type='submit' value='Neste' onClick={() => this.validInput() ? this.nextStep() : console.log("badForm")} />
+            <input type='submit' value='Neste' onClick={() => this.validInput() ? this.getAvailableTimes() : console.log("badForm")} />
           </div>
         </form>
       </div>
@@ -104,11 +129,14 @@ class SultenForm extends Component {
     return (
       <div id='sulten-container'>
         <h2>
-          Velg tid som passer deg best
+          Velg tid som passer best for deg
         </h2>
+        <p>
+          {moment(this.state.date).format("D/M-YY")}
+        </p>
         <div id='sulten-times'>
           {this.state.available_times.map((time) => (
-            <button key={time} className='sulten-time' onClick={() => this.selectTime(time)}>{time}</button>
+            <button key={time} className='sulten-time' onClick={() => this.selectTime(time)}>{moment(time).format("HH:mm")}</button>
           ))}
         </div>
         <div id='sulten-actions'>
@@ -126,20 +154,28 @@ class SultenForm extends Component {
         </h2>
         <ul id='sulten-form-flex'>
           <li>
+            <label>Navn</label>
+            <p>{this.state.name}</p>
+          </li>
+          <li>
             <label>Epost</label>
             <p>{this.state.email}</p>
           </li>
           <li>
             <label>Antall</label>
-            <p>{this.state.participants}</p>
+            <p>{this.state.people}</p>
           </li>
           <li>
-            <label>Tidspunkt</label>
-            <p>{this.state.time}</p>
+            <label>Dato</label>
+            <p>{this.state.date}</p>
           </li>
           <li>
-            <label>Varighet</label>
-            <p>{this.state.duration}</p>
+            <label>Fra</label>
+            <p>{moment(this.state.time).format("HH:mm")}</p>
+          </li>
+          <li>
+            <label>Til</label>
+            <p>{moment(this.state.time).add(this.state.duration, 'm').format("HH:mm")}</p>
           </li>
           <li>
             <label>Type</label>
