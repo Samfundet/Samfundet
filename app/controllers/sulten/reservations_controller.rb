@@ -15,7 +15,7 @@ class Sulten::ReservationsController < ApplicationController
       format.html
       format.csv do
         headers['Content-Disposition'] = "attachment; filename='Reservasjon.csv'"
-      end  
+      end
     end
   end
 
