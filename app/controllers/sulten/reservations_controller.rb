@@ -10,14 +10,12 @@ class Sulten::ReservationsController < ApplicationController
   end
 
   def export
-    @tables = Sulten::Table.order(:number).all
     @reservations = Sulten::Reservation.where(reservation_from: Time.now.beginning_of_week..Time.now.next_year).order("reservation_from ASC")
-
     respond_to do |format|
       format.html
       format.csv do
-        response.headers['Content-Disposition'] = "attachment; filename='Reservasjon.csv'"
-      end
+        headers['Content-Disposition'] = "attachment; filename='Reservasjon.csv'"
+      end  
     end
   end
 
