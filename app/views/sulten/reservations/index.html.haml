@@ -3,7 +3,7 @@
 %p
   = link_to t("sulten.reservation.show_all"), sulten_reservations_archive_path
 %p#export_csv
-  = link_to T("sulten.reservation.export_to_csv"), sulten_reservations_export_path(@reservations, format: :csv)
+  = link_to T("sulten.reservation.export_to_csv"), sulten_reservations_export_path(format: :csv)
 
 - @reservations.group_by {|i| i.reservation_from.to_date }.each do |date, f|
   %h2
