@@ -93,7 +93,7 @@ class Applicant < ActiveRecord::Base
   end
 
   def lowest_priority_group(admission)
-    job_applications.select { |application| application.job.admission == admission && application.withdrawn == false}.max_by(&:priority).job.group.id
+    job_applications.select { |application| application.job.admission == admission && application.withdrawn == false }.max_by(&:priority).job.group.id
   end
 
   def is_unwanted?(admission)
