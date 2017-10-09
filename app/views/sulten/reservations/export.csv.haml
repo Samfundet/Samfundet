@@ -1,0 +1,27 @@
+- require 'csv'
+
+= CSV.generate(headers: true) do |csv|
+  - csv << [t("sulten.reservation.name"),
+            t("sulten.reservation.from"),
+            t("sulten.reservation.to"),
+            t("sulten.reservation.people"),
+            t("sulten.reservation.reservation_type"),
+            t("sulten.reservation.table"),
+            t("sulten.reservation.telephone"),
+            t("sulten.reservation.email"),
+            t("sulten.reservation.allergies"),
+            t("sulten.reservation.internal_comment")]
+
+  - @reservations.each do |reservation|
+    - csv << [reservation.name,
+              reservation.reservation_from,
+              reservation.reservation_to,
+              reservation.people,
+              reservation.reservation_type,
+              reservation.table.number,
+              reservation.telephone,
+              reservation.email,
+              reservation.allergies,
+              reservation.internal_comment]
+
+- end.html_safe  # Turn quote into "

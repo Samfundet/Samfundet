@@ -197,6 +197,8 @@ Rails.application.routes.draw do
     get :admin, to: "admin#index"
     get :kjempelars, to: "admin#index"
     get "reservations/archive" => "reservations#archive"
+    get "reservations/export" => "reservations#export"
+    get "/available" => "reservations#available"
 
     resources :reservation_types
     resources :reservations do

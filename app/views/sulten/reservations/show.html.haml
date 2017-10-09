@@ -48,7 +48,7 @@
       = t("sulten.reservation.internal_comment")
     %td
       = @reservation.internal_comment
-  
+
 %p
   = link_to t("crud.edit"), [:edit, @reservation]
   = link_to t("crud.destroy"), @reservation, method: :delete, data: {confirm: t("crud.confirm")}

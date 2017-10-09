@@ -1,11 +1,22 @@
 class Sulten::ReservationsController < ApplicationController
-  filter_access_to [:archive, :admin_new, :admin_create], require: :manage
+  filter_access_to :archive, :export, require: :manage
+
   def index
     @reservations = Sulten::Reservation.where(reservation_from: Time.now.beginning_of_week..Time.now.end_of_week).order("reservation_from")
   end
 
   def archive
     @reservations = Sulten::Reservation.where(reservation_from: Time.now.beginning_of_week..Time.now.next_year).order("reservation_from ASC")
+  end
+
+  def export
+    @reservations = Sulten::Reservation.where(reservation_from: Time.now.beginning_of_week..Time.now.next_year).order("reservation_from ASC")
+    respond_to do |format|
+      format.html
+      format.csv do
+        headers['Content-Disposition'] = "attachment; filename='Reservasjon.csv'"
+      end
+    end
   end
 
   def new
@@ -41,6 +52,10 @@ class Sulten::ReservationsController < ApplicationController
     end
   end
 
+  def available
+    available_times = Sulten::Reservation.find_available_times(params[:date], params[:duration].to_i, params[:people].to_i, params[:type_id].to_i)
+    render json: available_times
+  end
 
   def show
     @reservation = Sulten::Reservation.find(params[:id])
