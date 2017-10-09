@@ -31,15 +31,6 @@ class Sulten::TablesController < ApplicationController
     @table = Sulten::Table.new
   end
 
-  def csv
-    require 'csv'
-    csv_string = CSV.generate do |csv|
-      csv << ["row", "of", "CSV", "data"]
-      csv << ["another", "row"]
-      # ...
-    end
-  end
-
   def create
     puts params
     @table = Sulten::Table.new(params[:sulten_table])
