@@ -15,7 +15,4 @@ class Sulten::Table < ActiveRecord::Base
   def to_s
     number
   end
-
-
-
 end
