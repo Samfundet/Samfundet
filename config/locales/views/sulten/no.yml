@@ -21,7 +21,9 @@
       export_to_csv: "Eksporter alle reservasjoner til CSV"
       form:
         title: "lyche reservasjon"
+        title_admin: "lyche reservasjon (ADMIN)"
         intro1: "For å lage en reservasjon hos Lyche, vennligst fyll ut og send inn skjemaet under."
+        intro1_admin: "Dette er hva brukere ser:"
         intro2: "Foreløpig kan en bare reservere bord mellom kl. 16:00 - 22:00 og reservasjonen må gjøres minst ett døgn i forveien."
         intro3: "For å endre eller avbestille en reservasjon, vennligst send mail til "
         too_many: "mer enn 12 personer? send oss en "
@@ -42,6 +44,7 @@
       capacity: "Antall plasser"
       comment: "Kommentar"
       available: "Tilgjengelig"
+      admin_select: "Bordnummer"
     reservation_type:
       name: "Navn"
       description: "Beskrivelse"
