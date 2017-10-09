@@ -1,8 +1,37 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import './sulten.css'
+import './stepbar.css'
 import axios from 'axios'
 import moment from 'moment'
+
+function StepViewer(props){
+  console.log(props)
+  var s1,s2,s3;
+  s1 = s2 = s3 = "step"
+  const current = "step current"
+  switch (props.step) {
+    case 1:
+      s1 = current
+      break
+    case 2:
+      s2 = current
+      break
+    case 3:
+      s3 = current
+      break
+    default:
+      s1 = current
+      break
+  }
+  return (
+    <ol className="stepBar step3">
+      <li className={s1}>Info</li>
+      <li className={s2}>Tid</li>
+      <li className={s3}>Bekreft</li>
+    </ol>
+  )
+}
 
 class SultenForm extends Component {
   constructor () {
@@ -11,7 +40,7 @@ class SultenForm extends Component {
       step: 0,
       available_times: [],
       duration: 30,
-      type: 'drikke'
+      type: 'drikke',
     }
   }
 
@@ -57,11 +86,11 @@ class SultenForm extends Component {
           Velkommen til Lyche sitt nye bordbestillingssystem
         </h2>
         <span id='sulten-body'>
-          FOR Å LAGE EN RESERVASJON HOS LYCHE, VENNLIGST FYLL UT OG SEND INN SKJEMAET UNDER.
+          For å lage en reservasjon hos lyche, vennligst fyll ut og send inn skjemaet under.
 
-          FORELØPIG KAN EN BARE RESERVERE BORD MELLOM KL. 16:00 - 22:00 OG RESERVASJONEN MÅ GJØRES MINST ETT DØGN I FORVEIEN.
+          Foreløpig kan en bare reservere bord mellom kl. 16:00 - 22:00 og reservasjonen må gjøres minst ett døgn i forveien.
 
-          FOR Å ENDRE ELLER AVBESTILLE EN RESERVASJON, VENNLIGST SEND MAIL TIL LYCHE.
+          For å endre eller avbestille en reservasjon, vennligst send mail til lyche.
         </span>
         <div id='sulten-actions'>
           <input type='submit' value='Start' onClick={() => this.nextStep()} />
@@ -73,29 +102,31 @@ class SultenForm extends Component {
   stepOne () {
     return (
       <div id='sulten-container'>
-        <h2>
-          Fyll inn skjemaet for å gå videre i bestillingen
-        </h2>
         <form onSubmit={e => e.preventDefault()}>
           <ul id='sulten-form-flex'>
             <li>
-              <label for='name'>Navn</label>
+              <label htmlFor='name'>Navn</label>
               <input type='text' name='name' value={this.state.name} onChange={e => this.handleFormChange('name', e.target.value)} required />
             </li>
             <li>
-              <label for='email'>E-post</label>
+              <label htmlFor='email'>E-post</label>
               <input type='email' name='email' value={this.state.email} onChange={e => this.handleFormChange('email', e.target.value)} required />
             </li>
             <li>
-              <label for='people'>Antall</label>
+              <label htmlFor='people'>Antall</label>
               <input type='number' name='people' value={this.state.people} onChange={e => this.handleFormChange('people', e.target.value)} required min="1" step="1" max="12" />
             </li>
             <li>
-              <label for='date'>Dato</label>
-              <input type='date' name='date' value={this.state.date} onChange={e => this.handleFormChange('date', e.target.value)} required />
+              <label htmlFor='date'>Dato</label>
+              <input type='date' name='date'
+                value={this.state.date}
+                onChange={e =>
+                    this.handleFormChange(
+                      'date', e.target.value)} required
+              />
             </li>
             <li>
-              <label for='duration'>Varighet</label>
+              <label htmlFor='duration'>Varighet</label>
               <select name='duration' onChange={e => this.handleFormChange('duration', e.target.value)} required >
                 <option value='30'>30m</option>
                 <option value='60'>1t</option>
@@ -104,7 +135,7 @@ class SultenForm extends Component {
               </select>
             </li>
             <li>
-              <label for='type'>Type</label>
+              <label htmlFor='type'>Type</label>
               <select name='type' onChange={e => this.handleFormChange('type', e.target.value)} required >
                 <option value='drikke'>Drikke</option>
                 <option value='mat'>Mat</option>
@@ -128,11 +159,8 @@ class SultenForm extends Component {
   stepTwo () {
     return (
       <div id='sulten-container'>
-        <h2>
-          Velg tid som passer best for deg
-        </h2>
         <p>
-          {moment(this.state.date).format("D/M-YY")}
+          {moment(this.state.date).format("DD/MM/YY")}
         </p>
         <div id='sulten-times'>
           {this.state.available_times.map((time) => (
@@ -149,9 +177,6 @@ class SultenForm extends Component {
   stepThree () {
     return (
       <div id='sulten-container'>
-        <h2>
-          Bekreft din bestilling
-        </h2>
         <ul id='sulten-form-flex'>
           <li>
             <label>Navn</label>
@@ -210,15 +235,38 @@ class SultenForm extends Component {
   renderStep () {
     switch (this.state.step) {
       case 0:
-        return this.stepZero()
+        return (
+          <div className="step-view">
+            {this.stepZero()}
+          </div>
+        )
       case 1:
-        return this.stepOne()
+        return (
+          <div className="step-view">
+            <StepViewer step={1} />
+            {this.stepOne()}
+          </div>
+        )
       case 2:
-        return this.stepTwo()
+        return (
+          <div className="step-view">
+            <StepViewer step={2} />
+            {this.stepTwo()}
+          </div>
+        )
       case 3:
-        return this.stepThree()
+        return (
+          <div className="step-view">
+            <StepViewer step={3} />
+            {this.stepThree()}
+          </div>
+        )
       case 4:
-        return this.stepFour()
+        return (
+          <div className="step-view">
+            {this.stepFour()}
+          </div>
+        )
     }
   }
 

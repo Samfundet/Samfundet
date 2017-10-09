@@ -2,8 +2,19 @@
   background-color: #eee;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   min-height: 40vh;
+  min-width: 540px;
+}
+
+#sulten-form-flex input { 
+  border: 1px solid #a03033;
+  border-radius: 4px;
+  padding: 5px 5px;
+}
+#sulten-form-flex select { 
+  border: 1px solid #a03033;
+  padding: 2px 5px;
 }
 
 #sulten-body {
@@ -55,7 +66,7 @@
 #sulten-actions {
   display: flex;
   justify-content: center;
-  width: 80%;
+  width: 60%;
   margin: 0 auto;
 }
 
