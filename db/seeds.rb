@@ -543,8 +543,6 @@ table2.reservation_types << type1
 tables = [table1.id, table2.id]
 types = [type1.id, type2.id]
 
-# Initialize list of tables
-
 15.times.each do
   now = DateTime.now
   date = (now + rand(1..25).days).change(hour: rand(16..20))
