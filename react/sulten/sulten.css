@@ -1,0 +1,76 @@
+#sulten-container {
+  background-color: #eee;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 40vh;
+  min-width: 540px;
+}
+
+#sulten-form-flex input { 
+  border: 1px solid #a03033;
+  border-radius: 4px;
+  padding: 5px 5px;
+}
+#sulten-form-flex select { 
+  border: 1px solid #a03033;
+  padding: 2px 5px;
+}
+
+#sulten-body {
+  margin: 2em 2em;
+  font-weight: light;
+}
+
+#sulten-container h2 {
+  text-align: center;
+}
+
+#sulten-form-flex {
+  width: 50%;
+  margin: 0 auto;
+}
+
+/* start flexing */
+#sulten-form-flex li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 1em;
+}
+
+#sulten-form-flex > li > label,
+#sulten-form-flex li p {
+  flex: 1 0 120px;
+  max-width: 110px;
+}
+
+#sulten-form-flex > li > label + * {
+  flex: 1 0 220px;
+}
+
+#sulten-form-flex p {
+  margin: 0 0;
+}
+
+#sulten-container input[type~=submit] {
+  margin: 2em 2em;
+  width: 80%;
+}
+
+.sulten-time {
+  margin-right: 1em;
+  margin-left: 1em;
+}
+
+#sulten-actions {
+  display: flex;
+  justify-content: center;
+  width: 60%;
+  margin: 0 auto;
+}
+
+#sulten-times {
+  width: 50%;
+  margin: 0 auto;
+}
