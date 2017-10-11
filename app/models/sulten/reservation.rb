@@ -8,13 +8,11 @@ class Sulten::Reservation < ActiveRecord::Base
   attr_accessor :reservation_duration, :admin_access
 
   validates_presence_of :reservation_from, :reservation_to, :reservation_duration, :people,
-                        :name, :reservation_type
-  validate :email, :telephone, presence: true, unless: :admin_access
-
+                        :name, :reservation_type, :email, :telephone
   validate :check_opening_hours, :check_amount_of_people,
            :reservation_is_one_day_in_future, :email, on: :create, unless: :admin_access
 
-  validates :email, email: true, unless: :admin_access
+  validates :email, email: true
 
   before_validation(on: :create) do
     should_break = false
@@ -37,7 +35,8 @@ class Sulten::Reservation < ActiveRecord::Base
     self.reservation_to = reservation_from + reservation_duration.to_i.minutes
   end
 
-  after_validation(on: :create, unless: :admin_access) do
+  after_validation(on: :create) do
+    return if :admin_access
     self.table = Sulten::Reservation.find_table(reservation_from, reservation_to, people, reservation_type_id)
 
     unless table

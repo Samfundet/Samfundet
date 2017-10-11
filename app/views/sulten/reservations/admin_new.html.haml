@@ -10,7 +10,7 @@
   = f.inputs do
     = f.input :people, label: t("sulten.reservation.people"),as: :number
     = f.input :reservation_from, placeholder: t("sulten.reservation.placeholder_date"), label: t("sulten.reservation.form.from"), input_html: { class: "datetimepicker_lyche"}, as: :string
-    = f.input :reservation_duration, label: t("sulten.reservation.form.duration"), collection: [30, 60, 90, 120, 180], include_blank: false, selected: 120
+    = f.input :reservation_duration, label: t("sulten.reservation.form.duration"), collection: [30, 60, 90, 120, 180], member_label: proc{|d| "#{d} minutter"}, include_blank: false, selected: 120
     = f.input :name, label: t("sulten.reservation.name")
     = f.input :reservation_type, label: t("sulten.reservation.reservation_type"), include_blank: false
     = f.input :table_id, label: t("sulten.table.admin_select"), as: :select, collection: Sulten::Table.where(available: true)

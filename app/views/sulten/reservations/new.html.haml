@@ -15,7 +15,7 @@
         = t("sulten.reservation.form.too_many")
         = mail_to "lyche@uka.no", "mail."
     = f.input :reservation_from, placeholder: t("sulten.reservation.placeholder_date"), label: t("sulten.reservation.form.from"), input_html: { class: "datetimepicker_lyche"}, as: :string
-    = f.input :reservation_duration, label: t("sulten.reservation.form.duration"), collection: [30, 60, 90, 120], member_label: proc{|d| "#{d} minutter"}, include_blank: false
+    = f.input :reservation_duration, label: t("sulten.reservation.form.duration"), collection: [30, 60, 90, 120, 180], member_label: proc{|d| "#{d} minutter"}, include_blank: false, selected: 120
     = f.input :name, label: t("sulten.reservation.name")
     %li
       %p.inline-hints
