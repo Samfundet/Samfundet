@@ -5,20 +5,20 @@ class Sulten::Reservation < ActiveRecord::Base
   attr_accessible :reservation_from, :reservation_duration, :reservation_to, :people, :name,
                   :telephone, :email, :allergies, :internal_comment, :table_id, :reservation_type_id, :reservation_duration
 
-  attr_accessor :reservation_duration
+  attr_accessor :reservation_duration, :admin_access
 
   validates_presence_of :reservation_from, :reservation_to, :reservation_duration, :people,
-                        :name, :telephone, :email, :reservation_type
-
-  validate :check_opening_hours, :reservation_is_one_day_in_future, :check_amount_of_people, on: :create
+                        :name, :reservation_type, :email, :telephone
+  validate :check_opening_hours, :check_amount_of_people,
+           :reservation_is_one_day_in_future, :email, on: :create, unless: :admin_access
 
   validates :email, email: true
 
   before_validation(on: :create) do
     should_break = false
 
-    unless [30, 60, 90, 120].include? reservation_duration.to_i
-      errors.add(:reservation_duration, I18n.t("helpers.models.sulten.reservation.errors.people.check_reservation_duration"))
+    unless [30, 60, 90, 120, 180].include? reservation_duration.to_i
+      errors.add(:reservation_duration, I18n.t("helpers.models.sulten.reservation.errors.check_reservation_duration"))
       should_break = true
     end
 
@@ -28,7 +28,6 @@ class Sulten::Reservation < ActiveRecord::Base
     end
 
     return false if should_break
-
     self.reservation_to = reservation_from + reservation_duration.to_i.minutes
   end
 
@@ -36,7 +35,7 @@ class Sulten::Reservation < ActiveRecord::Base
     self.reservation_to = reservation_from + reservation_duration.to_i.minutes
   end
 
-  after_validation(on: :create) do
+  after_validation(on: :create, unless: :admin_access) do
     self.table = Sulten::Reservation.find_table(reservation_from, reservation_to, people, reservation_type_id)
 
     unless table

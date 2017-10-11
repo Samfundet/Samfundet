@@ -21,7 +21,9 @@ en:
       export_to_csv: "Export all reservations to CSV"
       form:
         title: "lyche reservation"
+        title_admin: "lyche reservation (ADMIN)"
         intro1: "Fill in and submit the form below to make a reservation at Lyche"
+        intro1_admin: "This is what users see:"
         intro2: "Currently you may only make reservations for time periods between 4 pm and 10 pm, and a reservation must be made no later than the day before it begins."
         intro3: "In order to change or cancel a reservation, please send an email to "
         too_many: "more than 12 persons? send us a "
@@ -42,6 +44,7 @@ en:
       capacity: "Capacity"
       comment: "Comment"
       available: "Available"
+      admin_select: "Table number"
     reservation_type:
       name: "Name"
       description: "Description"
