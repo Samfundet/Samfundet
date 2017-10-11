@@ -1,5 +1,5 @@
 class Sulten::ReservationsController < ApplicationController
-  filter_access_to [:archive, :admin_new, :admin_create], require: :manage
+  filter_access_to [:archive, :export, :admin_new, :admin_create], require: :manage
 
   def index
     @reservations = Sulten::Reservation.where(reservation_from: Time.now.beginning_of_week..Time.now.end_of_week).order("reservation_from")
