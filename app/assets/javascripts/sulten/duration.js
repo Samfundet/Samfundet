@@ -1,6 +1,6 @@
 //If occation is food, set minimum value to 90 minutes
 
-//Formtastic initialiserer sulten_reservation_reservation_duration selectoren med :collector
+//Formtastic initialises sulten_reservation_reservation_duration selectoren with :collector
 $("#sulten_reservation_reservation_type_id").change(function(){
 var preValue = parseInt($("#sulten_reservation_reservation_duration").find(":selected").val())
 var durationOptions = [30, 60, 90, 120]
@@ -10,7 +10,7 @@ var durationOptions = [30, 60, 90, 120]
   //drikke = 3
 
   //if testing, change the right hand side to reflect the "Mat/drikke" value in development.
-  //remember to change it back to 2
+  //remember to change it back to 2 afterwards
   if($(this).val() == 2){
     durationOptions = durationOptions.slice(2,4)
   }
