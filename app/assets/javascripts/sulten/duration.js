@@ -9,7 +9,11 @@ var durationOptions = [30, 60, 90, 120]
   //mat = 2
   //drikke = 3
 
-  //if testing, change the right hand side to reflect the "Mat/drikke" value in development.
+  //In testing the values are:
+  //drikke = 5
+  //mat/drikke = 6
+
+  //if testing, change 'this.val()==' to reflect the "Mat/drikke" value in development.
   //remember to change it back to 2 afterwards
   if($(this).val() == 2){
     durationOptions = durationOptions.slice(2,4)
