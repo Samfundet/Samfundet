@@ -205,6 +205,14 @@ authorization do
     has_permission_on :pages, to: [:read, :update]
   end
 
+  role :mg_marked do
+    has_permission_on [
+      :feedback_admin,
+      :feedback_surveys,
+      :feedback_questions
+      ], to: :manage
+  end
+
   [:fs, :raadet, :styret].each do |group_role|
     role group_role do
       has_permission_on :documents, to: :manage

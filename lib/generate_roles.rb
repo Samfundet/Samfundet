@@ -35,6 +35,7 @@ def generate_roles
   Role.create!(name: "mg_layout", title: "mg_layout", description: "Denne rollen er for medlemmer av mg layout")
   Role.create!(name: "mg_layout_sjef", title: "mg_layout_sjef", description: "Denne rollen er for sjefen av mg layout")
   Role.create!(name: "mg_redaksjon", title: "mg_redaksjon", description: "Denne rollen er for medlemmer av mg redaksjonen")
+  Role.create!(name: "mg_marked", title: "mg_marked", description: "Denne rollen er for medlemmer av mg marked")
   Role.create!(name: "ksg_sulten", title: "ksg_sulten", description: "Denne rollen er for medlemmer av ksg for lyches reservasjonssystem")
   Role.create!(name: "mg_nestleder", title: "mg_nestleder", description: "Denne rollen er for nestleder av MG som er opptaksansvarlig for hele huset og dermed har ekstra rettigheter i forbindelse med dette.")
 end
