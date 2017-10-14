@@ -80,7 +80,7 @@ class Sulten::ReservationsController < ApplicationController
   def destroy
     Sulten::Reservation.find(params[:id]).destroy
     flash[:success] = t("helpers.models.sulten.reservation.success.delete")
-    redirect_to x_sulten_reservations_path
+    redirect_to sulten_reservations_archive_path
   end
 
   def success
