@@ -11,14 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170817174432) do
+ActiveRecord::Schema.define(:version => 20171014172855) do
 
   create_table "admissions", :force => true do |t|
     t.string   "title"
     t.datetime "shown_application_deadline"
     t.datetime "user_priority_deadline"
-    t.datetime "created_at",                                  :null => false
-    t.datetime "updated_at",                                  :null => false
+    t.datetime "created_at",                                                                           :null => false
+    t.datetime "updated_at",                                                                           :null => false
     t.datetime "shown_from"
     t.datetime "admin_priority_deadline"
     t.datetime "actual_application_deadline"
@@ -203,6 +203,8 @@ ActiveRecord::Schema.define(:version => 20170817174432) do
     t.string   "banner_alignment"
     t.integer  "duration",              :default => 120
     t.string   "youtube_embed"
+    t.integer  "feedback_survey_id"
+    t.boolean  "has_survey"
   end
 
   add_index "events", ["billig_event_id"], :name => "index_events_on_billig_event_id", :unique => true
@@ -212,10 +214,51 @@ ActiveRecord::Schema.define(:version => 20170817174432) do
     t.datetime "closed_from"
     t.datetime "closed_to"
     t.text     "message_en"
+    t.text     "event_message_no"
+    t.text     "event_message_en"
   end
 
   create_table "external_organizers", :force => true do |t|
     t.string "name"
+  end
+
+  create_table "feedback_alternatives", :force => true do |t|
+    t.integer  "question_id"
+    t.integer  "index"
+    t.string   "text"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "feedback_answers", :force => true do |t|
+    t.integer  "survey_id"
+    t.integer  "question_id"
+    t.integer  "event_id"
+    t.string   "answer"
+    t.string   "token"
+    t.datetime "date"
+  end
+
+  create_table "feedback_questions", :force => true do |t|
+    t.integer  "index"
+    t.string   "text"
+    t.boolean  "has_text_input"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  create_table "feedback_surveys", :force => true do |t|
+    t.string   "title"
+    t.boolean  "open"
+    t.text     "start_message"
+    t.text     "end_message"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "feedback_surveys_questions", :force => true do |t|
+    t.integer "question_id"
+    t.integer "survey_id"
   end
 
   create_table "front_page_locks", :force => true do |t|
