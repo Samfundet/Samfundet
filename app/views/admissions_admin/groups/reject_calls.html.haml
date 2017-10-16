@@ -31,7 +31,7 @@
         = applicant.email
       %td
         - if applicant.log_entries.empty?
-          %b=t('admissions_admin.remember_to_call')
+          %b= t('admissions_admin.remember_to_call')
         - else
           = applicant.log_entries.last.log
       %td
