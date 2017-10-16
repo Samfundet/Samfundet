@@ -11,14 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170817174432) do
+ActiveRecord::Schema.define(:version => 20171014172855) do
 
   create_table "admissions", :force => true do |t|
     t.string   "title"
     t.datetime "shown_application_deadline"
     t.datetime "user_priority_deadline"
-    t.datetime "created_at",                                  :null => false
-    t.datetime "updated_at",                                  :null => false
+    t.datetime "created_at",                                                                           :null => false
+    t.datetime "updated_at",                                                                           :null => false
     t.datetime "shown_from"
     t.datetime "admin_priority_deadline"
     t.datetime "actual_application_deadline"
@@ -212,6 +212,8 @@ ActiveRecord::Schema.define(:version => 20170817174432) do
     t.datetime "closed_from"
     t.datetime "closed_to"
     t.text     "message_en"
+    t.text     "event_message_no"
+    t.text     "event_message_en"
   end
 
   create_table "external_organizers", :force => true do |t|

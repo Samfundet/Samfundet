@@ -292,6 +292,8 @@ puts "Creating everything closed periods"
 everything_closed_period = EverythingClosedPeriod.new(
   message_no: "Feiring av sommernissen",
   message_en: "Celebrate the summer santa",
+  event_message_no: "For mer informasjon, sjekk ut duvethvem.stream",
+  event_message_en: "For more information, check out youknowwho.stream",
   closed_from: DateTime.current + 2.weeks,
   closed_to: DateTime.current + 3.weeks )
 everything_closed_period.save!

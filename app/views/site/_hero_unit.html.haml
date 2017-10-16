@@ -13,8 +13,9 @@
               %td.title= link_to event.title, event
               %td.area= event.area
     - elsif samfundet_closed?
-      %p.no-events
-        = t 'site.index.no_events_because_closed'
+      .no-events
+        :markdown
+          #{EverythingClosedPeriod.current_period.event_message}
     - else
       %p.no-events
         = t 'site.index.no_events_today'
