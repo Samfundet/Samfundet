@@ -33,5 +33,4 @@
 //= require_tree "./site"
 //= require_tree "./areas"
 //= require_tree "./images"
-//= require_tree "./feedback"
 //= require cocoon

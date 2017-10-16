@@ -31,8 +31,8 @@
             color: #333;
 
             input[type="radio"]:checked+label {
-                border: solid 1px #319432;
-                border-radius: 5px;
+                border: none;
+                color: $samfundet-green;
             }
 
             li {
@@ -44,6 +44,10 @@
                 cursor: pointer;
                 padding: 10px;
             }
+        }
+
+        li.input {
+            border: none;
         }
     }
 

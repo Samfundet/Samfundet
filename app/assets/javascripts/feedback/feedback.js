@@ -1,39 +1,38 @@
-
-$(function () {
-
-  var surveyProperties = {
+var surveyProperties = {
     autoSubmit: true,
     hidePaginationInitially: true,
-  };
+};
 
-  var popped = false;
+var popped = false;
 
-  function openInModal(url, callback) {
+function openInModal(url, callback) {
     history.pushState(null, null, '#survey');
     popped = true;
     openModal(url, callback);
-  }
+}
 
-  function closeModal() {
-        $(this).remove();
-        history.pushState(null, null, '#');
-        popped = true;
-        $('html, body').animate({
-          scrollTop: 0
-        }, 1000);
-  }
+function closeModal() {
+    $(this).remove();
+    history.pushState(null, null, '#');
+    popped = true;
+    $('html, body').animate({
+      scrollTop: 0
+    }, 1000);
+}
 
-  function openModal(url, callback) {
+function openModal(url, callback) {
     $.get(url, function(html) {
     $("html, body").animate({ scrollTop: 0 }, "slow");
-      callback($(html).appendTo('body').modal({
-        clickClose: false,
-        escapeClose: false,
-      }).on($.modal.CLOSE, closeModal));
+      setTimeout(function() {
+          callback($(html).appendTo('body').modal({
+              clickClose: false,
+              escapeClose: false,
+          }).on($.modal.CLOSE, closeModal));
+      }, 1000);
     });
-  }
+}
 
-  function setUp(modal) {
+function setUp(modal) {
     var index = 0;
     var stack = [$('.feedback-start-message')].concat($('form.feedback-form').toArray(),
           [$('.feedback-end-message')]);
@@ -68,7 +67,6 @@ $(function () {
           }
         }
       });
-
     }
 
     function updateStack() {
@@ -84,7 +82,8 @@ $(function () {
 
       if (index == 0) {
         $('.feedback-wrapper .pagination').hide();
-      } else {
+      }
+      else {
         $('.feedback-wrapper .pagination').show();
 
         if (index < stack.length-1) {
@@ -149,13 +148,10 @@ $(function () {
     $('.feedback-wrapper .feedback-next').click(submitAndNext);
 
     $('.feedback-wrapper #feedback-end-survey').click(quitSurvey);
-  }
+}
 
-  if (typeof surveyPath !== 'undefined') {
-    openInModal(surveyPath, setUp);
-  }
-  else if (!$('.feedback-wrapper').length == 0) {
+if ($('.modalDiv').length > 0){
+    var surveyPath = $('.modalDiv').get(0).id;
     setUp($('.feedback-wrapper'));
-  }
-
-});
+    openInModal(surveyPath, setUp);
+}
