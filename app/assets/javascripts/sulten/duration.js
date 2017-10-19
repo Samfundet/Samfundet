@@ -4,8 +4,8 @@
 $("#sulten_reservation_reservation_type_id").change(function(){
 var preValue = parseInt($("#sulten_reservation_reservation_duration").find(":selected").val())
 var durationOptions = null;
-var drinkOptions = [30, 60, 90, 120]
-var foodOptions = [90, 120, 150, 180]
+const drinkOptions = [30, 60, 90, 120]
+const foodOptions = [90, 120, 150, 180]
 
   //In prod the values are:
   //mat = 2
