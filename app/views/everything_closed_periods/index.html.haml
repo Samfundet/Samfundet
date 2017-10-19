@@ -12,8 +12,14 @@
     %th= t('crud.destroy')
   - @current_and_future_closed_times.each do |ecp|
     %tr
-      %td= ecp.message
-      %td= ecp.event_message
+      %td
+        %p
+          :markdown
+            #{ecp.message}
+      %td
+        %p
+          :markdown
+            #{ecp.event_message}
       %td= ecp.closed_from.to_date
       %td= ecp.closed_to.to_date
       %td= link_to t('crud.edit'), edit_everything_closed_period_path(ecp.id)
