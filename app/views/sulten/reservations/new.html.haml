@@ -20,7 +20,7 @@
       %p.inline-hints
         = t("sulten.reservation.form.type_explanation")
     = f.input :reservation_type, label: t("sulten.reservation.reservation_type"), include_blank: false
-    = f.input :reservation_duration, label: t("sulten.reservation.form.duration"), collection: [90, 120], member_label: proc{|d| "#{d} minutter"}, include_blank: false
+    = f.input :reservation_duration, label: t("sulten.reservation.form.duration"), collection: [30, 60, 90, 120], member_label: proc{|d| "#{d} minutter"}, include_blank: false, selected: 90
     /collection: [90, 120] because "mat" is selected at load in prod
     = f.input :name, label: t("sulten.reservation.name")
     = f.input :telephone, label: t("sulten.reservation.telephone")
