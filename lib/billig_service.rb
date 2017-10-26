@@ -98,6 +98,10 @@ class BilligService < Sinatra::Base
         end
       end
 
+      callback_path = if I18n.locale == :en
+      then 'http://localhost:3000/en/events/purchase_callback'
+                      else 'http://localhost:3000/arrangement/purchase_callback' end
+      puts(tickets.map { |ticket| ticket.ticket.to_s << '12345'}.join(','))
       redirect callback_path << '/' << tickets.map { |ticket| ticket.ticket.to_s << '12345' }.join(',')
     end
   end
