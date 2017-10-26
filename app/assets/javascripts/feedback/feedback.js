@@ -142,7 +142,11 @@ function setUp(modal) {
     $('.feedback-wrapper #feedback-skip-survey').click(quitSurvey);
 
     if (surveyProperties.autoSubmit) {
-      $('.feedback-wrapper form input[type="radio"]').on('change', submitAndNext);
+      $('.feedback-wrapper form input[type="radio"]').on(
+          'change', function() {
+              setTimeout(submitAndNext, 369);
+          }
+      );
     }
 
     $('.feedback-wrapper .feedback-next').click(submitAndNext);
