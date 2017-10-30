@@ -12,7 +12,7 @@ class Feedback::QuestionsController < ApplicationController
     @question = Feedback::Question.new(params[:feedback_question])
     if @question.save
       flash[:success] = t('feedback.questions.create_success')
-      render :edit
+      redirect_to controller: 'feedback/admin', action: :admin
     else
       flash.now[:error] = t('feedback.questions.create_error')
       render :new
