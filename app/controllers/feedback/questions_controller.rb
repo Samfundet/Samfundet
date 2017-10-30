@@ -27,7 +27,7 @@ class Feedback::QuestionsController < ApplicationController
     else
       flash.now[:error] = t("errors.update_fail")
     end
-    redirect_to action: :edit
+    redirect_to controller: 'feedback/admin', action: :admin
   end
 
   def destroy
