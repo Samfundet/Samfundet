@@ -22,6 +22,7 @@
         text: Tekst
         create_success: Spørsmålet ble opprettet
         create_error: Spørsmålet ble ikke opprettet
+        edit: Rediger spørsmål
 
     action:
         new: Opprett undersøkelse
