@@ -6,7 +6,7 @@ class Feedback::Survey < ActiveRecord::Base
   attr_accessible :questions, :question_ids, :questions_attributes, :events, :title,
                   :start_message, :end_message, :open
 
-  validates_presence_of :title
+  validates_presence_of :title, :questions
 
   accepts_nested_attributes_for :questions, allow_destroy: true, reject_if: :all_blank
 
