@@ -33,7 +33,7 @@ class DocumentsController < ApplicationController
     @document = Document.find(params[:id])
   end
 
-  def update  
+  def update
     @document = Document.find params[:id]
     @document.uploader_id = current_user.id
     if @document.update_attributes(params[:document])
