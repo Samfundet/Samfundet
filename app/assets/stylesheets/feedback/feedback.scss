@@ -109,3 +109,15 @@
     }
   }
 }
+
+.current-question {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  .current-question-max-length {
+    margin-top: 20px;
+  }
+  .current-question-separator {
+    margin-top: 8px;
+  }
+}

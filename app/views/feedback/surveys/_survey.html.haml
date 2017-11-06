@@ -22,8 +22,12 @@
       #{@survey.end_message}
     .action-button.accept{ id: "feedback-end-survey" }= "Avslutt undersøkelse"
   .pagination
-    .button.feedback-previous= t("will_paginate.previous_label")
-    - @survey.questions.length.times.each do |i|
-      .button{ id: "feedback-index-#{i+1}"}= i+1
-    .button.feedback-next= t("will_paginate.next_label")
+    .current-question
+      /.button.feedback-previous= t("will_paginate.previous_label")
+      %h3{ id: "current-index" }
+      .current-question-separator
+        %h3 /
+      .current-question-max-length
+        %h3 #{@survey.questions.length}
+      /.button.feedback-next= t("will_paginate.next_label")
 
