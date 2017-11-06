@@ -13,6 +13,7 @@
     uploader: Lastet opp av
     choose_file: Velg fil (kun PDF)
     upload: Last opp dokument
+    update: Oppdater dokument
     no_documents: Ingen dokumenter
     confirm_delete: Er du sikker på at du vil slette dette dokumentet?
     publication_date_explanation: Publiseringsdatoen brukes til å bestemme hvilken rekkefølge dokumentene skal listes i. Du trenger kun å endre på den hvis du laster opp et gammelt saksdokument.

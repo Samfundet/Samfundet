@@ -71,7 +71,7 @@ Rails.application.routes.draw do
   ##  Routes for documents  ##
   ############################
 
-  resources :documents, only: [:index, :new, :create, :destroy] do
+  resources :documents, only: [:index, :new, :create, :edit, :update, :destroy] do
     get :admin, on: :collection
   end
 
