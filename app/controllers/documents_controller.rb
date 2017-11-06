@@ -29,6 +29,22 @@ class DocumentsController < ApplicationController
     end
   end
 
+  def edit
+    @document = Document.find(params[:id])
+  end
+
+  def update
+    @document = Document.find params[:id]
+    @document.uploader_id = current_user.id
+    if @document.update_attributes(params[:document])
+      flash[:success] = t('documents.edit_success')
+      redirect_to admin_documents_path
+    else
+      flash.now[:error] = t('common.fields_missing_error')
+      render :new
+    end
+  end
+
   def destroy
     @document = Document.find(params[:id])
     @document.destroy
