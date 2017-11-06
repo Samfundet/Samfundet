@@ -14,6 +14,7 @@ en:
     choose_file: Choose file (PDF only)
     upload: Upload document
     update: Update document
+    edit_success: Successfully updated document
     no_documents: No documents
     confirm_delete: Are you sure you want to delete this document?
     publication_date_explanation: The publication date is used for sorting. Only change it if you're uploading an old document.
