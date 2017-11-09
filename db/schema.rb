@@ -203,8 +203,6 @@ ActiveRecord::Schema.define(:version => 20171109194906) do
     t.string   "banner_alignment"
     t.integer  "duration",              :default => 120
     t.string   "youtube_embed"
-    t.integer  "feedback_survey_id"
-    t.boolean  "has_survey"
     t.string   "codeword"
   end
 
@@ -221,45 +219,6 @@ ActiveRecord::Schema.define(:version => 20171109194906) do
 
   create_table "external_organizers", :force => true do |t|
     t.string "name"
-  end
-
-  create_table "feedback_alternatives", :force => true do |t|
-    t.integer  "question_id"
-    t.integer  "index"
-    t.string   "text"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  create_table "feedback_answers", :force => true do |t|
-    t.integer  "survey_id"
-    t.integer  "question_id"
-    t.integer  "event_id"
-    t.string   "answer"
-    t.string   "token"
-    t.datetime "date"
-  end
-
-  create_table "feedback_questions", :force => true do |t|
-    t.integer  "index"
-    t.string   "text"
-    t.boolean  "has_text_input"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-  end
-
-  create_table "feedback_surveys", :force => true do |t|
-    t.string   "title"
-    t.boolean  "open"
-    t.text     "start_message"
-    t.text     "end_message"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
-
-  create_table "feedback_surveys_questions", :force => true do |t|
-    t.integer "question_id"
-    t.integer "survey_id"
   end
 
   create_table "front_page_locks", :force => true do |t|

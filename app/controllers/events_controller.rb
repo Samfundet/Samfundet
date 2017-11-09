@@ -117,7 +117,7 @@ class EventsController < ApplicationController
 
     if !@event.codeword.nil? && @event.codeword != params[:codeword]
       flash[:error] = t('events.please_enter_codeword')
-      redirect_to(@event) && return # Do we need to return here? 
+      redirect_to(@event) && return
     end
 
     unless @event.purchase_status == Event::TICKETS_AVAILABLE

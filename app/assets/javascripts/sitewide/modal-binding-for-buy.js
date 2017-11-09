@@ -67,7 +67,7 @@ $(function() {
   }
   openPurchaseModalBasedOnHash();
 
-  $(document).on('click', 'a.purchase-button', function(e) {
+  $(document).on('click', 'a.purchase-button:not(.no-modal)', function(e) {
     history.pushState(null, null, '#' + this.getAttribute('data-event-id') + '/buy');
     popped = true;
     openPurchaseModal(this.pathname, this);

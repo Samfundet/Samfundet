@@ -1,6 +1,9 @@
 - case event.purchase_status
 - when Event::TICKETS_AVAILABLE
-  = link_to t('events.purchase'), buy_event_path(event), class: 'purchase-button tickets-available', data: { event_id: event.to_param }
+  - if !event.codeword.nil?
+    = link_to t('events.purchase'), event_path(event), class: 'purchase-button tickets-available no-modal'
+  - else
+    = link_to t('events.purchase'), buy_event_path(event), class: 'purchase-button tickets-available', data: { event_id: event.to_param }
 - when Event::TICKETS_SOLD_OUT
   .purchase-button.tickets-sold-out
     = t('events.sold_out')
