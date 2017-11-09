@@ -20,7 +20,8 @@ class Event < ActiveRecord::Base
                   :soundcloud_link, :instagram_link, :twitter_link, :lastfm_link,
                   :snapchat_link, :vimeo_link, :general_link, :event_type, :status,
                   :primary_color, :secondary_color, :image_id,
-                  :price_groups, :price_type, :banner_alignment, :price_groups_attributes
+                  :price_groups, :price_type, :banner_alignment, :price_groups_attributes,
+                  :codeword
 
   extend LocalizedFields
   has_localized_fields :title, :short_description, :long_description
