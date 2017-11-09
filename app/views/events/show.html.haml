@@ -48,7 +48,7 @@
   - if @event.codeword
     %form.custom-form{action: "#{@event.to_param}/buy", method: "POST"}
       = hidden_field_tag :authenticity_token, form_authenticity_token
-      %input{type: 'text', name: 'codeword', placeholder: 'HEMMELIG KODEORD'}
+      %input{type: 'text', name: 'codeword', placeholder: t('events.codeword')}
       %input{type: 'submit'}
   - else
     .show-purchase-button

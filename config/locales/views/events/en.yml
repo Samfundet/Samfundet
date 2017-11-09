@@ -14,6 +14,8 @@ en:
     purchase_generic_error: Something went wrong during purchase. Please try again.
     time_of_start_has_passed: The start time of this event has passed.
     can_not_purchase_error: This event can not be purchased
+    please_enter_codeword: Please enter the correct codeword to purchase tickets for this event.
+    codeword: Code word
 
     eighteen: 18 years
     eighteen_twenty: 18&nbsp;(student), 20&nbsp;(non-student)
