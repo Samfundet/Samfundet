@@ -52,6 +52,16 @@
   height: 100%;
 }
 
+
+.custom-form {
+  padding-top: 3em;
+  text-align: center;
+  input[type='text']{
+    font-size: 1em;
+  }
+}
+
+
 .events.show {
     .event-image {
         @include autoscale-picture(200px);
