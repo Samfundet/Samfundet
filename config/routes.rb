@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   resources :events do
     get :buy, on: :member, action: "buy"
+    post :buy, on: :member, action: "buy"
     get :search, on: :collection
     post :search, on: :collection
     get :archive_search, on: :collection

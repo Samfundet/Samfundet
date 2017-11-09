@@ -16,6 +16,7 @@
     = f.input :age_limit, label: t('events.forms.labels.age_limit'), as: :select, collection: Event::AGE_LIMIT.map { |k| [t("events.#{k}").html_safe, k] }, include_blank: false
     = f.input :area, label: t('events.forms.labels.area'), include_blank: false
     = f.input :status, label: t('events.forms.labels.status'), as: :select, collection: Event::STATUS.map { |k| [t("events.#{k}"), k]}, include_blank: false
+    = f.input :codeword
 
   = render 'images/imagepicker', f: f
 
