@@ -115,6 +115,12 @@ class EventsController < ApplicationController
   def buy
     @event = Event.find(params[:id])
 
+    if !@event.codeword.nil? && @event.codeword != params[:codeword]
+      puts "JEG SKAL FEILE"
+      flash[:error] = t('events.please_enter_codeword')
+      redirect_to(@event) && return # Do we need to return here? 
+    end
+
     unless @event.purchase_status == Event::TICKETS_AVAILABLE
       raise ActionController::RoutingError.new('Not Found') if request.xhr?
 

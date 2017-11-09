@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20171014172855) do
+ActiveRecord::Schema.define(:version => 20171109194906) do
 
   create_table "admissions", :force => true do |t|
     t.string   "title"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(:version => 20171014172855) do
     t.datetime "shown_from"
     t.datetime "admin_priority_deadline"
     t.datetime "actual_application_deadline"
-    t.string   "promo_video",                 :default => ""
+    t.string   "promo_video",                 :default => "https://www.youtube.com/embed/T8MjwROd0dc"
   end
 
   create_table "applicants", :force => true do |t|
@@ -203,6 +203,7 @@ ActiveRecord::Schema.define(:version => 20171014172855) do
     t.string   "banner_alignment"
     t.integer  "duration",              :default => 120
     t.string   "youtube_embed"
+    t.string   "codeword"
   end
 
   add_index "events", ["billig_event_id"], :name => "index_events_on_billig_event_id", :unique => true
