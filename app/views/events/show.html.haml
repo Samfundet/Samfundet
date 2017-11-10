@@ -45,16 +45,8 @@
         %td= t('events.age_limit')
         %td= t_event_age_limit(@event)
 
-  - if @event.codeword
-    %form.custom-form{action: "#{@event.to_param}/buy", method: "POST"}
-      = hidden_field_tag :authenticity_token, form_authenticity_token
-      %div
-        %input{type: 'text', name: 'codeword', placeholder: t('events.codeword')}
-      %div
-        %input{type: 'submit', value: t('events.purchase')}
-  - else
-    .show-purchase-button
-      = render "buy_button", event: @event
+  .show-purchase-button
+    = render "buy_button", event: @event, button_only: false
 
   .description
     %p.description-short

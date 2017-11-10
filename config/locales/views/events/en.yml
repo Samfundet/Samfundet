@@ -16,6 +16,7 @@ en:
     can_not_purchase_error: This event can not be purchased
     please_enter_codeword: Please enter the codeword to purchase tickets for this event.
     codeword: Code word
+    wrong_codeword: Wrong code word :(
 
     eighteen: 18 years
     eighteen_twenty: 18&nbsp;(student), 20&nbsp;(non-student)

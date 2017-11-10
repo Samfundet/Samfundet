@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20171109194906) do
+ActiveRecord::Schema.define(:version => 20171110022238) do
 
   create_table "admissions", :force => true do |t|
     t.string   "title"
@@ -203,7 +203,7 @@ ActiveRecord::Schema.define(:version => 20171109194906) do
     t.string   "banner_alignment"
     t.integer  "duration",              :default => 120
     t.string   "youtube_embed"
-    t.string   "codeword"
+    t.string   "codeword",              :default => ""
   end
 
   add_index "events", ["billig_event_id"], :name => "index_events_on_billig_event_id", :unique => true

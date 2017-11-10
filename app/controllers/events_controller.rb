@@ -115,9 +115,14 @@ class EventsController < ApplicationController
   def buy
     @event = Event.find(params[:id])
 
-    if !@event.codeword.nil? && @event.codeword != params[:codeword]
-      flash[:error] = t('events.please_enter_codeword')
-      redirect_to(@event) && return
+    unless @event.codeword.empty?
+      if params[:codeword].nil?
+        flash[:error] = t('events.please_enter_codeword')
+        redirect_to(@event) && return
+      elsif @event.codeword != params[:codeword]
+        flash[:error] = t('events.wrong_codeword')
+        redirect_to(@event) && return
+      end
     end
 
     unless @event.purchase_status == Event::TICKETS_AVAILABLE

@@ -1,7 +1,16 @@
+- button_only = true if local_assigns[:button_only].nil? # Default value variable for partial views! \o/
 - case event.purchase_status
 - when Event::TICKETS_AVAILABLE
-  - if !event.codeword.nil?
-    = link_to t('events.purchase'), event_path(event), class: 'purchase-button tickets-available no-modal'
+  - if !event.codeword.empty?
+    - if button_only
+      = link_to t('events.purchase'), event_path(event), class: 'purchase-button tickets-available no-modal'
+    - else
+      %form.custom-form{action: "#{event.to_param}/buy", method: "POST"}
+        = hidden_field_tag :authenticity_token, form_authenticity_token
+        %div
+          %input{type: 'text', name: 'codeword', placeholder: t('events.codeword')}
+        %div
+          %input{type: 'submit', value: t('events.purchase')}
   - else
     = link_to t('events.purchase'), buy_event_path(event), class: 'purchase-button tickets-available', data: { event_id: event.to_param }
 - when Event::TICKETS_SOLD_OUT
