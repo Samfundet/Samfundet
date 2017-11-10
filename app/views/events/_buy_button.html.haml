@@ -1,7 +1,7 @@
 - button_only = true if local_assigns[:button_only].nil? # Default value variable for partial views! \o/
 - case event.purchase_status
 - when Event::TICKETS_AVAILABLE
-  - if !event.codeword.nil? && !event.codeword.empty?
+  - if !event.codeword.empty?
     - if button_only
       = link_to t('events.purchase'), event_path(event), class: 'purchase-button tickets-available no-modal'
     - else

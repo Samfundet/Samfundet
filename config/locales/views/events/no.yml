@@ -16,6 +16,7 @@
     can_not_purchase_error: Dette arrangementet kan ikke kjøpes
     please_enter_codeword: Vennligst skriv inn kodeordet for å kjøpe billetter til dette arrangementet.
     codeword: Kodeord
+    wrong_codeword: Feil kodeord :(
 
     eighteen: 18 år
     eighteen_twenty: 18 år&nbsp;(student), 20 år&nbsp;(ikke-student)
