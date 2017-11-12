@@ -1,5 +1,5 @@
-# -*- encoding : utf-8 -*-
 # frozen_string_literal: true
+
 module PagesHelper
   def diff(previous, current)
     previous = previous ? previous.scan(/\w+|\W+/) : []

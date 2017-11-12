@@ -1,8 +1,8 @@
-# -*- encoding : utf-8 -*-
 # frozen_string_literal: true
+
 class MembersRolesController < ApplicationController
   before_action :before_create, only: :create
-  filter_access_to [:create, :destroy], attribute_check: true
+  filter_access_to %i[create destroy], attribute_check: true
 
   def destroy
     @members_role.destroy

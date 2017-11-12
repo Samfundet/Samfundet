@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Sulten::Reservation < ActiveRecord::Base
   belongs_to :table
   belongs_to :reservation_type

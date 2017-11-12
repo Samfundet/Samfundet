@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: standard_hours
@@ -15,8 +16,8 @@
 class StandardHour < ActiveRecord::Base
   belongs_to :area
 
-  WEEKDAYS = %w(monday tuesday wednesday thursday friday
-                saturday sunday).freeze
+  WEEKDAYS = %w[monday tuesday wednesday thursday friday
+                saturday sunday].freeze
 
   validates :day, inclusion: { in: WEEKDAYS, message: 'Invalid weekday' }
   validates :day, :area, presence: true

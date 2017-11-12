@@ -1,5 +1,5 @@
-# -*- encoding : utf-8 -*-
 # frozen_string_literal: true
+
 # UGLY: Need this to circumvent declarative_authorization's automated permission checking for the application in session
 require 'declarative_authorization/maintenance'
 include Authorization::Maintenance

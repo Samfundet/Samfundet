@@ -1,5 +1,5 @@
-# -*- encoding : utf-8 -*-
 # frozen_string_literal: true
+
 class LogEntry < ActiveRecord::Base
   validates :log, :admission, :group, :applicant, :member, presence: true
 

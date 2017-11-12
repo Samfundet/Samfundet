@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class BilligPurchase < ActiveRecord::Base
   self.primary_key = :purchase
 

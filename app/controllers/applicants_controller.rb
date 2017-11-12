@@ -1,10 +1,9 @@
-# -*- encoding : utf-8 -*-
 # frozen_string_literal: true
 
 class ApplicantsController < ApplicationController
   layout 'admissions'
   filter_access_to :steal_identity
-  filter_access_to [:show, :edit, :update], attribute_check: true
+  filter_access_to %i[show edit update], attribute_check: true
 
   has_control_panel_applet :steal_identity_applet,
                            if: -> { permitted_to? :steal_identity, :applicants }
@@ -36,8 +35,7 @@ class ApplicantsController < ApplicationController
     @applicant = Applicant.find(params[:id])
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     password_should_change = !(params[:applicant][:password].blank? &&
@@ -55,7 +53,7 @@ class ApplicantsController < ApplicationController
     end
 
     unless password_should_change
-      [:old_password, :password, :password_confirmation].each do |key|
+      %i[old_password password password_confirmation].each do |key|
         params[:applicant].delete(key)
       end
     end
@@ -69,8 +67,7 @@ class ApplicantsController < ApplicationController
     end
   end
 
-  def forgot_password
-  end
+  def forgot_password; end
 
   def generate_forgot_password_email
     @applicant = Applicant.find_by(email: params[:email])
@@ -124,8 +121,7 @@ class ApplicantsController < ApplicationController
     end
   end
 
-  def steal_identity_applet
-  end
+  def steal_identity_applet; end
 
   def steal_identity
     applicant = Applicant.find(params[:applicant_id])

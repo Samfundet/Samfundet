@@ -1,5 +1,5 @@
-# -*- encoding : utf-8 -*-
 # frozen_string_literal: true
+
 class GroupType < ActiveRecord::Base
   has_many :groups, -> { order(:name) }
   has_many :jobs, through: :groups

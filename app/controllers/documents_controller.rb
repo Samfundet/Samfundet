@@ -1,5 +1,5 @@
-# -*- encoding : utf-8 -*-
 # frozen_string_literal: true
+
 class DocumentsController < ApplicationController
   filter_access_to :admin, require: :manage
 
@@ -53,8 +53,7 @@ class DocumentsController < ApplicationController
     redirect_to admin_documents_path
   end
 
-  def admin_applet
-  end
+  def admin_applet; end
 
   private
 

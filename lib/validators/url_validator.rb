@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class UrlValidator < ActiveModel::EachValidator
   def self.compliant?(value)
     uri = URI.parse(value)

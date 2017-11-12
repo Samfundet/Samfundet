@@ -1,12 +1,11 @@
-# -*- encoding : utf-8 -*-
 # frozen_string_literal: true
+
 class AdmissionsAdmin::JobsController < ApplicationController
   layout 'admissions'
-  before_action :before_new_and_create_and_search, only: [:new, :create, :search]
-  filter_access_to [:new, :create, :search, :edit, :update, :show, :destroy], attribute_check: true
+  before_action :before_new_and_create_and_search, only: %i[new create search]
+  filter_access_to %i[new create search edit update show destroy], attribute_check: true
 
-  def new
-  end
+  def new; end
 
   def create
     @job.update(jobs_params)
@@ -30,8 +29,7 @@ class AdmissionsAdmin::JobsController < ApplicationController
     render layout: false
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @job.update_attributes(jobs_params)

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Sulten::ReservationTypesController < ApplicationController
   def index
     @types = Sulten::ReservationType.all

@@ -1,5 +1,5 @@
-# -*- encoding : utf-8 -*-
 # frozen_string_literal: true
+
 module AreasHelper
   def area_link(area, area_name_override = nil)
     if area.page

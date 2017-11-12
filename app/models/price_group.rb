@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class PriceGroup < ActiveRecord::Base
   # attr_accessible :name, :price
 

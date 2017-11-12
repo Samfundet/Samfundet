@@ -1,5 +1,5 @@
-# -*- encoding : utf-8 -*-
 # frozen_string_literal: true
+
 class AdmissionsAdmin::JobApplicationsController < ApplicationController
   layout 'admissions'
   filter_access_to :show, attribute_check: true

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
+
 class Sulten::TablesController < ApplicationController
-  filter_access_to [:index, :new, :export], require: :read
+  filter_access_to %i[index new export], require: :read
 
   def index
     @tables = Sulten::Table.order(:number).all

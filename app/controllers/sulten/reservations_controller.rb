@@ -1,6 +1,7 @@
 # frozen_string_literal: true
+
 class Sulten::ReservationsController < ApplicationController
-  filter_access_to [:archive, :export, :admin_new, :edit, :admin_create], require: :manage
+  filter_access_to %i[archive export admin_new edit admin_create], require: :manage
 
   def index
     @reservations = Sulten::Reservation.where(reservation_from: Time.zone.now.beginning_of_week..Time.zone.now.end_of_week).order('reservation_from')
@@ -84,8 +85,7 @@ class Sulten::ReservationsController < ApplicationController
     redirect_to sulten_reservations_archive_path
   end
 
-  def success
-  end
+  def success; end
 
   private
 

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module LocalizedFields
   def localized_fields(*fields)
     fields.each do |field|

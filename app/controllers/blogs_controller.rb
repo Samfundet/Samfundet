@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class BlogsController < ApplicationController
   filter_access_to [:admin], require: :edit
 
@@ -59,8 +60,7 @@ class BlogsController < ApplicationController
     @articles = Blog.all
   end
 
-  def admin_applet
-  end
+  def admin_applet; end
 
   private
 

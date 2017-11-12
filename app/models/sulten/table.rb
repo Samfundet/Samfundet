@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Sulten::Table < ActiveRecord::Base
   has_many :reservation_types, through: :table_reservation_types
   has_many :table_reservation_types

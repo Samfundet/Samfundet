@@ -1,8 +1,8 @@
-# -*- encoding : utf-8 -*-
 # frozen_string_literal: true
+
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
-  FLASH_TYPES = [:success, :notice, :error, :message, :warning].freeze
+  FLASH_TYPES = %i[success notice error message warning].freeze
 
   def disable_robots
     content_for(:head) do

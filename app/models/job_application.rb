@@ -1,5 +1,5 @@
-# -*- encoding : utf-8 -*-
 # frozen_string_literal: true
+
 class JobApplication < ActiveRecord::Base
   belongs_to :applicant
   belongs_to :job

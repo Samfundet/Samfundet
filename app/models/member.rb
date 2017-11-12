@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require SamfundetAuth::Engine.root.join('app', 'models', 'member')
 
 class Member < ActiveRecord::Base

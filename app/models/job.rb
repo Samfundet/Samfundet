@@ -1,5 +1,5 @@
-# -*- encoding : utf-8 -*-
 # frozen_string_literal: true
+
 class Job < ActiveRecord::Base
   belongs_to :admission, touch: true
   belongs_to :group
@@ -55,7 +55,7 @@ class Job < ActiveRecord::Base
   end
 
   def job_applications_with_interviews
-    job_applications.select { |j| j.interview && j.interview.time }
+    job_applications.select { |j| j.interview&.time }
   end
 
   def job_applications_without_interviews

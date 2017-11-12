@@ -1,9 +1,9 @@
-# -*- encoding : utf-8 -*-
 # frozen_string_literal: true
+
 class JobApplicationsController < ApplicationController
   layout 'admissions'
   filter_access_to [:index]
-  filter_access_to [:update, :destroy, :up, :down], attribute_check: true
+  filter_access_to %i[update destroy up down], attribute_check: true
 
   def index
     @admissions = @current_user.job_applications.group_by { |job_application| job_application.job.admission }
@@ -12,7 +12,7 @@ class JobApplicationsController < ApplicationController
   def create
     @job_application = JobApplication.new(job_application_params)
 
-    if @job_application.job && @job_application.job.admission.actual_application_deadline > Time.current
+    if @job_application.job&.admission&.actual_application_deadline > Time.current
       if logged_in? && permitted_to?(:create, :job_applications)
         if current_user.class == Applicant
           handle_create_application_when_logged_in
@@ -68,7 +68,7 @@ class JobApplicationsController < ApplicationController
   private
 
   def prioritize(direction)
-    if @job_application && @job_application.job.admission.user_priority_deadline > Time.current
+    if @job_application&.job&.admission&.user_priority_deadline > Time.current
       @job_application.send "move_#{direction}"
       @job_application.save!
     elsif request.xhr?
