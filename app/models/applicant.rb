@@ -94,7 +94,7 @@ class Applicant < ActiveRecord::Base
   end
 
   def is_unwanted?(admission)
-    assigned_job_application(admission, acceptance_status: ["wanted", "reserved", ""]).nil?
+    assigned_job_application(admission, acceptance_status: ['wanted', 'reserved', '']).nil?
   end
 
   def jobs_applied_to(admission)

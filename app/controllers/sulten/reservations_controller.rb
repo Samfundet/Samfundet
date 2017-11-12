@@ -11,7 +11,7 @@ class Sulten::ReservationsController < ApplicationController
   end
 
   def export
-    @reservations = Sulten::Reservation.where(reservation_from: Time.now.beginning_of_week..Time.now.next_year).order("reservation_from ASC")
+    @reservations = Sulten::Reservation.where(reservation_from: Time.now.beginning_of_week..Time.now.next_year).order('reservation_from ASC')
     respond_to do |format|
       format.html
       format.csv do
@@ -45,10 +45,10 @@ class Sulten::ReservationsController < ApplicationController
     @reservation.admin_access = true
     if @reservation.save
       SultenNotificationMailer.send_reservation_email(@reservation).deliver
-      flash[:success] = t("helpers.models.sulten.reservation.success.create")
+      flash[:success] = t('helpers.models.sulten.reservation.success.create')
       redirect_to sulten_reservations_archive_path
     else
-      flash.now[:error] = t("helpers.models.sulten.reservation.errors.creation_fail")
+      flash.now[:error] = t('helpers.models.sulten.reservation.errors.creation_fail')
       render :admin_new
     end
   end

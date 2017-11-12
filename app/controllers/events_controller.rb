@@ -140,7 +140,7 @@ class EventsController < ApplicationController
       @payment_error = BilligPaymentError.where(error: params[:bsession]).first
       @payment_error_price_groups =
         Hash[BilligPaymentErrorPriceGroup.where(error: params[:bsession])
-                                         .map { |bpepg| [bpepg.price_group, bpepg.number_of_tickets] }]
+        .map { |bpepg| [bpepg.price_group, bpepg.number_of_tickets] }]
       flash.now[:error] = @payment_error.message
     else
       @payment_error = nil

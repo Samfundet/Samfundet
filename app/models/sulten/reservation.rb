@@ -3,12 +3,12 @@ class Sulten::Reservation < ActiveRecord::Base
   belongs_to :table
   belongs_to :reservation_type
 
-  #attr_accessible :reservation_from, :reservation_duration, :reservation_to, :people, :name,
+  # attr_accessible :reservation_from, :reservation_duration, :reservation_to, :people, :name,
   #                :telephone, :email, :allergies, :internal_comment, :table_id, :reservation_type_id, :reservation_duration
   validates :reservation_from, :reservation_to, :people,
             :name, :telephone, :email, :reservation_type, presence: true
 
-  #attr_accessor :reservation_duration, :admin_access
+  # attr_accessor :reservation_duration, :admin_access
 
   validate :check_opening_hours, :check_amount_of_people,
            :reservation_is_one_day_in_future, :email, on: :create, unless: :admin_access
@@ -17,7 +17,7 @@ class Sulten::Reservation < ActiveRecord::Base
 
   before_validation(on: :create) do
     unless [30, 60, 90, 120, 180].include? reservation_duration.to_i
-      errors.add(:reservation_duration, I18n.t("helpers.models.sulten.reservation.errors.check_reservation_duration"))
+      errors.add(:reservation_duration, I18n.t('helpers.models.sulten.reservation.errors.check_reservation_duration'))
       throw(:abort)
     end
 
@@ -94,27 +94,26 @@ class Sulten::Reservation < ActiveRecord::Base
     time_frame = default_open.to_i..default_close.to_i
     times_to_check = time_frame.step(30.minutes).to_a
     for i in 1..Sulten::ReservationType.all.length
-      Sulten::Table.where("capacity >= ? and available = ?", people, true).order("capacity ASC").tables_with_i_reservation_types(i).find do |t|
-        if t.reservation_types.pluck(:id).include? type_id
-          time_frame.step(30.minutes) do |time_step|
-            return possible_times if times_to_check.empty?
-            next if times_to_check.exclude? time_step
-            reservation_from = Time.at(time_step)
-            reservation_to = Time.at(time_step + duration.minutes)
+      Sulten::Table.where('capacity >= ? and available = ?', people, true).order('capacity ASC').tables_with_i_reservation_types(i).find do |t|
+        next unless t.reservation_types.pluck(:id).include? type_id
+        time_frame.step(30.minutes) do |time_step|
+          return possible_times if times_to_check.empty?
+          next if times_to_check.exclude? time_step
+          reservation_from = Time.at(time_step)
+          reservation_to = Time.at(time_step + duration.minutes)
 
-            busy_start = t.reservations.where("reservation_from >= ? and reservation_from < ?",
-                                              reservation_from,
-                                              reservation_to).any?
-
-            busy_end = t.reservations.where("reservation_to > ? and reservation_to < ?",
+          busy_start = t.reservations.where('reservation_from >= ? and reservation_from < ?',
                                             reservation_from,
                                             reservation_to).any?
 
-            busy_table = busy_start || busy_end
-            unless busy_table
-              possible_times.push(reservation_from.utc)
-              times_to_check.delete(time_step)
-            end
+          busy_end = t.reservations.where('reservation_to > ? and reservation_to < ?',
+                                          reservation_from,
+                                          reservation_to).any?
+
+          busy_table = busy_start || busy_end
+          unless busy_table
+            possible_times.push(reservation_from.utc)
+            times_to_check.delete(time_step)
           end
         end
       end
