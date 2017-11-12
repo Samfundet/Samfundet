@@ -75,7 +75,7 @@ class RolesController < ApplicationController
   end
 
   def one_year_old
-    @older_than_one_year = MembersRole.where("members_roles.created_at < ?", 1.year.ago)
+    @older_than_one_year = MembersRole.where('members_roles.created_at < ?', 1.year.ago)
   end
 
   protected
