@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 ###########################################
 # NOTHING GOES IN HERE WITHOUT A COMMENT! #
 ###########################################
@@ -132,8 +133,8 @@ gem 'cocoon'
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem 'web-console'
   gem 'listen', '~> 3.0.5'
+  gem 'web-console'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
@@ -193,8 +194,8 @@ group :development, :test do
 
   # RSpec is a unit testing framework.
   # rspec-rails integrates RSpec (v2) and Rails (v3).
-  gem 'rspec-rails'
   gem 'rails-controller-testing'
+  gem 'rspec-rails'
 end
 
 group :test do

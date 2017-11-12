@@ -1,5 +1,5 @@
-# -*- encoding : utf-8 -*-
 # frozen_string_literal: true
+
 class Admission < ActiveRecord::Base
   has_many :jobs
   has_many :job_applications, -> { uniq }, through: :jobs

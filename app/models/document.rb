@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Document < ActiveRecord::Base
   # attr_accessible :title, :category_id, :uploader_id, :publication_date, :file
 

@@ -1,5 +1,5 @@
-# -*- encoding : utf-8 -*-
 # frozen_string_literal: true
+
 # Filters added to this controller apply to all controllers in the application.
 # Likewise, all the methods added will be available for all controllers.
 
@@ -80,7 +80,7 @@ class ApplicationController < ActionController::Base
   end
 
   def request_referer_if_on_current_domain
-    request.referer if request.referer && request.referer.include?(request.host)
+    request.referer if request.referer&.include?(request.host)
   end
 
   def redirect_back

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module FixLocalesSpecs
   module ::ActionController::TestCase::Behavior
     alias process_without_logging process

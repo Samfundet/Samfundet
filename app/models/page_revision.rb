@@ -1,7 +1,7 @@
-# -*- encoding : utf-8 -*-
 # frozen_string_literal: true
+
 class PageRevision < ActiveRecord::Base
-  CONTENT_TYPES = %w(html markdown).freeze
+  CONTENT_TYPES = %w[html markdown].freeze
 
   validates :page, presence: true
   validates :content_type, inclusion: { in: CONTENT_TYPES, message: 'Invalid content type' }

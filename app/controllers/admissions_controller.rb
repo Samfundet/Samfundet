@@ -1,9 +1,9 @@
-# -*- encoding : utf-8 -*-
 # frozen_string_literal: true
+
 class AdmissionsController < ApplicationController
   layout 'admissions'
-  before_action :find_by_id, only: [:edit, :update]
-  filter_access_to [:new, :create, :edit, :update]
+  before_action :find_by_id, only: %i[edit update]
+  filter_access_to %i[new create edit update]
 
   has_control_panel_applet :admin_applet,
                            if: -> { permitted_to? :show, :admissions_admin_admissions }
@@ -31,8 +31,7 @@ class AdmissionsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @admission.update_attributes(admission_params)

@@ -1,5 +1,5 @@
-# -*- encoding : utf-8 -*-
 # frozen_string_literal: true
+
 module UserSessionsHelper
   # Returns the text width (in characters) of the username and password fields
   # for both member and applicant login forms.

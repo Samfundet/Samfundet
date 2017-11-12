@@ -1,4 +1,3 @@
-# -*- encoding : utf-8 -*-
 # frozen_string_literal: true
 
 class Applicant < ActiveRecord::Base
@@ -42,7 +41,7 @@ class Applicant < ActiveRecord::Base
     self.hashed_password = BCrypt::Password.create(@password, cost: cost)
   end
 
-  def assigned_job_application(admission, acceptance_status: %w(wanted reserved))
+  def assigned_job_application(admission, acceptance_status: %w[wanted reserved])
     job_applications.joins(:interview)
                     .where(interviews: { acceptance_status: acceptance_status })
                     .find { |application| application.job.admission == admission && application.withdrawn == false }
@@ -77,7 +76,7 @@ class Applicant < ActiveRecord::Base
   def self.interested_other_positions(admission)
     where(disabled: false).where(interested_other_positions: true).select do |applicant|
       # If not wanted by any
-      applicant.assigned_job_application(admission, acceptance_status: %w(wanted)).nil?
+      applicant.assigned_job_application(admission, acceptance_status: %w[wanted]).nil?
     end
   end
 

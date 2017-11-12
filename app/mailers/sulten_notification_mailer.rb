@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class SultenNotificationMailer < ActionMailer::Base
   default from: 'no-reply@samfundet.no',
           reply_to: 'lyche@samfundet.no'

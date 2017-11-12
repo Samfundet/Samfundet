@@ -1,15 +1,15 @@
-# -*- encoding : utf-8 -*-
 # frozen_string_literal: true
+
 class EventsController < ApplicationController
   filter_access_to [:admin], require: :edit
-  filter_access_to [:purchase_callback_failure,
-                    :purchase_callback_success], require: :buy
+  filter_access_to %i[purchase_callback_failure
+                      purchase_callback_success], require: :buy
   filter_access_to :rss, require: :read
 
   has_control_panel_applet :admin_applet,
                            if: -> { permitted_to? :edit, :events }
 
-  before_action :set_organizer_id, only: [:create, :update]
+  before_action :set_organizer_id, only: %i[create update]
 
   def set_organizer_id
     case params[:event][:organizer_type]
@@ -140,7 +140,7 @@ class EventsController < ApplicationController
       @payment_error = BilligPaymentError.where(error: params[:bsession]).first
       @payment_error_price_groups =
         Hash[BilligPaymentErrorPriceGroup.where(error: params[:bsession])
-        .map { |bpepg| [bpepg.price_group, bpepg.number_of_tickets] }]
+                                         .map { |bpepg| [bpepg.price_group, bpepg.number_of_tickets] }]
       flash.now[:error] = @payment_error.message
     else
       @payment_error = nil
@@ -160,8 +160,7 @@ class EventsController < ApplicationController
     @events = @events.paginate(page: params[:page], per_page: 20)
   end
 
-  def admin_applet
-  end
+  def admin_applet; end
 
   def purchase_callback_success
     split_tickets = params[:tickets]
@@ -220,7 +219,7 @@ class EventsController < ApplicationController
   end
 
   def rss
-    @events = if %w(archive arkiv).include? params[:type]
+    @events = if %w[archive arkiv].include? params[:type]
                 Event.active.published
               else
                 Event.upcoming.active.published
@@ -265,7 +264,7 @@ class EventsController < ApplicationController
       :price_type,
       :billig_event_id,
       :organizer_id,
-      price_groups_attributes: [:name, :price, :_destroy]
+      price_groups_attributes: %i[name price _destroy]
     )
   end
 end

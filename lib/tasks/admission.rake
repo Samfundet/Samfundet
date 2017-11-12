@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 namespace :admission do
   desc 'This task removes all data from the database that can be associated with an applicant.'
   task anonymize: :environment do

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 task search_index: :environment do
   puts 'Deleting old index'
   PgSearch::Document.delete_all

@@ -1,5 +1,5 @@
-# -*- encoding : utf-8 -*-
 # frozen_string_literal: true
+
 class Interview < ActiveRecord::Base
   belongs_to :job_application
   #  has_one :group, through: :job_application
@@ -21,7 +21,7 @@ class Interview < ActiveRecord::Base
 
   def acceptance_status
     field = self[:acceptance_status]
-    field = nil if field && field.empty?
+    field = nil if field&.empty?
     return field.to_sym unless field.blank?
   end
 

@@ -1,9 +1,9 @@
-# -*- encoding : utf-8 -*-
 # frozen_string_literal: true
+
 class AdmissionsAdmin::GroupsController < ApplicationController
   layout 'admissions'
 
-  filter_access_to [:show, :applications, :reject_calls], attribute_check: true
+  filter_access_to %i[show applications reject_calls], attribute_check: true
 
   def show
     @admission = Admission.find(params[:admission_id])
@@ -23,7 +23,7 @@ class AdmissionsAdmin::GroupsController < ApplicationController
       data: applications_per_day,
       encoding: 'text',
       labels: admission_day_labels,
-      axis_with_labels: %w(x y),
+      axis_with_labels: %w[x y],
       axis_range: [nil, [0, applications_per_day.max, [applications_per_day.max / 10, 1].max]],
       size: '800x350',
       bar_color: 'A03033'

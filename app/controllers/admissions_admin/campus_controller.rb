@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class AdmissionsAdmin::CampusController < ApplicationController
   filter_access_to [:admin], require: :edit
 

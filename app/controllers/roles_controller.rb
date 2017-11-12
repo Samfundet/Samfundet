@@ -1,8 +1,8 @@
-# -*- encoding : utf-8 -*-
 # frozen_string_literal: true
+
 class RolesController < ApplicationController
   filter_access_to [:pass], attribute_check: true
-  before_action :find_by_id, only: [:show, :edit, :update]
+  before_action :find_by_id, only: %i[show edit update]
 
   has_control_panel_applet :admin_applet,
                            if: -> { permitted_to?(:manage, Role) }
@@ -24,8 +24,7 @@ class RolesController < ApplicationController
     @roles = Role.unscoped.with_permissions_to(:manage_members).sort_by(&:title)
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @role = Role.new
@@ -42,8 +41,7 @@ class RolesController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @role.update_attributes(role_params)
@@ -55,8 +53,7 @@ class RolesController < ApplicationController
     end
   end
 
-  def admin_applet
-  end
+  def admin_applet; end
 
   def pass_applet
     @roles = current_user.roles.passable

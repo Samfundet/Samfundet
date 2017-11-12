@@ -1,5 +1,5 @@
-# -*- encoding : utf-8 -*-
 # frozen_string_literal: true
+
 class ImagesController < ApplicationController
   has_control_panel_applet :admin_applet,
                            if: -> { permitted_to? :edit, :images }
@@ -56,8 +56,7 @@ class ImagesController < ApplicationController
     render '_image_list', layout: false if request.xhr?
   end
 
-  def admin_applet
-  end
+  def admin_applet; end
 
   private
 

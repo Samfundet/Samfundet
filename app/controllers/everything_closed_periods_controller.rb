@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class EverythingClosedPeriodsController < ApplicationController
   filter_access_to :all
 

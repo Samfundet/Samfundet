@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class EverythingClosedPeriod < ActiveRecord::Base
   # attr_accessible :message_no, :message_en, :event_message_no, :event_message_en, :closed_from, :closed_to
 

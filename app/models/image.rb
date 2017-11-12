@@ -1,5 +1,5 @@
-# -*- encoding : utf-8 -*-
 # frozen_string_literal: true
+
 class Image < ActiveRecord::Base
   DEFAULT_TITLE = 'Default image'
   DEFAULT_PATH = Rails.root.join('app', 'assets', 'images',
@@ -9,7 +9,7 @@ class Image < ActiveRecord::Base
   has_attached_file :image_file,
                     styles: { medium: 'x180>', large: 'x400>' },
                     convert_options: { medium: '-quality 80', large: '-quality 80' },
-                    processors: [:thumbnail, :compression],
+                    processors: %i[thumbnail compression],
                     url: '/upload/:class/:attachment/:id_partition/:style/:filename',
                     path: ':rails_root/public/upload/:class/:attachment/:id_partition/:style/:filename',
                     default_url: '/home/aleksanb/Projects/Samfundet3/app/assets/images/banner-images/kitteh.jpeg'
@@ -31,9 +31,9 @@ class Image < ActiveRecord::Base
 
   include PgSearch
   pg_search_scope :search,
-                  against: [:title,
-                            :image_file_file_name,
-                            :image_file_content_type],
+                  against: %i[title
+                              image_file_file_name
+                              image_file_content_type],
                   using: { tsearch: { dictionary: 'english' } },
                   associated_against: { tags: :name }
 

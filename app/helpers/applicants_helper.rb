@@ -1,5 +1,5 @@
-# -*- encoding : utf-8 -*-
 # frozen_string_literal: true
+
 module ApplicantsHelper
   def facebook_search_link(applicant)
     search_url = "https://www.facebook.com/search/results.php?#{{ q: applicant.full_name }.to_query}"

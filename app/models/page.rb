@@ -1,12 +1,12 @@
-# -*- encoding : utf-8 -*-
 # frozen_string_literal: true
+
 class Page < ActiveRecord::Base
   NAME_FORMAT = /_?[0-9]*-?[a-zA-Z][a-zA-Z0-9\-]*/
   MENU_NAME = '_menu'
   INDEX_NAME = '_index'
   TICKETS_NAME = 'tickets'
   HANDICAP_INFO_NAME = 'other-info'
-  REVISION_FIELDS = [:title_no, :title_en, :content_no, :content_en, :content_type].freeze
+  REVISION_FIELDS = %i[title_no title_en content_no content_en content_type].freeze
 
   extend LocalizedFields
   localized_fields :title, :name, :content
@@ -55,12 +55,12 @@ class Page < ActiveRecord::Base
   end
 
   include PgSearch
-  multisearchable against: [:title_no,
-                            :title_en,
-                            :content_no,
-                            :content_en],
+  multisearchable against: %i[title_no
+                              title_en
+                              content_no
+                              content_en],
                   additional_attributes: ->(record) { { publish_at: record.created_at } },
-                  if: ->(record) { %w(_menu _index).exclude? record.name_no }
+                  if: ->(record) { %w[_menu _index].exclude? record.name_no }
 
   def self.find_by_name(name)
     if I18n.locale == :no

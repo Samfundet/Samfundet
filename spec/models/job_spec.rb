@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'rails_helper'
 
 describe Job, '#available_jobs_in_same_group' do
@@ -36,6 +37,6 @@ describe Job, '#tag_titles=' do
     job = create(:job)
     job.tag_titles = 'one two three four'
 
-    expect(job.tags.pluck(:title)).to match_array(%w(one two three four))
+    expect(job.tags.pluck(:title)).to match_array(%w[one two three four])
   end
 end

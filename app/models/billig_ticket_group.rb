@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class BilligTicketGroup < ActiveRecord::Base
   DEFAULT_TICKET_LIMIT = 9
 

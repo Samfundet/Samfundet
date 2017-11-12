@@ -1,10 +1,10 @@
-# -*- encoding : utf-8 -*-
 # frozen_string_literal: true
+
 require 'icalendar'
 
 class AdmissionsAdmin::InterviewsController < ApplicationController
   layout 'admissions'
-  filter_access_to [:show, :update], attribute_check: true
+  filter_access_to %i[show update], attribute_check: true
 
   def show
     interview = Interview.find(params[:id])

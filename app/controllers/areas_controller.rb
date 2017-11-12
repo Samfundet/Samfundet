@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class AreasController < ApplicationController
   filter_access_to :all
 
@@ -29,6 +30,6 @@ class AreasController < ApplicationController
   private
 
   def area_params
-    params.require(:area).permit(:page_id, standard_hours_attributes: [:open, :open_time, :close_time, :day, :id])
+    params.require(:area).permit(:page_id, standard_hours_attributes: %i[open open_time close_time day id])
   end
 end

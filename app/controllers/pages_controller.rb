@@ -1,9 +1,9 @@
-# -*- encoding : utf-8 -*-
 # frozen_string_literal: true
+
 class PagesController < ApplicationController
-  filter_access_to [:index, :new, :create]
-  filter_access_to [:show, :edit, :update, :destroy], attribute_check: true,
-                                                      load_method: :load_page
+  filter_access_to %i[index new create]
+  filter_access_to %i[show edit update destroy], attribute_check: true,
+                                                 load_method: :load_page
   filter_access_to [:admin], require: :edit
   filter_access_to [:graph, :history], require: :edit do
     show_admin?
@@ -87,8 +87,7 @@ class PagesController < ApplicationController
     @data = build_link_graph
   end
 
-  def admin_applet
-  end
+  def admin_applet; end
 
   def change_language
     new_route = I18n.locale == :no ? { locale: 'en' } : { locale: 'no' }

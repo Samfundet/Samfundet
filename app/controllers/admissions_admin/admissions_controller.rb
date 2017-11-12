@@ -1,8 +1,8 @@
-# -*- encoding : utf-8 -*-
 # frozen_string_literal: true
+
 class AdmissionsAdmin::AdmissionsController < ApplicationController
   layout 'admissions'
-  filter_access_to [:show, :statistics]
+  filter_access_to %i[show statistics]
 
   def show
     @admission = Admission.find(params[:id])
@@ -65,7 +65,7 @@ class AdmissionsAdmin::AdmissionsController < ApplicationController
       data: applications_per_day,
       encoding: 'text',
       labels: admission_day_labels,
-      axis_with_labels: %w(x y),
+      axis_with_labels: %w[x y],
       axis_range: [nil, [0, applications_per_day.max, [applications_per_day.max / 10, 1].max]],
       size: '800x350',
       bar_color: 'A03033'

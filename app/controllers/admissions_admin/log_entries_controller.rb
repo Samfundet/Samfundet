@@ -1,8 +1,8 @@
-# -*- encoding : utf-8 -*-
 # frozen_string_literal: true
+
 class AdmissionsAdmin::LogEntriesController < ApplicationController
   before_action :new_log_entry, only: :create
-  filter_access_to [:create, :destroy], attribute_check: true
+  filter_access_to %i[create destroy], attribute_check: true
 
   def create
     @log_entry.log = params[:log_entry][:log]
