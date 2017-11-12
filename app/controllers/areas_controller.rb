@@ -7,11 +7,11 @@ class AreasController < ApplicationController
 
   def edit
     @areas = Area.all
-    @area = Area.find_by(params[:id])
+    @area = Area.find(params[:id])
   end
 
   def update
-    @area = Area.find_by(params[:id])
+    @area = Area.find(params[:id])
 
     if @area.update(area_params)
       flash[:success] = t 'areas.update_success'
