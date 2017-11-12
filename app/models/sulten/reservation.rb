@@ -8,7 +8,7 @@ class Sulten::Reservation < ActiveRecord::Base
   validates :reservation_from, :reservation_to, :people,
             :name, :telephone, :email, :reservation_type, presence: true
 
-  # attr_accessor :reservation_duration, :admin_access
+  attr_accessor :reservation_duration, :admin_access
 
   validate :check_opening_hours, :check_amount_of_people,
            :reservation_is_one_day_in_future, :email, on: :create, unless: :admin_access
@@ -124,10 +124,10 @@ class Sulten::Reservation < ActiveRecord::Base
   def self.lyche_open?(from, to)
     # TODO: Change these defaults when admin can set them
     # The values 16 .. 22 are the openinghours
-    (16..22).cover?(from.hour..to.hour)
+    (from.hour >= 16 && to.hour < 22)
   end
 
   def self.kitchen_open?(from, to)
-    (16..22).cover?(from.hour..to.hour)
+    (from.hour >= 16 && to.hour < 22)
   end
 end
