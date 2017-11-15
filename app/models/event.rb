@@ -56,7 +56,7 @@ class Event < ActiveRecord::Base
   before_save :enforce_price_choice
 
   scope :active, -> { where(status: 'active') }
-  scope :published, -> { where('publication_time < ?', DateTime.current) }
+  scope :published, -> { where('publication_time < ?', Time.current) }
   scope :upcoming, -> { where('non_billig_start_time >= ?', Date.current) }
   scope :past, -> { where('non_billig_start_time < ?', Date.current) }
 
@@ -65,7 +65,7 @@ class Event < ActiveRecord::Base
       .published
       .where(
         non_billig_start_time:
-          (DateTime.current - 4.hours).change(hour: 4)..20.hours.from_now.change(hour: 4)
+          (Time.current - 4.hours).change(hour: 4)..20.hours.from_now.change(hour: 4)
       )
       .order(:non_billig_start_time)
   end
@@ -165,7 +165,7 @@ class Event < ActiveRecord::Base
     return TICKETS_UNAVAILABLE if billig_event.nil? || Rails.application.config.billig_offline
 
     within_sale_period =
-      DateTime.current.between?(billig_event.sale_from, billig_event.sale_to)
+      Time.current.between?(billig_event.sale_from, billig_event.sale_to)
 
     netsale_ticket_groups = billig_event.netsale_billig_ticket_groups
 

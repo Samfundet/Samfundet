@@ -147,13 +147,13 @@ class PagesController < ApplicationController
       # this is an url that leads to somewhere on samfundet.no
       begin
         uri = URI.join(request.protocol + request.host, url)
-      rescue
+      rescue URI::Error
         return url
       end
     else
       begin
         uri = URI(url)
-      rescue
+      rescue URI::Error
         return url
       end
     end
@@ -177,7 +177,7 @@ class PagesController < ApplicationController
           # this is a link that leads to something else than an info page
           return uri.path
         end
-      rescue
+      rescue ActionController::RoutingError
         # recognizing path failed
         # this link probably doesn't lead anywhere on the page
         return uri.path

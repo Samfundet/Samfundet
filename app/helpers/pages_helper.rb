@@ -21,8 +21,8 @@ module PagesHelper
 
   def page_by_name(name)
     page_url Page.find_by_name(name)
-  rescue
-    ''
+  rescue ActionController::UrlGenerationError
+    '#'
   end
 
   def expand_includes(text, seen = Set.new)

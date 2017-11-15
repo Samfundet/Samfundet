@@ -9,7 +9,7 @@ class Sulten::Reservation < ActiveRecord::Base
   validates :reservation_from, :reservation_to, :people,
             :name, :telephone, :email, :reservation_type, presence: true
 
-  attr_accessor :reservation_duration, :admin_access
+  attr_accessor :admin_access
 
   validate :check_opening_hours, :check_amount_of_people,
            :reservation_is_one_day_in_future, :email, on: :create, unless: :admin_access
@@ -88,13 +88,13 @@ class Sulten::Reservation < ActiveRecord::Base
   end
 
   def self.find_available_times(date, duration, people, type_id)
-    now = DateTime.parse(date).utc
+    now = Time.parse(date).utc
     default_open = now.change(hour: 16, min: 0, sec: 0)
     default_close = now.change(hour: 22, min: 0, sec: 0)
     possible_times = []
     time_frame = default_open.to_i..default_close.to_i
     times_to_check = time_frame.step(30.minutes).to_a
-    for i in 1..Sulten::ReservationType.all.length
+    Sulten::ReservationType.each do
       Sulten::Table.where('capacity >= ? and available = ?', people, true).order('capacity ASC').tables_with_i_reservation_types(i).find do |t|
         next unless t.reservation_types.pluck(:id).include? type_id
         time_frame.step(30.minutes) do |time_step|
@@ -118,8 +118,8 @@ class Sulten::Reservation < ActiveRecord::Base
           end
         end
       end
-      possible_times
     end
+    possible_times
   end
 
   def self.lyche_open?(from, to)

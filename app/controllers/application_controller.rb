@@ -41,7 +41,7 @@ class ApplicationController < ActionController::Base
     elsif session[:applicant_id]
       @current_user ||= Applicant.find(session[:applicant_id])
     end
-  rescue
+  rescue ActiveRecord::RecordNotFound
     @current_user = nil
   end
 
