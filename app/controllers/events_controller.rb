@@ -128,7 +128,7 @@ class EventsController < ApplicationController
     end
 
     unless @event.purchase_status == Event::TICKETS_AVAILABLE
-      raise ActionController::RoutingError.new('Not Found') if request.xhr?
+      raise ActionController::RoutingError, 'Not Found' if request.xhr?
 
       flash[:error] = t('events.can_not_purchase_error')
       redirect_to(@event) && return
