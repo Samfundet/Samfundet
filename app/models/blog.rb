@@ -9,7 +9,7 @@ class Blog < ActiveRecord::Base
 
   validates :title_no, :title_en, :lead_paragraph_no, :lead_paragraph_en, :content_no, :content_en, :publish_at, :author_id, :image_id, presence: true
 
-  scope :published, -> { where('publish_at < ?', DateTime.current).where(published: true) }
+  scope :published, -> { where('publish_at < ?', Timme.current).where(published: true) }
 
   extend LocalizedFields
   localized_fields :title, :lead_paragraph, :content

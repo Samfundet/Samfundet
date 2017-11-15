@@ -81,7 +81,7 @@ class ApplicantsController < ApplicationController
         ForgotPasswordMailer.forgot_password_email(@applicant).deliver
         flash[:success] = t('applicants.password_recovery.success',
                             email: @applicant.email)
-      rescue
+      rescue Net::SMTPError
         # This will be one of those "derp" moments.
         flash[:error] = t('applicants.password_recovery.error')
       end

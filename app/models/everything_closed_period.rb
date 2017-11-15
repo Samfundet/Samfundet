@@ -11,8 +11,8 @@ class EverythingClosedPeriod < ActiveRecord::Base
   validates :closed_to, presence: true
   validate :times_in_valid_order
 
-  scope :active_closed_periods, -> { where('closed_from <= ? AND closed_to >= ?', DateTime.current, DateTime.current) }
-  scope :current_and_future_closed_times, -> { where('closed_to >= ?', DateTime.current) }
+  scope :active_closed_periods, -> { where('closed_from <= ? AND closed_to >= ?', Time.current, Time.current) }
+  scope :current_and_future_closed_times, -> { where('closed_to >= ?', Time.current) }
 
   extend LocalizedFields
   localized_fields :message

@@ -13,6 +13,10 @@ AllCops:
 Metrics/LineLength:
   Max: 350
 
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+
 Lint/UnusedBlockArgument:
     Enabled: false
 

@@ -12,7 +12,7 @@ class JobApplicationsController < ApplicationController
   def create
     @job_application = JobApplication.new(job_application_params)
 
-    if @job_application.job&.admission&.actual_application_deadline > Time.current
+    if @job_application.job&.admission&.appliable?
       if logged_in? && permitted_to?(:create, :job_applications)
         if current_user.class == Applicant
           handle_create_application_when_logged_in
@@ -68,7 +68,7 @@ class JobApplicationsController < ApplicationController
   private
 
   def prioritize(direction)
-    if @job_application&.job&.admission&.user_priority_deadline > Time.current
+    if @job_application&.job&.admission&.prioritize?
       @job_application.send "move_#{direction}"
       @job_application.save!
     elsif request.xhr?

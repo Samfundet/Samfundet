@@ -120,6 +120,10 @@ class Admission < ActiveRecord::Base
     (actual_application_deadline > Time.current) && (shown_from < Time.current)
   end
 
+  def prioritize?
+    user_priority_deadline > Time.current
+  end
+
   def interview_dates
     from = actual_application_deadline.to_date + 1.day
     to   = user_priority_deadline.to_date

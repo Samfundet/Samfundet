@@ -92,7 +92,7 @@ class Applicant < ActiveRecord::Base
     job_applications.select { |application| application.job.admission == admission && application.withdrawn == false }.max_by(&:priority).job.group.id
   end
 
-  def is_unwanted?(admission)
+  def unwanted?(admission)
     assigned_job_application(admission, acceptance_status: ['wanted', 'reserved', '']).nil?
   end
 

@@ -22,7 +22,7 @@ class BilligTicketGroup < ActiveRecord::Base
   end
 
   def ticket_limit?
-    !ticket_limit.nil? && ticket_limit > 0
+    !ticket_limit.nil? && ticket_limit.positive?
   end
 
   def price_group_ticket_limit
