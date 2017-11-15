@@ -108,7 +108,7 @@ class PagesController < ApplicationController
   end
 
   def not_found
-    raise ActiveRecord::RecordNotFound.new
+    raise ActiveRecord::RecordNotFound
   end
 
   def show_admin?
