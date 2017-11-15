@@ -7,7 +7,7 @@ module StandardHoursHelper
                      .maximum(:updated_at)
                      .try(:utc)
                      .try(:to_s, :number)
-    current_day = (Time.current.day - 4.hours)
+    current_day = (Time.current - 4.hours)
 
     closed = EverythingClosedPeriod.current_period
 
