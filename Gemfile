@@ -131,6 +131,9 @@ gem 'slack-notifier'
 # Cocoon makes nested forms for price groups under events a lot easier. Adds some buttons and stuff
 gem 'cocoon'
 
+# memcache client
+gem 'dalli'
+
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'listen', '~> 3.0.5'
@@ -223,3 +226,4 @@ group :test do
   # Simplecov is a code coverage tool
   gem 'simplecov', require: false
 end
+
