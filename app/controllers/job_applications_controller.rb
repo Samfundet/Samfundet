@@ -6,6 +6,9 @@ class JobApplicationsController < ApplicationController
   filter_access_to %i[update destroy up down], attribute_check: true
 
   def index
+    puts 'xdddddddddddd'
+    puts current_user
+    puts current_user.class
     @admissions = @current_user.job_applications.group_by { |job_application| job_application.job.admission }
   end
 
