@@ -44,7 +44,7 @@ class Applicant < ActiveRecord::Base
   def assigned_job_application(admission, acceptance_status: %w[wanted reserved])
     job_applications.joins(:interview)
                     .where(interviews: { acceptance_status: acceptance_status })
-                    .find { |application| application.job.admission == admission }
+                    .find { |application| application.job.admission == admission && application.withdrawn == false }
   end
 
   def similar_jobs_not_applied_to
