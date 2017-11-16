@@ -59,8 +59,10 @@ class ApplicantsController < ApplicationController
     end
 
     if @applicant.update_attributes(applicant_params)
-      flash[:success] = t('applicants.update_success')
-      redirect_to job_applications_path
+      if @current_user.class == Applicant
+        flash[:success] = t('applicants.update_success')
+        redirect_to job_applications_path
+      end
     else
       flash[:error] = t('applicants.update_error')
       render :edit
