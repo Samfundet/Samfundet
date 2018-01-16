@@ -57,7 +57,7 @@ class PagesController < ApplicationController
 
   def update
     @page = Page.find_by_param(params[:id]) || not_found
-uth
+
     unless permitted_to? :edit_non_content_fields, @page
       params[:page].slice!(:title_no, :title_en, :content_no, :content_en)
     end
