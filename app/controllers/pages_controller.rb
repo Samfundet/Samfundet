@@ -57,7 +57,7 @@ class PagesController < ApplicationController
 
   def update
     @page = Page.find_by_param(params[:id]) || not_found
-
+uth
     unless permitted_to? :edit_non_content_fields, @page
       params[:page].slice!(:title_no, :title_en, :content_no, :content_en)
     end
@@ -76,10 +76,10 @@ class PagesController < ApplicationController
   end
 
   def destroy
-    @page = Page.find(params[:id])
+    @page = Page.find_by_name(params[:id])
     @page.destroy
     flash[:success] = t("pages.destroy_success")
-    redirect_to pages_path
+    redirect_to admin_pages_path
   end
 
   def graph
