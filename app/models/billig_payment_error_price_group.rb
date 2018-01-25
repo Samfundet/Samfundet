@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class BilligPaymentErrorPriceGroup < ActiveRecord::Base
-  attr_accessible :error, :number_of_tickets, :price_group
+  # attr_accessible :error, :number_of_tickets, :price_group
   belongs_to :billig_price_group, foreign_key: :price_group
 
   def samfundet_event

@@ -1,0 +1,42 @@
+#admission-notice {
+  text-align: center;
+}
+
+.login-form {
+  text-align: center;
+  @include grid-column(12);
+
+  form {
+    input[type=text], input[type=password] {
+      padding: 10px;
+      font-size: 20px;
+      border: 1px solid rgba(0, 0, 0, 0.5);
+
+      @include grid-media($mobile-and-tablet-portrait) {
+        width: 100%;
+      }
+    }
+
+    p {
+        margin: 16px 0;
+    }
+  }
+
+  @include grid-media($not-mobile) {
+    &.open-admission {
+      @include grid-column(6);
+
+      &.member {
+        text-align: right;
+        float: left;
+        width: 47%;
+      }
+
+      &.applicant {
+        text-align: left;
+        float: right;
+        width: 47%;
+      }
+    }
+  }
+}

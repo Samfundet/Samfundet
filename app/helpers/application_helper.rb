@@ -1,11 +1,12 @@
-# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
-  FLASH_TYPES = [:success, :notice, :error, :message, :warning].freeze
+  FLASH_TYPES = %i[success notice error message warning].freeze
 
   def disable_robots
     content_for(:head) do
-      haml_tag :meta, { name: 'robots', content: 'noindex' }
+      haml_tag :meta, name: 'robots', content: 'noindex'
     end
   end
 
@@ -17,7 +18,7 @@ module ApplicationHelper
     content_for(:open_graph) do
       capture_haml do
         open_graph.each do |property, content|
-          haml_tag :meta, { property: "og:#{property}", content:  content }
+          haml_tag :meta, property: "og:#{property}", content: content
         end
       end
     end
@@ -27,7 +28,7 @@ module ApplicationHelper
     content_for(:twitter) do
       capture_haml do
         twitter.each do |name, content|
-          haml_tag :meta, { name: "twitter:#{name}", content:  content }
+          haml_tag :meta, name: "twitter:#{name}", content: content
         end
       end
     end
@@ -60,7 +61,7 @@ module ApplicationHelper
       flashes.join
     else
       message = flash[type]
-      hide_link = content_tag(:a, "", href: request.url, class: :hide)
+      hide_link = content_tag(:a, '', href: request.url, class: :hide)
       content_tag(:div, hide_link + message, class: "flash #{type}") if flash[type]
     end
   end
@@ -78,20 +79,19 @@ module ApplicationHelper
     content_for(:tail) { javascript_include_tag(*args) }
   end
 
-  def typekit_include_tag apikey
+  def typekit_include_tag(apikey)
     javascript_include_tag("//use.typekit.net/#{apikey}.js") +
-      javascript_tag("try{Typekit.load()}catch(e){}")
+      javascript_tag('try{Typekit.load()}catch(e){}')
   end
 
   def todays_standard_hours
     StandardHour.open_today.includes(:area).order('areas.name')
   end
 
-  def background_image_helper css_class, image, options = {}
+  def background_image_helper(css_class, image, options = {})
     capture_haml do
-      haml_tag :div, {
-          class: css_class,
-          style: "background-image: url(#{asset_path(image.url(options[:size]))})" } do
+      haml_tag :div, class: css_class,
+                     style: "background-image: url(#{asset_path(image.url(options[:size]))})" do
         yield if block_given?
       end
     end
@@ -102,7 +102,7 @@ module ApplicationHelper
   end
 
   # Remove this when upgrading to Rails 4.1
-  def asset_url asset_name
+  def asset_url(asset_name)
     URI.join(root_url, asset_path(asset_name))
   end
 end

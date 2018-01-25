@@ -1,46 +1,45 @@
-# -*- encoding : utf-8 -*-
-require 'spec_helper'
+# frozen_string_literal: true
+
+require 'rails_helper'
 
 describe ApplicationController do
-  context :authorization do
-    before(:each) do
-      @member = mock_model(Member)
-      Member.stub(:find).with(@member.id).and_return(@member)
+  let(:member) { create(:member) }
+  let(:applicant) { create(:applicant) }
 
-      @applicant = mock_model(Applicant)
-      Applicant.stub(:find).with(@applicant.id).and_return(@applicant)
+  before(:each) do
+    session[:member_id] = nil
+    session[:applicant_id] = nil
+  end
+
+  describe '#current_user' do
+    it 'should return currently logged in member' do
+      session[:member_id] = member.id
+      expect(subject.current_user).to eq member
     end
 
-    describe :current_user do
-      it "should return currently logged in member" do
-        session[:member_id] = @member.id
-        controller.current_user.should == @member
-      end
-
-      it "should return currently logged in applicant" do
-        session[:applicant_id] = @applicant.id
-        controller.current_user.should == @applicant
-      end
-
-      it "should return nil when not logged in" do
-        controller.current_user.should be_nil
-      end
+    it 'should return currently logged in applicant' do
+      session[:applicant_id] = applicant.id
+      expect(subject.current_user).to eq applicant
     end
 
-    describe :logged_in? do
-      it "should return true if logged in as member" do
-        session[:member_id] = @member.id
-        controller.logged_in?.should be_true
-      end
+    it 'should return nil when not logged in' do
+      expect(subject.current_user).to be_nil
+    end
+  end
 
-      it "should return true if logged in as applicant" do
-        session[:applicant_id] = @applicant.id
-        controller.logged_in?.should be_true
-      end
+  describe '#logged_in?' do
+    it 'returns true if logged in as member' do
+      session[:member_id] = member.id
+      expect(subject.logged_in?).to be true
+    end
 
-      it "should return false when not logged in" do
-        controller.logged_in?.should be_false
-      end
+    it 'returns true if logged in as applicant' do
+      session[:applicant_id] = applicant.id
+      expect(subject.logged_in?).to be true
+    end
+
+    it 'returns false when not logged in' do
+      expect(subject.logged_in?).to be false
     end
   end
 end

@@ -1,0 +1,302 @@
+.events.purchase_callback_success {
+    table {
+        @extend .table-highlight-rows !optional;
+
+        tfoot tr {
+            td:first-child {
+                text-align: right;
+            }
+        }
+
+        #on-card {
+          color: green;
+          font-size: 32px;
+        }
+    }
+}
+
+.events.edit, .events.new {
+    .image-preview {
+        max-width: 100%;
+    }
+}
+
+.event-edit {
+    h3 {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+}
+
+.limit-exceeded {
+    background:#ff4040;
+}
+
+.embed-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+  margin-bottom: 12px;
+}
+
+.embed-container iframe,
+.embed-container object,
+.embed-container embed {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+
+.events.show {
+
+    .custom-form {
+      padding-top: 3em;
+      text-align: center;
+      input[type='text']{
+        text-align: center;
+        font-size: 1em;
+        border: 1px solid black;
+        margin: 4px;
+        padding: 2px;
+        border-radius: 4px;
+      }
+    }
+
+    .event-image {
+        @include autoscale-picture(200px);
+        @include grid-media($tablet-desktop) {
+            @include autoscale-picture(400px);
+        }
+    }
+
+    .mobile-banner {
+        @include grid-media($tablet-desktop) {
+          display: none;
+        }
+
+        h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 20pt;
+            color: $samfundet-red;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .banner-image {
+            @include autoscale-picture(200px);
+        }
+    }
+
+    .description {
+        @include grid-media($tablet-desktop) {
+            @include grid-shift(2);
+            @include grid-column(8);
+            @include grid-shift(2);
+        }
+
+        .description-short {
+          font-weight: $font-weight-medium;
+        }
+
+        .description-long {
+          font-weight: lighter;
+          margin-bottom: 20px;
+        }
+
+        p.adaptation {
+          font-style: italic;
+          font-size: 17px;
+        }
+
+        .social {
+            text-align: center;
+            margin-top: 20px;
+
+            .social-sites {
+                @include grid-column(12);
+                margin-bottom: 1em;
+
+                .social-element {
+                    list-style-type: none;
+                    text-align: center;
+
+                    li {
+                        padding: 0 0.5em;
+                        display: inline;
+                    }
+                }
+
+                #social-link {
+                    img {
+                        width: 36px;
+                        height: 36px;
+                    }
+                }
+            }
+            .spotify-box {
+                @include grid-column(12);
+            }
+        }
+    }
+
+    .details {
+      @include grid-column(12);
+
+      table {
+        margin: 15px auto;
+        border-spacing: 0;
+
+        tr {
+          td {
+            text-transform: uppercase;
+            padding: 5px 8px;
+
+            &:first-child {
+              font-weight: lighter;
+              border-right: 1px solid #333;
+            }
+
+            &:last-child {
+              font-weight: $font-weight-medium;
+            }
+          }
+        }
+      }
+    }
+
+    .show-purchase-button {
+      text-align: center;
+    }
+}
+
+.events {
+    .ajax-search {
+        display: none;
+    }
+
+    .search-results h3 {
+        @include grid-media($mobile-and-tablet-portrait) {
+            display: none;
+        }
+    }
+
+    .bottom-links {
+        display: table;
+        width: 100%;
+        text-align: center;
+        table-layout: fixed;
+
+        a{
+          display: table-cell;
+        }
+
+        img{
+          width: 2em;
+          position: relative;
+          top: 0.5em;
+          right: 0.5em;
+        }
+
+        @include grid-media($mobile-and-tablet-portrait) {
+          a{
+            display: table-row;
+          }
+        }
+    }
+
+    .event-group {
+        margin-bottom: 40px;
+
+        @include grid-column(12);
+
+        h2 {
+            color: $samfundet-red;
+            text-transform: uppercase;
+            text-align: center;
+            border-bottom: 1px solid #333;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+
+            @include grid-media($tablet-desktop) {
+                text-align: left;
+                border-bottom: none;
+                font-size: 30px;
+            }
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+
+            tr {
+                td {
+                    padding: 10px;
+                    text-align: center;
+
+                    @include grid-media($mobile-and-tablet-portrait) {
+                        &:first-child { padding-left: 0; }
+                        &:last-child { padding-right: 0; }
+                    }
+
+                    &.event-title {
+                        width: 34%;
+                        text-align: left;
+                    }
+
+                    &.event-title a, &.event-area a {
+                        text-decoration: none;
+                        text-transform: uppercase;
+                        color: $samfundet-black;
+                        font-weight: $font-weight-normal;
+                    }
+
+                    &.event-area-start-time {
+                        width: 33%;
+
+                        @include grid-media($tablet-desktop) {
+                            display: none;
+                        }
+                    }
+
+                    &.event-start-time, &.event-price {
+                        font-weight: lighter;
+                    }
+
+                    &.event-area, &.event-start-time, &.event-price {
+                        display: none;
+
+                        @include grid-media($tablet-desktop) {
+                            display: table-cell;
+                            width: 16%;
+                        }
+                    }
+
+                    &.event-buy {
+                        width: 33%;
+                        @include grid-media($tablet-desktop) {
+                            width: 16%;
+                        }
+                    }
+
+                    & + td {
+                        border-left: 1px solid #333;
+
+                        @include grid-media($tablet-desktop) {
+                            &:last-child {
+                                border-left: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

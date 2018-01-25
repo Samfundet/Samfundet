@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: standard_hours
@@ -14,19 +16,19 @@
 class StandardHour < ActiveRecord::Base
   belongs_to :area
 
-  WEEKDAYS = %w(monday tuesday wednesday thursday friday
-                saturday sunday).freeze
+  WEEKDAYS = %w[monday tuesday wednesday thursday friday
+                saturday sunday].freeze
 
-  validates_inclusion_of :day, in: WEEKDAYS, message: "Invalid weekday"
-  validates_presence_of :day, :area
-  validates_presence_of :open_time, :close_time, if: :open?
+  validates :day, inclusion: { in: WEEKDAYS, message: 'Invalid weekday' }
+  validates :day, :area, presence: true
+  validates :open_time, :close_time, presence: { if: :open? }
   validates :day, uniqueness: { scope: :area_id }
 
-  attr_accessible :close_time, :open_time, :day, :open
+  # attr_accessible :close_time, :open_time, :day, :open
 
   scope :open_today, -> { today.where(open: true) }
 
-  scope :today, -> do
-    where(day: (Time.current - 4.hours).strftime("%A").downcase)
-  end
+  scope :today, lambda {
+    where(day: (Time.current - 4.hours).strftime('%A').downcase)
+  }
 end

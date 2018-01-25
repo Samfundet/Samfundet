@@ -1,0 +1,39 @@
+$column: 90px;
+$gutter: 30px;
+$grid-column: 12;
+
+// Breakpoints
+$mobile-and-tablet-portrait: (
+  columns: 12,
+  media: 'only screen and (max-width: 768px)',
+);
+
+$tablet-portrait: (
+  columns: 12,
+  media: '(min-width: 481px) and (max-width: 768px)',
+);
+
+$tablet-desktop: (
+  columns: 12,
+  media: 'only screen and (min-width: 768px)',
+);
+
+$mobile: (
+  columns: 12,
+  media: 'only screen and (max-width: 480px)',
+);
+
+$not-mobile: (
+  columns: 12,
+  media: 'only screen and (min-width: 480px)',
+);
+
+$desktop: (
+  columns: 12,
+  media: 'only screen and (min-width: 1024px)',
+);
+
+$not-desktop: (
+  columns: 12,
+  media: 'only screen and (max-width: 1024px)',
+);

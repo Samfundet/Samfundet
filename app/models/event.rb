@@ -1,39 +1,40 @@
-# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 class Event < ActiveRecord::Base
-  AGE_LIMIT = %w(eighteen eighteen_twenty twenty none).freeze
-  EVENT_TYPE = %w(art concert course dj excenteraften football_match happening
+  AGE_LIMIT = %w[eighteen eighteen_twenty twenty none].freeze
+  EVENT_TYPE = %w[art concert course dj excenteraften football_match happening
                   luka_event meeting movie music performance quiz
-                  samfundet_meeting party_meeting show theater theme_party uka_event debate_event).freeze
-  STATUS = %w(active archived canceled).freeze
-  PRICE_TYPE = %w(included custom billig free).freeze
-  BANNER_ALIGNMENT = %w(left right hide).freeze
+                  samfundet_meeting party_meeting show theater theme_party uka_event debate_event].freeze
+  STATUS = %w[active archived canceled].freeze
+  PRICE_TYPE = %w[included custom billig free].freeze
+  BANNER_ALIGNMENT = %w[left right hide].freeze
 
   TICKETS_UNAVAILABLE = :tickets_unavailable
   TICKETS_AVAILABLE = :tickets_available
   TICKETS_SOLD_OUT = :tickets_sold_out
 
-  attr_accessible :area_id, :billig_event_id, :title_en, :non_billig_title_no,
-                  :non_billig_start_time, :age_limit, :organizer_id, :organizer_type,
-                  :short_description_en, :short_description_no, :duration,
-                  :long_description_en, :long_description_no, :publication_time,
-                  :spotify_uri, :facebook_link, :youtube_link, :youtube_embed, :spotify_link,
-                  :soundcloud_link, :instagram_link, :twitter_link, :lastfm_link,
-                  :snapchat_link, :vimeo_link, :general_link, :event_type, :status,
-                  :primary_color, :secondary_color, :image_id,
-                  :price_groups, :price_type, :banner_alignment, :price_groups_attributes,
-                  :codeword
+  # attr_accessible :area_id, :billig_event_id, :title_en, :non_billig_title_no,
+  #                :non_billig_start_time, :age_limit, :organizer_id, :organizer_type,
+  #                :short_description_en, :short_description_no, :duration,
+  #                :long_description_en, :long_description_no, :publication_time,
+  #                :spotify_uri, :facebook_link, :youtube_link, :youtube_embed, :spotify_link,
+  #                :soundcloud_link, :instagram_link, :twitter_link, :lastfm_link,
+  #                :snapchat_link, :vimeo_link, :general_link, :event_type, :status,
+  #                :primary_color, :secondary_color, :image_id,
+  #                :price_groups, :price_type, :banner_alignment, :price_groups_attributes,
+  #                :codeword
 
   extend LocalizedFields
-  has_localized_fields :title, :short_description, :long_description
+  localized_fields :title, :short_description, :long_description
 
-  validates_presence_of :title_en, :non_billig_title_no, :non_billig_start_time, :age_limit,
-                        :event_type, :status, :area, :organizer, :price_type, :banner_alignment, :image_id
-  validates_inclusion_of :age_limit, in: AGE_LIMIT, message: "Invalid age limit"
-  validates_inclusion_of :event_type, in: EVENT_TYPE, message: "Invalid type"
-  validates_inclusion_of :status, in: STATUS, message: "Invalid status"
-  validates_inclusion_of :price_type, in: PRICE_TYPE, message: "Invalid price type"
-  validates_inclusion_of :banner_alignment, in: BANNER_ALIGNMENT, message: "Invalid banner alignment"
-  validates_inclusion_of :organizer_type, in: [Group.name, ExternalOrganizer.name], message: "Invalid organizer type"
+  validates :title_en, :non_billig_title_no, :non_billig_start_time, :age_limit,
+            :event_type, :status, :area, :organizer, :price_type, :banner_alignment, :image_id, presence: true
+  validates :age_limit, inclusion: { in: AGE_LIMIT, message: 'Invalid age limit' }
+  validates :event_type, inclusion: { in: EVENT_TYPE, message: 'Invalid type' }
+  validates :status, inclusion: { in: STATUS, message: 'Invalid status' }
+  validates :price_type, inclusion: { in: PRICE_TYPE, message: 'Invalid price type' }
+  validates :banner_alignment, inclusion: { in: BANNER_ALIGNMENT, message: 'Invalid banner alignment' }
+  validates :organizer_type, inclusion: { in: [Group.name, ExternalOrganizer.name], message: 'Invalid organizer type' }
   validates :duration, numericality: { greater_than: 0 }
 
   validates :primary_color, css_hex_color: true, presence: true
@@ -46,32 +47,35 @@ class Event < ActiveRecord::Base
   belongs_to :billig_event
   belongs_to :image
   has_one :front_page_lock, as: :lockable
-  has_many :price_groups, uniq: true
+  has_many :price_groups, -> { uniq }
 
   accepts_nested_attributes_for :price_groups, allow_destroy: true
 
-  validates_presence_of :price_groups, if: -> { price_type.eql? 'custom' }
+  validates :price_groups, presence: { if: -> { price_type.eql? 'custom' } }
 
   before_save :enforce_price_choice
 
   scope :active, -> { where(status: 'active') }
-  scope :published, -> { where("publication_time < ?", DateTime.current) }
-  scope :upcoming, -> { where("non_billig_start_time >= ?", Date.current) }
-  scope :past, -> { where("non_billig_start_time < ?", Date.current) }
-  scope :today, -> {
+  scope :published, -> { where('publication_time < ?', Time.current) }
+  scope :upcoming, -> { where('non_billig_start_time >= ?', Date.current) }
+  scope :past, -> { where('non_billig_start_time < ?', Date.current) }
+
+  def self.today
     active
       .published
       .where(
         non_billig_start_time:
-          (DateTime.current - 4.hours).change(hour: 4)..20.hours.from_now.change(hour: 4))
+          (Time.current - 4.hours).change(hour: 4)..20.hours.from_now.change(hour: 4)
+      )
       .order(:non_billig_start_time)
-  }
-  scope :by_frontpage_weight, -> {
+  end
+
+  def self.by_frontpage_weight
     active
       .published
       .upcoming
       .sort { |a, b| b.front_page_weight <=> a.front_page_weight }
-  }
+  end
 
   def title_no
     billig_event.try(:event_name) || non_billig_title_no
@@ -91,29 +95,29 @@ class Event < ActiveRecord::Base
 
   include PgSearch
   pg_search_scope :search,
-                  against: [:non_billig_title_no, :title_en,
-                            :short_description_no, :short_description_en,
-                            :long_description_no, :long_description_en,
-                            :age_limit, :non_billig_start_time,
-                            :event_type],
+                  against: %i[non_billig_title_no title_en
+                              short_description_no short_description_en
+                              long_description_no long_description_en
+                              age_limit non_billig_start_time
+                              event_type],
                   using: {
                     tsearch: {
-                      dictionary: "english",
+                      dictionary: 'english',
                       prefix: true
                     }
                   },
                   associated_against: { area: :name }
   multisearchable against:
-                    [:non_billig_title_no,
-                     :title_en,
-                     :long_description_en,
-                     :long_description_no,
-                     :age_limit,
-                     :non_billig_start_time],
-                  additional_attributes: -> (record) { { publish_at: record.publication_time } }
+                    %i[non_billig_title_no
+                       title_en
+                       long_description_en
+                       long_description_no
+                       age_limit
+                       non_billig_start_time],
+                  additional_attributes: ->(record) { { publish_at: record.publication_time } }
 
   # Uses the above defined PgSearch scope to perform search.
-  def self.text_search query
+  def self.text_search(query)
     if query.present?
       query.sub! 'samfundet_meeting', 'meeting'
       published.includes(:area).search(query)
@@ -161,11 +165,11 @@ class Event < ActiveRecord::Base
     return TICKETS_UNAVAILABLE if billig_event.nil? || Rails.application.config.billig_offline
 
     within_sale_period =
-      DateTime.current.between?(billig_event.sale_from, billig_event.sale_to)
+      Time.current.between?(billig_event.sale_from, billig_event.sale_to)
 
     netsale_ticket_groups = billig_event.netsale_billig_ticket_groups
 
-    tickets_available = netsale_ticket_groups.any? &:tickets_left?
+    tickets_available = netsale_ticket_groups.any?(&:tickets_left?)
 
     if within_sale_period && netsale_ticket_groups.any?
       if tickets_available
@@ -185,17 +189,17 @@ class Event < ActiveRecord::Base
     weight = 50 - 4 * ((start_time - Time.current) / 1.day).to_i
 
     case event_type
-    when "concert"
+    when 'concert'
       weight += 7
-    when "theme_party"
+    when 'theme_party'
       weight += 9
-    when "football_match", "dj", "quiz"
-      weight += -4*60 # two month's worth of ban
+    when 'football_match', 'dj', 'quiz'
+      weight += -4 * 60 # two month's worth of ban
     else
       weight += 0
     end
 
-    weight += 6 if area.name == "Storsalen"
+    weight += 6 if area.name == 'Storsalen'
 
     case purchase_status
     when TICKETS_SOLD_OUT
@@ -239,7 +243,7 @@ class Event < ActiveRecord::Base
     end
   end
 
-  def self.front_page_events n_front_page_events
+  def self.front_page_events(n_front_page_events)
     locks = FrontPageLock.locks_enabled
     locks_map = Hash[locks.map { |l| [l.position, l.lockable] }]
 
@@ -283,7 +287,7 @@ class Event < ActiveRecord::Base
 
   def few_tickets_left?
     if billig_event.present?
-      billig_event.billig_ticket_groups.any? &:few_tickets_left
+      billig_event.billig_ticket_groups.any?(&:few_tickets_left)
     end
   end
 

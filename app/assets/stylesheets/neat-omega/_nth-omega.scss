@@ -1,0 +1,53 @@
+@charset "UTF-8";
+/// Creates a margin right on the nth object in the row and the last 
+/// object in the container which causes a centered flexbox to self correct.
+///
+/// It also brings back the neat 1.8 behavior of clearing the *n + 1 block element,
+/// which addresses a secondary edge case where short elements don't
+/// clear the full row in floated 'box' layouts.
+///
+/// @group Features
+///
+/// @name nth-omega
+///
+/// @argument {number (`nth-child`}
+///   When passed an `nth-child` argument of type `*n` with `block` display, 
+///   the omega mixin automatically adds a clear to the `*n+1` th element. 
+///   Note that composite arguments such as `2n+1` do not support this feature.
+///
+/// @argument {map} $grid [$neat-grid]
+///   The grid to be used to generate the margins.
+///   By default, the global `$neat-grid` will be used.
+///
+///   .nth-element {
+///     @include nth-omega(4n);
+///   }
+///
+/// @example css - CSS Output
+///
+///   .nth-element:nth-child(4n) {
+///     margin-right: 20px;
+///   }
+///
+///   .nth-element:nth-child(4n+1) {
+///     clear: left;
+///   }
+///
+///  .nth-element:last-child {
+///     margin-right: 20px;
+///   }
+///
+
+@mixin nth-omega($selector, $grid: $neat-grid) {
+  $_grid-gutter: _retrieve-neat-setting($grid, gutter);
+  
+  &:nth-of-type(#{$selector}) {
+    margin-#{_neat-opposite-direction($grid)}: $_grid-gutter;
+  }
+  &:nth-of-type(#{$selector}+1) {
+    clear: _neat-float-direction($grid);
+  }
+  &:last-child {
+    margin-#{_neat-opposite-direction($grid)}: $_grid-gutter;
+  }
+}

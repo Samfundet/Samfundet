@@ -1,0 +1,85 @@
+@import "index";
+@import "job_applications";
+@import "modules/interviews";
+
+// Styles local to the admissions module
+$link: #a03033;
+$text: #333333;
+
+.admissions {
+  #no-admissions {
+    text-align: center;
+  }
+
+  a {
+  color: $link;
+  text-decoration: none;
+  &:hover {
+    color: $text; } }
+}
+
+td.link {
+  display: inline;
+  padding-left: 10%;
+}
+
+.admissions, .jobs {
+  h2, h3 {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: $font-weight-normal;
+  }
+}
+
+#admission-header {
+  @include grid-column(12);
+
+  #header-image {
+    @include autoscale-picture(200px, 'opptaksamfundet_130.png');
+
+    @include grid-media($tablet-desktop) {
+        @include autoscale-picture(400px, 'opptaksamfundet_130.png');
+    }
+  }
+
+  .youtube-video {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    max-width: 100%;
+
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .no-active-admission-youtube-video {
+    position: relative;
+    margin: 10px;
+    max-width: 100%;
+    height: 300px;
+
+    iframe {
+      position: relative;
+      width: 50%;
+      height: 100%;
+    }
+  }
+
+  #navigation {
+    text-align: center;
+    margin: 20px 0;
+
+    a {
+      color: $samfundet-black;
+      text-transform: uppercase;
+      font-weight: $font-weight-bold;
+      margin-right: 10px;
+    }
+  }
+}
+

@@ -1,4 +1,5 @@
-# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 class JobApplication < ActiveRecord::Base
   belongs_to :applicant
   belongs_to :job
@@ -7,27 +8,13 @@ class JobApplication < ActiveRecord::Base
 
   has_one :interview, dependent: :destroy
 
-  validates_presence_of :job, :motivation
-  validates_presence_of :applicant, if: :validate_applicant?
-  validates_uniqueness_of :applicant_id, scope: :job_id, message: I18n.t('jobs.already_applied')
+  validates :job, :motivation, presence: true
+  validates :applicant, presence: { if: :validate_applicant? }
+  validates :applicant_id, uniqueness: { scope: :job_id, message: I18n.t('jobs.already_applied') }
 
   delegate :title, to: :job
 
   # named_scope :with_interviews, { conditions: ['interview.time > 0'] }
-
-  # scope_condition for acts_as_list
-  def scope_condition
-    if Rails.env == "test"
-      "1 = 1"
-    else
-      jobs = applicant.jobs.find(:all, conditions: { admission_id: job.admission_id }).collect(&:id)
-      if jobs.empty?
-        "0 = 1"
-      else
-        "applicant_id = #{applicant_id} AND job_id IN(#{jobs.join(', ')})"
-      end
-    end
-  end
 
   def find_or_create_interview
     interview || create_interview
@@ -60,7 +47,8 @@ class JobApplication < ActiveRecord::Base
   def last_log_entry
     LogEntry.where(
       admission_id: job.admission.id,
-      applicant_id: applicant.id).last
+      applicant_id: applicant.id
+    ).last
   end
 end
 

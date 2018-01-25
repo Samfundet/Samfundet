@@ -1,0 +1,156 @@
+// Based on a [blog post by Ryan Fait](http://ryanfait.com/resources/footer-stick-to-bottom-of-page/).
+//
+// Must be mixed into the top level of your stylesheet.
+//
+// Footer element must be outside of root wrapper element.
+//
+// Footer must be a fixed height.
+
+@mixin sticky-footer($footer-height,
+    $root-selector: unquote("#sticky-footer-wrapper"),
+    $root-footer-selector: unquote("#sticky-footer-wrapper-footer"),
+    $footer-selector: unquote("#footer")) {
+
+  html, body {
+    height: 100%; }
+  #{$root-selector} {
+    clear: both;
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin-bottom: -$footer-height;
+    #{$root-footer-selector} {
+      height: $footer-height; } }
+  #{$footer-selector} {
+    clear: both;
+    position: relative;
+    height: $footer-height; } }
+
+@include sticky-footer(280px);
+
+#footer {
+    background-color: $samfundet-black;
+    color: #555;
+    font-weight: $font-weight-normal;
+    font-size: 20px;
+
+    #cookies {
+      text-align: center;
+      font-size: 15px;
+      margin-top: 1rem;
+    }
+
+    a {
+        text-decoration: none;
+        color: #777;
+
+        &:hover { color: #888; }
+    }
+
+    #footer-wrapper {
+        padding-top: 35px;
+
+        @include grid-container;
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        #social {
+            text-align: right;
+            @include grid-column(5);
+
+            li {
+              margin: 2px 0;
+            }
+        }
+
+        img {
+            margin-left: 3px;
+            width: 24px;
+            height: 24px;  
+            vertical-align: middle;
+        }
+
+        #contact {
+            text-align: left;
+            @include grid-column(7);
+
+            li {
+              margin: 5px 0;
+            }
+        }
+
+        #contact-editors{
+            text-align: center;
+            ul {
+                margin-bottom: 8px;
+            }
+        }
+
+
+        }
+}
+
+#sponsors{
+  font-size: 20px;
+  font-weight: $font-weight-normal;
+  text-align: center;
+
+  #mainsponsor, #partners, #othersponsors{
+    @include grid-media($tablet-desktop) {
+      display: inline-block;
+    }
+    .logo, .sponsortext{
+      display: block;
+      a {
+        display: inline-block;
+
+        margin: auto;
+        padding: 40px;
+
+        height: 60px;
+        width: 120px;
+
+        background-position: center; 
+        background-repeat: no-repeat;
+        background-size: 120px;
+
+        @media (max-width: 400px) {
+          background-size: 100px;
+          width: 100px;
+          height: 50px;
+        }
+
+        &.dnb-icon {
+          background-image: url(footer/dnb.png);
+        }
+
+        &.isfit-icon {
+          background-image: url(footer/isfit.jpg);
+        }
+
+        &.uka-icon {
+          background-image: url(footer/uka.png);
+        }
+
+				&.muo-icon {
+          background-image: url(footer/muo.png);
+        }
+      }
+    }
+  }
+  #mainsponsor{
+    @include grid-media($tablet-desktop) {
+      padding-right: 80px;
+    }
+  }
+  #othersponsors{
+    @include grid-media($tablet-desktop) {
+      padding-right: 130px;
+      padding-left: 80px;
+    }
+  }
+}
+

@@ -1,19 +1,23 @@
+// Framework customizations
+@import "neat-settings/grid-settings";
+
+@import "neat";
+@import "neat-omega/*";
+
+// Scss and grid modules
+@import "bourbon";
+
 // Gem imports
+@import "jquery-ui/core";
 @import "jquery-ui/datepicker";
 @import "jquery-ui/autocomplete";
+@import "jquery-ui/theme";
 @import "jquery-tablesorter/theme.default";
 
 // Vendor stylesheets
 @import "jquery.modal";
 @import "jquery-ui-timepicker-addon.min";
 @import "_typeahead";
-
-// Scss and grid modules
-@import "bourbon";
-@import "neat";
-
-// Framework customizations
-@import "neat-settings/grid-settings";
 
 // Sass files for sitewide constants and mixins
 @import "sitewide/_code";
@@ -36,7 +40,7 @@
 @import "sitewide/_pagination";
 
 // Sass files for different modules
-@import "site/site.css.scss";
+@import "site/site";
 @import "events/events";
 @import "admissions/admissions";
 @import "documents/documents";

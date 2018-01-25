@@ -1,4 +1,5 @@
 # -*- encoding : utf-8 -*-
+# frozen_string_literal: true
 
 require 'redcarpet'
 
@@ -14,7 +15,6 @@ end
 
 module Haml::Filters::Markdown
   include Haml::Filters::Base
-  lazy_require 'redcarpet'
 
   markdown_extensions = {
     autolink: true,
@@ -28,7 +28,7 @@ module Haml::Filters::Markdown
     filter_html: true
   }
 
-  markdown = Redcarpet::Markdown.new(CustomRenderer.new(render_options),
+  markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(render_options),
                                      markdown_extensions)
 
   # using define_method rather than def to keep 'markdown' in scope

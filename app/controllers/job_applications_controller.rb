@@ -1,17 +1,18 @@
-# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 class JobApplicationsController < ApplicationController
-  layout "admissions"
+  layout 'admissions'
   filter_access_to [:index]
-  filter_access_to [:update, :destroy, :up, :down], attribute_check: true
+  filter_access_to %i[update destroy up down], attribute_check: true
 
   def index
     @admissions = @current_user.job_applications.group_by { |job_application| job_application.job.admission }
   end
 
   def create
-    @job_application = JobApplication.new(params[:job_application])
+    @job_application = JobApplication.new(job_application_params)
 
-    if @job_application.job && @job_application.job.admission.actual_application_deadline > Time.current
+    if @job_application.job&.admission&.appliable?
       if logged_in? && permitted_to?(:create, :job_applications)
         if current_user.class == Applicant
           handle_create_application_when_logged_in
@@ -33,7 +34,7 @@ class JobApplicationsController < ApplicationController
   end
 
   def update
-    if @job_application.update_attributes(params[:job_application])
+    if @job_application.update(job_application_params)
       @job_application.update_attribute(:withdrawn, false)
       flash[:success] = t('job_applications.application_updated')
       if current_user.class == Applicant
@@ -67,16 +68,14 @@ class JobApplicationsController < ApplicationController
   private
 
   def prioritize(direction)
-    if @job_application && @job_application.job.admission.user_priority_deadline > Time.current
+    if @job_application&.job&.admission&.prioritize?
       @job_application.send "move_#{direction}"
       @job_application.save!
+    elsif request.xhr?
+      render text: t('job_applications.cannot_prioritize_after_deadline'), status: 500
+      return
     else
-      if request.xhr?
-        render text: t('job_applications.cannot_prioritize_after_deadline'), status: 500
-        return
-      else
-        flash[:error] = t('job_applications.cannot_prioritize_after_deadline')
-      end
+      flash[:error] = t('job_applications.cannot_prioritize_after_deadline')
     end
     redirect_to_applications
   end
@@ -113,5 +112,9 @@ class JobApplicationsController < ApplicationController
   def render_application_form_with_errors
     flash[:error] = @job_application.errors.full_messages.first
     redirect_to @job_application.job
+  end
+
+  def job_application_params
+    params.require(:job_application).permit(:job_id, :motivation)
   end
 end

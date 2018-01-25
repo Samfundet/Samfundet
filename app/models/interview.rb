@@ -1,9 +1,10 @@
-# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 class Interview < ActiveRecord::Base
   belongs_to :job_application
   #  has_one :group, through: :job_application
 
-  scope :with_time_set, conditions: ["time > 0"]
+  scope :with_time_set, -> { where('time > 0') }
 
   ACCEPTANCE_STATUSES_NO = { wanted: 'Vil ha',
                              reserved: 'Reserve',
@@ -14,13 +15,13 @@ class Interview < ActiveRecord::Base
                              not_wanted: 'Not wanted',
                              nil => 'Not set' }.freeze
 
-  validates_inclusion_of :acceptance_status,
-                         in: ACCEPTANCE_STATUSES_NO.keys,
-                         message: "Invalid acceptance status"
+  validates :acceptance_status,
+            inclusion: { in: ACCEPTANCE_STATUSES_NO.keys,
+                         message: 'Invalid acceptance status' }
 
   def acceptance_status
     field = self[:acceptance_status]
-    field = nil if field && field.empty?
+    field = nil if field&.empty?
     return field.to_sym unless field.blank?
   end
 
@@ -40,7 +41,7 @@ class Interview < ActiveRecord::Base
     end
   end
 
-  def ACCEPTANCE_STATUSES
+  def acceptance_statuses
     if I18n.locale == :no
       ACCEPTANCE_STATUSES_NO
     elsif I18n.locale == :en

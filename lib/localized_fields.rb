@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 module LocalizedFields
-  def has_localized_fields(*fields)
+  def localized_fields(*fields)
     fields.each do |field|
       define_method field do
         if I18n.locale == :no || send("#{field}_en").blank?

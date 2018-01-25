@@ -1,0 +1,60 @@
+.areas.edit, .areas.update {
+    text-align: center;
+
+    h2 {
+        text-transform: uppercase;
+    }
+
+    form {
+        list-style-type: none;
+
+        @include grid-column(12);
+
+        .standard-hours {
+            @include grid-column(12);
+
+            .standard-hour {
+                background-color: rgba($samfundet-light-grey, 0.5);
+                padding: 20px;
+                margin-bottom: 20px;
+
+                @include grid-column(12);
+                @include grid-media($tablet-portrait) {
+                    @include grid-column(6 of 12);
+                    &:nth-child(4n-1) {
+                        @include omega();
+                    }
+                } 
+                @include grid-media($tablet-desktop) {
+                    @include grid-column(4 of 12);
+                    &:nth-child(6n-1) {
+                        @include omega();
+                    }
+                }
+
+                h2 {
+                    text-transform: uppercase;
+                    color: $samfundet-red;
+                }
+
+                & > li {
+                    margin: 5px 0;
+
+                    label { display: block; }
+                }
+            }
+        }
+
+        fieldset {
+            border: none;
+
+            ol {
+                list-style-type: none;
+
+                li {
+                    padding: 0;
+                }
+            }
+        }
+    }
+}

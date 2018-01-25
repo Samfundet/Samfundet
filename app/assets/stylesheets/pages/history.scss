@@ -1,0 +1,41 @@
+
+ins {
+    background: #8F8;
+    text-decoration: none;
+}
+
+del {
+    background: #F88;
+    text-decoration: line-through;
+}
+
+.revision {
+    .header {
+        @include grid-column(12 of 12);
+
+        background: #DDD;
+        margin-top: 10px;
+        padding: 10px;
+
+        .expand-button {
+            @include grid-column(2 of 12);
+
+            a {
+                font-size: 200%;
+            }
+        }
+
+        .meta-info {
+            @include grid-column(10 of 12);
+            text-align: right;
+        }
+    }
+
+    pre {
+        white-space: pre-wrap;
+    }
+
+    .language {
+        @include grid-column(6 of 12);
+    }
+}

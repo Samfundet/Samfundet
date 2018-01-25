@@ -1,4 +1,5 @@
 # -*- encoding : utf-8 -*-
+# frozen_string_literal: true
 Formtastic::FormBuilder.i18n_lookups_by_default = true
 
 # Set the default text field size when input is a string. Default is 50
@@ -13,7 +14,7 @@ Formtastic::FormBuilder.all_fields_required_by_default = false
 # '<abbr title="required">*</abbr>'. In other words, if you configure formtastic.required
 # in your locale, it will replace the abbr title properly. But if you don't want to use
 # abbr tag, you can simply give a string as below
-#Formtastic::FormBuilder.required_string = "(required)"
+# Formtastic::FormBuilder.required_string = "(required)"
 
 # Set the string that will be appended to the labels/fieldsets which are optional
 # Defaults to an empty string ("") and also accepts procs (see required_string above)

@@ -1,0 +1,47 @@
+.members.control_panel {
+  h1 {
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  #applets {
+    .applet {
+      background-color: rgba($samfundet-light-grey, 0.3);
+      text-align: center;
+      padding: 20px;
+      margin-bottom: 20px;
+
+      @include grid-column(12);
+
+      @include grid-media($tablet-portrait) {
+        @include grid-column(6 of 12);
+        @include omega("&:nth-of-type(2n)");
+      }
+
+      @include grid-media($tablet-desktop) {
+        @include grid-column(4 of 12);
+        @include omega("&:nth-of-type(3n)");
+      }
+
+      ul {
+        padding-left: 0;
+        list-style-type: none;
+      }
+
+      h2 {
+        text-transform: uppercase;
+        margin: 0;
+      }
+
+      p {
+          margin: 16px 0;
+      }
+
+      input[type=text] {
+        padding: 10px;
+        font-size: 20px;
+        border: 1px solid rgba(0, 0, 0, 0.5);
+      }
+    }
+  }
+}

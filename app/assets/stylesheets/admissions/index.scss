@@ -1,0 +1,123 @@
+.admissions.index {
+  .section {
+    @include grid-column(12);
+  }
+
+  #promo {
+    text-align: center;
+    margin-bottom: 2em;
+
+    @include grid-media($tablet-desktop) {
+      @include grid-shift(2);
+      @include grid-column(8);
+      @include omega;
+    }
+  }
+
+  #groups-with-jobs {
+    background-color: $samfundet-light-grey;
+
+    ul {
+      padding-left: 0;
+      text-align: center;
+      margin-bottom: 40px;
+      line-height: 0.7;
+      font-size: 0.9em;
+
+      @include grid-media($tablet-desktop) { 
+        font-size: 1.1em;
+        line-height: 1;
+      }
+
+      li {
+        display: inline;
+
+        a {
+          display: inline-block;
+          padding: 6px 7px;
+
+          &:hover {
+            background: #eeeeee;
+          }
+        }
+      }
+    }
+  }
+
+  #group-types {
+    .header {
+      @include grid-column(12);
+      background-color: $samfundet-light-grey;
+      margin: 10px 0;
+
+      @include grid-media($not-mobile) {
+        background-color: initial;
+      }
+
+      h3 {
+        margin: 10px 0;
+      }
+    }
+    .jobs {
+      @include grid-column(12);
+
+      margin-bottom: 1em;
+
+      .job {
+        @include grid-column(12);
+
+        margin-bottom: 20px;
+        padding: 0 10px;
+
+        .title {
+          @include grid-media($mobile) {
+            float: left;
+            text-transform: uppercase;
+
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            width: 70%;
+
+            a {
+              text-decoration: underline;
+              color: black;
+            }
+          }
+
+          @include grid-media($tablet-portrait) {
+            @include grid-column(3);
+          }
+
+          @include grid-media($tablet-desktop) {
+            @include grid-column(4);
+          }
+        }
+
+        .group {
+          @include grid-media($mobile) {
+            float: right;
+          }
+
+          @include grid-media($tablet-portrait) {
+            @include grid-column(3);
+          }
+
+          @include grid-media($tablet-desktop) {
+            @include grid-column(2);
+          }
+        }
+
+        .teaser {
+          @include grid-media($mobile) {
+            padding-top: 5px;
+            clear: both;
+          }
+          @include grid-media($not-mobile) {
+            @include grid-column(6);
+          }
+        }
+      }
+    }
+  }
+}

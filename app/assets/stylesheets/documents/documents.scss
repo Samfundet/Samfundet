@@ -1,0 +1,16 @@
+@import "admin";
+
+.documents {
+    ul.document-list {
+        @include grid-media($tablet-desktop) {
+            column-count: 3;
+            -webkit-column-count: 3;
+            -moz-column-count: 3;
+        }
+    }
+}
+
+.category-list a {
+    display: block;
+    margin-bottom: 5px;
+}

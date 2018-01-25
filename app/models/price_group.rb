@@ -1,8 +1,10 @@
-class PriceGroup < ActiveRecord::Base
-  attr_accessible :name, :price
+# frozen_string_literal: true
 
-  validate :name, :price, presence: true
-  validate :price, numericality: { only_integer: true }
+class PriceGroup < ActiveRecord::Base
+  # attr_accessible :name, :price
+
+  validates :name, :price, presence: true
+  validates :price, numericality: { only_integer: true }
 
   belongs_to :event
 end
