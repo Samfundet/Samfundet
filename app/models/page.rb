@@ -16,7 +16,7 @@ class Page < ActiveRecord::Base
   validates :name_no, uniqueness: true
   validates :name_en, uniqueness: true
   belongs_to :role
-  has_many :revisions, class_name: PageRevision.name
+  has_many :revisions, class_name: PageRevision.name, dependent: :delete_all
 
   attr_accessible :name_no, :name_en, :title_no, :title_en,
                   :content_no, :content_en, :role, :role_id, :created_at, :updated_at,

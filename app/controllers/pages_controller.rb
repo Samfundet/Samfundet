@@ -76,10 +76,10 @@ class PagesController < ApplicationController
   end
 
   def destroy
-    @page = Page.find(params[:id])
+    @page = Page.find_by_name(params[:id])
     @page.destroy
     flash[:success] = t("pages.destroy_success")
-    redirect_to pages_path
+    redirect_to admin_pages_path
   end
 
   def graph
