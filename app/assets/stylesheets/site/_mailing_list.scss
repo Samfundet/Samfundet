@@ -14,7 +14,7 @@
       width: 250px;
       border: 1px solid rgba(0, 0, 0, 0.5);
 
-      @include media($mobile-and-tablet-portrait) {
+      @include grid-media($mobile-and-tablet-portrait) {
         width: 100%;
         margin-bottom: 5px;
       }
@@ -25,7 +25,7 @@
       color: $samfundet-white;
       background-color: $samfundet-red;
 
-      @include media($mobile-and-tablet-portrait) {
+      @include grid-media($mobile-and-tablet-portrait) {
         width: 100%;
       }
     }

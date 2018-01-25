@@ -81,8 +81,8 @@ input[type=submit] {
 .container {
     margin-bottom: 40px;
 
-    @include outer-container;
-    @include media($not-desktop) {
+    @include grid-container;
+    @include grid-media($not-desktop) {
       margin-left: 20px;
       margin-right: 20px;
     }
@@ -123,7 +123,7 @@ input[type=submit] {
     margin-bottom: 10px;
 }
 
-@include media($desktop) {
+@include grid-media($desktop) {
   .rwd-break {
     display: none;
   }

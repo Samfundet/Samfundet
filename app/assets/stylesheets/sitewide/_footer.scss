@@ -50,7 +50,7 @@
     #footer-wrapper {
         padding-top: 35px;
 
-        @include outer-container;
+        @include grid-container;
 
         ul {
             list-style-type: none;
@@ -59,7 +59,7 @@
         
         #social {
             text-align: right;
-            @include span-columns(5);
+            @include grid-column(5);
 
             li {
               margin: 2px 0;
@@ -75,7 +75,7 @@
 
         #contact {
             text-align: left;
-            @include span-columns(7);
+            @include grid-column(7);
 
             li {
               margin: 5px 0;
@@ -99,7 +99,7 @@
   text-align: center;
 
   #mainsponsor, #partners, #othersponsors{
-    @include media($tablet-desktop) {
+    @include grid-media($tablet-desktop) {
       display: inline-block;
     }
     .logo, .sponsortext{
@@ -142,12 +142,12 @@
     }
   }
   #mainsponsor{
-    @include media($tablet-desktop) {
+    @include grid-media($tablet-desktop) {
       padding-right: 80px;
     }
   }
   #othersponsors{
-    @include media($tablet-desktop) {
+    @include grid-media($tablet-desktop) {
       padding-right: 130px;
       padding-left: 80px;
     }

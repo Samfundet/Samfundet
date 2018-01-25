@@ -4,17 +4,17 @@
         background-color: $samfundet-light-grey;
         text-transform: uppercase;
 
-        @include span-columns(12);
-        @include media($tablet-desktop) {
+        @include grid-column(12);
+        @include grid-media($tablet-desktop) {
             border-right: 1px solid #000;
             background-color: transparent;
-            @include span-columns(3.5 of 12);
+            @include grid-column(3.5 of 12);
         }
 
         .menu-content {
             display: none;
 
-            @include media($tablet-desktop) {
+            @include grid-media($tablet-desktop) {
                 display: block;
             }
         }
@@ -50,7 +50,7 @@
         }
 
         &:not(.submenu) {
-            @include media($mobile) {
+            @include grid-media($mobile) {
                 border-bottom: 1px dotted rgba(0, 0, 0, 0.3);
             }
         }

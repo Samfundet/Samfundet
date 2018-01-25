@@ -2,7 +2,7 @@
 
 .documents {
     ul.document-list {
-        @include media($tablet-desktop) {
+        @include grid-media($tablet-desktop) {
             column-count: 3;
             -webkit-column-count: 3;
             -moz-column-count: 3;

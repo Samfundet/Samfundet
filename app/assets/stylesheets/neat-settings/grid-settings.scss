@@ -1,14 +1,39 @@
-@import "neat-helpers"; // or "neat-helpers" when in Rails
-
 $column: 90px;
 $gutter: 30px;
-$grid-columns: 12;
+$grid-column: 12;
 
 // Breakpoints
-$mobile-and-tablet-portrait: new-breakpoint(max-width 768px 12);
-$tablet-portrait: new-breakpoint(min-width 481px max-width 768px 12);
-$tablet-desktop: new-breakpoint(min-width 769px 12);
-$mobile: new-breakpoint(max-width 480px 12);
-$not-mobile: new-breakpoint(min-width 481px 12);
-$desktop: new-breakpoint(min-width 1025px 12);
-$not-desktop: new-breakpoint(max-width 1024px 12);
+$mobile-and-tablet-portrait: (
+  columns: 12,
+  media: 'only screen and (max-width: 768px)',
+);
+
+$tablet-portrait: (
+  columns: 12,
+  media: '(min-width: 481px) and (max-width: 768px)',
+);
+
+$tablet-desktop: (
+  columns: 12,
+  media: 'only screen and (min-width: 768px)',
+);
+
+$mobile: (
+  columns: 12,
+  media: 'only screen and (max-width: 480px)',
+);
+
+$not-mobile: (
+  columns: 12,
+  media: 'only screen and (min-width: 480px)',
+);
+
+$desktop: (
+  columns: 12,
+  media: 'only screen and (min-width: 1024px)',
+);
+
+$not-desktop: (
+  columns: 12,
+  media: 'only screen and (max-width: 1024px)',
+);

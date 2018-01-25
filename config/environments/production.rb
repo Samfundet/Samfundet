@@ -51,8 +51,6 @@ Samfundet::Application.configure do
   # Enable threaded mode
   # config.threadsafe!
 
-  Haml::Template.options[:ugly] = :true
-
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_url_options = { host: 'samfundet.no', protocol: 'https' }
 

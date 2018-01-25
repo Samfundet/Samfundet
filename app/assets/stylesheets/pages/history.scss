@@ -11,14 +11,14 @@ del {
 
 .revision {
     .header {
-        @include span-columns(12 of 12);
+        @include grid-column(12 of 12);
 
         background: #DDD;
         margin-top: 10px;
         padding: 10px;
 
         .expand-button {
-            @include span-columns(2 of 12);
+            @include grid-column(2 of 12);
 
             a {
                 font-size: 200%;
@@ -26,7 +26,7 @@ del {
         }
 
         .meta-info {
-            @include span-columns(10 of 12);
+            @include grid-column(10 of 12);
             text-align: right;
         }
     }
@@ -36,6 +36,6 @@ del {
     }
 
     .language {
-        @include span-columns(6 of 12);
+        @include grid-column(6 of 12);
     }
 }

@@ -8,25 +8,25 @@
     form {
         list-style-type: none;
 
-        @include span-columns(12);
+        @include grid-column(12);
 
         .standard-hours {
-            @include span-columns(12);
+            @include grid-column(12);
 
             .standard-hour {
                 background-color: rgba($samfundet-light-grey, 0.5);
                 padding: 20px;
                 margin-bottom: 20px;
 
-                @include span-columns(12);
-                @include media($tablet-portrait) {
-                    @include span-columns(6 of 12);
+                @include grid-column(12);
+                @include grid-media($tablet-portrait) {
+                    @include grid-column(6 of 12);
                     &:nth-child(4n-1) {
                         @include omega();
                     }
                 } 
-                @include media($tablet-desktop) {
-                    @include span-columns(4 of 12);
+                @include grid-media($tablet-desktop) {
+                    @include grid-column(4 of 12);
                     &:nth-child(6n-1) {
                         @include omega();
                     }

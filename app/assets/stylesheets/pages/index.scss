@@ -10,8 +10,8 @@
         text-transform: uppercase;
         cursor: pointer;
 
-        @include span-columns(12);
-        @include media($tablet-desktop) {
+        @include grid-column(12);
+        @include grid-media($tablet-desktop) {
             display: none;
             background-color: transparent;
         }
@@ -27,11 +27,11 @@
 
     .content {
 
-        @include span-columns(12);
+        @include grid-column(12);
         @include omega();
-        @include media($tablet-desktop) {
+        @include grid-media($tablet-desktop) {
             padding: 0 1.7em;
-            @include span-columns(8.5 of 12);
+            @include grid-column(8.5 of 12);
         }
 
         h1 {
@@ -45,7 +45,7 @@
                 padding-top: 0;
             }
 
-            @include media($mobile-and-tablet-portrait) {
+            @include grid-media($mobile-and-tablet-portrait) {
                 font-size: 30px;
             }
         }

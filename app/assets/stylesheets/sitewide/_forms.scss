@@ -1,5 +1,5 @@
 form:not(.custom-form) {
-  @include span-columns(12);
+  @include grid-column(12);
 
   background-color: $samfundet-light-grey;
   padding-top: 10px;
@@ -21,9 +21,9 @@ form:not(.custom-form) {
     border: none;
     padding: 10px 12px;
 
-    @include span-columns(12 of 12);
-    @include media($tablet-desktop) {
-      @include span-columns(8 of 8);
+    @include grid-column(12 of 12);
+    @include grid-media($tablet-desktop) {
+      @include grid-column(8 of 8);
     }
 
     legend {
@@ -48,9 +48,9 @@ form:not(.custom-form) {
     }
 
     ol {
-      @include span-columns(12 of 12);
-      @include media($tablet-desktop) {
-        @include span-columns(8 of 8);
+      @include grid-column(12 of 12);
+      @include grid-media($tablet-desktop) {
+        @include grid-column(8 of 8);
       }
 
       list-style-type: none;
@@ -61,9 +61,9 @@ form:not(.custom-form) {
       li {
         padding: 5px;
 
-        @include span-columns(12 of 12);
-        @include media($tablet-desktop) {
-          @include span-columns(8 of 8);
+        @include grid-column(12 of 12);
+        @include grid-media($tablet-desktop) {
+          @include grid-column(8 of 8);
         }
 
         label {
@@ -71,15 +71,15 @@ form:not(.custom-form) {
           display: block;
           padding-top: 12px;
 
-          @include span-columns(12 of 12);
-          @include media ($tablet-desktop) {
+          @include grid-column(12 of 12);
+          @include grid-media ($tablet-desktop) {
             text-align: right;
-            @include span-columns(2 of 8);
+            @include grid-column(2 of 8);
           }
 
           input[type=radio] {
             width: auto;
-            @include media($tablet-desktop) {
+            @include grid-media($tablet-desktop) {
               margin: 5px 5px 5px 20%;
             }
           }
@@ -103,9 +103,9 @@ form:not(.custom-form) {
           border: 1px solid rgba(0, 0, 0, 0.5);
           resize: none;
 
-          @include span-columns(12 of 12);
-          @include media($tablet-desktop) {
-            @include span-columns(6 of 8);
+          @include grid-column(12 of 12);
+          @include grid-media($tablet-desktop) {
+            @include grid-column(6 of 8);
             @include omega();
           }
 
@@ -122,7 +122,7 @@ form:not(.custom-form) {
           margin: 12px;
           font-size: 1em;
 
-          @include media($mobile) {
+          @include grid-media($mobile) {
             width: 100%;
           }
         }
@@ -130,9 +130,9 @@ form:not(.custom-form) {
         p.inline-hints {
           margin-top:0;
           margin-bottom:0;
-          @include media($tablet-desktop) {
-            @include shift(2);
-            @include span-columns(6 of 8);
+          @include grid-media($tablet-desktop) {
+            @include grid-shift(2);
+            @include grid-column(6 of 8);
           }
         }
       }
@@ -142,7 +142,7 @@ form:not(.custom-form) {
   fieldset.actions {
     ol {
       input {
-        @include shift(2);
+        @include grid-shift(2);
       }
     }
   }

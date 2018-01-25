@@ -11,7 +11,7 @@ ruby '2.3.3'
 source 'https://rubygems.org'
 
 # Rails. Duh.
-gem 'rails', '5.0.0'
+gem 'rails', '5.1.4'
 
 # acts_as_list provides the means to sort and reorder a list of objects
 # with respect to a column in the database, e.g. to sort and reorder a list
@@ -46,9 +46,9 @@ gem 'sass'
 # Sass is a stylesheet language. It compiles to CSS.
 gem 'sass-rails'
 # Sass mixin library
-gem 'bourbon'
+gem 'bourbon', '~> 4.2.0'
 # Semantic fluid grid framework
-gem 'neat'
+gem 'neat', '2.0.0'
 # uglifier is a Ruby wrapper for UglifyJS, a JavaScript compressor.
 gem 'uglifier'
 
@@ -61,7 +61,8 @@ gem 'declarative_authorization', git: 'https://github.com/Samfundet/declarative_
 # not the database level. Therefore, there are no methods for explicitly
 # adding foreign keys in ActiveRecord migrations.
 # foreigner adds a few such methods.
-gem 'foreigner'
+# gem 'foreigner'
+# NOT NEEDED AFTER RAILS 4.2
 
 # formtastic is a Rails form builder plugin
 # with semantically rich and accessible markup.
@@ -113,7 +114,7 @@ gem 'date_validator'
 gem 'therubyracer', require: 'v8'
 
 # PostgreSQL adapter. See: config/database.yml
-gem 'pg'
+gem 'pg', '0.21.0'
 
 # Provides PostgreSQL fulltext search. Contains wrappers for tsvectors
 # and enables searching in nested attributes.
@@ -199,6 +200,9 @@ group :development, :test do
   # rspec-rails integrates RSpec (v2) and Rails (v3).
   gem 'rails-controller-testing'
   gem 'rspec-rails'
+
+  # Refills for removed Bourbon mixins
+  gem 'refills'
 end
 
 group :test do

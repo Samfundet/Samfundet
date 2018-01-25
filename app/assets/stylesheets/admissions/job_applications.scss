@@ -7,14 +7,14 @@
 
   .section {
     margin-top: 20px;
-    @include span-columns(12);
+    @include grid-column(12);
 
     .content {
       margin-bottom: 20px;
 
-      @include media($tablet-desktop){
-        @include shift(2);
-        @include span-columns(8);
+      @include grid-media($tablet-desktop){
+        @include grid-shift(2);
+        @include grid-column(8);
       }
 
       h3 {
@@ -29,21 +29,21 @@
         table{
           margin: 20px 0 55px 0;
           width: 50%;
-          @include shift(3);
+          @include grid-shift(3);
         }
       }
     }
 
     .log{
-      @include media($tablet-desktop){
-        @include span-columns(12);
+      @include grid-media($tablet-desktop){
+        @include grid-column(12);
         margin-top: 20px;
       }
     }
 
     .soknader{
-      @include media($tablet-desktop){
-        @include span-columns(12);
+      @include grid-media($tablet-desktop){
+        @include grid-column(12);
       }
     .display-none{
         display:none;
@@ -59,7 +59,7 @@
   }
 
   .section {
-    @include span-columns(12);
+    @include grid-column(12);
 
     .top {
       text-align: center;
@@ -71,20 +71,20 @@
       font-size: 1.1em;
       margin-bottom: 40px;
 
-      @include media($not-mobile) {
-        @include shift(1);
-        @include span-columns(10);
+      @include grid-media($not-mobile) {
+        @include grid-shift(1);
+        @include grid-column(10);
         @include omega;
       }
     }
 
     #job-application {
-      @include span-columns(12);
+      @include grid-column(12);
 
       background-color: $samfundet-light-grey;
       padding: 5px 20px;
 
-      @include media($not-mobile) {
+      @include grid-media($not-mobile) {
         padding: 5px 0;
       }
 
@@ -93,9 +93,9 @@
       }
 
       #apply-description {
-        @include media($not-mobile) {
-          @include shift(1);
-          @include span-columns(5);
+        @include grid-media($not-mobile) {
+          @include grid-shift(1);
+          @include grid-column(5);
         }
 
         p {
@@ -105,8 +105,8 @@
       }
 
       .textarea-wrapper {
-        @include media($not-mobile) {
-          @include span-columns(5);
+        @include grid-media($not-mobile) {
+          @include grid-column(5);
         }
 
         textarea {
@@ -116,7 +116,7 @@
         .submit-button-container {
           text-align: right;
 
-          @include media($not-mobile) {
+          @include grid-media($not-mobile) {
             text-align: left;
           }
         }
@@ -124,23 +124,23 @@
     }
 
     .other-jobs {
-      @include span-columns(12);
+      @include grid-column(12);
       padding-right: 20px;
       padding-left: 20px;
 
-      @include media($not-mobile) {
+      @include grid-media($not-mobile) {
         padding-right: 0;
         padding-left: 0;
 
-        @include shift(1);
-        @include span-columns(10);
+        @include grid-shift(1);
+        @include grid-column(10);
       }
 
       .similar-jobs, .same-group-jobs {
         margin-bottom: 40px;
 
-        @include media($not-mobile) {
-          @include span-columns(5);
+        @include grid-media($not-mobile) {
+          @include grid-column(5);
           margin-right: 0px;
           width: 50%;
         }
@@ -157,7 +157,7 @@
     }
 
     .col.max {
-      @include span-columns(12);
+      @include grid-column(12);
     }
   }
 }

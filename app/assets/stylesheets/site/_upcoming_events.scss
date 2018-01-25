@@ -1,23 +1,23 @@
 .site {
   .upcoming-events, .banner-event-mobile {
-    @include span-columns(12);
+    @include grid-column(12);
 
     .upcoming-event, .upcoming-blog {
       margin-bottom: 40px;
 
-      @include span-columns(12 of 12);
-      @include media($tablet-desktop) {
-        @include span-columns(6 of 12);
+      @include grid-column(12 of 12);
+      @include grid-media($tablet-desktop) {
+        @include grid-column(6 of 12);
 
         &:nth-child(4n - 1) {
-          @include span-columns(7 of 12);
+          @include grid-column(7 of 12);
         }
 
         &:nth-child(4n) {
-          @include span-columns(5 of 12);
+          @include grid-column(5 of 12);
         }
 
-        @include omega(2n);
+        @include omega("&:nth-of-type(2n)");
       }
 
       .picture {
@@ -61,11 +61,11 @@
 
         a { @include emph-link($samfundet-red); }
 
-        @include media($mobile) {
+        @include grid-media($mobile) {
           word-break: break-all;
         }
 
-        @include media($tablet-desktop) {
+        @include grid-media($tablet-desktop) {
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
@@ -83,7 +83,7 @@
   }
 
   .banner-event-mobile {
-    @include media($tablet-desktop) {
+    @include grid-media($tablet-desktop) {
       display: none;
     }
   }

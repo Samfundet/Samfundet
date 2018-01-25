@@ -32,12 +32,12 @@ td.link {
 }
 
 #admission-header {
-  @include span-columns(12);
+  @include grid-column(12);
 
   #header-image {
     @include autoscale-picture(200px, 'opptaksamfundet_130.png');
 
-    @include media($tablet-desktop) {
+    @include grid-media($tablet-desktop) {
         @include autoscale-picture(400px, 'opptaksamfundet_130.png');
     }
   }

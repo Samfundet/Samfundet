@@ -1,15 +1,15 @@
 .admissions.index {
   .section {
-    @include span-columns(12);
+    @include grid-column(12);
   }
 
   #promo {
     text-align: center;
     margin-bottom: 2em;
 
-    @include media($tablet-desktop) {
-      @include shift(2);
-      @include span-columns(8);
+    @include grid-media($tablet-desktop) {
+      @include grid-shift(2);
+      @include grid-column(8);
       @include omega;
     }
   }
@@ -24,7 +24,7 @@
       line-height: 0.7;
       font-size: 0.9em;
 
-      @include media($tablet-desktop) { 
+      @include grid-media($tablet-desktop) { 
         font-size: 1.1em;
         line-height: 1;
       }
@@ -46,11 +46,11 @@
 
   #group-types {
     .header {
-      @include span-columns(12);
+      @include grid-column(12);
       background-color: $samfundet-light-grey;
       margin: 10px 0;
 
-      @include media($not-mobile) {
+      @include grid-media($not-mobile) {
         background-color: initial;
       }
 
@@ -59,18 +59,18 @@
       }
     }
     .jobs {
-      @include span-columns(12);
+      @include grid-column(12);
 
       margin-bottom: 1em;
 
       .job {
-        @include span-columns(12);
+        @include grid-column(12);
 
         margin-bottom: 20px;
         padding: 0 10px;
 
         .title {
-          @include media($mobile) {
+          @include grid-media($mobile) {
             float: left;
             text-transform: uppercase;
 
@@ -85,36 +85,36 @@
             }
           }
 
-          @include media($tablet-portrait) {
-            @include span-columns(3);
+          @include grid-media($tablet-portrait) {
+            @include grid-column(3);
           }
 
-          @include media($tablet-desktop) {
-            @include span-columns(4);
+          @include grid-media($tablet-desktop) {
+            @include grid-column(4);
           }
         }
 
         .group {
-          @include media($mobile) {
+          @include grid-media($mobile) {
             float: right;
           }
 
-          @include media($tablet-portrait) {
-            @include span-columns(3);
+          @include grid-media($tablet-portrait) {
+            @include grid-column(3);
           }
 
-          @include media($tablet-desktop) {
-            @include span-columns(2);
+          @include grid-media($tablet-desktop) {
+            @include grid-column(2);
           }
         }
 
         .teaser {
-          @include media($mobile) {
+          @include grid-media($mobile) {
             padding-top: 5px;
             clear: both;
           }
-          @include media($not-mobile) {
-            @include span-columns(6);
+          @include grid-media($not-mobile) {
+            @include grid-column(6);
           }
         }
       }

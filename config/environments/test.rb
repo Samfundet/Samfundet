@@ -38,8 +38,6 @@ Samfundet::Application.configure do
 
   # We use english for testing
   config.i18n.default_locale = :en
-
-  Haml::Template.options[:ugly] = :true
 end
 
 Rails.application.routes.default_url_options[:locale] = 'en'

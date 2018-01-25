@@ -8,16 +8,16 @@
     }
 
     .existing-results, .ajax-results {
-        @include span-columns(12);
+        @include grid-column(12);
 
         .image-list {
-            @include span-columns(12);
+            @include grid-column(12);
 
             .image {
-                @include span-columns(12);
-                @include media($not-mobile) {
-                    @include span-columns(6);
-                    @include omega(2n);
+                @include grid-column(12);
+                @include grid-media($not-mobile) {
+                    @include grid-column(6);
+                    @include omega("&:nth-of-type(2n)");
                 }
 
                 .image-archive-image {
@@ -29,7 +29,7 @@
     }
 
     .image-actions {
-        @include span-columns(12);
+        @include grid-column(12);
     }
 }
 

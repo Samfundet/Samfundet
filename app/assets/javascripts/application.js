@@ -10,8 +10,8 @@
 //= require jquery.turbolinks
 //= require "jquery_ujs"
 //
-//= require jquery-ui/datepicker
-//= require jquery-ui/autocomplete
+//= require jquery-ui/widgets/datepicker
+//= require jquery-ui/widgets/autocomplete
 //= require "jquery-tablesorter"
 //
 // These are in vendor/assets/javascripts:

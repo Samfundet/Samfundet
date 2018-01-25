@@ -1,26 +1,26 @@
 .pages {
     .form {
         .pages-input {
-            @include span-columns(12);
+            @include grid-column(12);
 
-            @include media($not-mobile) {
-                @include span-columns(6 of 12);
+            @include grid-media($not-mobile) {
+                @include grid-column(6 of 12);
             }
         }
 
         .pages-preview {
             display: none;
 
-            @include media($not-mobile) {
+            @include grid-media($not-mobile) {
                 display: block;
 
-                @include span-columns(6 of 12);
+                @include grid-column(6 of 12);
                 @include omega();
             }
         }
 
         .pages-submition {
-            @include span-columns(12);
+            @include grid-column(12);
             @include omega();
         }
 
@@ -54,7 +54,7 @@
         h1 {
             margin: 0;
 
-            @include media($tablet-desktop) {
+            @include grid-media($tablet-desktop) {
                 padding: 15px 0;
             }
         }

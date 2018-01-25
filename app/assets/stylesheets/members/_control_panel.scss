@@ -11,16 +11,16 @@
       padding: 20px;
       margin-bottom: 20px;
 
-      @include span-columns(12);
+      @include grid-column(12);
 
-      @include media($tablet-portrait) {
-        @include span-columns(6 of 12);
-        @include omega(2n);
-      } 
+      @include grid-media($tablet-portrait) {
+        @include grid-column(6 of 12);
+        @include omega("&:nth-of-type(2n)");
+      }
 
-      @include media($tablet-desktop) {
-        @include span-columns(4 of 12);
-        @include omega(3n);
+      @include grid-media($tablet-desktop) {
+        @include grid-column(4 of 12);
+        @include omega("&:nth-of-type(3n)");
       }
 
       ul {

@@ -4,7 +4,7 @@
 
 .login-form {
   text-align: center;
-  @include span-columns(12);
+  @include grid-column(12);
 
   form {
     input[type=text], input[type=password] {
@@ -12,7 +12,7 @@
       font-size: 20px;
       border: 1px solid rgba(0, 0, 0, 0.5);
 
-      @include media($mobile-and-tablet-portrait) {
+      @include grid-media($mobile-and-tablet-portrait) {
         width: 100%;
       }
     }
@@ -22,9 +22,9 @@
     }
   }
 
-  @include media($not-mobile) {
+  @include grid-media($not-mobile) {
     &.open-admission {
-      @include span-columns(6);
+      @include grid-column(6);
 
       &.member {
         text-align: right;

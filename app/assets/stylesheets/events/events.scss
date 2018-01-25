@@ -71,13 +71,13 @@
 
     .event-image {
         @include autoscale-picture(200px);
-        @include media($tablet-desktop) {
+        @include grid-media($tablet-desktop) {
             @include autoscale-picture(400px);
         }
     }
 
     .mobile-banner {
-        @include media($tablet-desktop) {
+        @include grid-media($tablet-desktop) {
           display: none;
         }
 
@@ -96,10 +96,10 @@
     }
 
     .description {
-        @include media($tablet-desktop) {
-            @include shift(2);
-            @include span-columns(8);
-            @include shift(2);
+        @include grid-media($tablet-desktop) {
+            @include grid-shift(2);
+            @include grid-column(8);
+            @include grid-shift(2);
         }
 
         .description-short {
@@ -121,7 +121,7 @@
             margin-top: 20px;
 
             .social-sites {
-                @include span-columns(12);
+                @include grid-column(12);
                 margin-bottom: 1em;
 
                 .social-element {
@@ -142,13 +142,13 @@
                 }
             }
             .spotify-box {
-                @include span-columns(12);
+                @include grid-column(12);
             }
         }
     }
 
     .details {
-      @include span-columns(12);
+      @include grid-column(12);
 
       table {
         margin: 15px auto;
@@ -183,7 +183,7 @@
     }
 
     .search-results h3 {
-        @include media($mobile-and-tablet-portrait) {
+        @include grid-media($mobile-and-tablet-portrait) {
             display: none;
         }
     }
@@ -205,7 +205,7 @@
           right: 0.5em;
         }
 
-        @include media($mobile-and-tablet-portrait) {
+        @include grid-media($mobile-and-tablet-portrait) {
           a{
             display: table-row;
           }
@@ -215,7 +215,7 @@
     .event-group {
         margin-bottom: 40px;
 
-        @include span-columns(12);
+        @include grid-column(12);
 
         h2 {
             color: $samfundet-red;
@@ -225,7 +225,7 @@
             padding-bottom: 5px;
             margin-bottom: 10px;
 
-            @include media($tablet-desktop) {
+            @include grid-media($tablet-desktop) {
                 text-align: left;
                 border-bottom: none;
                 font-size: 30px;
@@ -241,7 +241,7 @@
                     padding: 10px;
                     text-align: center;
 
-                    @include media($mobile-and-tablet-portrait) {
+                    @include grid-media($mobile-and-tablet-portrait) {
                         &:first-child { padding-left: 0; }
                         &:last-child { padding-right: 0; }
                     }
@@ -261,7 +261,7 @@
                     &.event-area-start-time {
                         width: 33%;
 
-                        @include media($tablet-desktop) {
+                        @include grid-media($tablet-desktop) {
                             display: none;
                         }
                     }
@@ -273,7 +273,7 @@
                     &.event-area, &.event-start-time, &.event-price {
                         display: none;
 
-                        @include media($tablet-desktop) {
+                        @include grid-media($tablet-desktop) {
                             display: table-cell;
                             width: 16%;
                         }
@@ -281,7 +281,7 @@
 
                     &.event-buy {
                         width: 33%;
-                        @include media($tablet-desktop) {
+                        @include grid-media($tablet-desktop) {
                             width: 16%;
                         }
                     }
@@ -289,7 +289,7 @@
                     & + td {
                         border-left: 1px solid #333;
 
-                        @include media($tablet-desktop) {
+                        @include grid-media($tablet-desktop) {
                             &:last-child {
                                 border-left: none;
                             }

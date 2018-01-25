@@ -28,5 +28,3 @@ Rails.application.config do
 
   config.i18n.default_locale = :no
 end
-
-Haml::Template.options[:ugly] = :true

@@ -1,7 +1,7 @@
 .billig-buy {
     display: block;
 
-    @include span-columns(12);
+    @include grid-column(12);
 
     table {
         @extend .table-highlight-rows !optional;
@@ -133,7 +133,7 @@
     }
 
     .payment-wrapper {
-        @include span-columns(12);
+        @include grid-column(12);
     }
 
     .payment-choice {
@@ -158,11 +158,11 @@
     }
 
     .payment-info {
-        @include span-columns(12 of 12);
+        @include grid-column(12 of 12);
         @include omega();
 
-        @include media($tablet-desktop) {
-            @include span-columns(6 of 12);
+        @include grid-media($tablet-desktop) {
+            @include grid-column(6 of 12);
         }
 
         #card_feedback {
@@ -194,29 +194,29 @@
     }
 
     .payment-exp {
-        @include span-columns(4 of 6);
+        @include grid-column(4 of 6);
 
-        @include media($tablet-desktop) {
-            @include span-columns(3 of 6);
+        @include grid-media($tablet-desktop) {
+            @include grid-column(3 of 6);
         }
     }
 
     .payment-cvc2 {
-        @include span-columns(2 of 6);
+        @include grid-column(2 of 6);
         @include omega();
 
-        @include media($tablet-desktop) {
-            @include span-columns(3 of 6);
+        @include grid-media($tablet-desktop) {
+            @include grid-column(3 of 6);
             @include omega();
         }
     }
 
     .payment-verified {
-        @include span-columns(12 of 12);
+        @include grid-column(12 of 12);
         @include omega();
 
-        @include media($tablet-desktop) {
-            @include span-columns(6 of 12);
+        @include grid-media($tablet-desktop) {
+            @include grid-column(6 of 12);
             @include omega();
         }
 
@@ -228,6 +228,6 @@
     .payment-submit {
         padding: 15px 0;
 
-        @include span-columns(12);
+        @include grid-column(12);
     }
 }
