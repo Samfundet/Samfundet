@@ -1,0 +1,36 @@
+@charset "UTF-8";
+/// Creates a margin right on the nth object in the row and the last 
+/// object in the container which causes a centered flexbox to self correct.
+///
+/// It also brings back the neat 1.8 behavior of clearing the *n + 1 block element,
+/// which addresses a secondary edge case where short elements don't
+/// clear the full row in floated 'box' layouts.
+///
+/// @group Features
+///
+/// @name nth-alpha
+///
+/// @argument {number (`nth-child`}
+///   When passed an `nth-child` argument with `block` display, 
+///   the alpha mixin automatically clears that element. It can accept complex selectors.
+///
+/// @argument {map} $grid [$neat-grid]
+///   The grid to be used to generate the margins.
+///   By default, the global `$neat-grid` will be used.
+///
+///   .nth-element {
+///     @include nth-alpha(4n+1);
+///   }
+///
+/// @example css - CSS Output
+///
+///   .nth-element:nth-of-type(4n+1) {
+///     clear: left;
+///   }
+///
+
+@mixin nth-alpha($selector, $grid: $neat-grid) {
+  &:nth-of-type(#{$selector}) {
+    clear: _neat-float-direction($grid);
+  }
+}

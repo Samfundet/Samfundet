@@ -1,0 +1,54 @@
+@charset "UTF-8";
+/// Creates an opposite direction margin on the specified selector.
+/// This is primarily used to self-correct the alignment of a centered flex-grid.
+///
+/// @group Features
+///
+/// @name Omega
+///
+/// @argument { string } $selector 
+///   The omega-flex mixin creates a margin-right on the specified selector.
+///
+/// @argument {map} $grid [$neat-grid]
+///   The grid to be used to generate the margins.
+///   By default, the global `$neat-grid` will be used.
+///
+/// @example scss - Usage
+///   @include omega('.element:nth-of-type(3n+2)');
+///
+/// @example css - CSS Output
+///   .element:nth-of-type(3n+2) {
+///     margin-right: 20px;
+///   }
+///
+/// @example scss - Usage
+///  .element {
+///     @include omega('&:nth-of-type(3n+1)');
+///  }
+///
+/// @example css - CSS Output
+///   .element:nth-of-type(3n+1) {
+///     margin-right: 20px;
+///   }
+///
+/// @example scss - Usage
+///   .element {
+///     @include flex-omega;
+///   }
+///
+/// @example css - CSS Output
+///   .element {
+///     margin-right: 20px;
+///   }
+
+@mixin omega($selector: self, $grid: $neat-grid) {
+  $_grid-gutter: _retrieve-neat-setting($grid, gutter);
+
+  @if ($selector == self) or ($selector == null)  {
+    margin-#{_neat-opposite-direction($grid)}: $_grid-gutter;
+  } @else {
+    #{$selector} {
+      margin-#{_neat-opposite-direction($grid)}: $_grid-gutter;
+    }
+  }
+}

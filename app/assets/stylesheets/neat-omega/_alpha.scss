@@ -1,0 +1,51 @@
+@charset "UTF-8";
+/// Clears the float on the specified element. Note that in Neat 2.x, 
+/// this is likely the only mixin you need to properly clear floated layouts.
+///
+/// @group Features
+///
+/// @name alpha
+///
+/// @argument {self | string} [self] $element
+///   The alpha mixin automatically adds a clear to the specified `$element`. 
+///
+/// @argument {map} $grid [$neat-grid]
+///   The grid to be used to generate the margins.
+///   By default, the global `$neat-grid` will be used.
+///
+/// @example scss
+///
+///   .element:nth-child(3n+1) {
+///     @include alpha;
+///   }
+///
+///   .last-element {
+///     @include alpha('&:last-child');
+///   }
+///
+///   @include alpha('.custom:nth-child(3n+2)');
+///
+/// @example css - CSS Output
+///
+///   .element:nth-child(3n+1) {
+///     clear: left;
+///   }
+///
+///  .last-element:last-child {
+///     clear: left;
+///   }
+///
+///  .custom:nth-child(3n+2) {
+///     clear: left;
+///   }
+///
+
+@mixin alpha($selector: self, $grid: $neat-grid) {
+  @if $selector == self {
+    clear: _neat-float-direction($grid);
+  } @else {
+    #{$selector} {
+      clear: _neat-float-direction($grid);
+    }
+  }
+}
