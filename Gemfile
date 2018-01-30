@@ -13,6 +13,9 @@ source 'https://rubygems.org'
 # Rails. Duh.
 gem 'rails', '5.0.0'
 
+# Memcache client
+gem 'dalli'
+
 # acts_as_list provides the means to sort and reorder a list of objects
 # with respect to a column in the database, e.g. to sort and reorder a list
 # of job applications based on the priority set by the applicant.
