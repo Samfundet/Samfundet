@@ -191,6 +191,7 @@ authorization do
   role :mg_redaksjon do
     has_permission_on [
       :areas,
+      :events,
       :pages,
       :blogs,
       :everything_closed_periods
