@@ -60,12 +60,6 @@ gem 'uglifier'
 gem 'declarative_authorization', git: 'https://github.com/Samfundet/declarative_authorization.git', branch: 'rails5'
 # gem 'cancancan', '~> 1.15'
 
-# ActiveRecord manages referential integrity at the application level,
-# not the database level. Therefore, there are no methods for explicitly
-# adding foreign keys in ActiveRecord migrations.
-# foreigner adds a few such methods.
-gem 'foreigner'
-
 # formtastic is a Rails form builder plugin
 # with semantically rich and accessible markup.
 gem 'formtastic'
