@@ -25,6 +25,8 @@ en:
     registration_error: "The admission was not added. See details below."
     registration_success: "The admission was successfully added."
     statistics: "Statistics"
+    groups_with_admission: "Groups with admission"
+    groups_with_separate_admission: "Groups with separate admission"
 
     admin_applet:
       title: Admissions

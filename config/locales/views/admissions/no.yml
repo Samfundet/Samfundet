@@ -25,6 +25,8 @@
     registration_error: "Opptaket ble ikke lagt til. Se detaljer nedenfor."
     registration_success: "Opptaket har blitt lagt til."
     statistics: "Statistikk"
+    groups_with_admission: "Gjenger med opptak"
+    groups_with_separate_admission: "Gjenger med separat opptak"
 
     admin_applet:
       title: Opptak

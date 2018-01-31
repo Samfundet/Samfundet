@@ -11,18 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20171110022238) do
+ActiveRecord::Schema.define(:version => 20180131123446) do
 
   create_table "admissions", :force => true do |t|
     t.string   "title"
     t.datetime "shown_application_deadline"
     t.datetime "user_priority_deadline"
-    t.datetime "created_at",                                                                           :null => false
-    t.datetime "updated_at",                                                                           :null => false
+    t.datetime "created_at",                                                                              :null => false
+    t.datetime "updated_at",                                                                              :null => false
     t.datetime "shown_from"
     t.datetime "admin_priority_deadline"
     t.datetime "actual_application_deadline"
-    t.string   "promo_video",                 :default => "https://www.youtube.com/embed/T8MjwROd0dc"
+    t.string   "promo_video",                    :default => "https://www.youtube.com/embed/T8MjwROd0dc"
+    t.text     "groups_with_separate_admission"
   end
 
   create_table "applicants", :force => true do |t|
