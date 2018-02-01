@@ -42,7 +42,7 @@ class AdmissionsAdmin::AdmissionsController < ApplicationController
     campus_labels = @campuses.map do |campus|
       "#{campus.name} - #{@campus_count[campus.id]}"
     end
-    
+
     # The Gchart methods return an external URL to an image of the chart.
     @applications_per_group_chart = Gchart.pie(
       data: applications_per_group,
