@@ -44,7 +44,7 @@
 
       %tbody
         - job_application_groupings.each do |job_applications|
-          - job_applications.each do |job_application|
+          - job_applications.reverse_each do |job_application|
             %tr{id: "application-#{job_application.id}", class: "#{job_application.assignment_status} #{job_application.withdrawn ? 'display-none' : ''}"}
               %td
                 = link_to admissions_admin_admission_group_job_job_application_path(@admission, @group, job_application.job, job_application) do

@@ -23,8 +23,14 @@ $(function () {
 
   $("table.applications.sorted").tablesorter({
       headers: headers,
-      sortList: [[0,0]]
+      sortInitialOrder: "asc",
   });
+
+    $("table.roles.sorted").tablesorter({
+        headers: headers,
+        sortList: [[0,0]]
+    });
+
 
   $('fieldset.actions').hide();
 
