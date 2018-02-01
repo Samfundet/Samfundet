@@ -110,7 +110,7 @@ gem 'date_validator'
 gem 'therubyracer', require: 'v8'
 
 # PostgreSQL adapter. See: config/database.yml
-gem 'pg'
+gem 'pg', '0.21.0'
 
 # Provides PostgreSQL fulltext search. Contains wrappers for tsvectors
 # and enables searching in nested attributes.
