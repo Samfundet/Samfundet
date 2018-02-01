@@ -25,7 +25,6 @@ class AdmissionsAdmin::AdmissionsController < ApplicationController
       end.sum
     end
     group_labels = @admission.groups.map(&:name)
-
     admission_start = @admission.shown_from.to_date
     admission_end = @admission.actual_application_deadline.to_date
     applications_per_day = (admission_start..admission_end).map do |day|
@@ -36,15 +35,14 @@ class AdmissionsAdmin::AdmissionsController < ApplicationController
       day.strftime("%-d.%-m")
     end
 
-    applications_per_campus= @campuses.map do |campus|
+    applications_per_campus = @campuses.map do |campus|
       @campus_count[campus.id]
     end
-    #Want both the name of the campus, and amount of applicants
-    campus_labels=@campuses.map do |campus|
+    # Want both the name of the campus, and amount of applicants
+    campus_labels = @campuses.map do |campus|
       "#{campus.name} - #{@campus_count[campus.id]}"
     end
-
-
+    
     # The Gchart methods return an external URL to an image of the chart.
     @applications_per_group_chart = Gchart.pie(
       data: applications_per_group,
@@ -55,11 +53,11 @@ class AdmissionsAdmin::AdmissionsController < ApplicationController
     )
 
     @applications_per_campus_chart = Gchart.pie(
-        data: applications_per_campus,
-        encoding: 'text',
-        labels: campus_labels,
-        size: '800x350',
-        custom: 'chco=00FFFF,FF0000,FFFF00,0000FF',
+      data: applications_per_campus,
+      encoding: 'text',
+      labels: campus_labels,
+      size: '800x350',
+      custom: 'chco=00FFFF,FF0000,FFFF00,0000FF'
     )
 
     @applications_per_day_chart = Gchart.bar(
