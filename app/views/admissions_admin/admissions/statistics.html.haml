@@ -10,5 +10,10 @@
       %img{ src: @applications_per_group_chart }
   %p
     %figure
+      %figcaption= t('admissions_admin.applications_by_campus')
+      %img{ src: @applications_per_campus_chart }
+
+  %p
+    %figure
       %figcaption= t('admissions_admin.applications_by_day')
       %img{ src: @applications_per_day_chart }
