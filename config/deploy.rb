@@ -21,7 +21,7 @@ set :branch, inpt.empty? ? 'master' : inpt
 
 set :domain, 'samfundet.no'
 set :repository, 'git@github.com:Samfundet/Samfundet.git'
-set :shared_paths, ['config/database.yml', 'config/billig.yml', 'config/local_env.yml', 'log', 'public/upload']
+set :shared_paths, ['config/database.yml', 'config/billig.yml', 'config/local_env.yml', 'config/secrets.yml', 'log', 'public/upload']
 
 # https://github.com/mina-deploy/mina/issues/99
 set :term_mode, :nil
@@ -86,6 +86,10 @@ namespace :setup do
 
     queue! %(touch "#{deploy_to}/shared/config/local_env.yml")
     queue! %(chmod 770 "#{deploy_to}/shared/config/local_env.yml")
+
+    queue! %(touch "#{deploy_to}/shared/config/secrets.yml")
+    queue! %(chmod 770 "#{deploy_to}/shared/config/secrets.yml")
+
     queue  %(echo "-----> Be sure to edit 'shared/config/database.yml'.")
   end
 end
