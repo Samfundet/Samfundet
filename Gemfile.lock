@@ -10,10 +10,10 @@ GIT
 
 GIT
   remote: https://github.com/Samfundet/SamfundetAuth.git
-  revision: 7cc5eec878c6f43551008304ddc55c2c14c82519
+  revision: f7833972ee14d7d03430215b4b22b182f6bd0d01
   branch: rails5
   specs:
-    samfundet_auth (0.1.1)
+    samfundet_auth (0.1.2)
       declarative_authorization
       rails (~> 5.0.6)
 
@@ -467,7 +467,7 @@ DEPENDENCIES
   rspec
   rspec-rails
   rubocop (= 0.51.0)
-  samfundet_auth (~> 0.1.1)!
+  samfundet_auth (~> 0.1.2)!
   samfundet_domain (~> 0.1.0)!
   sass
   sass-rails
