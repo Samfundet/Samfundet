@@ -18,7 +18,7 @@ Samfundet::Application.configure do
   # config.log_level = :debug
 
   # Use a different logger for distributed setups
-  config.logger = Logger.new('/var/log/rails/staging.log')
+  logger = ActiveSupport::Logger.new('/var/log/rails/staging.log')
 
   # Use a different cache store in production
   config.cache_store = :mem_cache_store, 'localhost:11211', { namespace: 'staging' }
