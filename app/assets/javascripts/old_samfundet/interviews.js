@@ -23,13 +23,18 @@ $(function () {
 
   $("table.applications.sorted").tablesorter({
       headers: headers,
-      sortInitialOrder: "asc",
+      sortInitialOrder: "asc"
   });
 
-    $("table.roles.sorted").tablesorter({
-        headers: headers,
-        sortList: [[0,0]]
-    });
+  $("table.rejected.sorted").tablesorter({
+      headers: headers,
+      sortList: [[0,0]]
+  });
+
+  $("table.roles.sorted").tablesorter({
+      headers: headers,
+      sortList: [[0,0]]
+  });
 
 
   $('fieldset.actions').hide();
