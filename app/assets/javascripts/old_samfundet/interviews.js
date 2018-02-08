@@ -2,7 +2,6 @@
 $(function () {
   var headers = {};
 
-
   $.tablesorter.addParser({
       id: 'input-text',
       is: function(s) {
@@ -15,7 +14,6 @@ $(function () {
       },
       type: 'text'
   });
-
 
   headers[$('.interview-time').index()] = { sorter: 'input' };
   headers[$('.location').index()] = { sorter: 'input-text' };
@@ -35,7 +33,6 @@ $(function () {
       headers: headers,
       sortList: [[0,0]]
   });
-
 
   $('fieldset.actions').hide();
 
