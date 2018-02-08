@@ -89,3 +89,10 @@ Style/GuardClause:
     - 'app/models/sulten/reservation.rb'
     - 'lib/validators/css_hex_color_validator.rb'
     - 'lib/validators/email_validator.rb'
+
+DynamicFindBy:
+  Exclude:
+    - 'app/controllers/pages_controller.rb'
+    - 'app/helpers/pages_helper.rb'
+    - 'app/helpers/event_helper.rb'
+    - 'lib/control_panel.rb'
