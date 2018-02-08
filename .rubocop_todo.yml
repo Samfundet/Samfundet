@@ -96,3 +96,18 @@ DynamicFindBy:
     - 'app/helpers/pages_helper.rb'
     - 'app/helpers/event_helper.rb'
     - 'lib/control_panel.rb'
+
+Rails/OutputSafety:
+  # These files, marked as html_safe are considered no-risk as they are simply static texts in forms.
+  Exclude:
+    - 'app/helpers/event_helper.rb'
+    - 'app/helpers/pages_helper.rb'
+    - 'lib/control_panel.rb'
+
+Rails/Output:
+  Exclude:
+    - 'lib/billig_service.rb'
+
+Rails/FilePath:
+  Exclude:
+    - 'lib/tasks/cucumber.rake'
