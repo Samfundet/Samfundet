@@ -5,7 +5,7 @@ module PagesHelper
     previous = previous ? previous.scan(/\w+|\W+/) : []
     current  = current  ? current.scan(/\w+|\W+/)  : []
 
-    Diff::LCS.sdiff(previous, current).map do |change|
+    safe_join(Diff::LCS.sdiff(previous, current).map do |change|
       case change.action
       when '='
         h(change.new_element)
@@ -16,7 +16,7 @@ module PagesHelper
       when '!'
         "<del>#{h(change.old_element)}</del><ins>#{h(change.new_element)}</ins>"
       end
-    end.safe_join
+    end)
   end
 
   def page_by_name(name)
