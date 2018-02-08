@@ -28,7 +28,7 @@ module Haml::Filters::Markdown
     filter_html: true
   }
 
-  markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(render_options),
+  markdown = Redcarpet::Markdown.new(CustomRenderer.new(render_options),
                                      markdown_extensions)
 
   # using define_method rather than def to keep 'markdown' in scope
