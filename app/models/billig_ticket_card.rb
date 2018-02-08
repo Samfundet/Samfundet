@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class BilligTicketCard < ActiveRecord::Base
+class BilligTicketCard < ApplicationRecord
   self.primary_key = :card
 
   belongs_to :member, foreign_key: :owner_member_id

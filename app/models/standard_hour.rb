@@ -13,7 +13,7 @@
 #  day        :string(255)
 #
 
-class StandardHour < ActiveRecord::Base
+class StandardHour < ApplicationRecord
   belongs_to :area
 
   WEEKDAYS = %w[monday tuesday wednesday thursday friday

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Event < ActiveRecord::Base
+class Event < ApplicationRecord
   AGE_LIMIT = %w[eighteen eighteen_twenty twenty none].freeze
   EVENT_TYPE = %w[art concert course dj excenteraften football_match happening
                   luka_event meeting movie music performance quiz

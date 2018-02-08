@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Page < ActiveRecord::Base
+class Page < ApplicationRecord
   NAME_FORMAT = /_?[0-9]*-?[a-zA-Z][a-zA-Z0-9\-]*/
   MENU_NAME = '_menu'
   INDEX_NAME = '_index'

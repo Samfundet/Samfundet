@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Group < ActiveRecord::Base
+class Group < ApplicationRecord
   belongs_to :group_type
   belongs_to :page
   has_many :jobs

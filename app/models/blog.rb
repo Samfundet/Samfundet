@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Blog < ActiveRecord::Base
+class Blog < ApplicationRecord
   belongs_to :author, class_name: 'Member'
   belongs_to :image
   has_one :front_page_lock, as: :lockable

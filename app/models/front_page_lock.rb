@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class FrontPageLock < ActiveRecord::Base
+class FrontPageLock < ApplicationRecord
   BANNER_ID = 0
 
   belongs_to :lockable, polymorphic: true, touch: true

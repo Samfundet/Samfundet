@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class BilligPurchase < ActiveRecord::Base
+class BilligPurchase < ApplicationRecord
   self.primary_key = :purchase
 
   # This table has many more fields,

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Applicant < ActiveRecord::Base
+class Applicant < ApplicationRecord
   has_many :job_applications, -> { where(withdrawn: false).order(:priority) }, dependent: :destroy
   has_many :jobs, through: :job_applications
   has_many :password_recoveries

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class PriceGroup < ActiveRecord::Base
+class PriceGroup < ApplicationRecord
   # attr_accessible :name, :price
 
   validates :name, :price, presence: true

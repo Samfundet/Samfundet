@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class PageRevision < ActiveRecord::Base
+class PageRevision < ApplicationRecord
   CONTENT_TYPES = %w[html markdown].freeze
 
   validates :page, presence: true

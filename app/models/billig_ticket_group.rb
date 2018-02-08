@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class BilligTicketGroup < ActiveRecord::Base
+class BilligTicketGroup < ApplicationRecord
   DEFAULT_TICKET_LIMIT = 9
 
   self.primary_key = :ticket_group

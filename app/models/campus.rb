@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Campus < ActiveRecord::Base
+class Campus < ApplicationRecord
   has_many :applicants
 
   def to_s

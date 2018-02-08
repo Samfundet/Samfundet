@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Interview < ActiveRecord::Base
+class Interview < ApplicationRecord
   belongs_to :job_application
   #  has_one :group, through: :job_application
 

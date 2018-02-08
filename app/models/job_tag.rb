@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class JobTag < ActiveRecord::Base
+class JobTag < ApplicationRecord
 end
 
 # == Schema Information

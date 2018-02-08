@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class GroupType < ActiveRecord::Base
+class GroupType < ApplicationRecord
   has_many :groups, -> { order(:name) }
   has_many :jobs, through: :groups
 

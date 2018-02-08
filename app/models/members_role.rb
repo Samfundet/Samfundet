@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class MembersRole < ActiveRecord::Base
+class MembersRole < ApplicationRecord
   validates_presence_of :member_id
   validates_presence_of :role_id
   # attr_accessible :created_at, :member, :role

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class JobApplication < ActiveRecord::Base
+class JobApplication < ApplicationRecord
   belongs_to :applicant
   belongs_to :job
 

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class LogEntry < ActiveRecord::Base
+class LogEntry < ApplicationRecord
   validates :log, :admission, :group, :applicant, :member, presence: true
 
   belongs_to :applicant

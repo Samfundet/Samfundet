@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Image < ActiveRecord::Base
+class Image < ApplicationRecord
   DEFAULT_TITLE = 'Default image'
   DEFAULT_PATH = Rails.root.join('app', 'assets', 'images',
                                  'banner-images', 'kitteh.jpeg')

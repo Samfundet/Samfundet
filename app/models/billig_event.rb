@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class BilligEvent < ActiveRecord::Base
+class BilligEvent < ApplicationRecord
   has_one :samfundet_event, class_name: 'Event'
   has_many :billig_ticket_groups, foreign_key: :event
 

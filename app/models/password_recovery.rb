@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class PasswordRecovery < ActiveRecord::Base
+class PasswordRecovery < ApplicationRecord
   # Dummy model to get on Rails good side.
   # Rails can suck my balls -Stian
 end

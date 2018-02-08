@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Admission < ActiveRecord::Base
+class Admission < ApplicationRecord
   has_many :jobs
   has_many :job_applications, -> { uniq }, through: :jobs
   has_many :groups, -> { uniq }, through: :jobs
