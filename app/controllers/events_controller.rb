@@ -264,6 +264,7 @@ class EventsController < ApplicationController
       :price_type,
       :billig_event_id,
       :organizer_id,
+      :codeword,
       price_groups_attributes: %i[name price _destroy]
     )
   end
