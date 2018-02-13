@@ -152,6 +152,8 @@ Rails.application.routes.draw do
         end
         get 'show_interested_other_positions', to: 'applicants#show_interested_other_positions'
       end
+      get 'show_interested_other_positions', to: 'applicants#show_interested_other_positions'
+      get 'show_unflagged_applicants', to: 'applicants#show_unflagged_applicants'
     end
 
     post "applicant/steal_identity", to: "applicants#steal_identity", as: :applicants_steal_identity

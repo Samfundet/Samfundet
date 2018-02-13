@@ -1,0 +1,98 @@
+= javascript_include_tag 'applicants/show_unflagged_applicants', defer: true
+.section
+  .block
+    %p
+      %span{ style: "color: #932822"}= t('interviews.red_explanation')
+      %br
+      %span{ style: "color: #DC706A"}= t('interviews.pink_explanation')
+      %br
+      %span{ style: "color: #009402"}= t('interviews.green_explanation')
+      %br
+      %span{ style: "color: #00C703"}= t('interviews.bright_green_explanation')
+      %br
+      %span{ style: "color: #CEC000"}= t('interviews.yellow_explanation')
+      %br
+      %span{ style: "color: grey"}= t('interviews.grey_explanation')
+    %p
+      %input#hide_withdrawn{type:"checkbox", checked: true}
+        =t('interviews.hide_withdrawn_applications')
+    %table.applications.custom-table.sorted
+      %thead
+        %th
+          = t('interviews.applicant_name')
+        %th
+          = t('interviews.applicant_phone_number')
+        %th
+          = t('interviews.applicant_email_address')
+        %th
+          = t('interviews.applicant_campus')
+        - if show_job_titles
+          %th
+            = t('interviews.job')
+        %th.interview-time
+          = t('interviews.interview_time')
+        %th.location
+          = t('interviews.location')
+        %th.application-status
+          = t('interviews.interview_status')
+        %th
+          = t('interviews.comment')
+        %th
+          = t('interviews.latest_log_entry')
+        %td
+          = t('interviews.interested_other_positions')
+
+      %tbody
+        - job_applications.each do |job_application|
+          %tr{id: "application-#{job_application.id}", class: "#{job_application.assignment_status} #{job_application.withdrawn ? 'display-none' : ''}"}
+            %td
+              = link_to admissions_admin_admission_group_job_job_application_path(@admission, @group, job_application.job, job_application) do
+                = job_application.applicant.full_name
+            %td= job_application.applicant.phone
+            %td= job_application.applicant.email
+            %td= job_application.applicant.campus
+            - if show_job_titles
+              %td= job_application.title
+            %td
+              = semantic_form_for([:admissions_admin, @admission, @group, job_application.job, job_application, interview = job_application.find_or_create_interview], namespace: "interview_#{interview.id}", html: {class: "test custom-form"}) do |form|
+                = form.inputs do
+                  != form.input :time, as: :string, label: false, name: "time", input_html: { id: "interview_#{job_application.id}_time", class: "datetimepicker", value: interview.time ? interview.time : '', placeholder: "DD.MM.ÅÅÅÅ HH:MM" }
+                %span{ class: "status" }
+                = form.actions do
+                  != form.action :submit, button_html: { class: "interview_save", value: t('interviews.save_interview_time') }
+            %td
+              = semantic_form_for([:admissions_admin, @admission, @group, job_application.job, job_application, interview = job_application.find_or_create_interview], namespace: "interview_#{interview.id}", html: {class: "test custom-form"}) do |form|
+                = form.inputs do
+                  != form.input :location, label: false, name: "location", input_html: { id: "interview_#{job_application.id}_location", placeholder: t('interviews.location') }
+                %span{ class: "status" }
+                = form.actions do
+                  != form.action :submit, button_html: { class: "interview_save", value: t('interviews.save_interview_location') }
+            %td
+              = semantic_form_for([:admissions_admin, @admission, @group, job_application.job, job_application, interview = job_application.find_or_create_interview], namespace: "interview_#{interview.id}", html: {class: "test custom-form"}) do |form|
+                = form.inputs do
+                  != form.input :acceptance_status, name: "acceptance_status", as: :select, label: false, required: true, value: interview.acceptance_status, collection: interview.ACCEPTANCE_STATUSES.invert.sort, include_blank: false, input_html: { id: "interview_#{job_application.id}_acceptance_status", disabled: interview.past_set_status_deadline? }
+                = form.actions do
+                  != form.action :submit, button_html: { class: "interview_save", value: t('interviews.save_interview_status') }
+                %span{ class: "status" }
+            %td
+              = semantic_form_for([:admissions_admin, @admission, @group, job_application.job, job_application, interview = job_application.find_or_create_interview], namespace: "interview_#{interview.id}", html: {class: "test custom-form"}) do |form|
+                = form.inputs do
+                  != form.input :comment, label: false, input_html: { rows: 2, cols: 7}
+                %span{ class: "status" }
+                = form.actions do
+                  != form.action :submit, button_html: { class: "interview_save", value: 'save' }
+            %td
+              - if job_application.last_log_entry
+                = link_to admissions_admin_admission_group_job_job_application_path(@admission, @group, job_application.job, job_application, anchor: 'new_log_entry') do
+                  = job_application.last_log_entry.log
+            %td
+              = semantic_form_for(job_application.applicant, namespace: "interview_#{interview.id}", html: {class: "test custom-form interview"}) do |form|
+                = form.inputs do
+                  != form.input :interested_other_positions, label: false, as: :select, required: true
+                %span{ class: "status" }
+                = form.actions do
+                  != form.action :submit, button_html: { class: "interview_Save", value: 'save'}
+
+
+  - if job_application_groupings.empty?
+    %p Ingen søknader

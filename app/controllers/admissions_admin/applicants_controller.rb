@@ -5,4 +5,10 @@ class AdmissionsAdmin::ApplicantsController < ApplicationController
     @admission = Admission.find(params[:admission_id])
     @applicants = Applicant.interested_other_positions(@admission)
   end
+
+  def show_unflagged_applicants
+    @admission = Admission.find(params[:admission_id])
+    @applications = Applicant.unflagged_applicants(@admission)
+
+  end
 end
