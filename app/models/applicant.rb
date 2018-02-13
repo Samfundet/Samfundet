@@ -104,7 +104,7 @@ class Applicant < ApplicationRecord
   end
 
   def is_flagged?(admission)
-    !assigned_job_application(admission, acceptance_status: ["reserved", ""]).nil?
+    assigned_job_application(admission, acceptance_status: ["reserved", ""]).nil?
   end
 
   def jobs_applied_to(admission)
