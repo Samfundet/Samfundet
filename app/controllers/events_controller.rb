@@ -65,10 +65,6 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-
-    if @event.purchase_status == Event::TICKETS_AVAILABLE
-      flash.now[:notice] = 'Nettsiden oppdateres Tirsdag, 13. februar. Vennligst ikke kjøp billetter mellom 21:00-23:59'
-    end
   end
 
   def new
