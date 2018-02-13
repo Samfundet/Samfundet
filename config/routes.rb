@@ -27,8 +27,8 @@ Rails.application.routes.draw do
       get :rss, on: :collection, defaults: { format: 'rss' }
 
       collection do
-        get 'purchase_callback', to: :purchase_callback_failure
-        get 'purchase_callback/:tickets', to: :purchase_callback_success
+        get 'purchase_callback' => :purchase_callback_failure
+        get 'purchase_callback/:tickets' => :purchase_callback_success
       end
     end
 
