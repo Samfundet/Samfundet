@@ -1,21 +1,23 @@
-%h2 Søkere som ikke får stilling, men som gjerne vil ha.
-%p Søkere som er reservert må/bør klareres med gjengen som har reservert søkeren
+%h2 Søkere som ikke har blitt flagget, eller er satt til reserve
+%br
 
 - @applicants.each do |applicant|
   .applicant
     %h3
-      = link_to applicant.full_name, applicant
+      %strong= link_to applicant.full_name, applicant
       \-
       = applicant.phone
       \-
       = applicant.email
     - applicant.job_applications.each do |application|
-      %p
-        = application.job.group.name
-        \-
-        = application.job.title
-        %strong= application.interview.acceptance_status_string
+      - if application.interview.acceptance_status == :reserved || application.interview.acceptance_status == nil
+        %p
+          = application.job.group.name
+          \-
+          = application.job.title
+          %strong{:style => "color: #961E21"}= application.interview.acceptance_status_string
 
+  %br
   %br
 
 - if @applicants.blank?

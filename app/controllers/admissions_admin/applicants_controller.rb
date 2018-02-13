@@ -9,6 +9,5 @@ class AdmissionsAdmin::ApplicantsController < ApplicationController
   def show_unflagged_applicants
     @admission = Admission.find(params[:admission_id])
     @applicants = Applicant.unflagged_applicants(@admission)
-
   end
 end
