@@ -42,7 +42,7 @@ class Sulten::ReservationsController < ApplicationController
   end
 
   def admin_create
-    @reservation = Sulten::Reservation.new(params[:sulten_reservation])
+    @reservation = Sulten::Reservation.new(reservation_params)
     @reservation.admin_access = true
     if @reservation.save
       SultenNotificationMailer.send_reservation_email(@reservation).deliver
@@ -91,6 +91,7 @@ class Sulten::ReservationsController < ApplicationController
 
   def reservation_params
     params.require(:sulten_reservation).permit(
+      :table_id,
       :people,
       :reservation_from,
       :reservation_duration,
@@ -98,7 +99,8 @@ class Sulten::ReservationsController < ApplicationController
       :reservation_type_id,
       :telephone,
       :email,
-      :allergies
+      :allergies,
+      :internal_comment
     )
   end
 end
