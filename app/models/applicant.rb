@@ -83,7 +83,7 @@ class Applicant < ApplicationRecord
   def self.unflagged_applicants(admission)
     where(disabled: false).select do |applicant|
       # If not wanted by any
-      !applicant.is_flagged?(admission)
+      !applicant.is_flagged?(admission) ||  !applicant.is_reserved?(admission)
     end
   end
 
@@ -104,7 +104,11 @@ class Applicant < ApplicationRecord
   end
 
   def is_flagged?(admission)
-    assigned_job_application(admission, acceptance_status: ["reserved", ""]).nil?
+    assigned_job_application(admission, acceptance_status: "").nil?
+  end
+
+  def is_reserved?(admission)
+    assigned_job_application(admission, acceptance_status: "reserved").nil?
   end
 
   def jobs_applied_to(admission)

@@ -72,7 +72,7 @@ Rails.application.routes.draw do
     resources :blogs do
       get :admin, on: :collection
     end
-
+    
     ############################
     ##  Routes for admissions ##
     ############################
@@ -97,7 +97,6 @@ Rails.application.routes.draw do
       get "reset_password", to: "applicants#reset_password"
       get "search", to: "applicants#search", as: :applicant_search
     end
-
 
     resources :applicants
     resources :groups, only: [:new, :create, :edit, :update] do
