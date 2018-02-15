@@ -35,7 +35,7 @@ class JobApplicationsController < ApplicationController
 
   def update
     if @job_application.update(job_application_params)
-      @job_application.update_attribute(:withdrawn, false)
+      @job_application.update_attributes(withdrawn: false)
       flash[:success] = t('job_applications.application_updated')
       if current_user.class == Applicant
         redirect_to job_applications_path
@@ -48,7 +48,7 @@ class JobApplicationsController < ApplicationController
   end
 
   def destroy
-    JobApplication.find(params[:id]).update_attribute(:withdrawn, true)
+    JobApplication.find(params[:id]).update_attributes(withdrawn: true)
     flash[:success] = t('job_applications.application_deleted')
     if current_user.class == Applicant
       redirect_to job_applications_path

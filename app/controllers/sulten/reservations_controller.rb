@@ -12,7 +12,7 @@ class Sulten::ReservationsController < ApplicationController
   end
 
   def export
-    @reservations = Sulten::Reservation.where(reservation_from: Time.now.beginning_of_week..Time.now.next_year).order('reservation_from ASC')
+    @reservations = Sulten::Reservation.where(reservation_from: Time.zone.now.beginning_of_week..Time.zone.now.next_year).order('reservation_from ASC')
     respond_to do |format|
       format.html
       format.csv do

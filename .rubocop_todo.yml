@@ -92,6 +92,7 @@ Style/GuardClause:
 
 DynamicFindBy:
   Exclude:
+    - 'app/model/page.rb'
     - 'app/controllers/pages_controller.rb'
     - 'app/helpers/pages_helper.rb'
     - 'app/helpers/event_helper.rb'
@@ -109,5 +110,16 @@ Rails/Output:
     - 'lib/billig_service.rb'
 
 Rails/FilePath:
+  # Rails/FilePath: Please use Rails.root.join('path', 'to') instead.
+  # Rails.root.join('app', 'controllers', '**/*_controller.rb') - wut
+  Enabled: false
+
+Rails/ApplicationRecord:
+  # These two has to be subclass of ActiveRecord::Base instead because of the SamfundetAuth gem
   Exclude:
-    - 'lib/tasks/cucumber.rake'
+    - 'app/model/member.rb'
+    - 'app/model/role.rb'
+
+Rails/HasManyOrHasOneDependent:
+  # This should be cleaned up in the future
+  Enabled: false

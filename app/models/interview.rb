@@ -22,7 +22,7 @@ class Interview < ApplicationRecord
   def acceptance_status
     field = self[:acceptance_status]
     field = nil if field&.empty?
-    return field.to_sym unless field.blank?
+    return field.to_sym unless field.present?
   end
 
   def acceptance_status=(value)
