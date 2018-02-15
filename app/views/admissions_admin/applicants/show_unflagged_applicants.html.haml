@@ -1,6 +1,10 @@
 %h2 Søkere som er satt til reserve, eller ikke satt enda
-%br
-
+%p
+  %input#show_reserved{type:"checkbox", checked: true}
+    =t('admissions_admin.show_reserved_applicants')
+%p
+  %input#show_not_set{type:"checkbox", checked: true}
+  =t('admissions_admin.show_not_set_applicants')
 - @applicants.each do |applicant|
   .applicant
     %h3

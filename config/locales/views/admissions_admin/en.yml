@@ -11,3 +11,5 @@ en:
     reject_calls: "Applicants without any offers that %{group_name} has to call."
     remember_to_call: "NO LOG ENTRIES, REMEMBER TO CALL!"
     reject_calls_title: "This is a list of all the applicants that %{group_name} has to call. This page will be continuously updated."
+    show_reserved_applicants: "Show reserved applicants"
+    show_not_set_applicants: "Show applicants that have not yet been flagged"
