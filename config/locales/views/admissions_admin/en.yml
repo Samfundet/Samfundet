@@ -8,6 +8,7 @@ en:
     applications_by_campus: "Number of applications per campus"
     applications_by_day_for_group: "Number of applications per day for %{group}"
     show_interested_other_positions: 'Show applicants that are interested in other positions'
+    show_unflagged_applicants: 'Show applicants that are set to reserved or not yet flagged'
     reject_calls: "Applicants without any offers that %{group_name} has to call."
     remember_to_call: "NO LOG ENTRIES, REMEMBER TO CALL!"
     reject_calls_title: "This is a list of all the applicants that %{group_name} has to call. This page will be continuously updated."
