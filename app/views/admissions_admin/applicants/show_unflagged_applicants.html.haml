@@ -1,3 +1,4 @@
+= javascript_include_tag 'admissions_admin/admissions_admin_applicants', defer: true
 %h2 Søkere som er satt til reserve, eller ikke satt enda
 %p
   %input#show_reserved{type:"checkbox", checked: true}
@@ -6,7 +7,7 @@
   %input#show_not_set{type:"checkbox", checked: true}
   =t('admissions_admin.show_not_set_applicants')
 - @applicants.each do |applicant|
-  .applicant
+  .applicant{id:"applicant-#{applicant.id}", class: "display-none #{applicant.is_flagged?(@admission) ? '' : 'not_set display-not-set'} #{applicant.is_reserved?(@admission) ? 'reserved display-reserved' : ''}"}
     %h3
       %strong= link_to applicant.full_name, applicant
       \-
@@ -14,15 +15,14 @@
       \-
       = applicant.email
     - applicant.job_applications.each do |application|
-      - if application.interview.acceptance_status == :reserved || application.interview.acceptance_status == nil
-        %p
-          = application.job.group.name
-          \-
-          = application.job.title
-          %strong{:style => "color: #961E21"}= application.interview.acceptance_status_string
-
-  %br
-  %br
+      .application{id:"application-#{application.id}", class: "display-none #{application.interview.acceptance_status == nil ? 'not_set display-not-set' : ''} #{application.interview.acceptance_status == :reserved ? 'reserved display-reserved' : ''}"}
+        - if application.interview.acceptance_status == :reserved || application.interview.acceptance_status == nil
+          %p
+            = application.job.group.name
+            \-
+            = application.job.title
+            %strong{:style => "color: #961E21"}= application.interview.acceptance_status_string
+    %br
 
 - if @applicants.blank?
   %p
