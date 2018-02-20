@@ -39,8 +39,6 @@ Samfundet::Application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
-  config.eager_load = false
-
   Haml::Template.options[:ugly] = false
 
   config.action_mailer.perform_caching = false

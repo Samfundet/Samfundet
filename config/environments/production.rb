@@ -51,8 +51,6 @@ Samfundet::Application.configure do
   # Enable threaded mode
   # config.threadsafe!
 
-  config.eager_load = true
-
   Haml::Template.options[:ugly] = :true
 
   config.action_mailer.raise_delivery_errors = true
