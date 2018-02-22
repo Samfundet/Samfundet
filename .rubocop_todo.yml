@@ -35,7 +35,7 @@ Metrics/CyclomaticComplexity:
 # Offense count: 46
 # Configuration parameters: CountComments.
 Metrics/MethodLength:
-  Max: 35
+  Max: 50
 
 # Offense count: 7
 Metrics/PerceivedComplexity:
@@ -92,7 +92,7 @@ Style/GuardClause:
 
 DynamicFindBy:
   Exclude:
-    - 'app/model/page.rb'
+    - 'app/models/page.rb'
     - 'app/controllers/pages_controller.rb'
     - 'app/helpers/pages_helper.rb'
     - 'app/helpers/event_helper.rb'
@@ -117,9 +117,19 @@ Rails/FilePath:
 Rails/ApplicationRecord:
   # These two has to be subclass of ActiveRecord::Base instead because of the SamfundetAuth gem
   Exclude:
-    - 'app/model/member.rb'
-    - 'app/model/role.rb'
+    - 'app/models/member.rb'
+    - 'app/models/tag.rb'
+    - 'app/models/role.rb'
+
+Rails/HasAndBelongsToMany:
+  # This should be cleaned up in the future
+  Enabled: false
 
 Rails/HasManyOrHasOneDependent:
   # This should be cleaned up in the future
   Enabled: false
+
+Style/PercentLiteralDelimiters:
+  # %i( or %i[ - w/e
+  Enabled: False
+

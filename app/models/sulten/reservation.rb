@@ -100,8 +100,8 @@ class Sulten::Reservation < ApplicationRecord
         time_frame.step(30.minutes) do |time_step|
           return possible_times if times_to_check.empty?
           next if times_to_check.exclude? time_step
-          reservation_from = Time.at(time_step)
-          reservation_to = Time.at(time_step + duration.minutes)
+          reservation_from = Time.zone.at(time_step)
+          reservation_to = Time.zone.at(time_step + duration.minutes)
 
           busy_start = t.reservations.where('reservation_from >= ? and reservation_from < ?',
                                             reservation_from,
