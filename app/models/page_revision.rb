@@ -1,12 +1,13 @@
-# -*- encoding : utf-8 -*-
-class PageRevision < ActiveRecord::Base
-  CONTENT_TYPES = %w(html markdown).freeze
+# frozen_string_literal: true
 
-  validates_presence_of :page
-  validates_inclusion_of :content_type, in: CONTENT_TYPES, message: "Invalid content type"
+class PageRevision < ApplicationRecord
+  CONTENT_TYPES = %w[html markdown].freeze
+
+  validates :page, presence: true
+  validates :content_type, inclusion: { in: CONTENT_TYPES, message: 'Invalid content type' }
 
   belongs_to :page
   belongs_to :member
 
-  default_scope order(:version)
+  default_scope { order(:version) }
 end

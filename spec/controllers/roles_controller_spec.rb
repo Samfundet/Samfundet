@@ -1,142 +1,211 @@
-# -*- encoding : utf-8 -*-
-require 'spec_helper'
+# frozen_string_literal: true
+
+require 'rails_helper'
 
 describe RolesController do
-  describe :show do
-    it "should assign @role" do
-      @role = create_role("lim")
-
-      get :show, id: @role.id
-      assigns[:role].should == @role
+  let(:user) { create(:member) }
+  # let(:parent_role) { create(:role)}
+  # let(:child_role) { create(:role, role_id: parent_role.id)}
+  context 'logged in as regular user with some roles' do
+    before do
+      @parent_role = create(:role)
+      @child_role = create(:role, role_id: @parent_role.id)
+      user.roles << @parent_role
+      login_member(user)
     end
-  end
 
-  describe :index do
-    it "should assign @roles with the existing roles" do
-      @role = create_role("lim")
+    describe 'GET #index' do
+      it 'renders the index layout' do
+        get :index
 
-      get :index
-      assigns[:roles].should == [@role]
-    end
-  end
-
-  describe :new do
-    it "should return new record" do
-      get :new
-      assigns[:role].should be_new_record
-    end
-  end
-
-  describe :create do
-    describe "success" do
-      before(:each) do
-        @role = mock_model(Role).as_null_object
-        @role.should_receive(:save).and_return(true)
-
-        Role.should_receive(:new).at_least(:once).and_return(@role)
-        post :create
+        expect(response).to render_template(:index)
       end
 
-      it "should redirect to role page for that role" do
-        response.should redirect_to(role_path(@role))
-      end
+      it 'assigns @roles' do
+        get :index
 
-      it "should set success flash" do
-        flash[:success].should_not be_nil
+        expect(assigns(:roles)).to match([@child_role])
       end
     end
 
-    describe "failure" do
-      before(:each) do
-        @role = mock_model(Role).as_null_object
-        @role.should_receive(:save).and_return(false)
+    describe 'GET #show' do
+      it 'renders the show layout' do
+        get :show, params: { id: @parent_role.id, locale: 'en' }
 
-        Role.should_receive(:new).at_least(:once).and_return(@role)
-        post :create
-      end
-
-      it "should assign role" do
-        assigns[:role].should == @role
-      end
-
-      it "should set error flash" do
-        flash[:error].should_not be_nil
-      end
-
-      it "should re-render role creation form" do
-        response.should render_template(:new)
+        expect(response).to render_template(:show)
       end
     end
   end
-
-  describe :update do
-    before(:each) do
-      @role = create_role("lim")
+  context 'logged in as super user' do
+    before do
+      user.roles << Role.super_user
+      login_member(user)
     end
+    describe 'GET #new' do
+      it 'renders to new layout' do
+        get :new
 
-    describe "success" do
-      before(:each) do
-        Role.should_receive(:find_by_id).at_least(:once).and_return(@role)
-        @role.should_receive(:update_attributes).and_return(true)
-        post :update, id: @role.id
+        expect(response).to render_template(:new)
       end
 
-      it "should redirect to role page for that role" do
-        response.should redirect_to(role_path(@role))
-      end
+      it 'assigns @role to a new record' do
+        get :new
 
-      it "should set success flash" do
-        flash[:success].should_not be_nil
+        expect(assigns(:role)).to be_new_record
       end
     end
+    describe 'POST #create' do
+      context 'with valid attributes' do
+        let(:valid_attributes) { attributes_for(:role) }
+        it 'saves the new role' do
+          expect do
+            post :create, params: { role: valid_attributes }
+          end.to change(Role, :count).by(1)
+        end
 
-    describe "failure" do
-      before(:each) do
-        Role.should_receive(:find_by_id).at_least(:once).and_return(@role)
-        @role.should_receive(:update_attributes).and_return(false)
+        it 'redirects to role path' do
+          post :create, params: { role: valid_attributes }
 
-        post :update, id: @role.id
+          expect(response).to redirect_to(role_path(assigns(:role).id))
+        end
+
+        it 'displays flash success' do
+          post :create, params: { role: valid_attributes }
+
+          expect(flash[:success]).to match(I18n.t('roles.role_created'))
+        end
+      end
+      context 'with invalid attributes' do
+        let(:invalid_attributes) { attributes_for(:role, name: '') }
+        it 'saves the new role' do
+          expect do
+            post :create, params: { role: invalid_attributes }
+          end.to_not change(Role, :count)
+        end
+
+        it 'render the new template' do
+          post :create, params: { role: invalid_attributes }
+
+          expect(response).to render_template(:new)
+        end
+
+        it 'displays flash success' do
+          post :create, params: { role: invalid_attributes }
+
+          expect(flash[:error]).to match(I18n.t('common.fields_missing_error'))
+        end
+      end
+    end
+
+    describe 'GET #edit' do
+      let(:role) { create(:role) }
+      it 'renders the edit template' do
+        get :edit, params: { id: role.id }
+
+        expect(response).to render_template(:edit)
       end
 
-      it "should assign role" do
-        assigns[:role].should == @role
-      end
+      it 'assigns @role' do
+        get :edit, params: { id: role.id }
 
-      it "should set error flash" do
-        flash[:error].should_not be_nil
+        expect(assigns(:role)).to eq role
       end
+    end
 
-      it "should re-render role edit form" do
-        response.should render_template(:edit)
+    describe 'POST #update' do
+      let(:role) { create(:role) }
+      context 'with valid attributes' do
+        let(:valid_attributes) { attributes_for(:role, name: 'foobar') }
+
+        it 'assigns @role' do
+          post :update, params: { id: role.id, role: valid_attributes }
+
+          expect(assigns(:role)).to eq role
+        end
+
+        it 'updates role attributes' do
+          post :update, params: { id: role.id, role: valid_attributes }
+
+          role.reload
+          expect(role.name).to eq 'foobar'
+        end
+
+        it 'redirects to the role path' do
+          post :update, params: { id: role.id, role: valid_attributes }
+
+          expect(response).to redirect_to(role_path(role))
+        end
+
+        it 'displays flash success' do
+          post :update, params: { id: role.id, role: valid_attributes }
+
+          expect(flash[:success]).to eq 'Rollen er oppdatert.'
+        end
+      end
+      context 'without valid attributes' do
+        let(:invalid_attributes) { attributes_for(:role, name: '', description: 'This is a desc') }
+
+        it 'assigns @role' do
+          post :update, params: { id: role.id, role: invalid_attributes }
+
+          expect(assigns(:role)).to eq role
+        end
+
+        it 'does not updates role attributes' do
+          post :update, params: { id: role.id, role: invalid_attributes }
+
+          role.reload
+          expect(role.name).to_not eq 'foobar'
+          expect(role.description).to_not eq 'This is a desc'
+        end
+
+        it 'redirects to the role path' do
+          post :update, params: { id: role.id, role: invalid_attributes }
+
+          expect(response).to render_template(:edit)
+        end
+
+        it 'displays flash error' do
+          post :update, params: { id: role.id, role: invalid_attributes }
+
+          expect(flash[:error]).to eq I18n.t('common.fields_missing_error')
+        end
       end
     end
   end
-
-  describe :pass do
-    before(:each) do
-      Role.stub(:find).with(:all).and_return([])
-
-      @member = mock_model(Member)
-      session[:member_id] = @member.id
-      Member.should_receive(:find).at_least(:once).and_return(@member)
-
-      @role = mock_model(Role)
-      Role.should_receive(:find).with(@role.id.to_s).and_return(@role)
-
-      @members_role = mock_model(MembersRole)
-      @members_role.should_receive(:destroy)
-      MembersRole.should_receive(:find).and_return(@members_role)
-      MembersRole.should_receive(:create)
-
-      post :pass, id: @role.id, member_id: @member.id
+  context 'logged in as regular user with passable role' do
+    let(:member) { create(:member) }
+    before do
+      @role = create(:role, :passable)
+      user.roles << @role
+      login_member(user)
     end
 
-    it "should redirect back to the control panel" do
-      response.should redirect_to(members_control_panel_path)
-    end
+    describe 'POST #pass' do
+      it 'assigns @role' do
+        post :pass, params: { id: @role.id, member_id: member.id }
 
-    it "should set success flash" do
-      flash[:success].should_not be_nil
+        expect(assigns(:role)).to eq @role
+      end
+
+      it 'redirects to members controll panel' do
+        post :pass, params: { id: @role.id, member_id: member.id }
+
+        expect(response).to redirect_to members_control_panel_path
+      end
+
+      it 'passes the role' do
+        post :pass, params: { id: @role.id, member_id: member.id }
+
+        expect(member.roles).to include(@role)
+      end
+
+      it 'removes the role from the current user' do
+        post :pass, params: { id: @role.id, member_id: member.id }
+        user.reload
+
+        expect(user.roles).not_to include(@role)
+      end
     end
   end
 end

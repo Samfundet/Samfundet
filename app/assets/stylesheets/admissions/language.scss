@@ -19,10 +19,10 @@
     	  text-indent: -99999px;
       }
       a.norwegian {
-        background: url(/assets/icons/no.png) bottom;
+        background: asset-url("/assets/icons/no.png") bottom;
       }
       a.english {
-        background: url(/assets/icons/gb.png) bottom;
+        background: asset-url("/assets/icons/gb.png") bottom;
       }
       a:hover {
         background-position: 0 0;

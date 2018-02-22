@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class EverythingClosedPeriodsController < ApplicationController
   filter_access_to :all
 
@@ -7,8 +9,9 @@ class EverythingClosedPeriodsController < ApplicationController
 
   def new
     @everything_closed_period = EverythingClosedPeriod.new(
-      closed_from: DateTime.current,
-      closed_to: DateTime.current + 1.week)
+      closed_from: Time.current,
+      closed_to: Time.current + 1.week
+    )
   end
 
   def create

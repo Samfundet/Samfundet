@@ -1,5 +1,6 @@
-# -*- encoding : utf-8 -*-
-class JobTag < ActiveRecord::Base
+# frozen_string_literal: true
+
+class JobTag < ApplicationRecord
 end
 
 # == Schema Information

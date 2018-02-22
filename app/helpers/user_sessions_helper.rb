@@ -1,4 +1,5 @@
-# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 module UserSessionsHelper
   # Returns the text width (in characters) of the username and password fields
   # for both member and applicant login forms.
@@ -10,6 +11,6 @@ module UserSessionsHelper
     # This particular translation string is currently the longest
     # possible placeholder value. Again, this is an ugly assumption.
     # CSS is stupid.
-    t("member_sessions.forms.login.member_login_id").size + 3
+    t('member_sessions.forms.login.member_login_id').size + 3
   end
 end

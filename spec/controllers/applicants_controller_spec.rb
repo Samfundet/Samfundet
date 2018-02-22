@@ -1,355 +1,149 @@
-# -*- encoding : utf-8 -*-
-require 'spec_helper'
+# frozen_string_literal: true
+
+require 'rails_helper'
 
 describe ApplicantsController do
-  describe :new do
-    it "should return new record" do
+  describe 'GET #new' do
+    it 'assigns @applicant to a new record' do
       get :new
-      assigns[:applicant].should be_new_record
+
+      expect(assigns(:applicant)).to be_new_record
+    end
+    it 'renders the new template' do
+      get :new
+
+      expect(response).to render_template(:new)
     end
   end
 
-  describe :create do
-    describe "when successful" do
-      before(:each) do
-        @applicant_fields = {
-          firstname: "Jonas",
-          surname: "Dust",
-          phone: "+47 10 20 30 40",
-          email: "user@acme.org",
-          password: "suppe",
-          password_confirmation: "suppe"
-        }
+  describe 'POST #create' do
+    context 'with valid attributes' do
+      let(:campus) { create(:campus) }
+      let(:valid_attributes) { attributes_for(:applicant, campus_id: campus.id) }
+      it 'saves the applicant' do
+        expect do
+          post :create, params: { applicant: valid_attributes }
+        end.to change(Applicant, :count).by(1)
+      end
+      it 'logs in the created applicant' do
+        post :create, params: { applicant: valid_attributes }
 
-        @applicant = mock_model(Applicant)
-        @applicant.stub(:phone).and_return(@applicant_fields[:phone])
-        @applicant.should_receive(:save).and_return(true)
-
-        Applicant.should_receive(:new).at_least(:once).and_return(@applicant)
-        Applicant.stub(:find).with(@applicant.id).and_return(@applicant)
+        expect(assigns(:applicant)).to eq controller.current_user
       end
 
-      def post_create
-        post :create, applicant: @applicant_fields
+      context 'with pending application' do
+        let(:application) { create(:job_application) }
+        it 'saves the pending application' do
+          post :create, params: { applicant: valid_attributes }, session: { pending_application: application }
+
+          expect(assigns(:applicant).job_applications).to include(application)
+          expect(response).to redirect_to job_applications_path
+        end
       end
+      context 'without pending application' do
+        it 'redirects to admissions path' do
+          post :create, params: { applicant: valid_attributes }
 
-      it "should redirect to the admissions page" do
-        post_create
-        response.should redirect_to(admissions_path)
-      end
-
-      it "should set success flash" do
-        post_create
-        flash[:success].should_not be_nil
-      end
-
-      it "should log in the applicant" do
-        post_create
-        session[:applicant_id].should == @applicant.id
-      end
-
-      it_should_behave_like "login with pending application"
-    end
-
-    describe "when invalid" do
-      before(:each) do
-        @applicant = mock_model(Applicant)
-        @applicant.should_receive(:save).and_return(false)
-        @applicant.stub(:phone).and_return('string')
-
-        Applicant.should_receive(:new).at_least(:once).and_return(@applicant)
-
-        post :create
-      end
-
-      it "should assign applicant" do
-        assigns[:applicant].should == @applicant
-      end
-
-      it "should set error flash" do
-        flash[:error].should_not be_nil
-      end
-
-      it "should re-render registration form" do
-        response.should render_template(:new)
+          expect(response).to redirect_to admissions_path
+        end
       end
     end
-
-    describe "when a valid-looking phone number is entered" do
-      it "should not set flash[:notice]" do
-        @applicant = mock_model(Applicant)
-        @phone = mock("PhoneAttribute")
-        @phone.stub(:match).and_return(true)
-        @applicant.stub(:phone).and_return(@phone)
-        @applicant.stub(:save).and_return(true)
-
-        Applicant.should_receive(:new).at_least(:once).and_return(@applicant)
-
-        post :create
-
-        flash[:notice].should be_nil
+    context 'with invalid attributes' do
+      let(:invalid_attributes) { attributes_for(:applicant, firstname: '') }
+      it 'does not save the applicant' do
+        expect do
+          post :create, params: { applicant: invalid_attributes }
+        end.to_not change(Applicant, :count)
       end
-    end
+      it 'renders the new template' do
+        post :create, params: { applicant: invalid_attributes }
 
-    describe "when an invalid-looking phone number is entered" do
-      it "should set flash[:notice]" do
-        @applicant = mock_model(Applicant)
-        @phone = mock("PhoneAttribute")
-        @phone.stub(:match).and_return(false)
-        @applicant.stub(:phone).and_return(@phone)
-        @applicant.stub(:save).and_return(true)
-
-        Applicant.should_receive(:new).at_least(:once).and_return(@applicant)
-
-        post :create
-
-        flash[:notice].should_not be_nil
+        expect(response).to render_template(:new)
       end
     end
   end
 
-  describe :show do
-    it "should assign applicant" do
-      @applicant = mock_model(Applicant)
-      Applicant.should_receive(:find).at_least(:once).and_return(@applicant)
-      get :show, id: @applicant.id
-      assigns[:applicant].should == @applicant
+  describe 'POST #update' do
+    let(:applicant) { create(:applicant) }
+    before do
+      login_applicant(applicant)
     end
-  end
+    context 'with valid attributes' do
+      let(:valid_attributes) { attributes_for(:applicant, firstname: 'Foo', surname: 'Bar', password: '', password_confirmation: '') }
+      let(:valid_attributes_with_pw) { attributes_for(:applicant, old_password: 'password', password: 'Foobar', password_confirmation: 'Foobar') }
+      it 'updates the applicant' do
+        post :update, params: { id: applicant.id, applicant: valid_attributes }
+        applicant.reload
 
-  describe :generate_forgot_password_email do
-    describe "email failure" do
-      before(:each) do
-        Applicant.should_receive(:find_by_email).at_least(:once).and_return(nil)
-
-        post :generate_forgot_password_email
+        expect(applicant.firstname).to eq 'Foo'
+        expect(applicant.surname).to eq 'Bar'
       end
 
-      it "should set error flash" do
-        flash[:error].should_not be_nil
+      it 'displays flash success' do
+        post :update, params: { id: applicant.id, applicant: valid_attributes }
+
+        expect(flash[:success]).to match(I18n.t('applicants.update_success'))
       end
 
-      it "should redirect to forgot password" do
-        response.should redirect_to forgot_password_path
-      end
-    end
+      it 'redirects to job applications path' do
+        post :update, params: { id: applicant.id, applicant: valid_attributes }
 
-    describe "limit failure" do
-      before(:each) do
-        @applicant = mock_model(Applicant)
-        Applicant.should_receive(:find_by_email).at_least(:once).and_return(@applicant)
-        @applicant.should_receive(:can_recover_password?).at_least(:once).and_return(false)
-
-        post :generate_forgot_password_email
+        expect(response).to redirect_to job_applications_path
       end
 
-      it "should set error flash" do
-        flash[:error].should_not be_nil
-      end
+      it 'changes password' do
+        post :update, params: { id: applicant.id, applicant: valid_attributes_with_pw }
 
-      it "should redirect to forgot password" do
-        response.should redirect_to forgot_password_path
+        applicant.reload
+
+        expect(Applicant.authenticate(applicant.email, 'password')).to eq nil
+        expect(Applicant.authenticate(applicant.email, 'Foobar')).to eq applicant
       end
     end
 
-    describe "recovery_hash failure" do
-      before(:each) do
-        @applicant = mock_model(Applicant)
-        Applicant.should_receive(:find_by_email).at_least(:once).and_return(@applicant)
-        @applicant.should_receive(:can_recover_password?).and_return(true)
-        @applicant.stub(:create_recovery_hash).and_return('hash')
-        PasswordRecovery.stub(:create!).and_return(false)
+    context 'with invalid attributes' do
+      let(:invalid_attributes) { attributes_for(:applicant, firstname: ' ', password: nil, password_confirmation: nil) }
+      let(:invalid_attributes_with_pw) { attributes_for(:applicant, old_password: 'wrongPassword', password: 'Foobar', password_confirmation: 'Foobar') }
 
-        post :generate_forgot_password_email
+      it 'does not update attributes' do
+        post :update, params: { id: applicant.id, applicant: invalid_attributes }
+
+        applicant.reload
+
+        expect(applicant.firstname).to eq 'Test'
       end
 
-      it "should set error flash" do
-        flash[:error].should_not be_nil
+      it 'renders the edit template' do
+        post :update, params: { id: applicant.id, applicant: invalid_attributes }
+
+        expect(response).to render_template(:edit)
       end
 
-      it "should redirect to forgot password" do
-        response.should redirect_to forgot_password_path
-      end
-    end
+      it 'displays flash error' do
+        post :update, params: { id: applicant.id, applicant: invalid_attributes }
 
-    describe "email delivery failure" do
-      before(:each) do
-        @applicant = mock_model(Applicant)
-        Applicant.should_receive(:find_by_email).at_least(:once).and_return(@applicant)
-        @applicant.should_receive(:can_recover_password?).and_return(true)
-        @applicant.stub(:create_recovery_hash).and_return('hash')
-        @applicant.stub(:email).and_return('email')
-        @applicant.stub(:full_name).and_return('Full Name')
-        @applicant.stub_chain(:password_recoveries, :last, :recovery_hash).and_return('hash')
-        PasswordRecovery.stub(:create!).and_return(true)
-        @message = mock_model("Message")
-        ForgotPasswordMailer.stub(:forgot_password_email).and_return(@message)
-        @message.should_receive(:deliver).and_raise(NoMethodError)
-
-        post :generate_forgot_password_email
+        expect(flash[:error]).to match(I18n.t('applicants.update_error'))
       end
 
-      it "should set error flash" do
-        flash[:error].should_not be_nil
+      context 'when wrong old password submitted' do
+        it 'renders edit' do
+          post :update, params: { id: applicant.id, applicant: invalid_attributes_with_pw }
+
+          expect(response).to render_template :edit
+        end
+
+        it 'displays flash error' do
+          post :update, params: { id: applicant.id, applicant: invalid_attributes_with_pw }
+
+          expect(flash[:error]).to match(I18n.t('applicants.update_error'))
+        end
+
+        it 'adds error to old_password field' do
+          post :update, params: { id: applicant.id, applicant: invalid_attributes_with_pw }
+
+          expect(assigns(:applicant).errors[:old_password]).to include(I18n.t('applicants.password_missmatch'))
+        end
       end
-
-      it "should redirect to forgot password" do
-        response.should redirect_to forgot_password_path
-      end
-    end
-
-    describe "success" do
-      before(:each) do
-        @applicant = mock_model(Applicant)
-        Applicant.should_receive(:find_by_email).at_least(:once).and_return(@applicant)
-        @applicant.should_receive(:can_recover_password?).and_return(true)
-        @applicant.should_receive(:create_recovery_hash).at_least(:once).and_return('hash')
-        @applicant.stub(:email).and_return('email')
-        @applicant.stub(:full_name).and_return('Full Name')
-        @applicant.stub_chain(:password_recoveries, :last, :recovery_hash).and_return('hash')
-        PasswordRecovery.stub(:create!).and_return(true)
-        @message = mock_model("Message")
-        ForgotPasswordMailer.stub(:forgot_password_email).and_return(@message)
-        @message.should_receive(:deliver).and_return(@message)
-
-        post :generate_forgot_password_email
-      end
-
-      it "should set success flash" do
-        flash[:success].should_not be_nil
-      end
-
-      it "should redirect to forgot password" do
-        response.should redirect_to forgot_password_path
-      end
-    end
-  end
-
-  describe :reset_password do
-    describe "email failure" do
-      before(:each) do
-        Applicant.should_receive(:find_by_email).at_least(:once).and_return(nil)
-
-        get :reset_password
-      end
-
-      it "should set error flash" do
-        flash[:error].should_not be_nil
-      end
-
-      it "should not return applicant" do
-        assigns[:applicant].should be_nil
-      end
-    end
-
-    describe "hash failure" do
-      before(:each) do
-        @applicant = mock_model(Applicant)
-        Applicant.should_receive(:find_by_email).at_least(:once).and_return(@applicant)
-        @applicant.should_receive(:check_hash).at_least(:once).and_return(false)
-
-        get :reset_password
-      end
-
-      it "should set error flash" do
-        flash[:error].should_not be_nil
-      end
-
-      it "should not return applicant" do
-        assigns[:applicant].should be_nil
-      end
-    end
-
-    describe "success" do
-      before(:each) do
-        @applicant = mock_model(Applicant)
-        Applicant.should_receive(:find_by_email).at_least(:once).and_return(@applicant)
-        @applicant.should_receive(:check_hash).at_least(:once).and_return(true)
-        @hash = "hash"
-
-        get :reset_password, hash: @hash
-      end
-
-      it "should return applicant" do
-        assigns(:applicant).should == @applicant
-      end
-
-      it "should return the hash" do
-        assigns(:hash).should == @hash
-      end
-    end
-  end
-
-  describe :change_password do
-    describe "failure to validate hash" do
-      before(:each) do
-        @applicant = mock_model(Applicant)
-        Applicant.should_receive(:find).at_least(:once).and_return(@applicant)
-        @applicant.stub(:check_hash).and_return(false)
-
-        post :change_password, id: @applicant.id
-      end
-
-      it "should set error flash" do
-        flash[:error].should_not be_nil
-      end
-
-      it "should render reset password" do
-        response.should render_template(:reset_password)
-      end
-    end
-
-    describe "failure to update" do
-      before(:each) do
-        @applicant = mock_model(Applicant)
-        Applicant.should_receive(:find).at_least(:once).and_return(@applicant)
-        @applicant.stub(:check_hash).and_return(true)
-        @applicant.stub(:update_attributes).and_return(false)
-
-        post :change_password, applicant: {}, id: @applicant.id
-      end
-
-      it "should set error flash" do
-        flash[:error].should_not be_nil
-      end
-
-      it "should render reset password" do
-        response.should render_template(:reset_password)
-      end
-    end
-
-    describe "success" do
-      before(:each) do
-        @applicant = mock_model(Applicant)
-        Applicant.should_receive(:find).at_least(:once).and_return(@applicant)
-        @applicant.stub(:check_hash).and_return(true)
-        @applicant.stub(:update_attributes).and_return(true)
-        PasswordRecovery.create!(applicant_id: @applicant.id)
-
-        post :change_password, applicant: {}, id: @applicant.id
-      end
-
-      it "should delete all password_recoveries" do
-        @applicant.stub(:password_recoveries).and_return(PasswordRecovery.find_by_applicant_id(@applicant.id))
-        @applicant.password_recoveries.should be_nil
-      end
-      it "should set success flash" do
-        flash[:success].should_not be_nil
-      end
-
-      it "should redirect to login page" do
-        response.should redirect_to login_path
-      end
-    end
-  end
-
-  describe :steal_identity do
-    it "should set the session value applicant_id to the id of the applicant having the email specified and redirect to home page" do
-      applicant = mock_model(Applicant).as_null_object
-      Applicant.stub(:find_by_email).with("test@example.com").and_return(applicant)
-      post :steal_identity, applicant_email: "test@example.com"
-      session[:applicant_id].should == applicant.id
-      response.should redirect_to(root_path)
     end
   end
 end

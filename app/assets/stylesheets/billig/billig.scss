@@ -1,0 +1,233 @@
+.billig-buy {
+    display: block;
+
+    @include span-columns(12);
+
+    table {
+        @extend .table-highlight-rows !optional;
+
+        font-size: 1.15em;
+        width: 100%;
+        margin-bottom: 20px;
+        table-layout: fixed;
+        word-wrap: break-word;
+        overflow: scroll;
+        color: $samfundet-black;
+
+        tr .ticket-limit-hd {
+          text-align: center;
+        }
+
+        select {
+          width: 2.8em;
+          font-size: 0.9em;
+          font-family: "futura-pt", "Lato", sans-serif;
+          font-weight: $font-weight-normal;
+        }
+
+        .ticket-group-row:not(:first-child) th, .ticket-summary-row td {
+          border-top: solid 1px;
+          border-top-color: $samfundet-black;
+        }
+
+        .ticket-limit-reached {
+          color: $samfundet-orange;
+          font-weight: bolder !important;
+        }
+
+        .td-currency-unit-no::after {
+          position: absolute;
+          content: " ,-";
+        }
+
+        .td-currency-unit-en::after {
+          content: " NOK";
+        }
+
+        .td-ticket-unit-no::after {
+          content: " stk.";
+        }
+
+        .td-ticket-unit-en::after {
+          content: " pcs.";
+        }
+
+      }
+
+      // Make the ticket table more responsive for small screens
+      @media screen and (max-width: 736px) {
+        table {
+
+          th, td {
+            padding: 0.1em !important;
+            width: 50%;
+          }
+
+          select {
+            width: auto;
+          }
+        }
+      }
+
+    p {
+        display: block;
+        padding: 10px 0;
+    }
+
+    ul {
+        display: block;
+        list-style-type: none;
+
+        li {
+            display: block;
+            padding: 10px 0;
+        }
+    }
+
+    h2 {
+        font-weight: $font-weight-normal;
+        font-size: 1.8em;
+        margin: 20px 0 10px;
+    }
+
+    h3 {
+        font-weight: $font-weight-normal;
+        font-size: 1.6em;
+        margin: 15px 0 5px;
+    }
+
+    h4 {
+        font-weight: $font-weight-normal;
+        font-size: 1.4em;
+        margin: 15px 0 5px;
+    }
+
+    label {
+        display: block;
+    }
+
+    .radio-label {
+        display: inline;
+    }
+
+    input {
+        display: block;
+        border-radius: 3px;
+        border: 1px solid #777;
+        padding: 5px;
+        width: 250px;
+
+        &[type="radio"] {
+            display: inline;
+            width: inherit;
+        }
+
+        &[name="cvc2"] {
+            width: 50px;
+        }
+    }
+
+    select {
+        border-radius: 3px;
+        border: 1px solid #777;
+    }
+
+    .payment-wrapper {
+        @include span-columns(12);
+    }
+
+    .payment-choice {
+        #email_feedback {
+            margin: 2px;
+            height: 16px;
+            background-repeat: no-repeat;
+            background-position: left center;
+            padding-left: 18px;
+
+            &.email_error {
+                background-image: asset-url('https://billettsalg.samfundet.no/error.png')
+            }
+            &.email_equal:after {
+                color: green;
+                content: " \2713";
+            }
+        }
+    }
+    .custom-form input[type='submit']:disabled {
+      background-color: grey;
+    }
+
+    .payment-info {
+        @include span-columns(12 of 12);
+        @include omega();
+
+        @include media($tablet-desktop) {
+            @include span-columns(6 of 12);
+        }
+
+        #card_feedback {
+            margin: 2px;
+            height: 16px;
+            background-repeat: no-repeat;
+            background-position: left center;
+            padding-left: 18px;
+
+            &.card_error {
+                background-image: asset-url('https://billettsalg.samfundet.no/error.png');
+            }
+
+            &.card_visa {
+                background-image: asset-url('https://billettsalg.samfundet.no/visa.png');
+                padding-left: 28px;
+            }
+
+            &.card_mastercard {
+                background-image: asset-url('https://billettsalg.samfundet.no/mastercard.png');
+                padding-left: 28px;
+            }
+
+            &.card_valid:after {
+                color: green;
+                content: " \2713";
+            }
+        }
+    }
+
+    .payment-exp {
+        @include span-columns(4 of 6);
+
+        @include media($tablet-desktop) {
+            @include span-columns(3 of 6);
+        }
+    }
+
+    .payment-cvc2 {
+        @include span-columns(2 of 6);
+        @include omega();
+
+        @include media($tablet-desktop) {
+            @include span-columns(3 of 6);
+            @include omega();
+        }
+    }
+
+    .payment-verified {
+        @include span-columns(12 of 12);
+        @include omega();
+
+        @include media($tablet-desktop) {
+            @include span-columns(6 of 12);
+            @include omega();
+        }
+
+        img {
+            max-width: 100%;
+        }
+    }
+
+    .payment-submit {
+        padding: 15px 0;
+
+        @include span-columns(12);
+    }
+}

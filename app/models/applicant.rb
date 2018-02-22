@@ -1,7 +1,7 @@
-# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
 
-class Applicant < ActiveRecord::Base
-  has_many :job_applications, order: 'priority', dependent: :destroy, conditions: { withdrawn: false }
+class Applicant < ApplicationRecord
+  has_many :job_applications, -> { where(withdrawn: false).order(:priority) }, dependent: :destroy
   has_many :jobs, through: :job_applications
   has_many :password_recoveries
   has_many :log_entries
@@ -9,18 +9,18 @@ class Applicant < ActiveRecord::Base
 
   attr_accessor :password, :password_confirmation, :old_password
 
-  validates_presence_of :firstname, :surname, :email, :phone, :campus_id
-  validates_uniqueness_of :email, :phone
+  validates :firstname, :surname, :email, :phone, :campus_id, presence: true
+  validates :email, :phone, uniqueness: true
 
   validates :email, email: true
 
-  validates_presence_of :password, :password_confirmation,
-                        if: ->(applicant) { applicant.new_record? }
-  validates_length_of :password, minimum: 6,
-                                 if: ->(applicant) { applicant.new_record? }
-  validates_length_of :password, minimum: 6, if: :password_changed?
-  validates_confirmation_of :password, if: :password_changed?
-  validates_format_of :phone, with: /^[\d\s+]+$/
+  validates :password, :password_confirmation,
+            presence: { if: ->(applicant) { applicant.new_record? } }
+  validates :password, length: { minimum: 6,
+                                 if: ->(applicant) { applicant.new_record? } }
+  validates :password, length: { minimum: 6, if: :password_changed? }
+  validates :password, confirmation: { if: :password_changed? }
+  validates :phone, format: { with: /\A[\d\s+]+\z/ }
 
   before_save :hash_new_password, if: :password_changed?
 
@@ -33,7 +33,7 @@ class Applicant < ActiveRecord::Base
   end
 
   def hash_new_password
-    cost = if Rails.env == "production"
+    cost = if Rails.env == 'production'
              10
            else
              1
@@ -41,10 +41,10 @@ class Applicant < ActiveRecord::Base
     self.hashed_password = BCrypt::Password.create(@password, cost: cost)
   end
 
-  def assigned_job_application(admission, acceptance_status: %w(wanted reserved))
+  def assigned_job_application(admission, acceptance_status: %w[wanted reserved])
     job_applications.joins(:interview)
                     .where(interviews: { acceptance_status: acceptance_status })
-                    .find { |application| application.job.admission == admission && application.withdrawn == false }
+                    .find { |application| application.job.admission == admission }
   end
 
   def similar_jobs_not_applied_to
@@ -59,7 +59,7 @@ class Applicant < ActiveRecord::Base
   end
 
   def can_recover_password?
-    password_recoveries.where("created_at > ?", Time.current - 1.day).count < 5
+    password_recoveries.where('created_at > ?', Time.current - 1.day).count < 5
   end
 
   def create_recovery_hash
@@ -73,20 +73,16 @@ class Applicant < ActiveRecord::Base
     false
   end
 
-  def is_logged?
-    LogEntry.where(applicant_id: id).any?
-  end
-
   def self.interested_other_positions(admission)
     where(disabled: false).where(interested_other_positions: true).select do |applicant|
       # If not wanted by any
-      applicant.assigned_job_application(admission, acceptance_status: %w(wanted)).nil?
+      applicant.assigned_job_application(admission, acceptance_status: %w[wanted]).nil?
     end
   end
 
   class << self
     def authenticate(email, password)
-      applicant = where(disabled: false).find_by_email(email.downcase)
+      applicant = where(disabled: false).find_by(email: email.downcase)
       return applicant if applicant &&
                           BCrypt::Password.new(applicant.hashed_password) == password
     end
@@ -96,8 +92,8 @@ class Applicant < ActiveRecord::Base
     job_applications.select { |application| application.job.admission == admission && application.withdrawn == false }.max_by(&:priority).job.group.id
   end
 
-  def is_unwanted?(admission)
-    assigned_job_application(admission, acceptance_status: ["wanted", "reserved", ""]).nil?
+  def unwanted?(admission)
+    assigned_job_application(admission, acceptance_status: ['wanted', 'reserved', '']).nil?
   end
 
   def jobs_applied_to(admission)

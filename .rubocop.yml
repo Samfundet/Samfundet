@@ -7,9 +7,18 @@ AllCops:
     - 'config/**/*'
     - 'script/**/*'
     - 'tmp/**/*'
+    - 'features/**/*'
+  TargetRubyVersion: 2.3
 
 Metrics/LineLength:
   Max: 350
 
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+
 Lint/UnusedBlockArgument:
     Enabled: false
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact

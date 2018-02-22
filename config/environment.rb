@@ -1,6 +1,7 @@
 # -*- encoding : utf-8 -*-
+# frozen_string_literal: true
 # Load the rails application
-require File.expand_path('../application', __FILE__)
+require_relative 'application'
 
 # Initialize the rails application
 Samfundet::Application.initialize!

@@ -1,6 +1,7 @@
-# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 class JobsController < ApplicationController
-  layout "admissions"
+  layout 'admissions'
 
   def show
     @job = Job.find(params[:id])
@@ -8,8 +9,8 @@ class JobsController < ApplicationController
     @similar_available_jobs = @job.similar_available_jobs
 
     # FIXME: Probably some role check is better.
-    @job_application = if current_user.kind_of? Applicant
-                         @job.job_applications.find_or_initialize_by_applicant_id(current_user.id)
+    @job_application = if current_user.is_a? Applicant
+                         @job.job_applications.find_or_initialize_by(applicant_id: current_user.id)
                        else
                          JobApplication.new(job: @job)
                        end

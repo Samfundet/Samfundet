@@ -1,13 +1,14 @@
-# -*- encoding : utf-8 -*-
-class LogEntry < ActiveRecord::Base
-  validates_presence_of :log, :admission, :group, :applicant, :member
+# frozen_string_literal: true
+
+class LogEntry < ApplicationRecord
+  validates :log, :admission, :group, :applicant, :member, presence: true
 
   belongs_to :applicant
   belongs_to :admission
   belongs_to :group
   belongs_to :member
 
-  default_scope order: "created_at ASC"
+  default_scope { order(created_at: :asc) }
 end
 
 # == Schema Information

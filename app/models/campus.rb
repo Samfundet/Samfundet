@@ -1,5 +1,6 @@
-class Campus < ActiveRecord::Base
-  attr_accessible :name, :active
+# frozen_string_literal: true
+
+class Campus < ApplicationRecord
   has_many :applicants
 
   def to_s

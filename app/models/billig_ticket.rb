@@ -1,7 +1,9 @@
-class BilligTicket < ActiveRecord::Base
+# frozen_string_literal: true
+
+class BilligTicket < ApplicationRecord
   self.primary_key = :ticket
-  attr_accessible :ticket, :price_group, :purchase,
-                  :used, :refunder, :on_card, :refunder, :point_of_refund
+  # attr_accessible :ticket, :price_group, :purchase,
+  #                :used, :refunder, :on_card, :refunder, :point_of_refund
 
   belongs_to :billig_price_group, foreign_key: :price_group
   belongs_to :billig_purchase, foreign_key: :purchase

@@ -7,10 +7,11 @@ $(function() {
 		});
 	};
 
-	var tokens = $.map(events, function(elm) {
-		var e = elm.event;
-		e.displayName = e.non_billig_title_no + " " + e.created_at;
-		return e; 
+	var tokens = $.map(events, function(event) {
+	  console.log(typeof(event));
+	  console.log(event);
+		event.displayName = event.non_billig_title_no + " - " + new Date(event.created_at).toDateString();
+		return event;
 	});
 
 	$(".typeahead")

@@ -28,26 +28,27 @@
             %span.bullet
             = t 'navigation.admission.my_group'
     
-    /- if permitted_to?(:create, :job_applications)
-    /  %li{active_page_class(applicant_job_applications_path(current_user))}
-    /    = link_to applicant_job_applications_path(current_user) do
-    /      %span.bullet
-    /      = t 'navigation.admission.show_applications'
-    /  %li
-    /    = link_to applicants_logout_path, method: :post do
-    /      %span.bullet
-    /      =t "sessions.logout"
-    /  %li
-    /    %span.bullet.category_meeting
-    /    #{current_applicant.full_name}
-    /- else
-    /  / %li
-    /  /   -link_to new_applicant_path do
-    /  /     %span.bullet
-    /  /     =t 'navigation.admission.register'
-    /  %li
-    /    = link_to applicants_login_path do
-    /      %span.bullet
-    /      =t "applicants.login_title"
+    -#
+      - if permitted_to?(:create, :job_applications)
+        %li{active_page_class(applicant_job_applications_path(current_user))}
+          = link_to applicant_job_applications_path(current_user) do
+            %span.bullet
+            = t 'navigation.admission.show_applications'
+        %li
+          = link_to applicants_logout_path, method: :post do
+            %span.bullet
+            =t "sessions.logout"
+        %li
+          %span.bullet.category_meeting
+          #{current_applicant.full_name}
+      - else
+         %li
+           -link_to new_applicant_path do
+             %span.bullet
+             =t 'navigation.admission.register'
+        %li
+          = link_to applicants_login_path do
+            %span.bullet
+            =t "applicants.login_title"
 
 = render template: 'layouts/application'

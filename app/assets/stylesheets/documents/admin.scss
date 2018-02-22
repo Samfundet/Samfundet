@@ -1,0 +1,14 @@
+.documents {
+    table {
+        @extend .table-highlight-rows !optional;
+
+        tr.category {
+            font-weight: $font-weight-bold;
+        }
+
+        tr.empty {
+            color: gray;
+            font-style: italic;
+        }
+    }
+}
