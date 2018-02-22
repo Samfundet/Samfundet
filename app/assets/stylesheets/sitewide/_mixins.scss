@@ -5,7 +5,7 @@
 @mixin autoscale-picture($height, $picture:"") {
     height: $height;
     width: 100%;
-    background-image: url(#{$picture});
+    background-image: asset-url(#{$picture});
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

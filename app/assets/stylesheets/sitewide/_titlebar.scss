@@ -17,7 +17,7 @@ $image-aspect-ratio: 12;
         width: $logo-height * $image-aspect-ratio;
         margin-top: $image-margin * 1.5;
 
-        background-image: url(header/Samfundetlogo_hvit.png);
+        background-image: asset-url("header/Samfundetlogo_hvit.png");
         background-repeat: no-repeat;
         background-size: $logo-height * $image-aspect-ratio;
       }

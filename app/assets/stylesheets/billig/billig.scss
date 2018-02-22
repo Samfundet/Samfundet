@@ -145,7 +145,7 @@
             padding-left: 18px;
 
             &.email_error {
-                background-image: url('https://billettsalg.samfundet.no/error.png')
+                background-image: asset-url('https://billettsalg.samfundet.no/error.png')
             }
             &.email_equal:after {
                 color: green;
@@ -173,16 +173,16 @@
             padding-left: 18px;
 
             &.card_error {
-                background-image: url('https://billettsalg.samfundet.no/error.png');
+                background-image: asset-url('https://billettsalg.samfundet.no/error.png');
             }
 
             &.card_visa {
-                background-image: url('https://billettsalg.samfundet.no/visa.png');
+                background-image: asset-url('https://billettsalg.samfundet.no/visa.png');
                 padding-left: 28px;
             }
 
             &.card_mastercard {
-                background-image: url('https://billettsalg.samfundet.no/mastercard.png');
+                background-image: asset-url('https://billettsalg.samfundet.no/mastercard.png');
                 padding-left: 28px;
             }
 

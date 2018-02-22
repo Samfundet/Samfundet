@@ -124,19 +124,19 @@
         }
 
         &.dnb-icon {
-          background-image: url(footer/dnb.png);
+          background-image: asset-url("footer/dnb.png");
         }
 
         &.isfit-icon {
-          background-image: url(footer/isfit.png);
+          background-image: asset-url("footer/isfit.png");
         }
 
         &.uka-icon {
-          background-image: url(footer/uka.png);
+          background-image: asset-url("footer/uka.png");
         }
 
 				&.muo-icon {
-          background-image: url(footer/muo.png);
+          background-image: asset-url("footer/muo.png");
         }
       }
     }
