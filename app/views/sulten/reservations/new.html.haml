@@ -21,7 +21,7 @@
         = t("sulten.reservation.form.type_explanation")
     = f.input :reservation_type, label: t("sulten.reservation.reservation_type")
     = f.input :reservation_duration, label: t("sulten.reservation.form.duration"), collection: [60, 90, 120, 150, 180], member_label: proc{|d| "#{d} minutter"}, include_blank: false, selected: 60
-    /collection: [60, 90, 120, 150, 180] because "mat" is selected at load in prod
+    -# collection: [60, 90, 120, 150, 180] because "mat" is selected at load in prod
     = f.input :name, label: t("sulten.reservation.name")
     = f.input :telephone, label: t("sulten.reservation.telephone")
     = f.input :email, label: t("sulten.reservation.email")
