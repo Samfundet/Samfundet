@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require SamfundetAuth::Engine.root.join('app', 'models', 'role')
 
 class Role < ActiveRecord::Base
-  attr_accessible :group_id, :role_id, :passable
+  # attr_accessible :group_id, :role_id, :passable
 
   scope :passable, (lambda do
-    Role.where("passable = ?", true)
+    Role.where('passable = ?', true)
   end)
 
   def members
@@ -16,7 +18,9 @@ class Role < ActiveRecord::Base
   end
 
   def self.super_user
-    Role.find_or_create_by_title(title: "lim_web", name: "Superuser",
-                                 description: "Superrolle for alle i MG::Web.")
+    Role.find_or_create_by(title: 'lim_web') do |role|
+      role.name = 'Superuser',
+                  role.description = 'Superrolle for alle i MG::Web.'
+    end
   end
 end

@@ -1,117 +1,144 @@
-# -*- encoding : utf-8 -*-
-require 'spec_helper'
+# frozen_string_literal: true
+
+require 'rails_helper'
 
 describe GroupsController do
-  describe :show do
-    it "should assign @group" do
-      @group = create_group("Layout Info Marked")
+  let(:user) { create(:member) }
+  before do
+    role = Role.super_user
+    user.roles << role
+    login_member(user)
+  end
 
-      get :show, id: @group.id
-      assigns[:group].should == @group
+  describe 'GET #admin' do
+    it 'renders the admin template' do
+      get :admin
+
+      expect(response).to render_template(:admin)
+    end
+    it 'assigns @group_types to all' do
+      group_types = create_list(:group_type, 5)
+
+      get :admin
+
+      expect(assigns(:group_types)).to eq group_types
     end
   end
 
-  describe :index do
-    it "should assign @group_types with the existing group types" do
-      @group_type = GroupType.find_or_create_by_description("Dummy group type")
-
-      get :index
-      assigns[:group_types].should == [@group_type]
-    end
-  end
-
-  describe :new do
-    it "should return new record" do
+  describe 'GET #new' do
+    it 'renders the new template' do
       get :new
-      assigns[:group].should be_new_record
+
+      expect(response).to render_template(:new)
+    end
+
+    it 'assigns @group to a new record' do
+      get :new
+
+      expect(assigns(:group)).to be_new_record
     end
   end
 
-  describe :create do
-    describe "success" do
-      before(:each) do
-        @group = mock_model(Group).as_null_object
-        @group.should_receive(:save).and_return(true)
-
-        Group.should_receive(:new).at_least(:once).and_return(@group)
-        post :create
+  describe 'POST #create' do
+    let(:group_type) { create(:group_type) }
+    let(:valid_attributes) { attributes_for(:group, group_type_id: group_type.id) }
+    let(:invalid_attributes) { attributes_for(:group, name: '', group_type_id: group_type.id) }
+    context 'with valid attributes' do
+      it 'saves the new group' do
+        expect do
+          post :create, params: { group: valid_attributes }
+        end.to change(Group, :count).by(1)
       end
-
-      it "should redirect to group page" do
-        response.should redirect_to(groups_path)
+      it 'redirects to the group index' do
+        post :create, params: { group: valid_attributes }
+        expect(response).to redirect_to admin_groups_path
       end
-
-      it "should set success flash" do
-        flash[:success].should_not be_nil
+      it 'displays flash success' do
+        post :create, params: { group: valid_attributes }
+        expect(flash[:success]).to match('Gjengen er opprettet')
       end
     end
 
-    describe "failure" do
-      before(:each) do
-        @group = mock_model(Group).as_null_object
-        @group.should_receive(:save).and_return(false)
-
-        Group.should_receive(:new).at_least(:once).and_return(@group)
-        post :create
+    context 'with invalid attributes' do
+      it 'does not save the new group' do
+        expect do
+          post :create, params: { group: invalid_attributes }
+        end.to_not change(Group, :count)
       end
-
-      it "should assign group" do
-        assigns[:group].should == @group
+      it 're-renders the new template' do
+        post :create, params: { group: invalid_attributes }
+        expect(response).to render_template :new
       end
-
-      it "should set error flash" do
-        flash[:error].should_not be_nil
-      end
-
-      it "should re-render group creation form" do
-        response.should render_template(:new)
+      it 'displays flash error' do
+        post :create, params: { group: invalid_attributes }
+        expect(flash[:error]).to match(I18n.t('common.fields_missing_error'))
       end
     end
   end
 
-  describe :update do
-    before(:each) do
-      @group = create_group("Layout Info Marked")
+  describe 'GET #edit' do
+    let(:group) { create(:group) }
+
+    it 'renders the edit view' do
+      get :edit, params: { id: group.id }
+
+      expect(response).to render_template(:edit)
     end
 
-    describe "success" do
-      before(:each) do
-        Group.stub(:find).with(:all).and_return([])
+    it 'assigns @group' do
+      get :edit, params: { id: group.id }
 
-        Group.should_receive(:find).with(@group.id.to_s).and_return(@group)
-        @group.should_receive(:update_attributes).and_return(true)
-        post :update, id: @group.id
+      expect(assigns(:group)).to eq group
+    end
+  end
+
+  describe 'POST #update' do
+    let(:group) { create(:group) }
+    let(:group_type) { create(:group_type) }
+    let(:valid_attributes) { attributes_for(:group, group_type_id: group_type.id) }
+    let(:invalid_attributes) { attributes_for(:group, name: '', group_type_id: group_type.id) }
+    context 'with valid attributes' do
+      it 'assigns @group' do
+        put :update, params: { id: group.id, group: valid_attributes }
+
+        expect(assigns(:group)).to eq group
       end
-
-      it "should redirect to group page" do
-        response.should redirect_to(groups_path)
+      it "updates group's attributes" do
+        attributes = attributes_for(:group, name: 'Some name', abbreviation: 'sm')
+        post :update, params: { id: group.id, group: attributes }
+        group.reload
+        expect(group.name).to eq 'Some name'
+        expect(group.abbreviation).to eq 'sm'
       end
-
-      it "should set success flash" do
-        flash[:success].should_not be_nil
+      it 'redirects to the group index' do
+        post :update, params: { id: group.id, group: valid_attributes }
+        expect(response).to redirect_to admin_groups_path
+      end
+      it 'displays flash success' do
+        post :update, params: { id: group.id, group: valid_attributes }
+        expect(flash[:success]).to match('Gjengen er oppdatert')
       end
     end
 
-    describe "failure" do
-      before(:each) do
-        Group.stub(:find).with(:all).and_return([])
-
-        Group.should_receive(:find).with(@group.id.to_s).and_return(@group)
-        @group.should_receive(:update_attributes).and_return(false)
-
-        post :update, id: @group.id
+    context 'with invalid attributes' do
+      it 'assigns @group' do
+        post :update, params: { id: group.id, group: invalid_attributes }
+        expect(assigns(:group)).to eq group
       end
-
-      it "should assign group" do
-        assigns[:group].should == @group
+      it 'does not save the new group' do
+        attributes = attributes_for(:group, name: '', abbreviation: 'sm')
+        post :update, params: { id: group.id, group: attributes }
+        group.reload
+        expect(group.name).to_not eq ''
+        expect(group.abbreviation).to_not eq 'sm'
       end
-
-      it "should set error flash" do
-        flash[:error].should_not be_nil
+      it 're-renders the new template' do
+        post :update, params: { id: group.id, group: invalid_attributes }
+        expect(response).to render_template :edit
       end
-
-      it "should re-render group edit form" do
-        response.should render_template(:edit)
+      it 'displays flash error' do
+        post :create, params: { id: group.id, group: invalid_attributes }
+        expect(flash[:error]).to match(I18n.t('common.fields_missing_error'))
       end
     end
   end

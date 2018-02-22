@@ -1,7 +1,8 @@
-# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 class AdmissionsAdmin::AdmissionsController < ApplicationController
   layout 'admissions'
-  filter_access_to [:show, :statistics]
+  filter_access_to %i[show statistics]
 
   def show
     @admission = Admission.find(params[:id])
@@ -18,7 +19,7 @@ class AdmissionsAdmin::AdmissionsController < ApplicationController
     @campuses = Campus.order(:name)
     @campus_count = Campus.number_of_applicants_given_admission(@admission)
 
-    applications_count = @admission.job_applications.count
+    # applications_count = @admission.job_applications.count
     applications_per_group = @admission.groups.map do |group|
       group.jobs.where(admission_id: @admission.id).map do |job|
         job.job_applications.count
@@ -28,11 +29,11 @@ class AdmissionsAdmin::AdmissionsController < ApplicationController
     admission_start = @admission.shown_from.to_date
     admission_end = @admission.actual_application_deadline.to_date
     applications_per_day = (admission_start..admission_end).map do |day|
-      @admission.job_applications.where("DATE(job_applications.created_at) = ?",
+      @admission.job_applications.where('DATE(job_applications.created_at) = ?',
                                         day).count
     end
     admission_day_labels = (admission_start..admission_end).map do |day|
-      day.strftime("%-d.%-m")
+      day.strftime('%-d.%-m')
     end
 
     applications_per_campus = @campuses.map do |campus|
@@ -64,7 +65,7 @@ class AdmissionsAdmin::AdmissionsController < ApplicationController
       data: applications_per_day,
       encoding: 'text',
       labels: admission_day_labels,
-      axis_with_labels: %w(x y),
+      axis_with_labels: %w[x y],
       axis_range: [nil, [0, applications_per_day.max, [applications_per_day.max / 10, 1].max]],
       size: '800x350',
       bar_color: 'A03033'

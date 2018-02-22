@@ -1,4 +1,5 @@
-# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 module ControlPanel
   class Applet
     def initialize(controller, action_name, options)
@@ -11,7 +12,7 @@ module ControlPanel
       # uses instance_exec because instance_eval tries to pass self as a
       # parameter, so lambdas without arguments complain when using
       # instance_eval
-      @controller.instance_exec &@condition_block
+      @controller.instance_exec(&@condition_block)
     end
 
     def render
@@ -41,22 +42,24 @@ module ControlPanel
     end
   end
 
-  def self.applets(request)
-    Dir[Rails.root.join("app", "controllers", "**/*_controller.rb")].flat_map do |path|
-      controller_from_path(path).control_panel_applets.map do |create_applet|
-        create_applet.call(request)
+  class << self
+    def applets(request)
+      Dir[Rails.root.join('app', 'controllers', '**/*_controller.rb')].flat_map do |path|
+        controller_from_path(path).control_panel_applets.map do |create_applet|
+          create_applet.call(request)
+        end
       end
     end
-  end
 
-  private
+    private
 
-  # "/path/to/foo_controller.rb" => FooController
-  def self.controller_from_path(path)
-    if path.split('/')[-2] != 'controllers'
-      (path.split('/')[-2].camelize + '::' + File.basename(path, ".rb").camelize).constantize
-    else
-      File.basename(path, ".rb").camelize.constantize
+    # "/path/to/foo_controller.rb" => FooController
+    def controller_from_path(path)
+      if path.split('/')[-2] != 'controllers'
+        (path.split('/')[-2].camelize + '::' + File.basename(path, '.rb').camelize).constantize
+      else
+        File.basename(path, '.rb').camelize.constantize
+      end
     end
   end
 end

@@ -1,4 +1,5 @@
 # -*- encoding : utf-8 -*-
+# frozen_string_literal: true
 
 require 'redcarpet'
 
@@ -14,7 +15,6 @@ end
 
 module Haml::Filters::Markdown
   include Haml::Filters::Base
-  lazy_require 'redcarpet'
 
   markdown_extensions = {
     autolink: true,

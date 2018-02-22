@@ -1,21 +1,22 @@
-# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 class EventsController < ApplicationController
   filter_access_to [:admin], require: :edit
-  filter_access_to [:purchase_callback_failure,
-                    :purchase_callback_success], require: :buy
+  filter_access_to %i[purchase_callback_failure
+                      purchase_callback_success], require: :buy
   filter_access_to :rss, require: :read
 
   has_control_panel_applet :admin_applet,
                            if: -> { permitted_to? :edit, :events }
 
-  before_filter :set_organizer_id, only: [:create, :update]
+  before_action :set_organizer_id, only: %i[create update]
 
   def set_organizer_id
     case params[:event][:organizer_type]
     when Group.name
       params[:event][:organizer_id] = params[:event][:organizer_group_id]
     when ExternalOrganizer.name
-      params[:event][:organizer_id] = ExternalOrganizer.find_or_create_by_name(params[:event][:organizer_external_name]).id
+      params[:event][:organizer_id] = ExternalOrganizer.find_or_create_by(name: params[:event][:organizer_external_name]).id
     end
 
     params[:event].delete(:organizer_group_id)
@@ -70,11 +71,12 @@ class EventsController < ApplicationController
   def new
     @event = Event.new(
       non_billig_start_time: Time.current + 1.hour,
-      publication_time: Time.current)
+      publication_time: Time.current
+    )
   end
 
   def create
-    @event = Event.new(params[:event])
+    @event = Event.new(event_params)
     if @event.save
       if @event.non_billig_start_time < Time.current
         flash[:message] = t('events.time_of_start_has_passed')
@@ -93,7 +95,7 @@ class EventsController < ApplicationController
 
   def update
     @event = Event.find params[:id]
-    if @event.update_attributes(params[:event])
+    if @event.update_attributes(event_params)
       if @event.non_billig_start_time < Time.current
         flash[:message] = t('events.time_of_start_has_passed')
       end
@@ -126,7 +128,7 @@ class EventsController < ApplicationController
     end
 
     unless @event.purchase_status == Event::TICKETS_AVAILABLE
-      raise ActionController::RoutingError.new('Not Found') if request.xhr?
+      raise ActionController::RoutingError, 'Not Found' if request.xhr?
 
       flash[:error] = t('events.can_not_purchase_error')
       redirect_to(@event) && return
@@ -137,8 +139,8 @@ class EventsController < ApplicationController
     if params.key? :bsession
       @payment_error = BilligPaymentError.where(error: params[:bsession]).first
       @payment_error_price_groups =
-          Hash[BilligPaymentErrorPriceGroup.where(error: params[:bsession])
-          .map { |bpepg| [bpepg.price_group, bpepg.number_of_tickets] }]
+        Hash[BilligPaymentErrorPriceGroup.where(error: params[:bsession])
+                                         .map { |bpepg| [bpepg.price_group, bpepg.number_of_tickets] }]
       flash.now[:error] = @payment_error.message
     else
       @payment_error = nil
@@ -158,38 +160,36 @@ class EventsController < ApplicationController
     @events = @events.paginate(page: params[:page], per_page: 20)
   end
 
-  def admin_applet
-  end
+  def admin_applet; end
 
   def purchase_callback_success
     split_tickets = params[:tickets]
-                    .split(",")
+                    .split(',')
                     .map(&:to_i)
                     .uniq - [0]
 
-    @references = split_tickets.join(", ") << "."
+    @references = split_tickets.join(', ') << '.'
     @pdf_url = Rails.application.config.billig_ticket_path.dup
     @sum = 0
 
     @ticket_event_price_group_card_no =
-        split_tickets.each_with_index.map do |ticket_with_hmac, i|
-          ticket_id = ticket_with_hmac.to_s[0..-6].to_i # First 5 characters are hmac.
-          @pdf_url << "ticket#{i}=#{ticket_with_hmac}&"
-          billig_ticket = BilligTicket.find_by_ticket(ticket_id)
+      split_tickets.each_with_index.map do |ticket_with_hmac, i|
+        ticket_id = ticket_with_hmac.to_s[0..-6].to_i # First 5 characters are hmac.
+        @pdf_url << "ticket#{i}=#{ticket_with_hmac}&"
+        billig_ticket = BilligTicket.find(ticket_id)
 
-          if billig_ticket
-            @sum += billig_ticket.billig_price_group.price
+        next unless billig_ticket
+        @sum += billig_ticket.billig_price_group.price
 
-            card_number = if billig_ticket.on_card
-                            billig_ticket.billig_purchase.membership_card.card
-                          end
+        card_number = if billig_ticket.on_card
+                        billig_ticket.billig_purchase.membership_card.card
+                      end
 
-            [billig_ticket,
-             billig_ticket.billig_event,
-             billig_ticket.billig_price_group,
-             card_number]
-          end
-        end.compact
+        [billig_ticket,
+         billig_ticket.billig_event,
+         billig_ticket.billig_price_group,
+         card_number]
+      end.compact
 
     @pdf_url.chop! # Remove last '&' character.
   end
@@ -219,7 +219,7 @@ class EventsController < ApplicationController
   end
 
   def rss
-    @events = if %w(archive arkiv).include? params[:type]
+    @events = if %w[archive arkiv].include? params[:type]
                 Event.active.published
               else
                 Event.upcoming.active.published
@@ -227,5 +227,45 @@ class EventsController < ApplicationController
     respond_to do |format|
       format.rss { render layout: false }
     end
+  end
+
+  private
+
+  def event_params
+    params.require(:event).permit(
+      :non_billig_title_no,
+      :title_en,
+      :short_description_en,
+      :short_description_no,
+      :long_description_en,
+      :long_description_no,
+      :event_type,
+      :age_limit,
+      :area_id,
+      :status,
+      :image_id,
+      :primary_color,
+      :secondary_color,
+      :banner_alignment,
+      :organizer_type,
+      :non_billig_start_time,
+      :duration,
+      :publication_time,
+      :spotify_uri,
+      :facebook_link,
+      :youtube_link,
+      :youtube_embed,
+      :soundcloud_link,
+      :instagram_link,
+      :twitter_link,
+      :lastfm_link,
+      :vimeo_link,
+      :general_link,
+      :price_type,
+      :billig_event_id,
+      :organizer_id,
+      :codeword,
+      price_groups_attributes: %i(name price id _destroy)
+    )
   end
 end

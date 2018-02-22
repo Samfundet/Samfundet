@@ -1,33 +1,32 @@
-class Sulten::Reservation < ActiveRecord::Base
+# frozen_string_literal: true
+
+class Sulten::Reservation < ApplicationRecord
   belongs_to :table
   belongs_to :reservation_type
 
-  attr_accessible :reservation_from, :reservation_duration, :reservation_to, :people, :name,
-                  :telephone, :email, :allergies, :internal_comment, :table_id, :reservation_type_id, :reservation_duration
+  # attr_accessible :reservation_from, :reservation_duration, :reservation_to, :people, :name,
+  #                :telephone, :email, :allergies, :internal_comment, :table_id, :reservation_type_id, :reservation_duration
+  validates :reservation_from, :reservation_to, :people,
+            :name, :telephone, :email, :reservation_type, presence: true
 
-  attr_accessor :reservation_duration, :admin_access
+  attr_accessor :admin_access
 
-  validates_presence_of :reservation_from, :reservation_to, :reservation_duration, :people,
-                        :name, :reservation_type, :email, :telephone
   validate :check_opening_hours, :check_amount_of_people,
            :reservation_is_one_day_in_future, :email, on: :create, unless: :admin_access
 
   validates :email, email: true
 
   before_validation(on: :create) do
-    should_break = false
-
     unless [30, 60, 90, 120, 180].include? reservation_duration.to_i
-      errors.add(:reservation_duration, I18n.t("helpers.models.sulten.reservation.errors.check_reservation_duration"))
-      should_break = true
+      errors.add(:reservation_duration, I18n.t('helpers.models.sulten.reservation.errors.check_reservation_duration'))
+      throw(:abort)
     end
 
     if reservation_from.nil?
-      errors.add(:reservation_from, I18n.t("helpers.models.sulten.reservation.errors.invalid_reservation_format"))
-      should_break = true
+      errors.add(:reservation_from, I18n.t('helpers.models.sulten.reservation.errors.invalid_reservation_format'))
+      throw(:abort)
     end
 
-    return false if should_break
     self.reservation_to = reservation_from + reservation_duration.to_i.minutes
   end
 
@@ -40,41 +39,48 @@ class Sulten::Reservation < ActiveRecord::Base
 
     unless table
       errors.add(:reservation_from,
-                 I18n.t("helpers.models.sulten.reservation.errors.reservation_from.no_table_available"))
+                 I18n.t('helpers.models.sulten.reservation.errors.reservation_from.no_table_available'))
     end
   end
 
   def reservation_is_one_day_in_future
     if reservation_from < Date.tomorrow
-      errors.add(:reservation_from, I18n.t("helpers.models.sulten.reservation.errors.reservation_from.reservation_is_one_day_in_future"))
+      errors.add(:reservation_from, I18n.t('helpers.models.sulten.reservation.errors.reservation_from.reservation_is_one_day_in_future'))
     end
   end
 
   def check_opening_hours
     unless Sulten::Reservation.lyche_open?(reservation_from, reservation_to)
-      errors.add(:reservation_from, I18n.t("helpers.models.sulten.reservation.errors.reservation_from.check_opening_hours"))
+      errors.add(:reservation_from, I18n.t('helpers.models.sulten.reservation.errors.reservation_from.check_opening_hours'))
     end
   end
 
   def check_amount_of_people
     if people > 12
-      errors.add(:people, I18n.t("helpers.models.sulten.reservation.errors.people.too_many_people"))
+      errors.add(:people, I18n.t('helpers.models.sulten.reservation.errors.people.too_many_people'))
     elsif people < 1
-      errors.add(:people, I18n.t("helpers.models.sulten.reservation.errors.people.too_few_people"))
+      errors.add(:people, I18n.t('helpers.models.sulten.reservation.errors.people.too_few_people'))
     end
   end
 
   def first_name
-    name.partition(" ").first
+    name.partition(' ').first
   end
 
-  def self.find_table from, to, people, reservation_type_id
-    for i in 1..Sulten::ReservationType.all.length
-      Sulten::Table.where("capacity >= ? and available = ?", people, true).order("capacity ASC").tables_with_i_reservation_types(i).find do |t|
-        if t.reservation_types.pluck(:id).include? reservation_type_id
-          if t.reservations.where("reservation_from > ? or reservation_to < ?", to, from).count == t.reservations.count
-            return t
-          end
+  def reservation_duration=(duration)
+    self.reservation_to = reservation_from + duration.to_i.minutes if reservation_from.present?
+  end
+
+  def reservation_duration
+    @reservation_duration ||= ((reservation_to - reservation_from) / 60).to_i unless reservation_to.nil? || reservation_from.nil?
+  end
+
+  def self.find_table(from, to, people, reservation_type_id)
+    (1..Sulten::ReservationType.count).each do |i|
+      Sulten::Table.where('capacity >= ? and available = ?', people, true).order('capacity ASC').tables_with_i_reservation_types(i).find do |t|
+        next unless t.reservation_types.pluck(:id).include? reservation_type_id
+        if t.reservations.where('reservation_from > ? or reservation_to < ?', to, from).count == t.reservations.count
+          return t
         end
       end
     end
@@ -82,50 +88,47 @@ class Sulten::Reservation < ActiveRecord::Base
   end
 
   def self.find_available_times(date, duration, people, type_id)
-    now = DateTime.parse(date).utc
+    now = Time.parse(date).utc
     default_open = now.change(hour: 16, min: 0, sec: 0)
     default_close = now.change(hour: 22, min: 0, sec: 0)
     possible_times = []
     time_frame = default_open.to_i..default_close.to_i
     times_to_check = time_frame.step(30.minutes).to_a
-    for i in 1..Sulten::ReservationType.all.length
-      Sulten::Table.where("capacity >= ? and available = ?", people, true).order("capacity ASC").tables_with_i_reservation_types(i).find do |t|
-        if t.reservation_types.pluck(:id).include? type_id
-          time_frame.step(30.minutes) do |time_step|
-            return possible_times if times_to_check.empty?
-            next if times_to_check.exclude? time_step
-            reservation_from = Time.at(time_step)
-            reservation_to = Time.at(time_step + duration.minutes)
+    Sulten::ReservationType.each do
+      Sulten::Table.where('capacity >= ? and available = ?', people, true).order('capacity ASC').tables_with_i_reservation_types(i).find do |t|
+        next unless t.reservation_types.pluck(:id).include? type_id
+        time_frame.step(30.minutes) do |time_step|
+          return possible_times if times_to_check.empty?
+          next if times_to_check.exclude? time_step
+          reservation_from = Time.zone.at(time_step)
+          reservation_to = Time.zone.at(time_step + duration.minutes)
 
-            busy_start = t.reservations.where("reservation_from >= ? and reservation_from < ?",
-                                              reservation_from,
-                                              reservation_to).any?
-
-            busy_end = t.reservations.where("reservation_to > ? and reservation_to < ?",
+          busy_start = t.reservations.where('reservation_from >= ? and reservation_from < ?',
                                             reservation_from,
                                             reservation_to).any?
 
-            busy_table = busy_start || busy_end
-            unless busy_table
-              possible_times.push(reservation_from.utc)
-              times_to_check.delete(time_step)
-            end
+          busy_end = t.reservations.where('reservation_to > ? and reservation_to < ?',
+                                          reservation_from,
+                                          reservation_to).any?
+
+          busy_table = busy_start || busy_end
+          unless busy_table
+            possible_times.push(reservation_from.utc)
+            times_to_check.delete(time_step)
           end
         end
       end
-      possible_times
     end
+    possible_times
   end
 
-  def self.lyche_open? from, to
+  def self.lyche_open?(from, to)
     # TODO: Change these defaults when admin can set them
     # The values 16 .. 22 are the openinghours
-    (16..22).include?(from.hour..to.hour)
+    (from.hour >= 16 && to.hour < 22)
   end
 
-  def self.kitchen_open? from, to
-    default_kitchen_opening_hour = Time.new(2015, 01, 01, 16, 00, 00)
-    default_kitchen_closing_hour = Time.new(2015, 01, 01, 22, 00, 00)
-    (16..22).include?(from.hour..to.hour)
+  def self.kitchen_open?(from, to)
+    (from.hour >= 16 && to.hour < 22)
   end
 end

@@ -1,6 +1,8 @@
 // Gem imports
+@import "jquery-ui/core";
 @import "jquery-ui/datepicker";
 @import "jquery-ui/autocomplete";
+@import "jquery-ui/theme";
 @import "jquery-tablesorter/theme.default";
 
 // Vendor stylesheets
@@ -36,7 +38,7 @@
 @import "sitewide/_pagination";
 
 // Sass files for different modules
-@import "site/site.css.scss";
+@import "site/site";
 @import "events/events";
 @import "admissions/admissions";
 @import "documents/documents";

@@ -1,4 +1,5 @@
 # -*- encoding : utf-8 -*-
+# frozen_string_literal: true
 Given /^there are (open|closed) admissions titled (.+)$/i do |status, admissions|
   without_access_control do
     opts = case status

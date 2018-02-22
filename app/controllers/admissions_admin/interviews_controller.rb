@@ -1,23 +1,24 @@
-# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 require 'icalendar'
 
 class AdmissionsAdmin::InterviewsController < ApplicationController
-  layout "admissions"
-  filter_access_to [:show, :update], attribute_check: true
+  layout 'admissions'
+  filter_access_to %i[show update], attribute_check: true
 
   def show
     interview = Interview.find(params[:id])
 
-    raise "No interview time set" if interview.time.nil?
+    raise 'No interview time set' if interview.time.nil?
 
     respond_to do |format|
       format.ics do
         event = Icalendar::Event.new
         event.start = interview.time.strftime('%Y%m%dT%H%M%S')
         event.end = (interview.time + 30.minutes).strftime('%Y%m%dT%H%M%S')
-        event.summary = I18n.t("interviews.ical_summary",
+        event.summary = I18n.t('interviews.ical_summary',
                                group: interview.job_application.job.group)
-        event.description = I18n.t("interviews.ical_description",
+        event.description = I18n.t('interviews.ical_description',
                                    job: interview.job_application.job.title,
                                    group: interview.job_application.job.group)
 
@@ -58,7 +59,7 @@ class AdmissionsAdmin::InterviewsController < ApplicationController
                                                               @interview.job_application.job)
       end
     end
-  rescue Exception => ex
+  rescue StandardError => ex
     if request.xhr?
       render text: ex.to_s, status: 500
     else
@@ -76,18 +77,17 @@ class AdmissionsAdmin::InterviewsController < ApplicationController
       next if (application == @interview.job_application) || application.interview.nil? || application.interview.time.nil?
 
       time_interval = ((application.interview.time - 29.minutes)..(application.interview.time + 29.minutes))
-      if time_interval.include? @interview.time
-        other_interview_time = application.interview.time
-        if request.xhr?
-          @interview_warning = t("interviews.other_interviews_are_nigh",
-                                 applicant: @interview.job_application.applicant.full_name,
-                                 time: other_interview_time)
+      next unless time_interval.include? @interview.time
+      other_interview_time = application.interview.time
+      if request.xhr?
+        @interview_warning = t('interviews.other_interviews_are_nigh',
+                               applicant: @interview.job_application.applicant.full_name,
+                               time: other_interview_time)
 
-        else
-          flash[:message] = t("interviews.other_interviews_are_nigh",
-                              applicant: @interview.job_application.applicant.full_name,
-                              time: other_interview_time)
-        end
+      else
+        flash[:message] = t('interviews.other_interviews_are_nigh',
+                            applicant: @interview.job_application.applicant.full_name,
+                            time: other_interview_time)
       end
     end
   end
