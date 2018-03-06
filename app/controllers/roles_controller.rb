@@ -5,7 +5,7 @@ class RolesController < ApplicationController
   before_action :find_by_id, only: %i[show edit update]
 
   has_control_panel_applet :admin_applet,
-                           if: -> { permitted_to?(:manage, Role) }
+                           if: -> { permitted_to?(:manage, :roles) }
 
   has_control_panel_applet :pass_applet,
                            if: -> { current_user.roles.passable.present? }
