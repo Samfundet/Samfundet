@@ -2,6 +2,6 @@
 
 class ContactController < ApplicationController
   def index
-    @contact_form = ContactForm.new
+    @contact_form
   end
 end
