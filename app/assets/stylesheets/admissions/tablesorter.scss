@@ -1,6 +1,6 @@
 /* tables */
 table thead tr .tablesorter-header {
-	background-image: url(images/bg.gif);
+	background-image: asset-url(images/bg.gif);
 	background-repeat: no-repeat;
 	background-position: center right;
   cursor: hand;
@@ -10,8 +10,8 @@ table thead tr .tablesorter-header {
   border: 1px solid #ccc;
 }
 table thead tr .tablesorter-headerAsc {
-	background-image: url(images/asc.gif);
+	background-image: asset-url(images/asc.gif);
 }
 table thead tr .tablesorter-headerDesc {
-	background-image: url(images/desc.gif);
+	background-image: asset-url(images/desc.gif);
 }

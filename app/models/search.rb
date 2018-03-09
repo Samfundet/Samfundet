@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Search
   extend ActiveModel::Naming
   include ActiveModel::Conversion
@@ -17,7 +19,7 @@ class Search
 
   def results
     # RAILS4: Return PgSearch::Document.none when no query
-    PgSearch.multisearch(query).where("? >= publish_at", Time.current) if query
+    PgSearch.multisearch(query).where('? >= publish_at', Time.current) if query
   end
 
   def query?

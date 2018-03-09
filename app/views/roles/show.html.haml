@@ -8,12 +8,12 @@
     = @role.description
   - if @role.role
     %p
-      / 'roles.child_role_of' contains HTML, hence html_safe
+      -# 'roles.child_role_of' contains HTML, hence html_safe
       = t('roles.child_role_of',
           role: link_to(@role.role.title, @role.role)).html_safe
   - unless @role.roles.empty?
     %p
-      / 'roles.has_child_roles' also contains HTML
+      -# 'roles.has_child_roles' also contains HTML
       = t('roles.has_child_roles',
           roles: @role.roles.map{ |r| link_to r.title, r }.join(' ')).html_safe
   - if permitted_to?(:edit, @role)

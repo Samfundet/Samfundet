@@ -1,4 +1,5 @@
-# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 module StandardHoursHelper
   def cache_key_for_standard_hours
     count          = StandardHour.count

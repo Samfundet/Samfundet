@@ -20,9 +20,10 @@
       - if @job_application.withdrawn
         %h2{style:"color: red; margin-bottom: 30px; margin-top: -20px;"}
           ="Denne søknaden er blitt trukket!"
-      /%p.subtitle
-      / 'job_applications.applicant_for' contains HTML, hence html_safe
-      /= t('job_applications.applicant_for', job: link_to(@job_application.job.title, admissions_admin_admission_group_job_path(@job_application.job.admission, @job_application.job.group, @job_application.job)), group: @job_application.job.group.name).html_safe
+      -#
+        %p.subtitle
+         'job_applications.applicant_for' contains HTML, hence html_safe
+        = t('job_applications.applicant_for', job: link_to(@job_application.job.title, admissions_admin_admission_group_job_path(@job_application.job.admission, @job_application.job.group, @job_application.job)), group: @job_application.job.group.name).html_safe
 
     %h3= t('job_applications.application')
     != simple_format(html_escape(@job_application.motivation))

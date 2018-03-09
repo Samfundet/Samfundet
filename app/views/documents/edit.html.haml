@@ -4,8 +4,9 @@
     = f.input :category, collection: DocumentCategory.all, include_blank: false, label: t('documents.category')
 
   = f.inputs :document do
-    //%li
-    //  = f.input :file, as: :file, label: t('documents.choose_file')
+    -#
+      %li
+        = f.input :file, as: :file, label: t('documents.choose_file')
 
     %li
       = f.input :publication_date, input_html: { class: "datetimepicker" }, as: :string, label: t('documents.publication_date')

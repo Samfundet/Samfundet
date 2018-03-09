@@ -1,9 +1,0 @@
-lim:
-  name: Layout Info Marked
-  abbreviation: LIM
-  group_type: drift_type
-
-dusken:
-  name: Under Dusken
-  abbreviation: UD
-  group_type: media_type

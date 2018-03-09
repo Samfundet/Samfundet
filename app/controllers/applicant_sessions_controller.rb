@@ -1,6 +1,7 @@
-# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 class ApplicantSessionsController < UserSessionsController
-  layout "admissions"
+  layout 'admissions'
 
   def new
     @applicant = Applicant.new
@@ -14,7 +15,7 @@ class ApplicantSessionsController < UserSessionsController
     )
 
     if applicant.nil?
-      flash[:error] = t("applicants.login_error")
+      flash[:error] = t('applicants.login_error')
 
       @applicant = Applicant.new
       @applicant_login_email = params[:applicant_login_email]
@@ -26,10 +27,10 @@ class ApplicantSessionsController < UserSessionsController
 
     if pending_application?
       save_pending_application(applicant)
-      flash[:success] = t("applicants.login_success_application_saved", name: CGI.escapeHTML(applicant.full_name))
+      flash[:success] = t('applicants.login_success_application_saved', name: CGI.escapeHTML(applicant.full_name))
       redirect_to job_applications_path
     else
-      flash[:success] = t("applicants.login_success", name: CGI.escapeHTML(applicant.full_name))
+      flash[:success] = t('applicants.login_success', name: CGI.escapeHTML(applicant.full_name))
       redirect_after_login admissions_path
     end
   end

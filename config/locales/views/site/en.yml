@@ -23,5 +23,6 @@ en:
       opening_hours_today: "Opening hours"
 
       admissions_frontpage_highjack: "&lt;!-- Help! Samfundet.no needs developers to fix this error. <u>Apply to MG::Web today!</u> -->"
+      message_frontpage_highjack: "Placeholder"
       show_more: "Show all events"
       recieve_message: "Receive newsletter"

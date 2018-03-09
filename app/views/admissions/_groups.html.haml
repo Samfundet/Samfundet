@@ -1,38 +1,14 @@
 .section#groups-with-jobs
   .header
     %h2
-      Gjenger med opptak
+      = t('admissions.groups_with_admission')
   %ul
     - admission.groups.each do |group|
       %li
         = link_to "##{admission.to_param}/#{group.to_param}" do
           = group.name
-  %h3
-    Gjenger med separat opptak (følg lenke)
-  %ul
-    %li
-      = link_to "Trondheim Studentersangforening (TSS)", "http://www.mannskor.no/"
-
-    %br
-    %li
-      = link_to "Trondheims Kvinnelige Studentersangforening (TKS)", "http://www.studentkor.no/"
-
-    %br
-    %li
-      = link_to "Strindens Promenade Orchester", "http://www.strindens.no/"
-
-    %br
-    %li
-      = link_to "ISFiT", "http://www.isfit.no/"
-
-    %br
-    %li
-      = link_to "Studentersamfundets Symfoniorkester (Symforch)", "https://www.symforch.no/"
-      
-    %br
-    %li
-      = link_to "Leisure Suit Lovers (LSL)", "https://www.leisuresuitlovers.com/"
-      
-    %br
-    %li
-      = link_to "Snaustrinda Spelemannslag", "https://www.facebook.com/events/397607940668111/"
+    .separate-admissions
+      %h3
+        = t('admissions.groups_with_separate_admission')
+      :markdown
+        #{Admission.first.groups_with_separate_admission}

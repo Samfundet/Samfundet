@@ -80,7 +80,7 @@
           - if @event.instagram_link.present?
             %li
               = link_to @event.instagram_link, id: 'social-link', title: t('events.social.instagram_link_title') do
-                = image_tag 'instagram_36.png', alt: 'Instagram'
+                = image_tag 'instagram.png', alt: 'Instagram'
           - if @event.twitter_link.present?
             %li
               = link_to @event.twitter_link, id: 'social-link', title: t('events.social.twitter_link_title') do
@@ -101,5 +101,3 @@
       .spotify-box
         = render "spotify_play_box", locals: { event: @event }
 
-    %p
-      = render partial: "shared/disqus", locals: { title: @event.title }
