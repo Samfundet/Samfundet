@@ -1,13 +1,5 @@
 %h1= t('contact.title')
 %p= simple_format t('contact.text')
-= semantic_form_for @contact_form, url: contact_path do |f|
-  = f.inputs do
-    = f.input :name, as: :string, label: t('contact.name')
-    = f.input :email, as: :email, label: t('contact.email')
-    = f.input :problem_type, as: :select, collection: [[t('contact.general_questions'), 0], [t('contact.content_problem'), 1],
-    [t('contact.payment_problem'), 2], [t('contact.tech_problem'), 3]], label: t('contact.problem_type'), hint: t('contact.subject_hint')
-    = f.input :subject, as: :string, label: t('contact.subject')
-    = f.input :description, as: :text, label: t('contact.description'), hint: t('contact.description_min')
-
-  = f.actions do
-    = f.action :submit, label: t('contact.submit')
+%p= mail_to 'post@samfundet.no', t('contact.general_questions') + '/' + t('contact.payment_problem')
+%p= mail_to 'redaksjon@samfundet.no', t('contact.content_problem')
+%p= mail_to 'mg-web@samfundet.no', t('contact.tech_problem')
