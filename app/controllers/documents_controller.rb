@@ -49,7 +49,7 @@ class DocumentsController < ApplicationController
   def destroy
     @document = Document.find(params[:id])
     @document.destroy
-    flash[:success] = t('document.destroy_success')
+    flash[:success] = t('documents.destroy_success')
     redirect_to admin_documents_path
   end
 
