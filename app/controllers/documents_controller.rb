@@ -35,9 +35,9 @@ class DocumentsController < ApplicationController
   end
 
   def update
-    @document = Document.find params[:id]
+    @document = Document.find(params[:id])
     @document.uploader_id = current_user.id
-    if @document.update_attributes(params[:document])
+    if @document.update_attributes(document_params)
       flash[:success] = t('documents.edit_success')
       redirect_to admin_documents_path
     else
@@ -49,7 +49,7 @@ class DocumentsController < ApplicationController
   def destroy
     @document = Document.find(params[:id])
     @document.destroy
-    flash[:success] = t('document.destroy_success')
+    flash[:success] = t('documents.destroy_success')
     redirect_to admin_documents_path
   end
 
@@ -57,7 +57,7 @@ class DocumentsController < ApplicationController
 
   private
 
-  def document_param
-    params.require(:document).permit(:title, :category_id, :file, :publication_date)
+  def document_params
+    params.require(:document).permit(:uploader_id, :title, :category, :category_id, :file, :publication_date)
   end
 end
