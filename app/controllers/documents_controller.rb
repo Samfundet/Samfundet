@@ -35,9 +35,9 @@ class DocumentsController < ApplicationController
   end
 
   def update
-    @document = Document.find params[:id]
+    @document = Document.find(params[:id])
     @document.uploader_id = current_user.id
-    if @document.update_attributes(params[:document])
+    if @document.update_attributes(document_params)
       flash[:success] = t('documents.edit_success')
       redirect_to admin_documents_path
     else
