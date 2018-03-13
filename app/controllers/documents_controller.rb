@@ -57,7 +57,8 @@ class DocumentsController < ApplicationController
 
   private
 
-  def document_param
-    params.require(:document).permit(:title, :category_id, :file, :publication_date)
+  def document_params
+    params.require(:document).permit(:uploader_id, :title, :category_id, :file, :publication_date)
   end
+
 end
