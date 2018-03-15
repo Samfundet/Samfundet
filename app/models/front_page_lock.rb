@@ -28,6 +28,10 @@ class FrontPageLock < ApplicationRecord
   #  end
   # end
 
+  def self.locks_enabled
+    where('lockable_id IS NOT null').reject { |a| a.lockable_type == "Event" && a.lockable.end_time < 2.hours.from_now }
+  end
+
   def to_param
     position.to_s
   end
