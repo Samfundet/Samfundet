@@ -15,7 +15,7 @@ class EverythingClosedPeriodsController < ApplicationController
   end
 
   def create
-    @everything_closed_period = EverythingClosedPeriod.new(params[:everything_closed_period])
+    @everything_closed_period = EverythingClosedPeriod.new(everything_closed_period_params)
     if @everything_closed_period.save
       flash[:success] = I18n.t('everything_closed_periods.creation_success')
       redirect_to everything_closed_periods_path
@@ -31,7 +31,7 @@ class EverythingClosedPeriodsController < ApplicationController
 
   def update
     @everything_closed_period = EverythingClosedPeriod.find(params[:id])
-    if @everything_closed_period.update_attributes(params[:everything_closed_period])
+    if @everything_closed_period.update_attributes(everything_closed_period_params)
       flash[:success] = I18n.t('everything_closed_periods.update_success')
       redirect_to everything_closed_periods_path
     else
@@ -45,5 +45,9 @@ class EverythingClosedPeriodsController < ApplicationController
     @everything_closed_period.destroy
     flash[:success] = I18n.t('everything_closed_periods.destruction')
     redirect_to everything_closed_periods_path
+  end
+
+  def everything_closed_period_params
+    params.require(:everything_closed_period).permit(:message_no, :message_en, :event_message_no, :event_message_en, :closed_from, :closed_to)
   end
 end
