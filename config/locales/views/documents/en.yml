@@ -14,6 +14,7 @@ en:
     choose_file: Choose file (PDF only)
     upload: Upload document
     update: Update document
+    create_success: Successfully created document
     edit_success: Successfully updated document
     destroy_success: Successfully deleted document
     no_documents: No documents

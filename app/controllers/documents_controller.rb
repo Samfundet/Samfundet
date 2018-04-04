@@ -19,7 +19,7 @@ class DocumentsController < ApplicationController
   end
 
   def create
-    @document = Document.new(document_param)
+    @document = Document.new(document_params)
     @document.uploader_id = current_user.id
     if @document.save
       flash[:success] = t('documents.create_success')
