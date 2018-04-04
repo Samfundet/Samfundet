@@ -14,6 +14,7 @@
     choose_file: Velg fil (kun PDF)
     upload: Last opp dokument
     update: Oppdater dokument
+    create_success: Dokumentet er opprettet
     edit_success: Dokumentet er oppdatert
     destroy_success: Dokumentet ble slettet
     no_documents: Ingen dokumenter
