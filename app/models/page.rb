@@ -17,7 +17,10 @@ class Page < ApplicationRecord
   validates :name_no, uniqueness: true
   validates :name_en, uniqueness: true
   belongs_to :role
-  has_many :revisions, class_name: PageRevision.name, dependent: :destroy
+  has_many :revisions, class_name: PageRevision.name, dependent: :delete_all
+  attr_accessible :name_no, :name_en, :title_no, :title_en,
+                  :content_no, :content_en, :role, :role_id, :created_at, :updated_at,
+                  :content_type, :hide_menu
 
   default_scope { order(I18n.locale == :no ? :name_no : :name_en) }
 
