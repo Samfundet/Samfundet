@@ -18,7 +18,7 @@ class Page < ApplicationRecord
   validates :name_en, uniqueness: true
   belongs_to :role
   has_many :revisions, class_name: PageRevision.name, dependent: :delete_all
-  attr_accessible :name_no, :name_en, :title_no, :title_en,
+  attr_accessor :name_no, :name_en, :title_no, :title_en,
                   :content_no, :content_en, :role, :role_id, :created_at, :updated_at,
                   :content_type, :hide_menu
 
