@@ -149,10 +149,9 @@ Rails.application.routes.draw do
             resources :log_entries, only: [:create, :destroy]
           end
         end
-        get 'show_interested_other_positions', to: 'applicants#show_interested_other_positions'
+        get :show_interested_other_positions, to: 'applicants#show_interested_other_positions'
+        get :show_unflagged_applicants, to: 'applicants#show_unflagged_applicants'
       end
-      get 'show_interested_other_positions', to: 'applicants#show_interested_other_positions'
-      get 'show_unflagged_applicants', to: 'applicants#show_unflagged_applicants'
     end
 
     post "applicant/steal_identity", to: "applicants#steal_identity", as: :applicants_steal_identity
