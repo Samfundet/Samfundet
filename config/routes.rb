@@ -72,7 +72,7 @@ Rails.application.routes.draw do
     resources :blogs do
       get :admin, on: :collection
     end
-    
+
     ############################
     ##  Routes for admissions ##
     ############################
