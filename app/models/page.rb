@@ -18,9 +18,6 @@ class Page < ApplicationRecord
   validates :name_en, uniqueness: true
   belongs_to :role
   has_many :revisions, class_name: PageRevision.name, dependent: :delete_all
-  attr_accessor :name_no, :name_en, :title_no, :title_en,
-                  :content_no, :content_en, :role, :role_id, :created_at, :updated_at,
-                  :content_type, :hide_menu
 
   default_scope { order(I18n.locale == :no ? :name_no : :name_en) }
 
@@ -47,9 +44,8 @@ class Page < ApplicationRecord
       previous_version = revisions.last.try(:version) || 0
       field_values = Hash[REVISION_FIELDS.map { |field| [field, send(field)] }]
 
-      # TODO: Fix correct author
-      # author = Authorization.current_user
-      author = nil # unless author.is_a? Member
+      author = Authorization.current_user
+      author = nil unless author.instance_of? Member
 
       revisions.create!(field_values.merge(member: author, version: previous_version + 1))
 
@@ -112,4 +108,4 @@ class Page < ApplicationRecord
   def to_param
     name
   end
-end
+  end
