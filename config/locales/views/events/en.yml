@@ -119,11 +119,14 @@ en:
         ticket_purchased: "You have bought the following tickets with references: %{refs}"
         download_tickets: Download tickets as PDF
         confirmation_mail_confirmation: You will also receive your tickets on email.
-
+        
         event: Event
         time: When
         on_member_card: On membership card
         total: Sum
+        
+        survey_message: To help us improve our service we have made a short survey
+        start_survey: Start survey
 
     action:
         new: Create event

@@ -129,6 +129,9 @@
         on_member_card: På medlemskort
         total: Total
 
+        survey_message: For å hjelpe oss forbedre tilbudet vårt har vi laget en kort undersøkelse.
+        start_survey: Start undersøkelse
+
     action:
         new: Opprett arrangement
         delete: Slett arrangement
