@@ -7,7 +7,7 @@
   %input#show_not_set{type:"checkbox", checked: true}
   =t('admissions_admin.show_not_set_applicants')
 - @applicants.each do |applicant|
-  .applicant{id:"applicant-#{applicant.id}", class: "display-none #{applicant.is_flagged?(@admission) ? '' : 'not_set display-not-set'} #{applicant.is_reserved?(@admission) ? 'reserved display-reserved' : ''}"}
+  .applicant{id:"applicant-#{applicant.id}", class: "display-none #{applicant.flagged?(@admission) ? '' : 'not_set display-not-set'} #{applicant.reserved?(@admission) ? 'reserved display-reserved' : ''}"}
     %h3
       %strong= link_to applicant.full_name, applicant
       \-
