@@ -1,7 +1,4 @@
 - disable_robots
-- if @event.has_survey and not @survey.nil?
-  = javascript_include_tag('feedback/feedback', defer: true)
-  .modalDiv{:id=>"#{feedback_survey_path(@survey)}"}
 
 %h2
   = t('events.purchase_callback_success.title')
@@ -38,3 +35,11 @@
 
 %p
   = t('events.purchase_callback_success.confirmation_mail_confirmation')
+
+- if @event.has_survey and not @survey.nil?
+  = javascript_include_tag('feedback/feedback', defer: true)
+  .modalDiv{:id=>"#{feedback_survey_path(@survey)}"}
+  %p
+    = t('events.purchase_callback_success.survey_message')
+  %p{ :id=>'openFeedbackSurvey' }
+    = t('events.purchase_callback_success.start_survey')

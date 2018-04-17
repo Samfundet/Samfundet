@@ -8,6 +8,10 @@
             }
         }
     }
+    #openFeedbackSurvey {
+        color: $samfundet-red;
+        cursor: pointer;
+    }
 }
 
 .events.edit, .events.new {

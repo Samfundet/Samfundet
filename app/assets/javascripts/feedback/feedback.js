@@ -35,10 +35,11 @@ function openModal(url, callback) {
 function setUp(modal) {
   // check index of
   var index = 0;
-  var stack = [$('.feedback-start-message')].concat($('form.feedback-form').toArray(), [$('.feedback-end-message')]);
+  var stack = $('form.feedback-form').toArray().concat( [$('.feedback-end-message')]);
+  //var stack = [$('.feedback-start-message')].concat($('form.feedback-form').toArray(), [$('.feedback-end-message')]);
 
   function showMessage(m) {
-    $('.feedback-wrapper .message-box').text(m).show().delay(1500).slideUp();
+    $('.feedback-wrapper .message-box').text(m).show().delay(500).slideUp();
   }
 
   function ajaxSubmit (form) {
@@ -133,8 +134,13 @@ function setUp(modal) {
   }
 }
 
-if ($('.modalDiv').length > 0){
-  var surveyPath = $('.modalDiv').get(0).id;
-  setUp($('.feedback-wrapper'));
-  openInModal(surveyPath, setUp);
-}
+// Åpner survey når man klikker på 'start survey'
+document.getElementById('openFeedbackSurvey').addEventListener('click',function(e)
+{
+  if ($('.modalDiv').length > 0){
+    var surveyPath = $('.modalDiv').get(0).id;
+    setUp($('.feedback-wrapper'));
+    openInModal(surveyPath, setUp);
+    console.log('Hei');
+  } 
+});
