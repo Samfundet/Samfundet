@@ -356,7 +356,6 @@ surveys.length.times.each do |k|
   surveys[k] = Feedback::Survey.create!(
     title: Faker::Lorem.word,
     questions: questions.sample(rand(8..10)),
-    start_message: "Start message",
     end_message: "End message"
   )
 end
