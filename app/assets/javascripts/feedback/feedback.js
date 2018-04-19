@@ -36,7 +36,6 @@ function setUp(modal) {
   // check index of
   var index = 0;
   var stack = $('form.feedback-form').toArray().concat( [$('.feedback-end-message')]);
-  //var stack = [$('.feedback-start-message')].concat($('form.feedback-form').toArray(), [$('.feedback-end-message')]);
 
   function showMessage(m) {
     $('.feedback-wrapper .message-box').text(m).show().delay(500).slideUp();

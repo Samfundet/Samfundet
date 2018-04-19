@@ -4,7 +4,7 @@ class Feedback::Survey < ActiveRecord::Base
   has_many :answers, through: :questions
 
   attr_accessible :questions, :question_ids, :questions_attributes, :events, :title,
-                  :start_message, :end_message, :open
+                  :end_message, :open
 
   validates_presence_of :title, :questions
 
