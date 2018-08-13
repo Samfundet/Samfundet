@@ -2,6 +2,7 @@
 
 .section
   %h2= set_and_return_title t('jobs.your_applications')
+  %h3= t("jobs.gdpr")
   - if @admissions.empty?
     %p
       = t('jobs.no_applications')
