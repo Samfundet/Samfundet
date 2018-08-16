@@ -29,3 +29,4 @@ en:
     download_ical: "iCalendar file"
     belongs_to_closed_admission: "This job belongs to a closed admission, i.e. an admission that is either old or not yet open."
     similar_jobs_not_applied_to: "Similar jobs you havent applied to"
+    gdpr: "All personal information to applicants gets anonymized 3 weeks after the admission deadline"

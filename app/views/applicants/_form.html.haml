@@ -1,6 +1,6 @@
 = semantic_form_for applicant, html: { class: 'soon-to-be-default-styling' } do |form|
   != hidden_field_tag "redirect_to", html_escape(@redirect_to) if @redirect_to
-
+  %p= t("applicants.forms.register.gdpr")
   = form.inputs name: t("applicants.forms.register.personal_information") do
     != form.input :firstname
     != form.input :surname
