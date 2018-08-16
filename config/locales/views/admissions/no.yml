@@ -27,6 +27,7 @@
     statistics: "Statistikk"
     groups_with_admission: "Gjenger med opptak"
     groups_with_separate_admission: "Gjenger med separat opptak"
+    seperate_admission_information: "Gjenger med seperat opptak ligger nederst på siden"
 
     admin_applet:
       title: Opptak
@@ -34,7 +35,7 @@
     no_admissions:
         header: "Det er for tiden ingen opptak på Samfundet"
         ordinary_information: "Samfundet har sine ordinære opptak på starten av hvert semester. Følg med på denne siden!"
-        more_information: "For mer informasjon om samfundets gjenger" 
+        more_information: "For mer informasjon om samfundets gjenger"
         motivation_text: |
           Vi har opptak på starten av hvert semester og ønsker at du søker til oss som frivillig!
           Studentersamfundet i Trondhjem er Norges største studentersamfund og vi har et tilbud andre byer bare kan drømme om.

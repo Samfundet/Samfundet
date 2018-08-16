@@ -7,8 +7,6 @@
       %li
         = link_to "##{admission.to_param}/#{group.to_param}" do
           = group.name
-    .separate-admissions
-      %h3
-        = t('admissions.groups_with_separate_admission')
-      :markdown
-        #{Admission.first.groups_with_separate_admission}
+    %br
+    %br
+    = t('admissions.seperate_admission_information')
