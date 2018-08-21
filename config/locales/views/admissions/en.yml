@@ -27,8 +27,8 @@ en:
     statistics: "Statistics"
     groups_with_admission: "Groups with admission"
     groups_with_separate_admission: "Groups with separate admission"
-    seperate_admission_information: "Groups with seperate admission can be found at the bottom of the page"
-    
+    seperate_admission_information: "Click here for groups with seperate admission"
+
     admin_applet:
       title: Admissions
 

@@ -27,7 +27,7 @@
     statistics: "Statistikk"
     groups_with_admission: "Gjenger med opptak"
     groups_with_separate_admission: "Gjenger med separat opptak"
-    seperate_admission_information: "Gjenger med seperat opptak ligger nederst på siden"
+    seperate_admission_information: "Klikk her for gjenger med seperat opptak"
 
     admin_applet:
       title: Opptak
