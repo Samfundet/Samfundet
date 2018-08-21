@@ -27,7 +27,7 @@
       %table
         %thead
           %tr
-            %th= t('jobs.priority')
+            %th{ colspan: "2" }= t('jobs.priority')
             %th= t('jobs.job')
             %th= t('jobs.group')
             %th= t('jobs.interview_time')
@@ -35,6 +35,8 @@
         %tbody.sortable
           - job_applications.each_with_index do |job_application, index|
             %tr
+              %td.priority
+                  #{index + 1}
               %td
                 - if admission.user_priority_deadline > Time.current
                   = form_tag up_job_application_path(job_application), method: :post, class: 'up custom-form' do
