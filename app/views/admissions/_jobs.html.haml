@@ -15,10 +15,12 @@
               = group_link group, abbreviate_treshold: 20
             .teaser
               #{job.teaser.first(75)}
+
   .seperate-admission
     %h3
       = t('admissions.groups_with_separate_admission')
     :markdown
       #{Admission.first.groups_with_separate_admission}
+      
 #overlay.modal-dialog
   .contentWrap
