@@ -77,10 +77,9 @@ class AdmissionsAdmin::InterviewsController < ApplicationController
       next if (application == @interview.job_application) || application.interview.nil? || application.interview.time.nil?
 
       start_date = application.interview.time - 29.minutes
-      interview_time = application.interview.time
       end_date = application.interview.time + 29.minutes
 
-      next unless interview_time > start_date && interview_time < end_date
+      next unless @interview.time > start_date && @interview.time < end_date
       other_interview_time = application.interview.time
       if request.xhr?
         @interview_warning = t('interviews.other_interviews_are_nigh',
