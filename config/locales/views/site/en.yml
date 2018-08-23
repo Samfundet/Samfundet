@@ -26,3 +26,10 @@ en:
       message_frontpage_highjack: "Placeholder"
       show_more: "Show all events"
       recieve_message: "Receive newsletter"
+
+    notifications:
+      membership:
+        welcome: "Welcome new members! "
+        click: "Press "
+        to_url: "here "
+        register: "to register your new card :-)"
