@@ -9,17 +9,17 @@ class SiteController < ApplicationController
   end
 
   def check_active_notifications
-    register_membership = t('site.notifications.membership.welcome') +
-                     t('site.notifications.membership.click') +
-                     "#{view_context.link_to(t('site.notifications.membership.to_url'), 'https://medlem.samfundet.no')}" +
-                     t('site.notifications.membership.register')
+    register_membership =
+      t('site.notifications.membership.welcome') +
+      t('site.notifications.membership.click') +
+      view_context.link_to(t('site.notifications.membership.to_url'), 'https://medlem.samfundet.no') +
+      t('site.notifications.membership.register')
     flash_in_date_range 8, 9, register_membership
   end
 
   def flash_in_date_range(from_month, to_month, message)
-    current_month = Time.now.strftime("%m").to_i
-    if current_month.between?(from_month, to_month)
-      flash[:notice] = message.html_safe
-    end
+    current_month = Time.now.strftime('%m').to_i
+    return unless current_month.between?(from_month, to_month)
+    flash[:notice] = view_context.sanitize(message)
   end
 end
