@@ -16,7 +16,7 @@ class SiteController < ApplicationController
     #   %H - Hour of day
     flash_in_date_range = lambda { |date_from, date_to, date_type, msg|
       time_now = Time.now.strftime(date_type).to_i
-      return if not time_now.between?(date_from, date_to)
+      return unless time_now.between?(date_from, date_to)
       flash[:notice] = view_context.sanitize(msg)
     }
 
