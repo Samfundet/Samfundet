@@ -29,7 +29,7 @@
 
     notifications:
       membership:
-        welcome: "Velkommen nye medlemmer! "
-        click: "Trykk "
-        to_url: "her "
+        welcome: "Velkommen nye medlemmer!"
+        click: "Trykk"
+        to_url: "her"
         register: "for å registrere kortet ditt"

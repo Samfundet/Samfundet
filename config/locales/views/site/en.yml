@@ -29,7 +29,7 @@ en:
 
     notifications:
       membership:
-        welcome: "Welcome new members! "
-        click: "Click "
-        to_url: "here "
+        welcome: "Welcome new members!"
+        click: "Click"
+        to_url: "here"
         register: "to register your new card"
