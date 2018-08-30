@@ -7,12 +7,14 @@ class Applicant < ApplicationRecord
   has_many :log_entries
   belongs_to :campus
 
-  attr_accessor :password, :password_confirmation, :old_password
+  attr_accessor :password, :password_confirmation, :old_password, :gdpr_checkbox
 
   validates :firstname, :surname, :email, :phone, :campus_id, presence: true
   validates :email, :phone, uniqueness: true
 
   validates :email, email: true
+
+  validates :gdpr_checkbox, acceptance: true
 
   validates :password, :password_confirmation,
             presence: { if: ->(applicant) { applicant.new_record? } }
