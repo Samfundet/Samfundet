@@ -10,6 +10,7 @@ Use the [issue tracker](https://github.com/Samfundet/Samfundet/issues) to report
 ### Developing
 
 PRs are welcome. Follow these steps to set the website up locally:
+#### Ubuntu
 
 1. Install Ruby 2.3.3 via rvm using the following commands (_each line is a separate command!_):
 ```
