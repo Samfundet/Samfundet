@@ -4,7 +4,7 @@ class JobApplication < ApplicationRecord
   belongs_to :applicant
   belongs_to :job
 
-  acts_as_list column: :priority
+  acts_as_list column: :priority, scope: :applicant
 
   has_one :interview, dependent: :destroy
 

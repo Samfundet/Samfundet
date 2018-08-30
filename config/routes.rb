@@ -98,7 +98,6 @@ Rails.application.routes.draw do
       get "search", to: "applicants#search", as: :applicant_search
     end
 
-
     resources :applicants
     resources :groups, only: [:new, :create, :edit, :update] do
       get :admin, on: :collection
@@ -150,7 +149,8 @@ Rails.application.routes.draw do
             resources :log_entries, only: [:create, :destroy]
           end
         end
-        get 'show_interested_other_positions', to: 'applicants#show_interested_other_positions'
+        get :show_interested_other_positions, to: 'applicants#show_interested_other_positions'
+        get :show_unflagged_applicants, to: 'applicants#show_unflagged_applicants'
       end
     end
 

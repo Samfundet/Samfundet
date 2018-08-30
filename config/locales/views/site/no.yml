@@ -26,3 +26,10 @@
       message_frontpage_highjack: "Placeholder"
       show_more: "Vis alle arrangementer"
       recieve_message: "Motta nyhetsbrev"
+
+    notifications:
+      membership:
+        welcome: "Velkommen nye medlemmer!"
+        click: "Trykk"
+        to_url: "her"
+        register: "for å registrere kortet ditt"

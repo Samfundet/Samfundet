@@ -3,7 +3,7 @@ en:
     title: "Norway's largest student society"
     index:
       og_title: "Student Society in Trondheim"
-      og_description: "Student Society in Trondheim is an organization for students in Trondheim, owned and run by it's 9000 members. The Student Society is Trondheims largest culture organization." 
+      og_description: "Student Society in Trondheim is an organization for students in Trondheim, owned and run by its 9000 members. The Student Society is Trondheims largest culture organization."
 
       add_banner_lock: "Add banner lock"
       change_banner_lock: "Change banner lock"
@@ -26,3 +26,10 @@ en:
       message_frontpage_highjack: "Placeholder"
       show_more: "Show all events"
       recieve_message: "Receive newsletter"
+
+    notifications:
+      membership:
+        welcome: "Welcome new members!"
+        click: "Click"
+        to_url: "here"
+        register: "to register your new card"

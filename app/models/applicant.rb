@@ -82,6 +82,13 @@ class Applicant < ApplicationRecord
     end
   end
 
+  def self.unflagged_applicants(admission)
+    where(disabled: false).select do |applicant|
+      # If not wanted by any
+      !applicant.flagged?(admission) ||  applicant.reserved?(admission)
+    end
+  end
+
   class << self
     def authenticate(email, password)
       applicant = where(disabled: false).find_by(email: email.downcase)
@@ -96,6 +103,14 @@ class Applicant < ApplicationRecord
 
   def unwanted?(admission)
     assigned_job_application(admission, acceptance_status: ['wanted', 'reserved', '']).nil?
+  end
+
+  def flagged?(admission)
+    assigned_job_application(admission, acceptance_status: ['', nil]).nil?
+  end
+
+  def reserved?(admission)
+    !assigned_job_application(admission, acceptance_status: 'reserved').nil?
   end
 
   def jobs_applied_to(admission)

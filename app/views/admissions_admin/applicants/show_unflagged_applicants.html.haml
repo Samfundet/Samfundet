@@ -1,0 +1,30 @@
+= javascript_include_tag 'applicants/admissions_admin_applicants', defer: true
+%h2 Søkere som er satt til reserve, eller ikke satt enda
+%p
+  %input#show_reserved{type:"checkbox", checked: true}
+    =t('admissions_admin.show_reserved_applicants')
+%p
+  %input#show_not_set{type:"checkbox", checked: true}
+  =t('admissions_admin.show_not_set_applicants')
+- @applicants.each do |applicant|
+  .applicant{id:"applicant-#{applicant.id}", class: "display-none #{applicant.flagged?(@admission) ? '' : 'not_set display-not-set'} #{applicant.reserved?(@admission) ? 'reserved display-reserved' : ''}"}
+    %h3
+      %strong= applicant.full_name
+      \-
+      = applicant.phone
+      \-
+      = applicant.email
+    - applicant.job_applications.each do |application|
+      .application{id:"application-#{application.id}", class: "display-none #{application.interview.acceptance_status == nil ? 'not_set display-not-set' : ''} #{application.interview.acceptance_status == :reserved ? 'reserved display-reserved' : ''}"}
+        - if application.interview.acceptance_status == :reserved || application.interview.acceptance_status == nil
+          %p
+            = application.job.group.name
+            \-
+            = link_to application.job.title, admissions_admin_admission_group_job_path(@admission, application.job.group, application.job)
+            %strong{:style => "color: #961E21"}= application.interview.acceptance_status_string
+    %br
+
+- if @applicants.blank?
+  %p
+    Omprioriteringsfristen er ikke ute enda, kom tilbake etter
+    = l(@admission.admin_priority_deadline)
