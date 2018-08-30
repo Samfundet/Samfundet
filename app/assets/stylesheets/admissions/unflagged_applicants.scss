@@ -1,0 +1,15 @@
+//Styles related to the page over unflagged applicants
+//Gets automatically included in application.scss file
+
+//For displaying not set applicants if the checbox is checked
+.display-not-set{
+    display:initial !important;
+}
+//For displaying reserved applicants if the checkbox is checked
+.display-reserved{
+  display:initial !important;
+}
+//Hiding all applicants and applications if they don't have the display-reserved or display-set class
+.display-none{
+  display:none;
+}

@@ -125,7 +125,7 @@ authorization do
     has_permission_on :admissions_admin_jobs, to: :hidden_create
     has_permission_on :admissions_admin_admissions, to: :statistics
     has_permission_on :admissions_admin_groups, to: :applications
-    has_permission_on :admissions_admin_applicants, to: :show_interested_other_positions
+    has_permission_on :admissions_admin_applicants, to: [:show_interested_other_positions, :show_unflagged_applicants]
     has_permission_on [:members, :applicants], to: :steal_identity
     has_permission_on :members, to: :search
 
@@ -144,7 +144,7 @@ authorization do
       :admissions_admin_job_applications,
       :admissions_admin_log_entries
     ], to: :manage
-
+    has_permission_on :admissions_admin_applicants, to: [:show_interested_other_positions, :show_unflagged_applicants]
     has_permission_on :admissions_admin_job_applications, to: [:hidden_create, :withdraw_job_application]
     has_permission_on :job_applications, to: [:update, :delete]
     has_permission_on :admissions_admin_jobs, to: :hidden_create
