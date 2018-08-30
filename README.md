@@ -11,14 +11,23 @@ Use the [issue tracker](https://github.com/Samfundet/Samfundet/issues) to report
 
 PRs are welcome. Follow these steps to set the website up locally:
 
-1. Install Ruby on Rails.
-2. Run ```make copy-config-files``` and choose a password for the samfdb_dev database in ```config/database.yml```.
-3. Install Postgres. Ubuntu example: ```sudo apt-get install libpq-dev```.
-4. Switch to the Postgres user: ```sudo su postgres``` and run ```psql```.
-5. Run ```create user samf with password 'the_password_you_chose_in_step_2';``` and then ```ALTER USER samf CREATEDB;```.
-6. Exit postgres by ```\q``` and CTRL-D.
-6. Seed the database: ```rake db:seed```.
-7. To start the rails server, run the following command: ```rails server```. The website will be running on port 3000. For automatic reloading on filechange, run the following command in a separate terminal: ```rails guard```.
+1. Install Ruby 2.3.3 via rvm using the following commands (_each line is a separate command!_):
+```
+gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+\curl -sSL https://get.rvm.io | bash -s stable --ruby=2.3.3
+source ~/.rvm/scripts/rmv
+```
+2. Install Postgres:`sudo apt-get install postgresql postgresql-contrib libpq-dev`
+3. Run `bundle install` to install the required Ruby gems
+4. Choose a database password by running `export SAMFDB_DEV_PASS="enteryourpasswordhere"`.
+5. Set up the database by running (_each line is a separate command!_):
+```
+make copy-config-files
+sed -i "s/password:.*/password: $SAMFDB_DEV_PASS/" config/database.yml
+echo -e "CREATE USER samf WITH PASSWORD '$SAMFDB_DEV_PASS';\nALTER USER samf CREATEDB;" | sudo -u postgres psql
+rake db:setup
+```
+6. Start the Rails server by running `rails server`.
 
 ## License
 
