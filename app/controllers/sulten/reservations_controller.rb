@@ -100,7 +100,8 @@ class Sulten::ReservationsController < ApplicationController
       :telephone,
       :email,
       :allergies,
-      :internal_comment
+      :internal_comment,
+      :gdpr_checkbox
     )
   end
 end

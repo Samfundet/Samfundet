@@ -17,6 +17,7 @@
       telephone: "Telefonnummer"
       email: "Epost"
       allergies: "Allergier / andre beskjeder"
+      gdpr_checkbox: "Jeg godtar <a href='%{no_url}'>personvernerklæringen</a> for lyche reservasjon hos Samfundet"
       internal_comment: "Intern kommentar"
       export_to_csv: "Eksporter alle reservasjoner til CSV"
       form:
