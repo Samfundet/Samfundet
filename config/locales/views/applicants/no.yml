@@ -29,7 +29,7 @@
         password_information: "Passordinformasjon"
         extra_information: "Tilleggsinformasjons"
         gdpr: "All personinformasjon til søkere blir anonymisert 3 uker etter opptaksfristen."
-        gdpr_checkbox: "Jeg godtar <a href='%{url}'>personvernerklæringen</a> for søkerkonto hos Samfundet"
+        gdpr_checkbox: "Jeg godtar <a href='%{no_url}'>personvernerklæringen</a> for søkerkonto hos Samfundet"
       edit:
         heading: "Endre mine detaljer"
         submit: "Lagre endringer"

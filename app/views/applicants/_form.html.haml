@@ -16,7 +16,7 @@
     .select
       != form.input :interested_other_positions, as: :select, hint: t("applicants.interested_other_positions_hint")
     .gdpr_checkbox
-      != form.input :gdpr_checkbox, as: :boolean, label: raw(t("applicants.forms.register.gdpr_checkbox", url: '/informasjon/gdpr'))
+      != form.input :gdpr_checkbox, as: :boolean, label: raw(t("applicants.forms.register.gdpr_checkbox", en_url:'/en/information/gdpr', no_url: '/informasjon/gdpr'))
 
   = form.actions do
     != submit_tag t("applicants.forms.register.submit")
