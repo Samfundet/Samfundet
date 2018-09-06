@@ -32,6 +32,7 @@
       short_numbers: "%e.%m"
       short_date: "%-d. %b"
       short_datetime: "%e. %B"
+      long_datetime: "%e. %B %Y"
       long: "%e. %B %Y, %H.%M"
       formtastic: "%d.%m.%Y %H.%M"
   datetime:

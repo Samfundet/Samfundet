@@ -25,8 +25,12 @@
 
       %tr
         %td= t('time.date')
-        %td= l(@event.start_time, format: :short_datetime)
-
+        - if (@event.start_time.year == Time.current.year)
+          %td
+            = l(@event.start_time, format: :short_datetime)
+        - else
+          %td
+            = l(@event.start_time, format: :long_datetime)
       %tr
         %td= t('time.time')
         %td= from_to_string @event
