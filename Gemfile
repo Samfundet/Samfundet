@@ -1,20 +1,28 @@
+# frozen_string_literal: true
+
 ###########################################
 # NOTHING GOES IN HERE WITHOUT A COMMENT! #
 ###########################################
 
 # Specify ruby version that we use. Bundler gives an error when a different ruby is used.
-ruby '2.1.5'
+ruby '2.3.3'
 
 # The repository from which we're fetching our rubygems.
 source 'https://rubygems.org'
 
 # Rails. Duh.
-gem 'rails', '3.2.22.2'
+gem 'rails', '5.0.6'
+
+# Memcache client
+gem 'dalli'
 
 # acts_as_list provides the means to sort and reorder a list of objects
 # with respect to a column in the database, e.g. to sort and reorder a list
 # of job applications based on the priority set by the applicant.
 gem 'acts_as_list'
+
+# Use activerecord as session store
+gem 'activerecord-session_store'
 
 # bcrypt() is a sophisticated and secure hash algorithm
 # designed by The OpenBSD project for hashing passwords.
@@ -23,23 +31,34 @@ gem 'bcrypt-ruby', require: 'bcrypt'
 
 # we only use this gem for it's ujs capabilities.
 # jquery is the defacto DOM manipulation libraray
-gem 'jquery-rails', "~> 3.1.3"
+gem 'jquery-rails'
 
 # jquery ui for datepicker etc.
 gem 'jquery-ui-rails'
 
+# jquery support for turbolinks
+gem 'jquery-turbolinks'
+
 # used for sorting tables in the admission
-gem "jquery-tablesorter"
+gem 'jquery-tablesorter'
+
+# CoffeeScript is a scripting language. It compiles to JavaScript.
+gem 'coffee-rails'
+# Explicitly request sass version
+gem 'sass'
+# Sass is a stylesheet language. It compiles to CSS.
+gem 'sass-rails'
+# Sass mixin library
+gem 'bourbon'
+# Semantic fluid grid framework
+gem 'neat'
+# uglifier is a Ruby wrapper for UglifyJS, a JavaScript compressor.
+gem 'uglifier'
 
 # declarative_authorization provides a DSL for role-based access control.
 # See: config/authorization_rules.rb
-gem 'declarative_authorization'
-
-# ActiveRecord manages referential integrity at the application level,
-# not the database level. Therefore, there are no methods for explicitly
-# adding foreign keys in ActiveRecord migrations.
-# foreigner adds a few such methods.
-gem 'foreigner'
+gem 'declarative_authorization', git: 'https://github.com/Samfundet/declarative_authorization.git', branch: 'rails5'
+# gem 'cancancan', '~> 1.15'
 
 # formtastic is a Rails form builder plugin
 # with semantically rich and accessible markup.
@@ -50,39 +69,39 @@ gem 'formtastic'
 gem 'googlecharts'
 
 # Haml is a templating language. It compiles to HTML.
-gem 'haml-rails', "~> 0.3.5" # we need to not use a version larger than this becuse we get lazy_require error.
+gem 'haml-rails'
 
 # icalendar is a library for dealing with iCalendar files.
-gem 'icalendar', '>= 2.2.0'
+gem 'icalendar'
 
 # rails-translate-routes lets us use localized routes.
 # For example, we can replace the path '/groups' with the paths
 # '/gjenger' and '/en/groups' which both point to the same page.
 # See: config/locales/routes/i18n-routes.yml
-gem 'rails-translate-routes'
+gem 'route_translator'
 
 # RedCarpet renders Markdown, a light-weight markup language, to HTML.
 # See: config/initializers/haml_markdown.rb
-gem 'redcarpet'
+gem 'redcarpet', '~>3.4'
 
 # route_downcaser adds transparent support for case-insensive routes by downcasing requested URLs.
 gem 'route_downcaser'
 
 # SamfundetDomain is a gem which provides the application with samfundets domain models.
-gem 'samfundet_domain', git: "https://github.com/Samfundet/SamfundetDomain.git"
+gem 'samfundet_domain', '~> 0.1.0', git: 'https://github.com/Samfundet/SamfundetDomain.git', branch: 'rails5'
 
 # SamfundetAuth is a gem which provides the application with methods for authenticating against mdb2.
-gem 'samfundet_auth', '~> 0.0.11', git: "https://github.com/Samfundet/SamfundetAuth.git"
+gem 'samfundet_auth', '~> 0.1.2', git: 'https://github.com/Samfundet/SamfundetAuth.git', branch: 'rails5'
 
 # will_paginate is an adaptive pagination plugin.
 # It makes pagination very simple.
 gem 'will_paginate'
 
 # for file uploads, see https://github.com/thoughtbot/paperclip
-gem "paperclip", "~> 4.2.2"
+gem 'paperclip'
 
 # automatic compression of images uploaded via paperclip
-gem 'paperclip-compression', '0.3.5'
+gem 'paperclip-compression'
 
 # A simple date validator for Rails 3.
 gem 'date_validator'
@@ -91,7 +110,7 @@ gem 'date_validator'
 gem 'therubyracer', require: 'v8'
 
 # PostgreSQL adapter. See: config/database.yml
-gem 'pg'
+gem 'pg', '0.21.0'
 
 # Provides PostgreSQL fulltext search. Contains wrappers for tsvectors
 # and enables searching in nested attributes.
@@ -101,7 +120,7 @@ gem 'pg_search', git: 'https://github.com/Casecommons/pg_search.git', ref: 'ff1a
 gem 'diff-lcs'
 
 # Middleware to send notifications when errors occur
-gem 'exception_notification', '4.1.1'
+gem 'exception_notification'
 
 # Addon to exception_notification that sends exceptions to slack
 gem 'slack-notifier'
@@ -109,24 +128,16 @@ gem 'slack-notifier'
 # Cocoon makes nested forms for price groups under events a lot easier. Adds some buttons and stuff
 gem 'cocoon'
 
-group :assets do
-  # CoffeeScript is a scripting language. It compiles to JavaScript.
-  gem 'coffee-rails'
-  # Explicitly request sass version
-  gem 'sass', '~> 3.2.16'
-  # Sass is a stylesheet language. It compiles to CSS.
-  gem 'sass-rails'
-  # Sass mixin library
-  gem 'bourbon'
-  # Semantic fluid grid framework
-  gem 'neat'
-  # uglifier is a Ruby wrapper for UglifyJS, a JavaScript compressor.
-  gem 'uglifier'
-end
-
 group :development do
+  # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
+  gem 'listen', '~> 3.0.5'
+  gem 'web-console'
+  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'spring'
+  gem 'spring-watcher-listen', '~> 2.0.0'
+
   # Gem to detect ruby style guide violations
-  gem 'rubocop', require: false
+  gem 'rubocop', '0.51.0', require: false
 
   # annotate adds schema information from the database, in the form of
   # Ruby comments, to model files so that we can see which columns
@@ -140,7 +151,7 @@ group :development do
   # binding_of_caller is an optional dependency of better_errors which
   # allows for features such as local / instance variable expection,
   # REPL debugging etc.
-  gem 'better_errors', '~> 1.1'
+  gem 'better_errors'
   gem 'binding_of_caller'
 
   # magic_encoding adds an 'encoding: utf-8' comment to all .rb files
@@ -148,11 +159,7 @@ group :development do
 
   # rails-footnotes adds information useful for debugging to the bottom
   # of our web pages for easy reference.
-  gem 'rails-footnotes'
-
-  # RSpec is a unit testing framework.
-  # rspec-rails integrates RSpec (v2) and Rails (v3).
-  gem 'rspec-rails'
+  # gem 'rails-footnotes'
 
   # file listener for automatic refresh of webpage on file change
   gem 'guard-livereload', require: false
@@ -163,10 +170,10 @@ group :development do
 
   # Simple command execution over SSH. Lightweight deployment tool.
   # Using our own version until https://github.com/mina-deploy/mina/pull/361 is merged.
-  gem 'mina', git: "https://github.com/Samfundet/mina.git"
+  gem 'mina', git: 'https://github.com/Samfundet/mina.git'
 
   # A DSL for quickly creating web applications in Ruby with minimal effort.
-  gem 'sinatra'
+  # gem 'sinatra'
 
   # Turns objects into nicely formatted columns for easy reading.
   gem 'table_print'
@@ -175,9 +182,17 @@ group :development do
   gem 'railroady'
 end
 
-group :test, :development do
+group :development, :test do
   # Faker is a library that generates fake data (names, email addresses, etc.)
   gem 'faker', '~> 1.6.6'
+
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug', platform: :mri
+
+  # RSpec is a unit testing framework.
+  # rspec-rails integrates RSpec (v2) and Rails (v3).
+  gem 'rails-controller-testing'
+  gem 'rspec-rails'
 end
 
 group :test do
@@ -195,7 +210,13 @@ group :test do
   # The RSpec testing framework.
   gem 'rspec'
 
+  # Factories for testing
+  gem 'factory_girl_rails'
+
   # webrat provides functions such as 'visit', 'click_link',
   # 'click_button', etc. for use in integration tests.
   gem 'webrat'
+
+  # Simplecov is a code coverage tool
+  gem 'simplecov', require: false
 end

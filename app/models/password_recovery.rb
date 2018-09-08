@@ -1,5 +1,6 @@
-# -*- encoding : utf-8 -*-
-class PasswordRecovery < ActiveRecord::Base
+# frozen_string_literal: true
+
+class PasswordRecovery < ApplicationRecord
   # Dummy model to get on Rails good side.
   # Rails can suck my balls -Stian
 end

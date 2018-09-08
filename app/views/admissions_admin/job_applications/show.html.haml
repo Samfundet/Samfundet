@@ -1,3 +1,4 @@
+= javascript_include_tag 'job_applications/admissions_admin_job_applications', defer: true
 - set_title "#{@job_application.applicant.full_name} - #{t('jobs.view_application')}"
 
 .section
@@ -19,9 +20,10 @@
       - if @job_application.withdrawn
         %h2{style:"color: red; margin-bottom: 30px; margin-top: -20px;"}
           ="Denne søknaden er blitt trukket!"
-      /%p.subtitle
-      / 'job_applications.applicant_for' contains HTML, hence html_safe
-      /= t('job_applications.applicant_for', job: link_to(@job_application.job.title, admissions_admin_admission_group_job_path(@job_application.job.admission, @job_application.job.group, @job_application.job)), group: @job_application.job.group.name).html_safe
+      -#
+        %p.subtitle
+         'job_applications.applicant_for' contains HTML, hence html_safe
+        = t('job_applications.applicant_for', job: link_to(@job_application.job.title, admissions_admin_admission_group_job_path(@job_application.job.admission, @job_application.job.group, @job_application.job)), group: @job_application.job.group.name).html_safe
 
     %h3= t('job_applications.application')
     != simple_format(html_escape(@job_application.motivation))
@@ -64,6 +66,8 @@
 
   .soknader
     %h3= t('job_applications.applications')
+    %input#hide_withdrawn{type:"checkbox", checked: true}
+      =t('job_applications.hide_withdrawn_applications')
     %table
       %thead
         %tr
@@ -74,7 +78,8 @@
           %th= t('job_applications.interview_time')
       %tbody
         - @job_application.applicant.job_applications.select {|application| application.job.admission == @job_application.job.admission}.each_with_index do |job_application, index|
-          %tr{ class: [job_application == @job_application ? 'current' : 'other', job_application.assignment_status] }
+
+          %tr{ class: [job_application == @job_application ? 'current' : 'other', job_application.assignment_status], class: [job_application.withdrawn ? 'withdrawn display-none' : ''] }
             %td.priority
               #{index + 1}.
             %td

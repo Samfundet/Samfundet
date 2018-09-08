@@ -1,4 +1,5 @@
 # -*- encoding : utf-8 -*-
+# frozen_string_literal: true
 Given /^"([^"]*)" has applied for "([^"]+)" with motivation "([^"]+)"$/ do |applicant_name, job_name, motivation|
   first, second = applicant_name.split " "
   applicant = Applicant.find_or_initialize_by_firstname_and_surname(first, second)
@@ -8,7 +9,7 @@ Given /^"([^"]*)" has applied for "([^"]+)" with motivation "([^"]+)"$/ do |appl
   applicant.password_confirmation = "passord"
   applicant.save!
 
-  job = Job.find_by_title_no(job_name.strip.gsub(/[\"]/, ''))
+  job = Job.find_by(title_no: job_name.strip.gsub(/[\"]/, ''))
   ja = JobApplication.new(job: job,
                           motivation: motivation,
                           priority: 1)
@@ -23,7 +24,7 @@ Given /^There are jobs for "([^"]*)" in "([^"]*)" titled (.+)$/i do |group_name,
     group.save!
   end
 
-  admission = Admission.find_by_title(admission_title)
+  admission = Admission.find_by(title: admission_title)
 
   job_titles.split(/, ?/).each do |job_title|
     Job.create!(title_no: job_title.strip.gsub(/[\"]/, ''),

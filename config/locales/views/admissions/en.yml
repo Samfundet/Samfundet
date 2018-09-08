@@ -25,6 +25,9 @@ en:
     registration_error: "The admission was not added. See details below."
     registration_success: "The admission was successfully added."
     statistics: "Statistics"
+    groups_with_admission: "Groups with admission"
+    groups_with_separate_admission: "Groups with separate admission"
+    seperate_admission_information: "Click here for groups with seperate admission"
 
     admin_applet:
       title: Admissions
@@ -32,7 +35,7 @@ en:
     no_admissions:
         header: "There are currently no admissions to positions at Samfundet"
         ordinary_information: "Samfundet ordinairly has its admissions in the beginning of each semester. Keep an eye on this page!"
-        more_information: "For more information about samfundets groups" 
+        more_information: "For more information about samfundets groups"
         motivation_text: |
           We have our admissions in the beginning of each semester and it would be very much appreciated if you applied as a volunteer!
           Studentersamfundet i Trondhjem is Norways largest student society and we have more to offer than any other city.

@@ -28,6 +28,7 @@ en:
         login_information: "Log in information"
         password_information: "Password information"
         extra_information: "Additional information"
+        gdpr: "All personal information to applicants gets anonymized 3 weeks after the admission deadline"
       edit:
         heading: "Change my details"
         submit: "Save changes"

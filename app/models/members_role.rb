@@ -1,7 +1,9 @@
-# -*- encoding : utf-8 -*-
-class MembersRole < ActiveRecord::Base
-  validates_presence_of :member_id
-  validates_presence_of :role_id
+# frozen_string_literal: true
+
+class MembersRole < ApplicationRecord
+  validates :member_id, presence: true
+  validates :role_id, presence: true
+  # attr_accessible :created_at, :member, :role
 
   belongs_to :member, touch: true
   belongs_to :role

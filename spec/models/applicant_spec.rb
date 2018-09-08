@@ -1,54 +1,30 @@
-# -*- encoding : utf-8 -*-
-require 'spec_helper'
+# frozen_string_literal: true
 
-describe Applicant do
-  it_should_validate_presence_of :firstname, :surname, :email, :phone
+require 'rails_helper'
 
-  it 'should have full name property' do
-    @applicant = Applicant.new(firstname: "Torstein", surname: "Nicolaysen")
-    @applicant.full_name.should == 'Torstein Nicolaysen'
-  end
-
-  describe :phone do
-    before(:each) do
-      @applicant = create_applicant
-    end
-
-    it "can contain +" do
-      @applicant.phone = "12345678+"
-      @applicant.valid?.should be_true
-    end
-
-    it "can contain whitespace" do
-      @applicant.phone = "12345678  +"
-      @applicant.valid?.should be_true
-    end
-
-    it "can not contain alphabetic characters" do
-      @applicant.phone = "12345678  a+"
-      @applicant.valid?.should be_false
-    end
+describe Applicant, '#full_name' do
+  it 'should be a combination of firstname and surname' do
+    applicant = create(:applicant, firstname: 'Ola', surname: 'Norman')
+    expect(applicant.full_name).to eq 'Ola Norman'
   end
 end
 
-describe Applicant, "when authenticating" do
+describe Applicant, '.authenticate' do
   before do
-    @email = "joe@example.com"
-    @password = "secret"
-    @password_confirmation = "secret"
-
-    @applicant = create_applicant(email: @email, password: @password)
+    @email = 'joe@example.com'
+    @password = 'secret'
+    @applicant = create(:applicant, email: @email, password: @password, password_confirmation: @password)
   end
 
-  it "should return applicant given valid e-mail and password" do
-    Applicant.authenticate(@email, @password).should == @applicant
+  it 'should return applicant given valid email and password' do
+    expect(Applicant.authenticate(@email, @password)).to eq @applicant
   end
 
-  it "should return nil given incorrect password" do
-    Applicant.authenticate(@email, "incorrect-password").should be_nil
+  it 'should return nil given incorrect password' do
+    expect(Applicant.authenticate(@email, 'wrong_password')).to be_nil
   end
 
-  it "should return nil given incorrect email" do
-    Applicant.authenticate("incorrect-email", @password).should be_nil
+  it 'should return nil given incorrect email' do
+    expect(Applicant.authenticate('incorrect-email', @password)).to be_nil
   end
 end

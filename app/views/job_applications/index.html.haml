@@ -2,6 +2,7 @@
 
 .section
   %h2= set_and_return_title t('jobs.your_applications')
+  %h3= t("jobs.gdpr")
   - if @admissions.empty?
     %p
       = t('jobs.no_applications')
@@ -35,7 +36,7 @@
           - job_applications.each_with_index do |job_application, index|
             %tr
               %td.priority
-                = job_application.priority
+                #{index + 1}
               %td
                 - if admission.user_priority_deadline > Time.current
                   = form_tag up_job_application_path(job_application), method: :post, class: 'up custom-form' do

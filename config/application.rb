@@ -1,11 +1,10 @@
 # -*- encoding : utf-8 -*-
-require File.expand_path('../boot', __FILE__)
+# frozen_string_literal: true
+require_relative 'boot'
 
 require 'rails/all'
 
-if defined?(Bundler)
-  Bundler.require(*Rails.groups(assets: %w(production development test)))
-end
+Bundler.require(*Rails.groups)
 
 module Samfundet
   class Application < Rails::Application
@@ -28,13 +27,14 @@ module Samfundet
     config.time_zone = 'Stockholm'
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
-    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '{defaults,models,views,navigation}', '**', '*.yml').to_s]
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '{defaults,models,views,navigation,routes}', '**', '*.yml').to_s]
     config.i18n.available_locales = [:no, :en]
     config.i18n.enforce_available_locales = true
     config.i18n.default_locale = :no
+    config.i18n.fallbacks = false
 
     # Configure the default encoding used in templates for Ruby 1.9.
-    config.encoding = "utf-8"
+    config.encoding = 'utf-8'
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
@@ -48,21 +48,23 @@ module Samfundet
     # Files under app/assets/ which are not included in a Sprockets manifest
     # file must be added to config.assets.paths in order for helper functions
     # like 'javascript_include_tag' to find them
-    config.assets.paths << Rails.root.join("app", "assets", "javascripts", "interviews")
-    config.assets.precompile += ['linkgraph.js', 'old_samfundet/interviews.js', 'job_applications/job_applications.js', 'old_samfundet/jobs_search.js', 'job_applications/admissions_admin_job_applications.js']
+    config.assets.paths << Rails.root.join('app', 'assets', 'javascripts', 'interviews')
+    config.assets.precompile += ['linkgraph.js', 'old_samfundet/interviews.js', 'job_applications/job_applications.js', 'old_samfundet/jobs_search.js', 'applicants/admissions_admin_applicants.js', 'job_applications/admissions_admin_job_applications.js', 'sulten/duration.js']
 
     # Load local env variables into rails config
     config.before_configuration do
-        env_file = File.join(Rails.root, 'config', 'local_env.yml')
+      env_file = File.join(Rails.root, 'config', 'local_env.yml')
+      if File.exist?(env_file)
         YAML.load(File.open(env_file)).each do |key, value|
-            ENV[key.to_s] = value
-        end if File.exists?(env_file)
+          ENV[key.to_s] = value
+        end
+      end
 
-        billig_file = File.join(Rails.root, 'config', 'billig.yml')
-        billig = YAML.load(File.open(billig_file))
-        Rails.application.config.billig_message_no = billig['billig_message_no']
-        Rails.application.config.billig_message_en = billig['billig_message_en']
-        Rails.application.config.billig_offline = billig['billig_offline']
+      billig_file = File.join(Rails.root, 'config', 'billig.yml')
+      billig = YAML.load(File.open(billig_file))
+      Rails.application.config.billig_message_no = billig['billig_message_no']
+      Rails.application.config.billig_message_en = billig['billig_message_en']
+      Rails.application.config.billig_offline = billig['billig_offline']
     end
 
     config.generators do |g|

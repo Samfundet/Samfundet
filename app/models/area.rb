@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: areas
@@ -9,7 +11,7 @@
 #  updated_at  :datetime         not null
 #
 
-class Area < ActiveRecord::Base
+class Area < ApplicationRecord
   include Rails.application.routes.url_helpers
   belongs_to :page
 

@@ -1,4 +1,5 @@
 # -*- encoding : utf-8 -*-
+# frozen_string_literal: true
 authorization do
   role :guest do
     # Login is not protected, and should not be!
@@ -11,10 +12,10 @@ authorization do
 
     # Password reset should not be protected.
     has_permission_on :applicants,
-      to: [:forgot_password,
-        :generate_forgot_password_email,
-        :reset_password,
-        :change_password]
+                      to: [:forgot_password,
+                           :generate_forgot_password_email,
+                           :reset_password,
+                           :change_password]
 
     # Explicit read-privileges
     has_permission_on :site, to: :read
@@ -35,7 +36,7 @@ authorization do
     # Explicit read- and buy-privileges
     has_permission_on :events, to: [:read, :buy, :ical, :archive, :archive_search]
 
-    has_permission_on :sulten_reservations, to: [:create, :success]
+    has_permission_on :sulten_reservations, to: [:create, :success, :available]
   end
 
   role :medlem do
@@ -48,23 +49,20 @@ authorization do
     has_permission_on :members, to: :search do
       if_permitted_to :pass, :roles
     end
-    # kommentere på events osv.
-    # kommer seff etterhvert :)
-    #
-    # denne permissionen på sider vil vi etterhvert flytte over til en egen
-    # page_admin rolle, en slags redaktør.
+
     has_permission_on :pages, to: :preview
+
     has_permission_on :pages, to: [:edit, :update] do
-      if_attribute role: is_in {user.sub_roles}
+      if_attribute role: is_in { user.sub_roles }
     end
 
     has_permission_on :roles, to: :pass do
       if_attribute passable: true,
-        members: contains { user }
+                   members: contains { user }
     end
 
     has_permission_on :roles, to: [:read, :manage_members] do
-      if_attribute role: is_in { user.roles }
+      if_attribute role_id: is_in { user.roles.pluck(:id) }
     end
 
     has_permission_on :members_roles, to: :manage do
@@ -78,7 +76,7 @@ authorization do
       :sulten_reservations,
       :sulten_reservation_types,
       :sulten_admin
-      ], to: :manage
+    ], to: :manage
   end
 
   role :lim_web do
@@ -118,20 +116,22 @@ authorization do
       :sulten_admin,
       :contact,
       :admissions_admin_campus
-      ], to: :manage
+    ], to: :manage
 
+    has_permission_on :admissions_admin_groups, to: :reject_calls
+    has_permission_on :roles, to: :one_year_old
     has_permission_on :admissions_admin_campus, to: [:activate, :deactivate]
     has_permission_on :admissions_admin_job_applications, to: [:hidden_create, :withdraw_job_application]
     has_permission_on :admissions_admin_jobs, to: :hidden_create
     has_permission_on :admissions_admin_admissions, to: :statistics
     has_permission_on :admissions_admin_groups, to: :applications
-    has_permission_on :admissions_admin_applicants, to: :show_interested_other_positions
+    has_permission_on :admissions_admin_applicants, to: [:show_interested_other_positions, :show_unflagged_applicants]
     has_permission_on [:members, :applicants], to: :steal_identity
     has_permission_on :members, to: :search
 
     has_permission_on :roles, to: :manage_members
 
-    has_permission_on :pages, to: [:new, :create, :destroy, :edit_non_content_fields, :graph]
+    has_permission_on :pages, to: [:new, :create, :destroy, :edit_non_content_fields, :graph, :history]
   end
 
   role :mg_nestleder do
@@ -142,12 +142,13 @@ authorization do
       :admissions_admin_interviews,
       :admissions_admin_jobs,
       :admissions_admin_job_applications,
-      :admissions_admin_log_entries,
+      :admissions_admin_log_entries
     ], to: :manage
-
+    has_permission_on :admissions_admin_applicants, to: [:show_interested_other_positions, :show_unflagged_applicants]
     has_permission_on :admissions_admin_job_applications, to: [:hidden_create, :withdraw_job_application]
+    has_permission_on :job_applications, to: [:update, :delete]
     has_permission_on :admissions_admin_jobs, to: :hidden_create
-    has_permission_on :admissions_admin_groups, to: :applications
+    has_permission_on :admissions_admin_groups, to: [:applications, :reject_calls]
     has_permission_on :admissions_admin_admissions, to: :statistics
   end
 
@@ -160,7 +161,7 @@ authorization do
       if_attribute applicant: is { user }
     end
     has_permission_on :applicants, to: [:update] do
-      if_attribute id: is {user.id}
+      if_attribute id: is { user.id }
     end
   end
 
@@ -170,6 +171,7 @@ authorization do
   end
 
   role :gjengsjef do
+    has_permission_on :roles, to: :one_year_old
   end
 
   role :arrangementansvarlig do
@@ -187,6 +189,7 @@ authorization do
   role :mg_redaksjon do
     has_permission_on [
       :areas,
+      :events,
       :pages,
       :blogs,
       :everything_closed_periods
@@ -222,7 +225,7 @@ authorization do
     role group.admission_responsible_role do
       includes :opptaksansvarlig
       includes group.member_role
-      has_permission_on :admissions_admin_groups, to: [:show, :applications] do
+      has_permission_on :admissions_admin_groups, to: [:show, :applications, :reject_calls] do
         if_attribute id: is { group.id }
       end
       has_permission_on :admissions_admin_jobs, to: [:new, :create, :search, :edit, :update, :show, :delete] do

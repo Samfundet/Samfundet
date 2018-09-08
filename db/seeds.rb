@@ -7,8 +7,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Major.create(name: 'Daley', city: cities.first)
 
-require 'declarative_authorization'
-require Rails.root.join('lib', 'generate_roles')
+#require 'declarative_authorization'
+#require Rails.root.join('lib', 'generate_roles')
 
 raise "Not allowed to seed a production database!" if Rails.env.production?
 
@@ -22,7 +22,7 @@ end
 
 # Invoke gem seedscripts
 Rake::Task['samfundet_auth_engine:db:seed'].invoke
-Authorization.ignore_access_control(true)
+#Authorization.ignore_access_control(true)
 Rake::Task['samfundet_domain_engine:db:seed'].invoke
 
 # Create Organizers
@@ -34,7 +34,7 @@ ExternalOrganizer.create([
 puts "Done creating external organizers"
 
 # This is a separate task, using a method in lib/generate_roles.rb
-generate_roles
+#generate_roles
 
 # TOOD: Create extraordinary admission
 
@@ -142,7 +142,7 @@ image_list.each do |image|
   Image.create!(
       title: image,
       image_file: File.open(Rails.root.join('app', 'assets', 'images', image)),
-      uploader: Member.find_by_mail('myrlund@gmail')
+      uploader: Member.find_by(mail: 'myrlund@gmail')
     )
   puts "Image #{image} created"
 end
@@ -187,7 +187,7 @@ Group.all.each do |group|
     title_en: group.name,
     content_no: content,
     content_en: content,
-    role: Role.find_by_title(group.member_role) || Role.super_user
+    role: Role.find_by(title: group.member_role) || Role.super_user
   )
 
   puts "Created page for: #{group.name.parameterize}"
@@ -292,6 +292,8 @@ puts "Creating everything closed periods"
 everything_closed_period = EverythingClosedPeriod.new(
   message_no: "Feiring av sommernissen",
   message_en: "Celebrate the summer santa",
+  event_message_no: "For mer informasjon, sjekk ut duvethvem.stream",
+  event_message_en: "For more information, check out youknowwho.stream",
   closed_from: DateTime.current + 2.weeks,
   closed_to: DateTime.current + 3.weeks )
 everything_closed_period.save!
@@ -370,7 +372,8 @@ Area.all.each do |area|
           event: billig_event.event,
           num: number_of_available_tickets,
           ticket_group_name: 'Boys',
-          num_sold: rand(number_of_available_tickets+1)
+          num_sold: rand(number_of_available_tickets+1),
+          ticket_limit: rand(10) < 5 ? nil : rand(1..10)
         )
         BilligPriceGroup.create!(
           ticket_group: billig_ticket_group.ticket_group,
@@ -388,8 +391,9 @@ Area.all.each do |area|
           extra_billig_ticket_group = BilligTicketGroup.create!(
             event: billig_event.event,
             num: number_of_available_tickets+100,
-          ticket_group_name: 'Girls',
-            num_sold: rand(number_of_available_tickets+1)+100
+            ticket_group_name: 'Girls',
+            num_sold: rand(number_of_available_tickets+1)+100,
+            ticket_limit: rand(10) < 5 ? nil : rand(1..10)
           )
           BilligPriceGroup.create!(
             ticket_group: extra_billig_ticket_group.ticket_group,
@@ -450,7 +454,7 @@ possible_payment_errors.each do |error_message|
 
   BilligPaymentError.create!(
     error: bsession,
-    failed: rand(1.years.to_i).ago,
+    failed: rand(1.years.to_i).second.ago,
     owner_cardno: on_card ? rand(10000..999999) : nil,
     owner_email: on_card ? nil : Faker::Internet.email,
     message: error_message
@@ -540,6 +544,8 @@ table2.reservation_types << type1
 
 tables = [table1.id, table2.id]
 types = [type1.id, type2.id]
+
+# Initialize list of tables
 
 15.times.each do
   now = DateTime.now

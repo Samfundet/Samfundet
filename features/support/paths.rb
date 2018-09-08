@@ -1,4 +1,5 @@
 # -*- encoding : utf-8 -*-
+# frozen_string_literal: true
 module NavigationHelpers
   # Maps a name to a path. Used by the
   #
@@ -20,7 +21,7 @@ module NavigationHelpers
     when /the roles page/
       roles_path
     when /the role page for "([^"]+)"/
-      role_path(Role.find_by_title($1))
+      role_path(Role.find_by(title: $1))
     when /the groups page/
       groups_path
     when /the new group page/
@@ -38,27 +39,27 @@ module NavigationHelpers
     when /the members control panel page/
       members_control_panel_path
     when /the applicant admission page for "([^"]+)"/
-      group = Group.find_by_name($1)
+      group = Group.find_by(name: $1)
       group_job_applications_path(group)
     when /the group page for "([^"]*)"/
-      group_path(Group.find_by_name($1))
+      group_path(Group.find_by(name: $1))
     when /the edit group page for "([^"]*)"/
-      edit_group_path(Group.find_by_name($1))
+      edit_group_path(Group.find_by(name: $1))
     when /the job page for "([^"]*)" in "([^"]*)"/
-      admissions_admin_admission_group_path(Admission.find_by_title($2), Group.find_by_name($1))
+      admissions_admin_admission_group_path(Admission.find_by(title: $2), Group.find_by(name: $1))
     when /the edit job page for "([^"]*)"/
-      job = Job.find_by_title_no($1)
+      job = Job.find_by(title_no: $1)
       group = job.group
       admission = job.admission
       edit_admissions_admin_admission_group_job_path(admission, group, job)
     when /the job page for "([^"]*)"/
-      job_path(Job.find_by_title_no($1))
+      job_path(Job.find_by(title_no: $1))
     when /the group interviews page for "([^"]*)" in "([^"]+)"/
-      admissions_admin_admission_group_path(Admission.find_by_title($2), Group.find_by_name($1))
+      admissions_admin_admission_group_path(Admission.find_by(title: $2), Group.find_by(name: $1))
     when /([\w ]*)'s job application page for "([^"]*)"/
       firstname, surname = $1.split(" ")
-      a = Applicant.find_by_firstname_and_surname(firstname, surname)
-      job_application = JobApplication.find_by_applicant_id_and_job_id(a.id, Job.find_by_title_no($2).id)
+      a = Applicant.find_by(firstname: firstname, surname: surname)
+      job_application = JobApplication.find_by(applicant_id: a.id, job_id: Job.find_by(title_no: $2).id)
 
       job = job_application.job
       group = job.group

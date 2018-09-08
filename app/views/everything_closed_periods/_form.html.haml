@@ -2,6 +2,8 @@
   = f.inputs do
     = f.input :message_no
     = f.input :message_en
+    = f.input :event_message_no
+    = f.input :event_message_en
     = f.input :closed_from, as: :string,
       input_html: { class: "datepicker", value: f.object.closed_from.to_date }
     = f.input :closed_to, as: :string,

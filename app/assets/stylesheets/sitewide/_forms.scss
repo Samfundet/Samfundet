@@ -1,0 +1,200 @@
+form:not(.custom-form) {
+  @include span-columns(12);
+
+  background-color: $samfundet-light-grey;
+  padding-top: 10px;
+  padding-bottom: 7px;
+  margin-bottom: 40px;
+
+  .inputs {
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    label:first-letter {
+     text-transform: uppercase;
+   }
+  }
+
+  fieldset {
+    border: none;
+    padding: 10px 12px;
+
+    @include span-columns(12 of 12);
+    @include media($tablet-desktop) {
+      @include span-columns(8 of 8);
+    }
+
+    legend {
+      text-transform: uppercase;
+      padding: 5px 10px;
+      float: left;
+      width: 100%;
+      text-align: center;
+      margin-bottom: 10px;
+
+      span {
+        font-size: 1.3em;
+        padding: 5px;
+        border-radius: 10px;
+        background-color: rgba(238, 238, 238, 1);
+        margin-bottom: 10px;
+      }
+    }
+
+    .actions {
+      text-align: center;
+    }
+
+    ol {
+      @include span-columns(12 of 12);
+      @include media($tablet-desktop) {
+        @include span-columns(8 of 8);
+      }
+
+      list-style-type: none;
+      padding-left: 0;
+      margin: 0;
+
+
+      li {
+        padding: 5px;
+
+        @include span-columns(12 of 12);
+        @include media($tablet-desktop) {
+          @include span-columns(8 of 8);
+        }
+
+        label {
+          text-transform: lowercase;
+          display: block;
+          padding-top: 12px;
+
+          @include span-columns(12 of 12);
+          @include media ($tablet-desktop) {
+            text-align: right;
+            @include span-columns(2 of 8);
+          }
+
+          input[type=radio] {
+            width: auto;
+            @include media($tablet-desktop) {
+              margin: 5px 5px 5px 20%;
+            }
+          }
+        }
+
+        .inline-errors {
+          font-weight: $font-weight-bold;
+          color: $samfundet-white;
+          background-color: $samfundet-red;
+
+          clear: both;
+          padding: 7px;
+          margin-top: 0;
+        }
+
+        input, textarea {
+          display: block;
+          margin-bottom: 15px;
+          padding: 10px;
+          font-size: 1em;
+          border: 1px solid rgba(0, 0, 0, 0.5);
+          resize: none;
+
+          @include span-columns(12 of 12);
+          @include media($tablet-desktop) {
+            @include span-columns(6 of 8);
+            @include omega();
+          }
+
+          &[type=submit] {
+            width: auto;
+          }
+
+          &[type=color] {
+            padding: 3px;
+          }
+        }
+
+        select {
+          margin: 12px;
+          font-size: 1em;
+
+          @include media($mobile) {
+            width: 100%;
+          }
+        }
+
+        p.inline-hints {
+          margin-top:0;
+          margin-bottom:0;
+          @include media($tablet-desktop) {
+            @include shift(2);
+            @include span-columns(6 of 8);
+          }
+        }
+      }
+    }
+  }
+
+  fieldset.actions {
+    ol {
+      input {
+        @include shift(2);
+      }
+    }
+  }
+
+  .select {
+    select {
+      background-color: white;
+      width: 74.10533%;
+      padding: 10px;
+      margin: 0px !important;
+      border: 1px solid rgba(0, 0, 0, 0.5);
+    }
+  }
+}
+
+.search-form {
+  margin-bottom: 16px;
+
+  input {
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    font-size: 20px;
+    width: 100%;
+  }
+
+  select {
+    margin: 10px 3px 0 0;
+    font-size: 16px;
+    background-color: white;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+.archive-search-form {
+  margin-bottom: 16px;
+
+  input {
+    padding: 10px;
+      border: 1px solid rgba(0, 0, 0, 0.5);
+      font-size: 20px;
+    width: 100%;
+  }
+
+  select {
+    margin: 10px 3px 0 0;
+    font-size: 16px;
+      background-color: white;
+
+    &:last-child {
+      margin-right: 0;
+      }
+  }
+}

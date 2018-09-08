@@ -1,8 +1,10 @@
 'no':
   events:
     rss_title: Arrangementer på Studentersamfundet i Trondhjem
-    rss_alt_text: Samfundets rss feed.
-    ical_alt_text: Samfundets ical feed.
+    rss_alt_text: Samfundets RSS feed.
+    rss_short_text: RSS
+    ical_alt_text: Samfundets iCal feed.
+    ical_short_text: iCal
     create_success: Arrangementet er opprettet.
     create_error: Arrangementet ble ikke opprettet.
     update_success: Arrangementet er oppdatert.
@@ -12,11 +14,17 @@
     purchase_generic_error: Noe gikk galt under kjøp. Vennligs prøv igjen.
     time_of_start_has_passed: Starttidspunktet for dette arrangementet har allerede vært.
     can_not_purchase_error: Dette arrangementet kan ikke kjøpes
+    please_enter_codeword: Vennligst skriv inn kodeordet for å kjøpe billetter til dette arrangementet.
+    codeword: Kodeord
+    wrong_codeword: Feil kodeord :(
 
     eighteen: 18 år
     eighteen_twenty: 18 år&nbsp;(student), 20 år&nbsp;(ikke-student)
     twenty: 20 år
     none: Ingen aldersgrense
+    ticket_limit_event_show: Billettbegrensning
+    tickets_single: "%{total_ticket_limit} billett"
+    tickets_multiple: "%{total_ticket_limit} billetter"
 
     title: Tittel
     start_time: Starttid
@@ -27,7 +35,7 @@
     hide: skjul
 
     yes: ja
-    no: nei
+    nei: Nei
 
     add_price_group: Legg til prisgruppe
     remove_price_group: Slett denne prisgruppen
@@ -82,16 +90,20 @@
 
     index_title:  Kommende arrangementer
     information: Informasjon
+    ticket_limit_single: "0/%{ticket_limit} billett"
+    ticket_limit_multiple: "0/%{ticket_limit} billetter"
+    ticket_unit: stk.
     purchase: Kjøp billett
     sold_out: Utsolgt
+    currency_unit: ",-"
 
     buy_title: Kjøp billett til %{event_title}
     ticketless: "Billettløst på medlemskortet ditt:"
     paperticket: "Papirutskrift til e-post:"
     confirm_email: "Bekreft e-post:"
     about_ticket: "Om billettyper:"
-    about_ticketless_html: "Velger du <em>billettløst</em>, blir selve medlemskortet billetten din. Du trenger bare da å trekke kortet i døren når du kommer til Samfundet. <strong>Merk:</strong> Du kan kun ha én billett på kortet per arrangement. Resten vil du få tilsendt på epost."
-    about_paperticket_html: "Velger du <em>papirutskrift</em>, vil billetten(e) bli tilsendt bli tilsendt på epost og du må skrive dem ut. Billettenes strekkode skannes i døren når du kommer til Samfundet."
+    about_ticketless_html: "Velger du <em>billettløst</em>, blir selve medlemskortet billetten din. Du trenger bare da å trekke kortet i døren når du kommer til Samfundet. <strong>Merk:</strong> Du kan kun ha én billett på kortet per arrangement. Alle billettene vil bli tilsendt på epost."
+    about_paperticket_html: "Velger du <em>papirutskrift</em>, vil billetten(e) bli tilsendt på epost. Billettenes strekkode skannes i døren når du kommer til Samfundet."
     visa_or_master: "VISA- eller MasterCard-nummer:"
     expiration_month: "Utløpsdato:"
     commit_buy: Fullfør betaling

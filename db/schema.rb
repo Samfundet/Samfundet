@@ -11,18 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170109184205) do
+ActiveRecord::Schema.define(:version => 20180131123446) do
 
   create_table "admissions", :force => true do |t|
     t.string   "title"
     t.datetime "shown_application_deadline"
     t.datetime "user_priority_deadline"
-    t.datetime "created_at",                                                                           :null => false
-    t.datetime "updated_at",                                                                           :null => false
+    t.datetime "created_at",                                                                              :null => false
+    t.datetime "updated_at",                                                                              :null => false
     t.datetime "shown_from"
     t.datetime "admin_priority_deadline"
     t.datetime "actual_application_deadline"
-    t.string   "promo_video",                 :default => "https://www.youtube.com/embed/T8MjwROd0dc"
+    t.string   "promo_video",                    :default => "https://www.youtube.com/embed/T8MjwROd0dc"
+    t.text     "groups_with_separate_admission"
   end
 
   create_table "applicants", :force => true do |t|
@@ -114,6 +115,7 @@ ActiveRecord::Schema.define(:version => 20170109184205) do
     t.string   "ticket_group_name"
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false
+    t.integer  "ticket_limit"
   end
 
   create_table "billig_tickets", :primary_key => "ticket", :force => true do |t|
@@ -202,6 +204,7 @@ ActiveRecord::Schema.define(:version => 20170109184205) do
     t.string   "banner_alignment"
     t.integer  "duration",              :default => 120
     t.string   "youtube_embed"
+    t.string   "codeword",              :default => ""
   end
 
   add_index "events", ["billig_event_id"], :name => "index_events_on_billig_event_id", :unique => true
@@ -211,6 +214,8 @@ ActiveRecord::Schema.define(:version => 20170109184205) do
     t.datetime "closed_from"
     t.datetime "closed_to"
     t.text     "message_en"
+    t.text     "event_message_no"
+    t.text     "event_message_en"
   end
 
   create_table "external_organizers", :force => true do |t|
@@ -329,8 +334,10 @@ ActiveRecord::Schema.define(:version => 20170109184205) do
   end
 
   create_table "members_roles", :force => true do |t|
-    t.integer "member_id"
-    t.integer "role_id"
+    t.integer  "member_id"
+    t.integer  "role_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "page_revisions", :force => true do |t|

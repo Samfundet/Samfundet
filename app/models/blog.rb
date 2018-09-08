@@ -1,16 +1,18 @@
-class Blog < ActiveRecord::Base
+# frozen_string_literal: true
+
+class Blog < ApplicationRecord
   belongs_to :author, class_name: 'Member'
   belongs_to :image
   has_one :front_page_lock, as: :lockable
 
-  attr_accessible :title_no, :title_en, :lead_paragraph_no, :lead_paragraph_en, :content_no, :content_en, :publish_at, :published, :author_id, :image_id
+  # attr_accessible :title_no, :title_en, :lead_paragraph_no, :lead_paragraph_en, :content_no, :content_en, :publish_at, :published, :author_id, :image_id
 
-  validates_presence_of :title_no, :title_en, :lead_paragraph_no, :lead_paragraph_en, :content_no, :content_en, :publish_at, :author_id, :image_id
+  validates :title_no, :title_en, :lead_paragraph_no, :lead_paragraph_en, :content_no, :content_en, :publish_at, :author_id, :image_id, presence: true
 
-  scope :published, -> { where("publish_at < ?", DateTime.current).where(published: true) }
+  scope :published, -> { where('publish_at < ?', Time.current).where(published: true) }
 
   extend LocalizedFields
-  has_localized_fields :title, :lead_paragraph, :content
+  localized_fields :title, :lead_paragraph, :content
 
   def image_or_default
     if image.present?

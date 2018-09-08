@@ -1,6 +1,7 @@
 'no':
   job_applications:
     mine: "Mine søknader"
+    hide_withdrawn_applications: "Skjul trekte søknader"
     applications_for_group: "Søknader på stillinger i %{group_name}"
     title_with_applicant_and_job: "%{applicant_name} sin søknad til %{job_title}"
     cannot_apply_after_deadline: "Du kan ikke legge inn en søknad etter søknadsfristen for dette opptaket."

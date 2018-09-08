@@ -16,6 +16,8 @@
       != link_to t('admissions.show_all_applications'), applications_admissions_admin_admission_group_path(@admission, @group)
   %p
     = link_to t('admissions_admin.show_interested_other_positions'), admissions_admin_admission_show_interested_other_positions_path(@admission)
+  %p
+    = link_to t('admissions_admin.reject_calls', group_name: @group.name), reject_calls_admissions_admin_admission_group_path
 
   %table
     %thead

@@ -6,6 +6,7 @@ en:
 
     table_caption: "Scheduled periods when Samfundet is to be closed"
     message: "Message"
+    event_message: "Event message"
     from: "Closed From"
     to: "Closed To"
     add_new_link: "Add New Closed Period"

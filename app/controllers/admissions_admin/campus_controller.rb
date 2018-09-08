@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AdmissionsAdmin::CampusController < ApplicationController
   filter_access_to [:admin], require: :edit
 
@@ -13,10 +15,10 @@ class AdmissionsAdmin::CampusController < ApplicationController
   def create
     @campus = Campus.new(params[:campus])
     if @campus.save
-      flash[:success] = t("save_success")
+      flash[:success] = t('save_success')
       redirect_to action: :admin
     else
-      flash[:message] = t("save_error")
+      flash[:message] = t('save_error')
       render :new
     end
   end
@@ -32,10 +34,10 @@ class AdmissionsAdmin::CampusController < ApplicationController
   def update
     @campus = Campus.find params[:id]
     if @campus.update_attributes(params[:campus])
-      flash[:success] = t("update_success")
+      flash[:success] = t('update_success')
       redirect_to action: :admin
     else
-      flash.now[:error] = t("update_error")
+      flash.now[:error] = t('update_error')
       render :edit
     end
   end

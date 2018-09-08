@@ -1,5 +1,5 @@
 :javascript
-  var events = #{Event.all.to_json}
+  var events = #{Event.all.to_json.html_safe}
 
 .event-edit
   %h3 Nytt Arrangement
