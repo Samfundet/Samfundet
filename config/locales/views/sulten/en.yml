@@ -44,6 +44,7 @@ en:
       capacity: "Capacity"
       comment: "Comment"
       available: "Available"
+      next: "Next reservation"
       admin_select: "Table number"
     reservation_type:
       name: "Name"

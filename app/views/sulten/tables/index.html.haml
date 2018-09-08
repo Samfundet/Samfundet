@@ -11,6 +11,8 @@
     = t("sulten.table.comment")
   %th
     = t("sulten.table.available")
+  %th
+    = t("sulten.table.next")
   - Sulten::ReservationType.all.each do |t|
     %th
       = t
@@ -27,6 +29,10 @@
           = t("formtastic.yes")
         - else
           = t("formtastic.no")
+        %td
+          - $next = t.reservations.where("reservation_to > ?", DateTime.now).order("reservation_to ASC").first
+          - if $next
+            = link_to [$next.reservation_from, DateTime.now].max.strftime("%d.%m %H:%M") + " - " + $next.reservation_to.strftime("%H:%M"), $next
       - Sulten::ReservationType.all.each do |r|
         %td
           - if t.reservation_types.include? r

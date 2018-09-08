@@ -44,6 +44,7 @@
       capacity: "Antall plasser"
       comment: "Kommentar"
       available: "Tilgjengelig"
+      next: "Neste reservasjon"
       admin_select: "Bordnummer"
     reservation_type:
       name: "Navn"
