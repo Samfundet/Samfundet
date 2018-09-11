@@ -9,7 +9,7 @@ class Applicant < ApplicationRecord
 
   attr_accessor :password, :password_confirmation, :old_password
 
-  validates :firstname, :surname, :email, :phone, :campus_id, presence: true
+  validates :firstname, :surname, :email, :phone, :campus, presence: true
   validates :email, :phone, uniqueness: true
 
   validates :email, email: true
