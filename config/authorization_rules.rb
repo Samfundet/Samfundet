@@ -192,10 +192,11 @@ authorization do
       :events,
       :pages,
       :blogs,
-      :everything_closed_periods
+      :everything_closed_periods,
+      :front_page_locks
     ], to: :manage
-
-    has_permission_on :pages, to: [:read, :update]
+    has_permission_on :images, to: [:read]
+    has_permission_on :pages, to: [:read, :update, :edit_non_content_fields]
   end
 
   [:fs, :raadet, :styret].each do |group_role|
