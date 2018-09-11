@@ -6,7 +6,7 @@ class JobApplicationsController < ApplicationController
   filter_access_to %i[update destroy up down], attribute_check: true
 
   def index
-    @admissions = @current_user.job_applications.group_by { |job_application| job_application.job.admission }
+    @admissions = @current_user.job_applications.where(withdrawn: false).group_by { |job_application| job_application.job.admission }
   end
 
   def create
