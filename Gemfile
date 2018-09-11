@@ -128,6 +128,9 @@ gem 'slack-notifier'
 # Cocoon makes nested forms for price groups under events a lot easier. Adds some buttons and stuff
 gem 'cocoon'
 
+# Needed for serializing the models in the new JSON api
+gem 'active_model_serializers'
+
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'listen', '~> 3.0.5'
