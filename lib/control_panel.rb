@@ -44,7 +44,7 @@ module ControlPanel
 
   class << self
     def applets(request)
-      Dir[Rails.root.join('app', 'controllers', '**/*_controller.rb')].flat_map do |path|
+      Dir[Rails.root.join('app', 'controllers', '{[!api]**/*,*}_controller.rb')].flat_map do |path|
         controller_from_path(path).control_panel_applets.map do |create_applet|
           create_applet.call(request)
         end
