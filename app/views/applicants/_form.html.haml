@@ -1,6 +1,5 @@
 = semantic_form_for applicant, html: { class: 'soon-to-be-default-styling' } do |form|
   != hidden_field_tag "redirect_to", html_escape(@redirect_to) if @redirect_to
-  %p= t("applicants.forms.register.gdpr")
   = form.inputs name: t("applicants.forms.register.personal_information") do
     != form.input :firstname
     != form.input :surname
@@ -15,6 +14,8 @@
   = form.inputs name: t("applicants.forms.register.extra_information") do
     .select
       != form.input :interested_other_positions, as: :select, hint: t("applicants.interested_other_positions_hint")
+    .gdpr_checkbox
+      != form.input :gdpr_checkbox, as: :boolean, label: raw(t("applicants.forms.register.gdpr_checkbox", en_url:'/en/information/privacy', no_url: '/informasjon/personvern'))
 
   = form.actions do
     != submit_tag t("applicants.forms.register.submit")

@@ -14,3 +14,4 @@ en:
         age: "Age"
         sex: "Sex"
         interested_other_positions: "Interested in other positions"
+        gdpr_checkbox: "GDPR checkbox"

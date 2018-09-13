@@ -9,7 +9,9 @@ class Sulten::Reservation < ApplicationRecord
   validates :reservation_from, :reservation_to, :people,
             :name, :telephone, :email, :reservation_type, presence: true
 
-  attr_accessor :admin_access
+  attr_accessor :admin_access, :gdpr_checkbox
+
+  validates :gdpr_checkbox, acceptance: true
 
   validate :check_opening_hours, :check_amount_of_people,
            :reservation_is_one_day_in_future, :email, on: :create, unless: :admin_access
