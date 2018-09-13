@@ -113,7 +113,7 @@ class Applicant < ApplicationRecord
   end
 
   def jobs_applied_to(admission)
-    job_applications.select { |application| application.job.admission == admission  }.map(&:job)
+    job_applications.select { |application| application.job.admission == admission }.map(&:job)
   end
 
   def job_applications_at_group(admission, group)
