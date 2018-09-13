@@ -78,7 +78,7 @@ class Event < ApplicationRecord
   end
 
   def title_no
-    billig_event.try(:event_name) || non_billig_title_no
+    non_billig_title_no
   end
 
   def start_time
