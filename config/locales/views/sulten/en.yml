@@ -17,7 +17,7 @@ en:
       telephone: "Telephone number"
       email: "Email"
       allergies: "Allergies / other stuff"
-      gdpr_checkbox: "I agree to the  <a href='%{en_url}'>privacy policy</a> for lyche reservations at Samfundet"
+      gdpr_checkbox: "I agree to Samfundet's <a href='%{en_url}'>privacy policy</a>."
       internal_comment: "Internal comment"
       export_to_csv: "Export all reservations to CSV"
       form:
