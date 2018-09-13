@@ -8,6 +8,8 @@ module Api
     end
 
     def snakecase_params!
+      # deep_transform_keys will be deprecated
+      # so this functionality must be changed
       params.deep_transform_keys!(&:underscore)
     end
 
