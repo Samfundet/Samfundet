@@ -71,7 +71,6 @@
     %table
       %thead
         %tr
-          %th= t('job_applications.priority')
           %th= t('job_applications.job')
           %th= t('job_applications.group')
           %th= t('job_applications.status')
@@ -80,8 +79,6 @@
         - @job_application.applicant.job_applications.select {|application| application.job.admission == @job_application.job.admission}.each_with_index do |job_application, index|
 
           %tr{ class: [job_application == @job_application ? 'current' : 'other', job_application.assignment_status], class: [job_application.withdrawn ? 'withdrawn display-none' : ''] }
-            %td.priority
-              #{index + 1}.
             %td
               - if job_application != @job_application && permitted_to?(:show, job_application, context: :admissions_admin_job_applications)
                 = link_to admissions_admin_admission_group_job_job_application_path(job_application.job.admission, job_application.job.group, job_application.job, job_application) do
@@ -100,4 +97,3 @@
     %p
       = link_to admissions_admin_admission_group_job_path(@job_application.job.admission, @job_application.job.group, @job_application.job) do
         = "« #{T('common.back')}"
-

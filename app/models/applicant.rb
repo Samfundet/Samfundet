@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Applicant < ApplicationRecord
-  has_many :job_applications, -> { where(withdrawn: false).order(:priority) }, dependent: :destroy
+  has_many :job_applications, -> { order(:priority) }, dependent: :destroy
   has_many :jobs, through: :job_applications
   has_many :password_recoveries
   has_many :log_entries
@@ -42,7 +42,8 @@ class Applicant < ApplicationRecord
   end
 
   def assigned_job_application(admission, acceptance_status: %w[wanted reserved])
-    job_applications.joins(:interview)
+    job_applications.where(withdrawn: false)
+                    .joins(:interview)
                     .where(interviews: { acceptance_status: acceptance_status })
                     .find { |application| application.job.admission == admission }
   end
