@@ -1,7 +1,7 @@
 = javascript_include_tag 'job_applications/admissions_admin_job_applications', defer: true
 .section
   .block
-    %p
+    %p{class:"color_description"}
       %span{ style: "color: #932822"}= t('interviews.red_explanation')
       %br
       %span{ style: "color: #DC706A"}= t('interviews.pink_explanation')
@@ -9,6 +9,19 @@
       %span{ style: "color: #009402"}= t('interviews.green_explanation')
       %br
       %span{ style: "color: #00C703"}= t('interviews.bright_green_explanation')
+      %br
+      %span{ style: "color: #CEC000"}= t('interviews.yellow_explanation')
+      %br
+      %span{ style: "color: grey"}= t('interviews.grey_explanation')
+
+    %p{class:"color_description display-none"}
+      %span{ style: "color: #d65252"}= t('interviews.red_explanation')
+      %br
+      %span{ style: "color: #e66a6a"}= t('interviews.pink_explanation')
+      %br
+      %span{ style: "color: #16536A"}= t('interviews.blue_explanation')
+      %br
+      %span{ style: "color: #38758B"}= t('interviews.bright_blue_explanation')
       %br
       %span{ style: "color: #CEC000"}= t('interviews.yellow_explanation')
       %br

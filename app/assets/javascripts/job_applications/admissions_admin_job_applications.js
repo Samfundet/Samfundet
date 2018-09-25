@@ -7,5 +7,6 @@ $(function() {
 $(function() {
   $("#colorblind_mode").click(function (event) {
     $(".job_application_table").toggleClass('colorblind');
+    $(".color_description").toggleClass('display-none')
   });
 });
