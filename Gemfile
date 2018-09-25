@@ -13,6 +13,9 @@ source 'https://rubygems.org'
 # Rails. Duh.
 gem 'rails', '5.0.6'
 
+# GraphQL
+gem 'graphql'
+
 # Memcache client
 gem 'dalli'
 
@@ -223,3 +226,5 @@ group :test do
   # Simplecov is a code coverage tool
   gem 'simplecov', require: false
 end
+
+gem 'graphiql-rails', group: :development
