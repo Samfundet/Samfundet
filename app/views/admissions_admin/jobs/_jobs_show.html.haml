@@ -16,6 +16,9 @@
     %p
       %input#hide_withdrawn{type:"checkbox", checked: true}
         =t('interviews.hide_withdrawn_applications')
+      %br
+      %input#colorblind_mode{type:"checkbox", checked: false}
+        =t('interviews.colorblind_mode')
     %table.applications.custom-table.sorted
       %thead
         %th
@@ -42,7 +45,7 @@
         %td
           = t('interviews.interested_other_positions')
 
-      %tbody
+      %tbody{class: "job_application_table"}
         - job_application_groupings.each do |job_applications|
           - job_applications.reverse_each do |job_application|
             %tr{id: "application-#{job_application.id}", class: "#{job_application.assignment_status} #{job_application.withdrawn ? 'display-none' : ''}"}
@@ -93,7 +96,6 @@
                   %span{ class: "status" }
                   = form.actions do
                     != form.action :submit, button_html: { class: "interview_Save", value: 'save'}
-
 
   - if job_application_groupings.empty?
     %p Ingen søknader
