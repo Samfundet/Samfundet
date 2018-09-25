@@ -69,14 +69,17 @@
     }
 
     tr.other_job {
-      background-color: #c63a3a;
+      color: #000000 !important;
+      background-color: #d65252;
       a {
         color: #000000 !important;
       }
     }
 
     tr.other_job_reserved {
-      background-color: #e65a5a;
+      color: #000000 !important;
+
+      background-color: #e66a6a;
       a {
         color: #000000 !important;
       }
