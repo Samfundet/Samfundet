@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
 class Api::EventSerializer < ActiveModel::Serializer
-  attributes :id, :short_description
+  attributes(*Event.column_names)
 end
