@@ -18,6 +18,37 @@ class Api::EventsController < Api::APIController
     end
   end
 
+  def show
+    event = Event.find_by_id(params[:id])
+    if !event.nil?
+      render json: event
+    else
+      render :nothing, status: :not_found
+    end
+  end
+
+  def update
+    event = Event.find_by_id(params[:id])
+    if event.update(event_params)
+      render json: event
+    else
+      render json: event.errors, status: :bad_request
+    end
+  end
+
+  def destroy
+    event = Event.find_by_id(params[:id])
+    if !event.nil?
+      if event.destroy
+        render :nothing, status: :ok
+      else
+        render :nothing, status: :internal_server_error
+      end
+    else
+      render :nothing, status: :bad_request
+    end
+  end
+
   private
 
   def event_params
