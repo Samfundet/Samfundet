@@ -19,7 +19,7 @@ class Api::EventsController < Api::APIController
   end
 
   def show
-    event = Event.find_by_id(params[:id])
+    event = Event.find_by(id: params[:id])
     if !event.nil?
       render json: event
     else
@@ -28,7 +28,7 @@ class Api::EventsController < Api::APIController
   end
 
   def update
-    event = Event.find_by_id(params[:id])
+    event = Event.find_by(id: params[:id])
     if event.update(event_params)
       render json: event
     else
@@ -37,7 +37,7 @@ class Api::EventsController < Api::APIController
   end
 
   def destroy
-    event = Event.find_by_id(params[:id])
+    event = Event.find_by(id: params[:id])
     if !event.nil?
       if event.destroy
         render :nothing, status: :ok
