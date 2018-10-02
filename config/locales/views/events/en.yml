@@ -62,6 +62,8 @@ en:
     happening: Happening
     debate_event: Wednesday Debate
 
+    tickets_html: Member's tickets can be changed to non-member's tickets, by paying the difference at the main door on the day of the concert. Members cannot be refunded the difference from non-member's tickets. See %{href} for more information.
+    tickets_url: https://samfundet.no/en/information/tickets
     adaptation_html: Events at the Student Society can be adapted for visitors with movement and hearing impairment. See %{href} for more information.
     here: here
 

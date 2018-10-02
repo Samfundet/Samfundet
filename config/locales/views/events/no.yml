@@ -66,6 +66,8 @@
     happening: Happening
     debate_event: Onsdagsdebatt
 
+    tickets_html: Medlemsbilletter kan omgjøres til ikke-medlemsbilletter mot et mellomlegg i hoveddøren under åpningstid på konsertdagen. Medlemmer har ikke mulighet til å få tilbake mellomlegg fra ikke-medlemsbilletter. Se %{href} for mer informasjon.
+    tickets_url: https://samfundet.no/billetter
     adaptation_html: Arrangement på Samfundet kan tilrettelegges for besøkende med bevegelses- og hørselshemminger. Se %{href} for mer informasjon.
     here: her
 

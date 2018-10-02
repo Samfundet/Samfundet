@@ -60,6 +60,9 @@
         #{@event.long_description}
 
     %p.adaptation
+      = t('events.tickets_html', href: link_to(t('events.here'), t('events.tickets_url')))
+      %br
+      %br
       = t('events.adaptation_html', href: link_to(t('events.here'), Page.handicap_info))
 
     - if @event.youtube_embed.present?
@@ -104,4 +107,3 @@
 
       .spotify-box
         = render "spotify_play_box", locals: { event: @event }
-
