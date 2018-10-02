@@ -1,7 +1,7 @@
 module Types
   class EventType < BaseObject
     field :title, String, null: false
-    field :age_limit, String, null: false
+    field :age_limit, AgeLimit, null: false
     field :status, String, null: false
     field :youtube_link, String, null: true
     field :twitter_link, String, null: true
