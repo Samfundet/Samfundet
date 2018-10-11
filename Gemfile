@@ -13,6 +13,9 @@ source 'https://rubygems.org'
 # Rails. Duh.
 gem 'rails', '5.0.6'
 
+# GraphQL
+gem 'graphql'
+
 # Memcache client
 gem 'dalli'
 
@@ -183,6 +186,9 @@ group :development do
 
   # Generate diagrams of models and controllers. Usage: Install graphviz and run 'rake diagram:all'.
   gem 'railroady'
+
+  # Graphiql for GraphQL development
+  gem 'graphiql-rails'
 end
 
 group :development, :test do
