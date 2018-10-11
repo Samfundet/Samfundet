@@ -2,7 +2,7 @@
 
 class Types::QueryType < Types::BaseObject
   field :events, EventType.connection_type, null: false do
-    description "Get events."
+    description 'Get events.'
   end
 
   def events
@@ -11,7 +11,7 @@ class Types::QueryType < Types::BaseObject
 
   field :event, EventType, null: true do
     argument :id, Integer, required: true
-    description "Get a single event."
+    description 'Get a single event.'
   end
 
   def event(id:)
@@ -19,7 +19,7 @@ class Types::QueryType < Types::BaseObject
   end
 
   field :groups, [GroupType], null: false do
-    description "Get all groups."
+    description 'Get all groups.'
   end
   def groups
     Group.all

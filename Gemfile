@@ -186,6 +186,9 @@ group :development do
 
   # Generate diagrams of models and controllers. Usage: Install graphviz and run 'rake diagram:all'.
   gem 'railroady'
+
+  # Graphiql for GraphQL development
+  gem 'graphiql-rails'
 end
 
 group :development, :test do
@@ -226,5 +229,3 @@ group :test do
   # Simplecov is a code coverage tool
   gem 'simplecov', require: false
 end
-
-gem 'graphiql-rails', group: :development
