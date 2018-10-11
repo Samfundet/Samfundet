@@ -8,7 +8,7 @@ module Types
     field :youtube_link, String, null: true
     field :twitter_link, String, null: true
     field :instagram_link, String, null: true
-    field :organizer, GroupType, null: false
+    field :organizer, OrganizerType, null: false
     field :duration, Integer, null: false
   end
 end
