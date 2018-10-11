@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
-class Types::BaseObject < GraphQL::Schema::Object
-  field :id, Integer, null: false
+module Types
+  class BaseObject < GraphQL::Schema::Object
+    field :id, Integer, null: false
+  end
 end

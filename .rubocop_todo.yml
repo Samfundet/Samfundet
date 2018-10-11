@@ -76,6 +76,9 @@ Naming/VariableName:
 Style/ClassAndModuleChildren:
   Exclude:
     - 'spec/support/locale_fix.rb'
+    - 'app/graphql*'
+    - 'app/graphql/types/*'
+    - 'app/graphql/mutations/*'
 
 # Offense count: 100
 Style/Documentation:

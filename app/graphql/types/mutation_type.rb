@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
-class Types::MutationType < Types::BaseObject
-  field :update_event, mutation: Mutations::UpdateEvent
+module Types
+  class MutationType < Types::BaseObject
+    field :update_event, mutation: Mutations::UpdateEvent
+  end
 end
