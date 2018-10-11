@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Types
   class AgeLimit < BaseEnum
     value "eighteen", "18+"

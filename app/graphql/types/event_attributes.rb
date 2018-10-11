@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Types
   class EventAttributes < BaseInputObject
     argument :non_billig_title_no, String, required: true
