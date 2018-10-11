@@ -1,6 +1,78 @@
 # -*- encoding : utf-8 -*-
 # frozen_string_literal: true
 authorization do
+  role :guest do
+    # GraphQL guests
+    has_permission_on :graphql, to: :execute
+
+    # Login is not protected, and should not be!
+    has_permission_on :applicant_sessions, to: :create
+    has_permission_on :member_sessions, to: :create
+    has_permission_on :user_sessions, to: :create
+
+    # Search
+    has_permission_on :search, to: [:create, :search]
+
+    # Password reset should not be protected.
+    has_permission_on :applicants,
+                      to: [:forgot_password,
+                           :generate_forgot_password_email,
+                           :reset_password,
+                           :change_password]
+
+    # Explicit read-privileges
+    has_permission_on :site, to: :read
+    has_permission_on :admissions, to: :read
+    has_permission_on :jobs, to: :read
+    has_permission_on :job_applications, to: :create
+    has_permission_on :groups, to: :read
+    has_permission_on :blogs, to: :read
+    has_permission_on :contact, to: [:index, :create]
+
+    # Explicit create-privileges
+    has_permission_on :applicants, to: :create
+
+    # Explicit read-privileges
+    has_permission_on :documents, to: :index
+    has_permission_on :pages, to: :read
+
+    # Explicit read- and buy-privileges
+    has_permission_on :events, to: [:read, :buy, :ical, :archive, :archive_search]
+
+    has_permission_on :sulten_reservations, to: [:create, :success, :available]
+  end
+
+  role :medlem do
+    includes :guest
+
+    has_permission_on :user_sessions, to: :destroy
+
+    has_permission_on :members, to: :control_panel
+
+    has_permission_on :members, to: :search do
+      if_permitted_to :pass, :roles
+    end
+
+    has_permission_on :pages, to: :preview
+
+    has_permission_on :pages, to: [:edit, :update] do
+      if_attribute role: is_in { user.sub_roles }
+    end
+
+    has_permission_on :roles, to: :pass do
+      if_attribute passable: true,
+                   members: contains { user }
+    end
+
+    has_permission_on :roles, to: [:read, :manage_members] do
+      if_attribute role_id: is_in { user.roles.pluck(:id) }
+    end
+
+    has_permission_on :members_roles, to: :manage do
+      if_permitted_to :manage_members, :role
+    end
+  end
+
   role :ksg_sulten do
     has_permission_on [
       :sulten_tables,
