@@ -2,6 +2,9 @@
 # frozen_string_literal: true
 authorization do
   role :guest do
+    # GraphQL guests
+    has_permission_on :graphql, to: :execute
+
     # Login is not protected, and should not be!
     has_permission_on :applicant_sessions, to: :create
     has_permission_on :member_sessions, to: :create
