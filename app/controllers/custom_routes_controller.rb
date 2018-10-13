@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class CustomRoutesController < ApplicationController
   has_control_panel_applet :admin_applet,
                            if: -> { permitted_to? :edit, :custom_routes }
