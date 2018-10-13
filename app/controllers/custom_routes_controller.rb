@@ -50,7 +50,7 @@ class CustomRoutesController < ApplicationController
 
   def redirect
     @custom_route = CustomRoute.find_by source: params[:source]
-    @page = Page.find_by name: params[:source]
+    @page = Page.where('name_no = ? OR name_en = ?', params[:source], params[:source]).first
 
     if @page
       redirect_to @page
