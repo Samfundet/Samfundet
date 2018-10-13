@@ -1,10 +1,9 @@
+# frozen_string_literal: true
 class CustomRoutesController < ApplicationController
-
   has_control_panel_applet :admin_applet,
                            if: -> { permitted_to? :edit, :custom_routes }
 
-  def admin_applet
-  end
+  def admin_applet; end
 
   def index
     @custom_routes = CustomRoute.all
@@ -49,8 +48,8 @@ class CustomRoutesController < ApplicationController
   end
 
   def redirect
-    @custom_route = CustomRoute.find_by_source(params[:source])
-    @page = Page.find_by_name params[:source]
+    @custom_route = CustomRoute.find_by source: params[:source]
+    @page = Page.find_by name: params[:source]
 
     if @page
       redirect_to @page
