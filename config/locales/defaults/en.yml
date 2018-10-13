@@ -2,11 +2,13 @@ en:
   'true': "Yes"
   'false': "No"
   crud:
+    new: "new"
     show: "show"
     create: "create"
     destroy: "delete"
     edit: "edit"
     confirm: "Are you sure?"
+    update_success: "Element updated"
   common:
     markdown_hint: "This text is formatted using <a href=/en/information/markdown target=blank>Markdown</a>."
     fields_missing_error: "Please fill in all of the fields."

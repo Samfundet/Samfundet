@@ -1,0 +1,3 @@
+class CustomRoute < ApplicationRecord
+
+end

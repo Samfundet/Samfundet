@@ -1,0 +1,10 @@
+en:
+  custom_routes:
+    edit_title: 
+      generic: "Change custom routes"
+    name: "Name:"
+    source: "Source"
+    target: "Target"
+
+    update_success: "Custom route has been updated"
+    update_failure: "Custom route has not been updated"

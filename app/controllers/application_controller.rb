@@ -86,4 +86,8 @@ class ApplicationController < ActionController::Base
   def redirect_back
     redirect_to session[:return_to]
   end
+
+  def render_not_found
+    render file: "./public/404.html",  status: 404
+  end
 end
