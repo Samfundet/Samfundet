@@ -560,3 +560,13 @@ types = [type1.id, type2.id]
     reservation_type_id: types[rand(0..1)],
     table_id: tables[rand(0..1)])
 end
+
+# Create custom routes
+
+CustomRoute.create(
+  name: Faker::Lorem.sentence(1),
+  target: "test_route",
+  source: "events",
+  comment: Faker::Lorem.sentence(5)
+)
+
