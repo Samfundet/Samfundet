@@ -9,9 +9,9 @@
     source: "Kildeadresse"
     target: "Måladresse"
     comment: "Kommentar"
-    name_hint: "Et navn som beskriver redirigeringen. Vises ikke."
-    source_hint: "Adressen det skal omdirigeres fra. Skal ikke ha / i begynnelsen. Feks. 'test' vil virke på samfundet.no/test"
-    target_hint: "Adressen det skal omdirigeres til. Skal ha / i begynnelsen eller være en gyldig url-adresse. Feks. '/arrangement' vil redirigere til samfundet.no/arrangement"
+    name_hint: "Et navn som beskriver omdirigeringen. Vises ikke."
+    source_hint: "Adressen det skal omdirigeres fra. Skal ikke ha '/' i begynnelsen. Feks. 'test' vil virke på samfundet.no/test"
+    target_hint: "Adressen det skal omdirigeres til. Skal ha '/' i begynnelsen eller være en gyldig url-adresse. Feks. '/arrangement' vil omdirigere til samfundet.no/arrangement"
     comment_hint: "En kommentar som forklarer hvorfor vi har denne omdirigeringen."
     action:
       new: "Ny egendefinert url"
