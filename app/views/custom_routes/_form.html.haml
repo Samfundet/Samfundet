@@ -1,7 +1,7 @@
 = semantic_form_for @custom_route do |f|
   = f.inputs do
-    = f.input :name, label: t('custom_routes.name')
-    = f.input :source, label: t('custom_routes.source')
-    = f.input :target, label: t('custom_routes.target')
-    = f.input :comment, label: t('custom_routes.comment')
+    = f.input :name, label: t('custom_routes.name'), hint: t('custom_routes.name_hint')
+    = f.input :source, label: t('custom_routes.source'), hint: t('custom_routes.source_hint')
+    = f.input :target, label: t('custom_routes.target'), hint: t('custom_routes.target_hint')
+    = f.input :comment, label: t('custom_routes.comment'), hint: t('custom_routes.comment_hint')
   = f.actions
