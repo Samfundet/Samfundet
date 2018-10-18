@@ -54,3 +54,4 @@ coverage
 .loadpath
 
 webrat-*.html
+app/assets/react
