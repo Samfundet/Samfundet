@@ -2,7 +2,7 @@
 
 class Mutations::UpdateEvent < GraphQL::Schema::Mutation
   null true
-  argument :event, Types::EventAttributes, required: true
+  argument :event, Types::Input::EventAttributes, required: true
 
   field :event, Types::EventType, null: true
   field :success, Boolean, null: false
