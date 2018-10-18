@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class SamfundetSchema < GraphQL::Schema
-  mutation(Types::MutationType)
-  query(Types::QueryType)
+  mutation(Mutations::MutationType)
+  query(Queries::QueryType)
 
   def self.resolve_type(_abstract_type, object, _context)
     if object.is_a?(Group)
@@ -10,6 +10,5 @@ class SamfundetSchema < GraphQL::Schema
     elsif object.is_a?(ExternalOrganizer)
       Types::ExternalOrganizerType
     end
-    nil
   end
 end

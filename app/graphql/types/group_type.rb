@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Types
-  class GroupType < BaseObject
+  class GroupType < Bases::BaseObject
     field :name, String, null: false
     field :abbreviation, String, null: true
     field :website, String, null: false
