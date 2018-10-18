@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Types
-  class EventType < Base::BaseObject
+  class EventType < Bases::BaseObject
     field :title, String, null: false
     field :age_limit, AgeLimit, null: false
     field :status, String, null: false

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Types
-  module Base
+  module Bases
     class BaseInputObject < GraphQL::Schema::InputObject
       argument :id, Integer, required: false
     end

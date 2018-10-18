@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module Types
-  module Input
-    class EventAttributes < Types::Base::BaseInputObject
+  module Inputs
+    class EventAttributes < Types::Bases::BaseInputObject
       argument :non_billig_title_no, String, required: true
       argument :title_en, String, required: true
       argument :age_limit, AgeLimit, required: true
