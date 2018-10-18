@@ -13,13 +13,10 @@ class EventsController < ApplicationController
 
   def set_organizer_id
     case params[:event][:organizer_type]
-    when Group.name
-      params[:event][:organizer_id] = params[:event][:organizer_group_id]
     when ExternalOrganizer.name
       params[:event][:organizer_id] = ExternalOrganizer.find_or_create_by(name: params[:event][:organizer_external_name]).id
     end
 
-    params[:event].delete(:organizer_group_id)
     params[:event].delete(:organizer_external_name)
   end
 

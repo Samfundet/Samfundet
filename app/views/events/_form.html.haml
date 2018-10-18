@@ -31,7 +31,7 @@
       = f.label :organizer_type, value: Group.name do
         = t('events.organizers.group')
         = f.radio_button :organizer_type, Group.name, checked: true
-      = f.select :organizer_group_id, Group.all.map { |g| [g.name, g.id] }
+      = f.select :organizer_id, Group.all.map { |g| [g.name, g.id] }
     %li
       = f.label :organizer_type, value: ExternalOrganizer.name do
         = t('events.organizers.external')
