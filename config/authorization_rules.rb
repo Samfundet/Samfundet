@@ -10,6 +10,10 @@ authorization do
     has_permission_on :member_sessions, to: :create
     has_permission_on :user_sessions, to: :create
 
+    # TODO: The permission model for the React modules has to be rethought
+    # Current behavior: All React endpoints are available to all users
+    has_permission_on :static, to: :show
+
     # Search
     has_permission_on :search, to: [:create, :search]
 
