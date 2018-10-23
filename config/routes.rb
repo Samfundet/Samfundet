@@ -79,6 +79,12 @@ Rails.application.routes.draw do
 
     resources :admissions, only: [:index, :new, :create, :edit, :update]
 
+    ###############################
+    ##  Routes for custom_routes ##
+    ###############################
+
+    resources :custom_routes, only: [:index, :new, :create, :edit, :update, :destroy]
+
     # Everything closed period routes
     resources :everything_closed_periods, except: [:show]
 
@@ -193,8 +199,9 @@ Rails.application.routes.draw do
     #UKA 17 boksalg
     get '/bokhandel', to: redirect('https://samfundetbok.tabetalt.no/')
 
-    get ":id" => "pages#show", :id => Page::NAME_FORMAT
+    get "*source", to: "custom_routes#redirect"
   end
+
 end
 
 # Add Norwegian routes and prefix English ones with /en; this is handled

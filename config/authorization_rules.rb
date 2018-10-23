@@ -37,6 +37,9 @@ authorization do
     has_permission_on :events, to: [:read, :buy, :ical, :archive, :archive_search]
 
     has_permission_on :sulten_reservations, to: [:create, :success, :available]
+
+    # Redirect privileges
+    has_permission_on :custom_routes, to: :redirect
   end
 
   role :medlem do
@@ -115,7 +118,8 @@ authorization do
       :sulten_reservation_types,
       :sulten_admin,
       :contact,
-      :admissions_admin_campus
+      :admissions_admin_campus,
+      :custom_routes,
     ], to: :manage
 
     has_permission_on :admissions_admin_groups, to: :reject_calls

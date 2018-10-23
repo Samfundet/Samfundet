@@ -2,11 +2,13 @@
   'true': "Ja"
   'false': "Nei"
   crud:
+    new: "ny"
     show: "vis"
     create: "opprett"
     destroy: "slett"
     edit: "rediger"
     confirm: "Er du sikker?"
+    update_success: "Element oppdatert"
   common:
     markdown_hint: "Denne teksten formateres med <a href=/informasjon/markdown target=blank>Markdown</a>."
     fields_missing_error: "Vennligst fyll ut alle feltene."
