@@ -67,6 +67,7 @@
     debate_event: Onsdagsdebatt
 
     adaptation_html: Arrangement på Samfundet kan tilrettelegges for besøkende med bevegelses- og hørselshemminger. Se %{href} for mer informasjon.
+    ticket_change_html: Medlemsbilletter kan omgjøres til ikke-medlemsbilletter mot et mellomlegg i hoveddøren under åpningstid på konsertdagen. Medlemmer har ikke mulighet til å få tilbake mellomlegg fra ikke-medlemsbilletter. Se %{href} for mer informasjon.
     here: her
 
     social:
