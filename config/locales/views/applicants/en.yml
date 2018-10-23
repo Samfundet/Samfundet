@@ -19,7 +19,7 @@ en:
     steal_identity: "Steal applicant's identity"
     steal_identity_button: "Steal identity"
     search_placeholder: "Applicant's e-mail"
-    interested_other_positions_hint: "Are you interested in being offered other positions beyond the ones you will apply to?"
+    interested_other_positions_hint: "Are you interested in offers for other positions beyond the ones you will apply to?"
     forms:
       register:
         heading: "Register me as applicant"
