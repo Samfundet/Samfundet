@@ -105,7 +105,6 @@ class Page < ApplicationRecord
     end
   end
 
-
   def to_param
     name
   end
