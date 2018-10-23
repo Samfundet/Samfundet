@@ -3,7 +3,7 @@
   margin: -20px 0 30px 0;
   padding-top: 30px;
   .wrap {
-    background: url("images/promo-bottom.png") bottom left repeat-x;
+    background: asset-url("images/promo-bottom.png") bottom left repeat-x;
     padding-bottom: 50px; }
   .content {
     width: 950px;
@@ -42,7 +42,7 @@
 #promoshelf {
   clear: both;
   overflow: hidden;
-  background: url("images/promo-shelf.png") center center no-repeat;
+  background: asset-url("images/promo-shelf.png") center center no-repeat;
   height: 160px;
   padding: 40px 0 0 0;
   margin: -60px auto -150px auto; }

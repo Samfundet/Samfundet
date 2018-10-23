@@ -6,6 +6,7 @@
 
     table_caption: "Plantagte perioder Samfundet skal holde stengt"
     message: "Melding"
+    event_message: "Event Melding"
     from: "Stengt fra og med"
     to: "Stengt til og med"
     add_new_link: "Legg til ny periode"

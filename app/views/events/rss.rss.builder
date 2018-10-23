@@ -1,14 +1,16 @@
-xml.instruct! :xml, :version => "1.0" 
-xml.rss :version => "2.0" do
-  xml.channel do
-    xml.title t("events.rss_title")
-    xml.description t("events.rss_title") 
+# frozen_string_literal: true
 
-    @events.each do |event| 
+xml.instruct! :xml, version: '1.0'
+xml.rss version: '2.0' do
+  xml.channel do
+    xml.title t('events.rss_title')
+    xml.description t('events.rss_title')
+
+    @events.each do |event|
       xml.item do
         xml.title event.title
         xml.link event_url(event)
-        xml.link rel: :enclosure, title: :image, href: "#{asset_url(event.image.image_file.url(:large))}"
+        xml.link rel: :enclosure, title: :image, href: asset_url(event.image_or_default.url(:large)).to_s
         xml.location event.area_title
         xml.agelimit t("events.#{event.age_limit}")
         xml.prices do

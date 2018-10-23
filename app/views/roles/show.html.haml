@@ -8,12 +8,12 @@
     = @role.description
   - if @role.role
     %p
-      / 'roles.child_role_of' contains HTML, hence html_safe
+      -# 'roles.child_role_of' contains HTML, hence html_safe
       = t('roles.child_role_of',
           role: link_to(@role.role.title, @role.role)).html_safe
   - unless @role.roles.empty?
     %p
-      / 'roles.has_child_roles' also contains HTML
+      -# 'roles.has_child_roles' also contains HTML
       = t('roles.has_child_roles',
           roles: @role.roles.map{ |r| link_to r.title, r }.join(' ')).html_safe
   - if permitted_to?(:edit, @role)
@@ -25,11 +25,17 @@
     %table
       %tr
         %th= t('roles.member_name')
+        %th= t('roles.date_assigned')
+        %th= t('roles.one_year_old')
         %th &nbsp;
       - @role.members_roles.each do |members_role|
         %tr
           %td
             = members_role.member.full_name
+          %td
+            = members_role.created_at
+          %td
+            = t((members_role.created_at < 1.year.ago).to_s)
           %td
             = link_to t('roles.remove_member'),
                       [@role, members_role],

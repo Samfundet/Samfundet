@@ -1,6 +1,6 @@
-= render 'admissions_frontpage_highjack'
-- set_open_graph_params({ title: t('site.index.og_title'), description: t('site.index.og_description'), image: 'https://www.samfundet.no/upload/images/image_files/000/000/166/large/fasade_hoved_fg.jpg?1414442090'})
-- set_twitter_params({ card: "summary_large_image", title: t('site.index.og_title'), description: t('site.index.og_description'), 'image:src' => 'https://www.samfundet.no/upload/images/image_files/000/000/166/large/fasade_hoved_fg.jpg?1414442090'})
+-#= render 'admissions_frontpage_highjack'
+- set_open_graph_params({ title: t('site.index.og_title'), description: t('site.index.og_description'), image: 'https://www.samfundet.no/upload/images/image_files/000/001/669/original/logo_samf.no.png?1538501206'})
+- set_twitter_params({ card: "summary_large_image", title: t('site.index.og_title'), description: t('site.index.og_description'), 'image:src' => 'https://www.samfundet.no/upload/images/image_files/000/001/669/original/logo_samf.no.png?1538501206'})
 
 = render 'banner_image', banner_event: @banner_event
 
@@ -14,7 +14,6 @@
         = t('site.index.add_banner_lock')
 
 = render 'hero_unit'
-= render 'mailing_list_form'
 = render 'upcoming_events'
 
 .show-more-events

@@ -1,6 +1,7 @@
 'no':
   job_applications:
     mine: "Mine søknader"
+    hide_withdrawn_applications: "Skjul trekte søknader"
     applications_for_group: "Søknader på stillinger i %{group_name}"
     title_with_applicant_and_job: "%{applicant_name} sin søknad til %{job_title}"
     cannot_apply_after_deadline: "Du kan ikke legge inn en søknad etter søknadsfristen for dette opptaket."
@@ -17,6 +18,9 @@
     not_set: "Ikke satt"
     deadline_has_passed_for_some: "Noen av dine søknader hører til opptak hvor omprioriteringsfristen har utgått."
     deadline_has_passed_for_all: "Dine søknader tilhører et eller flere opptak hvor omprioriteringsfristen har utgått."
+    interested_other_positions: "Det er registrert at du ønsker å kunne få tilbud om stillinger utover de du søker på."
+    not_interested_other_positions: "Det er registrert at du IKKE ønsker å få tilbud om stillinger utover de du søker på."
+    change_interested_other_positions_status: "Klikk her for å endre det."
     log_entries:
       log_entries: "Loggføringer"
       description: "Loggføringer knyttes opp mot søkeren, din gjeng og dette opptaket. Det vil si at andre gjenger vil ikke se deres loggføringer. Du vil ikke se disse loggføringene dersom søkeren søker ved neste opptak. Du vil se loggføringene for denne søkeren på eventuelle andre søknader søkeren har ved din gjeng."

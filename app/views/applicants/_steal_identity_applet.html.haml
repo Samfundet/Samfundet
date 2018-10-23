@@ -1,6 +1,6 @@
 %h2= t("applicants.steal_identity")
 = form_tag applicants_steal_identity_path, method: "post", class: "custom-form" do
   %p
-    = text_field_tag :applicant_email, nil, placeholder: t("applicants.search_placeholder"), class: "textfield", required: true
+    = text_field_tag :applicant_id, nil, placeholder: t("applicants.search_placeholder"), class: "textfield applicant_autocomplete", required: true
   %p
     = submit_tag t("applicants.steal_identity_button")

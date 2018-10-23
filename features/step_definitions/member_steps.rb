@@ -1,4 +1,5 @@
 # -*- encoding : utf-8 -*-
+# frozen_string_literal: true
 Given /^there is a member with first name "([^\"]*)"$/ do |first_name|
   without_access_control do
     Member.create!(

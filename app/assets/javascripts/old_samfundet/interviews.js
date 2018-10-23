@@ -2,7 +2,6 @@
 $(function () {
   var headers = {};
 
-
   $.tablesorter.addParser({
       id: 'input-text',
       is: function(s) {
@@ -16,12 +15,21 @@ $(function () {
       type: 'text'
   });
 
-
   headers[$('.interview-time').index()] = { sorter: 'input' };
   headers[$('.location').index()] = { sorter: 'input-text' };
   headers[$('.application-status').index()] = { sorter: 'select' };
 
   $("table.applications.sorted").tablesorter({
+      headers: headers,
+      sortInitialOrder: "asc"
+  });
+
+  $("table.rejected.sorted").tablesorter({
+      headers: headers,
+      sortList: [[0,0]]
+  });
+
+  $("table.roles.sorted").tablesorter({
       headers: headers,
       sortList: [[0,0]]
   });

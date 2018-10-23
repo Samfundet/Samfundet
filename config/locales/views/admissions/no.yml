@@ -2,10 +2,7 @@
   admissions:
     admission_not_yet_open: "Opptaket klargjøres og åpner: "
     admission_promo: |
-      Over 1000 studenter bidrar allerede frivllig! 
-      Du kan være med å jobbe med blant annet lyd, lys, teater, snekring, IT, artistbooking, korsang, musikk og mye annet. 
-      Du kan lære mye av å jobbe på Samfundet, og du blir garantert kjent med mange andre studenter.
-
+      Over 1000 studenter bidrar allerede frivllig! Du kan være med å jobbe med blant annet lyd, lys, teater, snekring, IT, artistbooking, korsang, musikk og mye annet. Du kan lære mye av å jobbe på Samfundet, og du blir garantert kjent med mange andre studenter.
     application_deadline: "Søknadsfrist"
     back_to_overview: "Tilbake til stillingsoversikten"
     show_all_applications: "Vis alle søknader"
@@ -28,6 +25,9 @@
     registration_error: "Opptaket ble ikke lagt til. Se detaljer nedenfor."
     registration_success: "Opptaket har blitt lagt til."
     statistics: "Statistikk"
+    groups_with_admission: "Gjenger med opptak"
+    groups_with_separate_admission: "Gjenger med separat opptak"
+    seperate_admission_information: "Klikk her for gjenger med seperat opptak"
 
     admin_applet:
       title: Opptak
@@ -35,7 +35,7 @@
     no_admissions:
         header: "Det er for tiden ingen opptak på Samfundet"
         ordinary_information: "Samfundet har sine ordinære opptak på starten av hvert semester. Følg med på denne siden!"
-        more_information: "For mer informasjon om samfundets gjenger" 
+        more_information: "For mer informasjon om samfundets gjenger"
         motivation_text: |
           Vi har opptak på starten av hvert semester og ønsker at du søker til oss som frivillig!
           Studentersamfundet i Trondhjem er Norges største studentersamfund og vi har et tilbud andre byer bare kan drømme om.

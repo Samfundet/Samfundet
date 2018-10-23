@@ -1,6 +1,7 @@
-# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 class MembersController < ApplicationController
-  filter_access_to [:search, :control_panel, :steal_identity]
+  filter_access_to %i[search control_panel steal_identity]
 
   has_control_panel_applet :steal_identity_applet,
                            if: -> { permitted_to? :steal_identity, :members }
@@ -9,11 +10,13 @@ class MembersController < ApplicationController
                            if: -> { true }
 
   def search
-    @members = Member.where("UPPER(fornavn) || ' ' || UPPER(etternavn) LIKE UPPER(?)" +
-                            " OR UPPER(mail) LIKE UPPER(?) OR medlem_id = ?",
-                            "%#{params[:term].upcase}%",
-                            "%#{params[:term].upcase}%",
-                            params[:term].to_i)
+    @members = Member.where(
+      "UPPER(fornavn) || ' ' || UPPER(etternavn) LIKE UPPER(?)" \
+      ' OR UPPER(mail) LIKE UPPER(?) OR medlem_id = ?',
+      "%#{params[:term].upcase}%",
+      "%#{params[:term].upcase}%",
+      params[:term].to_i
+    )
 
     respond_to do |format|
       format.json do
@@ -28,11 +31,10 @@ class MembersController < ApplicationController
   end
 
   def control_panel
-    @applets = ControlPanel.applets(request).select &:relevant?
+    @applets = ControlPanel.applets(request).select(&:relevant?)
   end
 
-  def steal_identity_applet
-  end
+  def steal_identity_applet; end
 
   def steal_identity
     session[:member_id] = Member.find(params[:member_id]).id
@@ -40,6 +42,5 @@ class MembersController < ApplicationController
     redirect_to root_path
   end
 
-  def access_applet
-  end
+  def access_applet; end
 end

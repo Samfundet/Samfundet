@@ -25,7 +25,7 @@
         %td
           = k.reservation_type
         %td
-          = link_to k.table.number, k.table
+          = k.table.number
         %td
           = link_to t("crud.edit"), [:edit, k]
         %td
@@ -33,4 +33,4 @@
 - if @reservations.empty?
   = t("sulten.reservation.no_reservations")
 %p
-  = link_to t("common.back"), sulten_admin_path
+  = link_to t("common.back"), sulten_reservations_path

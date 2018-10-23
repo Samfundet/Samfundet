@@ -5,6 +5,12 @@
     summary: "%{admission} har %{applications} søknader på %{jobs} stillinger."
     applications_by_group: "Fordeling av søkere per gjeng"
     applications_by_day: "Antall søknader per dag"
+    applications_by_campus: "Antall søkere per campus"
     applications_by_day_for_group: "Antall søknader per dag for %{group}"
-    show_interested_other_positions: 'Show applicants that are interested in other positions'
     show_interested_other_positions: 'Vis søkere som er interesert i andre stillinger men som ikke er tildelt stillinger'
+    show_unflagged_applicants: 'Vis søkere som er satt til reserve eller som ikke har blitt satt enda'
+    reject_calls: "Søkere uten tilbud som %{group_name} må ringe."
+    remember_to_call: "INGEN LOGGFØRINGER, HUSK Å RING!"
+    reject_calls_title: 'Dette er en oversikt over alle søkere som %{group_name} må ringe (for øyeblikket). Legg merke til at denne oversikten kun viser søkere hvor alle søknader er merket "Vil ikke ha" og at den vil oppdateres kontinuerlig.'
+    show_reserved_applicants: "Vis reserverte søkere"
+    show_not_set_applicants: "Vis søkere som ikke har blitt flagget"

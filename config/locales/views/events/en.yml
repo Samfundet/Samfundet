@@ -1,8 +1,10 @@
 en:
   events:
     rss_title: Events at Studentersamfundet in Trondheim
-    rss_alt_text: Samfundets rss strøm.
-    ical_alt_text: Samfundets ical strøm.
+    rss_alt_text: Samfundet's RSS feed.
+    rss_short_text: RSS
+    ical_alt_text: Samfundet's iCal feed.
+    ical_short_text: iCal
     create_success: Successfully created the event.
     create_error: Could not create event.
     update_success: Successfully updated the event.
@@ -12,17 +14,24 @@ en:
     purchase_generic_error: Something went wrong during purchase. Please try again.
     time_of_start_has_passed: The start time of this event has passed.
     can_not_purchase_error: This event can not be purchased
+    please_enter_codeword: Please enter the codeword to purchase tickets for this event.
+    codeword: Code word
+    wrong_codeword: Wrong code word :(
 
     eighteen: 18 years
     eighteen_twenty: 18&nbsp;(student), 20&nbsp;(non-student)
     twenty: 20 years
     none: No age limit
+    ticket_limit_event_show: Ticket limit
+    tickets_single: "%{total_ticket_limit} ticket"
+    tickets_multiple: "%{total_ticket_limit} tickets"
 
     left: left
     right: right
+    hide: hide text
 
     yes: yes
-    no: no
+    nei: 'No'
 
     add_price_group: Add price group
     remove_price_group: Remove this price group
@@ -51,8 +60,9 @@ en:
     luka_event: LUKA event
     uka_event: UKE event
     happening: Happening
+    debate_event: Wednesday Debate
 
-    adaptation_html: Events at the Student Society can be adapted for visitors with movement og hearing impairment. See %{href} for more information.
+    adaptation_html: Events at the Student Society can be adapted for visitors with movement and hearing impairment. See %{href} for more information.
     here: here
 
     social:
@@ -76,16 +86,20 @@ en:
 
     index_title:  Upcoming events
     information: Information
+    ticket_limit_single: "0/%{ticket_limit} ticket"
+    ticket_limit_multiple: "0/%{ticket_limit} tickets"
+    ticket_unit: pcs.
     purchase: Purchase ticket
     sold_out: Sold out
+    currency_unit: " NOK"
 
     buy_title: Buy ticket for %{event_title}
     ticketless: "Ticketless on your membership card:"
     paperticket: "Ticket on paper, by email:"
     confirm_email: "Confirm email:"
     about_ticket: "About ticket types:"
-    about_ticketless_html: "If you choose <em>ticketless</em>, your membership card itself will be your ticket. You will then simply swipe your card when you enter Samfundet. <strong>Please note:</strong> You may only have one ticket on your card per event. The rest will be sent to your email. "
-    about_paperticket_html: "If you choose <em>ticket on paper</em>, your ticket(s) will be sent to your email, and you will have to print them. The tickets barcode will be scanned when you enter Samfundet."
+    about_ticketless_html: "If you choose <em>ticketless</em>, your membership card itself will be your ticket. You will then simply swipe your card when you enter Samfundet. <strong>Please note:</strong> You may only have one ticket on your card per event. All the tickets will be sent to your email. "
+    about_paperticket_html: "If you choose <em>ticket on paper</em>, your ticket(s) will be sent to your email. The tickets barcode will be scanned when you enter Samfundet."
     visa_or_master: "VISA- or Mastercard number:"
     expiration_month: "Expiration date:"
     commit_buy: Complete payment
@@ -147,7 +161,7 @@ en:
             status: Status
             primary_color: Primary color
             secondary_color: Secondary color
-            banner_alignment: Banner alignment
+            banner_alignment: Text alignment
             duration: Duration
             publication_time: Publication time
             free: Free

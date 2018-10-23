@@ -1,0 +1,39 @@
+.pagination {
+    text-align: center;
+    padding: 0.3em;
+    cursor: default; 
+    & a, & span, & em {
+        padding: 0.2em 0.5em;
+    }
+    & .disabled {
+        color: #aaaaaa;
+    }
+    & .current {
+        font-style: normal;
+        font-weight: $font-weight-bold;
+        color: #a03033;
+    }
+    & a {
+        border: 1px solid #dddddd;
+        color: #a03033;
+        text-decoration: none;
+    }
+    .pagination a:hover, .pagination a:focus {
+        border-color: #003366;
+        background: #0063dc;
+        color: white;
+    }
+    & .page_info {
+        color: #aaaaaa;
+        padding-top: 0.8em;
+    }
+    & .previous_page, & .next_page {
+        border-width: 2px;
+    }
+    & .previous_page {
+        margin-right: 1em;
+    }
+    & .next_page {
+        margin-left: 1em;
+    }
+}

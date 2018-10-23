@@ -7,8 +7,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Major.create(name: 'Daley', city: cities.first)
 
-require 'declarative_authorization'
-require Rails.root.join('lib', 'generate_roles')
+#require 'declarative_authorization'
+#require Rails.root.join('lib', 'generate_roles')
 
 raise "Not allowed to seed a production database!" if Rails.env.production?
 
@@ -22,7 +22,7 @@ end
 
 # Invoke gem seedscripts
 Rake::Task['samfundet_auth_engine:db:seed'].invoke
-Authorization.ignore_access_control(true)
+#Authorization.ignore_access_control(true)
 Rake::Task['samfundet_domain_engine:db:seed'].invoke
 
 # Create Organizers
@@ -34,7 +34,7 @@ ExternalOrganizer.create([
 puts "Done creating external organizers"
 
 # This is a separate task, using a method in lib/generate_roles.rb
-generate_roles
+#generate_roles
 
 # TOOD: Create extraordinary admission
 
@@ -50,7 +50,8 @@ admission = Admission.create!(
   shown_application_deadline: 2.weeks.from_now,
   actual_application_deadline: 2.weeks.from_now + 4.hours,
   user_priority_deadline: 3.weeks.from_now,
-  admin_priority_deadline: 3.weeks.from_now + 1.hour
+  admin_priority_deadline: 3.weeks.from_now + 1.hour,
+  promo_video: "https://www.youtube.com/embed/T8MjwROd0dc"
 )
 puts "Done creating admission"
 
@@ -81,6 +82,15 @@ def phone_number
   (10000000 + rand * 9000000).to_i.to_s
 end
 
+# Create campuses
+number_of_campuses = 10
+
+number_of_campuses.times do
+  campus_name = Faker::Company.name
+  puts "Creating campus #{campus_name}"
+  Campus.create(name: campus_name)
+end
+
 # Create a number of applicants
 puts "Creating #{number_of_applicants} applicants, and makes them apply for #{number_of_job_applications_pr_applicant} jobs"
 distinct_emails(number_of_applicants).each do |email|
@@ -89,7 +99,7 @@ distinct_emails(number_of_applicants).each do |email|
     surname: Faker::Name.last_name,
     phone: phone_number,
     email: email,
-    campus: Faker::Company.name,
+    campus: Campus.order("RANDOM()").first,
     password: 'passord',
     password_confirmation: 'passord',
     interested_other_positions: Faker::Boolean.boolean
@@ -132,7 +142,7 @@ image_list.each do |image|
   Image.create!(
       title: image,
       image_file: File.open(Rails.root.join('app', 'assets', 'images', image)),
-      uploader: Member.find_by_mail('myrlund@gmail')
+      uploader: Member.find_by(mail: 'myrlund@gmail')
     )
   puts "Image #{image} created"
 end
@@ -177,7 +187,7 @@ Group.all.each do |group|
     title_en: group.name,
     content_no: content,
     content_en: content,
-    role: Role.find_by_title(group.member_role) || Role.super_user
+    role: Role.find_by(title: group.member_role) || Role.super_user
   )
 
   puts "Created page for: #{group.name.parameterize}"
@@ -222,9 +232,11 @@ Page.create!(
   name_no: Page::MENU_NAME,
   name_en: Page::MENU_NAME,
   content_no: "- **Generelt**\n"\
+              "\t- [Saksdokumenter](/saksdokumenter)\n"\
               "\t- **Gjenger**\n#{Group.all.map { |p| "\t\t- [#{p.page.title_no}](/informasjon/#{p.page.name_no})" }.join("\n")}\n"\
               "\t- **Lokaler**\n#{Area.all.map { |p|  "\t\t- [#{p.page.title_no}](/informasjon/#{p.page.name_no})" }.join("\n")}\n",
   content_en: "- **General**\n"\
+              "\t- [Documents](/dokuments)\n"\
               "\t- **Groups**\n#{Group.all.map { |p| "\t\t- [#{p.page.title_en}](/informasjon/#{p.page.name_en})" }.join("\n")}\n"\
               "\t- **Areas**\n#{Area.all.map { |p|  "\t\t- [#{p.page.title_en}](/informasjon/#{p.page.name_en})" }.join("\n")}\n",
   role_id: Role.super_user.id
@@ -280,6 +292,8 @@ puts "Creating everything closed periods"
 everything_closed_period = EverythingClosedPeriod.new(
   message_no: "Feiring av sommernissen",
   message_en: "Celebrate the summer santa",
+  event_message_no: "For mer informasjon, sjekk ut duvethvem.stream",
+  event_message_en: "For more information, check out youknowwho.stream",
   closed_from: DateTime.current + 2.weeks,
   closed_to: DateTime.current + 3.weeks )
 everything_closed_period.save!
@@ -358,7 +372,8 @@ Area.all.each do |area|
           event: billig_event.event,
           num: number_of_available_tickets,
           ticket_group_name: 'Boys',
-          num_sold: rand(number_of_available_tickets+1)
+          num_sold: rand(number_of_available_tickets+1),
+          ticket_limit: rand(10) < 5 ? nil : rand(1..10)
         )
         BilligPriceGroup.create!(
           ticket_group: billig_ticket_group.ticket_group,
@@ -376,8 +391,9 @@ Area.all.each do |area|
           extra_billig_ticket_group = BilligTicketGroup.create!(
             event: billig_event.event,
             num: number_of_available_tickets+100,
-          ticket_group_name: 'Girls',
-            num_sold: rand(number_of_available_tickets+1)+100
+            ticket_group_name: 'Girls',
+            num_sold: rand(number_of_available_tickets+1)+100,
+            ticket_limit: rand(10) < 5 ? nil : rand(1..10)
           )
           BilligPriceGroup.create!(
             ticket_group: extra_billig_ticket_group.ticket_group,
@@ -438,7 +454,7 @@ possible_payment_errors.each do |error_message|
 
   BilligPaymentError.create!(
     error: bsession,
-    failed: rand(1.years.to_i).ago,
+    failed: rand(1.years.to_i).second.ago,
     owner_cardno: on_card ? rand(10000..999999) : nil,
     owner_email: on_card ? nil : Faker::Internet.email,
     message: error_message
@@ -480,6 +496,22 @@ puts "Creating document categories"
   )
 end
 
+puts "Creating documents"
+DocumentCategory.all.each do |category|
+    25.times do
+        member = Member.order("RANDOM()").first
+        file = File.open(Rails.root.join('app', 'assets', 'files', 'dummy.pdf'))
+        publication_date = 2.weeks.ago + (rand 2000).days
+        Document.create!(
+            title: Faker::Lorem.sentence(2),
+            category_id: category.id,
+            uploader_id: member.id,
+            publication_date: publication_date,
+            file: file
+        )
+    end
+end
+
 puts "Creating blog articles"
 Member.all.sample(10).each do |member|
   title = Faker::Lorem.sentence
@@ -513,6 +545,8 @@ table2.reservation_types << type1
 tables = [table1.id, table2.id]
 types = [type1.id, type2.id]
 
+# Initialize list of tables
+
 15.times.each do
   now = DateTime.now
   date = (now + rand(1..25).days).change(hour: rand(16..20))
@@ -526,3 +560,13 @@ types = [type1.id, type2.id]
     reservation_type_id: types[rand(0..1)],
     table_id: tables[rand(0..1)])
 end
+
+# Create custom routes
+
+CustomRoute.create(
+  name: Faker::Lorem.sentence(1),
+  target: "test_route",
+  source: "events",
+  comment: Faker::Lorem.sentence(5)
+)
+

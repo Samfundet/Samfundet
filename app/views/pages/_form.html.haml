@@ -27,9 +27,11 @@
               = form.input :content_type, collection: PageRevision::CONTENT_TYPES,
                 include_blank: false
               = form.input :role, collection: Role.all
+              = form.input :hide_menu, label: t("pages.hide_menu")
           - else
-            / This field exists so the live preview knows which content_type
-            / we are using. It is ignored in the controller.
+            -#
+              This field exists so the live preview knows which content_type
+              we are using. It is ignored in the controller.
             = form.input :content_type, as: :hidden
 
       .pages-preview

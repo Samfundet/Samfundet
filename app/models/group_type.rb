@@ -1,12 +1,11 @@
-# -*- encoding : utf-8 -*-
-class GroupType < ActiveRecord::Base
-  has_many :groups, order: 'name'
+# frozen_string_literal: true
+
+class GroupType < ApplicationRecord
+  has_many :groups, -> { order(:name) }
   has_many :jobs, through: :groups
 
-  validates_presence_of :description
+  validates :description, presence: true
   validates :description, uniqueness: true
-
-  default_scope order: "priority DESC"
 
   def <=>(other)
     priority <=> other.priority

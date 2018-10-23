@@ -2,6 +2,7 @@
 
 .section
   %h2= set_and_return_title t('jobs.your_applications')
+  %h3= t("jobs.gdpr")
   - if @admissions.empty?
     %p
       = t('jobs.no_applications')
@@ -17,6 +18,12 @@
           Dette er søknader fra et eldre opptak.
       %h4
         = t('jobs.repriorization_deadline') + ": " + admission.user_priority_deadline.to_s
+      %p
+        - if @current_user.interested_other_positions
+          = t('job_applications.interested_other_positions')
+        - else
+          = t('job_applications.not_interested_other_positions')
+        = link_to t('job_applications.change_interested_other_positions_status'), applicant_path(@current_user, applicant: { interested_other_positions: !@current_user.interested_other_positions }), method: :put, confirm: t('crud.confirm')
       %table
         %thead
           %tr
@@ -29,7 +36,7 @@
           - job_applications.each_with_index do |job_application, index|
             %tr
               %td.priority
-                = job_application.priority
+                #{index + 1}
               %td
                 - if admission.user_priority_deadline > Time.current
                   = form_tag up_job_application_path(job_application), method: :post, class: 'up custom-form' do

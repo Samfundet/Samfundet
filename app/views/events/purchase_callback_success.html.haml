@@ -1,3 +1,5 @@
+- disable_robots
+
 %h2
   = t('events.purchase_callback_success.title')
 
@@ -19,7 +21,10 @@
         %td= event.event_name
         %td= l(event.event_time, format: :long)
         %td= price_group.price_group_name
-        %td= card_no
+        -if card_no
+          %td#on-card &#10003;
+        -else
+          %td= t('events.nei');
         %td= price_group.price
   %tfoot
     %tr

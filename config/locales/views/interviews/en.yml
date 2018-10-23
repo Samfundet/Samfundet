@@ -30,3 +30,5 @@ en:
     latest_log_entry: "Latest log entry"
     job: "Job"
     interested_other_positions: "Open for alt. jobs"
+    hide_withdrawn_applications: "Hide withdrawn applications"
+    jobs_applicant_has_applied_to: "Jobs that this applicant has applied to"

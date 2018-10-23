@@ -1,0 +1,130 @@
+@mixin emph-link($color) {
+    text-decoration: none;
+    font-weight: $font-weight-normal;
+    text-transform: uppercase;
+    color: $color;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+p {
+    margin: 1em 0;
+    font-weight: $font-weight-normal;
+    font-size: 20px;
+    line-height: 1.3;
+    letter-spacing: 0.01rem;
+}
+
+ul {
+    list-style-type: none;
+}
+
+body {
+    font-family: "futura-pt", "Lato", sans-serif;
+
+    &.dev-filter {
+        background: repeating-linear-gradient(
+            45deg,
+            transparentize($samfundet-light-grey, 0.3),
+            transparentize($samfundet-light-grey, 0.3) 10px,
+            white 10px,
+            white 20px
+        );
+    }
+}
+
+img {
+    width: 100%;
+}
+
+h1 {
+  @include emph-link($samfundet-red);
+
+  font-size: 60px;
+  line-height: 1;
+  margin-bottom: 8px;
+  padding-top: 0px;
+}
+
+h2 {
+  font-size: 36px;
+}
+
+h2, h3, h4, h5, h6 {
+  color: $samfundet-dark-grey;
+  font-weight: $font-weight-medium;
+  line-height: 1.2;
+  margin-bottom: 4px;
+  margin-top: 10px;
+  margin-left: -1.8px;
+}
+
+a {
+    text-decoration: none;
+    color: $samfundet-red;
+}
+
+input[type=submit] {
+    background-color: $samfundet-red;
+    color: white;
+    font-weight: lighter;
+    text-transform: uppercase;
+    padding: 10px 25px;
+    border: none;
+    font-size: 1em;
+}
+
+.container {
+    margin-bottom: 40px;
+
+    @include outer-container;
+    @include media($not-desktop) {
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+}
+
+.clearfix { 
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+.purchase-button {
+    color: white;
+    padding: 10px;
+    display: inline-block;
+    text-decoration: none;
+
+    &.tickets-available {
+        background-color: $samfundet-red;
+
+        &:hover {
+            background-color: shade($samfundet-red, 60%);
+        }
+    }
+
+    &.tickets-sold-out {
+        background-color: $samfundet-medium-grey;
+    }
+}
+
+.billig-offline {
+    background-color: $samfundet-red;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+@include media($desktop) {
+  .rwd-break {
+    display: none;
+  }
+}

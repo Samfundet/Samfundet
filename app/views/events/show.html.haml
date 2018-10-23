@@ -25,8 +25,12 @@
 
       %tr
         %td= t('time.date')
-        %td= l(@event.start_time, format: :short_datetime)
-
+        - if (@event.start_time.year == Time.current.year)
+          %td
+            = l(@event.start_time, format: :short_datetime)
+        - else
+          %td
+            = l(@event.start_time, format: :long_datetime)
       %tr
         %td= t('time.time')
         %td= from_to_string @event
@@ -35,12 +39,18 @@
         %td= t('events.ticket')
         %td= inline_event_price @event
 
+      - if @event.ticket_limit?
+        %tr
+          - pluralize = @event.total_ticket_limit > 1 ? 'multiple' : 'single'
+          %td= t('events.ticket_limit_event_show')
+          %td= t("events.tickets_#{pluralize}", total_ticket_limit: @event.total_ticket_limit)
+
       %tr
         %td= t('events.age_limit')
         %td= t_event_age_limit(@event)
 
   .show-purchase-button
-    = render "buy_button", event: @event
+    = render "buy_button", event: @event, button_only: false
 
   .description
     %p.description-short
@@ -74,7 +84,7 @@
           - if @event.instagram_link.present?
             %li
               = link_to @event.instagram_link, id: 'social-link', title: t('events.social.instagram_link_title') do
-                = image_tag 'instagram_36.png', alt: 'Instagram'
+                = image_tag 'instagram.png', alt: 'Instagram'
           - if @event.twitter_link.present?
             %li
               = link_to @event.twitter_link, id: 'social-link', title: t('events.social.twitter_link_title') do
@@ -95,5 +105,3 @@
       .spotify-box
         = render "spotify_play_box", locals: { event: @event }
 
-    %p
-      = render partial: "shared/disqus", locals: { title: @event.title }

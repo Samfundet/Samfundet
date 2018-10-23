@@ -3,6 +3,7 @@
   %head
     %meta{ charset: "UTF-8" }
     %meta{ name: "viewport", content: "width=device-width, initial-scale=1.0" }
+    != yield :head
     %title
       - unless (yield :title).blank?
         #{yield(:title)} - 
@@ -10,7 +11,7 @@
     %link{ rel: "stylesheet", href: "//fonts.googleapis.com/css?family=Lato" }
     %link{ rel: "icon", href: asset_path("favicon.ico") }
     = stylesheet_link_tag :application
-    = render 'layouts/analytics' if Rails.env.production?
+    = render 'layouts/analytics'
     = javascript_include_tag :application, defer: true
     = typekit_include_tag "cwd6rno"
     = csrf_meta_tag
@@ -20,7 +21,6 @@
     %meta{ name:"twitter:site", content:"@Samfundet"}
     %meta{ name:"twitter:creator", content:"@Samfundet"}
     = yield :twitter
-    != yield :head
 
   %body{ class: ('dev-filter' unless Rails.env.production?) }
     #sticky-footer-wrapper

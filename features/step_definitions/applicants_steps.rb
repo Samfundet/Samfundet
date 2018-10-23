@@ -1,4 +1,5 @@
 # -*- encoding : utf-8 -*-
+# frozen_string_literal: true
 Given /^I am registered with email "([^\"]*)" and password "([^\"]*)"$/ do |email, password|
   step %(there is an applicant with email "#{email}" and password "#{password}")
 end

@@ -4,7 +4,7 @@
       != form.input :title
     != form.input :name
     != form.input :description
-    != form.input :passable
+    != form.input :passable, as: :select, include_blank: false
     != form.input :role
     != form.input :group
   = form.actions do

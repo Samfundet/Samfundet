@@ -1,3 +1,4 @@
+= javascript_include_tag 'job_applications/admissions_admin_job_applications', defer: true
 - set_title "#{@job_application.applicant.full_name} - #{t('jobs.view_application')}"
 
 .section
@@ -16,12 +17,23 @@
         %tr
           %td= t('interviews.applicant_campus')+ ":"
           %td=@job_application.applicant.campus
-      /%p.subtitle
-      / 'job_applications.applicant_for' contains HTML, hence html_safe
-      /= t('job_applications.applicant_for', job: link_to(@job_application.job.title, admissions_admin_admission_group_job_path(@job_application.job.admission, @job_application.job.group, @job_application.job)), group: @job_application.job.group.name).html_safe
+      - if @job_application.withdrawn
+        %h2{style:"color: red; margin-bottom: 30px; margin-top: -20px;"}
+          ="Denne søknaden er blitt trukket!"
+      -#
+        %p.subtitle
+         'job_applications.applicant_for' contains HTML, hence html_safe
+        = t('job_applications.applicant_for', job: link_to(@job_application.job.title, admissions_admin_admission_group_job_path(@job_application.job.admission, @job_application.job.group, @job_application.job)), group: @job_application.job.group.name).html_safe
 
     %h3= t('job_applications.application')
     != simple_format(html_escape(@job_application.motivation))
+
+    - if permitted_to?(:withdraw_job_application)
+      - if !@job_application.withdrawn
+        %h3= link_to 'Trekk søknad', job_application_path(@job_application), method: :delete, confirm: "Er du sikker?"
+      - else
+        %h3= link_to 'Aktiver søknad', job_application_path(@job_application), method: :put, confirm: "Er du sikker?"
+
   .log
     %h3= t('job_applications.log_entries.log_entries')
     %p= t('job_applications.log_entries.description')
@@ -54,19 +66,19 @@
 
   .soknader
     %h3= t('job_applications.applications')
+    %input#hide_withdrawn{type:"checkbox", checked: true}
+      =t('job_applications.hide_withdrawn_applications')
     %table
       %thead
         %tr
-          %th= t('job_applications.priority')
           %th= t('job_applications.job')
           %th= t('job_applications.group')
           %th= t('job_applications.status')
           %th= t('job_applications.interview_time')
       %tbody
         - @job_application.applicant.job_applications.select {|application| application.job.admission == @job_application.job.admission}.each_with_index do |job_application, index|
-          %tr{ class: [job_application == @job_application ? 'current' : 'other', job_application.assignment_status] }
-            %td.priority
-              #{index + 1}.
+
+          %tr{ class: [job_application == @job_application ? 'current' : 'other', job_application.assignment_status], class: [job_application.withdrawn ? 'withdrawn display-none' : ''] }
             %td
               - if job_application != @job_application && permitted_to?(:show, job_application, context: :admissions_admin_job_applications)
                 = link_to admissions_admin_admission_group_job_job_application_path(job_application.job.admission, job_application.job.group, job_application.job, job_application) do
@@ -85,4 +97,3 @@
     %p
       = link_to admissions_admin_admission_group_job_path(@job_application.job.admission, @job_application.job.group, @job_application.job) do
         = "« #{T('common.back')}"
-

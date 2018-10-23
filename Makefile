@@ -12,6 +12,7 @@ copy-config-files:
 	cp config/database.example.yml config/database.yml
 	cp config/local_env.example.yml config/local_env.yml
 	cp config/billig.example.yml config/billig.yml
+	cp config/secrets.example.yml config/secrets.yml
 
 .PHONY: copy-travis-files
 copy-travis-files:

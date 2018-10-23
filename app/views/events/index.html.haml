@@ -11,7 +11,13 @@
           %tbody
             = render events.sort_by{|event| event.start_time}
 
-  .links
-    %a.rss-icon{ href: '/rss', title: t('events.rss_alt_text')}
-    %a.ical-icon{ href: '/arrangement/ical', title: t('events.ical_alt_text')}
-    %a.archive-icon{ href: archive_events_path, title: t('events.archive.title')}    
+  .bottom-links
+    %a{ href: archive_events_path, title: t('events.archive.title')}
+      = image_tag("archive.svg")
+      = t('events.archive.title')
+    %a{ href: '/rss', title: t('events.rss_alt_text')}
+      = image_tag("rss.svg")
+      = t('events.rss_short_text')
+    %a{ href: '/arrangement/ical', title: t('events.ical_alt_text')}
+      = image_tag("calendar.svg")
+      = t('events.ical_short_text')

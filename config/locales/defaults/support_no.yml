@@ -13,6 +13,7 @@
       medium: "%a %d. %b"
       medium_long: "%A %d. %B"
       long: "%e. %B %Y"
+      month: "%B"
     day_names: [søndag, mandag, tirsdag, onsdag, torsdag, fredag, lørdag]
     abbr_day_names: [søn, man, tir, ons, tor, fre, lør]
     month_names: [~, januar, februar, mars, april, mai, juni, juli, august, september, oktober, november, desember]
@@ -31,6 +32,7 @@
       short_numbers: "%e.%m"
       short_date: "%-d. %b"
       short_datetime: "%e. %B"
+      long_datetime: "%e. %B %Y"
       long: "%e. %B %Y, %H.%M"
       formtastic: "%d.%m.%Y %H.%M"
   datetime:

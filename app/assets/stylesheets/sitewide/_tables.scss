@@ -1,0 +1,33 @@
+$border-color: rgba(200, 200, 200, 0.4);
+$alternate-cell-color: rgba(200, 200, 200, 0.15);
+
+table:not(.custom-table):not(.ui-datepicker-calendar) {
+  border: 1px solid $border-color;
+  width: 100%;
+  font-size: 17px;
+  font-weight: $font-weight-normal;
+  margin-bottom: 20px;
+
+  tr {
+    border-bottom: 1px solid $border-color;
+    padding: 10px 0;
+  }
+
+  th, td {
+    border-right: 1px solid $border-color;
+    padding: 10px 5px;
+    font-weight: $font-weight-normal;
+    text-align: left;
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+  th {
+    font-size: 25px;
+  }
+
+  thead > tr, tbody > tr:nth-child(even) {
+    background-color: $alternate-cell-color;
+  }
+}
