@@ -1,0 +1,8 @@
+Description:
+    Generates a new react module for testing
+
+Example:
+    rails generate react_module module_name
+
+    This will create:
+        app/views/static/module_name.html.haml
