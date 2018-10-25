@@ -59,6 +59,10 @@
       :markdown
         #{@event.long_description}
 
+    %p.ticket_exchange_info
+      = t('events.ticket_change_html', href: link_to(t('events.here'), Page.tickets))
+
+
     %p.adaptation
       = t('events.adaptation_html', href: link_to(t('events.here'), Page.handicap_info))
 
@@ -104,4 +108,3 @@
 
       .spotify-box
         = render "spotify_play_box", locals: { event: @event }
-
