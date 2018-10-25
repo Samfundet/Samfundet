@@ -10,6 +10,21 @@ module Types
     field :instagram_link, String, null: true
     field :organizer, OrganizerType, null: false
     field :duration, Integer, null: false
-    field :short_description_no, String, null: false
+
+    field :short_description, String, null: false do
+      argument :language, Language, required: true
+    end
+
+    def short_description(language:)
+      object["short_description_#{language.downcase}"]
+    end
+
+    field :long_description, String, null: false do
+      argument :language, Language, required: true
+    end
+
+    def long_description(language:)
+      object["long_description_#{language.downcase}"]
+    end
   end
 end
