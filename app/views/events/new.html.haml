@@ -1,5 +1,24 @@
 :javascript
+  // This `events` variable is referenced in `eventCreateAutocomplete.js` and is the complete list of events
+  // that can be selected when creating a new event from a previous event.
   var events = #{Event.all.to_json.html_safe}
+
+  var priceGroups = #{PriceGroup.all.to_json.html_safe}
+
+  // When fetching all events via Event.all, none of the events have the attribute 'price_groups'.
+  // This hacky js will check for price_type === 'custom' on all created events and add corresponding price groups to the event object.
+  // TODO: Should maybe use Event.join(:price_groups)... instead of hacky js
+  events.map(function(event) {
+    if(event.price_type === 'custom') {
+      var price_groups = []
+      priceGroups.map(function(priceGroup){
+        if (priceGroup.event_id === event.id) {
+        price_groups.push(priceGroup)
+        }
+      })
+      event.price_groups = price_groups
+    }
+  })
 
 .event-edit
   %h3 Nytt Arrangement
