@@ -70,8 +70,7 @@
     %li
       = f.label :price_type, value: "custom" do
         = t('events.forms.labels.custom')
-        = f.radio_button :price_type, "custom", checked: @event.price_type == nil
-        = @event.inspect
+        = f.radio_button :price_type, "custom", checked: @event.price_type == "custom"
       .nested-fields
         = f.semantic_fields_for :price_groups do |pg|
           = pg.inputs do
