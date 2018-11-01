@@ -12,18 +12,18 @@ module Types
     field :duration, Integer, null: false
 
     field :short_description, String, null: false do
-      argument :language, Language, required: true
+      argument :language, Language, required: false
     end
 
-    def short_description(language:)
+    def short_description(language: "NO")
       object["short_description_#{language.downcase}"]
     end
 
     field :long_description, String, null: false do
-      argument :language, Language, required: true
+      argument :language, Language, required: false
     end
 
-    def long_description(language:)
+    def long_description(language: "NO")
       object["long_description_#{language.downcase}"]
     end
   end
