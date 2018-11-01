@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-class Mutations::UpdateEvent < GraphQL::Schema::Mutation
-  null true
+class Mutations::UpdateEvent < Mutations::BaseMutation
   argument :event, Types::Inputs::EventAttributes, required: true
 
   field :event, Types::EventType, null: true
