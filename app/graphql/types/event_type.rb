@@ -15,7 +15,7 @@ module Types
       argument :language, Language, required: false
     end
 
-    def short_description(language: "NO")
+    def short_description(language: 'NO')
       object["short_description_#{language.downcase}"]
     end
 
@@ -23,7 +23,7 @@ module Types
       argument :language, Language, required: false
     end
 
-    def long_description(language: "NO")
+    def long_description(language: 'NO')
       object["long_description_#{language.downcase}"]
     end
   end
