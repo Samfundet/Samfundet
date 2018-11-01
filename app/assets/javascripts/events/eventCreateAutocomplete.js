@@ -3,11 +3,15 @@ $(function() {
 
 	var fillFormWithEvent = function fillFormWithEvent(event) {
 		$.each(event, function(key, val) {
-		    if (key === 'price_groups') {
-		        console.log(val)
+		    if (key === 'price_type') {
+                // Price type is a radio button, so we have to check it manually
+                // We also have to specifically add the value (we can't just do "#event_" + key), because
+                // #event_price_type also needs the value appended, for example "custom", which gives us
+                // #event_price_type_custom.
+                document.getElementById("event_" + key + "_" + val).checked = true;
+            } else {
+                $("#event_" + key).val(val);
             }
-		    // console.log("key: " + key + ", value: " + val);
-			$("#event_" + key).val(val);
 		});
 	};
 
