@@ -5,7 +5,7 @@ class CustomRoutesController < ApplicationController
                            if: -> { permitted_to? :edit, :custom_routes }
 
   # Skip forgery check on .js files located in /assets/ to avoid CORS errors
-  protect_from_forgery with: :exception, unless: -> { request.fullpath.match %r(\A\/assets\/.*\.js\z) }
+  protect_from_forgery with: :exception, unless: -> { request.fullpath.match %r(/\A\/assets\/.*\.js\z/) }
 
   def admin_applet; end
 
