@@ -16,6 +16,7 @@ class ImagesController < ApplicationController
 
   def create
     @image = Image.create(image_params)
+    @image.uploader = current_user
     if @image.save
       flash[:success] = t('images.create_success')
       redirect_to @image
@@ -36,7 +37,7 @@ class ImagesController < ApplicationController
   def update
     @image = Image.find(params[:id])
     if @image.update_attributes(image_params)
-      flash[:success] = t('common.update_success')
+      flash[:success] = t('images.update_success')
       redirect_to @image
     else
       flash.now[:error] = t('common.fields_missing_error')
@@ -61,6 +62,6 @@ class ImagesController < ApplicationController
   private
 
   def image_params
-    params.require(:image).permit(:title, :tagstring, :image_file)
+    params.require(:image).permit(:title, :tagstring, :image_file, :uploader)
   end
 end
