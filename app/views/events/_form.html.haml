@@ -74,7 +74,7 @@
       .nested-fields
         = f.semantic_fields_for :price_groups do |pg|
           = pg.inputs do
-            = render 'price_group_fields', f: pg
+            = render 'price_groups', f: pg
         = link_to_add_association t('events.add_price_group'), f, :price_groups
 
     %li
