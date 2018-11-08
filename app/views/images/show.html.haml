@@ -21,5 +21,8 @@
   %p= t('images.no_tags')
 
 %p
-  = t('images.uploaded_at', time: @image.image_file_updated_at)
-  = t('images.uploaded_by', name: @image.uploader.full_name)
+  - if @image.uploader.nil?
+    = t('images.uploaded_at', time: @image.image_file_updated_at)
+  - else
+    = t('images.uploaded_at', time: @image.image_file_updated_at)
+    = t('images.uploaded_by', name: @image.uploader.full_name)
