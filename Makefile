@@ -29,3 +29,7 @@ deploy-production:
 .PHONY: deploy-staging
 deploy-staging:
 	bundle exec mina deploy:staging
+
+.PHONY: git-hooks
+git-hooks:
+	ln -fs hooks/* .git/hooks
