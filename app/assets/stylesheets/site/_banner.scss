@@ -102,3 +102,11 @@
     display: block;
     text-align: center;
 }
+
+// The banner of events that don't have text in the image itself, we overlay a
+// <event_type> // <event_location> text, and this styles the double slashes to be
+// tighter to each other.
+.banner-type-location-double-slash-text {
+  margin-right: 10px;
+  letter-spacing: -15px;
+}
