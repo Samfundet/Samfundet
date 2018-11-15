@@ -5,6 +5,7 @@
 *.komodoproject
 *~
 .rvmrc
+.ruby-version
 
 *.sql
 *.sqlite3
