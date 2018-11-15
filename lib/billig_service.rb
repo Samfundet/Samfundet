@@ -63,12 +63,11 @@ class BilligService < Sinatra::Base
     else
       tickets = []
 
-      params.each do |key, v|
-	value = v.dup
+      params.each do |key, value|
         next unless /price_(\d+)_count/ =~ key
         price_group_id = Regexp.last_match(1)
 
-        value.to_i.times do
+        value.dup.to_i.times do
           ticket_id = (BilligTicket.pluck(:ticket).max || 0) + 1
 
           # This allows for all tickets on membership cards, while in reality,
