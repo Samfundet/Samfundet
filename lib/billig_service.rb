@@ -67,7 +67,7 @@ class BilligService < Sinatra::Base
         next unless /price_(\d+)_count/ =~ key
         price_group_id = Regexp.last_match(1)
 
-        value.to_i.times do
+        value.dup.to_i.times do
           ticket_id = (BilligTicket.pluck(:ticket).max || 0) + 1
 
           # This allows for all tickets on membership cards, while in reality,
@@ -90,7 +90,7 @@ class BilligService < Sinatra::Base
         end
       end
 
-      redirect 'http://localhost:3000/en/events/purchase_callback/' << tickets.map { |ticket| ticket.ticket.to_s << '12345' }.join(',')
+      redirect 'http://localhost:3000/en/events/purchase_callback/' + tickets.map { |ticket| ticket.ticket.to_s << '12345' }.join(',')
     end
   end
 end

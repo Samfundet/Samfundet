@@ -173,7 +173,7 @@ group :development do
   gem 'mina', git: 'https://github.com/Samfundet/mina.git'
 
   # A DSL for quickly creating web applications in Ruby with minimal effort.
-  # gem 'sinatra'
+  gem 'sinatra'
 
   # Turns objects into nicely formatted columns for easy reading.
   gem 'table_print'
