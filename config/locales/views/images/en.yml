@@ -11,6 +11,8 @@ en:
     search_results: Search results
     image_address: Image address
     chose_image: Chose image
+    uploaded_at: Uploaded %{time}
+    uploaded_by: by %{name}
 
     create_success: Image sucessfully created
     update_success: Image sucessfully updated

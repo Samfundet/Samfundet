@@ -19,3 +19,9 @@
     = link_to tag.name, search_images_path({ search: tag.name })
 - else
   %p= t('images.no_tags')
+
+%p
+  = t('images.uploaded_at', time: @image.image_file_updated_at)
+  // Show uploader only if image has uploader
+  - if @image.uploader
+    = t('images.uploaded_by', name: @image.uploader.full_name)
