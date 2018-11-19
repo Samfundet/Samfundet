@@ -51,6 +51,44 @@
         display: none !important;
       } } }
 
+  .colorblind{
+    tr.this_job {
+      color: #FFFFFF !important;
+      background-color: #16536A !important;
+      a {
+        color: #FFFFFF !important;
+      }
+    }
+
+    tr.this_job_reserved {
+      color: #FFFFFF !important;
+      background-color: #38758B !important;
+      a {
+        color: #FFFFFF !important;
+      }
+    }
+
+    tr.other_job {
+      color: #000000 !important;
+      background-color: #d65252;
+      a {
+        color: #000000 !important;
+      }
+    }
+
+    tr.other_job_reserved {
+      color: #000000 !important;
+
+      background-color: #e66a6a;
+      a {
+        color: #000000 !important;
+      }
+    }
+
+    tr.withdrawn {
+      background-color: lightgrey;
+    }
+  }
   tr.no_job {
     background-color: #FFF5BC;
   }
