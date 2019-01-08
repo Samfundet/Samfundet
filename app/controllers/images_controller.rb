@@ -6,7 +6,7 @@ class ImagesController < ApplicationController
 
   def index
     @images = Image.paginate(page: params[:page], per_page: 10)
-
+    @tags = Tag.paginate(page: params[:tags], per_page: 40)
     render layout: false if request.xhr?
   end
 

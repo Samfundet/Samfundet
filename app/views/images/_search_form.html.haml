@@ -3,9 +3,9 @@
 
 %p
   = t('images.tags')
-
 %ul.tag-list
-  - Tag.by_images_count.each do |tag|
+  - @tags.each do |tag|
     %li
       = link_to search_images_path({ search: tag.name }), data: { tag: tag.name }, class: 'tag' do
         = "#{tag.name} (#{tag.images_count})"
+= will_paginate @tags, :param_name => "tags"
