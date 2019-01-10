@@ -91,7 +91,7 @@ Rails.application.routes.draw do
       post "login" => "applicant_sessions#create",  as: :connect_applicant
 
       # ApplicantsController
-      get "change_password/:id", to: "applicants#change_password", as: :change_password
+      patch "change_password/:id", to: "applicants#change_password", as: :change_password
       get "forgot_password", to: "applicants#forgot_password"
       post "generate_forgot_password_email", to: "applicants#generate_forgot_password_email"
       get "reset_password", to: "applicants#reset_password"
