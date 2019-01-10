@@ -13,6 +13,8 @@ module Types
     field :start_time, GraphQL::Types::ISO8601DateTime, null: false
     field :end_time, GraphQL::Types::ISO8601DateTime, null: false
 
+    field :area, Area, null: false
+
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
     field :age_limit, AgeLimit, null: false
     field :status, String, null: false
