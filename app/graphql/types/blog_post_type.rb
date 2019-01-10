@@ -26,7 +26,7 @@ module Types
     end
 
     def lead_paragraph(language: "NO")
-      object.public_send("content_#{language.downcase}")
+      object.public_send("lead_paragraph_#{language.downcase}")
     end
 
   end
