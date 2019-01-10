@@ -2,7 +2,14 @@
 
 module Types
   class EventType < Bases::BaseObject
-    field :title, String, null: false
+    field :title, String, null: false do
+      argument :language, Language, required: true
+    end
+
+    def title(language:)
+      object.public_send("title_#{language.downcase}")
+    end
+
     field :age_limit, AgeLimit, null: false
     field :status, String, null: false
     field :youtube_link, String, null: true
