@@ -7,7 +7,8 @@ class Blog < ApplicationRecord
 
   # attr_accessible :title_no, :title_en, :lead_paragraph_no, :lead_paragraph_en, :content_no, :content_en, :publish_at, :published, :author_id, :image_id
 
-  validates :title_no, :title_en, :lead_paragraph_no, :lead_paragraph_en, :content_no, :content_en, :publish_at, :author_id, :image_id, presence: true
+  validates :title_no, :title_en, :lead_paragraph_no, :lead_paragraph_en, :content_no, :content_en, :publish_at, :author_id, presence: true
+  validates :image_id, presence: false # CHANGE THIS. TEMPORARY FOR GRAPHQL
 
   scope :published, -> { where('publish_at < ?', Time.current).where(published: true) }
 

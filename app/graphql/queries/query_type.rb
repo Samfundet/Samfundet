@@ -10,6 +10,14 @@ module Queries
       Event.all
     end
 
+    field :blog_posts, Types::BlogPostType.connection_type, null: false do
+      description 'Get blog posts'
+    end
+
+    def blog_posts
+      Blog.published
+    end
+
     field :event, Types::EventType, null: true do
       argument :id, Integer, required: true
       description 'Get a single event.'
