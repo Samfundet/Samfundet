@@ -22,7 +22,7 @@ Also run
 make test
 ```
 
-to make RubyCop inspect the code, which will check for style warnings.
+to make RuboCop inspect the code, which will check for style warnings.
 
 ## Code coverage
 
