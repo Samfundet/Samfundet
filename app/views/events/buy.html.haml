@@ -78,7 +78,7 @@
     %p.payment-choice
       = radio_button_tag "ticket_type", "card", @payment_error.try(:owner_cardno).present?, checked: true
       = label_tag "ticket_type_card", t('events.ticketless'), class: 'radio-label'
-      = text_field_tag "cardnumber", @payment_error.try(:owner_cardno) || (current_user.try(:membership_card).try(:card) if current_user.is_a?(Member)), tabindex: 2
+      = text_field_tag "membercard", @payment_error.try(:owner_cardno) || (current_user.try(:membership_card).try(:card) if current_user.is_a?(Member)), tabindex: 2
 
     %p.payment-choice
       = radio_button_tag "ticket_type", "paper", @payment_error.try(:owner_email).present?
