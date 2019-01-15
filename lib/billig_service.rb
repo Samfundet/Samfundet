@@ -11,7 +11,6 @@ class BilligService < Sinatra::Base
     tp params.map { |key, value|
       next unless /price_(\d+)_count/ =~ key
       price_group = BilligPriceGroup.find Regexp.last_match(1)
-
       {
         event: price_group.billig_ticket_group.billig_event.event_name,
         group: price_group.price_group_name,
