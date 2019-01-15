@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Mutations::UpdateBlogPost < Mutations::BlogPostBase
-  null true
   argument :id, ID, required: true
 
   field :blog_post, Types::BlogPostType, null: true
@@ -9,7 +8,6 @@ class Mutations::UpdateBlogPost < Mutations::BlogPostBase
   field :errors, String, null: true
 
   def resolve(**kwargs)
-    puts kwargs
     b = Blog.find(kwargs[:id])
     if b.update(kwargs)
       {

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 class Mutations::BlogPostBase < GraphQL::Schema::Mutation
   argument :title_no, String, required: true

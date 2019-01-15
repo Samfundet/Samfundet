@@ -8,7 +8,6 @@ class Mutations::CreateBlogPost < Mutations::BlogPostBase
   field :errors, String, null: true
 
   def resolve(**kwargs)
-    puts kwargs
     e = Blog.new(kwargs)
     if e.save
       {
@@ -16,7 +15,6 @@ class Mutations::CreateBlogPost < Mutations::BlogPostBase
         success: true
       }
     else
-      puts e.errors.full_messages
       {
         success: false,
         errors: e.errors.full_messages
