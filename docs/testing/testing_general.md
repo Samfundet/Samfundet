@@ -16,6 +16,14 @@ from the root of the project. If you only want to test a single file, you need t
 rspec spec/models/mymodel_spec.rb
 ```
 
+Also run
+
+```
+make test
+```
+
+to make RubyCop inspect the code, which will check for style warnings.
+
 ## Code coverage
 
 A very useful file to check out is `coverage/index.html`, which will list the coverage for all files in the project. Monitor your coverage with this fill. Remember that 100% coverage is not a goal, but generally try to test most of the code, so around 75% is a good goal. Try to trigger edge cases in your tests.
