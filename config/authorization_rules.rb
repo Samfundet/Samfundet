@@ -3,7 +3,7 @@
 authorization do
   role :guest do
     # GraphQL guests
-    has_permission_on :graphql, to: :execute
+    has_permission_on :graphql, to: [:execute, :handle_options_request]
 
     # Login is not protected, and should not be!
     has_permission_on :applicant_sessions, to: :create
