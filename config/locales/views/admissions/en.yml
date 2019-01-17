@@ -27,7 +27,7 @@ en:
     statistics: "Statistics"
     groups_with_admission: "Groups with admission"
     groups_with_separate_admission: "Groups with separate admission"
-    seperate_admission_information: "Click here for groups with seperate admission"
+    separate_admission_information: "Click here for groups with separate admission"
 
     admin_applet:
       title: Admissions
