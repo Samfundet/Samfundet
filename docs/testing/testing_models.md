@@ -48,9 +48,9 @@ describe Blog do
   end
 
   it 'should have a title_no greater than zero characters' do
-      expect {
+      expect do
         create(:blog, title_no: "", author_id: @member.id, image_id: @image.id)
-      }.to raise_error(ActiveRecord::RecordInvalid)
+      end.to raise_error(ActiveRecord::RecordInvalid)
   end
 end
 ```
