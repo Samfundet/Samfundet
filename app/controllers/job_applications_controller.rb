@@ -10,25 +10,30 @@ class JobApplicationsController < ApplicationController
   end
 
   def create
-    @job_application = JobApplication.new(job_application_params)
+    if !logged_in?
+      @applicant = Applicant.new # For the registration form
+      render 'applicant_sessions/new'
+    else
+      @job_application = JobApplication.new(job_application_params)
 
-    if @job_application.job&.admission&.appliable?
-      if logged_in? && permitted_to?(:create, :job_applications)
-        if current_user.class == Applicant
-          handle_create_application_when_logged_in
+      if @job_application.job&.admission&.appliable?
+        if logged_in? && permitted_to?(:create, :job_applications)
+          if current_user.class == Applicant
+            handle_create_application_when_logged_in
+          else
+            flash[:notice] = t('applicants.will_be_logged_out_as_member')
+            handle_create_application_when_not_logged_in
+          end
         else
-          flash[:notice] = t('applicants.will_be_logged_out_as_member')
           handle_create_application_when_not_logged_in
         end
       else
-        handle_create_application_when_not_logged_in
-      end
-    else
-      flash[:error] = t('job_applications.cannot_apply_after_deadline')
-      if @job_application.job
-        redirect_to @job_application.job
-      else
-        redirect_to admissions_path
+        flash[:error] = t('job_applications.cannot_apply_after_deadline')
+        if @job_application.job
+          redirect_to @job_application.job
+        else
+          redirect_to admissions_path
+        end
       end
     end
   end
