@@ -110,7 +110,9 @@
           font-size: 1.1em;
         }
       }
-
+      input[type=submit]:disabled{
+        background-color: rgb(188,188,188);
+      }
       .textarea-wrapper {
         @include media($not-mobile) {
           @include span-columns(5);

@@ -16,7 +16,7 @@
         = f.text_area :motivation, id: "motivation", value: (@current_user.nil? ? t('job_applications.forms.new.register_to_apply') : (@already_applied ? nil : @job.default_motivation_text)), rows: 9, readonly: @current_user.nil?
       %p.submit-button-container
         - if @current_user.nil?
-          = submit_tag  t('job_applications.forms.new.register_to_apply_button')
+          = submit_tag  t('job_applications.forms.new.register_to_apply_button'), disabled: true
         - else
           = submit_tag (@already_applied and !@job_application.withdrawn) ? t('job_applications.forms.edit.submit') : t('job_applications.forms.new.submit')
 
