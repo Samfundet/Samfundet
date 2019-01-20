@@ -42,5 +42,12 @@ module Queries
     def jobs
       Job.all
     end
+
+    field :pages, Types::PageType.connection_type, null: false do
+      description 'Get all pages.'
+    end
+    def pages
+      Page.all.includes(:revisions)
+    end
   end
 end

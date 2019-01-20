@@ -3,6 +3,8 @@
 class Mutations::CreateBlogPost < Mutations::BlogPostBase
   null true
 
+  argument :blog_post_input, Types::Inputs::BlogPostInput, required: true
+
   field :blog_post, Types::BlogPostType, null: true
   field :success, Boolean, null: false
   field :errors, String, null: true
