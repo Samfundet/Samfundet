@@ -18,8 +18,17 @@ module Queries
       Blog.published
     end
 
+    field :blog_post, Types::BlogPostType, null: true do
+      argument :id, ID, required: true
+      description 'Get a blog post'
+    end
+
+    def blog_post(id:)
+      Blog.find(id)
+    end
+
     field :event, Types::EventType, null: true do
-      argument :id, Integer, required: true
+      argument :id, ID, required: true
       description 'Get a single event.'
     end
 

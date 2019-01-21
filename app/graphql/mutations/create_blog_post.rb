@@ -3,14 +3,17 @@
 class Mutations::CreateBlogPost < Mutations::BlogPostBase
   null true
 
-  argument :blog_post_input, Types::Inputs::BlogPostInput, required: true
+  argument :blog_post_input, Types::Inputs::BlogPostInput, required: true, description: "The blog post."
+
+
+  description "Create a blog post."
 
   field :blog_post, Types::BlogPostType, null: true
   field :success, Boolean, null: false
-  field :errors, String, null: true
+  field :errors, Types::JsonType, null: true
 
-  def resolve(**kwargs)
-    e = Blog.new(kwargs)
+  def resolve(blog_post_input:)
+    e = Blog.new(blog_post_input.to_h)
     if e.save
       {
         blog_post: e,
@@ -19,7 +22,7 @@ class Mutations::CreateBlogPost < Mutations::BlogPostBase
     else
       {
         success: false,
-        errors: e.errors.full_messages
+        errors: e.errors.to_hash
       }
     end
   end
