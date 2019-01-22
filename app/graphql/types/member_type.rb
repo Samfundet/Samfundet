@@ -2,7 +2,14 @@
 
 module Types
   class MemberType < GraphQL::Schema::Object
-    field :fornavn, String, null: false
-    field :etternavn, String, null: false
+    field :forename, String, null: false
+    def forename
+      object.fornavn
+    end
+
+    field :surname, String, null: false
+    def surname
+      object.etternavn
+    end
   end
 end

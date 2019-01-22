@@ -3,7 +3,7 @@
 module Types
   class EventType < Bases::BaseObject
     field :title, String, null: false do
-      argument :language, Language, required: true
+      argument :language, Language, required: false, default_value: 'NO'
     end
 
     def title(language:)
@@ -26,7 +26,7 @@ module Types
     field :duration, Integer, null: false
 
     field :short_description, String, null: false do
-      argument :language, Language, required: true
+      argument :language, Language, required: false, default_value: 'NO'
     end
 
     def short_description(language:)
@@ -34,7 +34,7 @@ module Types
     end
 
     field :long_description, String, null: false do
-      argument :language, Language, required: true
+      argument :language, Language, required: false, default_value: 'NO'
     end
 
     def long_description(language:)

@@ -49,6 +49,7 @@ Metrics/PerceivedComplexity:
 # Offense count: 4
 Naming/AccessorMethodName:
   Exclude:
+    - 'app/graphql/queries/*'
     - 'app/helpers/application_helper.rb'
 
 # Offense count: 2
