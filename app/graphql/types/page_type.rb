@@ -25,7 +25,7 @@ module Types
 
     field :author, MemberType, null: true
     def author
-      object.public_send("author")
+      object.public_send('author')
     end
   end
 end

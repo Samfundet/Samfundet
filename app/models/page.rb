@@ -62,7 +62,7 @@ class Page < ApplicationRecord
                   if: ->(record) { %w[_menu _index].exclude? record.name_no }
 
   def author
-    self.revisions.last.member
+    revisions.last.member
   end
 
   def self.find_by_name(name)

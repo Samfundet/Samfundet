@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 class Mutations::UpdateBlogPost < Mutations::BlogPostBase
-  argument :id, ID, required: false, default_value: 1, description: "ID of a blog post."
-  argument :blog_post_input, Types::Inputs::BlogPostInput, required: true, description: "The blog post."
+  argument :id, ID, required: false, default_value: 1, description: 'ID of a blog post.'
+  argument :blog_post_input, Types::Inputs::BlogPostInput, required: true, description: 'The blog post.'
 
-  description "Update a blog post."
+  description 'Update a blog post.'
 
   field :blog_post, Types::BlogPostType, null: true
   field :success, Boolean, null: false

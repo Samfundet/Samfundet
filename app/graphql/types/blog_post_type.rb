@@ -24,5 +24,8 @@ module Types
     def lead_paragraph(language: 'NO')
       object.public_send("lead_paragraph_#{language.downcase}")
     end
+
+    field :publish_at, GraphQL::Types::ISO8601DateTime, null: false
+    field :published, Boolean, null: false
   end
 end

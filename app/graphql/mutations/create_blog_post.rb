@@ -3,10 +3,9 @@
 class Mutations::CreateBlogPost < Mutations::BlogPostBase
   null true
 
-  argument :blog_post_input, Types::Inputs::BlogPostInput, required: true, description: "The blog post."
+  argument :blog_post_input, Types::Inputs::BlogPostInput, required: true, description: 'The blog post.'
 
-
-  description "Create a blog post."
+  description 'Create a blog post.'
 
   field :blog_post, Types::BlogPostType, null: true
   field :success, Boolean, null: false
