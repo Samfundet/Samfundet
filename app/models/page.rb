@@ -60,6 +60,10 @@ class Page < ApplicationRecord
                   additional_attributes: ->(record) { { publish_at: record.created_at } },
                   if: ->(record) { %w[_menu _index].exclude? record.name_no }
 
+  def author
+    revisions.last.member
+  end
+
   def self.find_by_name(name)
     if I18n.locale == :no
       find_by(name_no: name.downcase)
