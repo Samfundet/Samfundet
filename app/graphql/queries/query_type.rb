@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Queries
-  class QueryType < Types::Bases::BaseObject
+  class QueryType < GraphQL::Schema::Object
     field :get_events, Types::EventType.connection_type, null: false do
       description 'Get events.'
     end
