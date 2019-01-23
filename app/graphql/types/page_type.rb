@@ -9,7 +9,7 @@ module Types
       object["name_#{language.downcase}"]
     end
 
-    field :title, String, null: false do
+    field :title, String, null: true do
       argument :language, Language, required: false, default_value: 'NO'
     end
     def title(language:)
