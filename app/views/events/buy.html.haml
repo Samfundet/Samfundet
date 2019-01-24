@@ -55,7 +55,7 @@
                   = price_group.price_group_name
                 %td.price{data: {price: price_group.price}, class: currency_unit_class}
                   = "#{price_group.price}"
-                %td{class: ticket_unit_class}
+                %td
                   = select_tag "price_#{price_group.price_group.to_s}_count",
                     options_for_select((0 .. price_group_options),
                       @payment_error_price_groups[price_group.price_group]), class: ticket_group_id, tabindex: 1
@@ -75,15 +75,16 @@
         %td.totalSum.ticket-data{class: currency_unit_class}
           = "0"
 
+    - isMember = current_user.is_a?(Member)
     %p.payment-choice
-      = radio_button_tag "ticket_type", "card", @payment_error.try(:owner_cardno).present?, checked: true
+      = radio_button_tag "ticket_type", "card", @payment_error.try(:owner_cardno).present?, checked: isMember
       = label_tag "ticket_type_card", t('events.ticketless'), class: 'radio-label'
-      = text_field_tag "membercard", @payment_error.try(:owner_cardno) || (current_user.try(:membership_card).try(:card) if current_user.is_a?(Member)), tabindex: 2
+      = text_field_tag "membercard", @payment_error.try(:owner_cardno) || (current_user.try(:membership_card).try(:card) if isMember), tabindex: 2, disabled: !isMember
 
     %p.payment-choice
-      = radio_button_tag "ticket_type", "paper", @payment_error.try(:owner_email).present?
+      = radio_button_tag "ticket_type", "paper", @payment_error.try(:owner_email).present?, checked: !isMember
       = label_tag "ticket_type_paper", t('events.paperticket'), class: 'radio-label'
-      = email_field_tag :email, @payment_error.try(:owner_email), tabindex: 2, disabled: true
+      = email_field_tag :email, @payment_error.try(:owner_email), tabindex: 2, disabled: isMember
 
     %h4
       = t('events.about_ticket')
