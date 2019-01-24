@@ -1,9 +1,18 @@
 # frozen_string_literal: true
 
+class CustomConnection < GraphQL::Types::Relay::BaseConnection
+  field :total_count, Integer, 'The total count of nodes.', null: false
+
+  def total_count
+    object.nodes.size
+  end
+end
+
 module Types
   module Bases
     class BaseObject < GraphQL::Schema::Object
-      field :id, Integer, null: false
+      connection_type_class CustomConnection
+      field :id, ID, null: false
     end
   end
 end
