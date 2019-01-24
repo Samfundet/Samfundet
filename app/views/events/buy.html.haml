@@ -83,7 +83,7 @@
     %p.payment-choice
       = radio_button_tag "ticket_type", "paper", @payment_error.try(:owner_email).present?
       = label_tag "ticket_type_paper", t('events.paperticket'), class: 'radio-label'
-      = email_field_tag :email, @payment_error.try(:owner_email), tabindex: 2
+      = email_field_tag :email, @payment_error.try(:owner_email), tabindex: 2, disabled: true
 
     %h4
       = t('events.about_ticket')
