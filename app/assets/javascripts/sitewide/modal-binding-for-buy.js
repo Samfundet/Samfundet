@@ -92,11 +92,11 @@ $(function() {
       if (id === '#membercard') {
         $('#email').prop('disabled', true);
         $('#membercard').prop('disabled', false);
-        $('#email').val(' ');
+        $('#email').val('');
       } else {
         $('#membercard').prop('disabled', true);
         $('#email').prop('disabled', false);
-        $('#membercard').val(' ');
+        $('#membercard').val('');
       }
     }
   );
