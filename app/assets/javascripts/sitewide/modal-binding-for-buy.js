@@ -46,7 +46,7 @@ $(function() {
         history.pushState(null, null, '#');
         popped = true;
         $('html, body').animate({
-          scrollTop: $(findParentEvent(source)).offset().middle
+          scrollTop: $(findParentEvent(source)).offset().top
         }, 1000);
       });
 
