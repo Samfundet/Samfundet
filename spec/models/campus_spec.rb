@@ -5,7 +5,6 @@ require 'rails_helper'
 require 'pp'
 
 describe Campus do
-
   it 'should show name when calling the to_s function' do
     campus = create(:campus)
     expect(campus.to_s).to be(campus.name)
@@ -54,5 +53,4 @@ describe Campus do
 
     expect(number_of_applicants).to eq(1)
   end
-
 end
