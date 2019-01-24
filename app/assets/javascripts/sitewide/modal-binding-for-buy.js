@@ -84,38 +84,38 @@ $(function() {
   });
 
   $(document).on('keyup blur', '#cardnumber, #email',
-      function clearOtherInputOnType() {
+    function clearOtherInputOnType() {
+      // Only clear other form if we've written something
+      if ($(this).val() == '') {
+        return;
+      }
 
-    // Only clear other form if we've written something
-    if ($(this).val() == '') {
-      return;
+      var id = '#' + $(this).attr('id');
+      $(id)
+        .siblings('input:radio')
+        .prop('checked', true);
+
+      if (id === '#cardnumber') {
+        $('#email').val('');
+      } else {
+        $('#cardnumber').val('');
+      }
     }
-
-    var id = '#' + $(this).attr('id');
-    $(id)
-      .siblings('input:radio')
-      .prop('checked', true);
-
-    if (id === '#cardnumber') {
-      $('#email').val('');
-    } else {
-      $('#cardnumber').val('');
-    }
-  });
+  );
 
   $(document).on('focus', '.billig-buy input[type=radio]',
-      function enforceRadioChoice() {
+    function enforceRadioChoice() {
+      // Clear selected and other input fields
+      var textfield = $(this).siblings('input[type=text], input[type=email]');
 
-    // Clear selected and other input fields
-    var textfield = $(this).siblings('input[type=text], input[type=email]');
-
-    var id = '#' + textfield.attr('id');
-    if (id === '#cardnumber') {
-      $('#email').val('');
-    } else {
-      $('#cardnumber').val('');
+      var id = '#' + textfield.attr('id');
+      if (id === '#cardnumber') {
+        $('#email').val('');
+      } else {
+        $('#cardnumber').val('');
+      }
     }
-  });
+  );
 
   function ticketFormLoaded() {
     // Keep track of ticket groups and their ticket limits
@@ -225,7 +225,11 @@ $(function() {
       });
 
       // Set the total cost and total tickets in the summary's html
-      $('.ticket-table .totalAmount').html(totalTickets + "/" + ticketLimits.reduce(function(a,b){return a+b},0));
+      var totalTicketsHtml = 0
+      if (totalTickets > 0) {
+        totalTicketsHtml = totalTickets + "/" + ticketLimits.reduce(function(a, b){return a + b}, 0);
+      }
+      $('.ticket-table .totalAmount').html(totalTicketsHtml);
       $('.ticket-table .totalSum').html(totalCost);
     });
   }
