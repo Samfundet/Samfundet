@@ -100,11 +100,11 @@
 
     buy_title: Kjøp billett til %{event_title}
     ticketless: "Billettløst på medlemskortet ditt:"
-    paperticket: "Papirutskrift til e-post:"
+    paperticket: "Digital billett til e-post:"
     confirm_email: "Bekreft e-post:"
     about_ticket: "Om billettyper:"
     about_ticketless_html: "Velger du <em>billettløst</em>, blir selve medlemskortet billetten din. Du trenger bare da å trekke kortet i døren når du kommer til Samfundet. <strong>Merk:</strong> Du kan kun ha én billett på kortet per arrangement. Alle billettene vil bli tilsendt på epost."
-    about_paperticket_html: "Velger du <em>papirutskrift</em>, vil billetten(e) bli tilsendt på epost. Billettenes strekkode skannes i døren når du kommer til Samfundet."
+    about_paperticket_html: "Velger du <em>digital billett</em>, vil billetten(e) bli tilsendt på epost. Billettenes strekkode skannes i døren når du kommer til Samfundet. Disse kan enten vises på mobil eller tas med som utskrift."
     visa_or_master: "VISA- eller MasterCard-nummer:"
     expiration_month: "Utløpsdato:"
     commit_buy: Fullfør betaling
