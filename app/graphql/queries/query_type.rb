@@ -2,11 +2,11 @@
 
 module Queries
   class QueryType < GraphQL::Schema::Object
-    field :get_events, Types::EventType.connection_type, null: false do
+    field :get_events, Types::Event.connection_type, null: false do
       description 'Get events.'
     end
     def get_events
-      Event.all.includes(:area, :billig_event)
+      Event.all.includes(:area, :billig_event, :price_groups)
     end
 
     field :get_blog_posts, Types::BlogPostType.connection_type, null: false do
@@ -24,7 +24,7 @@ module Queries
       Blog.find(id)
     end
 
-    field :get_event, Types::EventType, null: true do
+    field :get_event, Types::Event, null: true do
       argument :id, ID, required: true
       description 'Get a single event.'
     end
