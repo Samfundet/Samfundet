@@ -109,6 +109,7 @@ GEM
       thor (~> 0.19)
     builder (3.2.3)
     byebug (9.0.5)
+    cancancan (2.3.0)
     capybara (2.8.1)
       addressable
       mime-types (>= 1.16)
@@ -435,6 +436,7 @@ DEPENDENCIES
   binding_of_caller
   bourbon
   byebug
+  cancancan (~> 2.0)
   cocoon
   coffee-rails
   cucumber-rails
