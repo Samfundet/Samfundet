@@ -27,5 +27,27 @@ module Types
 
     field :publish_at, GraphQL::Types::ISO8601DateTime, null: false
     field :published, Boolean, null: false
+
+    field :image_id, ID, null: true
+
+    field :blog_path, String, null: false
+    def blog_path
+      Rails.application.routes.url_helpers.blog_path(object)
+    end
+
+    field :admin_blog_path, String, null: false
+    def admin_blog_path
+      Rails.application.routes.url_helpers.admin_blogs_path
+    end
+
+    field :edit_blog_path, String, null: false
+    def edit_blog_path
+      Rails.application.routes.url_helpers.edit_blog_path(object)
+    end
+
+    field :new_blog_path, String, null: false
+    def new_blog_path
+      Rails.application.routes.url_helpers.new_blog_path
+    end
   end
 end

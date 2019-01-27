@@ -49,6 +49,17 @@ class Image < ApplicationRecord
     tags.map(&:name).join ', '
   end
 
+  def self.image_or_default id
+    return default_image.image_file if id.nil?
+
+    image = find(id)
+    if image.present?
+      image.image_file
+    else
+      default_image.image_file
+    end
+  end
+
   def self.text_search(query)
     if query.present?
       search(query)
