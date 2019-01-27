@@ -18,7 +18,7 @@ module Types
       argument :area, Types::Area, required: true
       argument :age_limit, AgeLimit, required: true
       argument :status, Types::EventStatus, required: true
-      #argument :organizer, Types::OrganizerType, required: true
+      # argument :organizer, Types::OrganizerType, required: true
 
       argument :start_time, GraphQL::Types::ISO8601DateTime, required: true, as: :non_billig_start_time
       argument :duration, Integer, required: true

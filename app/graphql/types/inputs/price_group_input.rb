@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-#
+
 module Types
   module Inputs
     class PriceGroupInput < GraphQL::Schema::InputObject

@@ -2,7 +2,7 @@
 
 module Types
   class PriceType < Bases::BaseEnum
-    graphql_name "PriceType"
+    graphql_name 'PriceType'
   end
 end
 

@@ -2,7 +2,7 @@
 
 module Types
   class EventType < Bases::BaseEnum
-    graphql_name "EventType"
+    graphql_name 'EventType'
   end
 end
 

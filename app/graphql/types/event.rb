@@ -19,7 +19,6 @@ module Types
       object.event_type
     end
 
-
     field :price_type, PriceType, null: false
     field :price_groups, [PriceGroupType], null: true
     def price_groups
