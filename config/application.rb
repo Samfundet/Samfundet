@@ -45,17 +45,6 @@ module Samfundet
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
-
-    Dir.glob( Rails.root.join( 'app', 'assets', 'react', '*/*' ) ).each do |path|
-      puts "Adding dir to asset path: " + path
-      config.assets.paths << path
-      Dir.glob(File.join(path, '*.{css,js}')).each do | file |
-        puts "Adding file to precompile: " + file
-        config.assets.precompile << file
-      end
-    end
-
-
     # Files under app/assets/ which are not included in a Sprockets manifest
     # file must be added to config.assets.paths in order for helper functions
     # like 'javascript_include_tag' to find them
