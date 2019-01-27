@@ -7,9 +7,6 @@ Rails.application.routes.draw do
 
   match "/graphql", to: "graphql#execute", via: [:get, :post]
   match "/graphql", to: "graphql#handle_options_request", via: [:options]
-  namespace :api do
-    resources :events
-  end
 
   localized do
     root to: "site#index"
