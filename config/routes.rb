@@ -7,9 +7,6 @@ Rails.application.routes.draw do
 
   match "/graphql", to: "graphql#execute", via: [:get, :post]
   match "/graphql", to: "graphql#handle_options_request", via: [:options]
-  namespace :api do
-    resources :events
-  end
 
   localized do
     root to: "site#index"
@@ -204,10 +201,6 @@ Rails.application.routes.draw do
     get '/bokhandel', to: redirect('https://samfundetbok.tabetalt.no/')
 
     get ":id" => "pages#show", :id => Page::NAME_FORMAT
-
-    # The React modules routes are put at the bottom of the file to have least priority
-    get '/:page', to: 'static#show'
-    get '/:page/*all', to: 'static#show'
   end
 end
 
