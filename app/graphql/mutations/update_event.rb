@@ -2,15 +2,18 @@
 
 class Mutations::UpdateEvent < GraphQL::Schema::Mutation
   null true
-  argument :event, Types::Inputs::EventAttributes, required: true
 
-  field :event, Types::EventType, null: true
+  argument :id, ID, required: true, description: 'ID of an event.'
+  argument :event_input, Types::Inputs::EventInput, required: true
+
+  field :event, Types::Event, null: true
   field :success, Boolean, null: false
+  field :errors, Types::JsonType, null: true
 
-  def resolve(event:)
-    e = Event.find_by(id: event.id)
+  def resolve(id:, event_input:)
+    e = Event.find_by(id: id)
     if e
-      if e.update(event.to_h)
+      if e.update(event_input.to_h)
         {
           event: e,
           success: true
@@ -18,6 +21,7 @@ class Mutations::UpdateEvent < GraphQL::Schema::Mutation
       else
         {
           event: nil,
+          errors: e.errors.to_hash,
           success: false
         }
       end
