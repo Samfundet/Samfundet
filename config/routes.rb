@@ -1,6 +1,5 @@
 # -*- encoding : utf-8 -*-
 Rails.application.routes.draw do
-
   localized do
     root to: "site#index"
     get 'rss(/:type)', to: 'events#rss', defaults: { format: 'rss' }
