@@ -17,7 +17,7 @@ module Types
       argument :lead_paragraph_no, String, required: true
       argument :lead_paragraph_en, String, required: true
 
-      argument :author_id, Integer, required: true
+      # argument :author, Types::MemberType, required: true
 
       argument :published, Boolean, required: false, default_value: false
       argument :publish_at, GraphQL::Types::ISO8601DateTime, required: true
