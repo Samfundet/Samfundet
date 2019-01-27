@@ -1,7 +1,29 @@
 # frozen_string_literal: true
-
+#
 module Types
-  class BlogPostType < Bases::BaseObject
+  class RailsPaths < Bases::BaseObject
+    field :path, String, null: false
+    def path
+      Rails.application.routes.url_helpers.public_send("#{object.class.name.demodulize.downcase}_path", object)
+    end
+
+    field :admin_path, String, null: false
+    def admin_path
+      Rails.application.routes.url_helpers.public_send("admin_#{object.class.name.demodulize.downcase}s_path")
+    end
+
+    field :edit_path, String, null: false
+    def edit_path
+      Rails.application.routes.url_helpers.public_send("edit_#{object.class.name.demodulize.downcase}_path", object)
+    end
+
+    field :new_path, String, null: false
+    def new_path
+      Rails.application.routes.url_helpers.public_send("new_#{object.class.name.demodulize.downcase}_path")
+    end
+  end
+
+  class BlogPostType < RailsPaths
     field :author, MemberType, null: false
 
     field :title, String, null: false do
@@ -30,24 +52,5 @@ module Types
 
     field :image_id, ID, null: true
 
-    field :blog_path, String, null: false
-    def blog_path
-      Rails.application.routes.url_helpers.blog_path(object)
-    end
-
-    field :admin_blog_path, String, null: false
-    def admin_blog_path
-      Rails.application.routes.url_helpers.admin_blogs_path
-    end
-
-    field :edit_blog_path, String, null: false
-    def edit_blog_path
-      Rails.application.routes.url_helpers.edit_blog_path(object)
-    end
-
-    field :new_blog_path, String, null: false
-    def new_blog_path
-      Rails.application.routes.url_helpers.new_blog_path
-    end
   end
 end
