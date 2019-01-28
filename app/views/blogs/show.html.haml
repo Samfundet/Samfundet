@@ -4,27 +4,27 @@
 = content_for :banner_image do
   .banner
     #banner-image-link
-      = background_image_helper "banner-image", Image.image_or_default(@article["imageId"]), size: :large
+      = background_image_helper "banner-image", Image.image_or_default(@article.image_id), size: :large
 
 - cache cache_key_for_blog_show(@article) do
   - if permitted_to? :manage, :blogs
     .admin-choices
       %ul
         %li
-          = link_to t("crud.create"), @article["newBlogPath"]
+          = link_to t("crud.create"), @article.new_path
         %li
-          = link_to t("crud.edit"), @article["editBlogPath"]
+          = link_to t("crud.edit"), @article.edit_path
         %li
-          = link_to t("crud.destroy"), @article["blogPath"], confirm: t("crud.destroy"), method: :delete
+          = link_to t("crud.destroy"), @article.path, confirm: t("crud.destroy"), method: :delete
         %li
-          = link_to t("blog.admin"), @article["adminBlogPath"]
+          = link_to t("blog.admin"), @article.admin_path
 
   .blogpost
     %h1
-      = @article["title"]
+      = @article.title
 
     %p.metadata
-      #{@article["author"]["forename"]} #{@article["author"]["surname"]}&mdash;#{l DateTime.iso8601(@article["publishAt"]), format: :long}
+      #{@article.author.forename} #{@article.author.surname}&mdash;#{l DateTime.iso8601(@article.publish_at), format: :long}
 
     :markdown
-      #{@article["content"]}
+      #{@article.content}

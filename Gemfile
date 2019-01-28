@@ -16,6 +16,9 @@ gem 'rails', '5.0.6'
 # GraphQL
 gem 'graphql'
 
+# GraphQL client for easy integration of GraphQL into views
+gem 'graphql-client'
+
 # Memcache client
 gem 'dalli'
 

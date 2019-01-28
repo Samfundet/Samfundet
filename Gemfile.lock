@@ -183,6 +183,9 @@ GEM
       railties
       sprockets-rails
     graphql (1.8.10)
+    graphql-client (0.14.0)
+      activesupport (>= 3.0, < 6.0)
+      graphql (~> 1.6)
     guard (2.14.0)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
@@ -454,6 +457,7 @@ DEPENDENCIES
   googlecharts
   graphiql-rails
   graphql
+  graphql-client
   guard-livereload
   haml-rails
   icalendar

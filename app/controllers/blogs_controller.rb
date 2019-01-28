@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class BlogsController < ApplicationController
-  GET_ALL = GraphQL.parse <<-'GRAPHQL'
+  GET_ALL = GraphQLClient.parse(<<-'GRAPHQL')
     query {
       getBlogPosts {
         edges {
@@ -14,8 +14,8 @@ class BlogsController < ApplicationController
     }
   GRAPHQL
 
-  GET_ONE = GraphQL.parse <<-'GRAPHQL'
-    query GET_ONE($id: ID!) {
+  GET_ONE = GraphQLClient.parse(<<-'GRAPHQL')
+    query ($id: ID!) {
       payload: getBlogPost(id: $id) {
         id
         title
@@ -26,10 +26,10 @@ class BlogsController < ApplicationController
         content
         publishAt
         imageId
-        blogPath
-        newBlogPath
-        editBlogPath
-        adminBlogPath
+        path
+        newPath
+        editPath
+        adminPath
       }
     }
   GRAPHQL
@@ -44,8 +44,8 @@ class BlogsController < ApplicationController
   end
 
   def show
-    result = SamfundetSchema.execute(document: GET_ONE, variables: {id: params[:id]})
-    @article = result.to_h["data"]["payload"]
+    result = GraphQLClient.query(GET_ONE, variables: {id: params[:id]})
+    @article = result.data.payload
   end
 
   def new
