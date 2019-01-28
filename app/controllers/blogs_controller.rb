@@ -38,15 +38,14 @@ class BlogsController < ApplicationController
 
   filter_access_to [:admin], require: :edit
 
-  has_control_panel_applet :admin_applet,
-    if: -> { permitted_to? :edit, :blogs }
+  has_control_panel_applet :admin_applet, if: -> { permitted_to? :edit, :blogs }
 
   def index
     @articles = Blog.published.order('publish_at desc')
   end
 
   def show
-    result = GraphQLClient.query(GET_ONE, variables: {id: params[:id]})
+    result = GraphQLClient.query(GET_ONE, variables: { id: params[:id] })
     @article = result.data.payload
   end
 

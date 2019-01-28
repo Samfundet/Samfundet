@@ -29,6 +29,5 @@ module Types
     field :published, Boolean, null: false
 
     field :image_id, ID, null: true
-
   end
 end

@@ -49,7 +49,7 @@ class Image < ApplicationRecord
     tags.map(&:name).join ', '
   end
 
-  def self.image_or_default id
+  def self.image_or_default(id)
     return default_image.image_file if id.nil?
 
     image = find(id)
