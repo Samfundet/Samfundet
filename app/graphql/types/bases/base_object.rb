@@ -12,7 +12,7 @@ module Types
   module Bases
     class BaseObject < GraphQL::Schema::Object
       connection_type_class CustomConnection
-      field :id, ID, null: false
+      field :id, ID, "The ID of the requested resource", null: false
     end
   end
 end
