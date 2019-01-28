@@ -26,10 +26,12 @@ class BlogsController < ApplicationController
         content
         publishAt
         imageId
-        path
-        newPath
-        editPath
-        adminPath
+        paths {
+          base
+          new
+          edit
+          admin
+        }
       }
     }
   GRAPHQL

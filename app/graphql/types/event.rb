@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Types
-  class Event < Bases::BaseObject
+  class Event < Bases::RailsResource
     field :title, String, null: false do
       argument :language, Language, required: false, default_value: 'NO'
     end

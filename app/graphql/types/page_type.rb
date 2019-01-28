@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Types
-  class PageType < Bases::BaseObject
+  class PageType < Bases::RailsResource
     field :name, String, null: false do
       argument :language, Language, required: false, default_value: 'NO'
     end

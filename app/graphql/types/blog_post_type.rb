@@ -1,29 +1,7 @@
 # frozen_string_literal: true
-#
+
 module Types
-  class RailsPaths < Bases::BaseObject
-    field :path, String, null: false
-    def path
-      Rails.application.routes.url_helpers.public_send("#{object.class.name.demodulize.downcase}_path", object)
-    end
-
-    field :admin_path, String, null: false
-    def admin_path
-      Rails.application.routes.url_helpers.public_send("admin_#{object.class.name.demodulize.downcase}s_path")
-    end
-
-    field :edit_path, String, null: false
-    def edit_path
-      Rails.application.routes.url_helpers.public_send("edit_#{object.class.name.demodulize.downcase}_path", object)
-    end
-
-    field :new_path, String, null: false
-    def new_path
-      Rails.application.routes.url_helpers.public_send("new_#{object.class.name.demodulize.downcase}_path")
-    end
-  end
-
-  class BlogPostType < RailsPaths
+  class BlogPostType < Bases::RailsResource
     field :author, MemberType, null: false
 
     field :title, String, null: false do

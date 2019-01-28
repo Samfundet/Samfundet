@@ -11,13 +11,13 @@
     .admin-choices
       %ul
         %li
-          = link_to t("crud.create"), @article.new_path
+          = link_to t("crud.create"), @article.paths.new
         %li
-          = link_to t("crud.edit"), @article.edit_path
+          = link_to t("crud.edit"), @article.paths.edit
         %li
-          = link_to t("crud.destroy"), @article.path, confirm: t("crud.destroy"), method: :delete
+          = link_to t("crud.destroy"), @article.paths.base, confirm: t("crud.destroy"), method: :delete
         %li
-          = link_to t("blog.admin"), @article.admin_path
+          = link_to t("blog.admin"), @article.paths.admin
 
   .blogpost
     %h1
