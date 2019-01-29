@@ -26,7 +26,6 @@ authorization do
     has_permission_on :jobs, to: :read
     has_permission_on :job_applications, to: :create
     has_permission_on :groups, to: :read
-    has_permission_on :blogs, to: :read
     has_permission_on :contact, to: [:index, :create]
 
     # Explicit create-privileges
@@ -99,7 +98,6 @@ authorization do
       :applicants,
       :applicant_sessions,
       :areas,
-      :blogs,
       :documents,
       :events,
       :everything_closed_periods,
@@ -194,7 +192,6 @@ authorization do
       :areas,
       :events,
       :pages,
-      :blogs,
       :everything_closed_periods,
       :front_page_locks
     ], to: :manage
@@ -206,10 +203,6 @@ authorization do
     role group_role do
       has_permission_on :documents, to: :manage
     end
-  end
-
-  role :styret do
-    has_permission_on :blogs, to: :manage
   end
 
   Group.all.each do |group|

@@ -6,7 +6,9 @@
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
-  filter_access_to :all
+
+  # CanCan authorization helper
+  load_and_authorize_resource
 
   before_action :store_location
   before_action :set_locale
