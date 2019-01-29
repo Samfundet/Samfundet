@@ -36,7 +36,6 @@ authorization do
     has_permission_on :pages, to: :read
 
     # Explicit read- and buy-privileges
-    has_permission_on :events, to: [:read, :buy, :ical, :archive, :archive_search]
 
     has_permission_on :sulten_reservations, to: [:create, :success, :available]
   end
@@ -99,7 +98,6 @@ authorization do
       :applicant_sessions,
       :areas,
       :documents,
-      :events,
       :everything_closed_periods,
       :front_page_locks,
       :groups,
@@ -176,13 +174,11 @@ authorization do
   end
 
   role :arrangementansvarlig do
-    has_permission_on :events, to: :manage
     has_permission_on :front_page_locks, to: :manage
     has_permission_on :images, to: [:read]
   end
 
   role :mg_layout do
-    has_permission_on :events, to: :manage
     has_permission_on :front_page_locks, to: :manage
     has_permission_on :images, to: :manage
   end
@@ -190,7 +186,6 @@ authorization do
   role :mg_redaksjon do
     has_permission_on [
       :areas,
-      :events,
       :pages,
       :everything_closed_periods,
       :front_page_locks

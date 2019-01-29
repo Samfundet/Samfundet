@@ -15,10 +15,20 @@ class Ability
     # Read the index page
     can :read, :site
     can :read, Blog
+    can [:read, :buy, :ical, :archive, :archive_search], Event
+
+  end
+
+  def arrangementansvarlig
+    can :manage, Event
+  end
+
+  def mg_layout
+    can :manage, Event
   end
 
   def mg_redaksjon
-    can :manage, Blog
+    can :manage, [Blog, Event]
   end
 
   def styret
