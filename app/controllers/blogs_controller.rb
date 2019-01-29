@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class BlogsController < ApplicationController
-  # New authorization
-  load_and_authorize_resource
+  has_control_panel_applet :admin_applet,
+                           if: -> { authorize! :edit, Blog }
 
   def index
     @articles = Blog.published.order('publish_at desc')

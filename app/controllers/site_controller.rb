@@ -1,12 +1,20 @@
 # frozen_string_literal: true
 
 class SiteController < ApplicationController
+  # Skip because this is a non-resource controller
+  skip_load_and_authorize_resource
+
   before_action :check_active_notifications
+
   def index
+    authorize! :read, :site
+
     @todays_events = Event.today
     @upcoming_events = Event.front_page_events(11)
     @banner_event = @upcoming_events.shift
   end
+
+  private
 
   def check_active_notifications
     # from an dto are integers of date_type

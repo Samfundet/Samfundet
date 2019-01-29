@@ -12,11 +12,21 @@ class Ability
   end
 
   def guest
+    # Read the index page
+    can :read, :site
     can :read, Blog
   end
 
+  def mg_redaksjon
+    can :manage, Blog
+  end
+
+  def styret
+    can :manage, Blog
+  end
+
   def lim_web
-    puts @user.full_name
+    # Everything. Manage is a wild card that matches anything
     can :manage, :all
   end
 end
