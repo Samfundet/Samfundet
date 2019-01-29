@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class BlogsController < ApplicationController
+  # New authorization
   load_and_authorize_resource
 
   def index
