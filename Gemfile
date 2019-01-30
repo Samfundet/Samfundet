@@ -138,7 +138,10 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 
   # Gem to detect ruby style guide violations
-  gem 'rubocop', '0.51.0', require: false
+  gem 'rubocop'
+
+  # Rubocop the specs!
+  gem 'rubocop-rspec'
 
   # annotate adds schema information from the database, in the form of
   # Ruby comments, to model files so that we can see which columns
@@ -215,7 +218,7 @@ group :test do
   gem 'rspec'
 
   # Factories for testing
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
 
   # webrat provides functions such as 'visit', 'click_link',
   # 'click_button', etc. for use in integration tests.

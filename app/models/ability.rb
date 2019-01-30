@@ -44,8 +44,10 @@ class Ability
   end
 
   def medlem
-    can :preview, Page
-    can [:edit, :update], Page if role is_in { user.sub_roles }
+    # A member is almost identical to a guest, unless they have an additional
+
+    # If the user has the Pages owner role
+    can [:edit, :update, :preview], Page if role is_in { user.sub_roles }
 
     # A little but unsure about this one
     can :control_panel, Member
@@ -54,7 +56,7 @@ class Ability
     can :pass, Role, passable: true, members: contains { user }
 
     # A Member should be able to read and maage a Role if they are a part of it
-    can [:read, :manage_members], Role, role_id: is_in { users.roles.pluck(:id) }
+    can [:read, :manage_members], Role, role_id: is_in { users.sub_roles.pluck(:id) }
 
     # Should only be able to search members if they have a Role to pass
     can :search, Member if can? :pass, Role

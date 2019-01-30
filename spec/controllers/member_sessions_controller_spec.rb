@@ -18,6 +18,7 @@ describe MemberSessionsController do
 
   describe 'POST #create' do
     let(:user) { create(:member, passord: 'password') }
+
     context 'when password is valid' do
       it 'sets the current user and redirect to root' do
         post(
