@@ -15,7 +15,11 @@ class Ability
     # Read the index page
     can :read, :site
     can :read, Blog
-    can [:read, :buy, :ical, :archive, :archive_search], Event
+
+    can :execute, :graphql
+
+    # Event stuff actions
+    can [:read, :buy, :ical, :archive, :archive_search, :purchase_callback_success, :purchase_callback_failure, :rss], Event
 
   end
 
@@ -36,7 +40,7 @@ class Ability
   end
 
   def lim_web
-    # Everything. Manage is a wild card that matches anything
+    # Nothing is beyond our reach
     can :manage, :all
   end
 end

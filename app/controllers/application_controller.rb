@@ -7,12 +7,11 @@ class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
-  # CanCan authorization helper
-  load_and_authorize_resource
+  # CanCan lockdown. Check auth for all controllers unless explicitly skipped
+  check_authorization
 
   before_action :store_location
   before_action :set_locale
-  before_action :set_current_user_for_model_layer_access_control
 
   # Helper methods that are also used in controllers
   helper_method :current_user, :logged_in?
@@ -67,11 +66,6 @@ class ApplicationController < ActionController::Base
   end
 
   protected
-
-  # Allows models to access the current user
-  def set_current_user_for_model_layer_access_control
-    Authorization.current_user = current_user
-  end
 
   def redirect_to_if_not_ajax_request(path)
     if request.xhr?

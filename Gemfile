@@ -55,10 +55,7 @@ gem 'neat'
 # uglifier is a Ruby wrapper for UglifyJS, a JavaScript compressor.
 gem 'uglifier'
 
-# declarative_authorization provides a DSL for role-based access control.
-# See: config/authorization_rules.rb
-gem 'declarative_authorization', git: 'https://github.com/Samfundet/declarative_authorization.git', branch: 'rails5'
-
+# CanCanCan for role-based access control. See app/models/ability.rb
 gem 'cancancan', '~> 2.0'
 
 # formtastic is a Rails form builder plugin
