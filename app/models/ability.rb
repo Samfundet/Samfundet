@@ -13,13 +13,9 @@ class Ability
 
   def guest
     # A guest should be able to read basic stuff
-    can :read, Page
-    can :read, Blog
-    can :read, Group
-    can :read, Page
-    can :read, Document
+    can :read, [Blog, Group, Page, Document]
 
-    # Should be able to make an reservation @ Lyche
+    # Should be able to make a reservation @ Lyche
     can [:create, :success, :available], Sulten::Reservation
 
     can :execute, :graphql
@@ -48,6 +44,23 @@ class Ability
   end
 
   def medlem
+    can :preview, Page
+    can [:edit, :update], Page if role is_in { user.sub_roles }
+
+    # A little but unsure about this one
+    can :control_panel, Member
+
+    # If the Role is passable and the current user is one of its current holders
+    can :pass, Role, passable: true, members: contains { user }
+
+    # A Member should be able to read and maage a Role if they are a part of it
+    can [:read, :manage_members], Role, role_id: is_in { users.roles.pluck(:id) }
+
+    # Should only be able to search members if they have a Role to pass
+    can :search, Member if can? :pass, Role
+
+    # If they can manage members of a role, they shold be able to manage MemberRole
+    can :manage, MemberRole if can? :manage_members, Role
   end
 
   def arrangementansvarlig
