@@ -1,42 +1,6 @@
 # -*- encoding : utf-8 -*-
 # frozen_string_literal: true
 authorization do
-  role :guest do
-    # Login is not protected, and should not be!
-    has_permission_on :applicant_sessions, to: :create
-    has_permission_on :member_sessions, to: :create
-    has_permission_on :user_sessions, to: :create
-
-    # Search
-    has_permission_on :search, to: [:create, :search]
-
-    # Password reset should not be protected.
-    has_permission_on :applicants,
-                      to: [:forgot_password,
-                           :generate_forgot_password_email,
-                           :reset_password,
-                           :change_password]
-
-    # Explicit read-privileges
-    has_permission_on :site, to: :read
-    has_permission_on :admissions, to: :read
-    has_permission_on :jobs, to: :read
-    has_permission_on :job_applications, to: :create
-    has_permission_on :groups, to: :read
-    has_permission_on :contact, to: [:index, :create]
-
-    # Explicit create-privileges
-    has_permission_on :applicants, to: :create
-
-    # Explicit read-privileges
-    has_permission_on :documents, to: :index
-    has_permission_on :pages, to: :read
-
-    # Explicit read- and buy-privileges
-
-    has_permission_on :sulten_reservations, to: [:create, :success, :available]
-  end
-
   role :medlem do
     includes :guest
 

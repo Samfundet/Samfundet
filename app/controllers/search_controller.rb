@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class SearchController < ApplicationController
+  # Searching functionality is publicly available
+  skip_authorization_check
+
   def search
     @search = if params[:search]
                 Search.new(params[:search])
