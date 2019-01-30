@@ -1,3 +1,5 @@
+require: rubocop-rspec
+
 inherit_from:
   .rubocop_todo.yml
 
@@ -22,3 +24,20 @@ Lint/UnusedBlockArgument:
 
 Style/ClassAndModuleChildren:
   EnforcedStyle: compact
+RSpec/FilePath:
+  Exclude:
+    - spec/**/*
+
+# RSpec <3
+AllCops:
+  RSpec:
+    Patterns:
+      #- _spec.rb
+      - _factory.rb
+      - ability_spec.rb
+
+
+  RSpec/FactoryBot:
+    Patterns:
+      - spec/factories/**/*.rb
+

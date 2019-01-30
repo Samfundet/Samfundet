@@ -2,7 +2,7 @@
 
 include ActionDispatch::TestProcess
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :image do
     title 'Tittel'
     image_file do

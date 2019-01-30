@@ -4,6 +4,7 @@ require 'rails_helper'
 
 describe RolesController do
   let(:user) { create(:member) }
+
   # let(:parent_role) { create(:role)}
   # let(:child_role) { create(:role, role_id: parent_role.id)}
   context 'logged in as regular user with some roles' do
@@ -57,6 +58,7 @@ describe RolesController do
     describe 'POST #create' do
       context 'with valid attributes' do
         let(:valid_attributes) { attributes_for(:role) }
+
         it 'saves the new role' do
           expect do
             post :create, params: { role: valid_attributes }
@@ -77,10 +79,11 @@ describe RolesController do
       end
       context 'with invalid attributes' do
         let(:invalid_attributes) { attributes_for(:role, name: '') }
+
         it 'saves the new role' do
           expect do
             post :create, params: { role: invalid_attributes }
-          end.to_not change(Role, :count)
+          end.not_to change(Role, :count)
         end
 
         it 'render the new template' do
@@ -99,6 +102,7 @@ describe RolesController do
 
     describe 'GET #edit' do
       let(:role) { create(:role) }
+
       it 'renders the edit template' do
         get :edit, params: { id: role.id }
 
@@ -114,6 +118,7 @@ describe RolesController do
 
     describe 'POST #update' do
       let(:role) { create(:role) }
+
       context 'with valid attributes' do
         let(:valid_attributes) { attributes_for(:role, name: 'foobar') }
 
@@ -155,8 +160,8 @@ describe RolesController do
           post :update, params: { id: role.id, role: invalid_attributes }
 
           role.reload
-          expect(role.name).to_not eq 'foobar'
-          expect(role.description).to_not eq 'This is a desc'
+          expect(role.name).not_to eq 'foobar'
+          expect(role.description).not_to eq 'This is a desc'
         end
 
         it 'redirects to the role path' do
@@ -175,6 +180,7 @@ describe RolesController do
   end
   context 'logged in as regular user with passable role' do
     let(:member) { create(:member) }
+
     before do
       @role = create(:role, :passable)
       user.roles << @role

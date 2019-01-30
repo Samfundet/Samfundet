@@ -18,6 +18,7 @@ describe ApplicantSessionsController do
 
   describe 'POST #create' do
     let(:user) { create(:applicant, password: 'password') }
+
     context 'when password is valid' do
       it 'sets the current user and redirect to admissions path' do
         post(

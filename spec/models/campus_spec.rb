@@ -5,21 +5,21 @@ require 'rails_helper'
 require 'pp'
 
 describe Campus do
-  it 'should show name when calling the to_s function' do
+  it 'shows name when calling the to_s function' do
     campus = create(:campus)
     expect(campus.to_s).to be(campus.name)
   end
 
-  it 'should not have any applicants if just created' do
+  it 'does not have any applicants if just created' do
     campus = create(:campus)
     expect(campus.number_of_applicants).to be(0)
   end
 
-  it 'should not have any applicants if there are no admissions' do
-    expect(Campus.number_of_applicants_given_admission(nil)).to be(0)
+  it 'does not have any applicants if there are no admissions' do
+    expect(described_class.number_of_applicants_given_admission(nil)).to be(0)
   end
 
-  it 'should have an applicant if someone has applied from a particular campus' do
+  it 'has an applicant if someone has applied from a particular campus' do
     applicant = create(:applicant)
     job = create(:job)
     admission = create(:admission)
@@ -30,12 +30,12 @@ describe Campus do
     # Calling first returns an array [key, value], so accessing the second value
     # returns the actual number we're looking for.
     # TODO: Improve this test.
-    number_of_applicants = Campus.number_of_applicants_given_admission(admission).first.second
+    number_of_applicants = described_class.number_of_applicants_given_admission(admission).first.second
 
     expect(number_of_applicants).to eq(1)
   end
 
-  it 'should have an applicant if someone has applied from a particular campus current' do
+  it 'has an applicant if someone has applied from a particular campus current' do
     DatabaseCleaner.clean
 
     applicant = create(:applicant)
@@ -49,7 +49,7 @@ describe Campus do
     # Calling first returns an array [key, value], so accessing the second value
     # returns the actual number we're looking for.
     # TODO: Improve this test.
-    number_of_applicants = Campus.number_of_applicants_current_admission.first.second
+    number_of_applicants = described_class.number_of_applicants_current_admission.first.second
 
     expect(number_of_applicants).to eq(1)
   end

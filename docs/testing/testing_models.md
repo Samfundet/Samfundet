@@ -18,7 +18,7 @@ At the same time we're going to create a factory method by creating a file calle
 ```ruby
 # frozen_string_literal: true
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :blog do
     title_no "Test"
     title_en "Test"

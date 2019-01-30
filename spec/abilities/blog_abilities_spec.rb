@@ -12,8 +12,8 @@ describe Blog do
     # end
 
     context 'when user is logged in as guest' do
-      it { is_expected.to be_able_to(:read, Blog.new) }
-      it { is_expected.not_to be_able_to(:edit, Blog.new) }
+      it { is_expected.to be_able_to(:read, described_class.new) }
+      it { is_expected.not_to be_able_to(:edit, described_class.new) }
     end
   end
 end
