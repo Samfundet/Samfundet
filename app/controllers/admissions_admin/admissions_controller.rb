@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class AdmissionsAdmin::AdmissionsController < ApplicationController
+  load_and_authorize_resource
   layout 'admissions'
-  filter_access_to %i[show statistics]
 
   def show
     @admission = Admission.find(params[:id])

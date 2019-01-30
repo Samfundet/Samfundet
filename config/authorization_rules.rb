@@ -1,37 +1,6 @@
 # -*- encoding : utf-8 -*-
 # frozen_string_literal: true
 authorization do
-  role :medlem do
-    includes :guest
-
-    has_permission_on :user_sessions, to: :destroy
-
-    has_permission_on :members, to: :control_panel
-
-    has_permission_on :members, to: :search do
-      if_permitted_to :pass, :roles
-    end
-
-    has_permission_on :pages, to: :preview
-
-    has_permission_on :pages, to: [:edit, :update] do
-      if_attribute role: is_in { user.sub_roles }
-    end
-
-    has_permission_on :roles, to: :pass do
-      if_attribute passable: true,
-                   members: contains { user }
-    end
-
-    has_permission_on :roles, to: [:read, :manage_members] do
-      if_attribute role_id: is_in { user.roles.pluck(:id) }
-    end
-
-    has_permission_on :members_roles, to: :manage do
-      if_permitted_to :manage_members, :role
-    end
-  end
-
   role :ksg_sulten do
     has_permission_on [
       :sulten_tables,

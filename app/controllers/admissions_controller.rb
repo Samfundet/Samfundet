@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 class AdmissionsController < ApplicationController
+  load_and_authorize_resource
+
   layout 'admissions'
   before_action :find_by_id, only: %i[edit update]
-  filter_access_to %i[new create edit update]
 
   has_control_panel_applet :admin_applet,
                            if: -> { permitted_to? :show, :admissions_admin_admissions }
