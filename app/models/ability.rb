@@ -12,15 +12,42 @@ class Ability
   end
 
   def guest
-    # Read the index page
-    can :read, :site
+    # A guest should be able to read basic stuff
+    can :read, Page
     can :read, Blog
+    can :read, Group
+    can :read, Page
+    can :read, Document
+
+    # Should be able to make an reservation @ Lyche
+    can [:create, :success, :available], Sulten::Reservation
 
     can :execute, :graphql
 
-    # Event stuff actions
-    can [:read, :buy, :ical, :archive, :archive_search, :purchase_callback_success, :purchase_callback_failure, :rss], Event
+    # Should be allowed to search
+    can [:create, :search], Search
 
+    # Admission
+    can :read, Admission
+    can :read, Job
+    can :create, JobApplication
+
+    ## A guest should be able to create an Applicant and forget its password
+    can [:create,
+         :forgot_password,
+         :generate_forgot_password_email,
+         :reset_password,
+         :change_password], Applicant
+
+    # Event stuff actions. This should probably be cleaned up
+    can [:read, :buy, :ical,
+         :archive, :archive_search,
+         :purchase_callback_success,
+         :purchase_callback_failure, :rss], Event
+
+  end
+
+  def medlem
   end
 
   def arrangementansvarlig
