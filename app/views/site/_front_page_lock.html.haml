@@ -1,4 +1,4 @@
-- if permitted_to? :manage, :front_page_locks
+- if can? :manage, FrontPageLock
   - lock = FrontPageLock.find_by_position(index)
   - if lock.try(:lockable)
     .front-page-lock-actions

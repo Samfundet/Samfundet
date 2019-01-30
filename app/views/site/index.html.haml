@@ -5,7 +5,7 @@
 = render 'banner_image', banner_event: @banner_event
 
 - content_for :banner_image do
-  - if permitted_to? :manage, :front_page_locks
+  - if can? :manage, FrontPageLock
     - if @banner_event.try(:front_page_lock)
       = link_to edit_front_page_lock_path(@banner_event.front_page_lock), id: 'banner-image-edit' do
         = t('site.index.change_banner_lock')

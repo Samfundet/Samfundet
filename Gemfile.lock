@@ -26,14 +26,6 @@ GIT
       rails (~> 5.0.0)
 
 GIT
-  remote: https://github.com/Samfundet/declarative_authorization.git
-  revision: 52748a204fdaabf519d9085e6e3ec187b5a0c5c4
-  branch: rails5
-  specs:
-    declarative_authorization (1.0.0.pre)
-      rails (>= 4.0.0, < 5.2.0)
-
-GIT
   remote: https://github.com/Samfundet/mina.git
   revision: d8449b7b2cf3908361724b527d1ee4a05a698f97
   specs:
@@ -154,6 +146,7 @@ GEM
       activemodel
       activesupport
     debug_inspector (0.0.2)
+    declarative_authorization (0.5.7)
     diff-lcs (1.2.5)
     docile (1.1.5)
     em-websocket (0.5.1)
@@ -447,7 +440,6 @@ DEPENDENCIES
   dalli
   database_cleaner
   date_validator
-  declarative_authorization!
   diff-lcs
   exception_notification
   factory_girl_rails

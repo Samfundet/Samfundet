@@ -1,19 +1,10 @@
 # frozen_string_literal: true
 
 class GraphqlController < ApplicationController
+  skip_authorization_check
+
   skip_before_action :verify_authenticity_token
   after_action :allow_cors
-
-  def allow_cors
-    response.set_header('Access-Control-Allow-Origin', '*')
-
-    # Hacky, but required to not make web browser angry
-    response.set_header('Access-Control-Allow-Headers', 'Content-Type')
-  end
-
-  def handle_options_request
-    head(:ok) if request.request_method == 'OPTIONS'
-  end
 
   def execute
     variables = ensure_hash(params[:variables])
@@ -31,6 +22,16 @@ class GraphqlController < ApplicationController
   end
 
   private
+  def allow_cors
+    response.set_header('Access-Control-Allow-Origin', '*')
+
+    # Hacky, but required to not make web browser angry
+    response.set_header('Access-Control-Allow-Headers', 'Content-Type')
+  end
+
+  def handle_options_request
+    head(:ok) if request.request_method == 'OPTIONS'
+  end
 
   # Handle form data, JSON body, or a blank value
   def ensure_hash(ambiguous_param)
