@@ -21,7 +21,7 @@ module Queries
       description 'Get a blog post'
     end
     def get_blog_post(id:)
-      Blog.find(id)
+      Blog.find_by(id: id)
     end
 
     field :get_event, Types::Event, null: true do
@@ -44,7 +44,7 @@ module Queries
       description 'Get a single group.'
     end
     def get_group(id:)
-      Group.find(id)
+      Group.find_by(id: id)
     end
 
     field :get_members, Types::MemberType.connection_type, null: false do
@@ -59,7 +59,7 @@ module Queries
       description 'Get a single member.'
     end
     def get_member(id:)
-      Member.find(id)
+      Member.find_by(id: id)
     end
 
     field :jobs, [Types::JobType], null: false do
