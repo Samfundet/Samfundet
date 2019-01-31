@@ -29,16 +29,20 @@ window.bind_search = (search_form, search_input, existing_results, ajax_results,
     serialized_form = form.serialize()
     form_endpoint = form.attr('action')
 
-    $.post(
-      form_endpoint,
-      search: query)
-      .then (data, textStatus, xhr) ->
+    $.ajax({
+    type: 'POST',
+    url: form_endpoint,
+    data: {
+        search: query
+    },
+
+    }).then (data, textStatus, xhr) ->
         $(ajax_results).html data
         showSearch()
         ga('send', 'pageview',
           'page': form_endpoint + "?" + serialized_form,
           'title': 'Search - Virtual'
-        )
+        );
 
   scrollToSearch = ->
     width = $(window).width()
