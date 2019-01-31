@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Types
   class Text < Bases::BaseScalar
     def self.coerce_input(value, _context)
