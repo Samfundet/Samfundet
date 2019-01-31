@@ -11,8 +11,8 @@ module Types
         description 'English title'
       end
 
-      argument :content_no, String, required: true
-      argument :content_en, String, required: true
+      argument :content_no, Types::Text, required: true
+      argument :content_en, Types::Text, required: true
 
       argument :lead_paragraph_no, String, required: true
       argument :lead_paragraph_en, String, required: true
@@ -23,6 +23,8 @@ module Types
       argument :publish_at, GraphQL::Types::ISO8601DateTime, required: true
 
       argument :image_id, Integer, required: false
+
+      argument :author_id, Integer, required: true
     end
   end
 end
