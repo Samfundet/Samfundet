@@ -4,11 +4,9 @@ class RolesController < ApplicationController
   load_and_authorize_resource
   before_action :find_by_id, only: %i[show edit update]
 
-  has_control_panel_applet :admin_applet,
-                           if: -> { can? :manage_members, Role }
+  has_control_panel_applet :admin_applet, if: -> { Role.accessible_by(current_ability, :manage_members).any? }
 
-  has_control_panel_applet :pass_applet,
-                           if: -> { current_user.roles.passable.present? }
+  has_control_panel_applet :pass_applet, if: -> { current_user.roles.passable.present? }
 
   def index
     # Anyone permitted to edit roles is also allowed to manage members,
