@@ -8,9 +8,9 @@
 
 %p
   = link_to t('common.back'), images_path
-  - if permitted_to? :edit, @image
+  - if can? :edit, @image
     = link_to t('crud.edit'), edit_image_path
-  - if permitted_to? :destroy || @image.uploader == @current_user, @image
+  - if can? :destroy || @image.uploader == @current_user, @image
     = link_to t('crud.destroy'), @image, confirm: t('crud.confirm'), method: :delete
 
 %h2= t('images.tags')

@@ -31,5 +31,5 @@
         %td
           = link_to t("crud.edit"), edit_blog_path(article)
         %td
-          - if permitted_to? :destroy, article
+          - if can? :destroy, Article
             = link_to t("crud.destroy"), article, confirm: t("events.confirm_delete"), method: :delete

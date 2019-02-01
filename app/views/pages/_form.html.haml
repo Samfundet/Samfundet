@@ -6,7 +6,7 @@
           %h1
             = t("pages.norwegian_fields")
           .form-content-content
-            - if permitted_to? :edit_non_content_fields, @page 
+            - if can? :edit_non_content_fields, @page 
               = form.input :name_no
             = form.input :title_no
             = form.input :content_no, as: :text, hint: t('common.markdown_hint').html_safe
@@ -15,12 +15,12 @@
             %h1
               = t("pages.english_fields")
           .form-content-content
-            - if permitted_to? :edit_non_content_fields, @page 
+            - if can? :edit_non_content_fields, @page 
               = form.input :name_en
             = form.input :title_en
             = form.input :content_en, as: :text, hint: t('common.markdown_hint').html_safe
 
-          - if permitted_to? :edit_non_content_fields, @page
+          - if can? :edit_non_content_fields, @page
             .form-content-header
               = t("pages.other_fields")
             .form-content-content

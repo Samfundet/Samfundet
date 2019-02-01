@@ -28,10 +28,10 @@
           %td
             = group.website
           %td
-            - if permitted_to?(:update, group)
+            - if can?(:update, group)
               = link_to edit_group_path(group) do
                 Redigér gjeng
-  - if permitted_to?(:create, :groups)
+  - if can?(:create, Group)
     %p
       = link_to new_group_path, {class: "sexybutton sexysimple sexyred"} do
         Opprett gjeng

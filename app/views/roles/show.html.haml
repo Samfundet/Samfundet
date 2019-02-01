@@ -16,9 +16,9 @@
       -# 'roles.has_child_roles' also contains HTML
       = t('roles.has_child_roles',
           roles: @role.roles.map{ |r| link_to r.title, r }.join(' ')).html_safe
-  - if permitted_to?(:edit, @role)
+  - if can?(:edit, @role)
     %p
-      - if permitted_to?(:edit, @role)
+      - if can?(:edit, @role)
         = link_to t('roles.edit_role'), edit_role_path(@role),
                   { class: "sexybutton sexysimple sexyred" }
   - unless @role.members_roles.empty?
