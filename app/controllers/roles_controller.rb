@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 class RolesController < ApplicationController
-  filter_access_to [:pass], attribute_check: true
+  load_and_authorize_resource
   before_action :find_by_id, only: %i[show edit update]
 
   has_control_panel_applet :admin_applet,
-                           if: -> { Role.with_permissions_to(:manage_members).present? }
+                           if: -> { can? :manage_members, Role }
 
   has_control_panel_applet :pass_applet,
                            if: -> { current_user.roles.passable.present? }
@@ -21,7 +21,7 @@ class RolesController < ApplicationController
     #      default_scope { order(:title) }
     #
     # in the model.
-    @roles = Role.unscoped.with_permissions_to(:manage_members).sort_by(&:title)
+    @roles = Role.unscoped.accessible_by(current_ability, :manage_members).sort_by(&:title)
   end
 
   def show; end

@@ -2,8 +2,9 @@
 
 class JobApplicationsController < ApplicationController
   layout 'admissions'
-  filter_access_to [:index]
-  filter_access_to %i[update destroy up down], attribute_check: true
+  load_and_authorize_resource only: %i[index update destroy up down]
+  skip_authorization_check only: %i[create]
+
 
   def index
     @admissions = @current_user.job_applications.where(withdrawn: false).group_by { |job_application| job_application.job.admission }
@@ -13,7 +14,7 @@ class JobApplicationsController < ApplicationController
     @job_application = JobApplication.new(job_application_params)
 
     if @job_application.job&.admission&.appliable?
-      if logged_in? && permitted_to?(:create, :job_applications)
+      if logged_in? && can?(:create, JobApplication)
         if current_user.class == Applicant
           handle_create_application_when_logged_in
         else
@@ -34,7 +35,9 @@ class JobApplicationsController < ApplicationController
   end
 
   def update
-    if @job_application.update(job_application_update_params)
+    @job_application = JobApplication.find(params[:id])
+
+    if @job_application.update(job_application_params)
       @job_application.update_attributes(withdrawn: false)
       flash[:success] = t('job_applications.application_updated')
       if current_user.class == Applicant
@@ -116,9 +119,5 @@ class JobApplicationsController < ApplicationController
 
   def job_application_params
     params.require(:job_application).permit(:job_id, :motivation)
-  end
-
-  def job_application_update_params
-    params.permit(:job_id, :motivation)
   end
 end

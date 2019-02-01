@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class EverythingClosedPeriodsController < ApplicationController
-  filter_access_to :all
+  load_and_authorize_resource
 
   def index
     @current_and_future_closed_times = EverythingClosedPeriod.current_and_future_closed_times

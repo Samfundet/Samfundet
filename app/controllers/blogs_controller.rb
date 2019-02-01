@@ -2,7 +2,7 @@
 
 class BlogsController < ApplicationController
   has_control_panel_applet :admin_applet,
-                           if: -> { authorize! :edit, Blog }
+                           if: -> { can? :edit, Blog }
 
   def index
     @articles = Blog.published.order('publish_at desc')

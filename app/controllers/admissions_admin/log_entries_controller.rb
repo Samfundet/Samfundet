@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class AdmissionsAdmin::LogEntriesController < ApplicationController
+  load_and_authorize_resource
   before_action :new_log_entry, only: :create
-  filter_access_to %i[create destroy], attribute_check: true
 
   def create
     @log_entry.log = params[:log_entry][:log]
@@ -23,6 +23,9 @@ class AdmissionsAdmin::LogEntriesController < ApplicationController
   end
 
   private
+  def log_entry_params
+    params.require(:log_entry).permit(:log)
+  end
 
   def new_log_entry
     @admission = Admission.find params[:admission_id]
