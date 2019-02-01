@@ -11,7 +11,7 @@
     - cache [I18n.locale, admission] do
       != render(admission)
 
-- if permitted_to?(:manage, :admissions)
+- if can?(:manage, Admission)
   .section
     %h2= t('admissions.closed_admissions')
     - if @closed_admissions.empty?

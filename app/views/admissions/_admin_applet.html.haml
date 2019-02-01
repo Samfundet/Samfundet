@@ -1,7 +1,7 @@
 %h2
   = t("admissions.admin_applet.title")
 
-- if permitted_to?(:manage, :admissions)
+- if can?(:manage, Admission)
   = link_to t('admissions.create_admission'), new_admission_path
 
 - @admissions.each do |admission|

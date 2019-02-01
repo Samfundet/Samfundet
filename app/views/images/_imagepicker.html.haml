@@ -4,7 +4,7 @@
 
   %ul
     %li= link_to t('events.forms.existing_image'), images_path, class: 'choose-image-link'
-    - if permitted_to? :create, :images
+    - if can? :create, Image
       %li= link_to t('events.forms.upload_image'), new_image_path, target: 'blank'
     - else
       %li Du må kontakte layout i markedsføringsgjengen for å få lagt til nye bilder i systemet.

@@ -14,7 +14,7 @@
 .content{class: ("wide" if @page.hide_menu)}
   = render_page_content(@page.content, @page.content_type)
 
-  - if permitted_to? :edit, :pages
+  - if can? :edit, Page
     %p
       = t("pages.owned_by", owner: @page.role)
       - if @page.revisions.last.member
