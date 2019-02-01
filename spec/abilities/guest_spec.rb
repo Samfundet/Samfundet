@@ -16,15 +16,11 @@ describe Member do
       it { is_expected.not_to be_able_to(:manage, Blog) }
 
       # Testing guest n admissions
-      it { is_expected.to be_able_to(:read, Admission)
-      it { is_expected.to be_able_to(:read, Job)
-      it { is_expected.to be_able_to(:create, JobApplication)
-      it { is_expected.to be_able_to([:create,
-         :forgot_password,
-         :generate_forgot_password_email,
-         :reset_password,
+      it { is_expected.to be_able_to(:read, Admission) }
+      it { is_expected.to be_able_to(:read, Job) }
+      it { is_expected.to be_able_to(:create, JobApplication) }
+      it { is_expected.to be_able_to([:create, :forgot_password, :generate_forgot_password_email, :reset_password,
          :change_password], Applicant) }
-
     end
 
     context 'when logged in as a regular user' do
