@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
 class PagesController < ApplicationController
+  # We have to load the page with load_page beceause we're using custom
+  # loading functionality Page.find_by_param (deifned in the Page model class)
+  before_filter :load_page, only: [:show, :edit, :update, :destroy, :history]
   load_and_authorize_resource
+
   has_control_panel_applet :admin_applet,
                            if: -> { show_admin? }
 
@@ -13,12 +17,10 @@ class PagesController < ApplicationController
 
   def show
     @menu = Page.menu
-    @page = Page.find_by_param(params[:id]) || not_found
     @show_admin = show_admin?
   end
 
   def history
-    @page = Page.find_by_param(params[:id]) || not_found
     @revisions = @page.revisions
     @show_admin = show_admin?
   end
@@ -39,7 +41,6 @@ class PagesController < ApplicationController
   end
 
   def edit
-    @page = Page.find_by_param(params[:id]) || not_found
   end
 
   def preview
@@ -50,9 +51,8 @@ class PagesController < ApplicationController
   end
 
   def update
-    @page = Page.find_by_param(params[:id]) || not_found
 
-    unless authorize! :edit_non_content_fields, @page
+    if not can? :edit_non_content_fields, @page
       params[:page].slice!(:title_no, :title_en, :content_no, :content_en)
     end
 
@@ -70,7 +70,6 @@ class PagesController < ApplicationController
   end
 
   def destroy
-    @page = Page.find_by_param(params[:id])
     @page.destroy # TODO: Should perhaps set a deleted flag instead of deleting
     flash[:success] = t('pages.destroy_success')
     redirect_to admin_pages_path
@@ -97,7 +96,7 @@ class PagesController < ApplicationController
   end
 
   def load_page
-    Page.find_by_param(params[:id])
+    @page = Page.find_by_param(params[:id])
   end
 
   def not_found

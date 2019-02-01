@@ -1,24 +1,32 @@
 class Ability
   include CanCan::Ability
 
-  def initialize(user)
-    # Given user or a guest
-    @user = user || Member.new
+  def initialize(user, namespace = nil)
+    # Given user or an applicant
+    @user = user
 
-    # Everyone is a guest!
+    # Everyone should be able to do guest stuff
     guest
 
     if @user.is_a? Member
       medlem
-      @user.roles.each{|role| send(role.title)}
+
+      # Grant additional privileges if the role is passable
+      medlem_passable_role if @user.roles.passable
+
+      @user.roles.each do |role|
+        # Call the fucntions defined for the role
+        send(role.title)
+      end
     elsif @user.is_a? Applicant
       soker
+    else
     end
   end
 
   def guest
-    # A guest should be able to read basic stuff
-    can :read, [Blog, Group, Page, Document]
+    # A guest should be able to show basic stuff
+    can [:index, :show], [Blog, Page, Document]
 
     # Should be able to make a reservation @ Lyche
     can [:create, :success, :available], Sulten::Reservation
@@ -29,8 +37,8 @@ class Ability
     can [:create, :search], Search
 
     # Admission
-    can :read, Admission
-    can :read, Job
+    can [:index, :show], Admission
+    can :show, Job
     can :create, JobApplication
 
     ## A guest should be able to create an Applicant and forget its password
@@ -41,7 +49,7 @@ class Ability
          :change_password], Applicant
 
     # Event stuff actions. This should probably be cleaned up
-    can [:read, :buy, :ical,
+    can [:index, :show, :buy, :ical,
          :archive, :archive_search,
          :purchase_callback_success,
          :purchase_callback_failure, :rss], Event
@@ -50,32 +58,32 @@ class Ability
 
   def soker
     # Our lovely sokere should be able to manage their job applications
-    can [:manage, :down, :up], JobApplication, applicant: { id: @user.id }
+    can [:index, :create, :update, :destroy, :down, :up], JobApplication, applicant: { id: @user.id }
 
     # And to update their user
     can :update, Applicant, id: @user.id
   end
 
   def medlem
-    # A member is almost identical to a guest, unless they have an additional
-
     # If the user has the Pages owner role
     can [:admin, :edit, :update, :preview], Page, role_id: @user.sub_roles.pluck(:id)
 
     # A little but unsure about this one
     can :control_panel, Member
 
-    # If the Role is passable and the current user is one of its current holders
-    can :pass, Role, passable: true, id: @user.roles.pluck(:id)
-
-    # A Member should be able to read and maage a Role if they are a part of it
-    can [:read, :manage_members], Role, role_id: @user.sub_roles.pluck(:id)
-
-    # Should only be able to search members if they have a Role to pass
-    can :search, Member if can? :pass, Role
+    # A Member should be able to show and manage a Role if they are a part of it
+    can [:index, :show, :manage_members], Role, role_id: @user.roles.pluck(:id)
 
     # If they can manage members of a role, they shold be able to manage MemberRole
     can :manage, :member_role if can? :manage_members, Role
+  end
+
+  def medlem_passable_role
+    # Should only be able to search members if they have a Role to pass
+    can :search, Member
+
+    # If the Role is passable and the current user is one of its current holders
+    can :pass, Role, id: @user.roles.pluck(:id)
   end
 
   # MG
@@ -107,12 +115,14 @@ class Ability
   end
 
   def opptaksansvarlig
-    can :show, :admissions_admin_admissions
+    can :show, :admissions_admin_admission
     can [:update, :show_interested_other_positions], :admissions_admin_applicants
   end
 
 
   Group.all.each do |group|
+    define_method(:"#{group.member_role}") do
+    end
 
     define_method(:"#{group.event_manager_role}") do
       arrangementansvarlig
@@ -121,16 +131,16 @@ class Ability
     define_method(:"#{group.admission_responsible_role}") do
       opptaksansvarlig
 
-      can [:show, :applications, :reject_calls], :admissions_admin_groups, id: group.id
-      can [:new, :create, :search, :edit, :update, :show, :delete], :admissions_admin_jobs, group_id: group.id
-      can :show, :admissions_admin_job_applications, job: { group: { id: group.id } }
-      can [:show, :update], :admissions_admin_interviews, job_application: { job: { group: { id: group.id } }}
-      can [:create, :destroy], :admissions_admin_log_entries, group_id: group.id
+      can [:show, :applications, :reject_calls], Group, id: group.id
+      can [:new, :create, :search, :edit, :update, :show, :delete], Job, group_id: group.id
+      can :show, JobApplication, job: { group: { id: group.id } }
+      can [:show, :update], Interview, job_application: { job: { group: { id: group.id } }}
+      can [:create, :destroy], LogEntry, group_id: group.id
     end
 
     define_method(:"#{group.group_leader_role}") do
       # Can only update its own group
-      can :update, Group, id: group.id
+      can [:admin, :edit, :update], Group, id: group.id
 
       # Call gjengsjef and generated method
       gjengsjef
