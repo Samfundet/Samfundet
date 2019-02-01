@@ -2,7 +2,7 @@
 
 class ImagesController < ApplicationController
   has_control_panel_applet :admin_applet,
-                           if: -> { permitted_to? :edit, :images }
+                           if: -> { can? :edit, Image }
 
   def index
     @images = Image.paginate(page: params[:page], per_page: 10)

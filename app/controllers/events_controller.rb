@@ -3,7 +3,7 @@
 class EventsController < ApplicationController
   load_and_authorize_resource
   has_control_panel_applet :admin_applet,
-                           if: -> { authorize! :edit, Event }
+                           if: -> { can? :edit, Event }
 
   before_action :set_organizer_id, only: %i[create update]
 

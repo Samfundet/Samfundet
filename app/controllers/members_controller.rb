@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 class MembersController < ApplicationController
-  filter_access_to %i[search control_panel steal_identity]
+  load_and_authorize_resource
 
   has_control_panel_applet :steal_identity_applet,
-                           if: -> { permitted_to? :steal_identity, :members }
+                           if: -> { can? :steal_identity, Member }
 
   has_control_panel_applet :access_applet,
                            if: -> { true }

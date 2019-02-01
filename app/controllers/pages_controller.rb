@@ -1,14 +1,7 @@
 # frozen_string_literal: true
 
 class PagesController < ApplicationController
-  filter_access_to %i[index new create]
-  filter_access_to %i[show edit update destroy], attribute_check: true,
-                                                 load_method: :load_page
-  filter_access_to [:admin], require: :edit
-  filter_access_to [:graph, :history], require: :edit do
-    show_admin?
-  end
-
+  load_and_authorize_resource
   has_control_panel_applet :admin_applet,
                            if: -> { show_admin? }
 
@@ -59,7 +52,7 @@ class PagesController < ApplicationController
   def update
     @page = Page.find_by_param(params[:id]) || not_found
 
-    unless permitted_to? :edit_non_content_fields, @page
+    unless authorize! :edit_non_content_fields, @page
       params[:page].slice!(:title_no, :title_en, :content_no, :content_en)
     end
 
@@ -73,7 +66,7 @@ class PagesController < ApplicationController
   end
 
   def admin
-    @pages = Page.with_permissions_to(:edit)
+    @pages = Page.accessible_by(current_ability, :edit)
   end
 
   def destroy
@@ -112,8 +105,8 @@ class PagesController < ApplicationController
   end
 
   def show_admin?
-    can_create = permitted_to?(:new, :pages)
-    can_edit   = permitted_to?(:edit, :pages) && Page.with_permissions_to(:edit).present?
+    can_create = can?(:new, Page)
+    can_edit   = can?(:edit, Page)
     can_create || can_edit
   end
 

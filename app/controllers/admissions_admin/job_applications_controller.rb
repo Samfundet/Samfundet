@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 class AdmissionsAdmin::JobApplicationsController < ApplicationController
+  load_and_authorize_resource
   layout 'admissions'
-  filter_access_to :show, attribute_check: true
 
   def show
+    @job_application = JobApplication.find(params[:id])
     @log_entries = LogEntry.where(
       applicant_id: @job_application.applicant.id,
       admission_id: @job_application.job.admission.id,

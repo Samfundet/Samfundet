@@ -7,7 +7,7 @@ class AdmissionsController < ApplicationController
   before_action :find_by_id, only: %i[edit update]
 
   has_control_panel_applet :admin_applet,
-                           if: -> { permitted_to? :show, :admissions_admin_admissions }
+                           if: -> { can? :show, :admissions_admin_admissions }
 
   def index
     @open_admissions = Admission.appliable.includes(
