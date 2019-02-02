@@ -24,7 +24,7 @@ class AdmissionsAdminAbility
   end
 
   def opptaksansvarlig
-    can [:show], Admission
+    can :show, Admission
     can :show_interested_other_positions, Applicant
   end
 
