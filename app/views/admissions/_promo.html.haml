@@ -16,7 +16,7 @@
     %br
     - if can? :manage, Admission
       [
-      = link_to edit_admission_path(admission) do
+      = link_to edit_admissions_admin_admission_path(admission) do
         = t('admissions.edit_admission')
       ]
 
