@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class AdmissionsAdmin::JobsController < ApplicationController
+class AdmissionsAdmin::JobsController < AdmissionsAdmin::BaseController
   load_and_authorize_resource
   layout 'admissions'
   before_action :before_new_and_create_and_search, only: %i[new create search]

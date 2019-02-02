@@ -1,7 +1,7 @@
 class Ability
   include CanCan::Ability
 
-  def initialize(user, namespace = nil)
+  def initialize(user)
     # Given user or an applicant
     @user = user
 
@@ -15,12 +15,11 @@ class Ability
       medlem_passable_role if @user.roles.passable
 
       @user.roles.each do |role|
-        # Call the fucntions defined for the role
-        send(role.title)
+        # Call the fucntions defined for the role if it is defined
+        send(role.title) if self.respond_to? role.title
       end
     elsif @user.is_a? Applicant
       soker
-    else
     end
   end
 
@@ -114,12 +113,6 @@ class Ability
     can :manage, Event
   end
 
-  def opptaksansvarlig
-    can :show, :admissions_admin_admission
-    can [:update, :show_interested_other_positions], :admissions_admin_applicants
-  end
-
-
   Group.all.each do |group|
     define_method(:"#{group.member_role}") do
     end
@@ -128,23 +121,12 @@ class Ability
       arrangementansvarlig
     end
 
-    define_method(:"#{group.admission_responsible_role}") do
-      opptaksansvarlig
-
-      can [:show, :applications, :reject_calls], Group, id: group.id
-      can [:new, :create, :search, :edit, :update, :show, :delete], Job, group_id: group.id
-      can :show, JobApplication, job: { group: { id: group.id } }
-      can [:show, :update], Interview, job_application: { job: { group: { id: group.id } }}
-      can [:create, :destroy], LogEntry, group_id: group.id
-    end
-
     define_method(:"#{group.group_leader_role}") do
       # Can only update its own group
       can [:admin, :edit, :update], Group, id: group.id
 
       # Call gjengsjef and generated method
       gjengsjef
-      send(group.admission_responsible_role)
     end
   end
 end

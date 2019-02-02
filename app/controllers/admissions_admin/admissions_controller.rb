@@ -1,12 +1,16 @@
 # frozen_string_literal: true
 
-class AdmissionsAdmin::AdmissionsController < ApplicationController
+class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
   load_and_authorize_resource
   layout 'admissions'
 
+  has_control_panel_applet :admin_applet,
+                           if: -> { can? :show, Admission }
+
+
   def show
-    @admission = Admission.find(params[:id])
-    @my_groups = current_user.my_groups
+    # CHECK IF THIS WORKS wITH MULTIPLE BEFORE MERGE
+    @my_groups = Group.accessible_by(current_ability, :show)
     @job_application = JobApplication.new
 
     if @my_groups.length == 1
@@ -15,7 +19,6 @@ class AdmissionsAdmin::AdmissionsController < ApplicationController
   end
 
   def statistics
-    @admission = Admission.find(params[:id])
     @campuses = Campus.order(:name)
     @campus_count = Campus.number_of_applicants_given_admission(@admission)
 
@@ -71,4 +74,9 @@ class AdmissionsAdmin::AdmissionsController < ApplicationController
       bar_color: 'A03033'
     )
   end
+
+  def admin_applet
+    @admissions = Admission.current
+  end
+
 end
