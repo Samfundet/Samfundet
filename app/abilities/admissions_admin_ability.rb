@@ -6,8 +6,8 @@ class AdmissionsAdminAbility
 
     if @user.is_a? Member
       @user.roles.each do |role|
-        # Call the fucntions defined for the role, if we it is defined
-        send(role.title) if self.respond_to?(role.title)
+        # Call method on self for every title, if exists.
+        self.send(role.title) if self.respond_to?(role.title)
       end
     end
   end
