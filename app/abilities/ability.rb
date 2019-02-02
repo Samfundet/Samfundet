@@ -11,12 +11,17 @@ class Ability
     if @user.is_a? Member
       medlem
 
-      # Grant additional privileges if the role is passable
-      medlem_passable_role if @user.roles.passable
+      # Does the user have any roles?
+      if @user.roles.any?
+        medlem_has_role
 
-      @user.roles.each do |role|
-        # Call the fucntions defined for the role if it is defined
-        send(role.title) if self.respond_to? role.title
+        # Grant additional privileges if any of roles are passable
+        medlem_passable_role if @user.roles.passable.any?
+
+        @user.roles.each do |role|
+          # Call method on self for every title, if it exists.
+          self.send(role.title) if self.respond_to? role.title
+        end
       end
     elsif @user.is_a? Applicant
       soker
@@ -69,12 +74,14 @@ class Ability
 
     # A little but unsure about this one
     can :control_panel, Member
+  end
 
+  def medlem_has_role
     # A Member should be able to show and manage a Role if they are a part of it
     can [:index, :show, :manage_members], Role, role_id: @user.roles.pluck(:id)
 
-    # If they can manage members of a role, they shold be able to manage MemberRole
-    can :manage, MemberRole if can? :manage_members, Role
+    # If they can manage members of a role, they shold be able to manage MembersRole
+    can :manage, MembersRole if can? :manage_members, Role
   end
 
   def medlem_passable_role
