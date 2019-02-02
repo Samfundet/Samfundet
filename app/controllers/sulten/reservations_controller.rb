@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Sulten::ReservationsController < Sulten::BaseController
-  load_and_authorize_resource only: %i[archive export admin_new edit admin_create]
+  load_and_authorize_resource
 
   def index
     @reservations = Sulten::Reservation.where(reservation_from: Time.zone.now.beginning_of_week..Time.zone.now.end_of_week).order('reservation_from')

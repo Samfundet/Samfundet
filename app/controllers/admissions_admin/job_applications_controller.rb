@@ -5,7 +5,6 @@ class AdmissionsAdmin::JobApplicationsController < AdmissionsAdmin::BaseControll
   layout 'admissions'
 
   def show
-    @job_application = JobApplication.find(params[:id])
     @log_entries = LogEntry.where(
       applicant_id: @job_application.applicant.id,
       admission_id: @job_application.job.admission.id,
