@@ -17,6 +17,12 @@ class AdmissionsAdminAbility
     can :manage, :all
   end
 
+  def mg_nestleder
+    # MG::Nestleder is responsible for the entire admission process of Samfundet.no
+    # Remember that this is all within the context of the AdmissionAdmin controller namespace
+    can :manage, [Admission, Applicant, Group, Interview, Job, JobApplication, LogEntry]
+  end
+
   def opptaksansvarlig
     can [:show], Admission
     can :show_interested_other_positions, Applicant
