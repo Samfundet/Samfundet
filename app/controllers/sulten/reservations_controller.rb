@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Sulten::ReservationsController < ApplicationController
+class Sulten::ReservationsController < Sulten::BaseController
   load_and_authorize_resource only: %i[archive export admin_new edit admin_create]
 
   def index
