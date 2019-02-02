@@ -10,6 +10,11 @@ class ApplicationController < ActionController::Base
   # CanCan lockdown. Check auth for all controllers unless explicitly skipped
   check_authorization
 
+  rescue_from CanCan::AccessDenied do |exception|
+    Rails.logger.debug "Access denied on #{exception.action} #{exception.subject.inspect}"
+    permission_denied
+  end
+
   before_action :store_location
   before_action :set_locale
 

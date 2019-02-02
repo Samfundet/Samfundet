@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class AdmissionsAdmin::JobApplicationsController < ApplicationController
+class AdmissionsAdmin::JobApplicationsController < AdmissionsAdmin::BaseController
   load_and_authorize_resource
   layout 'admissions'
 

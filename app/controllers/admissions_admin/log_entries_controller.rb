@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class AdmissionsAdmin::LogEntriesController < ApplicationController
+class AdmissionsAdmin::LogEntriesController < AdmissionsAdmin::BaseController
   load_and_authorize_resource
   before_action :new_log_entry, only: :create
 

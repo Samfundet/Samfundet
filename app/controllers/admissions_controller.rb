@@ -6,9 +6,6 @@ class AdmissionsController < ApplicationController
   layout 'admissions'
   before_action :find_by_id, only: %i[edit update]
 
-  has_control_panel_applet :admin_applet,
-                           if: -> { can? :show, :admissions_admin_admissions }
-
   def index
     @open_admissions = Admission.appliable.includes(
       group_types: { groups: :jobs }
@@ -42,10 +39,6 @@ class AdmissionsController < ApplicationController
       flash[:error] = t('common.fields_missing_error')
       render action: 'edit'
     end
-  end
-
-  def admin_applet
-    @admissions = Admission.current
   end
 
   protected
