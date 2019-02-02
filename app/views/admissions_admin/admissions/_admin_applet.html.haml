@@ -2,7 +2,7 @@
   = t("admissions.admin_applet.title")
 
 - if can?(:manage, Admission)
-  = link_to t('admissions.create_admission'), new_admission_path
+  = link_to t('admissions.create_admission'), new_admissions_admin_admission_path
 
 - @admissions.each do |admission|
   %h3
