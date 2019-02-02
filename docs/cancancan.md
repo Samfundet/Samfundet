@@ -3,9 +3,9 @@ We have decided to migrate from `declarative_authorization` to the `CanCanCan` g
 
 
 ## Ability definitions
-For simplicity, we have split the ability-definitions into two separate classes in `app/models/ability.rb` and `app/models/admissions_admin_ability.rb`.
+For simplicity, we have split the ability-definitions into two separate classes in `app/abilities/ability.rb`, `app/abilities/sulten_ability.rb`, `app/abilities/admissions_admin_ability.rb`.
 
-The main reason for doing this is so that none of the abilities granted in `ability.rb` can be accidentally applied to controllers in `AdmissionsAdmin::` namespace.
+The main reason for doing this is so that none of the abilities granted in `ability.rb` can be accidentally applied to controllers in the `AdmissionsAdmin::` or `Sulten::` namespace.
 It also makes it easier to debug and reason about why a given role has certain abilities.
 
 For each role in our system we define a method. `guest`, `medlem` and `mg_gjengsjef` are three examples.
