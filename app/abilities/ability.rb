@@ -76,7 +76,7 @@ class Ability
     can [:index, :show, :manage_members], Role, role_id: @user.roles.pluck(:id)
 
     # If they can manage members of a role, they shold be able to manage MembersRole
-    can :manage, MembersRole if can? :manage_members, Role
+    can :manage, MembersRole, role_id: @user.roles.pluck(:id)
   end
 
   def medlem_passable_role
