@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class BlogsController < ApplicationController
+  authorize_resource
   has_control_panel_applet :admin_applet,
                            if: -> { can? :edit, Blog }
 
