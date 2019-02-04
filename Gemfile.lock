@@ -17,11 +17,10 @@ GIT
 
 GIT
   remote: https://github.com/Samfundet/SamfundetDomain.git
-  revision: e3a484f5fa6242222bb4aad49b38b712777b1765
-  branch: rails5
+  revision: e1da764690ad4f2f703975eadf24d1828d1fa6be
   specs:
     samfundet_domain (0.1.0)
-      rails (~> 5.0.0)
+      rails (~> 5.0.6)
 
 GIT
   remote: https://github.com/Samfundet/mina.git

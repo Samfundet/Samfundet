@@ -86,7 +86,7 @@ gem 'redcarpet', '~>3.4'
 gem 'route_downcaser'
 
 # SamfundetDomain is a gem which provides the application with samfundets domain models.
-gem 'samfundet_domain', '~> 0.1.0', git: 'https://github.com/Samfundet/SamfundetDomain.git', branch: 'rails5'
+gem 'samfundet_domain', '~> 0.1.0', git: 'https://github.com/Samfundet/SamfundetDomain.git'
 
 # SamfundetAuth is a gem which provides the application with methods for authenticating against mdb2.
 gem 'samfundet_auth', '~> 0.2.0', git: 'https://github.com/Samfundet/SamfundetAuth.git'
