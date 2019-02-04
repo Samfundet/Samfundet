@@ -72,11 +72,11 @@ class Ability
   end
 
   def medlem_has_role
-    # A Member should be able to show and manage a Role if they are a part of it
+    # Can manage a role IF the user has the parent role (role_id)
     can [:index, :show, :manage_members], Role, role_id: @user.roles.pluck(:id)
 
-    # If they can manage members of a role, they shold be able to manage MembersRole
-    can :manage, MembersRole, role_id: @user.roles.pluck(:id)
+    # Can manage it IF the user has the parent role of the associated role
+    can :manage, MembersRole, role: { role_id: @user.roles.pluck(:id) }
   end
 
   def medlem_passable_role
@@ -84,7 +84,7 @@ class Ability
     can :search, Member
 
     # If the Role is passable and the current user is one of its current holders
-    can :pass, Role, id: @user.roles.pluck(:id)
+    can :pass, Role, passable: true, id: @user.roles.pluck(:id)
   end
 
   # MG
