@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ImagesController < ApplicationController
+  load_and_authorize_resource
+
   has_control_panel_applet :admin_applet,
                            if: -> { can? :edit, Image }
 
@@ -27,15 +29,12 @@ class ImagesController < ApplicationController
   end
 
   def show
-    @image = Image.find(params[:id])
   end
 
   def edit
-    @image = Image.find(params[:id])
   end
 
   def update
-    @image = Image.find(params[:id])
     if @image.update_attributes(image_params)
       flash[:success] = t('images.update_success')
       redirect_to @image
