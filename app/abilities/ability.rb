@@ -32,16 +32,11 @@ class Ability
     # A guest should be able to show basic stuff
     can [:index, :show], [Blog, Page, Document]
 
-    # Should be able to make a reservation @ Lyche
-    can [:create, :success, :available], Sulten::Reservation
-
-    can :execute, :graphql
-
     # Should be allowed to search
     can [:create, :search], Search
 
     # Admission
-    can [:index, :show], Admission
+    can :index, Admission
     can :show, Job
     can :create, JobApplication
 
@@ -100,11 +95,11 @@ class Ability
   end
 
   def mg_layout
-    can :manage, Event
+    can :manage, [Event, Image, FrontPageLock]
   end
 
   def mg_redaksjon
-    can :manage, [Blog, Event]
+    can :manage, [Blog, Event, Page, FrontPageLock, EverythingClosedPeriod, Area]
   end
 
   # ORGANIZATION
