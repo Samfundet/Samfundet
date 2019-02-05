@@ -35,14 +35,14 @@ describe Admission, '#appliable?' do
     expect(admission.appliable?).to eq true
   end
 
-  it 'is true just after the shown application deadline' do
+  it 'should be true just after the shown application deadline' do
     admission = create(:admission,
                        shown_application_deadline: 1.minute.ago,
                        actual_application_deadline: 1.hour.from_now)
     expect(admission.appliable?).to eq true
   end
 
-  it 'is false some time after the shown application deadline' do
+  it 'should be false some time after the shown application deadline' do
     admission = create(:admission,
                        shown_application_deadline: 1.hour.ago,
                        actual_application_deadline: 1.minute.ago)

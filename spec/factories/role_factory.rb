@@ -1,11 +1,14 @@
 # frozen_string_literal: true
 
-FactoryBot.define do
+FactoryGirl.define do
   factory :role do
-    name 'Member'
-    title { name.downcase }
-    description 'A role'
-
-    members { [] }
+    name 'Name'
+    sequence(:title) { |n| "title#{n}" }
+    description 'Description here'
+    passable false
+    role_id nil
+    trait :passable do
+      passable true
+    end
   end
 end

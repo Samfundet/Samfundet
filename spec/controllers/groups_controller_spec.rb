@@ -4,7 +4,6 @@ require 'rails_helper'
 
 describe GroupsController do
   let(:user) { create(:member) }
-
   before do
     role = Role.super_user
     user.roles << role
@@ -44,7 +43,6 @@ describe GroupsController do
     let(:group_type) { create(:group_type) }
     let(:valid_attributes) { attributes_for(:group, group_type_id: group_type.id) }
     let(:invalid_attributes) { attributes_for(:group, name: '', group_type_id: group_type.id) }
-
     context 'with valid attributes' do
       it 'saves the new group' do
         expect do
@@ -65,7 +63,7 @@ describe GroupsController do
       it 'does not save the new group' do
         expect do
           post :create, params: { group: invalid_attributes }
-        end.not_to change(Group, :count)
+        end.to_not change(Group, :count)
       end
       it 're-renders the new template' do
         post :create, params: { group: invalid_attributes }
@@ -99,7 +97,6 @@ describe GroupsController do
     let(:group_type) { create(:group_type) }
     let(:valid_attributes) { attributes_for(:group, group_type_id: group_type.id) }
     let(:invalid_attributes) { attributes_for(:group, name: '', group_type_id: group_type.id) }
-
     context 'with valid attributes' do
       it 'assigns @group' do
         put :update, params: { id: group.id, group: valid_attributes }
@@ -132,8 +129,8 @@ describe GroupsController do
         attributes = attributes_for(:group, name: '', abbreviation: 'sm')
         post :update, params: { id: group.id, group: attributes }
         group.reload
-        expect(group.name).not_to eq ''
-        expect(group.abbreviation).not_to eq 'sm'
+        expect(group.name).to_not eq ''
+        expect(group.abbreviation).to_not eq 'sm'
       end
       it 're-renders the new template' do
         post :update, params: { id: group.id, group: invalid_attributes }

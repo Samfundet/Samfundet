@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-FactoryBot.define do
+FactoryGirl.define do
   factory :job_tag do
     title 'Title'
   end

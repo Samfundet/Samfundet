@@ -3,12 +3,12 @@
 require 'rails_helper'
 
 describe Group, 'short_name' do
-  it 'returns the abbreviation if present' do
+  it 'should return the abbreviation if present' do
     group = create(:group, name: 'MG:WEB', abbreviation: 'LIM')
     expect(group.short_name).to eq 'LIM'
   end
 
-  it 'returns name if abbreviation not present' do
+  it 'should return name if abbreviation not present' do
     group = create(:group, name: 'MG:WEB', abbreviation: '')
     expect(group.short_name).to eq 'MG:WEB'
   end

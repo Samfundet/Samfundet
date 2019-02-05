@@ -29,7 +29,6 @@ describe MembersController do
 
   describe 'POST #steal_identity' do
     let(:member) { create(:member) }
-
     xit 'changes current user to the given member' do
       post :steal_identity, params: { member_id: member.id }
 

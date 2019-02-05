@@ -20,7 +20,6 @@ describe ApplicantsController do
     context 'with valid attributes' do
       let(:campus) { create(:campus) }
       let(:valid_attributes) { attributes_for(:applicant, campus_id: campus.id) }
-
       it 'saves the applicant' do
         expect do
           post :create, params: { applicant: valid_attributes }
@@ -34,7 +33,6 @@ describe ApplicantsController do
 
       context 'with pending application' do
         let(:application) { create(:job_application) }
-
         it 'saves the pending application' do
           post :create, params: { applicant: valid_attributes }, session: { pending_application: application }
 
@@ -52,11 +50,10 @@ describe ApplicantsController do
     end
     context 'with invalid attributes' do
       let(:invalid_attributes) { attributes_for(:applicant, firstname: '') }
-
       it 'does not save the applicant' do
         expect do
           post :create, params: { applicant: invalid_attributes }
-        end.not_to change(Applicant, :count)
+        end.to_not change(Applicant, :count)
       end
       it 'renders the new template' do
         post :create, params: { applicant: invalid_attributes }
@@ -68,14 +65,12 @@ describe ApplicantsController do
 
   describe 'POST #update' do
     let(:applicant) { create(:applicant) }
-
     before do
       login_applicant(applicant)
     end
     context 'with valid attributes' do
       let(:valid_attributes) { attributes_for(:applicant, firstname: 'Foo', surname: 'Bar', password: '', password_confirmation: '') }
       let(:valid_attributes_with_pw) { attributes_for(:applicant, old_password: 'password', password: 'Foobar', password_confirmation: 'Foobar') }
-
       it 'updates the applicant' do
         post :update, params: { id: applicant.id, applicant: valid_attributes }
         applicant.reload

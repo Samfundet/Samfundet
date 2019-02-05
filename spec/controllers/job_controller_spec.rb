@@ -39,7 +39,6 @@ describe JobsController do
 
     context 'when logged in as an applicant' do
       let(:applicant) { create(:applicant) }
-
       before do
         login_applicant(applicant)
       end

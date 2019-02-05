@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-FactoryBot.define do
+FactoryGirl.define do
   factory :job do
     title_no 'Title NO'
     title_en 'Title EN'

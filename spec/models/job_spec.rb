@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 describe Job, '#available_jobs_in_same_group' do
-  it 'onlies list available jobs in same group' do
+  it 'should only list available jobs in same group' do
     group1 = create(:group)
     group2 = create(:group)
     admission = create(:admission)
@@ -16,7 +16,7 @@ describe Job, '#available_jobs_in_same_group' do
 end
 
 describe Job, '#similar_available_jobs' do
-  it 'lists similar available jobs' do
+  it 'should list similar available jobs' do
     admission = create(:admission)
     job1 = create(:job, admission: admission)
     job2 = create(:job, admission: admission)
@@ -33,7 +33,7 @@ describe Job, '#similar_available_jobs' do
 end
 
 describe Job, '#tag_titles=' do
-  it 'creates new tags from string input' do
+  it 'should create new tags from string input' do
     job = create(:job)
     job.tag_titles = 'one two three four'
 

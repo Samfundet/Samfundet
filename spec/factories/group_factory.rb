@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-FactoryBot.define do
+FactoryGirl.define do
   factory :group do
     sequence(:name) { |n| "Group#{n}" }
     abbreviation 'gn'
