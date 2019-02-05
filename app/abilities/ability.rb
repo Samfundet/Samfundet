@@ -108,6 +108,11 @@ class Ability
     can :manage, Blog
   end
 
+  def mg_nestleder
+    # Needs manage permissions here to see statistics
+    can :manage, Admission
+  end
+
   def gjengsjef
     can :one_year_old, Role
   end
