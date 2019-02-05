@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class FrontPageLocksController < ApplicationController
-  load_and_authorize_resource
+  authorize_resource
 
   def edit
     @front_page_lock = FrontPageLock.where(position: params[:id]).first_or_create!
