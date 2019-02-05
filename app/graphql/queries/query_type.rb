@@ -83,5 +83,16 @@ module Queries
       argument :id, ID, required: true
       Page.find(id).includes(:revisions)
     end
+
+    field :roles, Types::Role.connection_type, null: false do
+      argument :root, Boolean, required: false
+    end
+    def roles(root:)
+      if root
+        Role.where(role_id: nil).includes(:roles).all
+      else
+        Role.includes(:role, :roles).all
+      end
+    end
   end
 end
