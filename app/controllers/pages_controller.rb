@@ -103,7 +103,7 @@ class PagesController < ApplicationController
 
   def show_admin?
     can_create = can?(:new, Page)
-    can_edit   = can?(:edit, Page)
+    can_edit   = can?(:edit, Page) && Page.accessible_by(current_ability, :edit).present?
     can_create || can_edit
   end
 
