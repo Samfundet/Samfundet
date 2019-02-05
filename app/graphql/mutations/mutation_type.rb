@@ -6,5 +6,6 @@ module Mutations
     field :create_blog_post, mutation: Mutations::CreateBlogPost
     field :update_blog_post, mutation: Mutations::UpdateBlogPost
     field :delete_blog_post, mutation: Mutations::DeleteBlogPost
+    field :create_reservation, mutation: Mutations::CreateReservation
   end
 end
