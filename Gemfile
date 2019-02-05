@@ -137,9 +137,6 @@ group :development do
   # Gem to detect ruby style guide violations
   gem 'rubocop'
 
-  # Rubocop the specs!
-  gem 'rubocop-rspec'
-
   # annotate adds schema information from the database, in the form of
   # Ruby comments, to model files so that we can see which columns
   # are actually in the database.
@@ -212,7 +209,7 @@ group :test do
   gem 'rspec'
 
   # Factories for testing
-  gem 'factory_bot_rails'
+  gem 'factory_girl_rails'
 
   # webrat provides functions such as 'visit', 'click_link',
   # 'click_button', etc. for use in integration tests.
