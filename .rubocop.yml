@@ -28,6 +28,10 @@ Lint/UnusedBlockArgument:
 Style/NegatedIf:
   Enabled: false
 
+# Allow "if not condition" instead of requiring "if !condition"
+Style/Not:
+  Enabled: false
+
 Style/ClassAndModuleChildren:
   EnforcedStyle: compact
 
