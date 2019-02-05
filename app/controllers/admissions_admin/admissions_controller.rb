@@ -14,9 +14,7 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
     @my_groups = Group.accessible_by(current_ability, :show)
     @job_application = JobApplication.new
 
-    if @my_groups.length == 1
-      redirect_to admissions_admin_admission_group_path(@admission, @my_groups.first)
-    end
+    redirect_to admissions_admin_admission_group_path(@admission, @my_groups.first) if @my_groups.length == 1
   end
 
   def new
@@ -116,5 +114,4 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
   def admission_params
     params.require(:admission).permit(:title, :shown_from, :shown_application_deadline, :actual_application_deadline, :user_priority_deadline, :admin_priority_deadline, :groups_with_separate_admission, :promo_video)
   end
-
 end

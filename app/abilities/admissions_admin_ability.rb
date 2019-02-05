@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AdmissionsAdminAbility
   include CanCan::Ability
 
@@ -28,7 +30,6 @@ class AdmissionsAdminAbility
     can :show_interested_other_positions, Applicant
   end
 
-
   Group.all.each do |group|
     define_method(:"#{group.admission_responsible_role}") do
       opptaksansvarlig
@@ -36,7 +37,7 @@ class AdmissionsAdminAbility
       can [:show, :applications, :reject_calls], Group, id: group.id
       can [:new, :create, :search, :edit, :update, :show, :delete], Job, group_id: group.id
       can :show, JobApplication, job: { group: { id: group.id } }
-      can [:show, :update], Interview, job_application: { job: { group: { id: group.id } }}
+      can [:show, :update], Interview, job_application: { job: { group: { id: group.id } } }
       can [:create, :destroy], LogEntry, group_id: group.id
     end
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Ability
   include CanCan::Ability
 
@@ -52,7 +54,6 @@ class Ability
          :archive, :archive_search,
          :purchase_callback_success,
          :purchase_callback_failure, :rss], Event
-
   end
 
   def soker

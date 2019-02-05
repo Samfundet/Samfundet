@@ -3,7 +3,7 @@
 class PagesController < ApplicationController
   # We have to load the page with load_page beceause we're using custom
   # loading functionality Page.find_by_param (deifned in the Page model class)
-  before_filter :load_page, only: [:show, :edit, :update, :destroy, :history]
+  before_action :load_page, only: %i(show edit update destroy history)
   load_and_authorize_resource
 
   has_control_panel_applet :admin_applet,
@@ -40,8 +40,7 @@ class PagesController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def preview
     @content = params[:content]
@@ -51,7 +50,6 @@ class PagesController < ApplicationController
   end
 
   def update
-
     if not can? :edit_non_content_fields, @page
       params[:page].slice!(:title_no, :title_en, :content_no, :content_en)
     end

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-
 module PendingApplications
   def invalidate_cached_current_user
     @current_user = nil

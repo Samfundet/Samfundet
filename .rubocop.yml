@@ -1,5 +1,3 @@
-require: rubocop-rspec
-
 inherit_from:
   .rubocop_todo.yml
 
@@ -19,25 +17,25 @@ Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
 
+# Sometimes we want to have if blocks and not just "method_call if condition"
+Style/GuardClause:
+  Enabled: false
+
 Lint/UnusedBlockArgument:
-    Enabled: false
+  Enabled: false
+
+# Imo if not is more readable than unless
+Style/NegatedIf:
+  Enabled: false
 
 Style/ClassAndModuleChildren:
   EnforcedStyle: compact
-RSpec/FilePath:
+
+# Ability excludes
+Style/SymbolArray:
   Exclude:
-    - spec/**/*
+    - 'app/abilities/*'
 
-# RSpec <3
-AllCops:
-  RSpec:
-    Patterns:
-      #- _spec.rb
-      - _factory.rb
-      - ability_spec.rb
-
-
-  RSpec/FactoryBot:
-    Patterns:
-      - spec/factories/**/*.rb
-
+Style/RedundantSelf:
+  Exclude:
+    - 'app/abilities/*'

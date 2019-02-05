@@ -23,6 +23,7 @@ class AdmissionsAdmin::LogEntriesController < AdmissionsAdmin::BaseController
   end
 
   private
+
   def log_entry_params
     params.require(:log_entry).permit(:log)
   end

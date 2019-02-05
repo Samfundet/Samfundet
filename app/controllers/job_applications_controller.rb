@@ -5,7 +5,6 @@ class JobApplicationsController < ApplicationController
   load_and_authorize_resource only: %i[index update destroy up down]
   skip_authorization_check only: %i[create]
 
-
   def index
     @admissions = @current_user.job_applications.where(withdrawn: false).group_by { |job_application| job_application.job.admission }
   end
