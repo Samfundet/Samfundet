@@ -2,7 +2,7 @@
 
 class ApplicantsController < ApplicationController
   layout 'admissions'
-  load_and_authorize_resource only: %i[steal_identity show edit update]
+  load_and_authorize_resource only: %i[steal_identity show edit update search]
   skip_authorization_check only: %i[new create]
 
   has_control_panel_applet :steal_identity_applet,

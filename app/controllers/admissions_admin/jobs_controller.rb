@@ -8,7 +8,7 @@ class AdmissionsAdmin::JobsController < AdmissionsAdmin::BaseController
   def new; end
 
   def create
-    @job.update(jobs_params)
+    @job.update(job_params)
     if @job.save
       flash[:success] = t('jobs.job_created')
       redirect_to admissions_admin_admission_group_path(@admission, @group)
@@ -33,7 +33,7 @@ class AdmissionsAdmin::JobsController < AdmissionsAdmin::BaseController
   def edit; end
 
   def update
-    if @job.update_attributes(jobs_params)
+    if @job.update_attributes(jobs_param)
       flash[:success] = t('jobs.job_updated')
       redirect_to admissions_admin_admission_group_path(@job.admission, @job.group)
     else
@@ -50,7 +50,7 @@ class AdmissionsAdmin::JobsController < AdmissionsAdmin::BaseController
 
   private
 
-  def jobs_params
+  def job_params
     params.require(:job).permit(
       :title_no,
       :title_en,
