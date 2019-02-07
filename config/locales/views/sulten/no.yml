@@ -1,7 +1,7 @@
 'no':
   sulten:
     reservation:
-      title: "Reservasjoner denne uken:"
+      title: "Kommende reservasjoner:"
       no_reservations: "Ingen reservasjoner"
       no_reservations_this_week: "Ingen reservasjoner denne uken"
       show_all: "Vis alle"
