@@ -65,14 +65,14 @@ class Ability
   end
 
   def medlem
-    # If the user has the Pages owner role
-    can [:admin, :edit, :update, :preview], Page, role_id: @user.sub_roles.pluck(:id)
-
     # A little but unsure about this one
     can :control_panel, Member
   end
 
   def medlem_has_role
+    # If the user has the Pages owner role
+    can [:admin, :edit, :update, :preview], Page, role_id: @user.sub_roles.pluck(:id)
+    
     # Can manage a role IF the user has the parent role (role_id)
     can [:index, :show, :manage_members], Role, role_id: @user.roles.pluck(:id)
 
