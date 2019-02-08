@@ -1,7 +1,7 @@
 en:
   sulten:
     reservation:
-      title: "Upcomming reservations:"
+      title: "Upcoming reservations:"
       no_reservations: "No reservations"
       no_reservations_this_week: "No reservations this week"
       show_all: "Show all"
