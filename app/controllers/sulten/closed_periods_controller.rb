@@ -15,7 +15,7 @@ class Sulten::ClosedPeriodsController < ApplicationController
   end
 
   def create
-    @closed_period = Sulten::ClosedPeriod.new(lyche_closed_period_params)
+    @closed_period = Sulten::ClosedPeriod.new(sulten_closed_period_params)
     if @closed_period.save
       flash[:success] = I18n.t('sulten.closed_periods.creation_success')
       redirect_to sulten_closed_periods_path
@@ -31,7 +31,7 @@ class Sulten::ClosedPeriodsController < ApplicationController
 
   def update
     @closed_period = Sulten::ClosedPeriod.find(params[:id])
-    if @closed_period.update_attributes(closed_period_params)
+    if @closed_period.update_attributes(sulten_closed_period_params)
       flash[:success] = I18n.t('sulten.closed_periods.update_success')
       redirect_to sulten_closed_periods_path
     else
