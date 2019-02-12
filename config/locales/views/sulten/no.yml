@@ -50,3 +50,12 @@
     reservation_type:
       name: "Navn"
       description: "Beskrivelse"
+    closed_periods:
+      index_title: 'Planlagte perioder Lyche skal holde stengt'
+      edit_title: 'Rediger periode for når Lyche holder stengt'
+      new_title: 'Legg til periode når Lyche holder stengt'
+      table_caption: 'Planlagte perioder Lyche skal holde stengt'
+      to: 'Til'
+      from: 'Fra'
+      message: 'Melding'
+      add_new_link: 'Ny periode'

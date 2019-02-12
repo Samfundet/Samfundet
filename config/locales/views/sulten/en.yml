@@ -50,3 +50,13 @@ en:
     reservation_type:
       name: "Name"
       description: "Description"
+    closed_periods:
+      index_title: 'Scheduled periods when Lyche is closed'
+      edit_title: 'Edit period when Lyche is closed'
+      new_title: 'Add scheduled period when Lyche is closed'
+      table_caption: 'Scheduled periods when Lyche is closed'
+      to: 'To'
+      from: 'From'
+      message: 'Message'
+      edit_title: 'Rediger'
+      add_new_link: 'New period'
