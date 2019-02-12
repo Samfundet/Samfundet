@@ -1,0 +1,9 @@
+= semantic_form_for @closed_period do |f|
+  = f.inputs do
+    = f.input :message_no
+    = f.input :message_en
+    = f.input :closed_from, as: :string,
+      input_html: { class: "datepicker", value: f.object.closed_from.to_date }
+    = f.input :closed_to, as: :string,
+      input_html: { class: "datepicker", value: f.object.closed_to.to_date }
+  = f.actions
