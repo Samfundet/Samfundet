@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181030192431) do
+ActiveRecord::Schema.define(version: 20190212114924) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -481,6 +481,13 @@ ActiveRecord::Schema.define(version: 20181030192431) do
     t.datetime "updated_at", null: false
     t.index ["area_id"], name: "index_standard_hours_on_area_id", using: :btree
     t.index ["day"], name: "index_standard_hours_on_day", using: :btree
+  end
+
+  create_table "sulten_closed_periods", force: :cascade do |t|
+    t.string   "message_no"
+    t.string   "message_en"
+    t.datetime "closed_from"
+    t.datetime "closed_to"
   end
 
   create_table "sulten_reservation_types", force: :cascade do |t|
