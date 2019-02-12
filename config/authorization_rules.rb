@@ -75,7 +75,8 @@ authorization do
       :sulten_tables,
       :sulten_reservations,
       :sulten_reservation_types,
-      :sulten_admin
+      :sulten_admin,
+      :lyche_closed_periods,
     ], to: :manage
   end
 
@@ -114,6 +115,7 @@ authorization do
       :sulten_reservations,
       :sulten_reservation_types,
       :sulten_admin,
+      :sulten_closed_periods,
       :contact,
       :admissions_admin_campus
     ], to: :manage
