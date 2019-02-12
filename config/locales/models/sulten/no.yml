@@ -5,6 +5,7 @@
         all: "Alle %{n}"
         new: "Ny %{n}"
         new_thing: "Nytt %{n}"
+        manage: "Administrer %{n}"
         reservation:
           one: "reservasjon"
           other: "reservasjoner"
@@ -39,3 +40,10 @@
             create: "en ny reservasjonstype ble opprettet"
           errors:
             create: "reservasjonstypen kunne ikke opprettes"
+        closed_period:
+          one: "periode når Lyche er stengt"
+          other: "perioder når Lyche er stengt"
+          success:
+            create: "en ny periode ble opprettet"
+          errors:
+            create: "perioden kunne ikke opprettes"

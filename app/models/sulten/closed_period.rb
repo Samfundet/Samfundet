@@ -21,7 +21,7 @@ class Sulten::ClosedPeriod < ApplicationRecord
 
   def times_in_valid_order
     unless closed_from < closed_to
-      errors.add(:closed_to, I18n.t('helpers.models.sulten.closed_periods.times_in_valid_order'))
+      errors.add(:closed_to, I18n.t('sulten.closed_periods.times_in_valid_order'))
     end
   end
 end

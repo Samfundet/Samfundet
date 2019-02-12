@@ -59,3 +59,10 @@
       from: 'Fra'
       message: 'Melding'
       add_new_link: 'Ny periode'
+
+      creation_success: "Opprettet vellykket stengtperiode"
+      creation_failure: "Klarte ikke å opprette stengtperiode"
+      update_success: "Oppdaterte vellykket stengtperiode"
+      update_failure: "Klarte ikke å oppdatere stengtperiode"
+      destruction: "Slettet vellykket stengtperiode"
+      times_in_valid_order: "Slutten må være etter begynnelsen"

@@ -59,4 +59,11 @@ en:
       from: 'From'
       message: 'Message'
       edit_title: 'Rediger'
-      add_new_link: 'New period'
+      add_new_link: 'Add new period'
+
+      creation_success: "Successfully created lyche closed period"
+      creation_failure: "Failed at crating lyche closed perid"
+      update_success: "Successfully updated closed period"
+      update_failure: "Failed at updating closed period"
+      destruction: "Successfully destroyed closed period"
+      times_in_valid_order: "End must be after beginning"

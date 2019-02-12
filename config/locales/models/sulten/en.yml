@@ -5,6 +5,7 @@ en:
         all: "All %{n}"
         new: "New %{n}"
         new_thing: "New %{n}"
+        manage: "Manage %{n}"
         reservation:
           one: "reservation"
           other: "reservations"
@@ -39,3 +40,10 @@ en:
             create: "the occasion was successfully created"
           errors:
             create: "the occasion could not be created"
+        closed_period:
+          one: "period when Lyche is closed"
+          other: "periods when Lyche is closed"
+          success:
+            create: "the period was successfully created"
+          errors:
+            create: "the period could not be created"
