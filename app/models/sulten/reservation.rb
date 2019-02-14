@@ -124,6 +124,16 @@ class Sulten::Reservation < ApplicationRecord
     possible_times
   end
 
+  def is_in_closed_period?
+    # This should only be validated when a reservation is created through the normal form
+    Sulten::ClosedPeriod.current_and_future_closed_times.each do |period|
+      if (period.closed_from..period.closed_to).cover? reservation_to
+        false
+      end
+    end
+    true
+  end
+
   def self.lyche_open?(from, to)
     # TODO: Change these defaults when admin can set them
     # The values 16 .. 22 are the openinghours

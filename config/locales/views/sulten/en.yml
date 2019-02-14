@@ -33,6 +33,7 @@ en:
         type_explanation: "what is the purpose of the visit? this helps determine the sort of table you will be given"
         create: "make reservation"
         update: "update reservation"
+        closed: "Lyche reservations are closed from %{from} to %{to}"
       show:
         from: "Reserved from"
         to: "Reserved until"
@@ -51,19 +52,19 @@ en:
       name: "Name"
       description: "Description"
     closed_periods:
-      index_title: 'Scheduled periods when Lyche is closed'
-      edit_title: 'Edit period when Lyche is closed'
-      new_title: 'Add scheduled period when Lyche is closed'
-      table_caption: 'Scheduled periods when Lyche is closed'
+      index_title: 'Scheduled periods when Lyche reservations ar closed'
+      edit_title: 'Edit period when Lyche reservations are closed'
+      new_title: 'Add scheduled period when Lyche reservations are closed'
+      table_caption: 'Scheduled periods when Lyche reservations are closed'
       to: 'To'
       from: 'From'
       message: 'Message'
       edit_title: 'Rediger'
       add_new_link: 'Add new period'
 
-      creation_success: "Successfully created lyche closed period"
-      creation_failure: "Failed at crating lyche closed perid"
-      update_success: "Successfully updated closed period"
-      update_failure: "Failed at updating closed period"
-      destruction: "Successfully destroyed closed period"
+      creation_success: "Successfully created Lyche reservations closed period"
+      creation_failure: "Failed at crating Lyche reservations closed perid"
+      update_success: "Successfully updated Lyche reservations closed period"
+      update_failure: "Failed at updating Lyche reservations closed period"
+      destruction: "Successfully destroyed Lyche reservations closed period"
       times_in_valid_order: "End must be after beginning"

@@ -26,6 +26,7 @@
               too_few_people: "det må være minst én person på en reservasjon"
             check_reservation_duration: "reservasjonslengden må velges blant de angitte tidene"
             invalid_reservation_format: "Feil format. Prøv formatet: 20.10.2016 16:00"
+            in_closed_period: "Lyche reservasjoner er stengt i tidsrommet du prøvde å reservere i"
         table:
           one: "bord"
           other: "bord"
@@ -41,8 +42,8 @@
           errors:
             create: "reservasjonstypen kunne ikke opprettes"
         closed_period:
-          one: "periode når Lyche er stengt"
-          other: "perioder når Lyche er stengt"
+          one: "periode når Lyche reservasjoner er stengt"
+          other: "perioder når Lyche reservasjoner er stengt"
           success:
             create: "en ny periode ble opprettet"
           errors:
