@@ -22,7 +22,7 @@ class Sulten::ReservationsController < ApplicationController
   end
 
   def new
-    @closed_periods = Sulten::ClosedPeriod.all
+    @closed_periods = Sulten::ClosedPeriod.current_and_future_closed_times.sort_by &:closed_from
     @reservation = Sulten::Reservation.new
   end
 
