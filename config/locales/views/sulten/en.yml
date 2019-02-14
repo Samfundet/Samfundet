@@ -34,6 +34,7 @@ en:
         create: "make reservation"
         update: "update reservation"
         closed: "Lyche reservations are closed from %{from} to %{to}"
+        closed: "Lyche reservations are closed %{date}"
       show:
         from: "Reserved from"
         to: "Reserved until"
@@ -52,18 +53,17 @@ en:
       name: "Name"
       description: "Description"
     closed_periods:
-      index_title: 'Scheduled periods when Lyche reservations ar closed'
+      index_title: 'Scheduled periods when Lyche reservations are closed'
       edit_title: 'Edit period when Lyche reservations are closed'
-      new_title: 'Add scheduled period when Lyche reservations are closed'
+      new_title: 'Add speriod when Lyche reservations are closed'
       table_caption: 'Scheduled periods when Lyche reservations are closed'
       to: 'To'
       from: 'From'
       message: 'Message'
-      edit_title: 'Rediger'
       add_new_link: 'Add new period'
 
       creation_success: "Successfully created Lyche reservations closed period"
-      creation_failure: "Failed at crating Lyche reservations closed perid"
+      creation_failure: "Failed at creating Lyche reservations closed period"
       update_success: "Successfully updated Lyche reservations closed period"
       update_failure: "Failed at updating Lyche reservations closed period"
       destruction: "Successfully destroyed Lyche reservations closed period"
