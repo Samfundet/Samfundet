@@ -76,7 +76,7 @@ authorization do
       :sulten_reservations,
       :sulten_reservation_types,
       :sulten_admin,
-      :lyche_closed_periods,
+      :sulten_closed_periods,
     ], to: :manage
   end
 
