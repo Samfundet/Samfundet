@@ -34,7 +34,7 @@ en:
         create: "make reservation"
         update: "update reservation"
         closed: "Reservations are closed from %{from} to %{to}"
-        closed: "Reservations are closed %{date}"
+        closed_one_day: "Reservations are closed %{date}"
       show:
         from: "Reserved from"
         to: "Reserved until"
