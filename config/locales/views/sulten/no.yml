@@ -33,8 +33,8 @@
         type_explanation: "hva er hovedmålet med besøket? vi bruker dette for å tildele et passende bord"
         create: "opprett reservasjon"
         update: "oppdater reservasjon"
-        closed: "Lyche reservasjoner er stengt fra %{from} til og med %{to}"
-        closed_one_day: "Lyche reservasjoner er stengt %{date}"
+        closed: "Reservasjoner er stengt fra %{from} til og med %{to}"
+        closed_one_day: "Reservasjoner er stengt %{date}"
       show:
         from: "Reservert fra"
         to: "Reservert til"
@@ -53,10 +53,10 @@
       name: "Navn"
       description: "Beskrivelse"
     closed_periods:
-      index_title: 'Planlagte perioder Lyche reservasjoner skal være stengt'
-      edit_title: 'Rediger periode for når Lyche reservasjoner skal være stengt'
-      new_title: 'Legg til periode når Lyche reservasjoner skal være stengt'
-      table_caption: 'Planlagte perioder Lyche reservasjoner skal være stengt'
+      index_title: 'Planlagte perioder Lychereservasjoner skal være stengt'
+      edit_title: 'Rediger periode for når Lychereservasjoner skal være stengt'
+      new_title: 'Legg til periode når Lychereservasjoner skal være stengt'
+      table_caption: 'Planlagte perioder Lychereservasjoner skal være stengt'
       to: 'Til'
       from: 'Fra'
       message: 'Melding'

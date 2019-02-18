@@ -33,8 +33,8 @@ en:
         type_explanation: "what is the purpose of the visit? this helps determine the sort of table you will be given"
         create: "make reservation"
         update: "update reservation"
-        closed: "Lyche reservations are closed from %{from} to %{to}"
-        closed: "Lyche reservations are closed %{date}"
+        closed: "Reservations are closed from %{from} to %{to}"
+        closed: "Reservations are closed %{date}"
       show:
         from: "Reserved from"
         to: "Reserved until"
