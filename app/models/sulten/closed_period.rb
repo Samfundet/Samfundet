@@ -18,8 +18,6 @@ class Sulten::ClosedPeriod < ApplicationRecord
   end
 
   def times_in_valid_order
-    unless closed_from <= closed_to
-      errors.add(:closed_to, I18n.t('sulten.closed_periods.times_in_valid_order'))
-    end
+    errors.add(:closed_to, I18n.t('sulten.closed_periods.times_in_valid_order')) unless closed_from <= closed_to
   end
 end

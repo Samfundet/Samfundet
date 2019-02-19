@@ -124,14 +124,14 @@ class Sulten::Reservation < ApplicationRecord
     possible_times
   end
 
-  def is_in_closed_period?
+  def in_closed_period?
     # This should only be validated when a reservation is created through the normal form
     Sulten::ClosedPeriod.current_and_future_closed_times.each do |period|
-      if (period.closed_from..(period.closed_to+1.day)).cover? reservation_to
+      if (period.closed_from..(period.closed_to + 1.day)).cover? reservation_to
         return true
       end
     end
-    return false
+    false
   end
 
   def self.lyche_open?(from, to)
