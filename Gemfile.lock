@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/Samfundet/SamfundetAuth.git
-  revision: f7833972ee14d7d03430215b4b22b182f6bd0d01
+  revision: 277804a8a46034fb56aeeb866ba65a0737722ea1
   branch: rails5
   specs:
     samfundet_auth (0.1.2)
@@ -128,7 +128,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.10.0)
-    concurrent-ruby (1.0.5)
+    concurrent-ruby (1.1.4)
     crass (1.0.4)
     cucumber (2.4.0)
       builder (>= 2.1.2)
@@ -176,7 +176,7 @@ GEM
     formtastic (3.1.4)
       actionpack (>= 3.2.13)
     gherkin (4.0.0)
-    globalid (0.4.1)
+    globalid (0.4.2)
       activesupport (>= 4.2.0)
     googlecharts (1.6.12)
     graphiql-rails (1.4.11)
@@ -236,20 +236,20 @@ GEM
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
-    loofah (2.2.2)
+    loofah (2.2.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     lumberjack (1.0.10)
     magic_encoding (0.0.2)
-    mail (2.7.0)
+    mail (2.7.1)
       mini_mime (>= 0.1.1)
     method_source (0.8.2)
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
     mimemagic (0.3.2)
-    mini_mime (1.0.0)
-    mini_portile2 (2.3.0)
+    mini_mime (1.0.1)
+    mini_portile2 (2.4.0)
     minitest (5.11.3)
     multi_json (1.12.1)
     multi_test (0.1.2)
@@ -258,9 +258,9 @@ GEM
       sass (>= 3.3)
       thor (~> 0.19)
     nenv (0.3.0)
-    nio4r (2.2.0)
-    nokogiri (1.8.5)
-      mini_portile2 (~> 2.3.0)
+    nio4r (2.3.1)
+    nokogiri (1.10.1)
+      mini_portile2 (~> 2.4.0)
     notiffany (0.1.1)
       nenv (~> 0.1)
       shellany (~> 0.0)
@@ -284,7 +284,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
-    rack (2.0.5)
+    rack (2.0.6)
     rack-livereload (0.3.16)
       rack
     rack-protection (2.0.4)
@@ -400,7 +400,7 @@ GEM
     therubyracer (0.12.2)
       libv8 (~> 3.16.14.0)
       ref
-    thor (0.20.0)
+    thor (0.20.3)
     thread_safe (0.3.6)
     tilt (2.0.8)
     turbolinks (5.0.1)
@@ -502,4 +502,4 @@ RUBY VERSION
    ruby 2.3.3p222
 
 BUNDLED WITH
-   1.16.2
+   1.16.6
