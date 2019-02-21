@@ -22,6 +22,7 @@ class Sulten::ReservationsController < ApplicationController
   end
 
   def new
+    @closed_periods = Sulten::ClosedPeriod.current_and_future_closed_times.sort_by(&:closed_from)
     @reservation = Sulten::Reservation.new
   end
 
@@ -30,8 +31,12 @@ class Sulten::ReservationsController < ApplicationController
   end
 
   def create
+    @closed_periods = Sulten::ClosedPeriod.current_and_future_closed_times.sort_by(&:closed_from)
     @reservation = Sulten::Reservation.new(reservation_params)
-    if @reservation.save
+    if @reservation.is_in_closed_period?
+      flash.now[:error] = t('helpers.models.sulten.reservation.errors.in_closed_period')
+      render :new
+    elsif @reservation.save
       SultenNotificationMailer.send_reservation_email(@reservation).deliver
       flash[:success] = t('helpers.models.sulten.reservation.success.create')
       redirect_to success_sulten_reservations_path

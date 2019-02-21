@@ -1,5 +1,15 @@
 - set_open_graph_params({ title: t('site.index.og_title'), description: t('site.index.og_description'), image: 'https://www.samfundet.no/upload/images/image_files/000/001/669/original/logo_samf.no.png?1538501206'})
 - set_twitter_params({ card: "summary_large_image", title: t('site.index.og_title'), description: t('site.index.og_description'), 'image:src' => 'https://www.samfundet.no/upload/images/image_files/000/001/669/original/logo_samf.no.png?1538501206'})
+- @closed_periods.each do |period|
+  .flash.notice
+    %b
+      - if period.closed_from == period.closed_to
+        = t("sulten.reservation.form.closed_one_day", :date => l(period.closed_from, format: "%d. %B"))
+      - else
+        = t("sulten.reservation.form.closed", :from => l(period.closed_from, format: "%d. %B"), :to => l(period.closed_to, format: "%d. %B"))
+    - if period.message
+      .notice-message
+        = period.message
 
 = javascript_include_tag 'sulten/duration', defer: true
 %h2= t("sulten.reservation.form.title")

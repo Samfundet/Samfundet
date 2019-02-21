@@ -182,6 +182,8 @@ Rails.application.routes.draw do
       get "reservations/export" => "reservations#export"
       get "/available" => "reservations#available"
 
+      resources :closed_periods, except: [:show]
+
       resources :reservation_types
       resources :reservations do
         get :success, on: :collection

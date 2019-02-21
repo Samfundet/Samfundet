@@ -5,6 +5,7 @@
         all: "Alle %{n}"
         new: "Ny %{n}"
         new_thing: "Nytt %{n}"
+        manage: "Administrer %{n}"
         reservation:
           one: "reservasjon"
           other: "reservasjoner"
@@ -25,6 +26,7 @@
               too_few_people: "det må være minst én person på en reservasjon"
             check_reservation_duration: "reservasjonslengden må velges blant de angitte tidene"
             invalid_reservation_format: "Feil format. Prøv formatet: 20.10.2016 16:00"
+            in_closed_period: "Reservasjoner er stengt i tidsrommet du prøvde å reservere i"
         table:
           one: "bord"
           other: "bord"
@@ -39,3 +41,10 @@
             create: "en ny reservasjonstype ble opprettet"
           errors:
             create: "reservasjonstypen kunne ikke opprettes"
+        closed_period:
+          one: "periode når Lychereservasjoner er stengt"
+          other: "perioder når Lychereservasjoner er stengt"
+          success:
+            create: "en ny periode ble opprettet"
+          errors:
+            create: "perioden kunne ikke opprettes"
