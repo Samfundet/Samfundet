@@ -40,7 +40,6 @@ class Ability
     # Admission
     can :index, Admission
     can :show, Job
-    can :create, JobApplication
 
     ## A guest should be able to create an Applicant and forget its password
     can [:create,
@@ -72,7 +71,7 @@ class Ability
   def medlem_has_role
     # If the user has the Pages owner role
     can [:admin, :edit, :update, :preview], Page, role_id: @user.sub_roles.pluck(:id)
-    
+
     # Can manage a role IF the user has the parent role (role_id)
     can [:index, :show, :manage_members], Role, role_id: @user.roles.pluck(:id)
 
