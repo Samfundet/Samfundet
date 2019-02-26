@@ -10,7 +10,6 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
                            if: -> { can? :show, Admission }
 
   def show
-    # CHECK IF THIS WORKS wITH MULTIPLE BEFORE MERGE
     @my_groups = Group.accessible_by(current_ability, :show)
     @job_application = JobApplication.new
 
