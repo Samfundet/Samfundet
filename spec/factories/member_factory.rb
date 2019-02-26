@@ -11,7 +11,7 @@ FactoryGirl.define do
 
   trait :with_role do
     ignore do
-      role_title ""
+      role_title ''
     end
 
     after(:create) do |member, evaluator|
