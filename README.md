@@ -36,6 +36,14 @@ rake db:setup
 ```
 7. Start the Rails server by running `rails server`.
 
+#### Add git hooks
+
+You can optionally add checks before commits etc. through git-hooks. To apply them run
+```
+make git-hooks
+```
+This will add symbolic links in .git/hooks from the hooks dir.
+
 ## License
 
 MIT © Samfundet.no project authors
