@@ -13,8 +13,12 @@ class Role < ActiveRecord::Base
     Member.find(members_roles.all.collect(&:member_id))
   end
 
+  def child_roles
+    roles.map(&:sub_roles).flatten
+  end
+
   def sub_roles
-    roles + roles.map(&:sub_roles).flatten
+    roles + child_roles
   end
 
   def self.super_user

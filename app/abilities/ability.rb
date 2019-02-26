@@ -15,7 +15,11 @@ class Ability
 
       # Does the user have any roles?
       if @user.roles.any?
+        # The medlem has a role!
         medlem_has_role
+
+        # If the medlem has any child roles
+        medlem_has_child_roles if @user.child_roles.any?
 
         # Grant additional privileges if any of roles are passable
         medlem_passable_role if @user.roles.passable.any?
@@ -71,12 +75,19 @@ class Ability
   def medlem_has_role
     # If the user has the Pages owner role
     can [:admin, :edit, :update, :preview], Page, role_id: @user.sub_roles.pluck(:id)
+  end
+
+  def medlem_has_child_roles
+    # Can manage child roles so should be able to search members to add
+    can :search, Member
 
     # Can manage a role IF the user has the parent role (role_id)
     can [:index, :show, :manage_members], Role, role_id: @user.roles.pluck(:id)
 
-    # Can manage it IF the user has the parent role of the associated role
-    can :manage, MembersRole, role: { role_id: @user.roles.pluck(:id) }
+    # Only allowed to add/remove user from role if
+    # 1. the user has the assigned role as a child
+    # 2. the user owns the parent role of the child role
+    can [:create, :destroy], MembersRole, role: { id: @user.child_roles.pluck(:id), role_id: @user.sub_roles.pluck(:id) }
   end
 
   def medlem_passable_role
