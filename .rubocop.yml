@@ -39,6 +39,7 @@ Style/ClassAndModuleChildren:
 Style/SymbolArray:
   Exclude:
     - 'app/abilities/*'
+    - 'spec/abilities/*'
 
 Style/RedundantSelf:
   Exclude:

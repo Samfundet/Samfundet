@@ -18,7 +18,7 @@ describe 'sulten ability' do
   end
 
   describe 'ksg_sulten' do
-    let(:member) { create(:member, :with_role, role_title: "ksg_sulten") }
+    let(:member) { create(:member, :with_role, role_title: 'ksg_sulten') }
 
     context 'manage all sulten stuff' do
       it { is_expected.to be_able_to(:manage, Sulten::Table) }

@@ -29,6 +29,6 @@ class SultenAbility
   end
 
   def ksg_sulten
-    can :manage, [Sulten::Table, Sulten::Reservation, Sulten::ReservationType]
+    can :manage, [Sulten::Table, Sulten::Reservation, Sulten::ReservationType, Sulten::ClosedPeriod]
   end
 end

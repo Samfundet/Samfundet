@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Sulten::ClosedPeriodsController < ApplicationController
-  filter_access_to :all
+  load_and_authorize_resource
 
   def index
     @current_and_future_closed_times = Sulten::ClosedPeriod.current_and_future_closed_times
@@ -25,12 +25,9 @@ class Sulten::ClosedPeriodsController < ApplicationController
     end
   end
 
-  def edit
-    @closed_period = Sulten::ClosedPeriod.find params[:id]
-  end
+  def edit; end
 
   def update
-    @closed_period = Sulten::ClosedPeriod.find(params[:id])
     if @closed_period.update_attributes(sulten_closed_period_params)
       flash[:success] = I18n.t('sulten.closed_periods.update_success')
       redirect_to sulten_closed_periods_path
@@ -41,7 +38,6 @@ class Sulten::ClosedPeriodsController < ApplicationController
   end
 
   def destroy
-    @closed_period = Sulten::ClosedPeriod.find params[:id]
     @closed_period.destroy
     flash[:success] = I18n.t('sulten.closed_periods.destruction')
     redirect_to sulten_closed_periods_path
