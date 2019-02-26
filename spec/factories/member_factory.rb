@@ -8,4 +8,14 @@ FactoryGirl.define do
     telefon '123123123'
     passord 'passord'
   end
+
+  trait :with_role do
+    ignore do
+      role_title ""
+    end
+
+    after(:create) do |member, evaluator|
+      member.roles << create(:role, title: evaluator.role_title)
+    end
+  end
 end
