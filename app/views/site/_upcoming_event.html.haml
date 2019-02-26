@@ -12,7 +12,7 @@
   .ribbon-image-wrapper
     = link_to event do
       = background_image_helper "picture", event.image_or_default, size: :medium
-      - if event.front_page_lock && (permitted_to? :manage, :front_page_locks)
+      - if event.front_page_lock && (can? :manage, FrontPageLock)
         .locked-border
           = image_tag "fontawesome/lock24.svg", alt: "Padlock"
       = render 'events/corner_ribbon', event: event

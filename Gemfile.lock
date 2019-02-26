@@ -10,28 +10,17 @@ GIT
 
 GIT
   remote: https://github.com/Samfundet/SamfundetAuth.git
-  revision: 277804a8a46034fb56aeeb866ba65a0737722ea1
-  branch: rails5
+  revision: cced3c8a39ee36bcc74879fd83c895501641962c
   specs:
-    samfundet_auth (0.1.2)
-      declarative_authorization
+    samfundet_auth (0.2.0)
       rails (~> 5.0.6)
 
 GIT
   remote: https://github.com/Samfundet/SamfundetDomain.git
-  revision: e3a484f5fa6242222bb4aad49b38b712777b1765
-  branch: rails5
+  revision: e1da764690ad4f2f703975eadf24d1828d1fa6be
   specs:
     samfundet_domain (0.1.0)
-      rails (~> 5.0.0)
-
-GIT
-  remote: https://github.com/Samfundet/declarative_authorization.git
-  revision: 52748a204fdaabf519d9085e6e3ec187b5a0c5c4
-  branch: rails5
-  specs:
-    declarative_authorization (1.0.0.pre)
-      rails (>= 4.0.0, < 5.2.0)
+      rails (~> 5.0.6)
 
 GIT
   remote: https://github.com/Samfundet/mina.git
@@ -109,6 +98,7 @@ GEM
       thor (~> 0.19)
     builder (3.2.3)
     byebug (9.0.5)
+    cancancan (2.3.0)
     capybara (2.8.1)
       addressable
       mime-types (>= 1.16)
@@ -164,10 +154,10 @@ GEM
       actionmailer (>= 4.0, < 6)
       activesupport (>= 4.0, < 6)
     execjs (2.7.0)
-    factory_girl (4.7.0)
+    factory_girl (4.9.0)
       activesupport (>= 3.0.0)
-    factory_girl_rails (4.7.0)
-      factory_girl (~> 4.7.0)
+    factory_girl_rails (4.9.0)
+      factory_girl (~> 4.9.0)
       railties (>= 3.0.0)
     faker (1.6.6)
       i18n (~> 0.5)
@@ -435,13 +425,13 @@ DEPENDENCIES
   binding_of_caller
   bourbon
   byebug
+  cancancan (~> 2.0)
   cocoon
   coffee-rails
   cucumber-rails
   dalli
   database_cleaner
   date_validator
-  declarative_authorization!
   diff-lcs
   exception_notification
   factory_girl_rails
@@ -475,8 +465,8 @@ DEPENDENCIES
   route_translator
   rspec
   rspec-rails
-  rubocop (= 0.51.0)
-  samfundet_auth (~> 0.1.2)!
+  rubocop
+  samfundet_auth (~> 0.2.0)!
   samfundet_domain (~> 0.1.0)!
   sass
   sass-rails

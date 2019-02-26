@@ -2,7 +2,7 @@
   = t("events.admin_applet.title")
 
 %ul
-  - if permitted_to? :create, :events
+  - if can? :create, Event
     %li
       = link_to t("events.action.new"), new_event_path
   %li

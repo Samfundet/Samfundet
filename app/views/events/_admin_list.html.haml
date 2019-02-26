@@ -7,9 +7,9 @@
       %th= t("events.organizer")
       %th= t("events.area")
 
-      - if permitted_to? :edit
+      - if can? :edit, Event
         %th
-      - if permitted_to? :destroy
+      - if can? :destroy, Event
         %th
 
   %tbody
@@ -25,8 +25,8 @@
 
         %td= event.area
 
-        - if permitted_to? :edit
+        - if can? :edit, event
           %td= link_to t("crud.edit"), edit_event_path(event)
 
-        - if permitted_to? :destroy
+        - if can? :destroy, event
           %td= link_to t("crud.destroy"), event, confirm: t("events.confirm_delete"), method: :delete

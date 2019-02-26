@@ -1,6 +1,5 @@
 # -*- encoding : utf-8 -*-
 Rails.application.routes.draw do
-
   localized do
     root to: "site#index"
     get 'rss(/:type)', to: 'events#rss', defaults: { format: 'rss' }
@@ -77,7 +76,7 @@ Rails.application.routes.draw do
     ##  Routes for admissions ##
     ############################
 
-    resources :admissions, only: [:index, :new, :create, :edit, :update]
+    resources :admissions, only: :index
 
     # Everything closed period routes
     resources :everything_closed_periods, except: [:show]
@@ -131,7 +130,7 @@ Rails.application.routes.draw do
         get :deactivate, to: "campus#deactivate"
         get :activate, to: "campus#activate"
       end
-      resources :admissions, only: :show do
+      resources :admissions, only: [:show, :new, :create, :edit, :update] do
         get :statistics, on: :member
         resources :groups, only: :show do
           get :applications, on: :member

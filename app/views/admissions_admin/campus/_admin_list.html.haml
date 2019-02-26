@@ -13,9 +13,9 @@
       %th= t("crud.updated_at")
       %th= t("number_of_applicants")
       %th= t("number_of_current_applicants")
-      - if permitted_to? :edit
+      - if can? :edit, Campus
         %th
-      - if permitted_to? :destroy
+      - if can? :destroy, Campus
         %th
 
   %tbody
@@ -26,7 +26,7 @@
         %td= campus.updated_at
         %td= campus.number_of_applicants
         %td= @campus_count[campus.id]
-        - if permitted_to? :edit
+        - if can? :edit, Campus
           %td= link_to t("crud.edit"), edit_admissions_admin_campus_path(campus)
           - if campus.active?
             %td= link_to t("deactivate"), admissions_admin_campus_deactivate_path(campus)

@@ -14,7 +14,7 @@
               .front-elem.date{ style: "color: #5F6C9F" }
                 = t('layouts.application.menu.blog')
 
-- if permitted_to? :manage, :blogs
+- if can? :manage, Blog
   .admin-choices
     %ul
       %li

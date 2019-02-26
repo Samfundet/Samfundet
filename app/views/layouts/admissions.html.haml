@@ -5,13 +5,13 @@
         %span.bullet
         = t 'navigation.admission.all'
 
-    - unless has_role?(:soker)
+    - unless current_user.is_a? Applicant
       %li{active_page_class(new_applicant_path)}
         = link_to new_applicant_path do
           %span.bullet
           = t 'navigation.admission.register'
 
-    - if has_role?(:soker)
+    - if current_user.is_a? Applicant
       %li{active_page_class(job_applications_path)}
         = link_to job_applications_path do
           %span.bullet
@@ -20,16 +20,16 @@
         = link_to edit_applicant_path(current_user) do
           %span.bullet
           = t 'navigation.admission.edit'
-    
-    - if permitted_to?(:show, :admissions_admin_admissions) && !Admission.current.empty?
+
+    - if can? :show, :admissions_admin_admissions && !Admission.current.empty?
       %li{active_page_class(my_group_path(Admission.current.first, @group))}
         - unless Admission.current.empty?
           = link_to admissions_admin_admission_path(Admission.current.first) do
             %span.bullet
             = t 'navigation.admission.my_group'
-    
+
     -#
-      - if permitted_to?(:create, :job_applications)
+      - if can? :create, JobApplication
         %li{active_page_class(applicant_job_applications_path(current_user))}
           = link_to applicant_job_applications_path(current_user) do
             %span.bullet
