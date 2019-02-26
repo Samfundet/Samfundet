@@ -6,6 +6,6 @@ services:
     restart: always
     environment:
       POSTGRES_USER: samfundet
-      POSTGRES_PASSWORD: samfundet
+      POSTGRES_PASSWORD: ${SAMFDB_DEV_PASS}
     ports:
       - "5432:5432"
