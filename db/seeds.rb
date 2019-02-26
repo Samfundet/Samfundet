@@ -7,8 +7,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Major.create(name: 'Daley', city: cities.first)
 
-#require 'declarative_authorization'
-#require Rails.root.join('lib', 'generate_roles')
+require Rails.root.join('lib', 'generate_roles')
 
 raise "Not allowed to seed a production database!" if Rails.env.production?
 
@@ -34,7 +33,7 @@ ExternalOrganizer.create([
 puts "Done creating external organizers"
 
 # This is a separate task, using a method in lib/generate_roles.rb
-#generate_roles
+generate_roles
 
 # TOOD: Create extraordinary admission
 

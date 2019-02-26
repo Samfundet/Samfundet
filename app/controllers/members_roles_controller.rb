@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class MembersRolesController < ApplicationController
-  # Do not load resource here. We are customly loading the resource so Can^3 can check for custom permission
+  # Do not load resource here. We are customly loading the resource so Can^3s condition on the resource (role) can be applied
   authorize_resource
   before_action :before_create, only: :create
 
