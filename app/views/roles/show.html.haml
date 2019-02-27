@@ -25,6 +25,7 @@
     %table
       %tr
         %th= t('roles.member_name')
+        %th= t('roles.active_membership')
         %th= t('roles.date_assigned')
         %th= t('roles.one_year_old')
         %th &nbsp;
@@ -32,6 +33,8 @@
         %tr
           %td
             = members_role.member.full_name
+          %td
+            = t(members_role.member.active_membership?)
           %td
             = members_role.created_at
           %td
