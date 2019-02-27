@@ -11,18 +11,18 @@ class Ability
     guest
 
     if @user.is_a? Member
-      medlem
+      member
 
       # Does the user have any roles?
       if @user.roles.any?
-        # The medlem has a role!
-        medlem_has_role
+        # The member has a role!
+        member_has_role
 
-        # If the medlem has any child roles
-        medlem_has_child_roles if @user.child_roles.any?
+        # If the member has any child roles
+        member_has_child_roles if @user.child_roles.any?
 
         # Grant additional privileges if any of roles are passable
-        medlem_passable_role if @user.roles.passable.any?
+        member_passable_role if @user.roles.passable.any?
 
         @user.roles.each do |role|
           # Call method on self for every title, if it exists.
@@ -67,17 +67,17 @@ class Ability
     can :update, Applicant, id: @user.id
   end
 
-  def medlem
+  def member
     # A little but unsure about this one
     can :control_panel, Member
   end
 
-  def medlem_has_role
+  def member_has_role
     # If the user has the Pages owner role
     can [:admin, :edit, :update, :preview], Page, role_id: @user.sub_roles.pluck(:id)
   end
 
-  def medlem_has_child_roles
+  def member_has_child_roles
     # Can manage child roles so should be able to search members to add
     can :search, Member
 
@@ -90,7 +90,7 @@ class Ability
     can [:create, :destroy], MembersRole, role: { id: @user.child_roles.pluck(:id), role_id: @user.sub_roles.pluck(:id) }
   end
 
-  def medlem_passable_role
+  def member_passable_role
     # Should only be able to search members if they have a Role to pass
     can :search, Member
 
