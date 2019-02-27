@@ -8,8 +8,8 @@ class MembersRolesController < ApplicationController
   def destroy
     @members_role = MembersRole.find params[:id]
     @members_role.destroy
-    flash[:success] = 'Medlemmet er slettet.'
-    redirect_to role_path(@members_role.role)
+    flash[:success] = 'Medlemmet er slettet fra rollen.'
+    redirect_to :back
   end
 
   def create

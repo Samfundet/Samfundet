@@ -21,6 +21,14 @@ class Role < ActiveRecord::Base
     roles + child_roles
   end
 
+  def to_s
+    if group
+      "#{group.short_name}: #{name}"
+    else
+      title
+    end
+  end
+
   def self.super_user
     Role.find_or_create_by(title: 'lim_web') do |role|
       role.name = 'Superuser',
