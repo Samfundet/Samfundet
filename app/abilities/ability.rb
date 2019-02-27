@@ -73,7 +73,7 @@ class Ability
   end
 
   def member_has_role
-    # If the user has the Pages owner role
+    # If the user has the Pages owner role, either directly or transitively
     can [:admin, :edit, :update, :preview], Page, role_id: @user.sub_roles.pluck(:id)
   end
 
@@ -82,12 +82,12 @@ class Ability
     can :search, Member
 
     # Can manage a role IF the user has the parent role (role_id)
-    can [:index, :show, :manage_members], Role, role_id: @user.roles.pluck(:id)
+    can [:index, :show, :manage_members, :one_year_old], Role, role_id: @user.roles.pluck(:id)
 
     # Only allowed to add/remove user from role if
     # 1. the user has the assigned role as a child
     # 2. the user owns the parent role of the child role
-    can [:create, :destroy], MembersRole, role: { id: @user.child_roles.pluck(:id), role_id: @user.sub_roles.pluck(:id) }
+    can [:create, :destroy], MembersRole, role: { id: @user.child_roles.pluck(:id), role_id: @user.roles.pluck(:id) }
   end
 
   def member_passable_role
@@ -123,9 +123,7 @@ class Ability
     can :manage, Admission
   end
 
-  def gjengsjef
-    can :one_year_old, Role
-  end
+  def gjengsjef; end
 
   def arrangementansvarlig
     can :manage, Event
