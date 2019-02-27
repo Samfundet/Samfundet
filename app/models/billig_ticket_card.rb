@@ -6,5 +6,7 @@ class BilligTicketCard < ApplicationRecord
   belongs_to :member, foreign_key: :owner_member_id
   has_many :billig_purchases, foreign_key: :owner_member_id, primary_key: :owner_member_id
 
-  # attr_accessible :card, :owner_member_id, :membership_ends
+  def active?
+    membership_ends >= Time.zone.today
+  end
 end

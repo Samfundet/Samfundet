@@ -6,6 +6,7 @@
 %table.roles.custom-table.sorted
   %thead
     %th= t('roles.member_name')
+    %th= t('roles.active_membership')
     %th= t('roles.title')
     %th= t('roles.date_assigned')
 
@@ -14,6 +15,8 @@
     %tr
       %td
         = members_role.member.full_name
+      %td
+        = t(members_role.member.active_membership?)
       %td
         = link_to members_role.role, members_role.role
       %td

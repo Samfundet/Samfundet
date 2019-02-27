@@ -14,4 +14,8 @@ class Member < ActiveRecord::Base
   def sub_roles
     roles + child_roles
   end
+
+  def active_membership?
+    !membership_card.nil? && membership_card.active?
+  end
 end
