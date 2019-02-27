@@ -11,14 +11,18 @@ class Ability
     guest
 
     if @user.is_a? Member
-      medlem
+      member
 
       # Does the user have any roles?
       if @user.roles.any?
-        medlem_has_role
+        # The member has a role!
+        member_has_role
+
+        # If the member has any child roles
+        member_has_child_roles if @user.child_roles.any?
 
         # Grant additional privileges if any of roles are passable
-        medlem_passable_role if @user.roles.passable.any?
+        member_passable_role if @user.roles.passable.any?
 
         @user.roles.each do |role|
           # Call method on self for every title, if it exists.
@@ -63,23 +67,30 @@ class Ability
     can :update, Applicant, id: @user.id
   end
 
-  def medlem
+  def member
     # A little but unsure about this one
     can :control_panel, Member
   end
 
-  def medlem_has_role
-    # If the user has the Pages owner role
+  def member_has_role
+    # If the user has the Pages owner role, either directly or transitively
     can [:admin, :edit, :update, :preview], Page, role_id: @user.sub_roles.pluck(:id)
-
-    # Can manage a role IF the user has the parent role (role_id)
-    can [:index, :show, :manage_members], Role, role_id: @user.roles.pluck(:id)
-
-    # Can manage it IF the user has the parent role of the associated role
-    can :manage, MembersRole, role: { role_id: @user.roles.pluck(:id) }
   end
 
-  def medlem_passable_role
+  def member_has_child_roles
+    # Can manage child roles so should be able to search members to add
+    can :search, Member
+
+    # Can manage a role IF the user has the parent role (role_id)
+    can [:index, :show, :manage_members, :one_year_old], Role, role_id: @user.roles.pluck(:id)
+
+    # Only allowed to add/remove user from role if
+    # 1. the user has the assigned role as a child
+    # 2. the user owns the parent role of the child role
+    can [:create, :destroy], MembersRole, role: { id: @user.child_roles.pluck(:id), role_id: @user.roles.pluck(:id) }
+  end
+
+  def member_passable_role
     # Should only be able to search members if they have a Role to pass
     can :search, Member
 
@@ -112,9 +123,7 @@ class Ability
     can :manage, Admission
   end
 
-  def gjengsjef
-    can :one_year_old, Role
-  end
+  def gjengsjef; end
 
   def arrangementansvarlig
     can :manage, Event
