@@ -7,7 +7,7 @@ class AdmissionsAdminAbility
     @user = user
 
     if @user.is_a? Member
-      @user.roles.each do |role|
+      @user.sub_roles.each do |role|
         # Call method on self for every title, if exists.
         self.send(role.title) if self.respond_to?(role.title)
       end

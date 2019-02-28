@@ -24,7 +24,8 @@ class Ability
         # Grant additional privileges if any of roles are passable
         member_passable_role if @user.roles.passable.any?
 
-        @user.roles.each do |role|
+        # Grant permissions for the users roles AND child roles
+        @user.sub_roles.each do |role|
           # Call method on self for every title, if it exists.
           self.send(role.title) if self.respond_to? role.title
         end
