@@ -21,7 +21,7 @@
           %span.bullet
           = t 'navigation.admission.edit'
 
-    - if can? :show, :admissions_admin_admissions && !Admission.current.empty?
+    - if AdmissionsAdminAbility.new(current_user).can?(:show, Admission) && !Admission.current.empty?
       %li{active_page_class(my_group_path(Admission.current.first, @group))}
         - unless Admission.current.empty?
           = link_to admissions_admin_admission_path(Admission.current.first) do
