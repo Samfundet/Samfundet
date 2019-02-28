@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 class DocumentsController < ApplicationController
-  load_and_authorize_resource
+  # Not necessary to load resource here as we have not conditional permissions
+  # and we're loading the resource manually in each action
+  authorize_resource
 
   has_control_panel_applet :admin_applet,
                            if: -> { can? :manage, Document }

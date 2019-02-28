@@ -116,6 +116,15 @@ class Ability
   # ORGANIZATION
   def styret
     can :manage, Blog
+    can :manage, Document
+  end
+
+  def raadet
+    can :manage, Document
+  end
+
+  def fs
+    can :manage, Document
   end
 
   def mg_nestleder
@@ -130,7 +139,10 @@ class Ability
   end
 
   Group.all.each do |group|
-    define_method(:"#{group.member_role}") do
+    # If the method has not been defined yet. Prevent overriding of styret, fs and raadet methods
+    if !self.method_defined? group.member_role
+      define_method(:"#{group.member_role}") do
+      end
     end
 
     define_method(:"#{group.event_manager_role}") do
