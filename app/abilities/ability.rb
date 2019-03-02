@@ -136,7 +136,7 @@ class Ability
   def gjengsjef; end
 
   def arrangementansvarlig
-    can :manage, Event
+    can :manage, [Event, Image, FrontPageLock]
   end
 
   Group.all.each do |group|
