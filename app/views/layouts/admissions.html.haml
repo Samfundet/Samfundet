@@ -23,10 +23,9 @@
 
     - if AdmissionsAdminAbility.new(current_user).can?(:show, Admission) && !Admission.current.empty?
       %li{active_page_class(my_group_path(Admission.current.first, @group))}
-        - unless Admission.current.empty?
-          = link_to admissions_admin_admission_path(Admission.current.first) do
-            %span.bullet
-            = t 'navigation.admission.my_group'
+        = link_to admissions_admin_admission_path(Admission.current.first) do
+          %span.bullet
+          = t 'navigation.admission.my_group'
 
     -#
       - if can? :create, JobApplication
