@@ -3,7 +3,7 @@
 class ApplicantsController < ApplicationController
   layout 'admissions'
   load_and_authorize_resource only: %i[steal_identity show edit update search]
-  skip_authorization_check only: %i[new create]
+  skip_authorization_check only: %i[new create forgot_password generate_forgot_password_email reset_password change_password]
 
   has_control_panel_applet :steal_identity_applet,
                            if: -> { can? :steal_identity, Applicant }
