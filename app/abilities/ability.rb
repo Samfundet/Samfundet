@@ -54,7 +54,7 @@ class Ability
          :change_password], Applicant
 
     # Event stuff actions. This should probably be cleaned up
-    can [:index, :show, :buy, :ical,
+    can [:index, :show, :buy, :ical, :search,
          :archive, :archive_search,
          :purchase_callback_success,
          :purchase_callback_failure, :rss], Event
