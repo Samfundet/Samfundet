@@ -11,7 +11,6 @@ en:
       add_lock: "Add lock"
       change_lock: "Change lock"
       clear_lock: "Remove lock"
-
       few_tickets_left: "Few tickets left"
       max_ticket_limit_short: "Max %{total_ticket_limit}"
       max_ticket_limit_single_long: "Max %{total_ticket_limit} ticket"
@@ -23,7 +22,7 @@ en:
       opening_hours_today: "Opening hours"
 
       admissions_frontpage_highjack: "&lt;!-- Help! Samfundet.no needs developers to fix this error. <u>Apply to MG::Web today!</u> -->"
-      message_frontpage_highjack: "Placeholder"
+      message_frontpage_highjack: "The leader-elect of Samfundet is looking for board members! Application deadline: March 17 at 23:59. Click me for more information!"
       show_more: "Show all events"
       recieve_message: "Receive newsletter"
 
