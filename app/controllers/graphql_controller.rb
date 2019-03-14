@@ -21,10 +21,12 @@ class GraphqlController < ApplicationController
     query = params[:query]
     operation_name = params[:operationName]
     context = {
-      # Query context goes here, for example:
-      # current_user: current_user,
+      current_user: current_user
     }
     result = SamfundetSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
+
+    login_member result.context[:member_id]
+
     render json: result
   rescue => e
     raise e unless Rails.env.development?
@@ -32,6 +34,13 @@ class GraphqlController < ApplicationController
   end
 
   private
+
+  def login_member member_id
+    if !member_id.nil?
+      session[:applicant_id] = nil
+      session[:member_id] = member_id
+    end
+  end
 
   # Handle form data, JSON body, or a blank value
   def ensure_hash(ambiguous_param)

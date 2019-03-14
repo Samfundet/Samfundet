@@ -2,6 +2,13 @@
 
 module Queries
   class QueryType < GraphQL::Schema::Object
+    field :current_user, Types::MemberType, null: true do
+      description 'Get the current user object.'
+    end
+    def current_user
+      context[:current_user]
+    end
+
     field :events, Types::Event.connection_type, null: false do
       description 'Get events.'
     end
