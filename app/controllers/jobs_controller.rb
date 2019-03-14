@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class JobsController < ApplicationController
+  skip_authorization_check
   layout 'admissions'
 
   def show

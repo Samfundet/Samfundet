@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class AdmissionsAdmin::CampusController < ApplicationController
-  filter_access_to [:admin], require: :edit
+class AdmissionsAdmin::CampusController < AdmissionsAdmin::BaseController
+  load_and_authorize_resource
 
   def admin
     @campuses = Campus.order(:name)

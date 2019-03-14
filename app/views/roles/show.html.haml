@@ -16,15 +16,16 @@
       -# 'roles.has_child_roles' also contains HTML
       = t('roles.has_child_roles',
           roles: @role.roles.map{ |r| link_to r.title, r }.join(' ')).html_safe
-  - if permitted_to?(:edit, @role)
+  - if can?(:edit, @role)
     %p
-      - if permitted_to?(:edit, @role)
+      - if can?(:edit, @role)
         = link_to t('roles.edit_role'), edit_role_path(@role),
                   { class: "sexybutton sexysimple sexyred" }
   - unless @role.members_roles.empty?
     %table
       %tr
         %th= t('roles.member_name')
+        %th= t('roles.active_membership')
         %th= t('roles.date_assigned')
         %th= t('roles.one_year_old')
         %th &nbsp;
@@ -32,6 +33,8 @@
         %tr
           %td
             = members_role.member.full_name
+          %td
+            = t(members_role.member.active_membership?)
           %td
             = members_role.created_at
           %td

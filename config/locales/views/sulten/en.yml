@@ -1,7 +1,7 @@
 en:
   sulten:
     reservation:
-      title: "Reservations this week:"
+      title: "Upcoming reservations:"
       no_reservations: "No reservations"
       no_reservations_this_week: "No reservations this week"
       show_all: "Show all"
@@ -33,6 +33,8 @@ en:
         type_explanation: "what is the purpose of the visit? this helps determine the sort of table you will be given"
         create: "make reservation"
         update: "update reservation"
+        closed: "Reservations are closed from %{from} to %{to}"
+        closed_one_day: "Reservations are closed %{date}"
       show:
         from: "Reserved from"
         to: "Reserved until"
@@ -50,3 +52,19 @@ en:
     reservation_type:
       name: "Name"
       description: "Description"
+    closed_periods:
+      index_title: 'Scheduled periods when Lyche reservations are closed'
+      edit_title: 'Edit period when Lyche reservations are closed'
+      new_title: 'Add speriod when Lyche reservations are closed'
+      table_caption: 'Scheduled periods when Lyche reservations are closed'
+      to: 'To'
+      from: 'From'
+      message: 'Message'
+      add_new_link: 'Add new period'
+
+      creation_success: "Successfully created Lyche reservations closed period"
+      creation_failure: "Failed at creating Lyche reservations closed period"
+      update_success: "Successfully updated Lyche reservations closed period"
+      update_failure: "Failed at updating Lyche reservations closed period"
+      destruction: "Successfully destroyed Lyche reservations closed period"
+      times_in_valid_order: "End must be after beginning"

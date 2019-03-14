@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
-class AdmissionsAdmin::JobsController < ApplicationController
+class AdmissionsAdmin::JobsController < AdmissionsAdmin::BaseController
+  load_and_authorize_resource
   layout 'admissions'
   before_action :before_new_and_create_and_search, only: %i[new create search]
-  filter_access_to %i[new create search edit update show destroy], attribute_check: true
 
   def new; end
 
   def create
-    @job.update(jobs_params)
+    @job.update(job_params)
     if @job.save
       flash[:success] = t('jobs.job_created')
       redirect_to admissions_admin_admission_group_path(@admission, @group)
@@ -19,6 +19,7 @@ class AdmissionsAdmin::JobsController < ApplicationController
   end
 
   def show
+    @job = Job.find(params[:id])
     @group = Group.find(params[:group_id])
     @admission = Admission.find(params[:admission_id])
   end
@@ -32,7 +33,7 @@ class AdmissionsAdmin::JobsController < ApplicationController
   def edit; end
 
   def update
-    if @job.update_attributes(jobs_params)
+    if @job.update_attributes(jobs_param)
       flash[:success] = t('jobs.job_updated')
       redirect_to admissions_admin_admission_group_path(@job.admission, @job.group)
     else
@@ -49,7 +50,7 @@ class AdmissionsAdmin::JobsController < ApplicationController
 
   private
 
-  def jobs_params
+  def job_params
     params.require(:job).permit(
       :title_no,
       :title_en,

@@ -25,8 +25,8 @@
             %td= document.publication_date
             %td= document.uploader.full_name
             %td
-              - if permitted_to? :edit, document
+              - if can? :edit, document
                 = link_to t('crud.edit'), edit_document_path(document)
             %td
-              - if permitted_to? :destroy, document
+              - if can? :destroy, document
                 = link_to t('crud.destroy'), document, confirm: t('documents.confirm_delete'), method: :delete

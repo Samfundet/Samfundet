@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-class AdmissionsAdmin::JobApplicationsController < ApplicationController
+class AdmissionsAdmin::JobApplicationsController < AdmissionsAdmin::BaseController
+  load_and_authorize_resource
   layout 'admissions'
-  filter_access_to :show, attribute_check: true
 
   def show
     @log_entries = LogEntry.where(

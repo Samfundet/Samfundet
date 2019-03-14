@@ -7,7 +7,7 @@
       = background_image_helper "banner-image", @article.image_or_default, size: :large
 
 - cache cache_key_for_blog_show(@article) do
-  - if permitted_to? :manage, :blogs
+  - if can? :manage, Blog
     .admin-choices
       %ul
         %li

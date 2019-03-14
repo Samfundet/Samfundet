@@ -1,13 +1,10 @@
 # frozen_string_literal: true
 
 class PagesController < ApplicationController
-  filter_access_to %i[index new create]
-  filter_access_to %i[show edit update destroy], attribute_check: true,
-                                                 load_method: :load_page
-  filter_access_to [:admin], require: :edit
-  filter_access_to [:graph, :history], require: :edit do
-    show_admin?
-  end
+  # We have to load the page with load_page beceause we're using custom
+  # loading functionality Page.find_by_param (deifned in the Page model class)
+  before_action :load_page, only: %i(show edit update destroy history)
+  load_and_authorize_resource
 
   has_control_panel_applet :admin_applet,
                            if: -> { show_admin? }
@@ -20,12 +17,10 @@ class PagesController < ApplicationController
 
   def show
     @menu = Page.menu
-    @page = Page.find_by_param(params[:id]) || not_found
     @show_admin = show_admin?
   end
 
   def history
-    @page = Page.find_by_param(params[:id]) || not_found
     @revisions = @page.revisions
     @show_admin = show_admin?
   end
@@ -45,9 +40,7 @@ class PagesController < ApplicationController
     end
   end
 
-  def edit
-    @page = Page.find_by_param(params[:id]) || not_found
-  end
+  def edit; end
 
   def preview
     @content = params[:content]
@@ -57,9 +50,7 @@ class PagesController < ApplicationController
   end
 
   def update
-    @page = Page.find_by_param(params[:id]) || not_found
-
-    unless permitted_to? :edit_non_content_fields, @page
+    if not can? :edit_non_content_fields, @page
       params[:page].slice!(:title_no, :title_en, :content_no, :content_en)
     end
 
@@ -73,11 +64,10 @@ class PagesController < ApplicationController
   end
 
   def admin
-    @pages = Page.with_permissions_to(:edit)
+    @pages = Page.accessible_by(current_ability, :edit)
   end
 
   def destroy
-    @page = Page.find_by_param(params[:id])
     @page.destroy # TODO: Should perhaps set a deleted flag instead of deleting
     flash[:success] = t('pages.destroy_success')
     redirect_to admin_pages_path
@@ -104,7 +94,7 @@ class PagesController < ApplicationController
   end
 
   def load_page
-    Page.find_by_param(params[:id])
+    @page = Page.find_by_param(params[:id])
   end
 
   def not_found
@@ -112,8 +102,8 @@ class PagesController < ApplicationController
   end
 
   def show_admin?
-    can_create = permitted_to?(:new, :pages)
-    can_edit   = permitted_to?(:edit, :pages) && Page.with_permissions_to(:edit).present?
+    can_create = can?(:new, Page)
+    can_edit   = can?(:edit, Page) && Page.accessible_by(current_ability, :edit).present?
     can_create || can_edit
   end
 

@@ -1,21 +1,49 @@
 # frozen_string_literal: true
 
-class AdmissionsAdmin::AdmissionsController < ApplicationController
+class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
+  load_and_authorize_resource
   layout 'admissions'
-  filter_access_to %i[show statistics]
+
+  before_action :find_by_id, only: %i[edit update]
+
+  has_control_panel_applet :admin_applet,
+                           if: -> { can? :show, Admission }
 
   def show
-    @admission = Admission.find(params[:id])
-    @my_groups = current_user.my_groups
+    @my_groups = Group.accessible_by(current_ability, :show)
     @job_application = JobApplication.new
 
-    if @my_groups.length == 1
-      redirect_to admissions_admin_admission_group_path(@admission, @my_groups.first)
+    redirect_to admissions_admin_admission_group_path(@admission, @my_groups.first) if @my_groups.length == 1
+  end
+
+  def new
+    @admission = Admission.new
+  end
+
+  def create
+    @admission = Admission.new(admission_params)
+    if @admission.save
+      flash[:success] = t('admissions.registration_success')
+      redirect_to admissions_path
+    else
+      flash[:error] = t('admissions.registration_error')
+      render :new
+    end
+  end
+
+  def edit; end
+
+  def update
+    if @admission.update_attributes(admission_params)
+      flash[:success] = 'Opptaket er oppdatert.'
+      redirect_to admissions_path
+    else
+      flash[:error] = t('common.fields_missing_error')
+      render action: 'edit'
     end
   end
 
   def statistics
-    @admission = Admission.find(params[:id])
     @campuses = Campus.order(:name)
     @campus_count = Campus.number_of_applicants_given_admission(@admission)
 
@@ -70,5 +98,19 @@ class AdmissionsAdmin::AdmissionsController < ApplicationController
       size: '800x350',
       bar_color: 'A03033'
     )
+  end
+
+  def admin_applet
+    @admissions = Admission.current
+  end
+
+  protected
+
+  def find_by_id
+    @admission = Admission.find(params[:id])
+  end
+
+  def admission_params
+    params.require(:admission).permit(:title, :shown_from, :shown_application_deadline, :actual_application_deadline, :user_priority_deadline, :admin_priority_deadline, :groups_with_separate_admission, :promo_video)
   end
 end
