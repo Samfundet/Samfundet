@@ -83,7 +83,7 @@ $(function() {
     openPurchaseModalBasedOnHash();
   });
 
-  $(document).on('focus', '.billig-buy input[type=radio]',
+  $(document).on('change', '.billig-buy input[type=radio]',
     function enforceRadioChoice() {
       // Clear selected and other input fields
       var textfield = $(this).siblings('input[type=text], input[type=email], input[type=radio]');
