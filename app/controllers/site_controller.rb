@@ -1,12 +1,16 @@
 # frozen_string_literal: true
 
 class SiteController < ApplicationController
+  skip_authorization_check
   before_action :check_active_notifications
+
   def index
     @todays_events = Event.today
     @upcoming_events = Event.front_page_events(11)
     @banner_event = @upcoming_events.shift
   end
+
+  private
 
   def check_active_notifications
     # from an dto are integers of date_type

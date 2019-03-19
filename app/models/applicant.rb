@@ -55,12 +55,6 @@ class Applicant < ApplicationRecord
     similar_jobs - jobs
   end
 
-  # Static because an applicant should be separated from the rest of the system
-  def role_symbols
-    # Think trice before changing this!
-    [:soker]
-  end
-
   def can_recover_password?
     password_recoveries.where('created_at > ?', Time.current - 1.day).count < 5
   end

@@ -4,6 +4,6 @@
 %ul
   %li
     = link_to t('images.admin_applet.view'), images_path
-  - if permitted_to? :new, :images
+  - if can? :new, Image
     %li
       = link_to t('images.admin_applet.new'), new_image_path

@@ -78,7 +78,8 @@ authorization do
       :sulten_tables,
       :sulten_reservations,
       :sulten_reservation_types,
-      :sulten_admin
+      :sulten_admin,
+      :sulten_closed_periods,
     ], to: :manage
   end
 
@@ -99,9 +100,7 @@ authorization do
       :applicants,
       :applicant_sessions,
       :areas,
-      :blogs,
       :documents,
-      :events,
       :everything_closed_periods,
       :front_page_locks,
       :groups,
@@ -117,6 +116,7 @@ authorization do
       :sulten_reservations,
       :sulten_reservation_types,
       :sulten_admin,
+      :sulten_closed_periods,
       :contact,
       :admissions_admin_campus
     ], to: :manage
@@ -178,13 +178,11 @@ authorization do
   end
 
   role :arrangementansvarlig do
-    has_permission_on :events, to: :manage
     has_permission_on :front_page_locks, to: :manage
     has_permission_on :images, to: [:read]
   end
 
   role :mg_layout do
-    has_permission_on :events, to: :manage
     has_permission_on :front_page_locks, to: :manage
     has_permission_on :images, to: :manage
   end
@@ -192,9 +190,7 @@ authorization do
   role :mg_redaksjon do
     has_permission_on [
       :areas,
-      :events,
       :pages,
-      :blogs,
       :everything_closed_periods,
       :front_page_locks
     ], to: :manage
@@ -206,10 +202,6 @@ authorization do
     role group_role do
       has_permission_on :documents, to: :manage
     end
-  end
-
-  role :styret do
-    has_permission_on :blogs, to: :manage
   end
 
   Group.all.each do |group|

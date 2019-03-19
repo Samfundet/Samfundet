@@ -2,11 +2,11 @@
 
 class ApplicantsController < ApplicationController
   layout 'admissions'
-  filter_access_to :steal_identity
-  filter_access_to %i[show edit update], attribute_check: true
+  load_and_authorize_resource only: %i[steal_identity show edit update search]
+  skip_authorization_check only: %i[new create forgot_password generate_forgot_password_email reset_password change_password]
 
   has_control_panel_applet :steal_identity_applet,
-                           if: -> { permitted_to? :steal_identity, :applicants }
+                           if: -> { can? :steal_identity, Applicant }
 
   def new
     @applicant = Applicant.new

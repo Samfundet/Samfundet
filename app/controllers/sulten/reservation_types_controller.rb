@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-class Sulten::ReservationTypesController < ApplicationController
+class Sulten::ReservationTypesController < Sulten::BaseController
+  load_and_authorize_resource
+
   def index
     @types = Sulten::ReservationType.all
   end

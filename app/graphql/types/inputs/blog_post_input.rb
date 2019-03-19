@@ -11,8 +11,13 @@ module Types
         description 'English title'
       end
 
+<<<<<<< HEAD
       argument :content_no, String, required: true
       argument :content_en, String, required: true
+=======
+      argument :content_no, Types::Text, required: true
+      argument :content_en, Types::Text, required: true
+>>>>>>> c1b3ee52b9282d57a3d2ca3ae104593a4232592b
 
       argument :lead_paragraph_no, String, required: true
       argument :lead_paragraph_en, String, required: true
@@ -23,6 +28,11 @@ module Types
       argument :publish_at, GraphQL::Types::ISO8601DateTime, required: true
 
       argument :image_id, Integer, required: false
+<<<<<<< HEAD
+=======
+
+      argument :author_id, Integer, required: true
+>>>>>>> c1b3ee52b9282d57a3d2ca3ae104593a4232592b
     end
   end
 end

@@ -44,7 +44,6 @@ class Page < ApplicationRecord
       previous_version = revisions.last.try(:version) || 0
       field_values = Hash[REVISION_FIELDS.map { |field| [field, send(field)] }]
 
-      author = Authorization.current_user
       author = nil unless author.instance_of? Member
 
       revisions.create!(field_values.merge(member: author, version: previous_version + 1))

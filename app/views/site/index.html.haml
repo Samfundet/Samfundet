@@ -1,11 +1,11 @@
--#= render 'admissions_frontpage_highjack'
+= render 'admissions_frontpage_highjack'
 - set_open_graph_params({ title: t('site.index.og_title'), description: t('site.index.og_description'), image: 'https://www.samfundet.no/upload/images/image_files/000/001/669/original/logo_samf.no.png?1538501206'})
 - set_twitter_params({ card: "summary_large_image", title: t('site.index.og_title'), description: t('site.index.og_description'), 'image:src' => 'https://www.samfundet.no/upload/images/image_files/000/001/669/original/logo_samf.no.png?1538501206'})
 
 = render 'banner_image', banner_event: @banner_event
 
 - content_for :banner_image do
-  - if permitted_to? :manage, :front_page_locks
+  - if can? :manage, FrontPageLock
     - if @banner_event.try(:front_page_lock)
       = link_to edit_front_page_lock_path(@banner_event.front_page_lock), id: 'banner-image-edit' do
         = t('site.index.change_banner_lock')

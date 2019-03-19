@@ -21,8 +21,8 @@
         %td
           = role.description
         %td
-          - if permitted_to?(:edit, :roles)
+          - if can?(:edit, Role)
             = link_to t('roles.edit_role'), edit_role_path(role)
-  - if permitted_to?(:create, :roles)
+  - if can?(:create, Role)
     %p= link_to t('roles.create_role'), new_role_path,
                 { class: "sexybutton sexysimple sexyred" }

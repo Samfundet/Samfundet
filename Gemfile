@@ -58,10 +58,8 @@ gem 'neat'
 # uglifier is a Ruby wrapper for UglifyJS, a JavaScript compressor.
 gem 'uglifier'
 
-# declarative_authorization provides a DSL for role-based access control.
-# See: config/authorization_rules.rb
-gem 'declarative_authorization', git: 'https://github.com/Samfundet/declarative_authorization.git', branch: 'rails5'
-# gem 'cancancan', '~> 1.15'
+# CanCanCan for role-based access control. See app/models/ability.rb
+gem 'cancancan', '~> 2.0'
 
 # formtastic is a Rails form builder plugin
 # with semantically rich and accessible markup.
@@ -91,10 +89,10 @@ gem 'redcarpet', '~>3.4'
 gem 'route_downcaser'
 
 # SamfundetDomain is a gem which provides the application with samfundets domain models.
-gem 'samfundet_domain', '~> 0.1.0', git: 'https://github.com/Samfundet/SamfundetDomain.git', branch: 'rails5'
+gem 'samfundet_domain', '~> 0.1.0', git: 'https://github.com/Samfundet/SamfundetDomain.git'
 
 # SamfundetAuth is a gem which provides the application with methods for authenticating against mdb2.
-gem 'samfundet_auth', '~> 0.1.2', git: 'https://github.com/Samfundet/SamfundetAuth.git', branch: 'rails5'
+gem 'samfundet_auth', '~> 0.2.0', git: 'https://github.com/Samfundet/SamfundetAuth.git'
 
 # will_paginate is an adaptive pagination plugin.
 # It makes pagination very simple.
@@ -140,7 +138,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 
   # Gem to detect ruby style guide violations
-  gem 'rubocop', '0.51.0', require: false
+  gem 'rubocop'
 
   # annotate adds schema information from the database, in the form of
   # Ruby comments, to model files so that we can see which columns

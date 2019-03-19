@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-class AdmissionsAdmin::GroupsController < ApplicationController
+class AdmissionsAdmin::GroupsController < AdmissionsAdmin::BaseController
+  load_and_authorize_resource
   layout 'admissions'
 
-  filter_access_to %i[show applications reject_calls], attribute_check: true
-
   def show
+    @group = Group.find(params[:id])
     @admission = Admission.find(params[:admission_id])
     @jobs = @group.jobs.where(admission: @admission)
     job_applications = @jobs.map(&:job_applications).flatten

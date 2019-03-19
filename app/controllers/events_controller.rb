@@ -1,14 +1,11 @@
 # frozen_string_literal: true
 
 class EventsController < ApplicationController
-  filter_access_to [:admin], require: :edit
-  filter_access_to %i[purchase_callback_failure
-                      purchase_callback_success], require: :buy
-  filter_access_to :rss, require: :read
-
+  load_and_authorize_resource
   has_control_panel_applet :admin_applet,
-                           if: -> { permitted_to? :edit, :events }
+                           if: -> { can? :edit, Event }
 
+  skip_before_action :verify_authenticity_token, only: %i[search archive_search]
   before_action :set_organizer_id, only: %i[create update]
 
   def set_organizer_id

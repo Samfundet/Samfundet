@@ -3,6 +3,8 @@
 require 'uri'
 
 class UserSessionsController < ApplicationController
+  skip_authorization_check
+
   def new
     @redirect_to = params[:redirect_to]
     @active_admissions_exist = Admission.active_admissions?

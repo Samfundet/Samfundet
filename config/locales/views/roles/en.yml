@@ -22,3 +22,4 @@ en:
     admin_applet_title: "Roles"
     admin_applet_description: "Manage roles"
     one_year_old_title: "Members who have had their role for more than one year"
+    active_membership: "Active membership"

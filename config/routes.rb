@@ -1,5 +1,11 @@
 # -*- encoding : utf-8 -*-
 Rails.application.routes.draw do
+  if Rails.env.development?
+    mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
+  end
+
+  match "/graphql", to: "graphql#execute", via: [:get, :post]
+  match "/graphql", to: "graphql#handle_options_request", via: [:options]
 
   if Rails.env.development?
     mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
@@ -84,7 +90,7 @@ Rails.application.routes.draw do
     ##  Routes for admissions ##
     ############################
 
-    resources :admissions, only: [:index, :new, :create, :edit, :update]
+    resources :admissions, only: :index
 
     # Everything closed period routes
     resources :everything_closed_periods, except: [:show]
@@ -138,7 +144,7 @@ Rails.application.routes.draw do
         get :deactivate, to: "campus#deactivate"
         get :activate, to: "campus#activate"
       end
-      resources :admissions, only: :show do
+      resources :admissions, only: [:show, :new, :create, :edit, :update] do
         get :statistics, on: :member
         resources :groups, only: :show do
           get :applications, on: :member
@@ -188,6 +194,8 @@ Rails.application.routes.draw do
       get "reservations/archive" => "reservations#archive"
       get "reservations/export" => "reservations#export"
       get "/available" => "reservations#available"
+
+      resources :closed_periods, except: [:show]
 
       resources :reservation_types
       resources :reservations do

@@ -10,4 +10,10 @@ FactoryGirl.define do
     password_confirmation 'password'
     association :campus, factory: :campus
   end
+
+  trait :with_job_applications do
+    after(:create) do |applicant|
+      create_list(:job_application, 1, applicant: applicant)
+    end
+  end
 end

@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
 class DocumentsController < ApplicationController
-  filter_access_to :admin, require: :manage
+  # Not necessary to load resource here as we have not conditional permissions
+  # and we're loading the resource manually in each action
+  authorize_resource
 
   has_control_panel_applet :admin_applet,
-                           if: -> { permitted_to? :manage, :documents }
+                           if: -> { can? :manage, Document }
 
   def admin
     @categories = DocumentCategory.includes(:documents)

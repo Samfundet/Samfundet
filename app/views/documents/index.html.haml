@@ -2,10 +2,10 @@
 
 .cover-photo
 
-- if permitted_to? :manage, :documents
+- if can? :manage, Document
   .admin-choices
     %ul
-      - if permitted_to? :new, :documents
+      - if can? :new, Document
         %li
           = link_to t("documents.new_document"), new_document_path
       %li

@@ -1,12 +1,10 @@
 # frozen_string_literal: true
 
 class GroupsController < ApplicationController
-  filter_access_to %i[new create]
-  filter_access_to %i[edit update], attribute_check: true
-  filter_access_to :admin, require: :edit
+  load_and_authorize_resource
 
   has_control_panel_applet :admin_applet,
-                           if: -> { permitted_to? :edit, :groups }
+                           if: -> { can? :edit, Group }
 
   def admin_applet; end
 

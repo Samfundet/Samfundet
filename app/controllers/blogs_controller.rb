@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
 class BlogsController < ApplicationController
-  filter_access_to [:admin], require: :edit
-
+  authorize_resource
   has_control_panel_applet :admin_applet,
-                           if: -> { permitted_to? :edit, :blogs }
+                           if: -> { can? :edit, Blog }
 
   def index
     @articles = Blog.published.order('publish_at desc')
