@@ -7,13 +7,6 @@ Rails.application.routes.draw do
   match "/graphql", to: "graphql#execute", via: [:get, :post]
   match "/graphql", to: "graphql#handle_options_request", via: [:options]
 
-  if Rails.env.development?
-    mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
-  end
-
-  match "/graphql", to: "graphql#execute", via: [:get, :post]
-  match "/graphql", to: "graphql#handle_options_request", via: [:options]
-
   localized do
     root to: "site#index"
     get 'rss(/:type)', to: 'events#rss', defaults: { format: 'rss' }
