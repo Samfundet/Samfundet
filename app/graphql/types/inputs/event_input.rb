@@ -9,13 +9,8 @@ module Types
       argument :title_en, String, required: true
       argument :short_description_no, String, required: true
       argument :short_description_en, String, required: true
-<<<<<<< HEAD
-      argument :long_description_no, String, required: true
-      argument :long_description_en, String, required: true
-=======
       argument :long_description_no, Types::Text, required: true
       argument :long_description_en, Types::Text, required: true
->>>>>>> c1b3ee52b9282d57a3d2ca3ae104593a4232592b
 
       argument :price_type, Types::PriceType, required: true
       argument :price_groups, [PriceGroupInput], required: false

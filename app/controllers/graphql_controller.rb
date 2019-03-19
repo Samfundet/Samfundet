@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class GraphqlController < ApplicationController
+  skip_authorization_check
   skip_before_action :verify_authenticity_token
   after_action :allow_cors
 
