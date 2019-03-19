@@ -1,6 +1,6 @@
 - set_title t("events.admin.title")
 
-- if permitted_to? :new, :events
+- if can? :new, Event
   %p.new
     = link_to t("events.action.new"), new_event_path
 

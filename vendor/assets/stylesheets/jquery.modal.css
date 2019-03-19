@@ -1,13 +1,9 @@
 .modal {
   display: none;
-  width: 400px;
+  min-width: 400px;
+  width: 40%;
   background: #fff;
   padding: 15px 30px;
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  -o-border-radius: 8px;
-  -ms-border-radius: 8px;
-  border-radius: 8px;
   -webkit-box-shadow: 0 0 10px #000;
   -moz-box-shadow: 0 0 10px #000;
   -o-box-shadow: 0 0 10px #000;
@@ -36,9 +32,4 @@
   margin-right: -32px;
   margin-top: -32px;
   background: url(spinner.gif) #111 no-repeat center center;
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  -o-border-radius: 8px;
-  -ms-border-radius: 8px;
-  border-radius: 8px;
 }

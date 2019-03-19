@@ -1,5 +1,5 @@
 .image-actions
-  - if permitted_to? :new, :images
+  - if can? :new, Image
     %p= link_to t('images.admin_applet.new'), new_image_path
 
 = render 'search_form'

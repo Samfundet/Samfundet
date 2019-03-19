@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 class ImagesController < ApplicationController
+  load_and_authorize_resource
+
   has_control_panel_applet :admin_applet,
-                           if: -> { permitted_to? :edit, :images }
+                           if: -> { can? :edit, Image }
 
   def index
     @images = Image.paginate(page: params[:page], per_page: 10)
@@ -26,16 +28,11 @@ class ImagesController < ApplicationController
     end
   end
 
-  def show
-    @image = Image.find(params[:id])
-  end
+  def show; end
 
-  def edit
-    @image = Image.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @image = Image.find(params[:id])
     if @image.update_attributes(image_params)
       flash[:success] = t('images.update_success')
       redirect_to @image

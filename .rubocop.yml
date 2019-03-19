@@ -17,8 +17,30 @@ Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
 
+# Sometimes we want to have if blocks and not just "method_call if condition"
+Style/GuardClause:
+  Enabled: false
+
 Lint/UnusedBlockArgument:
-    Enabled: false
+  Enabled: false
+
+# Imo if not is more readable than unless
+Style/NegatedIf:
+  Enabled: false
+
+# Allow "if not condition" instead of requiring "if !condition"
+Style/Not:
+  Enabled: false
 
 Style/ClassAndModuleChildren:
   EnforcedStyle: compact
+
+# Ability excludes
+Style/SymbolArray:
+  Exclude:
+    - 'app/abilities/*'
+    - 'spec/abilities/*'
+
+Style/RedundantSelf:
+  Exclude:
+    - 'app/abilities/*'

@@ -14,19 +14,19 @@
   %p
     = simple_format t('admissions.admission_promo')
     %br
-    - if permitted_to?(:manage, :admissions)
+    - if can? :manage, Admission
       [
-      = link_to edit_admission_path(admission) do
+      = link_to edit_admissions_admin_admission_path(admission) do
         = t('admissions.edit_admission')
       ]
 
-    - if permitted_to?(:show, :admissions_admin_admissions)
+    - if can? :show, :admissions_admin_admissions
       [
       = link_to admissions_admin_admission_path(admission) do
         = t('admissions.administer_my_group')
       ]
 
-    - if permitted_to?(:statistics, :admissions_admin_admissions)
+    - if can? :statistics, :admissions_admin_admissions
       [
       = link_to statistics_admissions_admin_admission_path(admission) do
         = t('admissions.statistics')

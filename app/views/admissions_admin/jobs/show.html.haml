@@ -9,7 +9,7 @@
 
 = render 'jobs_show', job_application_groupings: [@job.job_applications], show_job_titles: false
 
-- if permitted_to?(:hidden_create)
+- if can?(:hidden_create, JobApplication)
   = form_tag(hidden_create_admissions_admin_admission_group_job_job_applications_path(@admission, @group, @job)) do
     = label_tag(:email, "Email")
     = text_field_tag(:email)

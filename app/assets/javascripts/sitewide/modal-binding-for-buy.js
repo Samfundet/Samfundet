@@ -83,41 +83,26 @@ $(function() {
     openPurchaseModalBasedOnHash();
   });
 
-  $(document).on('keyup blur', '#cardnumber, #email',
-      function clearOtherInputOnType() {
+  $(document).on('change', '.billig-buy input[type=radio]',
+    function enforceRadioChoice() {
+      // Clear selected and other input fields
+      var textfield = $(this).siblings('input[type=text], input[type=email], input[type=radio]');
 
-    // Only clear other form if we've written something
-    if ($(this).val() == '') {
-      return;
+      var id = '#' + textfield.attr('id');
+      if (id === '#membercard') {
+        $('#email').prop('disabled', true);
+        $('#membercard').prop('disabled', false);
+        $('#email').val('');
+      } else {
+        $('#membercard').prop('disabled', true);
+        $('#email').prop('disabled', false);
+        $('#membercard').val('');
+      }
     }
-
-    var id = '#' + $(this).attr('id');
-    $(id)
-      .siblings('input:radio')
-      .prop('checked', true);
-
-    if (id === '#cardnumber') {
-      $('#email').val('');
-    } else {
-      $('#cardnumber').val('');
-    }
-  });
-
-  $(document).on('focus', '.billig-buy input[type=radio]',
-      function enforceRadioChoice() {
-
-    // Clear selected and other input fields
-    var textfield = $(this).siblings('input[type=text], input[type=email]');
-
-    var id = '#' + textfield.attr('id');
-    if (id === '#cardnumber') {
-      $('#email').val('');
-    } else {
-      $('#cardnumber').val('');
-    }
-  });
+  );
 
   function ticketFormLoaded() {
+    $('.ticket-table .totalAmount').html(0);
     // Keep track of ticket groups and their ticket limits
     var ticketGroupIds= getTicketGroupsIds();
     var ticketLimits = getTicketLimits(ticketGroupIds);
@@ -225,7 +210,11 @@ $(function() {
       });
 
       // Set the total cost and total tickets in the summary's html
-      $('.ticket-table .totalAmount').html(totalTickets + "/" + ticketLimits.reduce(function(a,b){return a+b},0));
+      var totalTicketsHtml = 0
+      if (totalTickets !== 0) {
+        totalTicketsHtml = totalTickets + "/" + ticketLimits.reduce(function(a, b){return a + b}, 0);
+      }
+      $('.ticket-table .totalAmount').html(totalTicketsHtml);
       $('.ticket-table .totalSum').html(totalCost);
     });
   }
@@ -309,10 +298,10 @@ $(function() {
     var input = $('#ccno');
     var info = getCardInformation(input.val());
     var email = $('#email').val();
-    var cardnumber = $('#cardnumber').val();
+    var membercard = $('#membercard').val();
     var cvc2 = $('#cvc2').val();
 
-    if (info && info['type'] !== 'error' && (($('#ticket_type_paper').prop('checked') && email != '') || ($('#ticket_type_card').prop('checked') && cardnumber != '')) && cvc2 != '') {
+    if (info && info['type'] !== 'error' && (($('#ticket_type_paper').prop('checked') && email != '') || ($('#ticket_type_card').prop('checked') && membercard != '')) && cvc2 != '') {
       $('.billig-buy .custom-form [name="commit"]').prop('disabled', false);
     }
     else {

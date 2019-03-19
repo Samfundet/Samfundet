@@ -1,13 +1,15 @@
 # frozen_string_literal: true
 
 class MembersRolesController < ApplicationController
+  # Do not load resource here. We are customly loading the resource so Can^3s condition on the resource (role) can be applied
+  authorize_resource
   before_action :before_create, only: :create
-  filter_access_to %i[create destroy], attribute_check: true
 
   def destroy
+    @members_role = MembersRole.find params[:id]
     @members_role.destroy
-    flash[:success] = 'Medlemmet er slettet.'
-    redirect_to role_path(@members_role.role)
+    flash[:success] = 'Medlemmet er slettet fra rollen.'
+    redirect_to :back
   end
 
   def create

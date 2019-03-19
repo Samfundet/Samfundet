@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 class AreasController < ApplicationController
-  filter_access_to :all
+  load_and_authorize_resource
 
   has_control_panel_applet :edit_opening_hours_applet,
-                           if: -> { permitted_to? :manage, :areas }
+                           if: -> { can? :manage, Area }
 
   def edit
     @areas = Area.all

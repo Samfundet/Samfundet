@@ -2,9 +2,9 @@
 
 require 'icalendar'
 
-class AdmissionsAdmin::InterviewsController < ApplicationController
+class AdmissionsAdmin::InterviewsController < AdmissionsAdmin::BaseController
+  load_and_authorize_resource
   layout 'admissions'
-  filter_access_to %i[show update], attribute_check: true
 
   def show
     interview = Interview.find(params[:id])

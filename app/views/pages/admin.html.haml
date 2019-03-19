@@ -1,6 +1,6 @@
 - set_title t("pages.admin")
 
-- if permitted_to? :new, :pages
+- if can? :new, Page
   %p.new
     = link_to t("pages.new_page"), new_page_path
     = link_to t("pages.graph"), {controller: :pages, action: :graph}
@@ -26,5 +26,5 @@
           %td= link_to l(page.revisions.last.created_at), history_page_path(page)
           %td= link_to t("crud.edit"), edit_page_path(page)
           %td
-            - if permitted_to? :destroy, page
+            - if can? :destroy, page
               = link_to t("crud.destroy"), page, confirm: t("pages.confirm_delete"), method: :delete
