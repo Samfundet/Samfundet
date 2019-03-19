@@ -96,7 +96,7 @@ class Sulten::Reservation < ApplicationRecord
     possible_times = []
     time_frame = default_open.to_i..default_close.to_i
     times_to_check = time_frame.step(30.minutes).to_a
-    Sulten::ReservationType.each do
+    (1..Sulten::ReservationType.count).each do |i|
       Sulten::Table.where('capacity >= ? and available = ?', people, true).order('capacity ASC').tables_with_i_reservation_types(i).find do |t|
         next unless t.reservation_types.pluck(:id).include? type_id
         time_frame.step(30.minutes) do |time_step|
