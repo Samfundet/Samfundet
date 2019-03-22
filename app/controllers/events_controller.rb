@@ -5,6 +5,7 @@ class EventsController < ApplicationController
   has_control_panel_applet :admin_applet,
                            if: -> { can? :edit, Event }
 
+  skip_before_action :verify_authenticity_token, only: %i[search archive_search]
   before_action :set_organizer_id, only: %i[create update]
 
   def set_organizer_id

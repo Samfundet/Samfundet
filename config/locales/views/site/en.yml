@@ -11,7 +11,6 @@ en:
       add_lock: "Add lock"
       change_lock: "Change lock"
       clear_lock: "Remove lock"
-
       few_tickets_left: "Few tickets left"
       max_ticket_limit_short: "Max %{total_ticket_limit}"
       max_ticket_limit_single_long: "Max %{total_ticket_limit} ticket"
