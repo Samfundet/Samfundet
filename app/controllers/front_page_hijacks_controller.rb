@@ -53,7 +53,7 @@ class FrontPageHijacksController < ApplicationController
   def admin_applet; end
 
   private
-  
+
   def front_page_hijack_params
     params.require(:front_page_hijack).permit(:message_no, :message_en, :shown_from, :shown_to)
   end
