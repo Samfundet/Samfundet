@@ -1,0 +1,26 @@
+- set_title t('front_page_hijack.index_title')
+
+%table
+  %caption
+    %h2= t('front_page_hijack.table_caption')
+  %tr
+    %th= t('front_page_hijack.message')
+    %th= t('front_page_hijack.from')
+    %th= t('front_page_hijack.to')
+    %th= t('crud.edit')
+    %th= t('crud.destroy')
+  - @current_and_future_front_page_hijacks.each do |fph|
+    %tr
+      %td
+        %p
+          :markdown
+            #{fph.message}
+      %td= fph.shown_from
+      %td= fph.shown_to
+      %td= link_to t('crud.edit'), edit_front_page_hijack_path(fph.id)
+      %td= link_to t('crud.destroy'), front_page_hijack_path(fph.id), confirm: t('crud.confirm'), method: :delete
+  %tfoot
+    %tr
+      %td{colspan: 5}= link_to t('front_page_hijack.add_new_link'), new_front_page_hijack_path
+
+=link_to t('common.back'), members_control_panel_path

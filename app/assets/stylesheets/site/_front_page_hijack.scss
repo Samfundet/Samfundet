@@ -1,0 +1,21 @@
+@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+@import "../stylesheets/sitewide/constants";
+
+.front_page_hijack {
+  width: 100%;
+  position: relative;
+  padding: 0.750em;
+  display: block;
+  text-align: center;
+  color: $samfundet-white;
+  text-transform: uppercase;
+  font-family: 'futura-pt', serif;
+
+  .fa.fa-info-circle {
+    font-size: 2em;
+  }
+
+  .front_page_message p {
+    font-weight: $font-weight-bold;
+  }
+}

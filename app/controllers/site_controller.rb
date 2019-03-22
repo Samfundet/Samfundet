@@ -2,12 +2,12 @@
 
 class SiteController < ApplicationController
   skip_authorization_check
-  before_action :check_active_notifications
 
   def index
     @todays_events = Event.today
     @upcoming_events = Event.front_page_events(11)
     @banner_event = @upcoming_events.shift
+    @front_page_hijack = FrontPageHijack.current_front_page_hijack
   end
 
 private
