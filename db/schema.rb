@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190212114924) do
+ActiveRecord::Schema.define(version: 20190312202521) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -270,6 +270,15 @@ ActiveRecord::Schema.define(version: 20190212114924) do
   create_table "feedback_surveys_questions", force: :cascade do |t|
     t.integer "question_id"
     t.integer "survey_id"
+  end
+
+  create_table "front_page_hijacks", force: :cascade do |t|
+    t.datetime "shown_from"
+    t.datetime "shown_to"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text     "message_no"
+    t.text     "message_en"
   end
 
   create_table "front_page_locks", force: :cascade do |t|

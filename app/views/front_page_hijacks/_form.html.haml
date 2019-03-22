@@ -1,0 +1,9 @@
+= semantic_form_for @front_page_hijack do |f|
+  = f.inputs do
+    = f.input :message_no, :input_html => { :rows => 5 }
+    = f.input :message_en, :input_html => { :rows => 5 }
+    = f.input :shown_from, as: :string,
+      input_html: { class: "datepicker", value: f.object.shown_from.to_date }
+    = f.input :shown_to, as: :string,
+      input_html: { class: "datepicker", value: f.object.shown_to.to_date }
+  = f.actions

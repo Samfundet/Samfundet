@@ -81,6 +81,9 @@ Rails.application.routes.draw do
     # Everything closed period routes
     resources :everything_closed_periods, except: [:show]
 
+    # Front page hijack routes
+    resources :front_page_hijacks, except: [:show]
+
     # Has to be above "resources :applicants" to get higher priority
     # because "/applicants/login" should match applicant_sessions#new
     # instead of applicants#show(login).

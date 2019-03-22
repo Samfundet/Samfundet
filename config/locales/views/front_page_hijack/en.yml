@@ -1,0 +1,20 @@
+en:
+  front_page_hijack:
+    index_title: "Front page hijack"
+    new_title: "New front page hijack"
+    edit_title: "Edit front page hijack"
+    destroy_success: "Successfully deleted front page hijack"
+    create_success: "Successfully created front page hijack"
+    create_error: "Could not create front page ijack"
+    update_success: "Successfully updated front page hijack"
+    update_error: "Could not update front page hijack"
+    time_in_valid_order: "The shown_to time must be later than the shown_from time"
+    table_caption: "All active or planned front page hijacks"
+    message: "Message"
+    from: "From"
+    to: "To"
+    add_new_link: "Create new front page hijack"
+    admin_applet:
+      title: "Front Page Hijack"
+      admin: "Manage front page hijacks"
+

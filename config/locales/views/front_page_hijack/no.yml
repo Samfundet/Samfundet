@@ -1,0 +1,19 @@
+'no':
+  front_page_hijack:
+    index_title: "Forsidekapring"
+    new_title: "Ny forsidekapring"
+    edit_title: "Rediger forsidekapring"
+    destroy_success: "Vellykket sletting av forsidekapring"
+    create_success: "Vellykket oppretting av forsidekapring"
+    create_error: "Mislykket oppretting av forsidekapring"
+    update_success: "Vellykket oppdatering av forsidekapring"
+    update_error: "Mislykket oppdatering av forsidekapring"
+    times_in_valid_order: "Vist_til tidspunktet skal være etter vist_fra tidpunktet"
+    table_caption: "Alle aktive og planlagte forsidekapringer"
+    message: "Melding"
+    from: "Fra"
+    to: "Til"
+    add_new_link: "Opprett ny forsidekapring"
+    admin_applet:
+      title: "Forsidekapring"
+      admin: "Administrer forsidekapring"

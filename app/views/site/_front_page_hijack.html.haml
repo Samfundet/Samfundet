@@ -1,0 +1,5 @@
+-if active_front_page_hijack?
+  .front_page_hijack
+    .fa.fa-info-circle
+    :markdown
+      #{FrontPageHijack.current_front_page_hijack.message}
