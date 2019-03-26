@@ -11,6 +11,5 @@ module Types
     field :file, String, null: false
 
     field :category, DocumentCategory, null: false
-
   end
 end

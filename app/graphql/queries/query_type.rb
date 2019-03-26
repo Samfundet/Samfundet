@@ -93,7 +93,7 @@ module Queries
       Document.find id
     end
 
-    field :documents, Types::Document.connection_type, null: false  do
+    field :documents, Types::Document.connection_type, null: false do
       description 'Get all documents.'
     end
 
