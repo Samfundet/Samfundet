@@ -62,7 +62,7 @@ module Queries
       Member.find(id)
     end
 
-    field :jobs, [Types::JobType], null: false do
+    field :jobs, Types::JobType.connection_type, null: false do
       description 'Get all jobs.'
     end
     def jobs
@@ -82,6 +82,23 @@ module Queries
     def page(id:)
       argument :id, ID, required: true
       Page.find(id).includes(:revisions)
+    end
+
+    field :document, Types::Document, null: false do
+      description 'Get a single document.'
+    end
+
+    def document(id:)
+      argument :id, ID, required: true
+      Document.find id
+    end
+
+    field :documents, Types::Document.connection_type, null: false  do
+      description 'Get all documents.'
+    end
+
+    def documents
+      Document.all
     end
   end
 end
