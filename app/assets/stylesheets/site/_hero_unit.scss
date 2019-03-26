@@ -31,7 +31,7 @@
   .hero-unit {
     background-color: #eee;
     position: relative;
-    margin: 0 0 20px 0;
+    margin: 20px 0 20px 0;
 
     @include span-columns(12);
     @include media($tablet-desktop) {

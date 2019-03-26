@@ -298,6 +298,16 @@ everything_closed_period = EverythingClosedPeriod.new(
 everything_closed_period.save!
 puts "Done creating everything closed periods"
 
+puts "Creating front page hijacks"
+front_page_hijack = FrontPageHijack.new(
+  message_no: "Du ser bra ut i dag :)",
+  message_en: "You look nice today :)",
+  shown_from: DateTime.current + 1.minute,
+  shown_to: DateTime.current + 1.weeks
+)
+front_page_hijack.save!
+puts "Done creating front page hijacks"
+
 # Create area for the whole house
 Area.create!(name: 'Hele huset')
 
