@@ -2,7 +2,7 @@
   = render 'front_page_lock', index: index
 
   .what
-    = "%s @ %s" % [t_event_type(event), event.area_title]
+    = "%s // %s" % [t_event_type(event), event.area_title]
     %br.rwd-break
     = I18n.l(event.start_time, format: :short)
 
