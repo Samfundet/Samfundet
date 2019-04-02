@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Sulten::ClosedPeriodsController < ApplicationController
+class Sulten::ClosedPeriodsController < Sulten::BaseController
   load_and_authorize_resource
 
   def index
