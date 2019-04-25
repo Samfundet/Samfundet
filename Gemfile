@@ -11,7 +11,7 @@ ruby '2.3.3'
 source 'https://rubygems.org'
 
 # Rails. Duh.
-gem 'rails', '5.0.6'
+gem 'rails', '~> 5.2.3'
 
 # Memcache client
 gem 'dalli'
@@ -86,10 +86,10 @@ gem 'redcarpet', '~>3.4'
 gem 'route_downcaser'
 
 # SamfundetDomain is a gem which provides the application with samfundets domain models.
-gem 'samfundet_domain', '~> 0.1.0', git: 'https://github.com/Samfundet/SamfundetDomain.git'
+gem 'samfundet_domain', '~> 0.1.0', path: '~/samf/SamfundetDomain/' # git: 'https://github.com/Samfundet/SamfundetDomain.git'
 
 # SamfundetAuth is a gem which provides the application with methods for authenticating against mdb2.
-gem 'samfundet_auth', '~> 0.2.0', git: 'https://github.com/Samfundet/SamfundetAuth.git'
+gem 'samfundet_auth', '~> 0.2.0', path: '~/samf/SamfundetAuth/' #git: 'https://github.com/Samfundet/SamfundetAuth.git'
 
 # will_paginate is an adaptive pagination plugin.
 # It makes pagination very simple.

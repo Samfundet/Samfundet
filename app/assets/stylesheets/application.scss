@@ -19,6 +19,7 @@
 
 // Sass files for sitewide constants and mixins
 @import "sitewide/_code";
+@import "sitewide/_mixins";
 @import "sitewide/_constants";
 @import "sitewide/_flexbox_mixins";
 @import "sitewide/_shared";
@@ -31,7 +32,6 @@
 @import "sitewide/_footer";
 @import "sitewide/_forms";
 @import "sitewide/_login_forms";
-@import "sitewide/_mixins";
 @import "sitewide/_modal";
 @import "sitewide/_flashes";
 @import "sitewide/_ribbon";
