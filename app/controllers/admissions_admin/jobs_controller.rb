@@ -33,7 +33,7 @@ class AdmissionsAdmin::JobsController < AdmissionsAdmin::BaseController
   def edit; end
 
   def update
-    if @job.update_attributes(jobs_param)
+    if @job.update_attributes(job_params)
       flash[:success] = t('jobs.job_updated')
       redirect_to admissions_admin_admission_group_path(@job.admission, @job.group)
     else

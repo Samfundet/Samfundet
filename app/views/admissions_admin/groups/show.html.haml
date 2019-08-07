@@ -43,12 +43,12 @@
           %td
             != link_to t('groups.job_listing'), job
           %td
-            - if can?(:edit, :admissions_admin_jobs, job)
+            - if can?(:edit, Job, job)
               != link_to t('groups.edit_job'), edit_admissions_admin_admission_group_job_path(@admission, @group, job)
-            - if can?(:delete, :admissions_admin_jobs, job) && !job.job_applications.exists?
+            - if can?(:destroy, Job, job) && !job.job_applications.exists?
               != link_to t('groups.delete_job'), admissions_admin_admission_group_job_path(@admission, @group, job), method: "delete", confirm: t('crud.confirm')
 
-  - if can?(:create, :admissions_admin_jobs)
+  - if can?(:create, Job)
     %p
       = link_to new_admissions_admin_admission_group_job_path(@admission, @group), { class: "sexybutton sexysimple sexyred" } do
         = T('jobs.create')
