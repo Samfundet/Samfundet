@@ -11,6 +11,6 @@
     != form.input :default_motivation_text_no, as: :text
     != form.input :default_motivation_text_en, as: :text
     != form.input :is_officer, as: :boolean
-    != form.input :tag_titles, as: :string, :placeholder => "Eksempel: foto, react, kaffe, skribent"
+    != form.input :tag_titles, as: :string, :placeholder => t('jobs.create_tags_example')
   = form.actions do
     != form.action :submit
