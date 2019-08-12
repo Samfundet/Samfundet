@@ -10,11 +10,9 @@ module PendingApplications
   end
 
   def save_pending_application(applicant)
-    without_access_control do
-      application = session[:pending_application]
-      application.applicant = applicant
-      application.save
-    end
+    application = session[:pending_application]
+    application.applicant = applicant
+    application.save
 
     session[:pending_application] = nil
   end
