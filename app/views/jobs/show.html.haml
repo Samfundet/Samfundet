@@ -28,7 +28,7 @@
             %li
               != link_to html_escape(job.title), job_path(job)
               != t('jobs.at')
-              != abbreviate_long_name(job.group, limit: 15)
+              != abbreviate_long_name(job.group, limit: 22)
 
     - unless @available_jobs_in_same_group.empty?
       .same-group-jobs
