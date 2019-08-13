@@ -11,7 +11,6 @@ class JobApplicationsController < ApplicationController
 
   def create
     @job_application = JobApplication.new(job_application_params)
-
     if @job_application.job&.admission&.appliable?
       if logged_in? && can?(:create, JobApplication)
         if current_user.class == Applicant
@@ -90,7 +89,7 @@ class JobApplicationsController < ApplicationController
     @job_application.skip_applicant_validation!
 
     if @job_application.valid?
-      session[:pending_application] = @job_application
+      cookies[:pending_application] = @job_application.to_json
       flash[:notice] = t('job_applications.login_to_complete')
 
       @applicant = Applicant.new # For the registration form
