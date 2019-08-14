@@ -10,9 +10,6 @@ module PendingApplications
   end
 
   def save_pending_application(applicant)
-    application = session[:pending_application]
-    application.applicant = applicant
-    application.save
 
     session[:pending_application] = nil
   end
