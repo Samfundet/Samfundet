@@ -17,10 +17,10 @@ class JobApplicationsController < ApplicationController
           handle_create_application_when_logged_in
         else
           flash[:notice] = t('applicants.will_be_logged_out_as_member')
-          handle_create_application_when_not_logged_in
+  
         end
       else
-        handle_create_application_when_not_logged_in
+        puts ""
       end
     else
       flash[:error] = t('job_applications.cannot_apply_after_deadline')
