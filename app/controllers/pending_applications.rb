@@ -6,13 +6,11 @@ module PendingApplications
   end
 
   def pending_application?
-    cookies[:pending_application]
+    session[:pending_application]
   end
 
   def save_pending_application(applicant)
-    application = JobApplication.new
-    application_json = cookies[:pending_application]
-    application.from_json(application_json)
+    application = session[:pending_application]
     application.applicant = applicant
     application.save
 

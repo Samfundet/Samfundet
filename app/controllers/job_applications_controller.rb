@@ -89,7 +89,7 @@ class JobApplicationsController < ApplicationController
     @job_application.skip_applicant_validation!
 
     if @job_application.valid?
-      cookies[:pending_application] = @job_application.to_json
+      session[:pending_application] = @job_application
       flash[:notice] = t('job_applications.login_to_complete')
 
       @applicant = Applicant.new # For the registration form
