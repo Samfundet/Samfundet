@@ -10,26 +10,7 @@ class JobApplicationsController < ApplicationController
   end
 
   def create
-    @job_application = JobApplication.new(job_application_params)
-    if @job_application.job&.admission&.appliable?
-      if logged_in? && can?(:create, JobApplication)
-        if current_user.class == Applicant
-          handle_create_application_when_logged_in
-        else
-          flash[:notice] = t('applicants.will_be_logged_out_as_member')
-  
-        end
-      else
-        puts ""
-      end
-    else
-      flash[:error] = t('job_applications.cannot_apply_after_deadline')
-      if @job_application.job
-        redirect_to @job_application.job
-      else
-        redirect_to admissions_path
-      end
-    end
+    puts "hei"
   end
 
   def update
