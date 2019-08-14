@@ -10,7 +10,26 @@ class JobApplicationsController < ApplicationController
   end
 
   def create
-    puts "hei"
+    @job_application = JobApplication.new(job_application_params)
+    if @job_application.job&.admission&.appliable?
+      if logged_in? && can?(:create, JobApplication)
+        if current_user.class == Applicant
+          handle_create_application_when_logged_in
+        else
+          flash[:notice] = t('applicants.will_be_logged_out_as_member')
+          handle_create_application_when_not_logged_in
+        end
+      else
+        handle_create_application_when_not_logged_in
+      end
+    else
+      flash[:error] = t('job_applications.cannot_apply_after_deadline')
+      if @job_application.job
+        redirect_to @job_application.job
+      else
+        redirect_to admissions_path
+      end
+    end
   end
 
   def update
@@ -70,7 +89,6 @@ class JobApplicationsController < ApplicationController
     @job_application.skip_applicant_validation!
 
     if @job_application.valid?
-      cookies[:signed_in] = 1
       session[:pending_application] = @job_application
       flash[:notice] = t('job_applications.login_to_complete')
 

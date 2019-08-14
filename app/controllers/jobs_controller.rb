@@ -5,6 +5,7 @@ class JobsController < ApplicationController
   layout 'admissions'
 
   def show
+    cookies[:signed_in] = 1
     @job = Job.find(params[:id])
     @available_jobs_in_same_group = @job.available_jobs_in_same_group
     @similar_available_jobs = @job.similar_available_jobs
