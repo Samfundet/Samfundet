@@ -6,6 +6,7 @@ class AdmissionsController < ApplicationController
   layout 'admissions'
 
   def index
+    cookies[:signed_in] = 1
     @open_admissions = Admission.appliable.includes(
       group_types: { groups: :jobs }
     )
