@@ -218,7 +218,7 @@ GEM
       addressable (~> 2.3)
     letter_opener (1.4.1)
       launchy (~> 2.2)
-    libv8 (3.16.14.15)
+    libv8 (3.16.14.19)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -383,8 +383,8 @@ GEM
       sprockets (>= 3.0.0)
     table_print (1.5.6)
     temple (0.8.0)
-    therubyracer (0.12.2)
-      libv8 (~> 3.16.14.0)
+    therubyracer (0.12.3)
+      libv8 (~> 3.16.14.15)
       ref
     thor (0.20.3)
     thread_safe (0.3.6)
@@ -476,14 +476,14 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   table_print
-  therubyracer
+  therubyracer (= 0.12.3)
   uglifier
   web-console
   webrat
   will_paginate
 
 RUBY VERSION
-   ruby 2.3.3p222
+   ruby 2.5.5p157
 
 BUNDLED WITH
-   1.16.4
+   1.17.3
