@@ -35,8 +35,29 @@ end
 describe Job, '#tag_titles=' do
   it 'should create new tags from string input' do
     job = create(:job)
-    job.tag_titles = 'one two three four'
+    job.tag_titles = 'one, two, three, four'
 
     expect(job.tags.pluck(:title)).to match_array(%w[one two three four])
+  end
+
+  it 'should filter out empty tags' do
+    job = create(:job)
+    job.tag_titles = 'one, two, three, , four'
+
+    expect(job.tags.pluck(:title)).to match_array(%w[one two three four])
+  end
+
+  it 'should support multi-word tags' do
+    job = create(:job)
+    job.tag_titles = 'one, two and three, four'
+
+    expect(job.tags.pluck(:title)).to match_array(['one', 'two and three', 'four'])
+  end
+
+  it 'should handle all edge cases' do
+    job = create(:job)
+    job.tag_titles = 'one, two and three, , four'
+
+    expect(job.tags.pluck(:title)).to match_array(['one', 'two and three', 'four'])
   end
 end
