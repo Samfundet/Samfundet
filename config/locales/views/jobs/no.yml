@@ -30,3 +30,5 @@
     belongs_to_closed_admission: "Dette vervet tilhører et lukket opptak, det vil si et opptak som enten er gammelt eller som ikke er åpnet ennå."
     similar_jobs_not_applied_to: "Lignende stillinger du ikke har søkt på"
     gdpr: "All personinformasjon til søkere blir anonymisert 3 uker etter opptaksfristen."
+    create_tags_example: "Eksempel: foto, react, kaffe, skribent"
+    

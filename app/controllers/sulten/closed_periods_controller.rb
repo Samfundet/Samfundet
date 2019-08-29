@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class Sulten::ClosedPeriodsController < ApplicationController
-  load_and_authorize_resource
+class Sulten::ClosedPeriodsController < Sulten::BaseController
+  load_and_authorize_resource param_method: :sulten_closed_period_params
 
   def index
     @current_and_future_closed_times = Sulten::ClosedPeriod.current_and_future_closed_times

@@ -26,7 +26,7 @@ rvm install 2.3.3 && rvm use 2.3.3 --default
     2. Install Postgres dependency `sudo apt-get install libpq-dev`
   - Option 2
     1. Install Postgres:```sudo apt-get install postgresql postgresql-contrib libpq-dev```
-    2. `echo -e "CREATE USER samf WITH PASSWORD '$SAMFDB_DEV_PASS';\nALTER USER samf CREATEDB;" | sudo -u postgres psql`
+    2. `echo -e "CREATE USER samfundet WITH PASSWORD '$SAMFDB_DEV_PASS';\nALTER USER samfundet CREATEDB;" | sudo -u postgres psql`
 5. Run `bundle install` to install the required Ruby gems
 6. Set up the database by running (_each line is a separate command!_):
 ```
