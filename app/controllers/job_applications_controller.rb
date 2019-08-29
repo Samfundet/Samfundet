@@ -119,6 +119,7 @@ class JobApplicationsController < ApplicationController
   def job_application_params
     params.require(:job_application).permit(:job_id, :motivation)
   end
+
   def update_job_application_params
     params.permit(:job_id, :motiation)
   end
