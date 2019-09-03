@@ -45,7 +45,11 @@ class Job < ApplicationRecord
   # Virtual tags attribute
   def tag_titles=(titles)
     old_tags = tags
-    new_tags = titles.split(/[,\s]+/).map { |title| JobTag.find_or_create_by(title: title.downcase) }
+    new_tags = titles
+               .split(',')
+               .map(&:strip)
+               .reject(&:empty?)
+               .map { |title| JobTag.find_or_create_by(title: title.downcase) }
     tags.delete(tags - old_tags)
     self.tags = new_tags
   end
