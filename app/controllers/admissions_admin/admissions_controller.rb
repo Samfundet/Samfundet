@@ -47,6 +47,37 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
     @campuses = Campus.order(:name)
     @campus_count = Campus.number_of_applicants_given_admission(@admission)
 
+    applicants_who_accepted_role = 0
+    known_ids = []
+    @admission.groups.map do |group|
+      # puts 'Group'
+      # puts group
+      group.jobs.where(admission_id: @admission.id).map do |job|
+        # puts 'Job'
+        # puts job
+        job.applicants.map do |app|
+          # puts 'applicant'
+          # puts app
+          # app.job_applications.map do |application|
+          #   puts application
+          # end
+          if not known_ids.include? app.id
+            LogEntry.where(admission_id: @admission.id, applicant_id: app.id).all.map do |lastLog|
+              if lastLog.log == "Ringt og tilbudt verv, takket ja"
+                applicants_who_accepted_role += 1
+                puts 'yay for ' + job.title_no + ',' + app.firstname
+                known_ids.push(app.id)
+                break
+              end
+            end
+          end
+        end
+      end
+    end
+
+    puts 'applicants who accepted: ' + applicants_who_accepted_role.to_s
+
+
     # applications_count = @admission.job_applications.count
     applications_per_group = @admission.groups.map do |group|
       group.jobs.where(admission_id: @admission.id).map do |job|
