@@ -36,6 +36,59 @@ rake db:setup
 ```
 7. Start the Rails server by running `rails server`.
 
+### Mac
+
+1. Install [RVM](https://rvm.io/) and [Homebrew](https://brew.sh/) with 
+```
+\curl -sSL https://get.rvm.io | bash -s stable --rails &&
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
+
+2. Set default Rails version to v.2.3.3
+```
+rvm install 2.3.3 && rvm use 2.3.3 --default
+```
+
+3. Choose a database password by running
+```
+echo 'export SAMFDB_DEV_PASS="samfundet"' >> ~/.bashrc && source ~/.bashrc
+```
+
+4. Install [Docker](https://docs.docker.com/docker-for-mac/install/#install-and-run-docker-desktop-for-mac)
+```
+brew cask install docker
+```
+
+5. Start the docker program (you can do that by using Spotlight search) and run
+```
+docker-compose up -d
+```
+
+6. Install postgres dependency
+```
+brew install postgresql
+```
+
+7. Install correct version of libv8 
+```
+gem install libv8 -v 3.16.14.15 -- --with-system-v8
+```
+
+8. Install the required Ruby Gems with 
+```
+bundle install
+```
+
+9. Set up the database by running (_each line is a separate command!_):
+```
+make copy-config-files
+brew install imagemagick
+bin/rails db:environment:set RAILS_ENV=development && bundle exec rake db:setup
+```
+
+10. Start the Rails server by running `rails server`
+
+
 #### Add git hooks
 
 You can optionally add checks before commits etc. through git-hooks. To apply them run
