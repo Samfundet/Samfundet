@@ -56,18 +56,9 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
     @admission.groups.map do |group|
       @uniq_applicants_in_group[group] = []
       @uniq_applicants_in_group_accepting_role[group] = 0
-      # puts 'Group'
-      # puts group
       @sum_job_applications += group.job_applications.count
       group.jobs.where(admission_id: @admission.id).map do |job|
-        # puts 'Job'
-        # puts job
         job.applicants.map do |app|
-          # puts 'applicant'
-          # puts app
-          # app.job_applications.map do |application|
-          #   puts application
-          # end
           # In each unique group
           if not @uniq_applicants_in_group[group].include? app.id
             @uniq_applicants_in_group[group].push(app.id)
@@ -83,7 +74,6 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
             LogEntry.where(admission_id: @admission.id, applicant_id: app.id).all.map do |lastLog|
               if lastLog.log == "Ringt og tilbudt verv, takket ja"
                 @applicants_who_accepted_role += 1
-                puts 'yay for ' + job.title_no + ',' + app.firstname
                 break
               end
             end
