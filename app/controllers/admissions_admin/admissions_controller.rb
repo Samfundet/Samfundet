@@ -47,11 +47,18 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
     @campuses = Campus.order(:name)
     @campus_count = Campus.number_of_applicants_given_admission(@admission)
 
-    applicants_who_accepted_role = 0
-    known_ids = []
+    # This is currently a holy mess, will be refactored.
+    @uniq_applicants_in_group = {}
+    @uniq_applicants_in_group_accepting_role = {}
+    @applicants_who_accepted_role = 0
+    @known_ids = []
+    @sum_job_applications = 0
     @admission.groups.map do |group|
+      @uniq_applicants_in_group[group] = []
+      @uniq_applicants_in_group_accepting_role[group] = 0
       # puts 'Group'
       # puts group
+      @sum_job_applications += group.job_applications.count
       group.jobs.where(admission_id: @admission.id).map do |job|
         # puts 'Job'
         # puts job
@@ -61,12 +68,22 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
           # app.job_applications.map do |application|
           #   puts application
           # end
-          if not known_ids.include? app.id
+          # In each unique group
+          if not @uniq_applicants_in_group[group].include? app.id
+            @uniq_applicants_in_group[group].push(app.id)
+            LogEntry.where(admission_id: @admission.id, applicant_id: app.id).all.map do |lastLog|
+              if lastLog.log == "Ringt og tilbudt verv, takket ja" and lastLog.group.name == group.name
+                @uniq_applicants_in_group_accepting_role[group] += 1
+              end
+            end
+          end
+          # Total for entire admission
+          if not @known_ids.include? app.id
+            @known_ids.push(app.id)
             LogEntry.where(admission_id: @admission.id, applicant_id: app.id).all.map do |lastLog|
               if lastLog.log == "Ringt og tilbudt verv, takket ja"
-                applicants_who_accepted_role += 1
+                @applicants_who_accepted_role += 1
                 puts 'yay for ' + job.title_no + ',' + app.firstname
-                known_ids.push(app.id)
                 break
               end
             end
@@ -75,7 +92,7 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
       end
     end
 
-    puts 'applicants who accepted: ' + applicants_who_accepted_role.to_s
+    puts 'applicants who accepted: ' + @applicants_who_accepted_role.to_s
 
 
     # applications_count = @admission.job_applications.count

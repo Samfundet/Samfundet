@@ -17,3 +17,27 @@
     %figure
       %figcaption= t('admissions_admin.applications_by_day')
       %img{ src: @applications_per_day_chart }
+
+  %p
+    = "#{@admission.title} hadde #{@known_ids.count} unike søkere, hvorav #{@applicants_who_accepted_role} ble tilbudt"
+    = " et verv og tatt opp"
+
+  %h3= "Unike søkere innad gjenger og hvor mange som ble tatt opp"
+  %h4
+    %table{:border => 1}
+      %tbody
+        %tr
+          %td
+            %strong
+              Gjeng
+          %td
+            %strong
+              Unike søkere
+          %td
+            %strong
+              Unike søkere som ble tatt opp
+        - @uniq_applicants_in_group.each do |key, value|
+          %tr
+            %td= link_to key.name, admissions_admin_admission_group_path(@admission, key)
+            %td= value.count
+            %td= @uniq_applicants_in_group_accepting_role[key]
