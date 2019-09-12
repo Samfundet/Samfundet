@@ -33,3 +33,4 @@
         click: "Trykk"
         to_url: "her"
         register: "for å registrere kortet ditt"
+        building_period: "Grunnet byggeperiode er samfundet stengt fra x til x."

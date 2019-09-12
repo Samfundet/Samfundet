@@ -31,5 +31,8 @@ class SiteController < ApplicationController
       view_context.link_to(t('site.notifications.membership.to_url'), 'https://medlem.samfundet.no') + ' ' +
       t('site.notifications.membership.register')
     flash_in_date_range.call(8, 9, '%m', register_membership)
+
+    building_period = t('site.notifications.membership.building_period')
+    flash_in_date_range.call(8, 9, '%m', building_period)
   end
 end

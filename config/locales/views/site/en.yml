@@ -32,3 +32,4 @@ en:
         click: "Click"
         to_url: "here"
         register: "to register your new card"
+        building_period: "Grunnet byggeperiode er samfundet stengt fra x til x."
