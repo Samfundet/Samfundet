@@ -60,21 +60,39 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
       group.jobs.where(admission_id: @admission.id).map do |job|
         job.applicants.map do |app|
           # In each unique group
-          if not @uniq_applicants_in_group[group].include? app.id
+          unless @uniq_applicants_in_group[group].include? app.id
             @uniq_applicants_in_group[group].push(app.id)
-            LogEntry.where(admission_id: @admission.id, applicant_id: app.id).all.map do |lastLog|
-              if lastLog.log == "Ringt og tilbudt verv, takket ja" and lastLog.group.name == group.name
+            log_entries = LogEntry.where(admission_id: @admission.id, applicant_id: app.id)
+
+            unless log_entries.empty?
+              last_log = log_entries.last
+
+              acceptance_strings = [
+                  "Ringt og tilbudt verv, takket ja",
+                  'Called and offered position, the applicant accepted',
+              ]
+
+              if acceptance_strings.include?(last_log.log) and last_log.group.name == group.name
                 @uniq_applicants_in_group_accepting_role[group] += 1
               end
             end
           end
           # Total for entire admission
-          if not @known_ids.include? app.id
+          unless @known_ids.include? app.id
             @known_ids.push(app.id)
-            LogEntry.where(admission_id: @admission.id, applicant_id: app.id).all.map do |lastLog|
-              if lastLog.log == "Ringt og tilbudt verv, takket ja"
+
+            log_entries = LogEntry.where(admission_id: @admission.id, applicant_id: app.id)
+
+            unless log_entries.empty?
+              last_log = log_entries.last
+
+              acceptance_strings = [
+                  "Ringt og tilbudt verv, takket ja",
+                  'Called and offered position, the applicant accepted',
+              ]
+
+              if acceptance_strings.include?(last_log.log)
                 @applicants_who_accepted_role += 1
-                break
               end
             end
           end
