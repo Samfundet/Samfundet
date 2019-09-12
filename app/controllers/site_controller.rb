@@ -32,7 +32,7 @@ class SiteController < ApplicationController
       t('site.notifications.membership.register')
     flash_in_date_range.call(8, 9, '%m', register_membership)
 
-    building_period = t('site.notifications.membership.building_period')
+    building_period = t('site.notifications.membership.building_period1') + ' ' + view_context.link_to(t('site.notifications.membership.uka'), 'https://www.uka.no/') + ' ' + t('site.notifications.membership.building_period2')
     flash_in_date_range.call(8, 9, '%m', building_period)
   end
 end

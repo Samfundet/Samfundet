@@ -33,4 +33,6 @@
         click: "Trykk"
         to_url: "her"
         register: "for å registrere kortet ditt"
-        building_period: "Grunnet byggeperiode er samfundet stengt fra x til x."
+        building_period1: "Grunnet byggeperiode før"
+        building_period2: "er Studentersamfundet stengt mellom 15 september til 2 oktober"
+        uka: "UKA"
