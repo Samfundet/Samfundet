@@ -1,0 +1,128 @@
+// Place all the styles related to the infoscreen controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#content {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+}
+#infoscreen {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+
+    background-image: asset-url("concert1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#samfundet-logo {
+    position: absolute;
+    left: 3em;
+    top: 3em;
+
+    display: block;
+
+    width: 300px;
+    height: 50px;
+    float: left;
+
+    background-image: asset-url("header/Samfundetlogo_hvit.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+#event-container {
+
+    height: 100%;
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+
+    #event-info-container {
+        width: 100%;
+        margin: 8em;
+    }
+    #event-title {
+        font-size: 4em;
+        color: white;
+        font-weight: bold;
+    }
+    #event-description {
+        font-size: 1.5em;
+        color: #ddd;
+        padding-bottom: .5em;
+    }
+    #event-date {
+        font-size: 1.5em;
+        color: white;
+        display: inline;
+        background-color: rgba(0,0,0,.5);
+        border-radius: .25em;
+        padding-left: .25em;
+        padding-right: .25em;
+        margin-right: .5em;
+    }
+    #event-place {
+        font-size: 1.5em;
+        color: white;
+        display: inline;
+        background-color: rgba(0,0,0,.5);
+        border-radius: .25em;
+        padding-left: .25em;
+        padding-right: .25em;
+    }
+}
+
+#calendar-section {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0,0,0,0.5);
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-top: 6em;
+
+    #calendar-title {
+        font-size: 3em;
+        color: white;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 1em;
+    }
+
+    #calendar-event {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        font-size: 1.5em;
+        vertical-align: top;
+        margin-bottom: 1em;
+
+
+        #calendar-event-time {
+            color: #aaa;
+            align-self: flex-start;
+            margin-right: 1em;
+            width: 15%;
+        }
+
+        #calendar-event-title {
+            color: white;
+            padding-right: 1em;
+            align-self: flex-start;
+            width: 60%;
+        }
+
+        #calendar-event-place {
+            color: gray;
+            width: 3em;
+            align-self: flex-start;
+            width: 25%;
+            text-align: right;
+        }
+
+    }
+}

@@ -1,0 +1,28 @@
+!!!5
+%html{ lang: I18n.locale, xmlns:"http://www.w3.org/1999/xhtml", "xmlns:og" => "http://ogp.me/ns#", "xmlns:fb" => "https://www.facebook.com/2008/fbml"}
+  %head
+    %meta{ charset: "UTF-8" }
+    %meta{ name: "viewport", content: "width=device-width, initial-scale=1.0" }
+    != yield :head
+    %title
+      - unless (yield :title).blank?
+        #{yield(:title)} - 
+      Samfundet.no
+    %link{ rel: "stylesheet", href: "//fonts.googleapis.com/css?family=Lato" }
+    %link{ rel: "icon", href: asset_path("favicon.ico") }
+    = stylesheet_link_tag :application
+    = render 'layouts/analytics'
+    = javascript_include_tag :application, defer: true
+    = typekit_include_tag "cwd6rno"
+    = csrf_meta_tag
+    %meta{ property:"og:url", content: request.base_url + request.original_fullpath}
+    %meta{ property:"og:type", content:"article"}
+    = yield :open_graph
+    %meta{ name:"twitter:site", content:"@Samfundet"}
+    %meta{ name:"twitter:creator", content:"@Samfundet"}
+    = yield :twitter
+
+  %body{ class: ('dev-filter' unless Rails.env.production?) }
+    #content{ class: "#{params[:controller]} #{controller.action_name}" }
+      != display_flash
+      = yield
