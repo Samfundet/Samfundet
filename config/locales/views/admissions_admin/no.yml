@@ -14,3 +14,10 @@
     reject_calls_title: 'Dette er en oversikt over alle søkere som %{group_name} må ringe (for øyeblikket). Legg merke til at denne oversikten kun viser søkere hvor alle søknader er merket "Vil ikke ha" og at den vil oppdateres kontinuerlig.'
     show_reserved_applicants: "Vis reserverte søkere"
     show_not_set_applicants: "Vis søkere som ikke har blitt flagget"
+    unique_applicants_title: "%{admission} har %{unique_applicants} unike søkere, og %{admitted_applicants} har blitt tatt opp."
+    unique_applicants_groups: "Unike søkere innad gjenger og hvor mange som ble tatt opp"
+    unique_applicants_group_table_header: "Gjeng"
+    unique_applicants_unique_applicants_table_header: "Unike søkere"
+    unique_applicants_unique_applicants_admitted_table_header: "Unike søkere tatt opp"
+
+
