@@ -130,7 +130,7 @@ class Ability
 
   def mg_nestleder
     # Needs manage permissions here to see statistics
-    can :manage, Admission
+    can :manage, [Admission, JobApplication]
   end
 
   def gjengsjef; end
