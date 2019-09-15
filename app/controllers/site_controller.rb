@@ -25,14 +25,11 @@ class SiteController < ApplicationController
     }
 
     # add all notifications below, call the flashes after each
-    # register_membership =
-    #  t('site.notifications.membership.welcome') + ' ' +
-    #  t('site.notifications.membership.click') + ' ' +
-    #  view_context.link_to(t('site.notifications.membership.to_url'), 'https://medlem.samfundet.no') + ' ' +
-    #  t('site.notifications.membership.register')
-    # flash_in_date_range.call(8, 9, '%m', register_membership)
-
-    building_period = t('site.notifications.membership.building_period1') + ' ' + view_context.link_to(t('site.notifications.membership.uka'), 'https://www.uka.no/') + ' ' + t('site.notifications.membership.building_period2')
-    flash_in_date_range.call(8, 9, '%m', building_period)
+    register_membership =
+      t('site.notifications.membership.welcome') + ' ' +
+      t('site.notifications.membership.click') + ' ' +
+      view_context.link_to(t('site.notifications.membership.to_url'), 'https://medlem.samfundet.no') + ' ' +
+      t('site.notifications.membership.register')
+    flash_in_date_range.call(8, 9, '%m', register_membership)
   end
 end
