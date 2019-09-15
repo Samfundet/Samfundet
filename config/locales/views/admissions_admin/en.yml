@@ -14,3 +14,8 @@ en:
     reject_calls_title: "This is a list of all the applicants that %{group_name} has to call. This page will be continuously updated."
     show_reserved_applicants: "Show reserved applicants"
     show_not_set_applicants: "Show applicants that have not yet been flagged"
+    unique_applicants_title: "%{admission} has %{unique_applicants} unique applicants, and %{admitted_applicants} has been admitted."
+    unique_applicants_groups: "Unique applicants for each group and how many that has been admitted"
+    unique_applicants_group_table_header: "Group"
+    unique_applicants_unique_applicants_table_header: "Unique applicants"
+    unique_applicants_unique_applicants_admitted_table_header: "Unique applicants admitted"
