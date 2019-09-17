@@ -21,6 +21,8 @@ en:
       internal_comment: "Internal comment"
       export_to_csv: "Export all reservations to CSV"
       form:
+        uka_title: 'Lyche reservation system during UKA'
+        uka: 'Bookings must be done before 14:00 the same day as the reservation. For any inquiries, contact us at ' # email link
         title: "lyche reservation"
         title_admin: "lyche reservation (ADMIN)"
         intro1: "Fill in and submit the form below to make a reservation at Lyche"

@@ -21,6 +21,8 @@
       internal_comment: "Intern kommentar"
       export_to_csv: "Eksporter alle reservasjoner til CSV"
       form:
+        uka_title: 'Lyche reservasjonssystem under UKA'
+        uka: 'Bordbestilling må gjøres innen 14:00 samme dag. For hendvendelser, kontakt oss på ' # email link
         title: "lyche reservasjon"
         title_admin: "lyche reservasjon (ADMIN)"
         intro1: "For å lage en reservasjon hos Lyche, vennligst fyll ut og send inn skjemaet under."
