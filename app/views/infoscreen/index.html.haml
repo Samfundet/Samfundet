@@ -8,20 +8,18 @@
         Beatae quod nihil occaecati officiis. Quo voluptatibus nemo non recusandae. At minus dignissimos est officiis possimus.
       #event-date 12 september
       #event-place 12:00 - Storsalen
-  #calendar-section
-    #calendar-title Hva skjer?
+  .calendar-section
+    .calendar-title Hva skjer?
     
-    #calendar-event
-      #calendar-event-time 12:00
-      #calendar-event-title Some event
-      #calendar-event-place Storsalen
-
-    #calendar-event
-      #calendar-event-time 12:00
-      #calendar-event-title Some event with a very long title
-      #calendar-event-place Storsalen
-
-    #calendar-event
-      #calendar-event-time 12:00
-      #calendar-event-title Some event
-      #calendar-event-place Storsalen
+    - @events.sort_by{|i| i.start_time}.first(8).group_by {|i| i.start_time.to_date }.sort.each do |date, events|
+      %div
+        .calendar-date
+          = l(date, format: :medium_long)
+        - events.sort_by{|event| event.start_time}.each do |event|
+          .calendar-event
+            .calendar-event-time 
+              = l(event.start_time, format: :time)
+            .calendar-event-title 
+              = event.title
+            .calendar-event-place
+              = @areas.find(event.area_id).name

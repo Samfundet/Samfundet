@@ -75,7 +75,7 @@
     }
 }
 
-#calendar-section {
+.calendar-section {
     width: 30%;
     height: 100%;
     display: flex;
@@ -83,9 +83,10 @@
     background-color: rgba(0,0,0,0.5);
     padding-left: 2em;
     padding-right: 2em;
-    padding-top: 6em;
-
-    #calendar-title {
+    padding-top: 3em;
+    overflow-y: hidden;
+    
+    .calendar-title {
         font-size: 3em;
         color: white;
         width: 100%;
@@ -93,7 +94,16 @@
         margin-bottom: 1em;
     }
 
-    #calendar-event {
+    .calendar-date {
+        font-size: 1.5em;
+        color: orange;
+        width: 100%;
+        text-align: left;
+        margin-bottom: 1em;
+        text-transform: uppercase;
+    }
+
+    .calendar-event {
         display: flex;
         flex-direction: row;
         width: 100%;
@@ -102,21 +112,21 @@
         margin-bottom: 1em;
 
 
-        #calendar-event-time {
+        .calendar-event-time {
             color: #aaa;
             align-self: flex-start;
             margin-right: 1em;
             width: 15%;
         }
 
-        #calendar-event-title {
+        .calendar-event-title {
             color: white;
             padding-right: 1em;
             align-self: flex-start;
             width: 60%;
         }
 
-        #calendar-event-place {
+        .calendar-event-place {
             color: gray;
             width: 3em;
             align-self: flex-start;

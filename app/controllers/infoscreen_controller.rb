@@ -3,5 +3,7 @@ class InfoscreenController < ApplicationController
     layout :nil
 
     def index
+        @events = Event.all
+        @areas = Area.all
     end
 end
