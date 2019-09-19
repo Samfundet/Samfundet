@@ -1,138 +1,239 @@
 // Place all the styles related to the infoscreen controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-#content {
+
+
+/* 
+====================
+    Main elements
+====================
+*/
+.infoscreen {
     width: 100%;
     height: 100%;
-    background-color: black;
+    background-color: white;
+    padding: 1em;
+    padding-top: 1.5em;
 }
-#infoscreen {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-
-    background-image: asset-url("concert1.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-#samfundet-logo {
+#samfundet-logo-container {
     position: absolute;
-    left: 3em;
-    top: 3em;
-
+    left: 4em;
+    top: 1.25em;
     display: block;
+    width: 23em;
+    height: 2.5em;
+    background-color: $samfundet-red;
+    border-radius: .5em;
 
-    width: 300px;
-    height: 50px;
-    float: left;
+    padding-left: .5em;
+    padding-right: .5em;
 
+    padding-top: .25em;
+    padding-bottom: .25em;
+
+    display: none;
+}
+#samfundet-logo {
     background-image: asset-url("header/Samfundetlogo_hvit.png");
     background-repeat: no-repeat;
     background-size: contain;
+    width: 22em;
+    height: 2em;
 }
-#event-container {
-
+/* 
+====================
+  Layout elements
+====================
+*/
+.top-left-section {
+    width: 60%;
+    height: 80%;
+    float: left;
+}
+.right-section {
+    width: 40%;
+    height: 80%;
+    float: left;
+    clear: right;
+}
+.bot-section {
+    width: 60%;
+    height: 20%;
+    float: left;
+}
+.corner-section {
+    width: 40%;
+    height: 20%;
+    float: left;
+}
+/* 
+====================
+   Shared elements
+====================
+*/
+.section-inner-box {
+    background-color: white;
+    //border: 1px solid lightgray;
+    border-radius: .75em;
+    //box-shadow: 0 .25em 1em .5em rgba(0,0,0,0.05);
+    height: calc(100% - 1em);
+    width: calc(100% - 1em);
+    overflow: hidden;
+    padding: 1.5em;
+    margin: .5em;
+}
+.nopad {
+    padding: 0;
+}
+.noborder {
+    border: 0px solid transparent;
+}
+.shadow {
+    box-shadow: 0 .25em 1em .5em rgba(0,0,0,0.2);
+}
+/* 
+====================
+      Event
+====================
+*/
+.event {
+    width: 100%;
     height: 100%;
-    width: 70%;
+    background-image: asset-url("concert4.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: .25em;
+}
+.event-info-box {
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    padding: 2em;
+    border-radius: .25em .25em 0 0;
+}
+.event-title {
+    font-size: 4em;
+    color: white;
+    font-weight: bold;
+}
+.event-description {
+    font-size: 1.5em;
+    color: #ddd;
+    padding-bottom: .5em;
+}
+.event-date {
+    font-size: 1.5em;
+    color: white;
+    display: inline;
+    border-radius: .25em;
+    padding-left: .5em;
+    padding-right: .5em;
+    margin-right: .5em;
+}
+.event-place {
+    font-size: 1.5em;
+    color:  white;
+    display: inline;
+    border-radius: .25em;
+    padding-left: .5em;
+    padding-right: .5em;
+}
+/* 
+====================
+      Weather
+====================
+*/
+.weather {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 1em;
+}
+/* 
+====================
+  Instagram reel
+====================
+*/
+.insta-reel {
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
-
-    #event-info-container {
-        width: 100%;
-        margin: 8em;
-    }
-    #event-title {
-        font-size: 4em;
-        color: white;
-        font-weight: bold;
-    }
-    #event-description {
-        font-size: 1.5em;
-        color: #ddd;
-        padding-bottom: .5em;
-    }
-    #event-date {
-        font-size: 1.5em;
-        color: white;
-        display: inline;
-        background-color: rgba(0,0,0,.5);
-        border-radius: .25em;
-        padding-left: .25em;
-        padding-right: .25em;
-        margin-right: .5em;
-    }
-    #event-place {
-        font-size: 1.5em;
-        color: white;
-        display: inline;
-        background-color: rgba(0,0,0,.5);
-        border-radius: .25em;
-        padding-left: .25em;
-        padding-right: .25em;
-    }
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: .5em;
+    overflow: hidden;
+}
+.insta-image {
+    width: 8em;
+    height: 100%;
+    margin-left: .75em;
+    margin-right: .75em;
+    background-color: white;
+    background-image: asset-url("concert5.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: .25em;
+}
+/* 
+====================
+     Calendar
+====================
+*/
+.calendar {
+    padding-left: 1.5em;
+    padding-right: .5em;
+}
+.calendar-title {
+    font-size: 3em;
+    color: black;
+    width: 100%;
+    text-align: center;
+    margin-bottom: .3em;
+    display: flex;
 }
 
-.calendar-section {
-    width: 30%;
-    height: 100%;
+.calendar-date {
+    font-size: 1.5em;
+    color: $samfundet-red;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 1em;
+    text-transform: uppercase;
+}
+
+.calendar-event {
     display: flex;
-    flex-direction: column;
-    background-color: rgba(0,0,0,0.5);
-    padding-left: 2em;
-    padding-right: 2em;
-    padding-top: 3em;
-    overflow-y: hidden;
-    
-    .calendar-title {
-        font-size: 3em;
-        color: white;
-        width: 100%;
-        text-align: center;
-        margin-bottom: 1em;
+    flex-direction: row;
+    width: 100%;
+    font-size: 1.5em;
+    vertical-align: top;
+    margin-bottom: 1em;
+
+    .calendar-event-time {
+        color: #aaa;
+        align-self: flex-start;
+        margin-right: 1em;
+        width: 15%;
     }
 
-    .calendar-date {
-        font-size: 1.5em;
-        color: orange;
-        width: 100%;
-        text-align: left;
-        margin-bottom: 1em;
-        text-transform: uppercase;
+    .calendar-event-title {
+        color: black;
+        padding-right: 1em;
+        align-self: flex-start;
+        width: 60%;
     }
 
-    .calendar-event {
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        font-size: 1.5em;
-        vertical-align: top;
-        margin-bottom: 1em;
-
-
-        .calendar-event-time {
-            color: #aaa;
-            align-self: flex-start;
-            margin-right: 1em;
-            width: 15%;
-        }
-
-        .calendar-event-title {
-            color: white;
-            padding-right: 1em;
-            align-self: flex-start;
-            width: 60%;
-        }
-
-        .calendar-event-place {
-            color: gray;
-            width: 3em;
-            align-self: flex-start;
-            width: 25%;
-            text-align: right;
-        }
-
+    .calendar-event-place {
+        color: gray;
+        width: 3em;
+        align-self: flex-start;
+        width: 25%;
+        text-align: right;
     }
 }

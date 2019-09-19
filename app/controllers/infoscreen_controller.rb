@@ -5,5 +5,7 @@ class InfoscreenController < ApplicationController
     def index
         @events = Event.all
         @areas = Area.all
+
+        @current_event = Event.first
     end
 end

@@ -1,25 +1,59 @@
+.infoscreen
+  #samfundet-logo-container
+    #samfundet-logo
+  .top-left-section
+    .section-inner-box
+      .event
+        .event-info-box
+          .event-title Lorem ipsum
+          .event-description 
+            Quia modi impedit enim eligendi reiciendis sed aut. Voluptatem excepturi rerum omnis omnis. Molestiae reiciendis quas voluptate. Quia hic culpa alias recusandae adipisci.
+            Beatae quod nihil occaecati officiis. Quo voluptatibus nemo non recusandae. At minus dignissimos est officiis possimus.
+          .event-place 21:00 - 23:00
+          .event-date 12 SEPTEMBER
+          .event-place STORSALEN
+  .right-section
+    .section-inner-box
+      .calendar
+        .calendar-title Hva skjer?
+        - @events.sort_by{|i| i.start_time}.first(8).group_by {|i| i.start_time.to_date }.sort.each do |date, events|
+          %div
+            .calendar-date
+              = l(date, format: :medium_long)
+            - events.sort_by{|event| event.start_time}.each do |event|
+              .calendar-event
+                .calendar-event-time 
+                  = l(event.start_time, format: :time)
+                  = l(event.end_time, format: :time)
+                .calendar-event-title 
+                  = event.title
+                .calendar-event-place
+                  = @areas.find(event.area_id).name
+  .bot-section
+    .section-inner-box.nopad.noborder
+      .insta-reel
+        .insta-image
+        .insta-image
+        .insta-image
+        .insta-image
+        .insta-image
+        .insta-image
+  .corner-section
+    .section-inner-box.noborder
+      .weather
+        = render 'weather'
+
+
 #infoscreen 
   #samfundet-logo
-  #event-container
-    #event-info-container
-      #event-title Some event title
-      #event-description 
+  %event-container
+    = image_tag @current_event.image_or_default.url(:large), :class => 'event-image'
+    %event-info-container
+      %event-title Some event title
+      %event-description 
         Quia modi impedit enim eligendi reiciendis sed aut. Voluptatem excepturi rerum omnis omnis. Molestiae reiciendis quas voluptate. Quia hic culpa alias recusandae adipisci.
         Beatae quod nihil occaecati officiis. Quo voluptatibus nemo non recusandae. At minus dignissimos est officiis possimus.
-      #event-date 12 september
-      #event-place 12:00 - Storsalen
+      %event-date 12 september
+      %event-place 12:00 - Storsalen
   .calendar-section
-    .calendar-title Hva skjer?
     
-    - @events.sort_by{|i| i.start_time}.first(8).group_by {|i| i.start_time.to_date }.sort.each do |date, events|
-      %div
-        .calendar-date
-          = l(date, format: :medium_long)
-        - events.sort_by{|event| event.start_time}.each do |event|
-          .calendar-event
-            .calendar-event-time 
-              = l(event.start_time, format: :time)
-            .calendar-event-title 
-              = event.title
-            .calendar-event-place
-              = @areas.find(event.area_id).name
