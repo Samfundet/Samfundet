@@ -42,18 +42,3 @@
     .section-inner-box.noborder
       .weather
         = render 'weather'
-
-
-#infoscreen 
-  #samfundet-logo
-  %event-container
-    = image_tag @current_event.image_or_default.url(:large), :class => 'event-image'
-    %event-info-container
-      %event-title Some event title
-      %event-description 
-        Quia modi impedit enim eligendi reiciendis sed aut. Voluptatem excepturi rerum omnis omnis. Molestiae reiciendis quas voluptate. Quia hic culpa alias recusandae adipisci.
-        Beatae quod nihil occaecati officiis. Quo voluptatibus nemo non recusandae. At minus dignissimos est officiis possimus.
-      %event-date 12 september
-      %event-place 12:00 - Storsalen
-  .calendar-section
-    
