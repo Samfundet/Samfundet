@@ -6,6 +6,8 @@ class FrontPageHijack < ApplicationRecord
   validates :message_en, presence: true
   validates :shown_from, presence: true
   validates :shown_to, presence: true
+  validates :background_color, css_hex_color: true, presence: true
+  validates :text_color, css_hex_color: true, presence: true
   validate :times_in_valid_order
 
   scope :active_hijacks, -> { where('shown_from <= ? AND shown_to >= ?', Time.current, Time.current.yesterday) }
@@ -14,7 +16,7 @@ class FrontPageHijack < ApplicationRecord
   localized_fields :message
 
   def self.current_front_page_hijack
-    active_hijacks.first
+    active_hijacks.last
   end
 
   def times_in_valid_order

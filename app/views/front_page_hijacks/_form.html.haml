@@ -6,4 +6,6 @@
       input_html: { class: "datepicker", value: f.object.shown_from.to_date }
     = f.input :shown_to, as: :string,
       input_html: { class: "datepicker", value: f.object.shown_to.to_date }
+    = f.input :background_color, as: :color, input_html: { value: f.object.background_color || '#000000' }
+    = f.input :text_color, as: :color, input_html: { value: f.object.text_color || '#ffffff' }
   = f.actions

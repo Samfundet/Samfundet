@@ -303,7 +303,9 @@ front_page_hijack = FrontPageHijack.new(
   message_no: "Du ser bra ut i dag :)",
   message_en: "You look nice today :)",
   shown_from: DateTime.current + 1.minute,
-  shown_to: DateTime.current + 1.weeks
+  shown_to: DateTime.current + 1.weeks,
+  background_color: '#000000',
+  text_color: '#ffffff'
 )
 front_page_hijack.save!
 puts "Done creating front page hijacks"

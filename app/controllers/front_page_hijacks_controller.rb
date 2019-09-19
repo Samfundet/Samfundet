@@ -13,7 +13,9 @@ class FrontPageHijacksController < ApplicationController
   def new
     @front_page_hijack = FrontPageHijack.new(
       shown_from: Time.current,
-      shown_to: Time.current + 1.week
+      shown_to: Time.current + 1.week,
+      background_color: '#e87511',
+      text_color: '#FFFFFF'
     )
   end
 
@@ -55,6 +57,13 @@ class FrontPageHijacksController < ApplicationController
   private
 
   def front_page_hijack_params
-    params.require(:front_page_hijack).permit(:message_no, :message_en, :shown_from, :shown_to)
+    params.require(:front_page_hijack).permit(
+      :message_no,
+      :message_en,
+      :shown_from,
+      :shown_to,
+      :background_color,
+      :text_color
+    )
   end
 end
