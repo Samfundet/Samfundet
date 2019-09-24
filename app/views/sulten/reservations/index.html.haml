@@ -40,7 +40,7 @@
   = t("sulten.reservation.title")
 %br
 - @reservations.group_by {|i| i.reservation_from.to_date }.each do |date, f|
-  %h2{anchor: "test_anchor"}
+  %h2
     = date
   %table
     %th
