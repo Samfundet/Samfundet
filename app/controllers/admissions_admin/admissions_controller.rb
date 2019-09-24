@@ -47,6 +47,8 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
     @campuses = Campus.order(:name)
     @campus_count = Campus.number_of_applicants_given_admission(@admission)
 
+    count_unique_applicants
+
     # applications_count = @admission.job_applications.count
     applications_per_group = @admission.groups.map do |group|
       group.jobs.where(admission_id: @admission.id).map do |job|
@@ -112,5 +114,60 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
 
   def admission_params
     params.require(:admission).permit(:title, :shown_from, :shown_application_deadline, :actual_application_deadline, :user_priority_deadline, :admin_priority_deadline, :groups_with_separate_admission, :promo_video)
+  end
+
+  private
+
+  # Count unique applicants and how many of those were actually admitted to Samfundet
+  # This is done both for Samfundet as a whole and for each group
+  def count_unique_applicants
+    @uniq_applicants_in_group = {}
+    @uniq_apps_groups_accepted = {}
+    @applicants_who_accepted_role = 0
+    @known_ids = []
+    @sum_job_applications = 0
+    @admission.groups.map do |group|
+      @uniq_applicants_in_group[group] = []
+      @uniq_apps_groups_accepted[group] = 0
+      @sum_job_applications += group.job_applications.count
+      group.jobs.where(admission_id: @admission.id).map do |job|
+        job.applicants.map do |app|
+          # In each unique group
+          next if @uniq_applicants_in_group[group].include? app.id
+          @uniq_applicants_in_group[group].push(app.id)
+          log_entries = LogEntry.where(admission_id: @admission.id, applicant_id: app.id)
+
+          next if log_entries.empty?
+          last_log = log_entries.last
+
+          acceptance_strings = [
+            'Ringt og tilbudt verv, takket ja',
+            'Called and offered position, the applicant accepted'
+          ]
+
+          if acceptance_strings.include?(last_log.log) && (last_log.group.name == group.name)
+            @uniq_apps_groups_accepted[group] += 1
+          end
+
+          # Total for entire admission
+          next if @known_ids.include? app.id
+          @known_ids.push(app.id)
+
+          log_entries = LogEntry.where(admission_id: @admission.id, applicant_id: app.id)
+
+          next if log_entries.empty?
+          last_log = log_entries.last
+
+          acceptance_strings = [
+            'Ringt og tilbudt verv, takket ja',
+            'Called and offered position, the applicant accepted'
+          ]
+
+          if acceptance_strings.include?(last_log.log)
+            @applicants_who_accepted_role += 1
+          end
+        end
+      end
+    end
   end
 end
