@@ -11,7 +11,7 @@ ruby '2.5.5'
 source 'https://rubygems.org'
 
 # Rails. Duh.
-gem 'rails', '5.0.6'
+gem 'rails', '~> 5.1.7'
 
 # Memcache client
 gem 'dalli'
@@ -80,16 +80,16 @@ gem 'route_translator'
 
 # RedCarpet renders Markdown, a light-weight markup language, to HTML.
 # See: config/initializers/haml_markdown.rb
-gem 'redcarpet', '~>3.4'
+gem 'redcarpet', '~>3.5'
 
 # route_downcaser adds transparent support for case-insensive routes by downcasing requested URLs.
 gem 'route_downcaser'
 
 # SamfundetDomain is a gem which provides the application with samfundets domain models.
-gem 'samfundet_domain', '~> 0.1.0', git: 'https://github.com/Samfundet/SamfundetDomain.git'
+gem 'samfundet_domain', git: 'https://github.com/Samfundet/SamfundetDomain.git', :branch => 'rails-5-1'
 
 # SamfundetAuth is a gem which provides the application with methods for authenticating against mdb2.
-gem 'samfundet_auth', '~> 0.2.0', git: 'https://github.com/Samfundet/SamfundetAuth.git'
+gem 'samfundet_auth', git: 'https://github.com/Samfundet/SamfundetAuth.git', :branch => 'rails-5-1'
 
 # will_paginate is an adaptive pagination plugin.
 # It makes pagination very simple.
@@ -108,11 +108,12 @@ gem 'date_validator'
 gem 'therubyracer', '0.12.3', require: 'v8'
 
 # PostgreSQL adapter. See: config/database.yml
-gem 'pg', '0.21.0'
+
+gem 'pg'
 
 # Provides PostgreSQL fulltext search. Contains wrappers for tsvectors
 # and enables searching in nested attributes.
-gem 'pg_search', git: 'https://github.com/Casecommons/pg_search.git', ref: 'ff1af34'
+gem 'pg_search', git: 'https://github.com/Casecommons/pg_search.git'
 
 # Diff library used in history for information pages
 gem 'diff-lcs'
