@@ -10,7 +10,7 @@ FactoryGirl.define do
   end
 
   trait :with_role do
-    ignore do
+    transient do
       role_title ''
     end
 
