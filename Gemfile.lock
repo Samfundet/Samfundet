@@ -7,28 +7,25 @@ GIT
       activesupport (>= 4.2)
 
 GIT
-  remote: https://github.com/Samfundet/SamfundetAuth.git
-  revision: d9f318892d88d9e4752ea725637fffdf2c8f1965
-  branch: rails-5-1
-  specs:
-    samfundet_auth (0.2.0)
-      rails (~> 5.1.7)
-
-GIT
-  remote: https://github.com/Samfundet/SamfundetDomain.git
-  revision: a8e1d24a52683eebc88e349c38eab5c83e976227
-  branch: rails-5-1
-  specs:
-    samfundet_domain (0.1.0)
-      rails (~> 5.1.7)
-
-GIT
   remote: https://github.com/Samfundet/mina.git
   revision: d8449b7b2cf3908361724b527d1ee4a05a698f97
   specs:
     mina (0.3.8)
       open4 (~> 1.3.4)
       rake
+
+PATH
+  remote: ../SamfundetAuth
+  specs:
+    samfundet_auth (0.1.0)
+      declarative_authorization
+      rails (~> 5.1.0)
+
+PATH
+  remote: ../SamfundetDomain
+  specs:
+    samfundet_domain (0.1.0)
+      rails (~> 5.1.7)
 
 GEM
   remote: https://rubygems.org/
@@ -76,30 +73,29 @@ GEM
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
-    acts_as_list (1.0.0)
-      activerecord (>= 4.2)
+    acts_as_list (0.8.2)
+      activerecord (>= 3.0)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
-    annotate (3.0.0)
+    annotate (2.7.5)
       activerecord (>= 3.2, < 7.0)
       rake (>= 10.4, < 13.0)
     arel (8.0.0)
     ast (2.4.0)
-    backports (3.15.0)
     bcrypt (3.1.13)
     bcrypt-ruby (3.1.5)
       bcrypt (>= 3.1.3)
-    better_errors (2.5.1)
+    better_errors (2.1.1)
       coderay (>= 1.0.0)
-      erubi (>= 1.0.0)
+      erubis (>= 2.6.6)
       rack (>= 0.9.0)
-    bindex (0.8.1)
-    binding_of_caller (0.8.0)
+    binding_of_caller (0.7.3)
       debug_inspector (>= 0.0.1)
-    bourbon (6.0.0)
+    bourbon (4.2.7)
+      sass (~> 3.4)
       thor (~> 0.19)
     builder (3.2.3)
-    byebug (11.0.1)
+    byebug (9.0.6)
     cancancan (2.3.0)
     capybara (3.29.0)
       addressable
@@ -110,6 +106,8 @@ GEM
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
     climate_control (0.2.0)
+    cocaine (0.5.8)
+      climate_control (>= 0.0.3, < 1.0)
     cocoon (1.2.14)
     coderay (1.1.2)
     coffee-rails (4.2.2)
@@ -121,45 +119,40 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.5)
     crass (1.0.4)
-    cucumber (3.1.2)
+    cucumber (2.99.0)
       builder (>= 2.1.2)
-      cucumber-core (~> 3.2.0)
-      cucumber-expressions (~> 6.0.1)
+      cucumber-core (~> 1.5.0)
       cucumber-wire (~> 0.0.1)
-      diff-lcs (~> 1.3)
-      gherkin (~> 5.1.0)
+      diff-lcs (>= 1.1.3)
+      gherkin (~> 4.0)
       multi_json (>= 1.7.5, < 2.0)
       multi_test (>= 0.1.2)
-    cucumber-core (3.2.1)
-      backports (>= 3.8.0)
-      cucumber-tag_expressions (~> 1.1.0)
-      gherkin (~> 5.0)
-    cucumber-expressions (6.0.1)
-    cucumber-rails (1.8.0)
-      capybara (>= 2.12, < 4)
-      cucumber (>= 3.0.2, < 4)
-      mime-types (>= 2.0, < 4)
-      nokogiri (~> 1.8)
-      railties (>= 4.2, < 7)
-    cucumber-tag_expressions (1.1.1)
+    cucumber-core (1.5.0)
+      gherkin (~> 4.0)
+    cucumber-rails (1.4.0)
+      capybara (>= 1.1.2)
+      cucumber (>= 1.2.0)
+      nokogiri (>= 1.5.0)
+      rails (>= 3.0.0)
     cucumber-wire (0.0.1)
     dalli (2.7.10)
-    database_cleaner (1.7.0)
+    database_cleaner (1.5.3)
     date_validator (0.9.0)
       activemodel
       activesupport
     debug_inspector (0.0.3)
-    diff-lcs (1.3)
-    docile (1.3.2)
+    declarative_authorization (0.5.7)
+    diff-lcs (1.2.5)
+    docile (1.1.5)
     em-websocket (0.5.1)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.6.0)
     erubi (1.9.0)
     erubis (2.7.0)
     eventmachine (1.2.7)
-    exception_notification (4.4.0)
-      actionmailer (>= 4.0, < 7)
-      activesupport (>= 4.0, < 7)
+    exception_notification (4.2.2)
+      actionmailer (>= 4.0, < 6)
+      activesupport (>= 4.0, < 6)
     execjs (2.7.0)
     factory_girl (4.9.0)
       activesupport (>= 3.0.0)
@@ -172,7 +165,7 @@ GEM
     formatador (0.2.5)
     formtastic (3.1.5)
       actionpack (>= 3.2.13)
-    gherkin (5.1.0)
+    gherkin (4.1.3)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     googlecharts (1.6.12)
@@ -208,25 +201,22 @@ GEM
     http_parser.rb (0.6.0)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
-    icalendar (2.5.3)
-      ice_cube (~> 0.16)
-    ice_cube (0.16.3)
-    jaro_winkler (1.5.3)
-    jquery-rails (4.3.5)
+    icalendar (2.4.1)
+    jquery-rails (4.2.2)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
-    jquery-tablesorter (1.26.1)
+    jquery-tablesorter (1.22.7)
       railties (>= 3.2, < 6)
     jquery-turbolinks (2.1.0)
       railties (>= 3.1.0)
       turbolinks
-    jquery-ui-rails (6.0.1)
+    jquery-ui-rails (5.0.5)
       railties (>= 3.2.16)
     json (2.2.0)
     launchy (2.4.3)
       addressable (~> 2.3)
-    letter_opener (1.7.0)
+    letter_opener (1.4.1)
       launchy (~> 2.2)
     libv8 (3.16.14.19)
     listen (3.0.8)
@@ -246,11 +236,12 @@ GEM
     mimemagic (0.3.3)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
-    minitest (5.12.0)
+    minitest (5.12.1)
     multi_json (1.13.1)
     multi_test (0.1.2)
     mustermann (1.0.3)
-    neat (4.0.0)
+    neat (1.8.0)
+      sass (>= 3.3)
       thor (~> 0.19)
     nenv (0.3.0)
     nio4r (2.5.2)
@@ -261,19 +252,20 @@ GEM
       shellany (~> 0.0)
     open4 (1.3.4)
     os (1.0.1)
-    paperclip (6.1.0)
+    paperclip (5.2.1)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
+      cocaine (~> 0.5.5)
       mime-types
       mimemagic (~> 0.3.0)
-      terrapin (~> 0.6.0)
     paperclip-compression (1.0.1)
       os (~> 1.0.0)
       paperclip (>= 5.2.1)
     parallel (1.17.0)
     parser (2.6.4.1)
       ast (~> 2.4.0)
-    pg (1.1.4)
+    pg (0.21.0)
+    powerpack (0.1.2)
     pry (0.12.2)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -313,9 +305,10 @@ GEM
       method_source
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
-    rainbow (3.0.0)
+    rainbow (2.2.2)
+      rake
     rake (12.3.3)
-    rb-fsevent (0.10.3)
+    rb-fsevent (0.9.8)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
     redcarpet (3.5.0)
@@ -323,59 +316,51 @@ GEM
     regexp_parser (1.6.0)
     route_downcaser (1.2.2)
       activesupport (>= 3.2)
-    route_translator (7.0.0)
-      actionpack (>= 5.0.0.1, < 6.1)
-      activesupport (>= 5.0.0.1, < 6.1)
-    rspec (3.8.0)
-      rspec-core (~> 3.8.0)
-      rspec-expectations (~> 3.8.0)
-      rspec-mocks (~> 3.8.0)
-    rspec-core (3.8.2)
-      rspec-support (~> 3.8.0)
-    rspec-expectations (3.8.4)
+    route_translator (5.4.1)
+      actionpack (>= 5.0.0.1, < 5.2)
+      activesupport (>= 5.0.0.1, < 5.2)
+    rspec (3.5.0)
+      rspec-core (~> 3.5.0)
+      rspec-expectations (~> 3.5.0)
+      rspec-mocks (~> 3.5.0)
+    rspec-core (3.5.4)
+      rspec-support (~> 3.5.0)
+    rspec-expectations (3.5.0)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.8.0)
-    rspec-mocks (3.8.1)
+      rspec-support (~> 3.5.0)
+    rspec-mocks (3.5.0)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.8.0)
-    rspec-rails (3.8.2)
+      rspec-support (~> 3.5.0)
+    rspec-rails (3.5.2)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       railties (>= 3.0)
-      rspec-core (~> 3.8.0)
-      rspec-expectations (~> 3.8.0)
-      rspec-mocks (~> 3.8.0)
-      rspec-support (~> 3.8.0)
-    rspec-support (3.8.2)
-    rubocop (0.74.0)
-      jaro_winkler (~> 1.5.1)
+      rspec-core (~> 3.5.0)
+      rspec-expectations (~> 3.5.0)
+      rspec-mocks (~> 3.5.0)
+      rspec-support (~> 3.5.0)
+    rspec-support (3.5.0)
+    rubocop (0.51.0)
       parallel (~> 1.10)
-      parser (>= 2.6)
-      rainbow (>= 2.2.2, < 4.0)
+      parser (>= 2.3.3.1, < 3.0)
+      powerpack (~> 0.1)
+      rainbow (>= 2.2.2, < 3.0)
       ruby-progressbar (~> 1.7)
-      unicode-display_width (>= 1.4.0, < 1.7)
+      unicode-display_width (~> 1.0, >= 1.0.1)
     ruby-progressbar (1.10.1)
     ruby_parser (3.14.0)
       sexp_processor (~> 4.9)
-    sass (3.7.4)
-      sass-listen (~> 4.0.0)
-    sass-listen (4.0.0)
-      rb-fsevent (~> 0.9, >= 0.9.4)
-      rb-inotify (~> 0.9, >= 0.9.7)
-    sass-rails (6.0.0)
-      sassc-rails (~> 2.1, >= 2.1.1)
-    sassc (2.2.1)
-      ffi (~> 1.9)
-    sassc-rails (2.1.2)
-      railties (>= 4.0.0)
-      sassc (>= 2.0)
-      sprockets (> 3.0)
-      sprockets-rails
-      tilt
+    sass (3.4.25)
+    sass-rails (5.0.7)
+      railties (>= 4.0.0, < 6)
+      sass (~> 3.1)
+      sprockets (>= 2.8, < 4.0)
+      sprockets-rails (>= 2.0, < 4.0)
+      tilt (>= 1.1, < 3)
     sexp_processor (4.13.0)
     shellany (0.0.1)
-    simplecov (0.17.1)
-      docile (~> 1.1)
+    simplecov (0.12.0)
+      docile (~> 1.1.0)
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
@@ -384,8 +369,8 @@ GEM
       rack (~> 2.0)
       rack-protection (= 2.0.7)
       tilt (~> 2.0)
-    slack-notifier (2.3.2)
-    spring (2.1.0)
+    slack-notifier (1.5.1)
+    spring (1.7.2)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
       spring (>= 1.2, < 3.0)
@@ -398,8 +383,6 @@ GEM
       sprockets (>= 3.0.0)
     table_print (1.5.6)
     temple (0.8.2)
-    terrapin (0.6.0)
-      climate_control (>= 0.0.3, < 1.0)
     therubyracer (0.12.3)
       libv8 (~> 3.16.14.15)
       ref
@@ -411,13 +394,13 @@ GEM
     turbolinks-source (5.2.0)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    uglifier (4.2.0)
+    uglifier (3.0.4)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (1.6.0)
-    web-console (3.7.0)
+    web-console (3.3.1)
       actionview (>= 5.0)
       activemodel (>= 5.0)
-      bindex (>= 0.4.0)
+      debug_inspector
       railties (>= 5.0)
     webrat (0.7.3)
       nokogiri (>= 1.2.0)
@@ -434,70 +417,70 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activerecord-session_store
-  acts_as_list
-  annotate
-  bcrypt-ruby
-  better_errors
-  binding_of_caller
-  bourbon
-  byebug
-  cancancan (~> 2.0)
-  cocoon
-  coffee-rails
-  cucumber-rails
-  dalli
-  database_cleaner
-  date_validator
-  diff-lcs
-  exception_notification
-  factory_girl_rails
+  activerecord-session_store (~> 1.1.0)
+  acts_as_list (~> 0.8.0)
+  annotate (~> 2.7.0)
+  bcrypt-ruby (~> 3.1.0)
+  better_errors (~> 2.1.0)
+  binding_of_caller (~> 0.7.0)
+  bourbon (~> 4.2.0)
+  byebug (~> 9.0.0)
+  cancancan (~> 2.3.0)
+  cocoon (~> 1.2.0)
+  coffee-rails (~> 4.2.0)
+  cucumber-rails (~> 1.4.0)
+  dalli (~> 2.7.0)
+  database_cleaner (~> 1.5.0)
+  date_validator (~> 0.9.0)
+  diff-lcs (~> 1.2.5)
+  exception_notification (~> 4.2.0)
+  factory_girl_rails (~> 4.9.0)
   faker (~> 1.6.6)
-  formtastic
-  googlecharts
-  guard-livereload
-  haml-rails
-  icalendar
-  jquery-rails
-  jquery-tablesorter
-  jquery-turbolinks
-  jquery-ui-rails
-  launchy
-  letter_opener
+  formtastic (~> 3.1.0)
+  googlecharts (~> 1.6.0)
+  guard-livereload (~> 2.5.0)
+  haml-rails (~> 2.0.0)
+  icalendar (~> 2.4.0)
+  jquery-rails (~> 4.2.0)
+  jquery-tablesorter (~> 1.22.0)
+  jquery-turbolinks (~> 2.1.0)
+  jquery-ui-rails (~> 5.0.0)
+  launchy (~> 2.4.0)
+  letter_opener (~> 1.4.0)
   listen (~> 3.0.5)
-  magic_encoding
+  magic_encoding (~> 0.0.0)
   mina!
-  neat
-  paperclip
-  paperclip-compression
-  pg
+  neat (~> 1.8.0)
+  paperclip (~> 5.2.0)
+  paperclip-compression (~> 1.0.0)
+  pg (~> 0.21.0)
   pg_search!
-  rack-livereload
-  railroady
+  rack-livereload (~> 0.3.0)
+  railroady (~> 1.5.0)
   rails (~> 5.1.7)
-  rails-controller-testing
-  rb-fsevent
-  redcarpet (~> 3.5)
-  route_downcaser
-  route_translator
-  rspec
-  rspec-rails
-  rubocop
+  rails-controller-testing (~> 1.0.0)
+  rb-fsevent (~> 0.9.0)
+  redcarpet (~> 3.5.0)
+  route_downcaser (~> 1.2.0)
+  route_translator (~> 5.4.0)
+  rspec (~> 3.5.0)
+  rspec-rails (~> 3.5.0)
+  rubocop (~> 0.51.0)
   samfundet_auth!
   samfundet_domain!
-  sass
-  sass-rails
-  simplecov
-  sinatra
-  slack-notifier
-  spring
+  sass (~> 3.4.0)
+  sass-rails (~> 5.0.0)
+  simplecov (~> 0.12.0)
+  sinatra (~> 2.0.0)
+  slack-notifier (~> 1.5.0)
+  spring (~> 1.7.0)
   spring-watcher-listen (~> 2.0.0)
-  table_print
-  therubyracer (= 0.12.3)
-  uglifier
-  web-console
-  webrat
-  will_paginate
+  table_print (~> 1.5.0)
+  therubyracer (~> 0.12.3)
+  uglifier (~> 3.0.0)
+  web-console (~> 3.3.0)
+  webrat (~> 0.7.0)
+  will_paginate (~> 3.1.0)
 
 RUBY VERSION
    ruby 2.5.5p157

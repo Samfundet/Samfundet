@@ -47,7 +47,7 @@ class Event < ApplicationRecord
   belongs_to :billig_event
   belongs_to :image
   has_one :front_page_lock, as: :lockable
-  has_many :price_groups, -> { uniq }
+  has_many :price_groups, -> { distinct }
 
   accepts_nested_attributes_for :price_groups, allow_destroy: true
 
