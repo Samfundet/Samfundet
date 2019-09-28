@@ -7,25 +7,28 @@ GIT
       activesupport (>= 4.2)
 
 GIT
+  remote: https://github.com/Samfundet/SamfundetAuth.git
+  revision: d9f318892d88d9e4752ea725637fffdf2c8f1965
+  branch: rails-5-1
+  specs:
+    samfundet_auth (0.2.0)
+      rails (~> 5.1.7)
+
+GIT
+  remote: https://github.com/Samfundet/SamfundetDomain.git
+  revision: 5bc2b3c1774e0b9950a0757d5cc1f24e2641986b
+  branch: rails-5-1
+  specs:
+    samfundet_domain (0.1.0)
+      rails (~> 5.1.7)
+
+GIT
   remote: https://github.com/Samfundet/mina.git
   revision: d8449b7b2cf3908361724b527d1ee4a05a698f97
   specs:
     mina (0.3.8)
       open4 (~> 1.3.4)
       rake
-
-PATH
-  remote: ../SamfundetAuth
-  specs:
-    samfundet_auth (0.1.0)
-      declarative_authorization
-      rails (~> 5.1.0)
-
-PATH
-  remote: ../SamfundetDomain
-  specs:
-    samfundet_domain (0.1.0)
-      rails (~> 5.1.7)
 
 GEM
   remote: https://rubygems.org/
@@ -141,7 +144,6 @@ GEM
       activemodel
       activesupport
     debug_inspector (0.0.3)
-    declarative_authorization (0.5.7)
     diff-lcs (1.2.5)
     docile (1.1.5)
     em-websocket (0.5.1)
