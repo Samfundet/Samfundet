@@ -86,10 +86,10 @@ gem 'redcarpet', '~> 3.5.0'
 gem 'route_downcaser', '~> 1.2.0'
 
 # SamfundetDomain is a gem which provides the application with samfundets domain models.
-gem 'samfundet_domain', git: 'https://github.com/Samfundet/SamfundetDomain.git', :branch => 'rails-5-1'
+gem 'samfundet_domain', git: 'https://github.com/Samfundet/SamfundetDomain.git', branch: 'rails-5-1'
 
 # SamfundetAuth is a gem which provides the application with methods for authenticating against mdb2.
-gem 'samfundet_auth', git: 'https://github.com/Samfundet/SamfundetAuth.git', :branch => 'rails-5-1'
+gem 'samfundet_auth', git: 'https://github.com/Samfundet/SamfundetAuth.git', branch: 'rails-5-1'
 
 # will_paginate is an adaptive pagination plugin.
 # It makes pagination very simple.
@@ -131,7 +131,7 @@ group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'listen', '~> 3.0.5'
   gem 'web-console', '~> 3.3.0'
-  
+
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring', '~> 1.7.0'
   gem 'spring-watcher-listen', '~> 2.0.0'
