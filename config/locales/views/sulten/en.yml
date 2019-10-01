@@ -1,8 +1,9 @@
 en:
   sulten:
     reservation:
-      title: "Upcoming reservations:"
+      title: "Upcoming reservations"
       no_reservations: "No reservations"
+      reservations: "Reservations"
       no_reservations_this_week: "No reservations this week"
       show_all: "Show all"
       name: "Name"
@@ -13,13 +14,17 @@ en:
       reservation_type: "Occasion"
       placeholder_date: "01.10.1910 12:00"
       table: "Table"
-      name: "Name"
       telephone: "Telephone number"
       email: "Email"
       allergies: "Allergies / other stuff"
       gdpr_checkbox: "I agree to Samfundet's <a href='%{en_url}'>privacy policy</a>."
       internal_comment: "Internal comment"
       export_to_csv: "Export all reservations to CSV"
+      summary:
+        title: "Summary"
+        date: "Date"
+        day: "Day"
+        total_week: "Total entire week"
       form:
         uka_title: 'Lyche reservation system during UKA'
         uka: 'Bookings must be done before 14:00 the same day as the reservation. For any inquiries, contact us at ' # email link

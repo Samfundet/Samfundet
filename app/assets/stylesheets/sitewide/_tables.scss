@@ -30,4 +30,10 @@ table:not(.custom-table):not(.ui-datepicker-calendar) {
   thead > tr, tbody > tr:nth-child(even) {
     background-color: $alternate-cell-color;
   }
+
+  tr.summation > td,
+  tr.summation:nth-child(even) > td {
+    border-top: 3px solid $samfundet-red;
+  }
+
 }

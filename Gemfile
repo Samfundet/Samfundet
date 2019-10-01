@@ -5,7 +5,7 @@
 ###########################################
 
 # Specify ruby version that we use. Bundler gives an error when a different ruby is used.
-ruby '2.3.3'
+ruby '2.5.5'
 
 # The repository from which we're fetching our rubygems.
 source 'https://rubygems.org'
@@ -105,7 +105,7 @@ gem 'paperclip-compression'
 gem 'date_validator'
 
 # therubyracer is a Ruby connection to the V8 JavaScript interpreter.
-gem 'therubyracer', require: 'v8'
+gem 'therubyracer', '0.12.3', require: 'v8'
 
 # PostgreSQL adapter. See: config/database.yml
 gem 'pg', '0.21.0'
