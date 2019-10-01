@@ -35,10 +35,9 @@
   = link_to T("sulten.reservation.export_to_csv"), sulten_reservations_export_path(format: :csv)
 %p
   = link_to t("sulten.reservation.show_all"), sulten_reservations_archive_path
-
-.reservation-separator
-  = t("sulten.reservation.title")
 %br
+%h2
+  = t("sulten.reservation.title")
 - @reservations.group_by {|i| i.reservation_from.to_date }.each do |date, f|
   %h2
     = date
@@ -70,4 +69,5 @@
         %td
           = link_to t("crud.destroy"), k, method: :delete, data: {confirm: t("crud.confirm")}
 - if @reservations.empty?
-  = t("sulten.reservation.no_reservations_this_week")
+  %h3
+    = t("sulten.reservation.no_reservations_this_week")
