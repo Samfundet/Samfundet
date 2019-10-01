@@ -2,16 +2,16 @@
 
 FactoryBot.define do
   factory :member do
-    fornavn 'Fornavn'
-    etternavn 'Etternavn'
+    fornavn { 'Fornavn' }
+    etternavn { 'Etternavn' }
     sequence(:mail) { |n| "test#{n}@test.com" }
-    telefon '123123123'
-    passord 'passord'
+    telefon { '123123123' }
+    passord { 'passord' }
   end
 
   trait :with_role do
     transient do
-      role_title ''
+      role_title { '' }
     end
 
     after(:create) do |member, evaluator|

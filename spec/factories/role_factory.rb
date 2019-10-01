@@ -2,13 +2,13 @@
 
 FactoryBot.define do
   factory :role do
-    name 'Name'
+    name { 'Name' }
     sequence(:title) { |n| "title#{n}" }
-    description 'Description here'
-    passable false
-    role_id nil
+    description { 'Description here' }
+    passable { false }
+    role_id { nil }
     trait :passable do
-      passable true
+      passable { true }
     end
   end
 end

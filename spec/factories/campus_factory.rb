@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :campus do
-    name 'Gloeshaugen'
-    active true
+    name { 'Gloeshaugen' }
+    active { true }
   end
 end

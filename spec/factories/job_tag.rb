@@ -2,6 +2,6 @@
 
 FactoryBot.define do
   factory :job_tag do
-    title 'Title'
+    title { 'Title' }
   end
 end
