@@ -27,7 +27,7 @@ gem 'activerecord-session_store', '~> 1.1.0'
 # bcrypt() is a sophisticated and secure hash algorithm
 # designed by The OpenBSD project for hashing passwords.
 # bcrypt-ruby provides a simple wrapper for safely handling passwords.
-gem 'bcrypt-ruby', '~> 3.1.0',  require: 'bcrypt'
+gem 'bcrypt', '~> 3.1.0'
 
 # we only use this gem for it's ujs capabilities.
 # jquery is the defacto DOM manipulation libraray
@@ -131,6 +131,7 @@ group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'listen', '~> 3.0.5'
   gem 'web-console', '~> 3.3.0'
+  
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring', '~> 1.7.0'
   gem 'spring-watcher-listen', '~> 2.0.0'
@@ -210,7 +211,7 @@ group :test do
   gem 'rspec', '~> 3.5.0'
 
   # Factories for testing
-  gem 'factory_girl_rails', '~> 4.9.0'
+  gem 'factory_bot_rails', '~> 5.1.0'
 
   # webrat provides functions such as 'visit', 'click_link',
   # 'click_button', etc. for use in integration tests.
