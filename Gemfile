@@ -165,8 +165,7 @@ group :development do
   gem 'rb-fsevent', '~> 0.9.0', require: false
 
   # Simple command execution over SSH. Lightweight deployment tool.
-  # Using our own version until https://github.com/mina-deploy/mina/pull/361 is merged.
-  gem 'mina', git: 'https://github.com/Samfundet/mina.git', branch: 'revert_old_change'
+  gem 'mina', '~> 0.3.0'
 
   # A DSL for quickly creating web applications in Ruby with minimal effort.
   gem 'sinatra', '~> 2.0.0'
