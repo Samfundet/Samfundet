@@ -4,7 +4,6 @@
 
 = render 'banner_image', banner_event: @banner_event
 
-%p= "Hei, venner :-)"
 - content_for :banner_image do
   - if can? :manage, FrontPageLock
     - if @banner_event.try(:front_page_lock)
