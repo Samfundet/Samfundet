@@ -14,8 +14,10 @@ GIT
     samfundet_domain (0.1.0)
       rails (~> 5.1.7)
 
-PATH
-  remote: ../mina
+GIT
+  remote: https://github.com/Samfundet/mina.git
+  revision: fc02c9385c7f7760aa39f8d46edbda8bcd3512a9
+  branch: revert_old_change
   specs:
     mina (0.3.8)
       open4 (~> 1.3.4)
