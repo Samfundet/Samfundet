@@ -44,14 +44,19 @@ gem 'jquery-tablesorter', '~> 1.22.0'
 
 # CoffeeScript is a scripting language. It compiles to JavaScript.
 gem 'coffee-rails', '~> 4.2.0'
+
 # Explicitly request sass version
 gem 'sass', '~> 3.4.0'
+
 # Sass is a stylesheet language. It compiles to CSS.
 gem 'sass-rails', '~> 5.0.0'
+
 # Sass mixin library
 gem 'bourbon', '~> 4.2.0'
+
 # Semantic fluid grid framework
 gem 'neat', '~> 1.8.0'
+
 # uglifier is a Ruby wrapper for UglifyJS, a JavaScript compressor.
 gem 'uglifier', '~> 3.0.0'
 
@@ -159,8 +164,10 @@ group :development do
 
   # file listener for automatic refresh of webpage on file change
   gem 'guard-livereload', '~> 2.5.0', require: false
+  
   # livereload injection via rack middleware, no need for browser extesions
   gem 'rack-livereload', '~> 0.3.0'
+  
   # For better mac filesystem listening performance
   gem 'rb-fsevent', '~> 0.9.0', require: false
 
