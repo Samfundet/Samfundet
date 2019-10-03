@@ -104,16 +104,12 @@ gem 'paperclip-compression', '~> 1.0.0'
 # A simple date validator for Rails 3.
 gem 'date_validator', '~> 0.9.0'
 
-# therubyracer is a Ruby connection to the V8 JavaScript interpreter.
-gem 'therubyracer', '~> 0.12.3', require: 'v8'
-
 # PostgreSQL adapter. See: config/database.yml
-
-gem 'pg', '~> 0.21.0'
+gem 'pg', '~> 1.1.0'
 
 # Provides PostgreSQL fulltext search. Contains wrappers for tsvectors
 # and enables searching in nested attributes.
-gem 'pg_search', git: 'https://github.com/Casecommons/pg_search.git'
+gem 'pg_search', '~> 2.3.0'
 
 # Diff library used in history for information pages
 gem 'diff-lcs', '~> 1.2.5'
