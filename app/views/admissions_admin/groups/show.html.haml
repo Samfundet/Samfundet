@@ -6,10 +6,7 @@
     &ndash;
     = @admission.title
   %p
-    = t('admissions.group_information', group_name: @group.name,
-                                        n_applications: @group.job_applications_in_admission(@admission).length,
-                                        n_jobs: @group.jobs_in_admission(@admission).length,
-                                        n_applicants: @group.job_applications_in_admission(@admission).map(&:applicant).uniq.length)
+    = t('admissions.group_information', group_name: @group.name, n_applications: @n_applications, n_jobs: @n_jobs, n_applicants: @n_applicants)
 
   %p
     != succeed '.' do
