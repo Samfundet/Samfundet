@@ -164,10 +164,10 @@ group :development do
 
   # file listener for automatic refresh of webpage on file change
   gem 'guard-livereload', '~> 2.5.0', require: false
-  
+
   # livereload injection via rack middleware, no need for browser extesions
   gem 'rack-livereload', '~> 0.3.0'
-  
+
   # For better mac filesystem listening performance
   gem 'rb-fsevent', '~> 0.9.0', require: false
 
