@@ -74,7 +74,7 @@ class ApplicationController < ActionController::Base
 
   def redirect_to_if_not_ajax_request(path)
     if request.xhr?
-      render nothing: true
+      render body: nil
     else
       redirect_to path
     end
