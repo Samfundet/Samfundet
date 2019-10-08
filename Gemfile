@@ -91,10 +91,10 @@ gem 'redcarpet', '~> 3.5.0'
 gem 'route_downcaser', '~> 1.2.0'
 
 # SamfundetDomain is a gem which provides the application with samfundets domain models.
-gem 'samfundet_domain', git: 'https://github.com/Samfundet/SamfundetDomain.git', branch: 'rails-5-1'
+gem 'samfundet_domain', git: 'https://github.com/Samfundet/SamfundetDomain.git'
 
 # SamfundetAuth is a gem which provides the application with methods for authenticating against mdb2.
-gem 'samfundet_auth', git: 'https://github.com/Samfundet/SamfundetAuth.git', branch: 'rails-5-1'
+gem 'samfundet_auth', git: 'https://github.com/Samfundet/SamfundetAuth.git'
 
 # will_paginate is an adaptive pagination plugin.
 # It makes pagination very simple.
