@@ -111,11 +111,6 @@ class JobApplicationsController < ApplicationController
     end
   end
 
-  def toggle_interested_other_positions
-    open(applicant_path(@current_user, applicant: { interested_other_positions: !@current_user.interested_other_positions }), method: :put, confirm: t('crud.confirm'))
-  end
-  helper_method :toggle_interested_other_positions
-
   def render_application_form_with_errors
     flash[:error] = @job_application.errors.full_messages.first
     redirect_to @job_application.job
