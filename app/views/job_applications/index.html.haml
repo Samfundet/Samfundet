@@ -1,14 +1,15 @@
 = javascript_include_tag 'job_applications/job_applications', defer: true
 
 .section
-  %h2= set_and_return_title t('jobs.your_applications')
+  %h1= set_and_return_title t('jobs.your_applications')
   %h3= t("jobs.gdpr")
+  %br
   - if @admissions.empty?
     %p
       = t('jobs.no_applications')
   - else
     - @admissions.each_pair do |admission, job_applications|
-      %h3
+      %h2
         = t('jobs.applications_to') + " #{admission.title}"
       - if admission.actual_application_deadline < Time.current && admission.user_priority_deadline > Time.current
         .flash.message
@@ -19,11 +20,8 @@
       %h4
         = t('jobs.repriorization_deadline') + ": " + admission.user_priority_deadline.to_s
       %p
-        - if @current_user.interested_other_positions
-          = t('job_applications.interested_other_positions')
-        - else
-          = t('job_applications.not_interested_other_positions')
-        = link_to t('job_applications.change_interested_other_positions_status'), applicant_path(@current_user, applicant: { interested_other_positions: !@current_user.interested_other_positions }), method: :put, confirm: t('crud.confirm')
+        = link_to check_box_tag("", "", @current_user.interested_other_positions), applicant_path(@current_user, applicant: { interested_other_positions: !@current_user.interested_other_positions }), method: :put, confirm: t('crud.confirm')
+        = t('job_applications.offer_other_positions')
       %table
         %thead
           %tr
