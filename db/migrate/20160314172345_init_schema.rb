@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-class InitSchema < ActiveRecord::Migration
+class InitSchema < ActiveRecord::Migration[5.1]
   def up
     create_table 'admissions', force: true do |t|
       t.string   'title'

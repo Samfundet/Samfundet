@@ -2,9 +2,9 @@
 
 include ActionDispatch::TestProcess
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :image do
-    title 'Tittel'
+    title { 'Tittel' }
     image_file do
       fixture_file_upload Rails.root.join('app', 'assets', 'images', 'banner-images', 'kitteh.jpeg')
     end

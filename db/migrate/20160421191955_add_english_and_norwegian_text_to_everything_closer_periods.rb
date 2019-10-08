@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-class AddEnglishAndNorwegianTextToEverythingCloserPeriods < ActiveRecord::Migration
+class AddEnglishAndNorwegianTextToEverythingCloserPeriods < ActiveRecord::Migration[5.1]
   def change
     rename_column :everything_closed_periods, :message, :message_no
     change_column :everything_closed_periods, :message_no, :text

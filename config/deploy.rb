@@ -15,6 +15,8 @@ print "Username @ Samfundet.no (defaults to current user's username): "
 username = STDIN.gets.chomp
 set :user, username unless username == ''
 
+set :ssh_options, '-o StrictHostKeyChecking=no'
+
 print 'Select a branch (default is master): '
 inpt = STDIN.gets.chomp
 set :branch, inpt.empty? ? 'master' : inpt
