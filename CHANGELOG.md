@@ -2,6 +2,12 @@
 
 ## [Ureleased]
 
+## 2019-10-08
+
+### Changed
+
+- Updated to Rails 5.1 (and various gems)
+
 ## 2019-10-03
 
 ### Changed
