@@ -11,7 +11,7 @@ ruby '2.5.5'
 source 'https://rubygems.org'
 
 # Rails. Duh.
-gem 'rails', '~> 5.1.7'
+gem 'rails', '~> 5.2.0'
 
 # Memcache client
 gem 'dalli', '~> 2.7.0'
@@ -81,7 +81,7 @@ gem 'icalendar', '~> 2.4.0'
 # For example, we can replace the path '/groups' with the paths
 # '/gjenger' and '/en/groups' which both point to the same page.
 # See: config/locales/routes/i18n-routes.yml
-gem 'route_translator', '~> 5.4.0'
+gem 'route_translator', '~> 5.6.0'
 
 # RedCarpet renders Markdown, a light-weight markup language, to HTML.
 # See: config/initializers/haml_markdown.rb
@@ -91,10 +91,14 @@ gem 'redcarpet', '~> 3.5.0'
 gem 'route_downcaser', '~> 1.2.0'
 
 # SamfundetDomain is a gem which provides the application with samfundets domain models.
-gem 'samfundet_domain', git: 'https://github.com/Samfundet/SamfundetDomain.git'
+# gem 'samfundet_domain', git: 'https://github.com/Samfundet/SamfundetDomain.git'
+gem 'samfundet_domain', git: 'https://github.com/Samfundet/SamfundetDomain.git', branch: 'rails-5-2'
+# gem 'samfundet_domain', path: '../SamfundetDomain'
 
 # SamfundetAuth is a gem which provides the application with methods for authenticating against mdb2.
-gem 'samfundet_auth', git: 'https://github.com/Samfundet/SamfundetAuth.git'
+# gem 'samfundet_auth', git: 'https://github.com/Samfundet/SamfundetAuth.git'
+gem 'samfundet_auth', git: 'https://github.com/Samfundet/SamfundetAuth.git', branch: 'rails-5-2'
+# gem 'samfundet_auth', path: '../SamfundetAuth'
 
 # will_paginate is an adaptive pagination plugin.
 # It makes pagination very simple.
