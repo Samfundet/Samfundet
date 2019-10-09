@@ -6,7 +6,9 @@
 
 ### Changed
 
-- Updated to Rails 5.1 (and various gems)
+- Updated `Samfundet`, `SamfundetAuth` and `SamfundetDomain` to Rails 5.1
+- More clearly show the status of whether the applicant wants other offers
+- Make `Samfundet` use latest versions of `SamfundetAuth` and `SamfundetDomain`
 
 ## 2019-10-03
 
