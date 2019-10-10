@@ -28,7 +28,7 @@
             &nbsp;
         - (@upcoming_admissions + @closed_admissions).each do |admission|
           %tr
-            %td= admission.title
+            %td= link_to admission.title, admissions_admin_admission_path(admission)
             %td= admission.shown_application_deadline
             %td= admission.user_priority_deadline
             %td= link_to t('admissions.edit_admission'), edit_admissions_admin_admission_path(admission)
