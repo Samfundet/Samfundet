@@ -16,7 +16,7 @@ en:
       table: "Table"
       telephone: "Telephone number"
       email: "Email"
-      allergies: "Allergies / other stuff"
+      other_messages: "Other messages"
       gdpr_checkbox: "I agree to Samfundet's <a href='%{en_url}'>privacy policy</a>."
       internal_comment: "Internal comment"
       export_to_csv: "Export all reservations to CSV"
