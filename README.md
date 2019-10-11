@@ -97,6 +97,10 @@ make git-hooks
 ```
 This will add symbolic links in .git/hooks from the hooks dir.
 
+### Workflow
+
+Make sure that you read the [workflow](docs/github_workflow.md) we have outlined before contributing.
+
 ## License
 
 MIT © Samfundet.no project authors
