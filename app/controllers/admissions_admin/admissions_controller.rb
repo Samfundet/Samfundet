@@ -82,16 +82,11 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
     applications_per_campus = @campuses.map do |campus|
       @campus_count[campus.id]
     end
-
-    total_applicants = @campuses.map(&:number_of_applicants).reduce(:+)  # Dette blir 52 selv om det bare er en søker?
-
+    
     # Want both the name of the campus, and % of applicants
     campus_labels = @campuses.map do |campus|
-      "#{campus.name}: #{(@campus_count[campus.id].fdiv(total_applicants) * 100).round(2)}% (#{@campus_count[campus.id]} pers.)"
+      "#{campus.name}: #{(@campus_count[campus.id].fdiv(applications_per_campus.sum) * 100).round(2)}% (#{@campus_count[campus.id]} pers.)"
     end
-
-    puts 'abc'
-    puts total_applicants #dette blir 52 selv om det bare er en søker?
 
     # The Gchart methods return an external URL to an image of the chart.
     @applications_per_group_chart = Gchart.pie(
