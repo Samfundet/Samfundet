@@ -9,7 +9,7 @@ class MembersRolesController < ApplicationController
     @members_role = MembersRole.find params[:id]
     @members_role.destroy
     flash[:success] = 'Medlemmet er slettet fra rollen.'
-    redirect_to :back
+    redirect_back(fallback_location: root_path)
   end
 
   def create
