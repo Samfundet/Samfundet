@@ -55,13 +55,26 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
         job.job_applications.count
       end.sum
     end
-    group_labels = @admission.groups.map(&:name)
+
+    applications_per_group_hash = @admission.groups.map do |group|
+      x = group.jobs.where(admission_id: @admission.id).map do |job|
+        job.job_applications.count
+      end.sum
+      [group.id, x]
+    end.to_h
+
+
+    group_labels = @admission.groups.map do |group|
+      "#{group.short_name}: #{(applications_per_group_hash[group.id].fdiv(applications_per_group.sum)*100).round(2)} % (#{applications_per_group_hash[group.id]} pers.)"
+    end
+
     admission_start = @admission.shown_from.to_date
     admission_end = @admission.actual_application_deadline.to_date
     applications_per_day = (admission_start..admission_end).map do |day|
       @admission.job_applications.where('DATE(job_applications.created_at) = ?',
                                         day).count
     end
+
     admission_day_labels = (admission_start..admission_end).map do |day|
       day.strftime('%-d.%-m')
     end
@@ -69,10 +82,16 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
     applications_per_campus = @campuses.map do |campus|
       @campus_count[campus.id]
     end
-    # Want both the name of the campus, and amount of applicants
+
+    total_applicants = @campuses.map(&:number_of_applicants).reduce(:+)  # Dette blir 52 selv om det bare er en søker?
+
+    # Want both the name of the campus, and % of applicants
     campus_labels = @campuses.map do |campus|
-      "#{campus.name} - #{@campus_count[campus.id]}"
+      "#{campus.name}: #{(@campus_count[campus.id].fdiv(total_applicants) * 100).round(2)}% (#{@campus_count[campus.id]} pers.)"
     end
+
+    puts 'abc'
+    puts total_applicants #dette blir 52 selv om det bare er en søker?
 
     # The Gchart methods return an external URL to an image of the chart.
     @applications_per_group_chart = Gchart.pie(
@@ -100,6 +119,17 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
       size: '800x350',
       bar_color: 'A03033'
     )
+
+    @applications_per_hour_today_chart = Gchart.line(
+        data: applications_per_day,
+        encoding: 'text',
+        labels: %w(00:00 01:00 02:00 03:00 04:00 05:00 06:00 07:00 08:00 09:00 10:00 11:00 12:00 13:00 14:00 15:00 16:00 17:00 18:00 19:00 20:00 21:00 22:00 23:00),
+        axis_with_labels: %w[x y],
+        axis_range: [nil, [0, applications_per_day.max, [applications_per_day.max / 10, 1].max]],
+        size: '800x350',
+        line_color: 'A03033'
+    )
+
   end
 
   def admin_applet

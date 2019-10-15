@@ -19,6 +19,12 @@
       %img{ src: @applications_per_day_chart }
 
   %p
+    %figure
+      %figcaption= t('Antall søknader per time')
+      %img{ src: @applications_per_hour_today_chart}
+
+
+  %p
     = t('admissions_admin.unique_applicants_title',
       admission: @admission.title,
       unique_applicants: @known_ids.count,
