@@ -1,16 +1,20 @@
 # CHANGELOG
 
-## [Ureleased]
+## [Unreleased]
+
+## 2019-10-16
+
+- Fix issue where Lyche closed periods would be visible regardless of whether they were actually active or not ([#514](https://github.com/Samfundet/Samfundet/issues/514))
 
 ## 2019-10-15
 
-- Fixed issue with site crashing when clicking on an individual tag while viewing an image ([#513](https://github.com/Samfundet/Samfundet/issues/513))
+- Fix issue with site crashing when clicking on an individual tag while viewing an image ([#513](https://github.com/Samfundet/Samfundet/issues/513))
 
 ## 2019-10-08
 
 ### Changed
 
-- Updated `Samfundet`, `SamfundetAuth` and `SamfundetDomain` to Rails 5.1 ([#24](https://github.com/Samfundet/SamfundetAuth/pull/24)), ([#4](https://github.com/Samfundet/SamfundetDomain/pull/4))
+- Update `Samfundet`, `SamfundetAuth` and `SamfundetDomain` to Rails 5.1 ([#24](https://github.com/Samfundet/SamfundetAuth/pull/24)), ([#4](https://github.com/Samfundet/SamfundetDomain/pull/4))
 - More clearly show the status of whether the applicant wants other offers ([#494](https://github.com/Samfundet/Samfundet/issues/494))
 - Make `Samfundet` use latest versions of `SamfundetAuth` and `SamfundetDomain` ([#519](https://github.com/Samfundet/Samfundet/pull/519))
 
@@ -36,7 +40,7 @@
 
 ### Removed
 
-- Deleted a useless file `en}`
+- Delete a useless file `en}`
 
 ## 2019-09-26
 
