@@ -34,8 +34,6 @@ class Campus < ApplicationRecord
       applicant_ids = current.first.job_applications.pluck(:applicant_id)
       campus_count = {}
       Applicant.where(id: applicant_ids).pluck(:campus_id).group_by { |i| i }.each { |k, v| campus_count[k] = v.length }
-      puts '1 2 3 4'
-      puts campus_count
       campus_count.default = 0
       campus_count
     end
