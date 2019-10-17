@@ -16,7 +16,7 @@
       table: "Bord"
       telephone: "Telefonnummer"
       email: "Epost"
-      allergies: "Allergier / andre beskjeder"
+      other_messages: "Andre beskjeder"
       gdpr_checkbox: "Jeg godtar Samfundets <a href='%{no_url}'>personvernerklæring</a>."
       internal_comment: "Intern kommentar"
       export_to_csv: "Eksporter alle reservasjoner til CSV"
