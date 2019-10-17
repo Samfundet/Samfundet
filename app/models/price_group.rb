@@ -6,5 +6,5 @@ class PriceGroup < ApplicationRecord
   validates :name, :price, presence: true
   validates :price, numericality: { only_integer: true }
 
-  belongs_to :event
+  belongs_to :event, optional: true
 end

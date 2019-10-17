@@ -13,7 +13,7 @@
 
 class Area < ApplicationRecord
   include Rails.application.routes.url_helpers
-  belongs_to :page
+  belongs_to :page, optional: true
 
   has_many :standard_hours
 

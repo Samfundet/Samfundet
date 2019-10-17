@@ -44,7 +44,7 @@ class Event < ApplicationRecord
 
   belongs_to :area
   belongs_to :organizer, polymorphic: true
-  belongs_to :billig_event
+  belongs_to :billig_event, optional: true
   belongs_to :image
   has_one :front_page_lock, as: :lockable
   has_many :price_groups, -> { distinct }

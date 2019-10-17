@@ -46,7 +46,7 @@ gem 'jquery-turbolinks', '~> 2.1.0'
 gem 'jquery-tablesorter', '~> 1.22.0'
 
 # CoffeeScript is a scripting language. It compiles to JavaScript.
-gem 'coffee-rails', '~> 4.2.0'
+gem 'coffee-rails', '~> 5.0.0'
 
 # Explicitly request sass version
 gem 'sass', '~> 3.4.0'

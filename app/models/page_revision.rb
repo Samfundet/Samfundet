@@ -7,7 +7,7 @@ class PageRevision < ApplicationRecord
   validates :content_type, inclusion: { in: CONTENT_TYPES, message: 'Invalid content type' }
 
   belongs_to :page
-  belongs_to :member
+  belongs_to :member, optional: true
 
   default_scope { order(:version) }
 end
