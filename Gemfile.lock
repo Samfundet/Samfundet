@@ -1,15 +1,13 @@
 GIT
   remote: https://github.com/Samfundet/SamfundetAuth.git
-  revision: a5fc16015ce7d0a2b4ee2f9a4bb5253a66370388
-  branch: rails-5-2
+  revision: 5da6cdefb9451c67808b555e79d8215d9a96c927
   specs:
     samfundet_auth (0.2.0)
       rails (~> 5.2.0)
 
 GIT
   remote: https://github.com/Samfundet/SamfundetDomain.git
-  revision: 8d79eb4826924fd56dcff4c38da291ddc7c7b747
-  branch: rails-5-2
+  revision: ccf608490749ee330805db4c7cf33678c85eb0e4
   specs:
     samfundet_domain (0.1.0)
       rails (~> 5.2.0)
