@@ -1,6 +1,6 @@
 %h2= @image.title
 
-= image_tag @image.image_file
+= image_tag @image.image_file.url
 
 %p
   = label_tag 'image-url', t('images.image_address')

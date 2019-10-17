@@ -12,14 +12,14 @@ class AdmissionsAdmin::LogEntriesController < AdmissionsAdmin::BaseController
       flash[:error] = 'Du er nødt til å fylle ut loggfeltet.'
     end
 
-    redirect_back
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy
     @log_entry.destroy
     flash[:success] = 'Loggføringen er slettet.'
 
-    redirect_back
+    redirect_back(fallback_location: root_path)
   end
 
   private

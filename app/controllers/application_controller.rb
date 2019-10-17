@@ -83,8 +83,4 @@ class ApplicationController < ActionController::Base
   def request_referer_if_on_current_domain
     request.referer if request.referer&.include?(request.host)
   end
-
-  def redirect_back
-    redirect_to session[:return_to]
-  end
 end

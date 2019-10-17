@@ -13,10 +13,10 @@ PRs are welcome. Follow these steps to set the website up locally:
 #### Ubuntu
 
 1. Install [RVM](https://rvm.io/)
-2. Install Ruby 2.3.3 via RVM using the following command
+2. Install Ruby 2.5.5 via RVM using the following command
 ```
 source ~/.rvm/scripts/rvm
-rvm install 2.3.3 && rvm use 2.3.3 --default
+rvm install 2.5.5 && rvm use 2.5.5 --default
 ```
 3. Choose a database password by running
 ```echo 'export SAMFDB_DEV_PASS="enteryourpasswordhere"' >> ~/.bashrc && source ~/.bashrc```
@@ -32,7 +32,7 @@ rvm install 2.3.3 && rvm use 2.3.3 --default
 ```
 make copy-config-files
 sed -i "s/password:.*/password: $SAMFDB_DEV_PASS/" config/database.yml
-rake db:setup
+bundle exec rails db:setup
 ```
 7. Start the Rails server by running `rails server`.
 
@@ -44,9 +44,9 @@ rake db:setup
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-2. Set default Rails version to v.2.3.3
+2. Set default Rails version to v.2.5.5
 ```
-rvm install 2.3.3 && rvm use 2.3.3 --default
+rvm install 2.5.5 && rvm use 2.5.5 --default
 ```
 
 3. Choose a database password by running

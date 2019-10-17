@@ -1,6 +1,6 @@
 = f.inputs name: t('events.forms.labels.images') do
   = f.input :image_id, as: :hidden, input_html: { value: Image.image_for(f.object).id, class: 'image_id_input' }
-  = image_tag Image.image_for(f.object).image_file, class: 'image-preview'
+  = image_tag Image.image_for(f.object).image_file.url, class: 'image-preview'
 
   %ul
     %li= link_to t('events.forms.existing_image'), images_path, class: 'choose-image-link'
