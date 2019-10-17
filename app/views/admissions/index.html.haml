@@ -11,7 +11,7 @@
     - cache [I18n.locale, admission] do
       != render(admission)
 
-- if can?(:manage, Admission)
+- if AdmissionsAdminAbility.new(current_user).can?(:show, Admission)
   .section
     %h2= t('admissions.closed_admissions')
     - if @closed_admissions.empty?
@@ -22,16 +22,18 @@
           %th= t('admissions.name')
           %th= t('admissions.application_deadline')
           %th= t('admissions.priority_deadline')
-          %th
-            &nbsp;
-          %th
-            &nbsp;
+          - if AdmissionsAdminAbility.new(current_user).can?(:manage, Admission)
+            %th
+              &nbsp;
+            %th
+              &nbsp;
         - (@upcoming_admissions + @closed_admissions).each do |admission|
           %tr
             %td= link_to admission.title, admissions_admin_admission_path(admission)
             %td= admission.shown_application_deadline
             %td= admission.user_priority_deadline
-            %td= link_to t('admissions.edit_admission'), edit_admissions_admin_admission_path(admission)
-            %td= link_to t('admissions.statistics'), statistics_admissions_admin_admission_path(admission)
+            - if AdmissionsAdminAbility.new(current_user).can?(:manage, Admission)
+              %td= link_to t('admissions.edit_admission'), edit_admissions_admin_admission_path(admission)
+              %td= link_to t('admissions.statistics'), statistics_admissions_admin_admission_path(admission)
     %p
       = link_to t('admissions.create_admission'), new_admissions_admin_admission_path, {class: "sexybutton sexysimple sexyred"}
