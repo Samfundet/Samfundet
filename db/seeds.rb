@@ -104,6 +104,7 @@ distinct_emails(number_of_applicants).each do |email|
     interested_other_positions: Faker::Boolean.boolean
   )
 
+
   # Apply jobs
   puts "New applicant: #{applicant.full_name}"
 
@@ -113,7 +114,8 @@ distinct_emails(number_of_applicants).each do |email|
       motivation: Faker::Lorem.paragraphs(5).join("\n\n"),
       applicant: applicant,
       priority: priority + 1,
-      job: job
+      job: job,
+      created_at: Faker::Time.between(1.weeks.ago, 2.weeks.from_now)
     )
     Interview.create!(
       time: Faker::Time.between(1.weeks.from_now, 2.weeks.from_now),

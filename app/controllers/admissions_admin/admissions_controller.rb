@@ -49,7 +49,6 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
 
     count_unique_applicants
 
-    # applications_count = @admission.job_applications.count
     applications_per_group = @admission.groups.map do |group|
       group.jobs.where(admission_id: @admission.id).map do |job|
         job.job_applications.count
@@ -63,9 +62,10 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
       [group.id, x]
     end.to_h
 
-
     group_labels = @admission.groups.map do |group|
-      "#{group.short_name}: #{(applications_per_group_hash[group.id].fdiv(applications_per_group.sum)*100).round(2)} % (#{applications_per_group_hash[group.id]} pers.)"
+      percentage = (applications_per_group_hash[group.id].fdiv(applications_per_group.sum)*100).round(2)
+      count = applications_per_group_hash[group.id]
+      "#{group.short_name}: #{percentage} % (#{count} #{t'admissions_admin.short_for_persons'})"
     end
 
     admission_start = @admission.shown_from.to_date
@@ -79,13 +79,19 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
       day.strftime('%-d.%-m')
     end
 
+    hours = (0..23).to_a.map { |x| '%02d' % x}
+
+    applications_per_hour = hours.map do |hour|
+        @admission.job_applications.where("extract(hour from job_applications.created_at) = ?", hour).count
+    end
+
     applications_per_campus = @campuses.map do |campus|
       @campus_count[campus.id]
     end
-    
+
     # Want both the name of the campus, and % of applicants
     campus_labels = @campuses.map do |campus|
-      "#{campus.name}: #{(@campus_count[campus.id].fdiv(applications_per_campus.sum) * 100).round(2)}% (#{@campus_count[campus.id]} pers.)"
+      "#{campus.name}: #{(@campus_count[campus.id].fdiv(applications_per_campus.sum) * 100).round(2)}% (#{@campus_count[campus.id]} #{t'admissions_admin.short_for_persons'})"
     end
 
     # The Gchart methods return an external URL to an image of the chart.
@@ -112,13 +118,14 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
       axis_with_labels: %w[x y],
       axis_range: [nil, [0, applications_per_day.max, [applications_per_day.max / 10, 1].max]],
       size: '800x350',
-      bar_color: 'A03033'
+      bar_color: 'A03033',
+
     )
 
-    @applications_per_hour_today_chart = Gchart.line(
-        data: applications_per_day,
+    @applications_per_hour_today_chart = Gchart.bar(
+        data: applications_per_hour,
         encoding: 'text',
-        labels: %w(00:00 01:00 02:00 03:00 04:00 05:00 06:00 07:00 08:00 09:00 10:00 11:00 12:00 13:00 14:00 15:00 16:00 17:00 18:00 19:00 20:00 21:00 22:00 23:00),
+        labels: hours,
         axis_with_labels: %w[x y],
         axis_range: [nil, [0, applications_per_day.max, [applications_per_day.max / 10, 1].max]],
         size: '800x350',

@@ -19,5 +19,7 @@
     unique_applicants_group_table_header: "Gjeng"
     unique_applicants_unique_applicants_table_header: "Unike søkere"
     unique_applicants_unique_applicants_admitted_table_header: "Unike søkere tatt opp"
+    applications_per_hour: "Antall søknader per time"
+    short_for_persons: "pers."
 
 
