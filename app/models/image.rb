@@ -23,7 +23,7 @@ class Image < ApplicationRecord
 
   has_and_belongs_to_many :tags, uniq: true
   has_many :events
-  belongs_to :uploader, class_name: 'Member', foreign_key: :uploader_id
+  belongs_to :uploader, class_name: 'Member', foreign_key: :uploader_id, optional: true
 
   before_destroy { |image| image.events.clear }
 

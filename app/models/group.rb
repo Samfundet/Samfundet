@@ -2,7 +2,7 @@
 
 class Group < ApplicationRecord
   belongs_to :group_type
-  belongs_to :page
+  belongs_to :page, optional: true
   has_many :jobs
   has_many :roles
   has_many :job_applications, through: :jobs

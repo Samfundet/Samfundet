@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Tag < ActiveRecord::Base
+class Tag < ApplicationRecord
   # attr_accessible :name
   has_and_belongs_to_many :images, uniq: true
 

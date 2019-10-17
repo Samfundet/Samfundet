@@ -2,7 +2,7 @@
 
 require SamfundetAuth::Engine.root.join('app', 'models', 'role')
 
-class Role < ActiveRecord::Base
+class Role < ApplicationRecord
   # attr_accessible :group_id, :role_id, :passable
 
   scope :passable, (lambda do

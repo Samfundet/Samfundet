@@ -107,6 +107,22 @@
 
 - Remove mentions of allergy in form when creating a reservation ([#503](https://github.com/Samfundet/Samfundet/issues/503))
 
+## 2019-10-17
+
+### Added
+
+- Make it visible that a reservation has a comment ([#501](https://github.com/Samfundet/Samfundet/issues/501))
+- Set name of admission as link to the corresponding admission page in admissions statistics page ([#495](https://github.com/Samfundet/Samfundet/issues/495))
+
+### Changed
+
+- Sort Lyche tables by number in ascending order ([#506](https://github.com/Samfundet/Samfundet/issues/506))
+- Don't send/require mail/phone when Lyche admins add a reservation manually ([#505](https://github.com/Samfundet/Samfundet/issues/505))
+
+### Removed
+
+- Remove mentions of allergy in form when creating a reservation ([#503](https://github.com/Samfundet/Samfundet/issues/503))
+
 ## 2019-10-16
 
 ### Fixed
