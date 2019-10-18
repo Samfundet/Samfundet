@@ -1,6 +1,10 @@
 %br
 %h1
   = "Lyche " + t("sulten.reservation.reservations")
+
+%p
+  = link_to t("helpers.models.sulten.new", :n => t("helpers.models.sulten.reservation.one")), sulten_reservasjon_admin_path
+
 %br
 %h2
   = t("sulten.reservation.summary.title")

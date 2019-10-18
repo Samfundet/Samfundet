@@ -1,6 +1,10 @@
 %br
 %h1
   = t("helpers.models.sulten.all", :n => t("helpers.models.sulten.reservation.other"))
+
+%p
+  = link_to t("helpers.models.sulten.new", :n => t("helpers.models.sulten.reservation.one")), sulten_reservasjon_admin_path
+
 %br
 - @reservations.group_by {|i| i.reservation_from.to_date }.each do |date, f|
   %h2
