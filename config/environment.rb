@@ -4,4 +4,4 @@
 require_relative 'application'
 
 # Initialize the rails application
-Samfundet::Application.initialize!
+Rails.application.initialize!

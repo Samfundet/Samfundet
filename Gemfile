@@ -61,7 +61,7 @@ gem 'neat', '~> 1.8.0'
 gem 'uglifier', '~> 3.0.0'
 
 # CanCanCan for role-based access control. See app/models/ability.rb
-gem 'cancancan', '~> 2.3.0'
+gem 'cancancan', '~> 3.0.0'
 
 # formtastic is a Rails form builder plugin
 # with semantically rich and accessible markup.
@@ -81,7 +81,7 @@ gem 'icalendar', '~> 2.4.0'
 # For example, we can replace the path '/groups' with the paths
 # '/gjenger' and '/en/groups' which both point to the same page.
 # See: config/locales/routes/i18n-routes.yml
-gem 'route_translator', '~> 5.10.0'
+gem 'route_translator', '~> 7.0.0'
 
 # RedCarpet renders Markdown, a light-weight markup language, to HTML.
 # See: config/initializers/haml_markdown.rb
@@ -131,6 +131,12 @@ gem 'slack-notifier', '~> 1.5.0'
 
 # Cocoon makes nested forms for price groups under events a lot easier. Adds some buttons and stuff
 gem 'cocoon', '~> 1.2.0'
+
+# Reduces boot times through caching; required in config/boot.rb
+gem 'bootsnap', '~> 1.4.0', require: false
+
+# Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
+gem 'webpacker', '~> 4.0'
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
