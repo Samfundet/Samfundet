@@ -11,6 +11,7 @@
 
 ### Changed
 
+- Update to Rails v5.2 ([#510](https://github.com/Samfundet/Samfundet/pull/510))
 - Sort Lyche tables by number in ascending order ([#506](https://github.com/Samfundet/Samfundet/issues/506))
 - Don't send/require mail/phone when Lyche admins add a reservation manually ([#505](https://github.com/Samfundet/Samfundet/issues/505))
 
