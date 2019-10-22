@@ -42,7 +42,25 @@ possible_number_of_jobs_in_group = [1, 2, 3]
 number_of_job_applications_pr_applicant = 3
 admission_title = "Høstopptak 2010"
 
-puts "Creating admission"
+puts "Creating admissions"
+old_admission_1 = Admission.create!(
+    title: "Høstopptak 1917",
+    shown_from: 100.years.ago - 2.weeks,
+    shown_application_deadline: 100.years.ago,
+    actual_application_deadline: 100.years.ago + 4.hours,
+    user_priority_deadline: 100.years.ago + 1.week,
+    admin_priority_deadline: 100.years.ago + 1.week + 1.hour,
+    promo_video: "https://www.youtube.com/embed/T8MjwROd0dc"
+)
+old_admission_2 = Admission.create!(
+    title: "Våropptak 1985",
+    shown_from: 34.years.ago - 2.weeks,
+    shown_application_deadline: 34.years.ago,
+    actual_application_deadline: 34.years.ago + 4.hours,
+    user_priority_deadline: 34.years.ago + 1.week,
+    admin_priority_deadline: 34.years.ago + 1.week + 1.hour,
+    promo_video: "https://www.youtube.com/embed/T8MjwROd0dc"
+)
 admission = Admission.create!(
   title: admission_title,
   shown_from: 1.week.ago,
@@ -530,7 +548,7 @@ Member.all.sample(10).each do |member|
 end
 
 #Create sulten reservations
-#
+puts "Creating lyche reservations"
 
 type1 = Sulten::ReservationType.create(name: "Drikke", description: "Bord bare for drikke")
 type2 = Sulten::ReservationType.create(name: "Mat/drikke", description: "Bord bare for mat og drikke")
@@ -545,8 +563,7 @@ tables = [table1.id, table2.id]
 types = [type1.id, type2.id]
 
 # Initialize list of tables
-
-15.times.each do
+30.times.each do
   now = DateTime.now
   date = (now + rand(1..25).days).change(hour: rand(16..20))
   Sulten::Reservation.create(
@@ -557,5 +574,8 @@ types = [type1.id, type2.id]
     reservation_duration: 30,
     telephone: phone_number,
     reservation_type_id: types[rand(0..1)],
-    table_id: tables[rand(0..1)])
+    table_id: tables[rand(0..1)],
+    allergies: rand(0..3) == 0 ? Faker::Lorem.sentence : nil
+  )
 end
+

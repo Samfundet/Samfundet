@@ -9,6 +9,11 @@ class AdmissionsAdmin::GroupsController < AdmissionsAdmin::BaseController
     @admission = Admission.find(params[:admission_id])
     @jobs = @group.jobs.where(admission: @admission)
     job_applications = @jobs.map(&:job_applications).flatten
+    @should_show_delete_button = @jobs.map { |job| job.job_applications.exists? }.include? false
+
+    @n_applications = job_applications.length
+    @n_jobs = @jobs.length
+    @n_applicants = @jobs.map(&:applicants).flatten.uniq.length
 
     admission_start = @admission.shown_from.to_date
     admission_end = @admission.actual_application_deadline.to_date

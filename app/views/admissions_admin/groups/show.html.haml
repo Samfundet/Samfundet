@@ -6,10 +6,7 @@
     &ndash;
     = @admission.title
   %p
-    = t('admissions.group_information', group_name: @group.name,
-                                        n_applications: @group.job_applications_in_admission(@admission).length,
-                                        n_jobs: @group.jobs_in_admission(@admission).length,
-                                        n_applicants: @group.job_applications_in_admission(@admission).map(&:applicant).uniq.length)
+    = t('admissions.group_information', group_name: @group.name, n_applications: @n_applications, n_jobs: @n_jobs, n_applicants: @n_applicants)
 
   %p
     != succeed '.' do
@@ -27,7 +24,8 @@
         %th= t('groups.job_type')
         %th
         %th
-        %th
+        - if @should_show_delete_button
+          %th
     %tbody
       - @jobs.each do |job|
         %tr
@@ -46,9 +44,10 @@
           %td
             - if can?(:edit, Job, job)
               != link_to t('groups.edit_job'), edit_admissions_admin_admission_group_job_path(@admission, @group, job)
-          %td
-            - if can?(:destroy, Job, job) && !job.job_applications.exists?
-              != link_to t('groups.delete_job'), admissions_admin_admission_group_job_path(@admission, @group, job), method: "delete", confirm: t('crud.confirm')
+          - if @should_show_delete_button
+            %td
+              - if can?(:destroy, Job, job) && !job.job_applications.exists?
+                != link_to t('groups.delete_job'), admissions_admin_admission_group_job_path(@admission, @group, job), method: "delete", confirm: t('crud.confirm')
 
   - if can?(:create, Job)
     %p

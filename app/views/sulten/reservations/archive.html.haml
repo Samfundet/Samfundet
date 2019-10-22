@@ -1,5 +1,7 @@
-%h2
+%br
+%h1
   = t("helpers.models.sulten.all", :n => t("helpers.models.sulten.reservation.other"))
+%br
 - @reservations.group_by {|i| i.reservation_from.to_date }.each do |date, f|
   %h2
     = date
@@ -18,6 +20,8 @@
       %tr
         %td
           = link_to k.name, k
+          - if k.allergies
+            = link_to image_tag('icons/comment.png', class: "comment-icon", alt: "Comment"), k
         %td
           #{k.reservation_from.strftime("%H:%M")} - #{k.reservation_to.strftime("%H:%M")}
         %td
@@ -32,5 +36,3 @@
           = link_to t("crud.destroy"), k, method: :delete, data: {confirm: t("crud.confirm")}
 - if @reservations.empty?
   = t("sulten.reservation.no_reservations")
-%p
-  = link_to t("common.back"), sulten_reservations_path

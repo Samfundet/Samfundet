@@ -1,10 +1,43 @@
+%br
+%h1
+  = "Lyche " + t("sulten.reservation.reservations")
+%br
 %h2
-  = t("sulten.reservation.title")
-%p
-  = link_to t("sulten.reservation.show_all"), sulten_reservations_archive_path
+  = t("sulten.reservation.summary.title")
+%table
+  %th
+    = t("sulten.reservation.summary.day")
+  %th
+    = t("sulten.reservation.summary.date")
+  %th
+    = t("sulten.reservation.reservations")
+  %th
+    = t("sulten.reservation.people")
+  - @reservations.group_by {|i| i.reservation_from.to_date }.each do |date, f|
+    %tr
+      %td
+        = l(date, format: '%A').capitalize
+      %td
+        = date
+      %td
+        = f.length
+      %td
+        = f.map(&:people).sum
+  %tr{class:"summation"}
+    %td{style:"font-style:italic;", colspan:2}
+      = t("sulten.reservation.summary.total_week")
+    %td
+      = @reservations.length
+    %td
+      = @reservations.map(&:people).sum
+
 %p#export_csv
   = link_to T("sulten.reservation.export_to_csv"), sulten_reservations_export_path(format: :csv)
-
+%p
+  = link_to t("sulten.reservation.show_all"), sulten_reservations_archive_path
+%br
+%h2
+  = t("sulten.reservation.title")
 - @reservations.group_by {|i| i.reservation_from.to_date }.each do |date, f|
   %h2
     = date
@@ -23,19 +56,20 @@
       %tr
         %td
           = link_to k.name, k
+          - if k.allergies
+            = link_to image_tag('icons/comment.png', class: "comment-icon", alt: "Comment"), k
         %td
           #{k.reservation_from.strftime("%H:%M")} - #{k.reservation_to.strftime("%H:%M")}
         %td
           = k.people
         %td
           = k.reservation_type
-        %th
+        %td
           = k.table.number
         %td
           = link_to t("crud.edit"), [:edit, k]
         %td
           = link_to t("crud.destroy"), k, method: :delete, data: {confirm: t("crud.confirm")}
 - if @reservations.empty?
-  = t("sulten.reservation.no_reservations_this_week")
-%p
-  = link_to t("common.back"), sulten_admin_path
+  %h3
+    = t("sulten.reservation.no_reservations_this_week")

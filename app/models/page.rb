@@ -52,7 +52,7 @@ class Page < ApplicationRecord
     end
   end
 
-  include PgSearch
+  include PgSearch::Model
   multisearchable against: %i[title_no
                               title_en
                               content_no

@@ -1,8 +1,9 @@
 'no':
   sulten:
     reservation:
-      title: "Kommende reservasjoner:"
+      title: "Kommende reservasjoner"
       no_reservations: "Ingen reservasjoner"
+      reservations: "Reservasjoner"
       no_reservations_this_week: "Ingen reservasjoner denne uken"
       show_all: "Vis alle"
       name: "Navn"
@@ -13,13 +14,19 @@
       reservation_type: "Anledning"
       placeholder_date: "01.10.1910 12:00"
       table: "Bord"
-      name: "Navn"
       telephone: "Telefonnummer"
       email: "Epost"
-      allergies: "Allergier / andre beskjeder"
+      other_messages: "Andre beskjeder"
       gdpr_checkbox: "Jeg godtar Samfundets <a href='%{no_url}'>personvernerklæring</a>."
       internal_comment: "Intern kommentar"
       export_to_csv: "Eksporter alle reservasjoner til CSV"
+      summary:
+        title: "Oppsummering"
+        date: "Dato"
+        day: "Dag"
+        total: "Totalt antall reservasjoner"
+        total_people: "Totalt antall personer"
+        total_week: "Totalt hele uka"
       form:
         uka_title: 'Lyche reservasjonssystem under UKA'
         uka: 'Bordbestilling må gjøres innen 14:00 samme dag. For hendvendelser, kontakt oss på ' # email link

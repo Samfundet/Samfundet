@@ -1,3 +1,4 @@
 #admission-header
   .no-active-admission-youtube-video
-    %iframe{ src: @closed_admissions.first.promo_video, frameborder: 0, allowfullscreen: true }
+    - if not @closed_admissions.first.nil?
+      %iframe{ src: @closed_admissions.first.promo_video, frameborder: 0, allowfullscreen: true }

@@ -47,10 +47,15 @@ class Sulten::ReservationsController < Sulten::BaseController
   end
 
   def admin_create
-    @reservation = Sulten::Reservation.new(reservation_params)
+    # We don't require Lyche admins to type in silly telephone numbers when they manually
+    # add a reservation, so just add N/A to signal that it's unecessary. Telephone won't be
+    # added from the admin_new view, so we add it here.
+    admin_params = reservation_params.merge(telephone: 'N/A')
+    @reservation = Sulten::Reservation.new(admin_params)
     @reservation.admin_access = true
     if @reservation.save
-      SultenNotificationMailer.send_reservation_email(@reservation).deliver
+      # Note that we don't send an email confimation on manually created reservations.
+      # That's only for reservations created by users.
       flash[:success] = t('helpers.models.sulten.reservation.success.create')
       redirect_to sulten_reservations_archive_path
     else

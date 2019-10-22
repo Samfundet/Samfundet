@@ -18,9 +18,7 @@
     not_set: "Ikke satt"
     deadline_has_passed_for_some: "Noen av dine søknader hører til opptak hvor omprioriteringsfristen har utgått."
     deadline_has_passed_for_all: "Dine søknader tilhører et eller flere opptak hvor omprioriteringsfristen har utgått."
-    interested_other_positions: "Det er registrert at du ønsker å kunne få tilbud om stillinger utover de du søker på."
-    not_interested_other_positions: "Det er registrert at du IKKE ønsker å få tilbud om stillinger utover de du søker på."
-    change_interested_other_positions_status: "Klikk her for å endre det."
+    offer_other_positions: "Ønsker tilbud om verv utover de jeg søker på"
     log_entries:
       log_entries: "Loggføringer"
       description: "Loggføringer knyttes opp mot søkeren, din gjeng og dette opptaket. Det vil si at andre gjenger vil ikke se deres loggføringer. Du vil ikke se disse loggføringene dersom søkeren søker ved neste opptak. Du vil se loggføringene for denne søkeren på eventuelle andre søknader søkeren har ved din gjeng."

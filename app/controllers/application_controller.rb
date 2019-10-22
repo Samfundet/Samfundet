@@ -74,7 +74,7 @@ class ApplicationController < ActionController::Base
 
   def redirect_to_if_not_ajax_request(path)
     if request.xhr?
-      render nothing: true
+      render body: nil
     else
       redirect_to path
     end
@@ -82,9 +82,5 @@ class ApplicationController < ActionController::Base
 
   def request_referer_if_on_current_domain
     request.referer if request.referer&.include?(request.host)
-  end
-
-  def redirect_back
-    redirect_to session[:return_to]
   end
 end

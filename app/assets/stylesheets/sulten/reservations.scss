@@ -2,3 +2,22 @@
   font-weight:400;
   padding:5px;
 }
+
+.comment-icon {
+  width: 20px;
+  height: 20px;
+  padding: 3px;
+  display: inline-block;
+  float: right;
+  background-color: $samfundet-red;
+  border-radius: 5px;
+  margin-right: 5px;
+}
+
+.reservation-separator {
+  background-color: $samfundet-green;
+  padding: 10px;
+  color: white;
+  font-size: 1.5em;
+  width: 100%;
+}
