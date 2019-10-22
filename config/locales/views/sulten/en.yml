@@ -49,6 +49,8 @@ en:
         line1: "Your reservation at Lyche was successfully made!"
         line2: "You should be getting an email shortly, containing the details of your reservation."
         line3_html: "If you do not get an email, please notify"
+      calendar:
+        title: "Lyche Calendar"
     table:
       number: "Number"
       capacity: "Capacity"
