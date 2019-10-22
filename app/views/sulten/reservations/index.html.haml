@@ -56,7 +56,7 @@
       %tr
         %td
           = link_to k.name, k
-          - if k.allergies
+          - unless k.allergies.empty?
             = link_to image_tag('icons/comment.png', class: "comment-icon", alt: "Comment"), k
         %td
           #{k.reservation_from.strftime("%H:%M")} - #{k.reservation_to.strftime("%H:%M")}
