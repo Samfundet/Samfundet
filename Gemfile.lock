@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/Samfundet/SamfundetAuth.git
-  revision: eb04e2392786f09dce29ff757b3e016fee4d2a37
+  revision: d94918321862655ec0b571f39f8620274c7b20f9
   branch: rails-6-0
   specs:
     samfundet_auth (0.2.0)
@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/Samfundet/SamfundetDomain.git
-  revision: 9aa434d3d5d7910f9939ec37d3f2532662a2a7d4
+  revision: 55b33b8848bb2aa49f67b4a294da2163587ca0b6
   branch: rails-6-0
   specs:
     samfundet_domain (0.1.0)
@@ -224,7 +224,7 @@ GEM
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
-    loofah (2.3.0)
+    loofah (2.3.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     lumberjack (1.0.13)
