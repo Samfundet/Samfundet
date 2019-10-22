@@ -2,6 +2,16 @@
 
 ## [Unreleased]
 
+## 2019-10-22
+
+### Added
+
+- Show shortcuts to new reservation form for Lyche admin ([#525](https://github.com/Samfundet/Samfundet/pull/525))
+
+### Fixed
+
+- Fixed issue where Lyche reservation comment icon would appear regardless of whether there was an actual comment or not ([#524](https://github.com/Samfundet/Samfundet/issues/524))
+
 ## 2019-10-17
 
 ### Added
@@ -53,27 +63,27 @@
 
 ### Changed
 
-- Hide delete column if no jobs can be deleted
+- Hide delete column if no jobs can be deleted ([#442](https://github.com/Samfundet/Samfundet/issues/442))
 
 ### Fixed
 
-- Fix crash when no there were no previous or current admissiona and one navigated to `/admission`
+- Fix crash when no there were no previous or current admissiona and one navigated to `/admission` ([#475](https://github.com/Samfundet/Samfundet/issues/475))
 
 ### Removed
 
-- Delete a useless file `en}`
+- Delete a useless file `en}` ([#483](https://github.com/Samfundet/Samfundet/pull/483))
 
 ## 2019-09-26
 
 ### Changed
 
-- Upgrade to Ruby v2.5
+- Upgrade to Ruby v2.5 ([#474](https://github.com/Samfundet/Samfundet/pull/474))
 
 ## 2019-09-24
 
 ### Changed
 
-- Set start day of calendar picker to Monday instead of Sunday, which was the default
+- Set start day of calendar picker to Monday instead of Sunday, which was the default ([#473](https://github.com/Samfundet/Samfundet/pull/473))
 
 ## 2019-09-18
 
