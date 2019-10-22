@@ -51,6 +51,8 @@
         line1: "Din reservasjon hos Lyche har blitt registrert!"
         line2: "Du skal ha fått tilsendt mail med detaljer om din reservasjon."
         line3_html: "Hvis du ikke har fått mail, vennligst gi beskjed til"
+      calendar:
+        title: "Lyche Calendar"
     table:
       number: "Nummer"
       capacity: "Antall plasser"

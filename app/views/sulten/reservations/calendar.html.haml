@@ -1,0 +1,19 @@
+- if @reservations.exists?
+  .calendar
+    .calendar-title= t("sulten.reservation.calendar.title")
+    .calendar-row.head
+      .calendar-column.fixed
+        = t("sulten.reservation.table")
+      - (15..24).each do |hour|
+        .calendar-column
+          = "%02d:00" % hour.to_s
+    - @tables.each do |table|
+      .calendar-row
+        .calendar-column.fixed
+          = table.number.to_s
+        .calendar-column
+          - @reservations.where(:table_id=> table).each_with_index do |res, index|
+            .calendar-reservation{style: "width: #{@render_widths[index]}%; right: #{@render_offsets[index]}%;"}
+              = res.reservation_from.to_s[10..15] + " - " + res.reservation_to.to_s[10..15]
+- else
+  %p= "No reservations today"

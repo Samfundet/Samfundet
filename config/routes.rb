@@ -179,6 +179,7 @@ Rails.application.routes.draw do
       get :kjempelars, to: "admin#index"
       get "reservations/archive" => "reservations#archive"
       get "reservations/export" => "reservations#export"
+      get "reservations/calendar" => "reservations#calendar"
       get "/available" => "reservations#available"
 
       resources :closed_periods, except: [:show]
