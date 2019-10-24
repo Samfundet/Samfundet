@@ -62,6 +62,7 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
       @admission.job_applications.where('DATE(job_applications.created_at) = ?',
                                         day).count
     end
+
     admission_day_labels = (admission_start..admission_end).map do |day|
       day.strftime('%-d.%-m')
     end
