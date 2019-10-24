@@ -44,10 +44,14 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
   end
 
   def statistics
-    @campuses = Campus.order(:name)
-    @campus_count = Campus.number_of_applicants_given_admission(@admission)
-    count_unique_applicants
+    @applications_per_group_chart = applications_per_group_chart
+    @applications_per_day_chart = applications_per_day_chart
+    @applications_per_hour_chart = applications_per_hour_chart
+    @applications_per_campus_chart = applications_per_campus_chart
+  end
 
+  # The Gchart methods return an external URL to an image of the chart.
+  def applications_per_group_chart
     applications_per_group = @admission.groups.map do |group|
       group.jobs.where(admission_id: @admission.id).map do |job|
         job.job_applications.count
@@ -67,40 +71,6 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
       "#{group.short_name}: #{percentage} % (#{count} #{t('admissions_admin.short_for_persons')})"
     end
 
-    admission_start = @admission.shown_from.to_date
-    admission_end = @admission.actual_application_deadline.to_date
-    applications_per_day = (admission_start..admission_end).map do |day|
-      @admission.job_applications.where('DATE(job_applications.created_at) = ?',
-                                        day).count
-    end
-
-    admission_day_labels = (admission_start..admission_end).map do |day|
-      day.strftime('%-d.%-m')
-    end
-
-    hours = (0..23).to_a.map { |x| format('%02d', x) }
-
-    applications_per_hour = hours.map do |hour|
-      @admission.job_applications.where('extract(hour from job_applications.created_at) = ?', hour).count
-    end
-
-    applications_per_campus = @campuses.map do |campus|
-      @campus_count[campus.id]
-    end
-
-    # Want both the name of the campus, and % of applicants
-    campus_labels = @campuses.map do |campus|
-      "#{campus.name}: #{(@campus_count[campus.id].fdiv(applications_per_campus.sum) * 100).round(2)}% (#{@campus_count[campus.id]} #{t('admissions_admin.short_for_persons')})"
-    end
-
-    @applications_per_group_chart = applications_per_group_chart(applications_per_group, group_labels)
-    @applications_per_day_chart = applications_per_day_chart(applications_per_day, admission_day_labels)
-    @applications_per_hour_chart = applications_per_hour_chart(applications_per_hour, hours)
-    @applications_per_campus_chart = applications_per_campus_chart(applications_per_campus, campus_labels)
-  end
-
-  # The Gchart methods return an external URL to an image of the chart.
-  def applications_per_group_chart(applications_per_group, group_labels)
     Gchart.pie(
       data: applications_per_group,
       encoding: 'text',
@@ -110,7 +80,17 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
     )
   end
 
-  def applications_per_day_chart(applications_per_day, admission_day_labels)
+  def applications_per_day_chart
+    admission_start = @admission.shown_from.to_date
+    admission_end = @admission.actual_application_deadline.to_date
+    applications_per_day = (admission_start..admission_end).map do |day|
+      @admission.job_applications.where('DATE(job_applications.created_at) = ?',
+                                        day).count
+    end
+    admission_day_labels = (admission_start..admission_end).map do |day|
+      day.strftime('%-d.%-m')
+    end
+
     Gchart.bar(
       data: applications_per_day,
       encoding: 'text',
@@ -122,7 +102,11 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
     )
   end
 
-  def applications_per_hour_chart(applications_per_hour, hours)
+  def applications_per_hour_chart
+    hours = (0..23).to_a.map { |x| format('%02d', x) }
+    applications_per_hour = hours.map do |hour|
+      @admission.job_applications.where('extract(hour from job_applications.created_at) = ?', hour).count
+    end
     Gchart.bar(
       data: applications_per_hour,
       encoding: 'text',
@@ -134,7 +118,20 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
     )
   end
 
-  def applications_per_campus_chart(applications_per_campus, campus_labels)
+  def applications_per_campus_chart
+    @campuses = Campus.order(:name)
+    @campus_count = Campus.number_of_applicants_given_admission(@admission)
+    count_unique_applicants
+
+    applications_per_campus = @campuses.map do |campus|
+      @campus_count[campus.id]
+    end
+
+    # Want both the name of the campus, and % of applicants
+    campus_labels = @campuses.map do |campus|
+      "#{campus.name}: #{(@campus_count[campus.id].fdiv(applications_per_campus.sum) * 100).round(2)}% (#{@campus_count[campus.id]} #{t('admissions_admin.short_for_persons')})"
+    end
+
     Gchart.pie(
       data: applications_per_campus,
       encoding: 'text',
