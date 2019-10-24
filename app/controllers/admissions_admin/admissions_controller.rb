@@ -101,46 +101,46 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
 
   # The Gchart methods return an external URL to an image of the chart.
   def applications_per_group_chart(applications_per_group, group_labels)
-       Gchart.pie(
-        data: applications_per_group,
-        encoding: 'text',
-        labels: group_labels,
-        size: '800x300',
-        custom: 'chco=00FFFF,FF0000,FFFF00,0000FF', # color scale
-        )
+    Gchart.pie(
+      data: applications_per_group,
+      encoding: 'text',
+      labels: group_labels,
+      size: '800x300',
+      custom: 'chco=00FFFF,FF0000,FFFF00,0000FF', # color scale
+    )
   end
 
   def applications_per_day_chart(applications_per_day, admission_day_labels)
-       Gchart.bar(
-        data: applications_per_day,
-        encoding: 'text',
-        labels: admission_day_labels,
-        axis_with_labels: %w[x y],
-        axis_range: [nil, [0, applications_per_day.max, [applications_per_day.max / 10, 1].max]],
-        size: '800x350',
-        bar_color: 'A03033'
+    Gchart.bar(
+      data: applications_per_day,
+      encoding: 'text',
+      labels: admission_day_labels,
+      axis_with_labels: %w[x y],
+      axis_range: [nil, [0, applications_per_day.max, [applications_per_day.max / 10, 1].max]],
+      size: '800x350',
+      bar_color: 'A03033'
     )
   end
 
   def applications_per_hour_chart(applications_per_hour, hours)
-       Gchart.bar(
-        data: applications_per_hour,
-        encoding: 'text',
-        labels: hours,
-        axis_with_labels: %w[x y],
-        axis_range: [nil, [0, applications_per_hour.max, [applications_per_hour.max / 10, 1].max]],
-        size: '800x350',
-        line_color: 'A03033'
+    Gchart.bar(
+      data: applications_per_hour,
+      encoding: 'text',
+      labels: hours,
+      axis_with_labels: %w[x y],
+      axis_range: [nil, [0, applications_per_hour.max, [applications_per_hour.max / 10, 1].max]],
+      size: '800x350',
+      line_color: 'A03033'
     )
   end
 
   def applications_per_campus_chart(applications_per_campus, campus_labels)
-       Gchart.pie(
-        data: applications_per_campus,
-        encoding: 'text',
-        labels: campus_labels,
-        size: '800x350',
-        custom: 'chco=00FFFF,FF0000,FFFF00,0000FF'
+    Gchart.pie(
+      data: applications_per_campus,
+      encoding: 'text',
+      labels: campus_labels,
+      size: '800x350',
+      custom: 'chco=00FFFF,FF0000,FFFF00,0000FF'
     )
   end
 
