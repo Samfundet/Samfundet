@@ -132,9 +132,6 @@ gem 'slack-notifier', '~> 1.5.0'
 # Cocoon makes nested forms for price groups under events a lot easier. Adds some buttons and stuff
 gem 'cocoon', '~> 1.2.0'
 
-# Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '~> 1.4.0', require: false
-
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 4.0'
 
