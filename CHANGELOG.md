@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## 2019-10-28
+
+### Changed
+
+- Use old Lyche reservation form now that UKA 2019 is over ([#532](https://github.com/Samfundet/Samfundet/pull/532))
+
 ## 2019-10-22
 
 ### Added
@@ -89,10 +95,10 @@
 
 ### Added
 
-- Added the new reservation form the Luka is using during UKA
+- Add the new reservation form Lyche is using during UKA ([#469](https://github.com/Samfundet/Samfundet/pull/469))
 
 ## 2019-09-17
 
 ### Added
 
-- Added Hotjar, a service to know where our users are clicking and looking fom which heatmaps are generated
+- Add Hotjar, a service to know where our users are clicking and looking from which heatmaps are generated ([#468](https://github.com/Samfundet/Samfundet/pull/468))
