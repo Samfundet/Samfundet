@@ -60,7 +60,7 @@
       %tr
         %td
           = link_to k.name, k
-          - unless k.allergies.empty?
+          - if k.allergies.present?
             = link_to image_tag('icons/comment.png', class: "comment-icon", alt: "Comment"), k
         %td
           #{k.reservation_from.strftime("%H:%M")} - #{k.reservation_to.strftime("%H:%M")}
@@ -74,6 +74,6 @@
           = link_to t("crud.edit"), [:edit, k]
         %td
           = link_to t("crud.destroy"), k, method: :delete, data: {confirm: t("crud.confirm")}
-- if @reservations.empty?
+- if @reservations.blank?
   %h3
     = t("sulten.reservation.no_reservations_this_week")
