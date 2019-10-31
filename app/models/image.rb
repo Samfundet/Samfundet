@@ -6,20 +6,20 @@ class Image < ApplicationRecord
                                  'banner-images', 'kitteh.jpeg')
   # attr_accessible :title, :image_file, :uploader_id, :tagstring, :uploader
 
-  has_attached_file :image_file,
-                    styles: { medium: 'x180>', large: 'x400>' },
-                    convert_options: { medium: '-quality 80', large: '-quality 80' },
-                    processors: %i[thumbnail compression],
-                    url: '/upload/:class/:attachment/:id_partition/:style/:filename',
-                    path: ':rails_root/public/upload/:class/:attachment/:id_partition/:style/:filename',
-                    default_url: '/home/aleksanb/Projects/Samfundet3/app/assets/images/banner-images/kitteh.jpeg'
+  has_one_attached :image_file
+                    # styles: { medium: 'x180>', large: 'x400>' },
+                    # convert_options: { medium: '-quality 80', large: '-quality 80' },
+                    # # processors: %i[thumbnail compression],
+                    # url: '/upload/:class/:attachment/:id_partition/:style/:filename',
+                    # path: ':rails_root/public/upload/:class/:attachment/:id_partition/:style/:filename',
+                    # default_url: '/home/aleksanb/Projects/Samfundet3/app/assets/images/banner-images/kitteh.jpeg'
 
   validates :title, uniqueness: true, presence: true
   validates :image_file, presence: true
 
-  validates_attachment :image_file,
-                       presence: true,
-                       content_type: { content_type: ['image/jpeg', 'image/jpg', 'image/gif', 'image/png'] }
+  # validates_attachment :image_file,
+                       # presence: true,
+                       # content_type: { content_type: ['image/jpeg', 'image/jpg', 'image/gif', 'image/png'] }
 
   has_and_belongs_to_many :tags, uniq: true
   has_many :events

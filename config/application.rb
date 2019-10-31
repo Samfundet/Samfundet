@@ -3,6 +3,7 @@
 require_relative 'boot'
 
 require 'rails/all'
+require "active_storage/engine"
 
 Bundler.require(*Rails.groups)
 

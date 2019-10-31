@@ -156,7 +156,7 @@ image_list = ["concert1.jpg", "concert2.jpg", "concert3.jpg", "concert4.jpg", "c
 image_list.each do |image|
   Image.create!(
       title: image,
-      image_file: File.open(Rails.root.join('app', 'assets', 'images', image)),
+      image_file: attach(File.open(Rails.root.join('app', 'assets', 'images', image))),
       uploader: Member.find_by(mail: 'myrlund@gmail')
     )
   puts "Image #{image} created"
