@@ -35,17 +35,21 @@
           = table.comment
       .calendar-column
         - if @render_reservations[table.id]
-          - @render_reservations[table.id].each do |res, offset, width, has_collision|
+          - @render_reservations[table.id].each do |res, offset, width, left_align|
             = link_to edit_sulten_reservation_path(res) do
-              .calendar-reservation{style: "width: #{width}%; left: #{offset}%;", class: has_collision ? "collision" : ""}
+              .calendar-reservation{style: "width: #{width}%; left: #{offset}%; color: #{(res.allergies.present? or res.internal_comment.present?) ? "yellow" : "white"}"}
                 = res.reservation_from.to_s[10..15] + " (" + res.people.to_s + ")"
-                .calendar-reservation-tip
+
+                .calendar-reservation-tip{class: left_align ? "left" : "right"}
                   .calendar-tip-title
                     = res.name + " (#{res.people.to_s} " + t('sulten.reservation.calendar.people_short') + ")"
                   .calendar-tip-row= t("sulten.reservation.time")+": " + res.reservation_from.to_s[10..15] + " - " + res.reservation_to.to_s[10..15]
                   .calendar-tip-row= t("sulten.reservation.telephone")+": " + res.telephone.to_s
-                  .calendar-tip-row= t("sulten.reservation.email")+": " + res.email.to_s
                   .calendar-tip-row= t("sulten.reservation.reservation_type")+": " + res.reservation_type.to_s
+                  - if res.allergies.present?
+                    .calendar-tip-row= t("sulten.reservation.other_messages")+": " + res.allergies.to_s
+                  - if res.internal_comment.present?
+                    .calendar-tip-row= t("sulten.reservation.internal_comment")+": " + res.internal_comment.to_s
   .calendar-row
 
 .tool-button

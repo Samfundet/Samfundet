@@ -57,7 +57,9 @@ namespace :sulten do
               reservation_duration: duration,
               telephone: "123456789",
               reservation_type_id: types.sample(1),
-              table_id: tables.sample(1)[0].id
+              table_id: tables.sample(1)[0].id,
+              internal_comment: rand(0..5)==0 ? Faker::Lorem.sentence(12) : nil,
+              allergies: rand(0..5)==0 ? Faker::Lorem.sentence(12) : nil
           ).save(validate: false)
         end
       end

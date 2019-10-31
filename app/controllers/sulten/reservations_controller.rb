@@ -106,7 +106,7 @@ class Sulten::ReservationsController < Sulten::BaseController
       return
     end
 
-    @reservations.each do |res|
+    @reservations_today.each do |res|
       @render_reservations[res.table_id] = []
     end
 
@@ -130,8 +130,7 @@ class Sulten::ReservationsController < Sulten::BaseController
     @reservations_today.each do |res|
       offset_percent = ((res.reservation_from - start_timeline).seconds / length_timeline).to_f * 100
       width_percent = ((res.reservation_duration*60) / length_timeline.to_f) * 100
-      has_collision = collision_reservations.include?(res.id)
-      data = [res, offset_percent, width_percent, false]
+      data = [res, offset_percent, width_percent, offset_percent<=50]
       @render_reservations[res.table_id].insert(0, data)
 
       puts 'Reservation at ' + res.reservation_from.to_s + ' at table ' + Sulten::Table.find(res.table_id).number.to_s

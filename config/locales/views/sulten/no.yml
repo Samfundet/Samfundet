@@ -52,12 +52,13 @@
         line2: "Du skal ha fått tilsendt mail med detaljer om din reservasjon."
         line3_html: "Hvis du ikke har fått mail, vennligst gi beskjed til"
       calendar:
-        title: "Daglig Oversikt"
+        title: "Lyche Calendar"
         edit: "Endre"
         people_short: "pers"
         tools: "Verktøy"
         change_closed: "Endre stengte perioder"
         back_to_today: "Tilbake til idag"
+        beta_link: "Kalender (beta)"
     table:
       number: "Nummer"
       capacity: "Antall plasser"
