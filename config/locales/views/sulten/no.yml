@@ -20,6 +20,7 @@
       gdpr_checkbox: "Jeg godtar Samfundets <a href='%{no_url}'>personvernerklæring</a>."
       internal_comment: "Intern kommentar"
       export_to_csv: "Eksporter alle reservasjoner til CSV"
+      hi: "Hei"
       summary:
         title: "Oppsummering"
         date: "Dato"
