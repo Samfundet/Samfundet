@@ -79,33 +79,68 @@ class Sulten::ReservationsController < Sulten::BaseController
 
   def calendar
     puts "******** CALENDAR FUNC *************"
-    start_timeline = Time.zone.now.beginning_of_day + 15.hours
-    end_timeline = Time.zone.now.beginning_of_day + 24.hours
-    length_timeline = end_timeline - start_timeline
 
-    @reservations = Sulten::Reservation.where(reservation_from: start_timeline..end_timeline)
-    @render_offsets = []
-    @render_widths = []
-
-    @reservations.each do |res|
-      offset_percent = ((res.reservation_from - start_timeline) / length_timeline).to_f * 100
-      @render_offsets.insert(@render_offsets.length, offset_percent)
-
-      width_percent = ((res.reservation_duration*60) / length_timeline.to_f) * 100
-      @render_widths.insert(@render_widths.length, width_percent)
-
-      puts "into day: "+((res.reservation_from - Time.zone.now.beginning_of_day).to_f/60).to_s + "/" + (24.hours.to_f).to_s + " => "+ offset_percent.to_s
-
-      puts " START OF DAY "+Time.zone.now.beginning_of_day.to_s
-      puts " START OF RES "+res.reservation_from.to_s
-      puts " DIFFERENCE   "+(res.reservation_from - Time.zone.now.beginning_of_day).to_s
-
+    if params[:date] != nil
+      @calendar_date = Date.strptime(params[:date], "%d-%m-%Y")
+      @is_today = Date.today.beginning_of_day == @calendar_date.beginning_of_day
+    else
+      @calendar_date = Date.today
+      @is_today = true
     end
 
+    start_timeline = @calendar_date.beginning_of_day + 15.hours
+    end_timeline = @calendar_date.beginning_of_day + 26.hours
+    length_timeline = (end_timeline - start_timeline).seconds
+
+    puts 'Start timeline:  ' + start_timeline.to_s
+    puts 'End timeline:    ' + end_timeline.to_s
+    puts 'Length timeline: ' + length_timeline.to_s
+
+    @reservations = Sulten::Reservation.where(reservation_from: @calendar_date.beginning_of_week..@calendar_date.end_of_week)
+    @reservations_today = Sulten::Reservation.where(reservation_from: start_timeline..end_timeline)
     @tables = Sulten::Table.order(:number).all
 
-    puts "CALENDAR INIT FOUND "+@reservations.length.to_s+" reservations!!"
-    puts "between "+Time.zone.now.beginning_of_day.to_s+" to "+Time.zone.now.end_of_day.to_s
+    @render_reservations = {}
+
+    if @reservations.length == 0
+      return
+    end
+
+    @reservations.each do |res|
+      @render_reservations[res.table_id] = []
+    end
+
+
+
+    collision_reservations = []
+    @reservations_today.each do |res|
+      @reservations_today.each do |col|
+        if res.id != col.id
+          # Check collision
+          if res.reservation_from < col.reservation_to
+            if res.reservation_to > col.reservation_from
+              collision_reservations.insert(0, res.id)
+              collision_reservations.insert(0, col.id)
+            end
+          end
+        end
+      end
+    end
+
+    @reservations_today.each do |res|
+      offset_percent = ((res.reservation_from - start_timeline).seconds / length_timeline).to_f * 100
+      width_percent = ((res.reservation_duration*60) / length_timeline.to_f) * 100
+      has_collision = collision_reservations.include?(res.id)
+      data = [res, offset_percent, width_percent, false]
+      @render_reservations[res.table_id].insert(0, data)
+
+      puts 'Reservation at ' + res.reservation_from.to_s + ' at table ' + Sulten::Table.find(res.table_id).number.to_s
+      puts ' width: ' + width_percent.to_s + '% of timeline'
+      puts ' offset: ' + offset_percent.to_s + '% of timeline'
+    end
+
+
+
     puts "******** CALENDAR FUNC END *************"
   end
 
