@@ -2,6 +2,18 @@
 
 ## [Unreleased]
 
+## 2019-11-07
+
+### Added
+
+- Show previously Lyche closed periods ([#518](https://github.com/Samfundet/Samfundet/issues/518))
+
+### Fixed
+
+- Fix mention of allergies on Lyche reservation form ([#534](https://github.com/Samfundet/Samfundet/issues/534))
+- Translate un-translated text ([#530](https://github.com/Samfundet/Samfundet/issues/530))
+- Fix typo in title of film club page ([#537](https://github.com/Samfundet/Samfundet/issues/537))
+
 ## 2019-10-28
 
 ### Changed
