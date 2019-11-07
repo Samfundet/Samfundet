@@ -14,6 +14,10 @@ class Sulten::ClosedPeriodsController < Sulten::BaseController
     )
   end
 
+  def archive
+    @previous_closed_periods = Sulten::ClosedPeriod.previous_closed_periods
+  end
+
   def create
     @closed_period = Sulten::ClosedPeriod.new(sulten_closed_period_params)
     if @closed_period.save

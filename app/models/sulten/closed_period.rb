@@ -7,6 +7,7 @@ class Sulten::ClosedPeriod < ApplicationRecord
   validates :closed_to, presence: true
   validate :times_in_valid_order
 
+  scope :previous_closed_periods, -> { where('closed_to < ?', Time.current.yesterday) }
   scope :active_closed_periods, -> { where('closed_from <= ? AND closed_to >= ?', Time.current, Time.current.yesterday) }
   scope :current_and_future_closed_times, -> { where('closed_to >= ?', Time.current.yesterday) }
 
