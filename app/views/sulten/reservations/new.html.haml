@@ -39,7 +39,7 @@
     = f.input :name, label: t("sulten.reservation.name")
     = f.input :telephone, label: t("sulten.reservation.telephone")
     = f.input :email, label: t("sulten.reservation.email")
-    = f.input :allergies, label: t("sulten.reservation.allergies")
+    = f.input :allergies, label: t("sulten.reservation.other_messages")
     .gdpr_checkbox
       != f.input :gdpr_checkbox, as: :boolean, label: raw(t("sulten.reservation.gdpr_checkbox", en_url:'/en/privacy', no_url: '/personvern'))
 
