@@ -1,5 +1,5 @@
-%h2 Søkere som ikke får stilling, men som gjerne vil ha.
-%p Søkere som er reservert må/bør klareres med gjengen som har reservert søkeren
+%h2 #{t('admissions_admin.applicant_dont_get_position')}
+%p #{t('admissions_admin.reserved_applicants')}
 
 - @applicants.each do |applicant|
   .applicant
@@ -20,5 +20,5 @@
 
 - if @applicants.blank?
   %p
-    Omprioriteringsfristen er ikke ute enda, kom tilbake etter 
+    #{t('admissions_admin.reprioritisation_deadline')}
     = l(@admission.admin_priority_deadline)
