@@ -69,6 +69,8 @@ en:
       from: 'From'
       message: 'Message'
       add_new_link: 'Add new period'
+      archive_title: 'Previous closed periods for Lyche'
+      show_all_previous_closed_periods: 'Show all previous closed periods'
 
       creation_success: "Successfully created Lyche reservations closed period"
       creation_failure: "Failed at creating Lyche reservations closed period"

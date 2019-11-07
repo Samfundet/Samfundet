@@ -182,6 +182,7 @@ Rails.application.routes.draw do
       get "/available" => "reservations#available"
 
       resources :closed_periods, except: [:show]
+      get "/closed_periods/arkiv" => "closed_periods#archive", as: :closed_periods_archive
 
       resources :reservation_types
       resources :reservations do

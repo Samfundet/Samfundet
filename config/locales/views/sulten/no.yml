@@ -71,6 +71,8 @@
       from: 'Fra'
       message: 'Melding'
       add_new_link: 'Ny periode'
+      archive_title: 'Tidligere perioder Lyche har vært stengt'
+      show_all_previous_closed_periods: 'Vis alle tidligere perioder Lyche har vært stengt'
 
       creation_success: "Opprettet vellykket stengtperiode"
       creation_failure: "Klarte ikke å opprette stengtperiode"
