@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## 2019-11-08
+
+### Fixed
+
+- Fix font size of second-level header in information pages ([#538](https://github.com/Samfundet/Samfundet/pull/538))
+
 ## 2019-11-07
 
 ### Added
