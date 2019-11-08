@@ -29,4 +29,4 @@
           %td= link_to t("crud.edit"), edit_event_path(event)
 
         - if can? :destroy, event
-          %td= link_to t("crud.destroy"), event, confirm: t("events.confirm_delete"), method: :delete
+          %td= link_to t("crud.destroy"), event, data: { confirm: t("events.confirm_delete") }, method: :delete

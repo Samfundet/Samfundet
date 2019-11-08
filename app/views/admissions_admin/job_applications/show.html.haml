@@ -30,9 +30,9 @@
 
     - if can?(:withdraw, JobApplication)
       - if !@job_application.withdrawn
-        %h3= link_to 'Trekk søknad', job_application_path(@job_application), method: :delete, confirm: "Er du sikker?"
+        %h3= link_to 'Trekk søknad', job_application_path(@job_application), method: :delete, data: { confirm: "Er du sikker?" }
       - else
-        %h3= link_to 'Aktiver søknad', job_application_path(@job_application), method: :put, confirm: "Er du sikker?"
+        %h3= link_to 'Aktiver søknad', job_application_path(@job_application), method: :put, data: { confirm: "Er du sikker?" }
 
   .log
     %h3= t('job_applications.log_entries.log_entries')
@@ -62,7 +62,7 @@
             = log_entry.member.full_name
           %td
             = link_to t('crud.destroy').humanize, [:admissions_admin, @job_application.job.admission,
-            @job_application.job.group, @job_application.applicant, log_entry], method: "delete", confirm: t('crud.confirm')
+            @job_application.job.group, @job_application.applicant, log_entry], method: "delete", data: { confirm: t('crud.confirm') }
 
   .soknader
     %h3= t('job_applications.applications')

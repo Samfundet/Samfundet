@@ -25,4 +25,4 @@
         = link_to t('roles.remove_member'),
                   [members_role.role, members_role],
                   method: :delete,
-                  confirm: t('crud.confirm')
+                  data: { confirm: t('crud.confirm') }

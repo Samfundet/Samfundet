@@ -16,6 +16,6 @@
       %td
         = link_to t("crud.edit"), edit_sulten_reservation_type_path(t)
       %td
-        = link_to t("crud.destroy"), t, confirm: t("crud.confirm"), method: :delete
+        = link_to t("crud.destroy"), t, data: { confirm: t("crud.confirm") }, method: :delete
 %p
   = link_to t("common.back"), sulten_admin_path

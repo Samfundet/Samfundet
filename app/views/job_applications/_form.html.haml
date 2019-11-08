@@ -22,5 +22,5 @@
 
 
 - if @already_applied and !@job_application.withdrawn
-  = link_to @job_application, { method: :delete, style:"position:relative; top:-53px; left:180px", class: "sexybutton sexysimple sexyred", id: "delete_job_application", confirm: t('crud.confirm') } do
+  = link_to @job_application, { method: :delete, style:"position:relative; top:-53px; left:180px", class: "sexybutton sexysimple sexyred", id: "delete_job_application", data: { confirm: t('crud.confirm') } } do
     = t('job_applications.forms.edit.withdraw')

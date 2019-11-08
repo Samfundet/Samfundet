@@ -43,7 +43,7 @@
             = link_to t('roles.remove_member'),
                       [@role, members_role],
                       method: :delete,
-                      confirm: t('crud.confirm')
+                      data: { confirm: t('crud.confirm') }
   %h2= t('roles.add_member')
   = form_tag role_members_roles_path(@role), method: :post do
     %p

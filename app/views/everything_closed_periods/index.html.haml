@@ -23,7 +23,7 @@
       %td= ecp.closed_from.to_date
       %td= ecp.closed_to.to_date
       %td= link_to t('crud.edit'), edit_everything_closed_period_path(ecp.id)
-      %td= link_to t('crud.destroy'), everything_closed_period_path(ecp.id), confirm: t('crud.confirm'), method: :delete
+      %td= link_to t('crud.destroy'), everything_closed_period_path(ecp.id), data: { confirm: t('crud.confirm') }, method: :delete
   %tfoot
     %tr
       %td{colspan: 5}= link_to t('everything_closed_periods.add_new_link'), new_everything_closed_period_path

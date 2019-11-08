@@ -47,7 +47,7 @@
           - if @should_show_delete_button
             %td
               - if can?(:destroy, Job, job) && !job.job_applications.exists?
-                != link_to t('groups.delete_job'), admissions_admin_admission_group_job_path(@admission, @group, job), method: "delete", confirm: t('crud.confirm')
+                != link_to t('groups.delete_job'), admissions_admin_admission_group_job_path(@admission, @group, job), method: "delete", data: { confirm: t('crud.confirm') }
 
   - if can?(:create, Job)
     %p

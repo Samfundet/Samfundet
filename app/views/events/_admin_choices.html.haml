@@ -8,7 +8,7 @@
         = link_to t("crud.edit"), edit_event_path(@event)
 
       %li
-        = link_to t("crud.destroy"), @page, confirm: t("events.confirm_delete"), method: :delete
+        = link_to t("crud.destroy"), @page, data: { confirm: t("events.confirm_delete") }, method: :delete
 
       %li
         = link_to t("event.admin"), admin_events_path

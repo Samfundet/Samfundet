@@ -27,4 +27,4 @@
           %td= link_to t("crud.edit"), edit_page_path(page)
           %td
             - if can? :destroy, page
-              = link_to t("crud.destroy"), page, confirm: t("pages.confirm_delete"), method: :delete
+              = link_to t("crud.destroy"), page, data: { confirm: t("pages.confirm_delete") }, method: :delete
