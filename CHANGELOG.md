@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## 2019-11-10
+
+### Fixed
+
+- Upgrade `loofah` dependency to patch security vulnerability ([#546](https://github.com/Samfundet/Samfundet/pull/546))
+
 ## 2019-11-08
 
 ### Fixed
