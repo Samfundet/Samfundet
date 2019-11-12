@@ -11,7 +11,7 @@
 
       - if can? :destroy, @page
         %li
-          = link_to t("crud.destroy"), @page, confirm: t("pages.confirm_delete"), method: :delete
+          = link_to t("crud.destroy"), @page, data: { confirm: t("pages.confirm_delete") }, method: :delete
 
       %li
         = link_to t("pages.admin"), admin_pages_path
