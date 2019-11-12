@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## 2019-11-12
+
+### Fixed
+
+- Reinstate confirmation boxes on delete operations ([#545](https://github.com/Samfundet/Samfundet/pull/545))
+
 ## 2019-11-10
 
 ### Fixed
