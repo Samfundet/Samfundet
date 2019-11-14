@@ -2,6 +2,36 @@
 
 ## [Unreleased]
 
+## 2019-11-12
+
+### Fixed
+
+- Reinstate confirmation boxes on delete operations ([#545](https://github.com/Samfundet/Samfundet/pull/545))
+
+## 2019-11-10
+
+### Fixed
+
+- Upgrade `loofah` dependency to patch security vulnerability ([#546](https://github.com/Samfundet/Samfundet/pull/546))
+
+## 2019-11-08
+
+### Fixed
+
+- Fix font size of second-level header in information pages ([#538](https://github.com/Samfundet/Samfundet/pull/538))
+
+## 2019-11-07
+
+### Added
+
+- Show previously Lyche closed periods ([#518](https://github.com/Samfundet/Samfundet/issues/518))
+
+### Fixed
+
+- Fix mention of allergies on Lyche reservation form ([#534](https://github.com/Samfundet/Samfundet/issues/534))
+- Translate un-translated text ([#530](https://github.com/Samfundet/Samfundet/issues/530))
+- Fix typo in title of film club page ([#537](https://github.com/Samfundet/Samfundet/issues/537))
+
 ## 2019-10-28
 
 ### Changed

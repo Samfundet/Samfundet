@@ -29,4 +29,4 @@
                 = link_to t('crud.edit'), edit_document_path(document)
             %td
               - if can? :destroy, document
-                = link_to t('crud.destroy'), document, confirm: t('documents.confirm_delete'), method: :delete
+                = link_to t('crud.destroy'), document, data: { confirm: t('documents.confirm_delete') }, method: :delete

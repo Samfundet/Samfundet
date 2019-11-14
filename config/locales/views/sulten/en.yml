@@ -20,6 +20,7 @@ en:
       gdpr_checkbox: "I agree to Samfundet's <a href='%{en_url}'>privacy policy</a>."
       internal_comment: "Internal comment"
       export_to_csv: "Export all reservations to CSV"
+      hi: "Hi"
       summary:
         title: "Summary"
         date: "Date"
@@ -76,6 +77,8 @@ en:
       from: 'From'
       message: 'Message'
       add_new_link: 'Add new period'
+      archive_title: 'Previous closed periods for Lyche'
+      show_all_previous_closed_periods: 'Show all previous closed periods'
 
       creation_success: "Successfully created Lyche reservations closed period"
       creation_failure: "Failed at creating Lyche reservations closed period"

@@ -50,6 +50,12 @@
             }
         }
 
+      h2 {
+        @include media($mobile-and-tablet-portrait) {
+          font-size: 27px;
+        }
+      }
+
         p {
             margin-top: 0;
             margin-bottom: 20px;

@@ -192,6 +192,7 @@ en:
 
         existing_image: Select existing image
         upload_image: Upload new image
+        contact_layout_or_redaksjonen: You must contact Layout or Redaksjonen in Markedsføringsgjengen to add new images to the system.
 
     search:
         title: Search for events

@@ -15,7 +15,7 @@
         %li
           = link_to t("crud.edit"), edit_blog_path(@article)
         %li
-          = link_to t("crud.destroy"), @article, confirm: t("crud.destroy"), method: :delete
+          = link_to t("crud.destroy"), @article, data: { confirm: t("crud.destroy") }, method: :delete
         %li
           = link_to t("blog.admin"), admin_blogs_path
 

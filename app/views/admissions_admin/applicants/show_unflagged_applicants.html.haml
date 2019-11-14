@@ -1,5 +1,5 @@
 = javascript_include_tag 'applicants/admissions_admin_applicants', defer: true
-%h2 Søkere som er satt til reserve, eller ikke satt enda
+%h2 #{t('admissions_admin.applicants_set_to_reserve')}
 %p
   %input#show_reserved{type:"checkbox", checked: true}
     =t('admissions_admin.show_reserved_applicants')
@@ -26,5 +26,5 @@
 
 - if @applicants.blank?
   %p
-    Omprioriteringsfristen er ikke ute enda, kom tilbake etter
+    #{t('admissions_admin.reprioritisation_deadline')}
     = l(@admission.admin_priority_deadline)
