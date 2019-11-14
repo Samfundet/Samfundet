@@ -180,6 +180,8 @@ Rails.application.routes.draw do
       get "reservations/archive" => "reservations#archive"
       get "reservations/export" => "reservations#export"
       get "/available" => "reservations#available"
+      get "/admin/index" => "admin#index", as: :lyche_admin
+
 
       resources :closed_periods, except: [:show]
       get "/closed_periods/arkiv" => "closed_periods#archive", as: :closed_periods_archive
