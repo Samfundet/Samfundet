@@ -23,6 +23,23 @@ namespace :sulten do
     tables = Sulten::Table.all
     types = Sulten::ReservationType.all
 
+    # Create additional tables if necessary
+    if tables.length < 30
+      n_tables = 30-tables.length
+      puts "Too few tables, creating " + n_tables.to_s + " more"
+      (0..n_tables).each do |offset|
+        if offset > 5
+          table = Sulten::Table.create(number: tables.length + offset, capacity: rand(2..8), available: true)
+        else
+          table = Sulten::Table.create(number: 10 + tables.length + offset, capacity: rand(2..8), available: true)
+        end
+        table.reservation_types << types.sample(1)
+      end
+      tables = Sulten::Table.all
+    end
+
+
+
     (0..5).each do |offset|
       20.times.each do
         now = DateTime.now + offset.days
