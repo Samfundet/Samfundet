@@ -21,8 +21,8 @@
   %p
     = t('admissions_admin.unique_applicants_title',
       admission: @admission.title,
-      unique_applicants: @known_ids.count,
-      admitted_applicants: @applicants_who_accepted_role)
+      unique_applicants: @unique_applicants_total,
+      admitted_applicants: @accepted_applicants_total)
 
   %h3= t('admissions_admin.unique_applicants_groups')
   %h4
@@ -35,8 +35,8 @@
             %strong= t('admissions_admin.unique_applicants_unique_applicants_table_header')
           %td
             %strong= t('admissions_admin.unique_applicants_unique_applicants_admitted_table_header')
-        - @uniq_applicants_in_group.each do |key, value|
+        - @unique_applicants_per_group.each do |key, value|
           %tr
             %td= link_to key.name, admissions_admin_admission_group_path(@admission, key)
             %td= value.count
-            %td= @uniq_apps_groups_accepted[key]
+            %td= @accepted_applicants_per_group[key]
