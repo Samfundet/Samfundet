@@ -122,53 +122,40 @@ private
   # Count unique applicants and how many of those were actually admitted to Samfundet
   # This is done both for Samfundet as a whole and for each group
   def count_unique_applicants
-    @uniq_applicants_in_group = {}
-    @uniq_apps_groups_accepted = {}
-    @applicants_who_accepted_role = 0
-    @known_ids = []
-    @sum_job_applications = 0
+    @unique_applicants_per_group = {}
+    @accepted_applicants_per_group = {}
+    
     @admission.groups.map do |group|
-      @uniq_applicants_in_group[group] = []
-      @uniq_apps_groups_accepted[group] = 0
-      @sum_job_applications += group.job_applications.count
+      @unique_applicants_per_group[group] = Set[]
+      @accepted_applicants_per_group[group] = 0
+      
       group.jobs.where(admission_id: @admission.id).map do |job|
         job.applicants.map do |app|
-          # In each unique group
-          next if @uniq_applicants_in_group[group].include? app.id
-          @uniq_applicants_in_group[group].push(app.id)
+          @unique_applicants_per_group[group].add app.id
+          
           log_entries = LogEntry.where(admission_id: @admission.id, applicant_id: app.id)
 
-          next if log_entries.empty?
-          last_log = log_entries.last
+          # An applicant can possibly be considered accepted if he/she/they has/have been logged,
+          # and only any of the following acceptance strings below.
+          unless log_entries.empty?
+            last_log = log_entries.last
 
-          acceptance_strings = [
-            'Ringt og tilbudt verv, takket ja',
-            'Called and offered position, the applicant accepted'
-          ]
-
-          if acceptance_strings.include?(last_log.log) && (last_log.group.name == group.name)
-            @uniq_apps_groups_accepted[group] += 1
-          end
-
-          # Total for entire admission
-          next if @known_ids.include? app.id
-          @known_ids.push(app.id)
-
-          log_entries = LogEntry.where(admission_id: @admission.id, applicant_id: app.id)
-
-          next if log_entries.empty?
-          last_log = log_entries.last
-
-          acceptance_strings = [
-            'Ringt og tilbudt verv, takket ja',
-            'Called and offered position, the applicant accepted'
-          ]
-
-          if acceptance_strings.include?(last_log.log)
-            @applicants_who_accepted_role += 1
+            @accepted_applicants_per_group[group] += 1 if application_is_accepted?(last_log.log)
           end
         end
       end
     end
+
+    @unique_applicants_total = @unique_applicants_per_group.flat_map { |_, v| v }.uniq.count
+    @accepted_applicants_total = @accepted_applicants_per_group.values.reduce(:+)
   end
+end
+
+def application_is_accepted?(log)
+  acceptance_strings = [
+      'Ringt og tilbudt verv, takket ja',
+      'Called and offered position, the applicant accepted'
+  ]
+  
+  acceptance_strings.include?(log)
 end
