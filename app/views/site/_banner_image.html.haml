@@ -10,19 +10,19 @@
               .ribbon.blue
                 = t('layouts.application.menu.blog')
           = background_image_helper "banner-image", banner_event.image_or_default, size: :large do
-            - if banner_event.is_a?(Event)
-              .container
-                .image-text{ class: banner_event.banner_alignment }
-                  .wrapper
-                    .font-elem.date{ style: "color: #{banner_event.primary_color}" }
-                      = l banner_event.start_time, format: :short_date
-                  .wrapper
-                    .front-elem.where{ style: "color: #{banner_event.primary_color}" }
-                      // Just using a double forward slash creates too much space between them, so
-                      // we tighten the two forward slashes and must therefore split up the string
-                      = t_event_type(banner_event)
-                      %span.banner-type-location-double-slash-text //
-                      = banner_event.area_title
-                  .wrapper
-                    .front-elem.title{ style: "color: #{banner_event.secondary_color}" }
-                      = banner_event.title
+            -#- if banner_event.is_a?(Event)
+            -#  .container
+            -#    .image-text{ class: banner_event.banner_alignment }
+            -#      .wrapper
+            -#        .font-elem.date{ style: "color: #{banner_event.primary_color}" }
+            -#          = l banner_event.start_time, format: :short_date
+            -#      .wrapper
+            -#        .front-elem.where{ style: "color: #{banner_event.primary_color}" }
+            -#          // Just using a double forward slash creates too much space between them, so
+            -#          // we tighten the two forward slashes and must therefore split up the string
+            -#          = t_event_type(banner_event)
+            -#          %span.banner-type-location-double-slash-text //
+            -#          = banner_event.area_title
+            -#      .wrapper
+            -#        .front-elem.title{ style: "color: #{banner_event.secondary_color}" }
+            -#          = banner_event.title

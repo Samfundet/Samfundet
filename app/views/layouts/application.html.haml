@@ -29,6 +29,9 @@
         = render 'layouts/titlebar'
       = yield :banner_image
 
+      .container-full
+        = yield :full_container
+
       .container
         - cache [I18n.locale, 'header', cache_key_for_standard_hours] do
           = render 'layouts/header'

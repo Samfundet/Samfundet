@@ -14,7 +14,8 @@
         = t('site.index.add_banner_lock')
 
 = render 'hero_unit'
-= render 'upcoming_events'
+= render 'upcoming_events', banner_event: @banner_event, upcoming_events: @upcoming_events
 
-.show-more-events
-  = link_to t('site.index.show_more'), events_path
+= link_to events_path do
+  .show-more-events
+    = t('site.index.show_more')

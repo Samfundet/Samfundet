@@ -98,9 +98,16 @@
   font-weight: $font-weight-normal;
   text-align: center;
 
+  background-color: #eee;
+  padding-top: 20px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+
   #mainsponsor, #partners, #othersponsors{
     @include media($tablet-desktop) {
-      display: inline-block;
+      display: block;
     }
     .logo, .sponsortext{
       display: block;
@@ -143,13 +150,10 @@
   }
   #mainsponsor{
     @include media($tablet-desktop) {
-      padding-right: 80px;
     }
   }
   #othersponsors{
     @include media($tablet-desktop) {
-      padding-right: 130px;
-      padding-left: 80px;
     }
   }
 }

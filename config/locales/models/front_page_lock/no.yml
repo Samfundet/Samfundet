@@ -10,7 +10,7 @@
         blog_empty_choice_error: "Du må velge en blogg som skal låses"
     attributes:
       front_page_lock:
-       event: Arrangement 
+       event: Arrangement
 
   formtastic:
     labels:
