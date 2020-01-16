@@ -24,16 +24,18 @@ ul {
 }
 
 body {
+
+    margin-top: 64px;
     font-family: "futura-pt", "Lato", sans-serif;
 
     &.dev-filter {
-        background: repeating-linear-gradient(
+        /*background: repeating-linear-gradient(
             45deg,
             transparentize($samfundet-light-grey, 0.3),
             transparentize($samfundet-light-grey, 0.3) 10px,
             white 10px,
             white 20px
-        );
+        );*/
     }
 }
 
@@ -50,9 +52,6 @@ h1 {
   padding-top: 0px;
 }
 
-h2 {
-  font-size: 36px;
-}
 
 h2, h3, h4, h5, h6 {
   color: $samfundet-dark-grey;
@@ -61,6 +60,13 @@ h2, h3, h4, h5, h6 {
   margin-bottom: 4px;
   margin-top: 10px;
   margin-left: -1.8px;
+}
+
+h2 {
+  font-size: 42px;
+  text-transform: uppercase;
+  color: $samfundet-red;
+  font-weight: lighter;
 }
 
 a {
@@ -78,17 +84,24 @@ input[type=submit] {
     font-size: 1em;
 }
 
-.container {
-    margin-bottom: 40px;
 
-    @include outer-container;
-    @include media($not-desktop) {
-      margin-left: 20px;
-      margin-right: 20px;
-    }
+.container {
+   padding-top: 64px;
+   padding-bottom: 64px;
+   @include outer-container;
+   @include media($not-desktop) {
+     margin-left: 20px;
+     margin-right: 20px;
+   }
 }
 
-.clearfix { 
+.container-full {
+  @include outer-container(100%);
+  padding-top: 0;
+  max-width: 1400px;
+}
+
+.clearfix {
     &:after {
         content: "";
         display: table;

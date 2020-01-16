@@ -3,7 +3,7 @@
 
   .ajax-search
 
-  .upcoming-events
+  .upcoming-events-container
     - @events.group_by {|i| i.start_time.to_date }.sort.each do |date, events|
       .event-group
         %h2= l(date, format: :medium_long)

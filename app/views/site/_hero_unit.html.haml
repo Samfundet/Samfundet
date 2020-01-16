@@ -1,23 +1,24 @@
-.hero-unit
-  .date-today
-    %h2
-      = I18n.l(DateTime.current-4.hours, format: "%-d. %b")
-  .events-today
-    %h2= t 'site.index.events_today'
-    - if @todays_events.present?
-      %table.custom-table
-        %tbody
-          - @todays_events.each do |event|
-            %tr
-              %td.time= I18n.l(event.start_time, format: :time)
-              %td.title= link_to event.title, event
-              %td.area= event.area
-    - elsif samfundet_closed?
-      .no-events
-        :markdown
-          #{EverythingClosedPeriod.current_period.event_message}
-    - else
-      %p.no-events
-        = t 'site.index.no_events_today'
+= content_for :full_container do
+  .hero-unit
+    .date-today
+      %h2
+        = I18n.l(DateTime.current-4.hours, format: "%-d. %b")
+    .events-today
+      %h2= t 'site.index.events_today'
+      - if @todays_events.present?
+        %table.custom-table
+          %tbody
+            - @todays_events.each do |event|
+              %tr
+                %td.time= I18n.l(event.start_time, format: :time)
+                %td.title= link_to event.title, event
+                %td.area= event.area
+      - elsif samfundet_closed?
+        .no-events
+          :markdown
+            #{EverythingClosedPeriod.current_period.event_message}
+      - else
+        %p.no-events
+          = t 'site.index.no_events_today'
 
-  = render 'layouts/opening_hours'
+    = render 'layouts/opening_hours'

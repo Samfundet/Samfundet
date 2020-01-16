@@ -4,6 +4,9 @@ $image-margin: 5.5px;
 $image-aspect-ratio: 12;
 
 #top-bar {
+
+    display: none;
+
     background-color: $samfundet-black;
     overflow: hidden;
     color: white;

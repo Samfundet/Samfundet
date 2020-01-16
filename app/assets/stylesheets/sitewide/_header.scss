@@ -1,3 +1,105 @@
+
+#header {
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  height: 64px;
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 10px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  background-color: black;
+  z-index: 10000;
+
+  box-shadow: 2px 2px 25px 0 rgba(0,0,0,0.5);
+
+}
+
+.header-icon {
+  display: block;
+  background-image: asset-url("logo-trans.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 350px;
+  margin-top: 8px;
+  height: 32px;
+}
+
+.header-menu {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  justify-content: flex-end;
+  justify-self: flex-end;
+  height: 32px;
+  line-height: 32px;
+
+  .header-menu-item {
+    font-weight: normal;
+    color: white;
+    display: inline;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    margin: 0 10px;
+  }
+
+  .header-menu-item:hover {
+    color: #aaa;
+  }
+
+  .header-menu-item.login {
+    background-color: $samfundet-red;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 3px;
+    padding-top: 3px;
+    color: white;
+    font-size: 14px;
+    border-radius: 100px;
+  }
+  .header-menu-item.login:hover {
+    filter: brightness(1.2);
+    -webkit-filter: brightness(1.2);
+  }
+
+  .control-panel {
+    background-image: url(asset_path("icons/gear.png"));
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: block;
+    min-width: 28px;
+    min-height: 28px;
+    margin-top: 2px;
+    transition: .2s;
+    margin-left: 20px;
+  }
+
+  .control-panel:hover {
+    filter: brightness(0.7);
+    -webkit-filter: brightness(0.7);
+    transition: .1s;
+  }
+
+}
+
+
+
+@media only screen and (max-width: 1000px){
+  .header-menu {
+    display: none;
+  }
+}
+
+
+/*
 $locales-with-opening-hours: 12;
 $menu-items-per-column: 3;
 
@@ -14,7 +116,13 @@ h3 {
 }
 
 #header {
-    margin: 15px 0;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    padding: 12px 0;
+    background-color: black;
 
     @include span-columns(12);
     @include omega();
@@ -48,7 +156,7 @@ h3 {
             a {
                 display: inline;
                 text-decoration: none;
-                color: #000;
+                color: #fff;
 
                 text-transform: uppercase;
                 font-weight: $font-weight-medium;
@@ -266,3 +374,4 @@ h3 {
   border-left: 7px solid transparent;
   border-right: 7px solid transparent;
 }
+*/

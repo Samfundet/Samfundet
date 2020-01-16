@@ -4,10 +4,27 @@
 @import "_banner";
 @import "_mailing_list";
 
+
 .show-more-events {
   text-align: center;
   font-weight: $font-weight-normal;
   text-transform: uppercase;
-  color: #a03033;
-  font-size: 35px;
+
+  display: block;
+  width: 500px;
+  max-width: 100%;
+  padding: 10px 5px 10px 5px;
+  font-size: 22px;
+  background-color: #ddd;
+  color: black;
+  border-radius: 30px;
+
+  margin: 0 auto;
+  margin-bottom: 80px;
+
+}
+
+
+.show-more-events:hover {
+  color: #aaa;
 }
