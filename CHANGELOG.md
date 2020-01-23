@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2020-01-23
+
+### Fixed
+
+- Fix issue with changing password for applicants ([#568](https://github.com/Samfundet/Samfundet/pull/568))
+
 ## 2019-11-14
 
 ### Fixed
