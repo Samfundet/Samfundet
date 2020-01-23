@@ -77,7 +77,7 @@ class ApplicantsController < ApplicationController
       flash[:error] = t('applicants.password_recovery.email_unknown')
     elsif !@applicant.can_recover_password?
       flash[:error] = t('applicants.password_recovery.limit_reached')
-    elsif PasswordRecovery.create!(id: @applicant.id,
+    elsif PasswordRecovery.create!(applicant_id: @applicant.id,
                                    recovery_hash: @applicant.create_recovery_hash)
       begin
         ForgotPasswordMailer.forgot_password_email(@applicant).deliver
@@ -93,13 +93,18 @@ class ApplicantsController < ApplicationController
     redirect_to forgot_password_path
   end
 
+  def prepare_form
+    @hash = params[:hash]
+    @email = params[:email]
+  end
+
   def reset_password
     @applicant = Applicant.find_by(email: params[:email])
     if !@applicant || !@applicant.check_hash(params[:hash])
       flash[:error] = t('applicants.password_recovery.hash_error')
       @applicant = nil
     else
-      @hash = params[:hash]
+      prepare_form
     end
   end
 
@@ -109,15 +114,17 @@ class ApplicantsController < ApplicationController
     if @applicant.check_hash(params[:hash])
       if @applicant.update_attributes(password: new_data[:password],
                                       password_confirmation: new_data[:password_confirmation])
-        PasswordRecovery.destroy(params[:id])
+        PasswordRecovery.find_by(applicant_id: @applicant.id).destroy
         flash[:success] = t('applicants.password_recovery.change_success')
 
         redirect_to login_path
       else
+        prepare_form
         flash[:error] = t('applicants.password_recovery.change_error')
         render :reset_password
       end
     else
+      prepare_form
       flash[:error] = t('applicants.password_recovery.change_error')
       render :reset_password
     end

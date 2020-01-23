@@ -2,6 +2,12 @@
   activerecord:
       errors:
         models:
+          applicant:
+            attributes:
+              password:
+                too_short: "Passordet er for kort, må være minst %{count} tegn"
+              password_confirmation:
+                confirmation: "Bekreftelsen er ikke den samme"
           event:
             attributes:
               start_time:

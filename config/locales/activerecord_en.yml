@@ -1,6 +1,13 @@
 en:
   activerecord:
       errors:
+        models:
+          applicant:
+            attributes:
+              password:
+                too_short: "The password is too short, must be at least %{count} characters."
+              password_confirmation:
+                confirmation: "Password confirmation does not match."
         template:
           header: "Could not save %{model} beause %{count} is wrong."
           body: "problems arose because of the following fields:"
