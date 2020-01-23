@@ -31,10 +31,11 @@
 .hero-unit {
   background-color: #fff;
   position: relative;
-  padding-bottom: 10px;
-  padding-top: 10px;
+  max-width: 1000px;
+  margin: 0 auto;
+  height: 250px;
+  background-color: red;
 
-  @include span-columns(12);
   @include media($tablet-desktop) {
 
     &:first-child:after {
