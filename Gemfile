@@ -19,7 +19,7 @@ gem 'dalli', '~> 2.7.0'
 # acts_as_list provides the means to sort and reorder a list of objects
 # with respect to a column in the database, e.g. to sort and reorder a list
 # of job applications based on the priority set by the applicant.
-gem 'acts_as_list', '~> 0.8.0'
+gem 'acts_as_list', '~> 1.0.0'
 
 # Use activerecord as session store
 gem 'activerecord-session_store', '~> 1.1.0'
