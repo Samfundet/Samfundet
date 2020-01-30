@@ -1,6 +1,6 @@
 = semantic_form_for @reservation do |f|
   = f.inputs do
-    = f.input :table, label: t("sulten.reservation.table")
+    = f.input :table, label: t("sulten.reservation.table"), collection: Sulten::Table.all.order(:number)
     = f.input :people, label: t("sulten.reservation.people"),as: :number
     = f.input :reservation_from, label: t("sulten.reservation.form.from"), input_html: { class: "datetimepicker_lyche"}, as: :string, input_html: { value: @reservation.reservation_from.to_s }
     = f.input :reservation_duration, label: t("sulten.reservation.form.duration"), collection: [30, 60, 90, 120, 180], member_label: proc{|d| "#{d} minutter"}
