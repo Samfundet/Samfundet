@@ -10,11 +10,16 @@ Use the [issue tracker](https://github.com/Samfundet/Samfundet/issues) to report
 ### Developing
 
 PRs are welcome. Follow these steps to set the website up locally:
+
+Clone repository:
+
+```
+git clone https://github.com/Samfundet/Samfundet.git
+```
+
 #### Ubuntu
 
-1. Install RVM
-Mac: https://rvm.io/
-Ubuntu: https://github.com/rvm/ubuntu_rvm
+1. Install [RVM](https://github.com/rvm/ubuntu_rvm)
 2. Install Ruby 2.5.5 via RVM using the following command
 ```
 source ~/.rvm/scripts/rvm
@@ -40,7 +45,7 @@ bundle exec rails db:setup
 
 ### Mac
 
-1. Install [RVM](https://rvm.io/) and [Homebrew](https://brew.sh/) with 
+1. Install [RVM](https://rvm.io/) and [Homebrew](https://brew.sh/) with
 ```
 \curl -sSL https://get.rvm.io | bash -s stable --rails &&
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -66,29 +71,24 @@ brew cask install docker
 docker-compose up -d
 ```
 
-6. Install postgres dependency
+6. Install Postgres dependency
 ```
 brew install postgresql
 ```
 
-7. Install correct version of libv8 
-```
-gem install libv8 -v 3.16.14.15 -- --with-system-v8
-```
-
-8. Install the required Ruby Gems with 
+7. Install the required Ruby Gems with
 ```
 bundle install
 ```
 
-9. Set up the database by running (_each line is a separate command!_):
+8. Set up the database by running (_each line is a separate command!_):
 ```
 make copy-config-files
 brew install imagemagick
-bin/rails db:environment:set RAILS_ENV=development && bundle exec rake db:setup
+rails db:setup
 ```
 
-10. Start the Rails server by running `rails server`
+9. Start the Rails server by running `rails server`
 
 
 #### Add git hooks
