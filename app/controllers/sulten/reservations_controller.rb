@@ -104,6 +104,9 @@ class Sulten::ReservationsController < Sulten::BaseController
     @reservations.each do |res|
       @render_reservations[res.table_id] = []
     end
+    @reservations_today.each do |res|
+      @render_reservations[res.table_id] = []
+    end
 
     @reservations_today.each do |res|
       offset_percent = ((res.reservation_from - start_timeline).seconds / length_timeline).to_f * 100
