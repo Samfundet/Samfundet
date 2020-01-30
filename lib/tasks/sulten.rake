@@ -6,10 +6,10 @@ namespace :sulten do
     puts 'Anonymize sulten reservations'
     Sulten::Reservation.where('reservation_to < ?', Time.zone.today).each do |reservation|
       reservation.assign_attributes(
-        name: Faker::Name.first_name,
-        email: Faker::Internet.email,
-        telephone: Faker::Base.numerify('########'),
-        allergies: 'REDACTED'
+          name: Faker::Name.first_name,
+          email: Faker::Internet.email,
+          telephone: Faker::Base.numerify('########'),
+          allergies: 'REDACTED'
       )
       reservation.save(validate: false)
       print '-'
@@ -25,7 +25,7 @@ namespace :sulten do
 
     # Create additional tables if necessary
     if tables.length < 30
-      n_tables = 30-tables.length
+      n_tables = 30 - tables.length
       puts "Too few tables, creating " + n_tables.to_s + " more"
       (0..n_tables).each do |offset|
         if offset > 5
@@ -39,17 +39,16 @@ namespace :sulten do
     end
 
 
-
     (0..5).each do |offset|
       20.times.each do
         now = DateTime.now + offset.days
 
         table_id = tables.sample(1)[0].id
-        date = now.beginning_of_day + rand(15..23).hours + (rand(0..3)*15).minutes
-        duration = rand(1..3)*30
+        date = now.beginning_of_day + rand(15..23).hours + (rand(0..3) * 15).minutes
+        duration = rand(1..3) * 30
 
-        col_a = Sulten::Reservation.where(reservation_from: date..date+duration.minutes)
-        col_b = Sulten::Reservation.where(reservation_to: date..date+duration.minutes)
+        col_a = Sulten::Reservation.where(reservation_from: date..date + duration.minutes)
+        col_b = Sulten::Reservation.where(reservation_to: date..date + duration.minutes)
 
         has_collision = false
         col_a.each do |res|
@@ -75,8 +74,8 @@ namespace :sulten do
               telephone: "123456789",
               reservation_type_id: types.sample(1),
               table_id: tables.sample(1)[0].id,
-              internal_comment: rand(0..5)==0 ? Faker::Lorem.sentence(12) : nil,
-              allergies: rand(0..5)==0 ? Faker::Lorem.sentence(12) : nil
+              internal_comment: rand(0..5) == 0 ? Faker::Lorem.sentence(12) : nil,
+              allergies: rand(0..5) == 0 ? Faker::Lorem.sentence(12) : nil
           ).save(validate: false)
         end
       end
