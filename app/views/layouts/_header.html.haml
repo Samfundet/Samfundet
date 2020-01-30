@@ -1,6 +1,66 @@
+
+#header-menu-mobile
+  -# TODO this section should be modular, duplicate code!!
+  = link_to root_path do
+    .header-menu-item
+      = t('layouts.application.menu.home')
+  = link_to events_path do
+    .header-menu-item
+      = t('layouts.application.menu.events')
+
+  = link_to events_path do
+    .header-menu-item
+      = t('layouts.application.menu.venues')
+
+  = link_to pages_path do
+    .header-menu-item
+      = t('layouts.application.menu.info')
+
+  = link_to "https://medlem.samfundet.no/" do
+    .header-menu-item
+      = t('layouts.application.menu.membership')
+
+  = link_to admissions_path do
+    .header-menu-item
+      = t('layouts.application.menu.admissions')
+
+  - if logged_in?
+    -# .username= current_user.full_name
+    - if current_user.is_a?(Applicant)
+      = link_to job_applications_path do
+        .header-menu-item
+          = t('job_applications.mine')
+    - elsif has_control_panel_applets?
+      = link_to members_control_panel_path do
+        .control-panel
+    = link_to logout_path, method: :post do
+      .header-menu-item.login
+        = t('layouts.application.menu.logout')
+  - else
+    = link_to login_path do
+      .header-menu-item.login
+        = t('layouts.application.menu.login')
+
 #header
+
+  #header-menu-button-mobile
+    .header-menu-button-line
+    .header-menu-button-line
+    .header-menu-button-line
+
+  %script
+    :plain
+      mob_mnu = document.getElementById('header-menu-mobile')
+      mob_btn = document.getElementById('header-menu-button-mobile')
+      mob_btn.onclick = function(){
+          mob_mnu.classList.toggle('open');
+          mob_btn.classList.toggle('open');
+      }
+
   = link_to root_path do
     .header-icon
+
+
   .header-menu
 
     = link_to events_path do

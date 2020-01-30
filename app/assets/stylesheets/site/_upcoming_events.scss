@@ -83,8 +83,6 @@
 
   .upcoming-event:hover, .upcoming-blog:hover {
 
-    border-radius: 15px;
-
     .picture {
       background-size: auto 105%;
       transition: .6s;
@@ -107,6 +105,7 @@
 @media only screen and (max-width: 1400px){
   .upcoming-events-home-page, .banner-event-mobile {
     grid-template-columns: 1fr;
+    padding: 0;
   }
   .upcoming-event, .upcoming-blog {
     height: 300px;
@@ -118,8 +117,27 @@
     padding: 10px;
   }
   .upcoming-event, .upcoming-blog {
-    height: 300px;
-    max-height: 300px;
+    height: 230px;
+    max-height: 230px;
+  }
+}
+@media only screen and (max-width: 1000px){
+  .upcoming-events-home-page, .banner-event-mobile {
+    padding: 0;
+    grid-gap: 0;
+
+    .upcoming-event, .upcoming-blog {
+      margin: 0;
+      border-radius: 0;
+      overflow: visible;
+      box-shadow: none;
+      .picture {
+        border-radius: 0;
+      }
+      .details {
+        display: none;
+      }
+    }
   }
 }
 
@@ -128,3 +146,4 @@
     display: none;
   }
 }
+

@@ -29,12 +29,13 @@
         = render 'layouts/titlebar'
       = yield :banner_image
 
+      - cache [I18n.locale, 'header', cache_key_for_standard_hours] do
+        = render 'layouts/header'
+
       .container-full
         = yield :full_container
 
       .container
-        - cache [I18n.locale, 'header', cache_key_for_standard_hours] do
-          = render 'layouts/header'
 
         #content{ class: "#{params[:controller]} #{controller.action_name}" }
           != display_flash

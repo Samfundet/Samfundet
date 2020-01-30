@@ -1,10 +1,9 @@
 .countdown-unit {
-  background-color: #eee;
   padding: 20px;
 
   text-align: center;
-
   margin-bottom: 20px;
+
 
   @include media($tablet-desktop) {
     margin-bottom: 0px;
@@ -29,36 +28,37 @@
 }
 
 .hero-unit {
-  background-color: #fff;
-  position: relative;
   max-width: 1000px;
   margin: 0 auto;
-  height: 250px;
-  background-color: red;
+  display: flex;
 
-  @include media($tablet-desktop) {
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
 
-    &:first-child:after {
-      content: "";
-      position: absolute;
-      top: 23%;
-      bottom: 10%;
-      left: 50%;
-      border-left: 1px solid $samfundet-medium-grey;
-    }
+  @include media($mobile) {
+    padding-top: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    display: flex;
+    flex-direction: column;
+
   }
 
   .opening-hours, .events-today {
 
-    @include span-columns(12 of 12);
-    @include media($tablet-desktop) {
-      @include span-columns(6 of 12);
+    flex-basis: 50%;
+    padding-top: 16px;
+
+    @include media($mobile){
+      flex-basis: 100%;
     }
 
     h2 {
       text-align: center;
       text-transform: uppercase;
       margin-top: 0;
+      color: black;
     }
 
     table {
@@ -82,6 +82,7 @@
   }
 
   .date-today {
+    flex-basis: 100%;
     h2 {
       margin: 0.5em 0 0 0;
       font-size: 1.2em;
@@ -92,15 +93,10 @@
   }
 
   .opening-hours {
-    display: none;
 
     .everything-closed {
       margin-left: 10px;
       padding-bottom: 10px;
-    }
-
-    @include media($tablet-desktop) {
-      display: block;
     }
 
     .time { text-align: right; }
@@ -122,11 +118,25 @@
         @include emph-link($samfundet-red);
         font-weight: $font-weight-medium;
       }
+      @include media($mobile) {
+        font-size: 14px;
+      }
     }
     .area { text-transform: uppercase; }
     .no-events {
       text-align: center;
       margin: 1em;
     }
+  }
+}
+
+
+
+@media only screen and (max-width: 800px){
+  .hero-unit {
+    flex-direction: column;
+  }
+  .opening-hours, .events-today {
+    flex-basis: 100%;
   }
 }

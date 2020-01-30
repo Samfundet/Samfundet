@@ -1,5 +1,5 @@
 = content_for :banner_image do
-  -if banner_event
+  - if banner_event
     .banner.ribbon-image-wrapper
       - cache cache_key_for_banner_event(banner_event) do
         = link_to banner_event, id: 'banner-image-link' do
