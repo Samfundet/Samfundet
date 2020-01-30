@@ -1,6 +1,11 @@
 # CHANGELOG
 
-## [Unreleased]
+## 2019-11-14
+
+### Fixed
+
+- Correct UI issues with documents (saksdokumenter) table ([#544](https://github.com/Samfundet/Samfundet/issues/544))
+- Point back button in closed periods view to Lyche admin view, not control panel ([#541](https://github.com/Samfundet/Samfundet/issues/541))
 
 ## 2019-11-12
 
