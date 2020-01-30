@@ -2,7 +2,7 @@
   %h2= set_and_return_title t('admissions_admin.statistics_page_title', admission: @admission.title)
   = high_chart('1', @applications_per_group_chart)
   = high_chart('2', @applicants_per_campus_chart)
-  = high_chart('4', @applications_per_day_chart)
+  = high_chart('3', @applications_per_day_chart)
 
   %p
     = t('admissions_admin.unique_applicants_title',

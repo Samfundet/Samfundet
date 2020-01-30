@@ -36,7 +36,7 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
 
   def update
     if @admission.update_attributes(admission_params)
-      flash[:success] = 'Opptaket er oppdatert.'
+      flash[:success] = t('admissions_admin.admission_updated')
       redirect_to admissions_path
     else
       flash[:error] = t('common.fields_missing_error')
@@ -94,9 +94,9 @@ private
     @applications_per_day = (admission_start..admission_end).zip(applications_per_day)
 
     @applications_per_day_chart = LazyHighCharts::HighChart.new('graph') do |f|
-      f.series(data: @applications_per_day, type: 'spline', name: 'Applications per day')
-      f.yAxis(title: { text: 'Applications' }, allowDecimals: false)
-      f.xAxis(title: { text: 'Days' }, categories: (admission_start..admission_end).map(&:to_s))
+      f.series(data: @applications_per_day, type: 'spline', name: t('admissions_admin.applications'))
+      f.yAxis(title: { text: t('admissions_admin.applications') }, allowDecimals: false)
+      f.xAxis(title: { text: t('admissions_admin.days') }, categories: (admission_start..admission_end).map(&:to_s))
     end
   end
 
@@ -105,11 +105,11 @@ private
       f.chart(defaultSeriesType: 'pie', margin: [50, 200, 60, 170])
       series = {
         type: 'pie',
-        name: 'Applications per campus',
+        name: t('admissions_admin.applicants'),
         data: @applicants_per_campus
       }
       f.series(series)
-      f.options[:title][:text] = 'Applications per campus'
+      f.options[:title][:text] = t('admissions_admin.applications_by_campus')
       f.legend(layout: 'vertical', style: { left: 'auto', bottom: 'auto', right: '50px', top: '100px' })
       f.plot_options(pie: {
         allowPointSelect: true,
@@ -127,11 +127,11 @@ private
       f.chart({ defaultSeriesType: 'pie', margin: [50, 200, 60, 170] })
       series = {
         type: 'pie',
-        name: 'Applications per group',
+        name: t('admissions_admin.applicants'),
         data: @applications_per_group
       }
       f.series(series)
-      f.options[:title][:text] = 'Applications per group'
+      f.options[:title][:text] = t('admissions_admin.applications_by_group')
       f.legend(layout: 'vertical', style: { left: 'auto', bottom: 'auto', right: '50px', top: '100px' })
       f.plot_options(pie: {
         allowPointSelect: true,
