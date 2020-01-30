@@ -12,7 +12,9 @@ Use the [issue tracker](https://github.com/Samfundet/Samfundet/issues) to report
 PRs are welcome. Follow these steps to set the website up locally:
 #### Ubuntu
 
-1. Install [RVM](https://rvm.io/)
+1. Install RVM
+Mac: https://rvm.io/
+Ubuntu: https://github.com/rvm/ubuntu_rvm
 2. Install Ruby 2.5.5 via RVM using the following command
 ```
 source ~/.rvm/scripts/rvm
