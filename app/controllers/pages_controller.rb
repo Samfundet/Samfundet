@@ -161,18 +161,18 @@ private
         destination = Rails.application.routes.recognize_path uri.to_s
         if destination[:controller] == 'pages' && destination[:action] == 'show'
           # this is some link that resolves to an info page
-          return destination[:id]
+          destination[:id]
         else
           # this is a link that leads to something else than an info page
-          return uri.path
+          uri.path
         end
       rescue ActionController::RoutingError
         # recognizing path failed
         # this link probably doesn't lead anywhere on the page
-        return uri.path
+        uri.path
       end
     else
-      return url
+      url
     end
   end
 end

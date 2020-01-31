@@ -50,11 +50,3 @@ Performance/RegexpMatch:
 Style/ClassAndModuleChildren:
   Exclude:
     - 'spec/support/locale_fix.rb'
-
-# Offense count: 8
-# Cop supports --auto-correct.
-# Configuration parameters: AllowMultipleReturnValues.
-Style/RedundantReturn:
-  Exclude:
-    - 'app/controllers/pages_controller.rb'
-    - 'app/models/job_application.rb'
