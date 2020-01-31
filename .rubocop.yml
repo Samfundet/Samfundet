@@ -53,3 +53,6 @@ Style/SymbolArray:
 Style/RedundantSelf:
   Exclude:
     - 'app/abilities/*'
+
+Style/StringLiterals:
+  EnforcedStyle: single_quotes

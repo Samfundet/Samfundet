@@ -122,10 +122,3 @@ Style/RedundantReturn:
 Style/Semicolon:
   Exclude:
     - 'app/controllers/sulten/reservations_controller.rb'
-
-# Offense count: 941
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, ConsistentQuotesInMultiline.
-# SupportedStyles: single_quotes, double_quotes
-Style/StringLiterals:
-  Enabled: false
