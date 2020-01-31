@@ -133,7 +133,7 @@ class Sulten::ReservationsController < Sulten::BaseController
     redirect_to sulten_reservations_archive_path
   end
 
-  def success;
+  def success
   end
 
 private

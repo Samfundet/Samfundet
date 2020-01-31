@@ -58,10 +58,3 @@ Style/RedundantReturn:
   Exclude:
     - 'app/controllers/pages_controller.rb'
     - 'app/models/job_application.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: AllowAsExpressionSeparator.
-Style/Semicolon:
-  Exclude:
-    - 'app/controllers/sulten/reservations_controller.rb'
