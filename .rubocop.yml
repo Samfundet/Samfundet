@@ -42,7 +42,7 @@ Layout/AccessModifierIndentation:
   EnforcedStyle: outdent
 
 Layout/EmptyLinesAroundAccessModifier:
-  EnforcedStyle: only_before
+  EnforcedStyle: around
 
 # Ability excludes
 Style/SymbolArray:
