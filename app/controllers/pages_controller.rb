@@ -87,7 +87,7 @@ class PagesController < ApplicationController
     new_route
   end
 
-  private
+private
 
   def page_params
     params.require(:page).permit(:name_no, :name_en, :title_no, :title_en, :content_no, :content_en, :content_type, :role_id)

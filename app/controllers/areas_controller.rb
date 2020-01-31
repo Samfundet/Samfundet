@@ -27,7 +27,7 @@ class AreasController < ApplicationController
     @areas = Area.all
   end
 
-  private
+private
 
   def area_params
     params.require(:area).permit(:page_id, standard_hours_attributes: %i[open open_time close_time day id])

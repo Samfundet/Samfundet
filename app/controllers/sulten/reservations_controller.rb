@@ -138,7 +138,7 @@ class Sulten::ReservationsController < Sulten::BaseController
   def success;
   end
 
-  private
+private
 
   def reservation_params
     params.require(:sulten_reservation).permit(

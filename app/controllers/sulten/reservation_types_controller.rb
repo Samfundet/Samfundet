@@ -44,7 +44,7 @@ class Sulten::ReservationTypesController < Sulten::BaseController
     end
   end
 
-  private
+private
 
   def reservation_type_params
     params.require(:sulten_reservation_type).permit(:name, :description)

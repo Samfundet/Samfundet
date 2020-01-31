@@ -116,7 +116,7 @@ class Applicant < ApplicationRecord
     group.job_applications_in_admission(admission).select { |ja| ja.applicant == self }
   end
 
-  private
+private
 
   def lowercase_email
     self.email = email.downcase unless email.nil?
