@@ -8,14 +8,6 @@
 
 # Offense count: 1
 # Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: empty_lines, no_empty_lines
-Layout/EmptyLinesAroundBlockBody:
-  Exclude:
-    - 'app/controllers/sulten/reservations_controller.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
 Layout/EmptyLinesAroundMethodBody:
   Exclude:
     - 'app/controllers/sulten/reservations_controller.rb'

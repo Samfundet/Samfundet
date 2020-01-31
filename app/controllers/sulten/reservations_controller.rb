@@ -113,7 +113,6 @@ class Sulten::ReservationsController < Sulten::BaseController
       width_percent = ((res.reservation_duration * 60) / length_timeline.to_f) * 100
       data = [res, offset_percent, width_percent, offset_percent < 50 ? true : false]
       @render_reservations[res.table_id].insert(0, data)
-
     end
   end
 
