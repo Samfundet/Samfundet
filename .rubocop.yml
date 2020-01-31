@@ -54,6 +54,9 @@ Layout/EndAlignment:
 Layout/ElseAlignment:
   Enabled: false
 
+Layout/FirstArgumentIndentation:
+  Enabled: false
+
 # Ability excludes
 Style/SymbolArray:
   Exclude:
