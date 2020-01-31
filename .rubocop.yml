@@ -13,9 +13,6 @@ AllCops:
     - 'features/**/*'
   TargetRubyVersion: 2.5
 
-Metrics/LineLength:
-  Max: 350
-
 Metrics/BlockLength:
   Max: 90
   Exclude:
@@ -27,6 +24,9 @@ Style/GuardClause:
 
 Lint/UnusedBlockArgument:
   Enabled: false
+
+Layout/LineLength:
+  Max: 350
 
 # Imo if not is more readable than unless
 Style/NegatedIf:
