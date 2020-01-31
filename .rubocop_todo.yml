@@ -5,11 +5,3 @@
 # one by one as the offenses are removed from the code base.
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
-
-# Offense count: 3
-# Cop supports --auto-correct.
-Performance/RegexpMatch:
-  Exclude:
-    - 'app/models/page.rb'
-    - 'lib/validators/css_hex_color_validator.rb'
-    - 'lib/validators/email_validator.rb'
