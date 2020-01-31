@@ -13,7 +13,7 @@ describe JobsController do
       allow(Job).to receive(:find) { job }
       allow(job).to receive(:similar_available_jobs) { [similar_job] }
       allow(job).to receive(:available_jobs_in_same_group) { [similar_job] }
-      t = job.similar_available_jobs
+      job.similar_available_jobs
     end
 
     it 'renders the new template with admissions layout' do

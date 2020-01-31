@@ -15,14 +15,6 @@ Layout/FirstArgumentIndentation:
     - 'app/controllers/sulten/reservations_controller.rb'
     - 'lib/tasks/sulten.rake'
 
-# Offense count: 9
-Lint/UselessAssignment:
-  Exclude:
-    - 'lib/generate_roles.rb'
-    - 'spec/controllers/job_controller_spec.rb'
-    - 'spec/models/admission_spec.rb'
-    - 'spec/models/job_spec.rb'
-
 # Offense count: 10
 # Configuration parameters: CountComments, ExcludedMethods.
 # ExcludedMethods: refine
