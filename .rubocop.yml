@@ -1,3 +1,6 @@
+inherit_gem:
+  rubocop-rails_config:
+    - config/rails.yml
 inherit_from:
   .rubocop_todo.yml
 
@@ -8,7 +11,7 @@ AllCops:
     - 'script/**/*'
     - 'tmp/**/*'
     - 'features/**/*'
-  TargetRubyVersion: 2.3
+  TargetRubyVersion: 2.5
 
 Metrics/LineLength:
   Max: 350
@@ -34,6 +37,12 @@ Style/Not:
 
 Style/ClassAndModuleChildren:
   EnforcedStyle: compact
+
+Layout/AccessModifierIndentation:
+  EnforcedStyle: outdent
+
+Layout/EmptyLinesAroundAccessModifier:
+  EnforcedStyle: only_before
 
 # Ability excludes
 Style/SymbolArray:
