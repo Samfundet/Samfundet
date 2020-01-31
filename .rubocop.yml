@@ -48,7 +48,7 @@ Layout/EmptyLinesAroundAccessModifier:
   EnforcedStyle: around
 
 Layout/EndAlignment:
-  EnforcedStyleAlignWith: start_of_line
+  EnforcedStyleAlignWith: keyword
   AutoCorrect: true
 
 Layout/ElseAlignment:

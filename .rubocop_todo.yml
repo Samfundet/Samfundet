@@ -15,12 +15,6 @@ Layout/FirstArgumentIndentation:
     - 'app/controllers/sulten/reservations_controller.rb'
     - 'lib/tasks/sulten.rake'
 
-# Offense count: 35
-# Cop supports --auto-correct.
-# Configuration parameters: Width, IgnoredPatterns.
-Layout/IndentationWidth:
-  Enabled: false
-
 # Offense count: 9
 Lint/UselessAssignment:
   Exclude:
