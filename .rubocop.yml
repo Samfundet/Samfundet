@@ -41,6 +41,8 @@ Style/AndOr:
 
 Style/ClassAndModuleChildren:
   EnforcedStyle: compact
+  Exclude:
+    - 'spec/support/locale_fix.rb'
 
 Layout/AccessModifierIndentation:
   EnforcedStyle: outdent
