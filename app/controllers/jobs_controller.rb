@@ -14,7 +14,7 @@ class JobsController < ApplicationController
                          @job.job_applications.find_or_initialize_by(applicant_id: current_user.id)
                        else
                          JobApplication.new(job: @job)
-                       end
+    end
 
     @already_applied = !@job_application.new_record?
 

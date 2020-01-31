@@ -39,7 +39,7 @@ class Applicant < ApplicationRecord
              10
            else
              1
-           end
+    end
     self.hashed_password = BCrypt::Password.create(@password, cost: cost)
   end
 

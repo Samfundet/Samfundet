@@ -9,7 +9,7 @@ class SearchController < ApplicationController
                 Search.new(params[:search])
               else
                 Search.new
-              end
+    end
     @results = @search.results.paginate(page: params[:page], per_page: 10) if @search.query?
   end
 end

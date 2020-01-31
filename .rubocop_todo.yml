@@ -36,18 +36,6 @@ Layout/EmptyLinesAroundMethodBody:
   Exclude:
     - 'app/controllers/sulten/reservations_controller.rb'
 
-# Offense count: 6
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyleAlignWith, AutoCorrect, Severity.
-# SupportedStylesAlignWith: keyword, variable, start_of_line
-Layout/EndAlignment:
-  Exclude:
-    - 'app/controllers/events_controller.rb'
-    - 'app/controllers/jobs_controller.rb'
-    - 'app/controllers/search_controller.rb'
-    - 'app/models/applicant.rb'
-    - 'lib/billig_service.rb'
-
 # Offense count: 3
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, IndentationWidth.

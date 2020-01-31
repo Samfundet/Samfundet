@@ -74,7 +74,7 @@ class BilligService < Sinatra::Base
           # only one ticket will be on the card.
           member_id = if params[:cardnumber].present?
                         BilligTicketCard.where(card: params[:cardnumber]).first.try(:owner_member_id)
-                      end
+          end
 
           bp = BilligPurchase.create!(
             owner_member_id: member_id,

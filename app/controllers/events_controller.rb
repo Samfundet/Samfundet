@@ -177,7 +177,7 @@ class EventsController < ApplicationController
 
         card_number = if billig_ticket.on_card
                         billig_ticket.billig_purchase.membership_card.card
-                      end
+        end
 
         [billig_ticket,
          billig_ticket.billig_event,
@@ -217,7 +217,7 @@ class EventsController < ApplicationController
                 Event.active.published
               else
                 Event.upcoming.active.published
-              end
+    end
     respond_to do |format|
       format.rss { render layout: false }
     end
