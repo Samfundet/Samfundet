@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 2020-01-30
+
+### Added
+
+- Add beta version of new admin reservation panel ([#547](https://github.com/Samfundet/Samfundet/pull/547)), ([#575](https://github.com/Samfundet/Samfundet/pull/575))
+
+### Fixed
+
+- Update README.md ([#573](https://github.com/Samfundet/Samfundet/pull/573)), ([#574](https://github.com/Samfundet/Samfundet/pull/574))
+
 ## 2020-01-23
 
 ### Fixed
