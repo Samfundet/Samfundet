@@ -35,6 +35,9 @@ Style/NegatedIf:
 Style/Not:
   Enabled: false
 
+Style/AndOr:
+  Enabled: false
+
 Style/ClassAndModuleChildren:
   EnforcedStyle: compact
 

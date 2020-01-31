@@ -45,14 +45,6 @@ Performance/RegexpMatch:
 
 # Offense count: 1
 # Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: always, conditionals
-Style/AndOr:
-  Exclude:
-    - 'lib/tasks/sulten.rake'
-
-# Offense count: 1
-# Cop supports --auto-correct.
 # Configuration parameters: AutoCorrect, EnforcedStyle.
 # SupportedStyles: nested, compact
 Style/ClassAndModuleChildren:
