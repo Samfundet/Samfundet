@@ -78,7 +78,6 @@ class Sulten::ReservationsController < Sulten::BaseController
   end
 
   def calendar
-
     if params[:date] != nil
       @calendar_date = Date.strptime(params[:date], '%d-%m-%Y')
       @is_today = Date.today.beginning_of_day == @calendar_date.beginning_of_day
