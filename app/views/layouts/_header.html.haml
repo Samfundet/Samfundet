@@ -48,15 +48,6 @@
     .header-menu-button-line
     .header-menu-button-line
 
-  %script
-    :plain
-      mob_mnu = document.getElementById('header-menu-mobile')
-      mob_btn = document.getElementById('header-menu-button-mobile')
-      mob_btn.onclick = function(){
-          mob_mnu.classList.toggle('open');
-          mob_btn.classList.toggle('open');
-      }
-
   = link_to root_path do
     .header-icon
 

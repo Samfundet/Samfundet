@@ -9,6 +9,7 @@
 
   width: 100%;
 
+  border: 2px solid red;
 
   .upcoming-event, .upcoming-blog {
 
@@ -60,7 +61,10 @@
         color: white;
         font-size: 40px;
       }
-
+      .location {
+        color: white;
+        font-size: 40px;
+      }
       .location {
         text-transform: uppercase;
         font-size: 28px;
