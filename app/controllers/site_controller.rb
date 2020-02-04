@@ -3,6 +3,7 @@
 class SiteController < ApplicationController
   skip_authorization_check
   before_action :check_active_notifications
+  layout "full_page"
 
   def index
     @todays_events = Event.today
