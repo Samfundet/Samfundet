@@ -1,0 +1,2 @@
+module Sulten::SultenHelper
+end

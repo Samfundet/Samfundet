@@ -98,7 +98,6 @@ input[type=submit] {
 .container-full {
   @include outer-container(100%);
   padding-top: 0;
-  max-width: 1400px;
 }
 
 .clearfix {
