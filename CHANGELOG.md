@@ -4,7 +4,7 @@
 
 ### Changed
 
-- Replaced graph library ([#562](https://github.com/Samfundet/Samfundet/pull/562))
+- Replace graph library ([#562](https://github.com/Samfundet/Samfundet/pull/562))
 
 ### Fixed
 
