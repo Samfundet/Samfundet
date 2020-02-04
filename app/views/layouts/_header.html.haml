@@ -52,6 +52,9 @@
     = link_to pages_path do
       .header-menu-item
         = t('layouts.application.menu.info')
+    = link_to sulten_path do
+      .header-menu-item
+        = t('layouts.application.menu.lyche')
     = link_to "https://medlem.samfundet.no/" do
       .header-menu-item
         = t('layouts.application.menu.membership')
@@ -67,6 +70,7 @@
       - elsif has_control_panel_applets?
         = link_to members_control_panel_path do
           .control-panel
+      -# TODO Logout fails and redirects as GET instead of POST
       = link_to logout_path, method: :post do
         .header-menu-item.login
           = t('layouts.application.menu.logout')

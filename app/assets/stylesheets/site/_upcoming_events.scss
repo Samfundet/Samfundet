@@ -1,4 +1,8 @@
 .site {
+
+  max-width: 1400px;
+  margin: 0 auto;
+
   .upcoming-events, .banner-event-mobile {
     @include span-columns(12);
 

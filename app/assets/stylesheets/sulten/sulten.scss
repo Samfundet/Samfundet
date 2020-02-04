@@ -1,0 +1,71 @@
+
+#sponsors {
+  background-color: #333;
+  color: white;
+  display: none;
+}
+.sulten-container {
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  padding: 50px;
+  padding-bottom: 500px;
+}
+
+@keyframes lyche-icon-fade-in {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  100% {
+    transform: none;
+    opacity: 1;
+  }
+}
+.lyche-icon {
+  animation-name: lyche-icon-fade-in;
+  animation-duration: 2s;
+  animation-delay: .5s;
+  animation-fill-mode: forwards;
+
+  background-image: url(asset_path("sulten/Lyche_orange.png"));
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  width: 300px;
+  height: 200px;
+
+  margin: 0 auto;
+  opacity: 0;
+
+}
+@keyframes lyche-description-fade-in {
+  0% {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  100% {
+    transform: none;
+    opacity: 1;
+  }
+}
+.lyche-description {
+  color: #aaa;
+  font-size: 18px;
+  opacity: 0;
+  animation-name: lyche-description-fade-in;
+  animation-duration: 2s;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+  margin: 0 auto;
+  max-width: 700px;
+}
+
+.lyche-image {
+  background-image: url(asset_path("sulten/lyche_skilt.jpg"));
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 500px;
+  height: 500px;
+  margin: 0 auto;
+}
