@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 2020-02-04
+
+### Changed
+
+- Replaced graph library ([#562](https://github.com/Samfundet/Samfundet/pull/562))
+
+### Fixed
+
+- Upgrade Rails to 5.2.4.1 to fix security vulnerability ([#563](https://github.com/Samfundet/Samfundet/pull/563))
+- Fix applicant prioritization ([#572](https://github.com/Samfundet/Samfundet/pull/572))
+
 ## 2020-01-30
 
 ### Added
