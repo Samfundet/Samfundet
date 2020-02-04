@@ -1,29 +1,20 @@
 
 #header-menu-mobile
-  -# TODO this section should be modular, duplicate code!!
   = link_to root_path do
     .header-menu-item
       = t('layouts.application.menu.home')
   = link_to events_path do
     .header-menu-item
       = t('layouts.application.menu.events')
-
-  = link_to events_path do
-    .header-menu-item
-      = t('layouts.application.menu.venues')
-
   = link_to pages_path do
     .header-menu-item
       = t('layouts.application.menu.info')
-
   = link_to "https://medlem.samfundet.no/" do
     .header-menu-item
       = t('layouts.application.menu.membership')
-
   = link_to admissions_path do
     .header-menu-item
       = t('layouts.application.menu.admissions')
-
   - if logged_in?
     -# .username= current_user.full_name
     - if current_user.is_a?(Applicant)
@@ -51,29 +42,22 @@
   = link_to root_path do
     .header-icon
 
-
   .header-menu
-
+    = link_to root_path do
+      .header-menu-item
+        = t('layouts.application.menu.home')
     = link_to events_path do
       .header-menu-item
         = t('layouts.application.menu.events')
-
-    = link_to events_path do
-      .header-menu-item
-        = t('layouts.application.menu.venues')
-
     = link_to pages_path do
       .header-menu-item
         = t('layouts.application.menu.info')
-
     = link_to "https://medlem.samfundet.no/" do
       .header-menu-item
         = t('layouts.application.menu.membership')
-
     = link_to admissions_path do
       .header-menu-item
         = t('layouts.application.menu.admissions')
-
     - if logged_in?
       -# .username= current_user.full_name
       - if current_user.is_a?(Applicant)
