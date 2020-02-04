@@ -1,153 +1,94 @@
-
-.upcoming-events-home-page, .banner-event-mobile {
-
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 20px;
-  padding: 40px;
-  padding-bottom: 0;
-
-  width: 100%;
-
-  border: 2px solid red;
-
-  .upcoming-event, .upcoming-blog {
-
-    display: block;
-    width: 100%;
-    height: 300px;
-    transition: .3s;
-
-    border-radius: 5px;
-    box-shadow: 5px 5px 20px 0 rgba(0,0,0,0.25);
-
-    overflow: hidden;
-
-    .picture {
-      background-size: auto 100%;
-      background-position: center;
-      width: 100%;
-      height: 100%;
-      transition: .3s;
-      border-radius: 5px;
-    }
-
-    .details {
-      opacity: 0;
-      border-radius: 5px;
-
-      color: white;
-      background-color: rgba(0,0,0,0.25);
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .locks > a {
-      color: white;
-      font-style: italic;
-    }
-    .locks {
-      padding-bottom: 10px;
-    }
-
-    .top-section {
-      flex: 1;
-      padding: 20px;
-      background: linear-gradient(to top, transparent, rgba(0,0,0,0.1));
-      border-radius: 15px 15px 0 0;
-      color: white;
-      .title {
-        color: white;
-        font-size: 40px;
-      }
-      .location {
-        color: white;
-        font-size: 40px;
-      }
-      .location {
-        text-transform: uppercase;
-        font-size: 28px;
-      }
-
-    }
-
-    .bottom-section {
-      padding: 20px;
-      background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.5));
-      border-radius: 0 0 15px 15px;
-      .description {
-        font-size: 20px;
-        color: white;
-      }
-
-    }
-
-  }
-
-  .upcoming-event:hover, .upcoming-blog:hover {
-
-    .picture {
-      background-size: auto 105%;
-      transition: .6s;
-    }
-
-    .details {
-      opacity: 1;
-      transition: .4s;
-    }
-
-    .title {
-
-    }
-
-  }
-
-}
-
-
-@media only screen and (max-width: 1400px){
-  .upcoming-events-home-page, .banner-event-mobile {
-    grid-template-columns: 1fr;
-    padding: 0;
-  }
-  .upcoming-event, .upcoming-blog {
-    height: 300px;
-    max-height: 300px;
-  }
-}
-@media only screen and (max-width: 1200px){
-  .upcoming-events-home-page, .banner-event-mobile {
-    padding: 10px;
-  }
-  .upcoming-event, .upcoming-blog {
-    height: 230px;
-    max-height: 230px;
-  }
-}
-@media only screen and (max-width: 1000px){
-  .upcoming-events-home-page, .banner-event-mobile {
-    padding: 0;
-    grid-gap: 0;
+.site {
+  .upcoming-events, .banner-event-mobile {
+    @include span-columns(12);
 
     .upcoming-event, .upcoming-blog {
-      margin: 0;
-      border-radius: 0;
-      overflow: visible;
-      box-shadow: none;
+      margin-bottom: 40px;
+
+      @include span-columns(12 of 12);
+      @include media($tablet-desktop) {
+        @include span-columns(6 of 12);
+
+        &:nth-child(4n - 1) {
+          @include span-columns(7 of 12);
+        }
+
+        &:nth-child(4n) {
+          @include span-columns(5 of 12);
+        }
+
+        @include omega(2n);
+      }
+
       .picture {
-        border-radius: 0;
+        @include autoscale-picture(180px);
+        margin-bottom: 10px;
       }
-      .details {
-        display: none;
+
+      .locked-border {
+        border-style: solid;
+        border-width: 10px;
+        position: absolute;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        img {
+          width: 60px;
+          height: 60px;
+        }
       }
+
+      .description {
+        margin-top: 15px;
+
+        .purchase-button {
+          float: right;
+          margin-left: 0.3em;
+          margin-bottom: 0.2em;
+          a { display: inline-block; }
+        }
+      }
+
+      .what {
+        text-transform: uppercase;
+        font-weight: lighter;
+        font-size: 22px;
+      }
+
+      h2 {
+        color: $samfundet-red;
+        margin: 0 0 2px 0;
+
+        a { @include emph-link($samfundet-red); }
+
+        @include media($mobile) {
+          word-break: break-all;
+        }
+
+        @include media($tablet-desktop) {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+
+      img { width: 100%; }
+    }
+
+    .upcoming-blog {
+      h2, h2 a {
+        color: $samfundet-blue;
+      }
+    }
+  }
+
+  .banner-event-mobile {
+    @include media($tablet-desktop) {
+      display: none;
     }
   }
 }
 
-.banner-event-mobile {
-  @include media($tablet-desktop) {
-    display: none;
-  }
+.front-page-lock-actions a {
+  margin-right: 10px;
 }
-

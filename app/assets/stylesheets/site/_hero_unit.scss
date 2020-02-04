@@ -1,9 +1,9 @@
 .countdown-unit {
   padding: 20px;
 
+  background-color: #eee;
   text-align: center;
   margin-bottom: 20px;
-
 
   @include media($tablet-desktop) {
     margin-bottom: 0px;
@@ -28,9 +28,15 @@
 }
 
 .hero-unit {
-  max-width: 1000px;
+
+  width: 100%;
   margin: 0 auto;
+  margin-top: 32px;
+  margin-bottom: 32px;
   display: flex;
+  box-shadow: 0px 3px 15px 0px rgba(0,0,0,0.1);
+
+  border-radius: 4px;
 
   flex-wrap: wrap;
   flex-direction: row;
@@ -49,6 +55,8 @@
 
     flex-basis: 50%;
     padding-top: 16px;
+
+    max-width: 600px;
 
     @include media($mobile){
       flex-basis: 100%;

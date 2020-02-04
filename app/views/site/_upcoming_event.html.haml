@@ -1,22 +1,7 @@
 .upcoming-event
-  = link_to event do
-    = background_image_helper "picture", event.image_or_default, size: :large do
-      .details
-        .top-section
-          .locks
-            = render 'front_page_lock', index: index
-          .location
-            = "%s // %s" % [t_event_type(event), event.area_title]
-          = link_to event do
-            .title
-              = event.title
+  = render 'front_page_lock', index: index
 
-        .bottom-section
-          .description
-            Ma Jester er et nytt og spennende Oslo-band med dype røtter fra tjukkeste Toten. Musikken byr på en blanding av poppete hverdagspoesi, rock, og svevende indie med beina godt planta på bakken.
-
-
--#  .what
+  .what
     = "%s // %s" % [t_event_type(event), event.area_title]
     %br.rwd-break
     = I18n.l(event.start_time, format: :short)
@@ -36,4 +21,3 @@
     = render "events/buy_button", event: event
     %p
       = event.short_description
-
