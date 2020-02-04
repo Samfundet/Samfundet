@@ -1,5 +1,5 @@
 class Sulten::SultenController < ApplicationController
-  load_and_authorize_resource
+  skip_authorization_check
   layout "full_page"
 
   def index
