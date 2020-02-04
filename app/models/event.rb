@@ -315,7 +315,7 @@ class Event < ApplicationRecord
     "#{super}-#{purchase_status}-#{few_tickets_left?}"
   end
 
-  private
+private
 
   def unique_price_groups
     if billig_event.nil?

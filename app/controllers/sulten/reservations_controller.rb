@@ -78,9 +78,8 @@ class Sulten::ReservationsController < Sulten::BaseController
   end
 
   def calendar
-
     if params[:date] != nil
-      @calendar_date = Date.strptime(params[:date], "%d-%m-%Y")
+      @calendar_date = Date.strptime(params[:date], '%d-%m-%Y')
       @is_today = Date.today.beginning_of_day == @calendar_date.beginning_of_day
     else
       @calendar_date = Date.today
@@ -113,7 +112,6 @@ class Sulten::ReservationsController < Sulten::BaseController
       width_percent = ((res.reservation_duration * 60) / length_timeline.to_f) * 100
       data = [res, offset_percent, width_percent, offset_percent < 50 ? true : false]
       @render_reservations[res.table_id].insert(0, data)
-
     end
   end
 
@@ -135,10 +133,10 @@ class Sulten::ReservationsController < Sulten::BaseController
     redirect_to sulten_reservations_archive_path
   end
 
-  def success;
+  def success
   end
 
-  private
+private
 
   def reservation_params
     params.require(:sulten_reservation).permit(

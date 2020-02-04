@@ -9,7 +9,7 @@ describe Job, '#available_jobs_in_same_group' do
     admission = create(:admission)
     job1 = create(:job, group: group1, admission: admission)
     job2 = create(:job, group: group1, admission: admission)
-    job3 = create(:job, group: group2, admission: admission)
+    create(:job, group: group2, admission: admission)
 
     expect(job1.available_jobs_in_same_group).to match_array([job2])
   end

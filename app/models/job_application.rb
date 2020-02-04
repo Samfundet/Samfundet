@@ -23,15 +23,15 @@ class JobApplication < ApplicationRecord
   def assignment_status
     assigned_job_application = applicant.assigned_job_application(job.admission)
     if withdrawn
-      return :withdrawn
+      :withdrawn
     elsif assigned_job_application.nil?
-      return :no_job
+      :no_job
     else
       acceptance_status = assigned_job_application.find_or_create_interview.acceptance_status
       if assigned_job_application.job == job
-        return acceptance_status == :reserved ? :this_job_reserved : :this_job
+        acceptance_status == :reserved ? :this_job_reserved : :this_job
       else
-        return acceptance_status == :reserved ? :other_job_reserved : :other_job
+        acceptance_status == :reserved ? :other_job_reserved : :other_job
       end
     end
   end

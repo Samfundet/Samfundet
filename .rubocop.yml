@@ -1,3 +1,6 @@
+inherit_gem:
+  rubocop-rails_config:
+    - config/rails.yml
 inherit_from:
   .rubocop_todo.yml
 
@@ -8,12 +11,10 @@ AllCops:
     - 'script/**/*'
     - 'tmp/**/*'
     - 'features/**/*'
-  TargetRubyVersion: 2.3
-
-Metrics/LineLength:
-  Max: 350
+  TargetRubyVersion: 2.5
 
 Metrics/BlockLength:
+  Max: 90
   Exclude:
     - 'spec/**/*'
 
@@ -24,6 +25,9 @@ Style/GuardClause:
 Lint/UnusedBlockArgument:
   Enabled: false
 
+Layout/LineLength:
+  Max: 350
+
 # Imo if not is more readable than unless
 Style/NegatedIf:
   Enabled: false
@@ -32,8 +36,29 @@ Style/NegatedIf:
 Style/Not:
   Enabled: false
 
+Style/AndOr:
+  Enabled: false
+
 Style/ClassAndModuleChildren:
   EnforcedStyle: compact
+  Exclude:
+    - 'spec/support/locale_fix.rb'
+
+Layout/AccessModifierIndentation:
+  EnforcedStyle: outdent
+
+Layout/EmptyLinesAroundAccessModifier:
+  EnforcedStyle: around
+
+Layout/EndAlignment:
+  EnforcedStyleAlignWith: keyword
+  AutoCorrect: true
+
+Layout/ElseAlignment:
+  Enabled: false
+
+Layout/FirstArgumentIndentation:
+  Enabled: false
 
 # Ability excludes
 Style/SymbolArray:
@@ -44,3 +69,6 @@ Style/SymbolArray:
 Style/RedundantSelf:
   Exclude:
     - 'app/abilities/*'
+
+Style/StringLiterals:
+  EnforcedStyle: single_quotes

@@ -48,7 +48,7 @@ class AdmissionsAdmin::JobsController < AdmissionsAdmin::BaseController
     redirect_to admissions_admin_admission_group_path(@job.admission, @job.group)
   end
 
-  private
+private
 
   def job_params
     params.require(:job).permit(

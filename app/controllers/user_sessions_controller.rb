@@ -19,7 +19,7 @@ class UserSessionsController < ApplicationController
     redirect_to root_path
   end
 
-  protected
+protected
 
   def redirect_after_login(default_path)
     if params[:redirect_to] && URI.parse(params[:redirect_to]).relative?

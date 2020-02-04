@@ -19,17 +19,17 @@ class EventsController < ApplicationController
 
   def index
     @events = Event
-              .active
-              .published
-              .upcoming
+                .active
+                .published
+                .upcoming
   end
 
   def search
     @events = Event
-              .active
-              .published
-              .upcoming
-              .text_search(params[:search])
+                .active
+                .published
+                .upcoming
+                .text_search(params[:search])
 
     render '_search_results', layout: false if request.xhr?
   end
@@ -134,7 +134,7 @@ class EventsController < ApplicationController
       @payment_error = BilligPaymentError.where(error: params[:bsession]).first
       @payment_error_price_groups =
         Hash[BilligPaymentErrorPriceGroup.where(error: params[:bsession])
-                                         .map { |bpepg| [bpepg.price_group, bpepg.number_of_tickets] }]
+               .map { |bpepg| [bpepg.price_group, bpepg.number_of_tickets] }]
       flash.now[:error] = @payment_error.message
     else
       @payment_error = nil
@@ -154,13 +154,14 @@ class EventsController < ApplicationController
     @events = @events.paginate(page: params[:page], per_page: 20)
   end
 
-  def admin_applet; end
+  def admin_applet
+  end
 
   def purchase_callback_success
     split_tickets = params[:tickets]
-                    .split(',')
-                    .map(&:to_i)
-                    .uniq - [0]
+                      .split(',')
+                      .map(&:to_i)
+                      .uniq - [0]
 
     @references = split_tickets.join(', ') << '.'
     @pdf_url = Rails.application.config.billig_ticket_path.dup
@@ -223,7 +224,7 @@ class EventsController < ApplicationController
     end
   end
 
-  private
+private
 
   def event_params
     params.require(:event).permit(

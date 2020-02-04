@@ -22,7 +22,7 @@ class AdmissionsAdmin::LogEntriesController < AdmissionsAdmin::BaseController
     redirect_back(fallback_location: root_path)
   end
 
-  private
+private
 
   def log_entry_params
     params.require(:log_entry).permit(:log)

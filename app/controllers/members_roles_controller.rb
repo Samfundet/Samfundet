@@ -22,7 +22,7 @@ class MembersRolesController < ApplicationController
     redirect_to role_path(@members_role.role)
   end
 
-  private
+private
 
   def before_create
     @members_role = MembersRole.new(

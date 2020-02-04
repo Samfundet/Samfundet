@@ -10,7 +10,7 @@ class Sulten::AdminController < Sulten::BaseController
 
   def admin_applet; end
 
-  private
+private
 
   def authorize
     # Every action in this controller requires :manage permission on Sulten::Reservation

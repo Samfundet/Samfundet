@@ -26,7 +26,7 @@ namespace :sulten do
     # Create additional tables if necessary
     if tables.length < 30
       n_tables = 30 - tables.length
-      puts "Too few tables, creating " + n_tables.to_s + " more"
+      puts 'Too few tables, creating ' + n_tables.to_s + ' more'
       (0..n_tables).each do |offset|
         if offset > 5
           table = Sulten::Table.create(number: tables.length + offset, capacity: rand(2..8), available: true)
@@ -71,7 +71,7 @@ namespace :sulten do
               reservation_from: date,
               email: Faker::Internet.email,
               reservation_duration: duration,
-              telephone: "123456789",
+              telephone: '123456789',
               reservation_type_id: types.sample(1),
               table_id: tables.sample(1)[0].id,
               internal_comment: rand(0..5) == 0 ? Faker::Lorem.sentence(12) : nil,

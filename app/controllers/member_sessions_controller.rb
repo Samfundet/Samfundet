@@ -23,7 +23,7 @@ class MemberSessionsController < UserSessionsController
     end
   end
 
-  private
+private
 
   def login_member(member)
     session[:applicant_id] = nil

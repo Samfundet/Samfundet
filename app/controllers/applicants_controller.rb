@@ -164,7 +164,7 @@ class ApplicantsController < ApplicationController
     end
   end
 
-  private
+private
 
   def login_applicant(applicant)
     session[:applicant_id] = applicant.id

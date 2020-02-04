@@ -73,7 +73,7 @@ class RolesController < ApplicationController
     @older_than_one_year = MembersRole.accessible_by(current_ability, :destroy).where('members_roles.created_at < ?', 1.year.ago)
   end
 
-  protected
+protected
 
   def find_by_id
     @role = Role.find_by(id: params[:id].to_i)

@@ -66,7 +66,7 @@ class Job < ApplicationRecord
     job_applications - job_applications_with_interviews
   end
 
-  private
+private
 
   def appliable_admission_ids
     Admission.appliable.collect(&:id)

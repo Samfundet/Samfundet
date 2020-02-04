@@ -69,7 +69,7 @@ class Page < ApplicationRecord
   end
 
   def self.find_by_param(id)
-    if id =~ NAME_FORMAT
+    if NAME_FORMAT.match?(id)
       find_by_name(id)
     else
       find(id)

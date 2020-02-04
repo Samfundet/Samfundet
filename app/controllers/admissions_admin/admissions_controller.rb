@@ -107,7 +107,7 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
     @admissions = Admission.current
   end
 
-  protected
+protected
 
   def find_by_id
     @admission = Admission.find(params[:id])
@@ -117,7 +117,7 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
     params.require(:admission).permit(:title, :shown_from, :shown_application_deadline, :actual_application_deadline, :user_priority_deadline, :admin_priority_deadline, :groups_with_separate_admission, :promo_video)
   end
 
-  private
+private
 
   # Count unique applicants and how many of those were actually admitted to Samfundet
   # This is done both for Samfundet as a whole and for each group

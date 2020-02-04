@@ -39,7 +39,7 @@ class GroupsController < ApplicationController
     end
   end
 
-  private
+private
 
   def group_params
     params.require(:group).permit(:name, :abbreviation, :page_id, :website, :group_type_id)

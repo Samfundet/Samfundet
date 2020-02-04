@@ -142,7 +142,8 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 
   # Gem to detect ruby style guide violations
-  gem 'rubocop', '~> 0.51.0'
+  gem 'rubocop', '~> 0.79.0'
+  gem 'rubocop-rails_config', '~> 0.9.1'
 
   # annotate adds schema information from the database, in the form of
   # Ruby comments, to model files so that we can see which columns

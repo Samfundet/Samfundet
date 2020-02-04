@@ -51,7 +51,7 @@ module ControlPanel
       end
     end
 
-    private
+  private
 
     # "/path/to/foo_controller.rb" => FooController
     def controller_from_path(path)

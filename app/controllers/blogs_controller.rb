@@ -61,7 +61,7 @@ class BlogsController < ApplicationController
 
   def admin_applet; end
 
-  private
+private
 
   def blog_params
     params.require(:blog).permit(:title_no, :title_en, :lead_paragraph_no, :lead_paragraph_en, :content_no, :content_en, :published, :publish_at, :image_id)
