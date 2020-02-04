@@ -49,7 +49,7 @@ module Samfundet
     # file must be added to config.assets.paths in order for helper functions
     # like 'javascript_include_tag' to find them
     config.assets.paths << Rails.root.join('app', 'assets', 'javascripts', 'interviews')
-    config.assets.precompile += ['linkgraph.js', 'old_samfundet/interviews.js', 'job_applications/job_applications.js', 'old_samfundet/jobs_search.js', 'applicants/admissions_admin_applicants.js', 'job_applications/admissions_admin_job_applications.js', 'sulten/duration.js']
+    config.assets.precompile += ['chartkick.js', 'linkgraph.js', 'old_samfundet/interviews.js', 'job_applications/job_applications.js', 'old_samfundet/jobs_search.js', 'applicants/admissions_admin_applicants.js', 'job_applications/admissions_admin_job_applications.js', 'sulten/duration.js']
 
     # Load local env variables into rails config
     config.before_configuration do
