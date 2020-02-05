@@ -20,7 +20,7 @@ copy-travis-files:
 
 .PHONY: test
 test:
-	bundle exec rubocop -R -D
+	bundle exec rubocop -D
 
 .PHONY: deploy-production
 deploy-production:

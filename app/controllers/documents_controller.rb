@@ -57,7 +57,7 @@ class DocumentsController < ApplicationController
 
   def admin_applet; end
 
-  private
+private
 
   def document_params
     params.require(:document).permit(:uploader_id, :title, :category, :category_id, :file, :publication_date)

@@ -25,3 +25,7 @@ en:
     reserved_applicants: "Applicants who is reserved have to/should be cleared with the group that has made the reservation."
     reprioritisation_deadline: "The reprioritisation deadline is not expired, please come back after"
     applicants_set_to_reserve: "Applicants who are reserved, or not yet flagged"
+    applications: "Applications"
+    applicants: "Applicants"
+    days: "Days"
+    admission_updated: "Admissions was updated"

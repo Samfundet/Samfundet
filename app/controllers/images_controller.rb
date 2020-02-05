@@ -56,7 +56,7 @@ class ImagesController < ApplicationController
 
   def admin_applet; end
 
-  private
+private
 
   def image_params
     params.require(:image).permit(:title, :tagstring, :image_file)

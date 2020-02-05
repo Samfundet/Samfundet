@@ -70,7 +70,7 @@ class AdmissionsAdmin::InterviewsController < AdmissionsAdmin::BaseController
     end
   end
 
-  private
+private
 
   def show_warning_if_other_interviews_take_place_within_30_minutes
     @interview.job_application.applicant.job_applications.each do |application|

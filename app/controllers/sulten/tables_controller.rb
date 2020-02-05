@@ -44,7 +44,7 @@ class Sulten::TablesController < Sulten::BaseController
     end
   end
 
-  private
+private
 
   def table_params
     params.require(:sulten_table).permit(:number, :capacity, :comment, :available, reservation_type_ids: [])

@@ -67,7 +67,7 @@ class JobApplicationsController < ApplicationController
     prioritize :lower
   end
 
-  private
+private
 
   def prioritize(direction)
     if @job_application&.job&.admission&.prioritize?

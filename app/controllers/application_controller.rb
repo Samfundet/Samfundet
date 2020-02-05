@@ -70,7 +70,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  protected
+protected
 
   def redirect_to_if_not_ajax_request(path)
     if request.xhr?

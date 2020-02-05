@@ -87,7 +87,7 @@ class PagesController < ApplicationController
     new_route
   end
 
-  private
+private
 
   def page_params
     params.require(:page).permit(:name_no, :name_en, :title_no, :title_en, :content_no, :content_en, :content_type, :role_id)
@@ -161,18 +161,18 @@ class PagesController < ApplicationController
         destination = Rails.application.routes.recognize_path uri.to_s
         if destination[:controller] == 'pages' && destination[:action] == 'show'
           # this is some link that resolves to an info page
-          return destination[:id]
+          destination[:id]
         else
           # this is a link that leads to something else than an info page
-          return uri.path
+          uri.path
         end
       rescue ActionController::RoutingError
         # recognizing path failed
         # this link probably doesn't lead anywhere on the page
-        return uri.path
+        uri.path
       end
     else
-      return url
+      url
     end
   end
 end

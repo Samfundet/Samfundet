@@ -1,5 +1,32 @@
 # CHANGELOG
 
+## 2020-02-04
+
+### Changed
+
+- Replace graph library ([#562](https://github.com/Samfundet/Samfundet/pull/562))
+
+### Fixed
+
+- Upgrade Rails to 5.2.4.1 to fix security vulnerability ([#563](https://github.com/Samfundet/Samfundet/pull/563))
+- Fix applicant prioritization ([#572](https://github.com/Samfundet/Samfundet/pull/572))
+
+## 2020-01-30
+
+### Added
+
+- Add beta version of new admin reservation panel ([#547](https://github.com/Samfundet/Samfundet/pull/547)), ([#575](https://github.com/Samfundet/Samfundet/pull/575))
+
+### Fixed
+
+- Update README.md ([#573](https://github.com/Samfundet/Samfundet/pull/573)), ([#574](https://github.com/Samfundet/Samfundet/pull/574))
+
+## 2020-01-23
+
+### Fixed
+
+- Fix issue with changing password for applicants ([#568](https://github.com/Samfundet/Samfundet/pull/568))
+
 ## 2019-11-14
 
 ### Fixed

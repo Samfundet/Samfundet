@@ -20,19 +20,14 @@ class AdmissionsAdmin::GroupsController < AdmissionsAdmin::BaseController
     applications_per_day = (admission_start..admission_end).map do |day|
       job_applications.count { |a| a.created_at.to_date == day.to_date }
     end
-    admission_day_labels = (admission_start..admission_end).map do |day|
-      day.strftime('%-d.%-m')
-    end
 
-    @applications_per_day_chart = Gchart.bar(
-      data: applications_per_day,
-      encoding: 'text',
-      labels: admission_day_labels,
-      axis_with_labels: %w[x y],
-      axis_range: [nil, [0, applications_per_day.max, [applications_per_day.max / 10, 1].max]],
-      size: '800x350',
-      bar_color: 'A03033'
-    )
+    @applications_per_day = (admission_start..admission_end).zip(applications_per_day)
+
+    @applications_per_day_chart = LazyHighCharts::HighChart.new('graph') do |f|
+      f.series(data: applications_per_day, type: 'spline', name: 'Applications per day')
+      f.yAxis(title: { text: 'Applications' }, allowDecimals: false)
+      f.xAxis(title: { text: 'Days' }, categories: (admission_start..admission_end).map(&:to_s))
+    end
   end
 
   def applications

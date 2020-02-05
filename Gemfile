@@ -16,10 +16,13 @@ gem 'rails', '~> 5.2.0'
 # Memcache client
 gem 'dalli', '~> 2.7.0'
 
+# Charts
+gem 'lazy_high_charts', '~> 1.5.0'
+
 # acts_as_list provides the means to sort and reorder a list of objects
 # with respect to a column in the database, e.g. to sort and reorder a list
 # of job applications based on the priority set by the applicant.
-gem 'acts_as_list', '~> 0.8.0'
+gem 'acts_as_list', '~> 1.0.0'
 
 # Use activerecord as session store
 gem 'activerecord-session_store', '~> 1.1.0'
@@ -66,10 +69,6 @@ gem 'cancancan', '~> 2.3.0'
 # formtastic is a Rails form builder plugin
 # with semantically rich and accessible markup.
 gem 'formtastic', '~> 3.1.0'
-
-# Google Charts is an online service for generating charts.
-# We use it for displaying statistics about admissions.
-gem 'googlecharts', '~> 1.6.0'
 
 # Haml is a templating language. It compiles to HTML.
 gem 'haml-rails', '~> 2.0.0'
@@ -142,7 +141,8 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 
   # Gem to detect ruby style guide violations
-  gem 'rubocop', '~> 0.51.0'
+  gem 'rubocop', '~> 0.79.0'
+  gem 'rubocop-rails_config', '~> 0.9.1'
 
   # annotate adds schema information from the database, in the form of
   # Ruby comments, to model files so that we can see which columns

@@ -35,3 +35,6 @@
 //= require_tree "./areas"
 //= require_tree "./images"
 //= require cocoon
+//= require highcharts/highcharts
+//= require highcharts/highcharts-more
+//= require highcharts/highstock

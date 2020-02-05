@@ -31,11 +31,12 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
     end
   end
 
-  def edit; end
+  def edit
+  end
 
   def update
     if @admission.update_attributes(admission_params)
-      flash[:success] = 'Opptaket er oppdatert.'
+      flash[:success] = t('admissions_admin.admission_updated')
       redirect_to admissions_path
     else
       flash[:error] = t('common.fields_missing_error')
@@ -49,65 +50,28 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
 
     count_unique_applicants
 
-    # applications_count = @admission.job_applications.count
-    applications_per_group = @admission.groups.map do |group|
-      group.jobs.where(admission_id: @admission.id).map do |job|
+    @applications_per_group = @admission.groups.map do |group|
+      count = group.jobs.where(admission_id: @admission.id).map do |job|
         job.job_applications.count
       end.sum
-    end
-    group_labels = @admission.groups.map(&:name)
-    admission_start = @admission.shown_from.to_date
-    admission_end = @admission.actual_application_deadline.to_date
-    applications_per_day = (admission_start..admission_end).map do |day|
-      @admission.job_applications.where('DATE(job_applications.created_at) = ?',
-                                        day).count
+      ["#{group.name} - #{count}", count]
     end
 
-    admission_day_labels = (admission_start..admission_end).map do |day|
-      day.strftime('%-d.%-m')
+    @applicants_per_campus = @campuses.map do |campus|
+      count = @campus_count[campus.id]
+      ["#{campus.name} - #{count}", count]
     end
 
-    applications_per_campus = @campuses.map do |campus|
-      @campus_count[campus.id]
-    end
-    # Want both the name of the campus, and amount of applicants
-    campus_labels = @campuses.map do |campus|
-      "#{campus.name} - #{@campus_count[campus.id]}"
-    end
-
-    # The Gchart methods return an external URL to an image of the chart.
-    @applications_per_group_chart = Gchart.pie(
-      data: applications_per_group,
-      encoding: 'text',
-      labels: group_labels,
-      size: '800x300',
-      custom: 'chco=00FFFF,FF0000,FFFF00,0000FF', # color scale
-    )
-
-    @applications_per_campus_chart = Gchart.pie(
-      data: applications_per_campus,
-      encoding: 'text',
-      labels: campus_labels,
-      size: '800x350',
-      custom: 'chco=00FFFF,FF0000,FFFF00,0000FF'
-    )
-
-    @applications_per_day_chart = Gchart.bar(
-      data: applications_per_day,
-      encoding: 'text',
-      labels: admission_day_labels,
-      axis_with_labels: %w[x y],
-      axis_range: [nil, [0, applications_per_day.max, [applications_per_day.max / 10, 1].max]],
-      size: '800x350',
-      bar_color: 'A03033'
-    )
+    applications_per_group_chart
+    applicants_per_campus_chart
+    applications_per_day_chart
   end
 
   def admin_applet
     @admissions = Admission.current
   end
 
-  protected
+protected
 
   def find_by_id
     @admission = Admission.find(params[:id])
@@ -117,58 +81,106 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
     params.require(:admission).permit(:title, :shown_from, :shown_application_deadline, :actual_application_deadline, :user_priority_deadline, :admin_priority_deadline, :groups_with_separate_admission, :promo_video)
   end
 
-  private
+private
+
+  def applications_per_day_chart
+    admission_start = @admission.shown_from.to_date
+    admission_end = @admission.actual_application_deadline.to_date
+    applications_per_day = (admission_start..admission_end).map do |day|
+      @admission.job_applications.where('DATE(job_applications.created_at) = ?',
+                                        day).count
+    end
+
+    @applications_per_day = (admission_start..admission_end).zip(applications_per_day)
+
+    @applications_per_day_chart = LazyHighCharts::HighChart.new('graph') do |f|
+      f.series(data: @applications_per_day, type: 'spline', name: t('admissions_admin.applications'))
+      f.yAxis(title: { text: t('admissions_admin.applications') }, allowDecimals: false)
+      f.xAxis(title: { text: t('admissions_admin.days') }, categories: (admission_start..admission_end).map(&:to_s))
+    end
+  end
+
+  def applicants_per_campus_chart
+    @applicants_per_campus_chart = LazyHighCharts::HighChart.new('pie') do |f|
+      f.chart(defaultSeriesType: 'pie', margin: [50, 200, 60, 170])
+      series = {
+        type: 'pie',
+        name: t('admissions_admin.applicants'),
+        data: @applicants_per_campus
+      }
+      f.series(series)
+      f.options[:title][:text] = t('admissions_admin.applications_by_campus')
+      f.legend(layout: 'vertical', style: { left: 'auto', bottom: 'auto', right: '50px', top: '100px' })
+      f.plot_options(pie: {
+        allowPointSelect: true,
+        cursor: 'pointer',
+        dataLabels: {
+          enabled: true,
+          color: 'black',
+        }
+      })
+    end
+  end
+
+  def applications_per_group_chart
+    @applications_per_group_chart = LazyHighCharts::HighChart.new('pie') do |f|
+      f.chart({ defaultSeriesType: 'pie', margin: [50, 200, 60, 170] })
+      series = {
+        type: 'pie',
+        name: t('admissions_admin.applicants'),
+        data: @applications_per_group
+      }
+      f.series(series)
+      f.options[:title][:text] = t('admissions_admin.applications_by_group')
+      f.legend(layout: 'vertical', style: { left: 'auto', bottom: 'auto', right: '50px', top: '100px' })
+      f.plot_options(pie: {
+        allowPointSelect: true,
+        cursor: 'pointer',
+        dataLabels: {
+          enabled: true,
+          color: 'black',
+        }
+      })
+    end
+  end
 
   # Count unique applicants and how many of those were actually admitted to Samfundet
   # This is done both for Samfundet as a whole and for each group
   def count_unique_applicants
-    @uniq_applicants_in_group = {}
-    @uniq_apps_groups_accepted = {}
-    @applicants_who_accepted_role = 0
-    @known_ids = []
-    @sum_job_applications = 0
+    @unique_applicants_per_group = {}
+    @accepted_applicants_per_group = {}
+
     @admission.groups.map do |group|
-      @uniq_applicants_in_group[group] = []
-      @uniq_apps_groups_accepted[group] = 0
-      @sum_job_applications += group.job_applications.count
+      @unique_applicants_per_group[group] = Set[]
+      @accepted_applicants_per_group[group] = 0
+
       group.jobs.where(admission_id: @admission.id).map do |job|
         job.applicants.map do |app|
-          # In each unique group
-          next if @uniq_applicants_in_group[group].include? app.id
-          @uniq_applicants_in_group[group].push(app.id)
-          log_entries = LogEntry.where(admission_id: @admission.id, applicant_id: app.id)
-
-          next if log_entries.empty?
-          last_log = log_entries.last
-
-          acceptance_strings = [
-            'Ringt og tilbudt verv, takket ja',
-            'Called and offered position, the applicant accepted'
-          ]
-
-          if acceptance_strings.include?(last_log.log) && (last_log.group.name == group.name)
-            @uniq_apps_groups_accepted[group] += 1
-          end
-
-          # Total for entire admission
-          next if @known_ids.include? app.id
-          @known_ids.push(app.id)
+          @unique_applicants_per_group[group].add app.id
 
           log_entries = LogEntry.where(admission_id: @admission.id, applicant_id: app.id)
 
-          next if log_entries.empty?
-          last_log = log_entries.last
+          # An applicant can possibly be considered accepted if he/she/they has/have been logged,
+          # and only any of the following acceptance strings below.
+          unless log_entries.empty?
+            last_log = log_entries.last
 
-          acceptance_strings = [
-            'Ringt og tilbudt verv, takket ja',
-            'Called and offered position, the applicant accepted'
-          ]
-
-          if acceptance_strings.include?(last_log.log)
-            @applicants_who_accepted_role += 1
+            @accepted_applicants_per_group[group] += 1 if application_is_accepted?(last_log.log)
           end
         end
       end
     end
+
+    @unique_applicants_total = @unique_applicants_per_group.flat_map { |_, v| v }.uniq.count
+    @accepted_applicants_total = @accepted_applicants_per_group.values.reduce(:+)
   end
+end
+
+def application_is_accepted?(log)
+  acceptance_strings = [
+    'Ringt og tilbudt verv, takket ja',
+    'Called and offered position, the applicant accepted'
+  ]
+
+  acceptance_strings.include?(log)
 end

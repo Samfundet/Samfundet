@@ -10,7 +10,7 @@ def generate_roles
       title: group.group_leader_role.to_s
     )
 
-    admission_role = Role.create_with(
+    Role.create_with(
       name: 'Opptaksansvarlig',
       description: "Rolle for opptaksperson for #{group.name}.",
       group: group,
@@ -19,7 +19,7 @@ def generate_roles
       title: group.admission_responsible_role.to_s
     )
 
-    event_manager = Role.create_with(
+    Role.create_with(
       name: 'Arrangementansvarlig',
       description: "Rolle for arrangementansvarlig for #{group.name}",
       group: group,
