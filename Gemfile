@@ -189,6 +189,9 @@ group :development do
 end
 
 group :development, :test do
+  # seedbank loads seeds from respective environments and folders
+  gem 'seedbank'
+
   # Faker is a library that generates fake data (names, email addresses, etc.)
   gem 'faker', '~> 1.6.6'
 
