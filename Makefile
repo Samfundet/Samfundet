@@ -33,3 +33,9 @@ deploy-staging:
 .PHONY: git-hooks
 git-hooks:
 	ln -fs hooks/* .git/hooks
+
+localseed:
+	RAILS_ENV=development rake db:seed
+
+truncate:
+	RAILS_ENV=development rake db:seed:development:truncate
