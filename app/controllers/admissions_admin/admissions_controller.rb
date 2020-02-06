@@ -116,8 +116,7 @@ private
       f.xAxis(title: { text: t('admissions_admin.hour') }, categories: (hours).map(&:to_s))
     end
   end
-
-
+  
   def applicants_per_campus_chart
     @applicants_per_campus_chart = LazyHighCharts::HighChart.new('pie') do |f|
       f.chart(defaultSeriesType: 'pie', margin: [50, 200, 60, 170])
