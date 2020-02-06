@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 2020-02-06
+
+### Changed
+
+- Improve seed script ([#580](https://github.com/Samfundet/Samfundet/pull/580))
+
+### Fixed
+
+- Fix wrong total unique applicant count ([#588](https://github.com/Samfundet/Samfundet/pull/588))
+
 ## 2020-02-04
 
 ### Changed
