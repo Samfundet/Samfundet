@@ -49,7 +49,9 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
 
     count_unique_applicants
 
-    # applications_count = @admission.job_applications.count
+    applications_count = @admission.job_applications.count
+    puts 'hei'
+    puts applications_count
     applications_per_group = @admission.groups.map do |group|
       group.jobs.where(admission_id: @admission.id).map do |job|
         job.job_applications.count
