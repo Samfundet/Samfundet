@@ -49,7 +49,7 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
     @campus_count = Campus.number_of_applicants_given_admission(@admission)
 
     count_unique_applicants
-
+    
     @applications_per_group = @admission.groups.map do |group|
       count = group.jobs.where(admission_id: @admission.id).map do |job|
         job.job_applications.count
