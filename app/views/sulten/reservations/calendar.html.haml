@@ -82,7 +82,7 @@
     = t("sulten.reservation.reservations")
   %th
     = t("sulten.reservation.people")
-  - @reservations.sort_by(&:reservation_from).group_by {|i| i.reservation_from.to_date }.each do |date, f|
+  - @reservations.each do |date, f|
     %tr
       %td
         = l(date, format: '%A').capitalize
@@ -96,9 +96,9 @@
     %td{style:"font-style:italic;", colspan:2}
       = t("sulten.reservation.summary.total_week")
     %td
-      = @reservations.length
+      = @total_reservations
     %td
-      = @reservations.map(&:people).sum
+      = @total_people
 %p#export_csv
   = link_to T("sulten.reservation.export_to_csv"), sulten_reservations_export_path(format: :csv)
 %p
@@ -110,7 +110,7 @@
 %h2
   = t("sulten.reservation.upcoming_reservations")
 
-- @reservations.sort_by(&:reservation_from).group_by {|i| i.reservation_from.to_date }.each do |date, f|
+- @reservations.each do |date, f|
   %h3
     =  l(date, format: '%A').capitalize + ', ' + date.to_s
   %table
