@@ -50,6 +50,7 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
 
     count_unique_applicants
 
+
     @applications_per_group = @admission.groups.map do |group|
       count = group.jobs.where(admission_id: @admission.id).map do |job|
         job.job_applications.count
@@ -149,7 +150,6 @@ private
   def count_unique_applicants
     @unique_applicants_per_group = {}
     @accepted_applicants_per_group = {}
-
     @unique_applicants_total = []
     @admission.groups.map do |group|
       @unique_applicants_per_group[group] = Set[]
@@ -179,6 +179,7 @@ end
 
 def application_is_accepted?(log)
   acceptance_strings = [
+
     'Ringt og tilbudt verv, takket ja',
     'Called and offered position, the applicant accepted'
   ]
