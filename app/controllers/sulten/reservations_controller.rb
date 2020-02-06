@@ -113,6 +113,12 @@ class Sulten::ReservationsController < Sulten::BaseController
       data = [res, offset_percent+0.5, width_percent-0.5, offset_percent < 50 ? true : false]
       @render_reservations[res.table_id].insert(0, data)
     end
+
+    @total_reservations = @reservations.length
+    @total_people = @reservations.map(&:people).sum
+    @reservations = @reservations.sort_by(&:reservation_from).group_by {|i| i.reservation_from.to_date }
+
+
   end
 
   def update
