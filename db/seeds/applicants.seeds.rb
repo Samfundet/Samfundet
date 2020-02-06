@@ -40,12 +40,14 @@ after :generate_roles do
 
     jobs = Job.all.sample(number_of_job_applications_pr_applicant)
     jobs.each_with_index do |job, priority|
-      job_application = JobApplication.create!(
-        motivation: Faker::Lorem.paragraphs(5).join("\n\n"),
-        applicant: applicant,
-        priority: priority + 1,
-        job: job
+      job_application = JobApplication.new(
+          motivation: Faker::Lorem.paragraphs(5).join("\n\n"),
+          applicant: applicant,
+          priority: priority + 1,
+          job: job
       )
+      job_application.created_at = Faker::Time.between(1.week.ago, 2.weeks.from_now)
+      job_application.save
       Interview.create!(
         time: Faker::Time.between(1.weeks.from_now, 2.weeks.from_now),
         acceptance_status: Interview::ACCEPTANCE_STATUSES_NO.keys.sample,
@@ -72,4 +74,6 @@ after :generate_roles do
     member.roles << role
   end
   puts 'Created members.'
+
+
 end

@@ -5,6 +5,7 @@
     summary: "%{admission} har %{applications} søknader på %{jobs} stillinger."
     applications_by_group: "Fordeling av søkere per gjeng"
     applications_by_day: "Antall søknader per dag"
+    applications_by_hour: "Antall søkere per time"
     applications_by_campus: "Antall søkere per campus"
     applications_by_day_for_group: "Antall søknader per dag for %{group}"
     show_interested_other_positions: 'Vis søkere som er interesert i andre stillinger men som ikke er tildelt stillinger'
@@ -28,4 +29,6 @@
     applications: "Søknader"
     applicants: "Søkere"
     days: "Dager"
+    hour: "Time"
     admission_updated: "Opptaket ble oppdatert"
+
