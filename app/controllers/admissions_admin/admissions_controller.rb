@@ -149,11 +149,8 @@ private
   def count_unique_applicants
     @unique_applicants_per_group = {}
     @accepted_applicants_per_group = {}
-<<<<<<< HEAD
 
-=======
     @unique_applicants_total = []
->>>>>>> Fix wrong # of unique applicants
     @admission.groups.map do |group|
       @unique_applicants_per_group[group] = Set[]
       @accepted_applicants_per_group[group] = 0
@@ -161,11 +158,7 @@ private
       group.jobs.where(admission_id: @admission.id).map do |job|
         job.applicants.map do |app|
           @unique_applicants_per_group[group].add app.id
-<<<<<<< HEAD
-
-=======
           @unique_applicants_total.push app.id
->>>>>>> Fix wrong # of unique applicants
           log_entries = LogEntry.where(admission_id: @admission.id, applicant_id: app.id)
 
           # An applicant can possibly be considered accepted if he/she/they has/have been logged,
