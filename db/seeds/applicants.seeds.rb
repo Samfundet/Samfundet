@@ -74,6 +74,4 @@ after :generate_roles do
     member.roles << role
   end
   puts 'Created members.'
-
-
 end
