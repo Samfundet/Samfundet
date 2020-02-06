@@ -179,9 +179,7 @@ private
       end
     end
 
-    #@unique_applicants_total = @unique_applicants_per_group.flat_map { |_, v| v }.uniq.count
     @unique_applicants_total = @unique_applicants_total.uniq.count
-    #puts @unique_applicants_total2.uniq.count
     @accepted_applicants_total = @accepted_applicants_per_group.values.reduce(:+)
   end
 end
