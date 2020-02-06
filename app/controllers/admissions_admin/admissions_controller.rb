@@ -49,7 +49,7 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
     @campus_count = Campus.number_of_applicants_given_admission(@admission)
 
     count_unique_applicants
-    
+
     @applications_per_group = @admission.groups.map do |group|
       count = group.jobs.where(admission_id: @admission.id).map do |job|
         job.job_applications.count
@@ -149,7 +149,11 @@ private
   def count_unique_applicants
     @unique_applicants_per_group = {}
     @accepted_applicants_per_group = {}
+<<<<<<< HEAD
 
+=======
+    @unique_applicants_total = []
+>>>>>>> Fix wrong # of unique applicants
     @admission.groups.map do |group|
       @unique_applicants_per_group[group] = Set[]
       @accepted_applicants_per_group[group] = 0
@@ -157,7 +161,11 @@ private
       group.jobs.where(admission_id: @admission.id).map do |job|
         job.applicants.map do |app|
           @unique_applicants_per_group[group].add app.id
+<<<<<<< HEAD
 
+=======
+          @unique_applicants_total.push app.id
+>>>>>>> Fix wrong # of unique applicants
           log_entries = LogEntry.where(admission_id: @admission.id, applicant_id: app.id)
 
           # An applicant can possibly be considered accepted if he/she/they has/have been logged,
@@ -171,7 +179,9 @@ private
       end
     end
 
-    @unique_applicants_total = @unique_applicants_per_group.flat_map { |_, v| v }.uniq.count
+    #@unique_applicants_total = @unique_applicants_per_group.flat_map { |_, v| v }.uniq.count
+    @unique_applicants_total = @unique_applicants_total.uniq.count
+    #puts @unique_applicants_total2.uniq.count
     @accepted_applicants_total = @accepted_applicants_per_group.values.reduce(:+)
   end
 end
