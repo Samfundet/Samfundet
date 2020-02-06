@@ -1,7 +1,8 @@
 'no':
   sulten:
     reservation:
-      title: "Kommende reservasjoner"
+      title: "Lyche Reservasjoner"
+      upcoming_reservations: "Framtidige reservasjoner"
       no_reservations: "Ingen reservasjoner"
       reservations: "Reservasjoner"
       no_reservations_this_week: "Ingen reservasjoner denne uken"
@@ -22,7 +23,7 @@
       export_to_csv: "Eksporter alle reservasjoner til CSV"
       hi: "Hei"
       summary:
-        title: "Oppsummering"
+        title: "Ukeoversikt"
         date: "Dato"
         day: "Dag"
         total: "Totalt antall reservasjoner"
