@@ -28,6 +28,7 @@
   display: block;
   clear: both;
   overflow: hidden;
+  border-radius: 5px 5px 0 0;
 }
 
 .calendar-header {
@@ -68,34 +69,25 @@
   background-color: rgba(255, 255, 255,0.2);
 }
 
-.calendar-back-to-today {
-  float: left;
-  color: white;
-  font-size: 16px;
-  margin-left: 50px;
-  padding-top: 5px;
-  font-style: italic;
-}
-.calendar-back-to-today:hover {
-  color: #ddd;
-}
-
-.calendar-new-button {
+.calendar-header-button {
   float: right;
   margin-right: 20px;
-  background-color: $samfundet-purple;
+  background-color: $samfundet-green;
   padding: 4px;
   padding-left: 14px;
   padding-right: 14px;
   transition: .1s;
-  font-size: 16px;
+  font-size: 18px;
   color: white;
-  clear: right;
+  border-radius: 4px;
 }
 
-.calendar-new-button:hover {
-  background-color: rgba($samfundet-purple, 0.5);
+.calendar-header-button:hover {
+  filter: brightness(1.1);
   cursor: pointer;
+}
+.calendar-header-button.back {
+  background-color: #aaa;
 }
 
 .calendar-row {
@@ -141,9 +133,6 @@
   cursor: default;
 }
 
-.calendar-row:hover > .calendar-column.fixed {
-}
-
 .calendar-row.time {
   line-height: 48px;
   max-height: 32px;
@@ -175,7 +164,6 @@
   font-size: 11px;
   left: 0;
   white-space: nowrap;
-
   cursor: pointer;
 }
 
@@ -279,6 +267,7 @@
   background-color: #fff;
 }
 
+
 .tool-button {
   float: left;
   width: 20%;
@@ -291,7 +280,12 @@
   cursor: pointer;
   transition: .2s;
 }
-
+.tool-button:first-child {
+  border-radius: 0 0 0 5px;
+}
+.tool-button:last-child {
+  border-radius: 0 0 5px 0;
+}
 .tool-button * {
   color: black;
 }
