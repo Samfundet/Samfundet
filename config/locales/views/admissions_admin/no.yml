@@ -31,4 +31,9 @@
     days: "Dager"
     hour: "Time"
     admission_updated: "Opptaket ble oppdatert"
-
+    unlogged_applicants: "Søkere som ikke er loggførte"
+    show_unlogged_applicants: "Vis søkere som ikke er loggførte"
+    export_unlogged_applicants: "Eksporter ikke-loggførte søkere"
+    log_all_unlogged_applicants: "Loggfør alle"
+    all_applicants_logged: "Alle ikke-loggede søkere har blitt logget"
+    unique_applicant_logged_flash: "%{name} ble logget med '%{entry}'"

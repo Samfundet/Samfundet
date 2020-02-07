@@ -84,6 +84,12 @@ class Applicant < ApplicationRecord
     end
   end
 
+  def self.unlogged_applicants(admission)
+    where(disabled: false).select do |applicant|
+      applicant.log_entries.empty?
+    end
+  end
+
   class << self
     def authenticate(email, password)
       applicant = where(disabled: false).find_by(email: email.downcase)
