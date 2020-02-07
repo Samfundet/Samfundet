@@ -110,7 +110,7 @@ class Sulten::ReservationsController < Sulten::BaseController
     @reservations_today.each do |res|
       offset_percent = ((res.reservation_from - start_timeline).seconds / length_timeline).to_f * 100
       width_percent = ((res.reservation_duration * 60) / length_timeline.to_f) * 100
-      data = [res, offset_percent + 0.5, width_percent - 0.5, offset_percent < 50 ? true : false]
+      data = [res, offset_percent+0.5, width_percent-0.5, offset_percent < 50 ? true : false]
       @render_reservations[res.table_id].insert(0, data)
     end
 
@@ -141,7 +141,7 @@ class Sulten::ReservationsController < Sulten::BaseController
   def success
   end
 
-  private
+private
 
   def reservation_params
     params.require(:sulten_reservation).permit(
