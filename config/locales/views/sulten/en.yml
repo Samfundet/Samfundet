@@ -14,7 +14,7 @@ en:
       reservation_type: "Occasion"
       placeholder_date: "01.10.1910 12:00"
       table: "Table"
-      missing_tablee: "Missing table"
+      missing_table: "Missing table"
       telephone: "Telephone number"
       email: "Email"
       other_messages: "Other messages"
