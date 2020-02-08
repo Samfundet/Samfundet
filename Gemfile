@@ -11,18 +11,15 @@ ruby '2.5.5'
 source 'https://rubygems.org'
 
 # Rails. Duh.
-gem 'rails', '~> 5.2.0'
+gem 'rails', '~> 6.0.0'
 
 # Memcache client
 gem 'dalli', '~> 2.7.0'
 
-# Charts
-gem 'lazy_high_charts', '~> 1.5.0'
-
 # acts_as_list provides the means to sort and reorder a list of objects
 # with respect to a column in the database, e.g. to sort and reorder a list
 # of job applications based on the priority set by the applicant.
-gem 'acts_as_list', '~> 1.0.0'
+gem 'acts_as_list', '~> 0.8.0'
 
 # Use activerecord as session store
 gem 'activerecord-session_store', '~> 1.1.0'
@@ -43,7 +40,7 @@ gem 'jquery-ui-rails', '~> 5.0.0'
 gem 'jquery-turbolinks', '~> 2.1.0'
 
 # used for sorting tables in the admission
-gem 'jquery-tablesorter', '~> 1.22.0'
+gem 'jquery-tablesorter', '~> 1.27.0'
 
 # CoffeeScript is a scripting language. It compiles to JavaScript.
 gem 'coffee-rails', '~> 5.0.0'
@@ -64,11 +61,15 @@ gem 'neat', '~> 1.8.0'
 gem 'uglifier', '~> 3.0.0'
 
 # CanCanCan for role-based access control. See app/models/ability.rb
-gem 'cancancan', '~> 2.3.0'
+gem 'cancancan', '~> 3.0.0'
 
 # formtastic is a Rails form builder plugin
 # with semantically rich and accessible markup.
 gem 'formtastic', '~> 3.1.0'
+
+# Google Charts is an online service for generating charts.
+# We use it for displaying statistics about admissions.
+gem 'googlecharts', '~> 1.6.0'
 
 # Haml is a templating language. It compiles to HTML.
 gem 'haml-rails', '~> 2.0.0'
@@ -80,7 +81,7 @@ gem 'icalendar', '~> 2.4.0'
 # For example, we can replace the path '/groups' with the paths
 # '/gjenger' and '/en/groups' which both point to the same page.
 # See: config/locales/routes/i18n-routes.yml
-gem 'route_translator', '~> 5.6.0'
+gem 'route_translator', '~> 7.0.0'
 
 # RedCarpet renders Markdown, a light-weight markup language, to HTML.
 # See: config/initializers/haml_markdown.rb
@@ -90,13 +91,13 @@ gem 'redcarpet', '~> 3.5.0'
 gem 'route_downcaser', '~> 1.2.0'
 
 # SamfundetDomain is a gem which provides the application with samfundets domain models.
-gem 'samfundet_domain', git: 'https://github.com/Samfundet/SamfundetDomain.git'
-# gem 'samfundet_domain', git: 'https://github.com/Samfundet/SamfundetDomain.git', branch: 'rails-5-2'
+# gem 'samfundet_domain', git: 'https://github.com/Samfundet/SamfundetDomain.git'
+gem 'samfundet_domain', git: 'https://github.com/Samfundet/SamfundetDomain.git', branch: 'rails-6-0'
 # gem 'samfundet_domain', path: '../SamfundetDomain'
 
 # SamfundetAuth is a gem which provides the application with methods for authenticating against mdb2.
-gem 'samfundet_auth', git: 'https://github.com/Samfundet/SamfundetAuth.git'
-# gem 'samfundet_auth', git: 'https://github.com/Samfundet/SamfundetAuth.git', branch: 'rails-5-2'
+# gem 'samfundet_auth', git: 'https://github.com/Samfundet/SamfundetAuth.git'
+gem 'samfundet_auth', git: 'https://github.com/Samfundet/SamfundetAuth.git', branch: 'rails-6-0'
 # gem 'samfundet_auth', path: '../SamfundetAuth'
 
 # will_paginate is an adaptive pagination plugin.
@@ -123,13 +124,16 @@ gem 'pg_search', '~> 2.3.0'
 gem 'diff-lcs', '~> 1.2.5'
 
 # Middleware to send notifications when errors occur
-gem 'exception_notification', '~> 4.2.0'
+gem 'exception_notification', '~> 4.4.0'
 
 # Addon to exception_notification that sends exceptions to slack
 gem 'slack-notifier', '~> 1.5.0'
 
 # Cocoon makes nested forms for price groups under events a lot easier. Adds some buttons and stuff
 gem 'cocoon', '~> 1.2.0'
+
+# Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
+gem 'webpacker', '~> 4.0'
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
@@ -141,8 +145,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 
   # Gem to detect ruby style guide violations
-  gem 'rubocop', '~> 0.79.0'
-  gem 'rubocop-rails_config', '~> 0.9.1'
+  gem 'rubocop', '~> 0.51.0'
 
   # annotate adds schema information from the database, in the form of
   # Ruby comments, to model files so that we can see which columns
@@ -189,9 +192,6 @@ group :development do
 end
 
 group :development, :test do
-  # seedbank loads seeds from respective environments and folders
-  gem 'seedbank'
-
   # Faker is a library that generates fake data (names, email addresses, etc.)
   gem 'faker', '~> 1.6.6'
 
