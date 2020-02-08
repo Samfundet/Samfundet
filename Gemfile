@@ -156,8 +156,8 @@ group :development do
   # binding_of_caller is an optional dependency of better_errors which
   # allows for features such as local / instance variable expection,
   # REPL debugging etc.
-  gem 'better_errors', '~> 2.1.0'
-  gem 'binding_of_caller', '~> 0.7.0'
+  gem 'better_errors', '~> 2.5.1'
+  gem 'binding_of_caller', '~> 0.8.0'
 
   # magic_encoding adds an 'encoding: utf-8' comment to all .rb files
   gem 'magic_encoding', '~> 0.0.0'
