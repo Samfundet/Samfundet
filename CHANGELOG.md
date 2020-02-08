@@ -1,5 +1,22 @@
 # CHANGELOG
 
+## 2020-02-08
+
+### Added
+
+- Show applications by hour statistics ([#449](https://github.com/Samfundet/Samfundet/issues/449))
+- Show and log individual/all unlogged applicants ([#578](https://github.com/Samfundet/Samfundet/issues/578))
+
+### Changed
+
+- Improve usability of Lyche admin calendar ([#581](https://github.com/Samfundet/Samfundet/issues/581))
+
+### Fixed
+
+- Fix crash when a reservations' table was deleted ([#539](https://github.com/Samfundet/Samfundet/pull/593))
+- Fix minor Lyche admin calendar UI issues ([#595](https://github.com/Samfundet/Samfundet/issues/595))
+- Bump version of debugging gem to fix stack traces ([#596](https://github.com/Samfundet/Samfundet/pull/596))
+
 ## 2020-02-06
 
 ### Changed
