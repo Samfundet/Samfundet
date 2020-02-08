@@ -1,5 +1,25 @@
+li {
+  list-style-type: none;
+}
+
+td {
+  width: 20%;
+}
+td:last-child {
+  width: 10%;
+}
+
+.log_all_container {
+  padding: 10px;
+}
+.log_all_button {
+  display: inline-block;
+  margin-left: 15px;
+}
+
 .log_selector {
   display: inline-block;
+  float: left;
   box-sizing: border-box;
   padding: 0.5em 2em 0.5em 0.5em;
   border: 1px solid #eee;
@@ -11,4 +31,5 @@
   background-repeat: no-repeat;
   background-position: right 15px top 1em, right 10px top 1em;
   background-size: 5px 5px, 5px 5px;
+  max-width: 400px;
 }

@@ -1,4 +1,3 @@
-= stylesheet_link_tag("admissions/unlogged_applicants")
 
 %h2= t('admissions_admin.unlogged_applicants')
 
@@ -6,8 +5,9 @@
   %p= link_to "« " + t('common.back').capitalize, admissions_admin_admission_path(@admission)
   %p= link_to t('admissions_admin.export_unlogged_applicants'), admissions_admin_admission_show_unlogged_applicants_path(@admission, format: :csv)
   = semantic_form_for :log_entry, method: :post do |f|
-    = f.input :log, as: :select, collection: @log_entries, input_html: { class: 'log_selector' }, label: false;
-    = f.submit t('admissions_admin.log_all_unlogged_applicants'), data: { confirm: t('crud.confirm') }
+    .log_all_container
+      = f.input :log, as: :select, collection: @log_entries, input_html: { class: 'log_selector' }, label: false;
+      = f.submit t('admissions_admin.log_all_unlogged_applicants'), data: { confirm: t('crud.confirm') }, class: 'log_all_button'
 - else
   %p= t('admissions_admin.all_applicants_logged')
 
