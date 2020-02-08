@@ -16,6 +16,9 @@ gem 'rails', '~> 6.0.0'
 # Memcache client
 gem 'dalli', '~> 2.7.0'
 
+# Charts
+gem 'lazy_high_charts', '~> 1.5.0'
+
 # acts_as_list provides the means to sort and reorder a list of objects
 # with respect to a column in the database, e.g. to sort and reorder a list
 # of job applications based on the priority set by the applicant.
