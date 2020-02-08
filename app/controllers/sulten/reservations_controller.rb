@@ -116,9 +116,7 @@ class Sulten::ReservationsController < Sulten::BaseController
 
     @total_reservations = @reservations.length
     @total_people = @reservations.map(&:people).sum
-    @reservations = @reservations.sort_by(&:reservation_from).group_by {|i| i.reservation_from.to_date }
-
-
+    @reservations = @reservations.sort_by(&:reservation_from).group_by { |i| i.reservation_from.to_date }
   end
 
   def update
