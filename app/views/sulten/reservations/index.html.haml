@@ -69,7 +69,11 @@
         %td
           = k.reservation_type
         %td
-          = k.table.number
+          - if k.missing_table
+            %span{style: "color:red"}
+              = t("sulten.reservation.missing_table")
+          - else
+            = k.table.number
         %td
           = link_to t("crud.edit"), [:edit, k]
         %td

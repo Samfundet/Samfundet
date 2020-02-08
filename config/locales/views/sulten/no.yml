@@ -14,6 +14,7 @@
       reservation_type: "Anledning"
       placeholder_date: "01.10.1910 12:00"
       table: "Bord"
+      missing_table: "Mangler bord"
       telephone: "Telefonnummer"
       email: "Epost"
       other_messages: "Andre beskjeder"
