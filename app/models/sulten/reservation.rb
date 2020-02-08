@@ -46,8 +46,13 @@ class Sulten::Reservation < ApplicationRecord
     end
   end
 
+  # If table was deleted, return a dummy table to prevent null-pointer exceptions
   def table
     super || Sulten::Table.new(number: -1, capacity: 0, available: false)
+  end
+
+  def missing_table
+    table.number == -1
   end
 
   def reservation_is_one_day_in_future
