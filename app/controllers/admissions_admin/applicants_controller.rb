@@ -15,9 +15,13 @@ class AdmissionsAdmin::ApplicantsController < AdmissionsAdmin::BaseController
 
   def show_unlogged_applicants
     @admission = Admission.find(params[:admission_id])
-    @group_jobs = get_groups_and_unlogged_applicants(@admission)
     @log_entries = LogEntry.possible_log_entries
-    @applicants = Applicant.unlogged_applicants(@admission)
+    @applicants = @admission.unlogged_applicants
+    @group_jobs = @applicants
+                    .flat_map(&:job_applications)
+                    .select { |job_a| job_a.job.admission == @admission }
+                    .group_by { |job_a| job_a.job.group }
+                    .sort_by { |k, _| k.name }
 
     respond_to do |format|
       format.html
@@ -68,13 +72,5 @@ private
 
     applicant.log_entries << log_entry
     applicant.save
-  end
-
-  def get_groups_and_unlogged_applicants(admission)
-    admission.groups.map do |group|
-      job_applications = group.jobs.map(&:job_applications).flatten
-      filtered_job_applicants = job_applications.select { |j| j.applicant.log_entries.empty? }
-      [group, filtered_job_applicants]
-    end.select { |_, job_applications| not job_applications.empty? }
   end
 end

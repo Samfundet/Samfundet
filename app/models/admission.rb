@@ -131,6 +131,12 @@ class Admission < ApplicationRecord
     (from..to).to_a
   end
 
+  def unlogged_applicants
+    job_applications
+      .map(&:applicant)
+      .select { |a| a.log_entries.empty? }
+  end
+
   def to_s
     "#{title} (#{I18n.localize shown_application_deadline, format: :short})"
   end
