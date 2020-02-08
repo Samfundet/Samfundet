@@ -46,6 +46,10 @@ class Sulten::Reservation < ApplicationRecord
     end
   end
 
+  def table
+    super || Sulten::Table.new(number: -1, capacity: 0, available: false)
+  end
+
   def reservation_is_one_day_in_future
     if reservation_from < Date.tomorrow
       errors.add(:reservation_from, I18n.t('helpers.models.sulten.reservation.errors.reservation_from.reservation_is_one_day_in_future'))
