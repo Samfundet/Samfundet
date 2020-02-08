@@ -1,6 +1,6 @@
 %br
 %h1
-  = t("sulten.reservation.calendar.title")
+  = t("sulten.reservation.title")
 
 .sulten-calendar
   .calendar-header
@@ -11,13 +11,13 @@
     = link_to sulten_reservations_calendar_path(:date => (@calendar_date+1.days).strftime("%d-%m-%Y")) do
       .calendar-arrow
         =image_tag "icons/black-arrow.png"
+    = link_to sulten_reservasjon_admin_path do
+      .calendar-header-button
+        = t("helpers.models.sulten.new", :n => t("helpers.models.sulten.reservation.one"))
     - unless @is_today
       = link_to sulten_reservations_calendar_path do
-        .calendar-back-to-today
+        .calendar-header-button.back
           = t("sulten.reservation.calendar.back_to_today")
-    = link_to sulten_reservasjon_admin_path do
-      .calendar-new-button
-        = t("helpers.models.sulten.new", :n => t("helpers.models.sulten.reservation.one"))
   .calendar-row.head
     .calendar-column.fixed
       = t("sulten.reservation.table")
@@ -30,7 +30,7 @@
   - @tables.each_with_index do |table, index|
     .calendar-row
       .calendar-column.fixed
-        = table.number.to_s
+        = table.number.to_s + ' (' + table.capacity.to_s + ')'
         .calendar-table-tip
           = table.comment
       .calendar-column
@@ -38,7 +38,7 @@
           - @render_reservations[table.id].each do |res, offset, width, left_align|
             = link_to edit_sulten_reservation_path(res) do
               .calendar-reservation{style: "width: #{width}%; left: #{offset}%; color: #{(res.allergies.present? or res.internal_comment.present?) ? "yellow" : "white"}"}
-                = res.reservation_from.to_s[10..15] + " (" + res.people.to_s + ")"
+                = res.name
 
                 .calendar-reservation-tip{class: left_align ? "left" : "right"}
                   .calendar-tip-title
@@ -52,16 +52,17 @@
                     .calendar-tip-row= t("sulten.reservation.internal_comment")+": " + res.internal_comment.to_s
   .calendar-row
 
-.tool-button
-  = link_to t("helpers.models.sulten.all", :n => t("helpers.models.sulten.table.other")), sulten_tables_path
-.tool-button
-  = link_to t("helpers.models.sulten.new_thing", :n => t("helpers.models.sulten.table.one")), new_sulten_table_path
-.tool-button
-  = link_to t("helpers.models.sulten.all", :n => t("helpers.models.sulten.reservation_type.other")), sulten_reservation_types_path
-.tool-button
-  = link_to t("helpers.models.sulten.new", :n => t("helpers.models.sulten.reservation_type.one")), new_sulten_reservation_type_path
-.tool-button
-  = link_to t("sulten.reservation.calendar.change_closed"), sulten_closed_periods_path
+%div
+  .tool-button
+    = link_to t("helpers.models.sulten.all", :n => t("helpers.models.sulten.table.other")), sulten_tables_path
+  .tool-button
+    = link_to t("helpers.models.sulten.new_thing", :n => t("helpers.models.sulten.table.one")), new_sulten_table_path
+  .tool-button
+    = link_to t("helpers.models.sulten.all", :n => t("helpers.models.sulten.reservation_type.other")), sulten_reservation_types_path
+  .tool-button
+    = link_to t("helpers.models.sulten.new", :n => t("helpers.models.sulten.reservation_type.one")), new_sulten_reservation_type_path
+  .tool-button
+    = link_to t("sulten.reservation.calendar.change_closed"), sulten_closed_periods_path
 
 %br
 %br
@@ -69,7 +70,7 @@
 %br
 
 %h2
-  = t("sulten.reservation.title")
+  = t("sulten.reservation.summary.title")
 %br
 
 %table
@@ -81,7 +82,7 @@
     = t("sulten.reservation.reservations")
   %th
     = t("sulten.reservation.people")
-  - @reservations.group_by {|i| i.reservation_from.to_date }.each do |date, f|
+  - @reservations.each do |date, f|
     %tr
       %td
         = l(date, format: '%A').capitalize
@@ -95,17 +96,23 @@
     %td{style:"font-style:italic;", colspan:2}
       = t("sulten.reservation.summary.total_week")
     %td
-      = @reservations.length
+      = @total_reservations
     %td
-      = @reservations.map(&:people).sum
+      = @total_people
 %p#export_csv
   = link_to T("sulten.reservation.export_to_csv"), sulten_reservations_export_path(format: :csv)
 %p
   = link_to t("sulten.reservation.show_all"), sulten_reservations_archive_path
 
-- @reservations.group_by {|i| i.reservation_from.to_date }.each do |date, f|
-  %h2
-    = date
+%br
+%br
+
+%h2
+  = t("sulten.reservation.upcoming_reservations")
+
+- @reservations.each do |date, f|
+  %h3
+    =  l(date, format: '%A').capitalize + ', ' + date.to_s
   %table
     %th
       = t("sulten.reservation.name")
