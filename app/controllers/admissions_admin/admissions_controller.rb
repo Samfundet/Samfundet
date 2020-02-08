@@ -66,6 +66,7 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
     applications_per_group_chart
     applicants_per_campus_chart
     applications_per_day_chart
+    applications_per_hour_chart
   end
 
   def admin_applet
@@ -101,6 +102,21 @@ private
     end
   end
 
+  def applications_per_hour_chart
+    hours = (0..23).to_a.map { |x| format('%02d', x) }
+    applications_per_hour = hours.map do |hour|
+      @admission.job_applications.where('extract(hour from job_applications.created_at) = ?', hour).count
+    end
+
+    @applications_per_hour = (hours).zip(applications_per_hour)
+
+    @applications_per_hour_chart = LazyHighCharts::HighChart.new('graph') do |f|
+      f.series(data: @applications_per_hour, type: 'spline', name: t('admissions_admin.applications'))
+      f.yAxis(title: { text: t('admissions_admin.applications') }, allowDecimals: false)
+      f.xAxis(title: { text: t('admissions_admin.hour') }, categories: (hours).map(&:to_s))
+    end
+  end
+
   def applicants_per_campus_chart
     @applicants_per_campus_chart = LazyHighCharts::HighChart.new('pie') do |f|
       f.chart(defaultSeriesType: 'pie', margin: [50, 200, 60, 170])
@@ -110,7 +126,6 @@ private
         data: @applicants_per_campus
       }
       f.series(series)
-      f.options[:title][:text] = t('admissions_admin.applications_by_campus')
       f.legend(layout: 'vertical', style: { left: 'auto', bottom: 'auto', right: '50px', top: '100px' })
       f.plot_options(pie: {
         allowPointSelect: true,
@@ -132,7 +147,6 @@ private
         data: @applications_per_group
       }
       f.series(series)
-      f.options[:title][:text] = t('admissions_admin.applications_by_group')
       f.legend(layout: 'vertical', style: { left: 'auto', bottom: 'auto', right: '50px', top: '100px' })
       f.plot_options(pie: {
         allowPointSelect: true,
