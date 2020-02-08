@@ -127,10 +127,25 @@
   border-bottom: 1px solid transparent;
   text-align: right;
   justify-content: end;
-  flex-direction: column;
   padding-right: 10px;
   border-right: 1px solid #aaa;
   cursor: default;
+  display: flex;
+  flex-direction: row;
+  padding-left: 5px;
+}
+
+.table-number {
+  min-width: 60%;
+  text-align: left;
+}
+
+.table-size {
+  color: #aaa;
+  min-width: 60%;
+  max-width: 60%;
+  white-space: nowrap;
+  text-align: right;
 }
 
 .calendar-row.time {
@@ -165,6 +180,11 @@
   left: 0;
   white-space: nowrap;
   cursor: pointer;
+}
+
+.calendar-reservation-title {
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .calendar-reservation:hover {

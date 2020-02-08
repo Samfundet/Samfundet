@@ -30,7 +30,10 @@
   - @tables.each_with_index do |table, index|
     .calendar-row
       .calendar-column.fixed
-        = table.number.to_s + ' (' + table.capacity.to_s + ')'
+        .table-number
+          = table.number.to_s
+        .table-size
+          = '(' + table.capacity.to_s + ')'
         .calendar-table-tip
           = table.comment
       .calendar-column
@@ -38,7 +41,8 @@
           - @render_reservations[table.id].each do |res, offset, width, left_align|
             = link_to edit_sulten_reservation_path(res) do
               .calendar-reservation{style: "width: #{width}%; left: #{offset}%; color: #{(res.allergies.present? or res.internal_comment.present?) ? "yellow" : "white"}"}
-                = res.name
+                .calendar-reservation-title
+                  = res.name
 
                 .calendar-reservation-tip{class: left_align ? "left" : "right"}
                   .calendar-tip-title
