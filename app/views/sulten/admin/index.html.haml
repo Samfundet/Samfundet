@@ -1,24 +1,147 @@
+%br
 %h1
   Lyche Admin
 
-%h2= t("helpers.models.sulten.reservation.other")
-= link_to t("helpers.models.sulten.all", :n => t("helpers.models.sulten.reservation.other")), sulten_reservations_path
-= link_to t("helpers.models.sulten.new", :n => t("helpers.models.sulten.reservation.one")), sulten_reservasjon_admin_path
+.sulten-calendar
+  .calendar-header
+    = link_to sulten_admin_path(:date => (@calendar_date-1.days).strftime("%d-%m-%Y")) do
+      .calendar-arrow{style:"transform: rotate(180deg);"}
+        =image_tag "icons/black-arrow.png"
+    .calendar-header-title= l(@calendar_date, format: :medium_long)
+    = link_to sulten_admin_path(:date => (@calendar_date+1.days).strftime("%d-%m-%Y")) do
+      .calendar-arrow
+        =image_tag "icons/black-arrow.png"
+    = link_to sulten_reservasjon_admin_path do
+      .calendar-header-button
+        = t("helpers.models.sulten.new", :n => t("helpers.models.sulten.reservation.one"))
+    - unless @is_today
+      = link_to sulten_admin_path do
+        .calendar-header-button.back
+          = t("sulten.reservation.calendar.back_to_today")
+  .calendar-row.head
+    .calendar-column.fixed
+      = t("sulten.reservation.table")
+    - (16..23).each do |hour|
+      .calendar-column.time
+        = "%02d:00" % hour.to_s
+    - (0..2).each do |hour|
+      .calendar-column.time
+        = "%02d:00" % hour.to_s
+  - @tables.each_with_index do |table, index|
+    .calendar-row
+      .calendar-column.fixed
+        = table.number.to_s + ' (' + table.capacity.to_s + ')'
+        .calendar-table-tip
+          = table.comment
+      .calendar-column
+        - if @render_reservations[table.id]
+          - @render_reservations[table.id].each do |res, offset, width, left_align|
+            = link_to edit_sulten_reservation_path(res) do
+              .calendar-reservation{style: "width: #{width}%; left: #{offset}%; color: #{(res.allergies.present? or res.internal_comment.present?) ? "yellow" : "white"}"}
+                = res.name
 
-%h2= t("helpers.models.sulten.table.other")
-= link_to t("helpers.models.sulten.all", :n => t("helpers.models.sulten.table.other")), sulten_tables_path
-= link_to t("helpers.models.sulten.new_thing", :n => t("helpers.models.sulten.table.one")), new_sulten_table_path
+                .calendar-reservation-tip{class: left_align ? "left" : "right"}
+                  .calendar-tip-title
+                    = res.name + " (#{res.people.to_s} " + t('sulten.reservation.calendar.people_short') + ")"
+                  .calendar-tip-row= t("sulten.reservation.time")+": " + res.reservation_from.to_s[10..15] + " - " + res.reservation_to.to_s[10..15]
+                  .calendar-tip-row= t("sulten.reservation.telephone")+": " + res.telephone.to_s
+                  .calendar-tip-row= t("sulten.reservation.reservation_type")+": " + res.reservation_type.to_s
+                  - if res.allergies.present?
+                    .calendar-tip-row= t("sulten.reservation.other_messages")+": " + res.allergies.to_s
+                  - if res.internal_comment.present?
+                    .calendar-tip-row= t("sulten.reservation.internal_comment")+": " + res.internal_comment.to_s
+  .calendar-row
 
-%h2= t("helpers.models.sulten.reservation_type.other")
-= link_to t("helpers.models.sulten.all", :n => t("helpers.models.sulten.reservation_type.other")), sulten_reservation_types_path
-= link_to t("helpers.models.sulten.new", :n => t("helpers.models.sulten.reservation_type.one")), new_sulten_reservation_type_path
-
-%h2= t("helpers.models.sulten.closed_period.other")
-= link_to t("helpers.models.sulten.manage", :n => t("helpers.models.sulten.closed_period.other")), sulten_closed_periods_path
+%div
+  = link_to sulten_tables_path do
+    .tool-button
+      = t("helpers.models.sulten.all", :n => t("helpers.models.sulten.table.other"))
+  = link_to new_sulten_table_path do
+    .tool-button
+      = t("helpers.models.sulten.new_thing", :n => t("helpers.models.sulten.table.one"))
+  = link_to sulten_reservation_types_path do
+    .tool-button
+      = t("helpers.models.sulten.all", :n => t("helpers.models.sulten.reservation_type.other"))
+  = link_to new_sulten_reservation_type_path do
+    .tool-button
+      = t("helpers.models.sulten.new", :n => t("helpers.models.sulten.reservation_type.one"))
+  = link_to sulten_closed_periods_path do
+    .tool-button
+      = t("sulten.reservation.calendar.change_closed")
 
 %br
 %br
 %br
+%br
 
-%h2= t("sulten.reservation.calendar.title")
-= link_to t("sulten.reservation.calendar.beta_link"), sulten_reservations_calendar_path
+%h2
+  = t("sulten.reservation.summary.title")
+%br
+
+%table
+  %th
+    = t("sulten.reservation.summary.day")
+  %th
+    = t("sulten.reservation.summary.date")
+  %th
+    = t("sulten.reservation.reservations")
+  %th
+    = t("sulten.reservation.people")
+  - @reservations.each do |date, f|
+    %tr
+      %td
+        = l(date, format: '%A').capitalize
+      %td
+        = date
+      %td
+        = f.length
+      %td
+        = f.map(&:people).sum
+  %tr{class:"summation"}
+    %td{style:"font-style:italic;", colspan:2}
+      = t("sulten.reservation.summary.total_week")
+    %td
+      = @total_reservations
+    %td
+      = @total_people
+%p#export_csv
+  = link_to T("sulten.reservation.export_to_csv"), sulten_reservations_export_path(format: :csv)
+%p
+  = link_to t("sulten.reservation.show_all"), sulten_reservations_archive_path
+
+%br
+%br
+
+%h2
+  = t("sulten.reservation.upcoming_reservations")
+
+- @reservations.each do |date, f|
+  %h3
+    =  l(date, format: '%A').capitalize + ', ' + date.to_s
+  %table
+    %th
+      = t("sulten.reservation.name")
+    %th
+      = t("sulten.reservation.time")
+    %th
+      = t("sulten.reservation.people")
+    %th
+      = t("sulten.reservation.reservation_type")
+    %th
+      = t("sulten.reservation.table")
+    - f.each do |k|
+      %tr
+        %td
+          = link_to k.name, k
+        %td
+          #{k.reservation_from.strftime("%H:%M")} - #{k.reservation_to.strftime("%H:%M")}
+        %td
+          = k.people
+        %td
+          = k.reservation_type
+        %td
+          = k.table.number
+        %td
+          = link_to t("crud.edit"), [:edit, k]
+        %td
+          = link_to t("crud.destroy"), k, method: :delete, data: {confirm: t("crud.confirm")}

@@ -182,7 +182,6 @@ Rails.application.routes.draw do
       get :kjempelars, to: "admin#index"
       get "reservations/archive" => "reservations#archive"
       get "reservations/export" => "reservations#export"
-      get "reservations/calendar" => "reservations#calendar"
       get "/available" => "reservations#available"
       get "/admin/index" => "admin#index", as: :lyche_admin
 
