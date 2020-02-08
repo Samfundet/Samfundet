@@ -133,12 +133,12 @@ gem 'cocoon', '~> 1.2.0'
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem 'listen', '~> 3.0.5'
-  gem 'web-console', '~> 3.3.0'
+  gem 'listen', '~> 3.2.1'
+  gem 'web-console', '~> 3.7.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring', '~> 1.7.0'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring', '~> 2.1.0'
+  gem 'spring-watcher-listen', '~> 2.0.1'
 
   # Gem to detect ruby style guide violations
   gem 'rubocop', '~> 0.79.0'
@@ -147,10 +147,10 @@ group :development do
   # annotate adds schema information from the database, in the form of
   # Ruby comments, to model files so that we can see which columns
   # are actually in the database.
-  gem 'annotate', '~> 2.7.0'
+  gem 'annotate', '~> 3.0.3'
 
   # Easier preview of mail in development
-  gem 'letter_opener', '~> 1.4.0'
+  gem 'letter_opener', '~> 1.7.0'
 
   # better_errors gives us better error pages when something goes wrong.
   # binding_of_caller is an optional dependency of better_errors which
@@ -167,19 +167,19 @@ group :development do
   # gem 'rails-footnotes'
 
   # file listener for automatic refresh of webpage on file change
-  gem 'guard-livereload', '~> 2.5.0', require: false
+  gem 'guard-livereload', '~> 2.5.2', require: false
 
   # livereload injection via rack middleware, no need for browser extesions
-  gem 'rack-livereload', '~> 0.3.0'
+  gem 'rack-livereload', '~> 0.3.17'
 
   # For better mac filesystem listening performance
-  gem 'rb-fsevent', '~> 0.9.0', require: false
+  gem 'rb-fsevent', '~> 0.10.3', require: false
 
   # Simple command execution over SSH. Lightweight deployment tool.
   gem 'mina', '~> 0.3.0'
 
   # A DSL for quickly creating web applications in Ruby with minimal effort.
-  gem 'sinatra', '~> 2.0.0'
+  gem 'sinatra', '~> 2.0.8'
 
   # Turns objects into nicely formatted columns for easy reading.
   gem 'table_print', '~> 1.5.0'
