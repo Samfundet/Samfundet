@@ -38,6 +38,10 @@ class Group < ApplicationRecord
     job_applications.select { |j| j.job.admission == admission }
   end
 
+  def applicants_in_admission(admission)
+    job_applications_in_admission(admission).map(&:applicant)
+  end
+
   def to_s
     if abbreviation.blank?
       name
@@ -81,6 +85,27 @@ class Group < ApplicationRecord
   def applicants_to_call(admission)
     job_applications = admission.job_applications.select { |job_application| job_application.job.group_id == id && job_application.withdrawn == false }
     job_applications.select { |job_application| job_application.applicant.lowest_priority_group(admission) == id && job_application.withdrawn == false }.map(&:applicant).uniq.select { |applicant| applicant.unwanted?(admission) }
+  end
+
+  def unlogged_applicants(admission)
+    applicants_in_admission(admission).select do |a|
+      a.unlogged?(admission)
+    end
+  end
+
+  def unlogged_applicants_in_each_job(admission)
+    jobs_and_applicants = {}
+
+    jobs_in_admission(admission).each do |j|
+      unlogged_applicants = j.job_applications.map(&:applicant).select do |a|
+        a.unlogged?(admission)
+      end
+
+      next if unlogged_applicants.empty?
+      jobs_and_applicants[j] = unlogged_applicants
+    end
+
+    jobs_and_applicants
   end
 end
 

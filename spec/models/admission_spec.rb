@@ -49,3 +49,56 @@ describe Admission, '#appliable?' do
     expect(admission.appliable?).to eq false
   end
 end
+
+describe Admission, '.unlogged_applicants' do
+  let(:user) { create(:member, passord: 'password') }
+
+  let(:admission1) { create(:admission_with_jobs) }
+  let(:admission2) { create(:admission_with_jobs) }
+
+  let(:applicant1) { create(:applicant, :with_job_applications) }
+  let(:applicant2) { create(:applicant, :with_job_applications) }
+  let(:applicant3) { create(:applicant, :with_job_applications) }
+  let(:applicant4) { create(:applicant, :with_job_applications) }
+
+  before do
+    admission1.jobs.first.job_applications << applicant1.job_applications
+    admission1.jobs.first.job_applications << applicant2.job_applications
+
+    admission2.jobs.first.job_applications << applicant3.job_applications
+    admission2.jobs.first.job_applications << applicant4.job_applications
+  end
+
+  it 'should correctly count unlogged applicants' do
+    expect(admission1.unlogged_applicants.count).to eq(2)
+  end
+
+  it 'should correctly count unlogged applicants after some have been logged' do
+    group = applicant1.job_applications.first.job.group
+    applicant1.log_with_text('logged', group, admission1, user)
+
+    expect(admission1.unlogged_applicants.count).to eq(1)
+  end
+
+  it 'should correctly count unlogged applicants when all have been logged' do
+    admission1.log_all_unlogged_applicants('logged', user)
+
+    expect(admission1.unlogged_applicants.count).to eq(0)
+  end
+
+  it 'should not log applicants from other admissions when logging everyone in an admission' do
+    admission1.log_all_unlogged_applicants('logged', user)
+
+    expect(admission1.unlogged_applicants.count).to eq(0)
+    expect(admission2.unlogged_applicants.count).to eq(2)
+  end
+
+  it 'should not log applicants from other admissions when logging some applicants in a group' do
+    group = applicant1.job_applications.first.job.group
+
+    admission1.log_applicants_in_group([applicant1], group, 'logged', user)
+
+    expect(admission1.unlogged_applicants.count).to eq(1)
+    expect(admission2.unlogged_applicants.count).to eq(2)
+  end
+end

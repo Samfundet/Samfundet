@@ -82,7 +82,7 @@ class Admission < ApplicationRecord
   # We must use lambdas so that the time is not 'cached' on server start.
   scope :current, (lambda do
     where('user_priority_deadline > ?', 2.weeks.ago)
-    .order('user_priority_deadline DESC')
+      .order('user_priority_deadline DESC')
   end)
 
   scope :appliable, (lambda do
@@ -126,9 +126,40 @@ class Admission < ApplicationRecord
 
   def interview_dates
     from = actual_application_deadline.to_date + 1.day
-    to   = user_priority_deadline.to_date
+    to = user_priority_deadline.to_date
 
     (from..to).to_a
+  end
+
+  def all_applicants
+    @all_applicants = job_applications.map(&:applicant).uniq
+  end
+
+  def unlogged_applicants
+    groups.map do |g|
+      g.unlogged_applicants(self)
+    end.flatten.uniq
+  end
+
+  def log_all_unlogged_applicants(text, current_user)
+    groups.each do |g|
+      g.jobs.map(&:job_applications).flatten.each do |j|
+        next unless j.applicant.unlogged?(self)
+
+        j.applicant.log_with_text(text, g, self, current_user)
+      end
+    end
+  end
+
+  def log_applicants_in_group(applicants, group, text, current_user)
+    applicants.each do |a|
+      unless a.log_with_text(text, group, self, current_user)
+        # Return on the first occurrence of error when trying to log applicants
+        return false
+      end
+    end
+
+    true
   end
 
   def to_s

@@ -4,3 +4,4 @@
       group:
         one: "gjeng"
         other: "gjenger"
+        save_error: "En feil skjedde under laglring."

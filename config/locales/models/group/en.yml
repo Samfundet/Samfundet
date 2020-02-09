@@ -4,3 +4,4 @@ en:
       group:
         one: "group"
         other: "groups"
+        save_error: "An error occurred during save."

@@ -39,3 +39,6 @@ localseed:
 
 truncate:
 	RAILS_ENV=development rake db:seed:development:truncate
+
+run-tests:
+	rspec .

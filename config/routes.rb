@@ -135,6 +135,9 @@ Rails.application.routes.draw do
         resources :groups, only: :show do
           get :applications, on: :member
           get :reject_calls, on: :member
+          get :show_unlogged_applicants
+          post :show_unlogged_applicants, to: 'groups#log_all_applicants'
+          patch :show_unlogged_applicants, to: 'groups#log_single_applicant'
           resources :jobs, only: [:show, :new, :create, :edit, :update, :destroy] do
             get :search, on: :collection
             resources :job_applications, only: :show do

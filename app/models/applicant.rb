@@ -84,12 +84,6 @@ class Applicant < ApplicationRecord
     end
   end
 
-  def self.unlogged_applicants(admission)
-    where(disabled: false).select do |applicant|
-      applicant.log_entries.empty?
-    end
-  end
-
   class << self
     def authenticate(email, password)
       applicant = where(disabled: false).find_by(email: email.downcase)
@@ -120,6 +114,23 @@ class Applicant < ApplicationRecord
 
   def job_applications_at_group(admission, group)
     group.job_applications_in_admission(admission).select { |ja| ja.applicant == self }
+  end
+
+  def log_with_text(log_text, group, admission, current_user)
+    log_entry = LogEntry.create!(
+      admission: admission,
+      applicant: self,
+      group: group,
+      member: current_user,
+      log: log_text,
+      )
+
+    log_entries << log_entry
+    save
+  end
+
+  def unlogged?(admission)
+    log_entries.select { |l| l.admission == admission && l.group  }.empty?
   end
 
 private
