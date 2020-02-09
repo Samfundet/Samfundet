@@ -14,6 +14,9 @@ Samfundet::Application.configure do
   # Show full error reports and disable caching
   config.consider_all_requests_local = true
 
+  # Disable automatic asset invalidation to enable LiveGuard.
+  config.assets.digest = false
+
   # Enable/disable caching. By default caching is disabled.
   if Rails.root.join('tmp/caching-dev.txt').exist?
     config.action_controller.perform_caching = true
@@ -52,4 +55,6 @@ Samfundet::Application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  config.middleware.insert_after ActionDispatch::Static, Rack::LiveReload
 end
