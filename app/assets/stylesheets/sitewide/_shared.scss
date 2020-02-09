@@ -1,9 +1,4 @@
-@mixin emph-link($color) {
-    text-decoration: none;
-    font-weight: $font-weight-normal;
-    text-transform: uppercase;
-    color: $color;
-}
+@import "mixins";
 
 * {
     margin: 0;
@@ -88,7 +83,7 @@ input[type=submit] {
     }
 }
 
-.clearfix { 
+.clearfix {
     &:after {
         content: "";
         display: table;

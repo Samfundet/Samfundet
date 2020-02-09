@@ -1,3 +1,5 @@
+@import "constants";
+
 // Used by wiring a div for the picture like this
 // haml: .my-class(style="background-image:url('url-to-image.png');")
 // scss: .my-class { @include autoscale-picture(200px, 'fallback-img-url.png'); } last arg is optional
@@ -9,4 +11,11 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+@mixin emph-link($color) {
+  text-decoration: none;
+  font-weight: $font-weight-normal;
+  text-transform: uppercase;
+  color: $color;
 }

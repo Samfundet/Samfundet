@@ -6,6 +6,7 @@ $grid-columns: 12;
 
 $_tablet-desktop: 769px;
 $_not-mobile: 481px;
+$_mobile: 480px;
 
 // Breakpoints
 $mobile-and-tablet-portrait: new-breakpoint(max-width 768px 12);
