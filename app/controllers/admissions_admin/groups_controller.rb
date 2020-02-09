@@ -51,4 +51,43 @@ class AdmissionsAdmin::GroupsController < AdmissionsAdmin::BaseController
     @group = Group.find(params[:id])
     @applicants_to_call = @group.applicants_to_call(@admission).sort_by(&:full_name)
   end
+
+  def show_unlogged_applicants
+    @admission = Admission.find(params[:admission_id])
+    @group = Group.find(params[:group_id])
+    @unlogged_applicants_grouped = { @group => @group.unlogged_applicants_in_each_job(@admission) }
+    @unlogged_applicants = @group.unlogged_applicants(@admission)
+    @all_applicants = @group.applicants_in_admission(@admission)
+  end
+
+  def log_all_applicants
+    admission = Admission.find(params[:admission_id])
+    group = Group.find(params[:group_id])
+    text = params[:log_entry][:log]
+    if admission.log_applicants_in_group(group.unlogged_applicants(admission), group, text, @current_user)
+      flash[:success] = t('admissions_admin.all_applicants_logged')
+    else
+      flash[:error] = t('helpers.models.group.save_error')
+    end
+
+
+    redirect_to admissions_admin_admission_group_show_unlogged_applicants_path
+  end
+
+  def log_single_applicant
+    admission = Admission.find(params[:admission_id])
+    applicant = Applicant.find(params[:applicant_id])
+    group = Group.find(params[:group_id])
+    text = params[:log_entry][:log]
+
+    if applicant.log_with_text(text, group, admission, @current_user)
+      flash[:success] = t('admissions_admin.unique_applicant_logged_flash',
+                          name: applicant.full_name,
+                          entry: text)
+    else
+      flash[:error] = t('helpers.models.group.save_error')
+    end
+
+    redirect_to admissions_admin_admission_group_show_unlogged_applicants_path
+  end
 end

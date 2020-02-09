@@ -1,0 +1,39 @@
+%h2= t('admissions_admin.unlogged_applicants')
+%p= "#{unlogged_applicants.count} of #{all_applicants.count} applicants must be logged."
+
+- unless all_applicants.empty?
+  %p= link_to "« " + t('common.back').capitalize, back_url
+  = semantic_form_for :log_entry, method: :post do |f|
+    .log_all_container
+      = f.input :log, as: :select, collection: LogEntry.possible_log_entries, input_html: { class: 'log_selector' }, label: false;
+      = f.submit t('admissions_admin.log_all_unlogged_applicants'), data: { confirm: t('crud.confirm') }, class: 'log_all_button'
+- else
+  %p= t('admissions_admin.all_applicants_logged')
+
+- unlogged_applicants_grouped.each do |group, jobs|
+  - next if jobs.values.empty?
+  %h3= link_to group.name, admissions_admin_admission_group_path(admission, group)
+  - jobs.each do |job, applicants|
+    - next if applicants.empty?
+    %table
+      %thead
+        %th= t('interviews.applicant_name')
+        %th= t('applicants.email')
+        %th= t('sulten.reservation.telephone')
+        %th= t('activerecord.models.log_entry.one').capitalize
+        %th= ''
+        %tbody
+          %h4= link_to job.title, admissions_admin_admission_group_job_path(admission, group, job)
+          - applicants.each do |applicant|
+            %tr
+              %td= link_to applicant.full_name, admissions_admin_admission_group_job_job_application_path(@admission, group, job, job.job_applications.where(applicant: applicant).first)
+              %td= applicant.email
+              %td= applicant.phone
+              = semantic_form_for :log_entry, url: submit_url, method: :patch do |f|
+                %input{ type: :hidden, name: :applicant_id, value: applicant.id}
+                %input{ type: :hidden, name: :admission_id, value: admission.id }
+                %input{ type: :hidden, name: :group_id, value: group.id }
+                %td= f.input :log, as: :select, collection: LogEntry.possible_log_entries, input_html: { class: 'log_selector' }, label: false;
+                %td= f.submit t('formtastic.save')
+
+%p= link_to "« " + t('common.back').capitalize, admissions_admin_admission_path(admission)

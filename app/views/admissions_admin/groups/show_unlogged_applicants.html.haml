@@ -3,5 +3,5 @@
   all_applicants: @all_applicants,
   unlogged_applicants_grouped: @unlogged_applicants_grouped,
   admission: @admission,
-  submit_url: admissions_admin_admission_show_unlogged_applicants_url(@admission),
-  back_url: admissions_admin_admission_path(@admission)
+  submit_url: admissions_admin_admission_group_show_unlogged_applicants_url(@admission, @group),
+  back_url: admissions_admin_admission_group_path(@admission, @group)
