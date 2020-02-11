@@ -141,17 +141,22 @@
     color: #aaa;
   }
 
-  .header-menu-item.login {
+  .login-button {
     background-color: $samfundet-red;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-bottom: 3px;
-    padding-top: 3px;
+    padding-left: 15px;
+    padding-right: 15px;
     color: white;
-    font-size: 14px;
     border-radius: 100px;
+    margin: 4px 10px;
+    text-transform: uppercase;
+    line-height: 24px;
+    a {
+      color: white;
+      font-size: 14px;
+
+    }
   }
-  .header-menu-item.login:hover {
+  .login-button:hover {
    filter: brightness(1.1);
   }
 
