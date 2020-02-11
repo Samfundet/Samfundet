@@ -124,7 +124,7 @@ Area.all.each do |area|
         long_description_no: Faker::Lorem.sentence(100),
         status: status.sample,
         event_type: event_type.sample,
-        banner_alignment: banner_alignment.sample,
+        banner_alignment: "hide", #banner_alignment.sample,
         spotify_uri: "spotify:user:alericm:playlist:3MI1e3OWArXKFKfPQ4MXXh",
         primary_color: chosen_colors.first,
         secondary_color: chosen_colors.last,
