@@ -4,7 +4,7 @@
       menu:
         menu: "Meny"
         opening_hours: "Åpningstider"
-        home: "Hovedsiden"
+        home: "Hjem"
         events: "Program"
         venues: "Lokaler"
         info: "Info"
@@ -12,7 +12,7 @@
         login: "Logg inn"
         logout: "Logg ut"
         change_language: "English"
-        membership: "Medlemskap"
+        membership: "Medlem"
         blog: "Blogg"
         live: "Direktesending"
         lyche: "Restaurant"

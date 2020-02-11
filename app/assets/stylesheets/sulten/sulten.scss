@@ -10,174 +10,186 @@
   height: 100%;
   padding: 20px;
   padding-top: 50px;
-}
-
-@keyframes lyche-icon-fade-in {
-  0% {
-    transform: translateY(-20px);
-    opacity: 0;
-  }
-  100% {
-    transform: none;
-    opacity: 1;
-  }
-}
-.lyche-icon {
-  animation-name: lyche-icon-fade-in;
-  animation-duration: 3s;
-  animation-fill-mode: forwards;
-
-  background-image: url(asset_path("sulten/Lyche_orange.png"));
-  background-size: contain;
-  background-repeat: no-repeat;
-
-  width: 300px;
-  height: 150px;
-  max-width: 100%;
-
-  margin: 0 auto;
-  opacity: 0;
-
-}
-@keyframes lyche-description-fade-in {
-  0% {
-    transform: translateX(-10px);
-    opacity: .5;
-  }
-  100% {
-    transform: none;
-    opacity: 1;
-  }
-}
-.lyche-description {
-  color: #aaa;
-  font-size: 18px;
-  opacity: 0.5;
-  animation-name: lyche-description-fade-in;
-  animation-duration: 3s;
-  animation-fill-mode: forwards;
-  margin: 0 auto;
-  max-width: 600px;
-  margin-bottom: 40px;
-  padding: 10px;
-}
-
-.lyche-image {
-  background-image: url(asset_path("sulten/lyche_skilt.jpg"));
-  background-size: contain;
-  background-repeat: no-repeat;
-  width: 500px;
-  height: 500px;
-  margin: 0 auto;
-}
-@keyframes lyche-button-fade-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-.reserve-table-button {
-  animation-duration: 2s;
-  animation-delay: .5s;
-  animation-fill-mode: forwards;
-
-  width: 300px;
-  height: 40px;
-  max-width: 100%;
-  line-height: 38px;
-  margin: 0 auto;
+  color: #ddd;
   text-align: center;
-  border-radius: 100px;
-  background-color: #aa6000;
-  color: white;
-  font-size: 24px;
-  font-weight: bold;
-  text-transform: uppercase;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  transition: .2s;
-  cursor: pointer;
-}
-.reserve-table-button:hover {
-  color: orange;
-  transition: .1s;
-}
-@keyframes lyche-menu-fade-in {
-  0% {
-    transform: translateY(100px) rotate(3deg);
+
+  .lyche-icon {
+    background-image: url(asset_path("sulten/Lyche_orange.png"));
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    width: 300px;
+    height: 150px;
+    max-width: 100%;
+
+    margin: 0 auto;
+  }
+
+  .lyche-description {
+    color: #aaa;
+    font-size: 18px;
+    margin: 0 auto;
+    max-width: 600px;
+    margin-bottom: 20px;
+    padding: 10px;
+  }
+
+  .lyche-open-hours-header {
+    font-size: 32px;
+    text-align: center;
+    color: $lyche-orange;
+    padding: 10px;
+  }
+
+  .lyche-open-hours {
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+    font-size: 18px;
+    margin-bottom: 40px;
+    border-collapse: collapse;
+    tr {
+      height: 24px;
+      text-transform: capitalize;
+
+      th {
+        border-width: 0;
+        text-align: left;
+        color: #ddd;
+        padding: 4px;
+      }
+
+      td {
+        text-align: right;
+        color: #ddd;
+        padding: 4px;
+      }
+    }
+
+    tr:nth-child(odd) {
+      background-color: #111;
+    }
+
+  }
+
+  @keyframes lyche-button-fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .reserve-table-button {
+    animation-duration: 2s;
+    animation-delay: .5s;
+    animation-fill-mode: forwards;
+
+    width: 300px;
+    height: 40px;
+    max-width: 100%;
+    line-height: 38px;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 100px;
+    background-color: $lyche-orange;
+    color: #222;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    transition: .2s;
+    cursor: pointer;
+  }
+
+  .reserve-table-button:hover {
+    color: white;
+    transition: .1s;
+  }
+
+  @keyframes lyche-menu-fade-in {
+    0% {
+      transform: translateY(100px) rotate(3deg);
+      opacity: 0;
+    }
+    20% {
+      opacity: 1;
+    }
+    100% {
+      transform: none;
+      opacity: 1;
+    }
+  }
+
+  .lyche-menu {
+    animation-name: lyche-menu-fade-in;
+    animation-duration: 1.5s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+
+    animation-timing-function: ease-out;
     opacity: 0;
+
+    margin: 0 auto;
+    max-width: 100%;
+    width: 600px;
+    text-align: center;
+    background-color: #111;
+    border-radius: 5px;
+
+    border: 2px solid #222;
+
+    margin-bottom: 30px;
+    margin-top: 100px;
   }
-  20% {
-    opacity: 1;
+
+  .lyche-menu-header {
+    font-size: 50px;
+    color: $lyche-orange;
+    text-transform: uppercase;
+    padding: 30px;
   }
-  100% {
-    transform: none;
-    opacity: 1;
+
+  .lyche-menu-category {
+    color: white;
+    display: block;
+    margin-top: 10px;
+    border-top: 4px solid rgba(255, 143, 0, 0.5);
+    font-size: 32px;
+    padding: 30px;
   }
-}
-.lyche-menu {
-  animation-name: lyche-menu-fade-in;
-  animation-duration: 1.5s;
-  animation-delay: 1s;
-  animation-fill-mode: forwards;
 
-  animation-timing-function: ease-out;
-  opacity: 0;
+  .lyche-menu-category-title {
+    color: white;
+    padding-top: 10px;
+    font-size: 32px;
+    margin-bottom: 30px;
+  }
 
-  margin: 0 auto;
-  max-width: 100%;
-  width: 600px;
-  text-align: center;
-  background-color: #111;
-  border-radius: 5px;
+  .lyche-menu-item {
+    font-size: 18px;
+    padding-bottom: 20px;
+  }
 
-  border: 2px solid #222;
+  .lyche-menu-item-title {
+    display: inline;
+    padding-right: 10px;
+    font-size: 24px;
+    color: $lyche-orange;
+  }
 
-  margin-bottom: 30px;
-  margin-top: 100px;
-}
+  .lyche-menu-item-price {
+    color: #444;
+    font-weight: bold;
+    display: inline;
+    word-break: keep-all;
+  }
 
-.lyche-menu-header {
-  font-size: 50px;
-  color: orange;
-  text-transform: uppercase;
-  padding: 30px;
-}
-
-.lyche-menu-category {
-  color: white;
-  display: block;
-  margin-top: 10px;
-  border-top: 4px solid rgba(255, 143, 0, 0.5);
-  font-size: 32px;
-  padding: 30px;
-}
-.lyche-menu-category-title {
-  color: white;
-  padding-top: 10px;
-  font-size: 32px;
-  margin-bottom: 30px;
-}
-.lyche-menu-item {
-  font-size: 18px;
-  padding-bottom: 20px;
-}
-.lyche-menu-item-title {
-  display: inline;
-  padding-right: 10px;
-  font-size: 24px;
-  color: orange;
-}
-.lyche-menu-item-price {
-  color: #444;
-  font-weight: bold;
-  display: inline;
-  word-break: keep-all;
-}
-.lyche-menu-item-description {
-  color: #aaa;
-  max-width: 300px;
-  margin: 0 auto;
+  .lyche-menu-item-description {
+    color: #aaa;
+    max-width: 300px;
+    margin: 0 auto;
+  }
 }

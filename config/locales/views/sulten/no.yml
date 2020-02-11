@@ -1,5 +1,6 @@
 'no':
   sulten:
+    open_hours: "Åpningstider"
     reservation:
       title: "Lyche Reservasjoner"
       upcoming_reservations: "Framtidige reservasjoner"

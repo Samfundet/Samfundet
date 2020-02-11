@@ -3,9 +3,19 @@
     .lyche-icon
 
     .lyche-description
-      Bar, kjøkken, vin, mat, behagelig atmosfære, spennende, unikt. På Lyche vil alle kunne finne sin favorittplass uansett om man er mange eller få, skal spise eller drikke, er på date eller for å møte venner. Både på en rolig tirsdag eller festfylt lørdag. Hele uka igjennom tilbys det behagelig bakgrunnsmusikk, gode sofaer, myke stoler i et lokale preget av farger og kontraster, og som er klassisk og moderne på samme tid. På Lyche koser du deg hele uka igjennom.
+      Bar, kjøkken, vin, mat, behagelig atmosfære, spennende, unikt. På Lyche vil alle kunne finne sin favorittplass uansett om man er mange eller få, skal spise eller drikke, er på date eller for å møte venner. På Lyche koser du deg hele uka igjennom.
       %br
-      %br
+
+    %h3.lyche-open-hours-header= t("sulten.open_hours")
+    %table.custom-table.lyche-open-hours
+      - @opening_hours.each do |hours|
+        %tr
+          %th= t("days.#{hours.day}")
+          %td.time
+            = format '%s–%s',
+                  I18n.l(hours.open_time, format: :time),
+                  I18n.l(hours.close_time, format: :time)
+    .lyche-description
       På fredager og lørdag, fra 22:00 til 02:00, er det 20 års aldersgrense i Lyche grunnet mulighet til å kjøpe sprit i baren. Ellers er det ikke noen aldersgrense i restauranten.
 
     .reserve-table-button

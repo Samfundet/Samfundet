@@ -3,7 +3,7 @@ class Sulten::SultenController < ApplicationController
   layout "full_page"
 
   def index
-
+    @opening_hours = Area.find_by_name("Lyche").standard_hours
   end
 
 end

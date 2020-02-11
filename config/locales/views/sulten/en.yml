@@ -1,5 +1,6 @@
 en:
   sulten:
+    open_hours: "Open Hours"
     reservation:
       title: "Lyche Reservations"
       upcoming_reservations: "Upcoming Reservations"
