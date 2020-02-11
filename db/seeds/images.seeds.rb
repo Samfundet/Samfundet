@@ -1,5 +1,5 @@
 puts "Creating images"
-image_list = ["concert1.jpg", "concert2.jpg", "concert3.jpg", "concert4.jpg", "concert5.jpg"]
+image_list = ["seed/banner01.jpg", "seed/banner02.jpg", "seed/banner03.jpg", "seed/banner04.jpg", "seed/banner05.jpg"]
 image_list.each do |image|
   Image.create!(
       title: image,
