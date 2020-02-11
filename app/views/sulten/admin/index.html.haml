@@ -30,7 +30,10 @@
   - @tables.each_with_index do |table, index|
     .calendar-row
       .calendar-column.fixed
-        = table.number.to_s + ' (' + table.capacity.to_s + ')'
+        .table-number
+          = table.number.to_s
+        .table-size
+          = '(' + table.capacity.to_s + ')'
         .calendar-table-tip
           = table.comment
       .calendar-column
