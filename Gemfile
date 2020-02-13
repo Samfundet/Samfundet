@@ -176,7 +176,7 @@ group :development do
   gem 'rb-fsevent', '~> 0.10.3', require: false
 
   # Simple command execution over SSH. Lightweight deployment tool.
-  gem 'mina', '~> 0.3.0'
+  gem 'mina', '~> 1.2.0'
 
   # A DSL for quickly creating web applications in Ruby with minimal effort.
   gem 'sinatra', '~> 2.0.8'

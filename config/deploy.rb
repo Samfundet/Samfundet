@@ -23,10 +23,12 @@ set :branch, inpt.empty? ? 'master' : inpt
 
 set :domain, 'samfundet.no'
 set :repository, 'git@github.com:Samfundet/Samfundet.git'
-set :shared_paths, ['config/database.yml', 'config/billig.yml', 'config/local_env.yml', 'config/secrets.yml', 'log', 'public/upload']
+set :shared_dirs, fetch(:shared_dirs, []).push('log', 'public/upload')
+set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/billig.yml', 'config/local_env.yml', 'config/secrets.yml')
 
 # https://github.com/mina-deploy/mina/issues/99
-set :term_mode, :nil
+# Update February 13th 2020, 'set :term_mode, :nil' is no longer needed, the below line works
+set :execution_mode, :system
 set :keep_releases, 3
 
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
@@ -43,14 +45,14 @@ namespace :environment do
   task :staging do
     set :rails_env, 'staging'
     set :deploy_to, '/var/www/samfundet.no/www-beta'
-    queue %{umask 002}
+    command %{umask 002}
   end
 
   desc 'Set up production-specific variables'
   task :production do
     set :rails_env, 'production'
     set :deploy_to, '/var/www/samfundet.no/www-rails/'
-    queue %(umask 002)
+    command %(umask 002)
   end
 end
 
@@ -68,31 +70,31 @@ end
 # all releases.
 namespace :setup do
   task production: :'environment:production' do
-    queue! %(mkdir -p "#{deploy_to}/releases")
-    queue! %(chmod 775 "#{deploy_to}/releases")
+    command %(mkdir -p "#{:deploy_to}/releases")
+    command %(chmod 775 "#{:deploy_to}/releases")
 
-    queue! %(mkdir -p "#{deploy_to}/shared/log")
-    queue! %(chmod 770 "#{deploy_to}/shared/log")
+    command %(mkdir -p "#{:deploy_to}/shared/log")
+    command %(chmod 770 "#{:deploy_to}/shared/log")
 
-    queue! %(mkdir -p "#{deploy_to}/shared/config")
-    queue! %(chmod 770 "#{deploy_to}/shared/config")
+    command %(mkdir -p "#{:deploy_to}/shared/config")
+    command %(chmod 770 "#{:deploy_to}/shared/config")
 
-    queue! %(mkdir -p "#{deploy_to}/shared/public/upload")
-    queue! %(chmod 775 "#{deploy_to}/shared/public/upload")
+    command %(mkdir -p "#{:deploy_to}/shared/public/upload")
+    command %(chmod 775 "#{:deploy_to}/shared/public/upload")
 
-    queue! %(touch "#{deploy_to}/shared/config/database.yml")
-    queue! %(chmod 770 "#{deploy_to}/shared/config/database.yml")
+    command %(touch "#{:deploy_to}/shared/config/database.yml")
+    command %(chmod 770 "#{:deploy_to}/shared/config/database.yml")
 
-    queue! %(touch "#{deploy_to}/shared/config/billig.yml")
-    queue! %(chmod 775 "#{deploy_to}/shared/config/billig.yml")
+    command %(touch "#{:deploy_to}/shared/config/billig.yml")
+    command %(chmod 775 "#{:deploy_to}/shared/config/billig.yml")
 
-    queue! %(touch "#{deploy_to}/shared/config/local_env.yml")
-    queue! %(chmod 770 "#{deploy_to}/shared/config/local_env.yml")
+    command %(touch "#{:deploy_to}/shared/config/local_env.yml")
+    command %(chmod 770 "#{:deploy_to}/shared/config/local_env.yml")
 
-    queue! %(touch "#{deploy_to}/shared/config/secrets.yml")
-    queue! %(chmod 770 "#{deploy_to}/shared/config/secrets.yml")
+    command %(touch "#{:deploy_to}/shared/config/secrets.yml")
+    command %(chmod 770 "#{:deploy_to}/shared/config/secrets.yml")
 
-    queue  %(echo "-----> Be sure to edit 'shared/config/database.yml'.")
+    command %(echo "-----> Be sure to edit 'shared/config/database.yml'.")
   end
 end
 
@@ -105,7 +107,7 @@ task :run_mina do
     invoke :'rails:assets_precompile'
     invoke :'deploy:cleanup'
 
-    to :launch do
+    on :launch do
       invoke :'passenger:restart'
     end
   end
@@ -127,14 +129,14 @@ end
 namespace :memcache do
   desc 'Flush memcache'
   task flush: :'environment:production' do
-    queue %(sg lim-web 'echo "flush_all" | nc localhost 11211')
+    command %(sg lim-web 'echo "flush_all" | nc localhost 11211')
   end
 end
 
 namespace :passenger do
   desc 'Restart Passenger'
   task :restart do
-    queue %(
+    command %(
       echo "-----> Restarting passenger"
       #{echo_cmd %(mkdir -p tmp)}
       #{echo_cmd %(touch tmp/restart.txt)}
