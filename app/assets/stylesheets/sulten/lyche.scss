@@ -1,0 +1,138 @@
+
+.lyche-container {
+  width: 100%;
+  height: 100%;
+
+  font-family: "Advent Pro", sans-serif;
+
+  .front-image {
+    background-image: asset-url("sulten/front.jpg");
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  .section {
+    height: 600px;
+    background-color: #efefef;
+
+    display: flex;
+    flex-direction: row;
+
+    padding: 2em 5em;
+
+    .image-container {
+      flex-basis: 50%;
+      padding: 2em;
+      .image {
+        width: 100%;
+        height: 100%;
+        background-image: asset-url("sulten/cook.jpg");
+        background-size: cover;
+      }
+    }
+
+    .title {
+      width: 0;
+      white-space: nowrap;
+      position: relative;
+      top: 50%;
+      left: -300px;
+      font-size: 5em;
+      z-index: 1;
+      color: white;
+    }
+
+    .description {
+       flex: 1;
+    }
+
+  }
+  .section:nth-child(odd) {
+    background-color: black;
+    flex-direction: row-reverse;
+    color: black;
+  }
+
+  .header-container {
+    position: fixed;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100px;
+
+    z-index: 69;
+
+    background: linear-gradient(to bottom, black, transparent);
+
+    .header-menu {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      width: 60%;
+
+      .menu-button {
+        color: white;
+        text-transform: uppercase;
+        cursor: pointer;
+        font-size: 1.2em;
+      }
+      .menu-button:hover {
+        color: orange;
+      }
+
+      .lyche-logo {
+        color: orange;
+        font-size: 3.5em;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+
+  .status-box {
+    width: 500px;
+    height: 160px;
+    position: absolute;
+    top: calc(50% - 80px);
+    left: calc(50% - 250px);
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: rgba(orange, 0.15);
+
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(15px);
+
+    box-shadow: 2px 2px 15px 2px rgba(0,0,0,0.65);
+
+    padding: 1em;
+    border-radius: 8px;
+
+    .open-hours {
+      flex: 1;
+      text-align: center;
+      font-size: 1.5em;
+      padding: .5em;
+    }
+
+    .action-container {
+      flex: 1;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+
+      .action-button {
+        font-size: 1.5em;
+      }
+    }
+
+  }
+
+}
