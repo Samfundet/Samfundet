@@ -49,6 +49,8 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
     @campus_count = Campus.number_of_applicants_given_admission(@admission)
 
     count_unique_applicants
+    sort_admissions
+    admin_applet
 
 
     @applications_per_group = @admission.groups.map do |group|
@@ -199,4 +201,21 @@ def application_is_accepted?(log)
   ]
 
   acceptance_strings.include?(log)
+end
+
+def sort_admissions
+  @sorted_admissions = Admission.all
+  @sorted_admissions.sort_by{ |shown_from |  }.each_with_index do |admission, index|
+    if @admission === @sorted_admissions[index]
+      @admission_int = index
+    end
+  end
+
+  if @admission_int <= @sorted_admissions.length() - 1
+    @previous_admission = @sorted_admissions[(@admission_int + 1)]
+  end
+
+  if @admission_int > 0
+    @next_admission = @sorted_admissions[@admission_int - 1]
+  end
 end

@@ -37,3 +37,5 @@
     log_all_unlogged_applicants: "Loggfør alle"
     all_applicants_logged: "Alle ikke-loggede søkere har blitt logget"
     unique_applicant_logged_flash: "%{name} ble logget med '%{entry}'"
+    next_admission: "Neste opptak"
+    previous_admission: "Forrige opptak"
