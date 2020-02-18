@@ -205,7 +205,7 @@ end
 
 def sort_admissions
   @sorted_admissions = Admission.all
-  @sorted_admissions.sort_by{ |shown_from |  }.each_with_index do |admission, index|
+  @sorted_admissions.sort_by { |shown_from |  }.each_with_index do |admission, index|
     if @admission === @sorted_admissions[index]
       @admission_int = index
     end
