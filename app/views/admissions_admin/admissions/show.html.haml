@@ -1,12 +1,13 @@
 %h1
   = @admission.title
 .section
-  %p
-    = link_to t("admissions_admin.show_interested_other_positions")+"...", admissions_admin_admission_show_interested_other_positions_path(@admission)
-    %br
-    = link_to t("admissions_admin.show_unflagged_applicants")+"...", admissions_admin_admission_show_unflagged_applicants_path(@admission)
-    %br
-    = link_to t('admissions_admin.show_unlogged_applicants')+"...", admissions_admin_admission_show_unlogged_applicants_path(@admission)
+  - if ! (@admission.admin_priority_deadline < Time.now)
+    %p
+      = link_to t("admissions_admin.show_interested_other_positions")+"...", admissions_admin_admission_show_interested_other_positions_path(@admission)
+      %br
+      = link_to t("admissions_admin.show_unflagged_applicants")+"...", admissions_admin_admission_show_unflagged_applicants_path(@admission)
+      %br
+      = link_to t('admissions_admin.show_unlogged_applicants')+"...", admissions_admin_admission_show_unlogged_applicants_path(@admission)
 .section
   %h2= set_and_return_title T('admissions.my_groups')
   %ul
