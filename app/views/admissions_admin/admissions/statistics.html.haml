@@ -1,5 +1,13 @@
+%h2= set_and_return_title t('admissions_admin.statistics_page_title', admission: @admission.title)
+
+.admission_buttons
+  - if @admission_int <= @admissions.length
+    = link_to t('admissions_admin.previous_admission'), statistics_admissions_admin_admission_path(@previous_admission)
+
+  - if @admission_int > 0
+    = link_to t('admissions_admin.next_admission'), statistics_admissions_admin_admission_path(@next_admission)
+
 .section
-  %h2= set_and_return_title t('admissions_admin.statistics_page_title', admission: @admission.title)
   %h3= t('admissions_admin.applications_by_group')
   = high_chart('1', @applications_per_group_chart)
   %h3= t('admissions_admin.applications_by_campus')
@@ -31,3 +39,10 @@
             %td= link_to key.name, admissions_admin_admission_group_path(@admission, key)
             %td= value.count
             %td= @accepted_applicants_per_group[key]
+
+.admission_buttons
+  - if @admission_int <= @admissions.length
+    = link_to t('admissions_admin.previous_admission'), statistics_admissions_admin_admission_path(@previous_admission)
+
+  - if @admission_int > 0
+    = link_to t('admissions_admin.next_admission'), statistics_admissions_admin_admission_path(@next_admission)

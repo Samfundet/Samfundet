@@ -37,3 +37,5 @@ en:
     log_all_unlogged_applicants: "Log all"
     all_applicants_logged: "All unlogged applicants have been logged"
     unique_applicant_logged_flash: "%{name} was logged successfully with '%{entry}'"
+    next_admission: "Next admission"
+    previous_admission: "Previous admission"
