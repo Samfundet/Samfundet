@@ -2,7 +2,7 @@ en:
   sulten:
     reservation:
       title: "Lyche Reservations"
-      upcoming_reservations: "Upcoming Reservations"
+      weekly_overview: "Weekly Overview"
       no_reservations: "No reservations"
       reservations: "Reservations"
       no_reservations_this_week: "No reservations this week"
@@ -24,7 +24,7 @@ en:
       export_to_csv: "Export all reservations to CSV"
       hi: "Hi"
       summary:
-        title: "Weekly Overview"
+        title: "Summary"
         date: "Date"
         day: "Day"
         total_week: "Total entire week"

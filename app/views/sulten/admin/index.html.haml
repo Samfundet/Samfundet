@@ -1,3 +1,5 @@
+= javascript_include_tag "sulten/calendar", defer: true
+
 %br
 %h1
   Lyche Admin
@@ -7,7 +9,10 @@
     = link_to sulten_admin_path(:date => (@calendar_date-1.days).strftime("%d-%m-%Y")) do
       .calendar-arrow{style:"transform: rotate(180deg);"}
         =image_tag "icons/black-arrow.png"
-    .calendar-header-title= l(@calendar_date, format: :medium_long)
+    #calendar-header-title
+      = l(@calendar_date, format: :long)
+      .calendar-header-icon
+    #calendar-datepicker-container
     = link_to sulten_admin_path(:date => (@calendar_date+1.days).strftime("%d-%m-%Y")) do
       .calendar-arrow
         =image_tag "icons/black-arrow.png"
@@ -107,7 +112,7 @@
       = @total_reservations
     %td
       = @total_people
-%p#export_csv
+%p
   = link_to T("sulten.reservation.export_to_csv"), sulten_reservations_export_path(format: :csv)
 %p
   = link_to t("sulten.reservation.show_all"), sulten_reservations_archive_path
@@ -116,7 +121,7 @@
 %br
 
 %h2
-  = t("sulten.reservation.upcoming_reservations")
+  = t("sulten.reservation.weekly_overview")
 
 - @reservations.each do |date, f|
   %h3
@@ -148,3 +153,8 @@
           = link_to t("crud.edit"), [:edit, k]
         %td
           = link_to t("crud.destroy"), k, method: :delete, data: {confirm: t("crud.confirm")}
+
+%p
+  = link_to T("sulten.reservation.export_to_csv"), sulten_reservations_export_path(format: :csv)
+%p
+  = link_to t("sulten.reservation.show_all"), sulten_reservations_archive_path

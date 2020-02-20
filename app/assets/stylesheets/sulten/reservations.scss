@@ -1,6 +1,7 @@
+
 .notice-message {
-  font-weight:400;
-  padding:5px;
+  font-weight: 400;
+  padding: 5px;
 }
 
 .comment-icon {
@@ -29,264 +30,302 @@
   clear: both;
   overflow: hidden;
   border-radius: 5px 5px 0 0;
-}
 
-.calendar-header {
-  color: white;
-  font-size: 20px;
-  padding-bottom: 20px;
-  padding-top: 16px;
-  padding-left: 20px;
-  height: 64px;
-  display: block;
-  width: 100%;
-  overflow-y: hidden;
-}
-.calendar-header-title{
-  text-transform: capitalize;
-  float: left;
-  width: 250px;
-  text-align: center;
-}
+  .calendar-header {
+    color: white;
+    font-size: 20px;
+    padding-bottom: 20px;
+    padding-top: 16px;
+    padding-left: 20px;
+    height: 64px;
+    display: block;
+    width: 100%;
+    overflow-y: hidden;
+  }
 
-.calendar-arrow {
-  width: 32px;
-  height: 32px;
-  background-color: transparent;
-  float: left;
-  text-align: center;
-  cursor: pointer;
-  color: #666;
-  transition: .2s;
-  border-radius: 2px;
-}
-.calendar-arrow > img {
-  margin: 0 auto;
-  padding: 3px;
-}
-.calendar-arrow:hover *{
-  transition: .2s;
-  background-color: rgba(255, 255, 255,0.2);
-}
+  #calendar-header-title {
+    text-transform: capitalize;
+    float: left;
+    width: 250px;
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
 
-.calendar-header-button {
-  float: right;
-  margin-right: 20px;
-  background-color: $samfundet-green;
-  padding: 4px;
-  padding-left: 14px;
-  padding-right: 14px;
-  transition: .1s;
-  font-size: 18px;
-  color: white;
-  border-radius: 4px;
-}
+  #calendar-header-title:hover {
+    color: #aaa;
+  }
 
-.calendar-header-button:hover {
-  filter: brightness(1.1);
-  cursor: pointer;
-}
-.calendar-header-button.back {
-  background-color: #aaa;
-}
+  .calendar-header-icon {
+    width: 16px;
+    height: 16px;
+    background-image: asset-url("icons/cal.png");
+    background-size: cover;
+    margin-left: 15px;
+    margin-top: 5px;
+  }
 
-.calendar-row {
-  background-color: #ddd;
-  height: 18px;
-  display: flex;
-  flex-direction: row;
-  flex-basis: max-content;
-  font-size: 12px;
-  line-height: 16px;
-}
-.calendar-row:nth-child(odd){
-  background-color: #ccc;
-}
+  #calendar-datepicker-container {
+    display: none;
+    z-index: 1;
+    position: absolute;
+    margin-top: 35px;
+    margin-left: -35px;
+  }
 
-.calendar-row.head {
-  height: 32px;
-  font-size: 14px;
-  line-height: 32px;
-}
-.calendar-row:hover {
-  background-color: #eee;
-}
+  #calendar-datepicker-container.open {
+    display: block;
+  }
 
+  .calendar-arrow {
+    width: 32px;
+    height: 32px;
+    background-color: transparent;
+    float: left;
+    text-align: center;
+    cursor: pointer;
+    color: #666;
+    transition: .2s;
+    border-radius: 2px;
+  }
 
-.calendar-column {
-  color: white;
-  display: flex;
-  flex-grow: 1;
-  position: relative;
-}
+  .calendar-arrow > img {
+    margin: 0 auto;
+    padding: 3px;
+  }
 
-.calendar-column.fixed {
-  width: 48px;
-  color: black;
-  flex-grow: 0;
-  border-bottom: 1px solid transparent;
-  text-align: right;
-  justify-content: end;
-  padding-right: 10px;
-  border-right: 1px solid #aaa;
-  cursor: default;
-  display: flex;
-  flex-direction: row;
-  padding-left: 5px;
-}
+  .calendar-arrow:hover * {
+    transition: .2s;
+    background-color: rgba(255, 255, 255, 0.2);
+  }
 
-.table-number {
-  min-width: 60%;
-  text-align: left;
-}
+  .calendar-header-button {
+    float: right;
+    margin-right: 20px;
+    background-color: $samfundet-green;
+    padding: 4px;
+    padding-left: 14px;
+    padding-right: 14px;
+    transition: .1s;
+    font-size: 18px;
+    color: white;
+    border-radius: 4px;
+  }
 
-.table-size {
-  color: #aaa;
-  min-width: 60%;
-  max-width: 60%;
-  white-space: nowrap;
-  text-align: right;
-}
+  .calendar-header-button:hover {
+    filter: brightness(1.1);
+    cursor: pointer;
+  }
 
-.calendar-row.time {
-  line-height: 48px;
-  max-height: 32px;
-  overflow: visible;
-}
+  .calendar-header-button.back {
+    background-color: #aaa;
+  }
 
-.calendar-column.time {
-  color: #777;
-  font-size: 12px;
-  padding-left: 10px;
-  height: 1000px;
-  border-right: 1px dashed #aaa;
-  text-align: right;
-  flex-direction: column;
-  padding-right: 5px;
-}
+  .calendar-row {
+    background-color: #ddd;
+    height: 18px;
+    display: flex;
+    flex-direction: row;
+    flex-basis: max-content;
+    font-size: 12px;
+    line-height: 16px;
+  }
 
-.calendar-reservation {
-  background-color: rgba($samfundet-blue, 0.9);
-  border-radius: 2px;
-  color: white;
-  height: 14px;
-  margin-top: 2px;
-  margin-bottom: 2px;
-  justify-content: center;
-  line-height: 14px;
-  text-align: center;
-  position: absolute;
-  font-size: 11px;
-  left: 0;
-  white-space: nowrap;
-  cursor: pointer;
-}
+  .calendar-row:nth-child(odd) {
+    background-color: #ccc;
+  }
 
-.calendar-reservation-title {
-  max-width: 100%;
-  overflow: hidden;
-}
+  .calendar-row.head {
+    height: 32px;
+    font-size: 14px;
+    line-height: 32px;
+  }
 
-.calendar-reservation:hover {
-  background-color: rgba($samfundet-blue, 0.75);
-}
+  .calendar-row:hover {
+    background-color: #eee;
+  }
 
-.calendar-reservation-tip {
-  position: absolute;
-  bottom: 14px;
-  border-radius: 2px;
-  min-width: 200px;
-  min-height: 75px;
-  max-width: 300px;
-  background-color: #fff;
-  opacity: 0;
-  font-size: 14px;
-  padding: 5px;
-  padding-left: 15px;
-  text-align: left;
-  z-index: 1;
-  pointer-events: none !important;
-  transition: .2s;
-  overflow: hidden;
-}
-.calendar-reservation-tip.left {
-  left: 0;
-}
-.calendar-reservation-tip.right {
-  right: 0;
-}
-.calendar-tip-row {
-  font-size: 12px;
-  font-weight: bold;
-  clear: both;
-  float: left;
-  padding-right: 10px;
-  width: 100%;
-  max-width: 100%;
-  max-height: 26px;
-  color: #555;
-  display: inline-block;
-  overflow: hidden;
-}
-.calendar-tip-title {
-  font-size: 14px;
-  font-weight: bold;
-  color: black;
-  display: block;
-  float: left;
-  padding-bottom: 4px;
-}
+  .calendar-column {
+    color: white;
+    display: flex;
+    flex-grow: 1;
+    position: relative;
+  }
 
-.calendar-tip-edit {
-  font-size: 11px;
-  font-style: italic;
-  color: black;
-  background-color: #eee;
-  border-radius: 4px;
-  padding-left: 12px;
-  padding-right: 12px;
-  height: 16px;
-  line-height: 16px;
-  float: right;
-  cursor: pointer;
-}
+  .calendar-column.fixed {
+    width: 48px;
+    color: black;
+    flex-grow: 0;
+    border-bottom: 1px solid transparent;
+    text-align: right;
+    justify-content: end;
+    padding-right: 10px;
+    border-right: 1px solid #aaa;
+    cursor: default;
+    display: flex;
+    flex-direction: row;
+    padding-left: 5px;
+  }
 
-.calendar-tip-edit:hover {
-  background-color: #ddd;
-  color: black;
-}
+  .table-number {
+    min-width: 60%;
+    text-align: left;
+  }
 
+  .table-size {
+    color: #aaa;
+    min-width: 60%;
+    max-width: 60%;
+    white-space: nowrap;
+    text-align: right;
+  }
 
-.calendar-reservation:hover > .calendar-reservation-tip {
-  opacity: 1;
-  transition: .2s;
-  transition-delay: .2s;
-}
+  .calendar-row.time {
+    line-height: 48px;
+    max-height: 32px;
+    overflow: visible;
+  }
 
-.calendar-table-tip {
-  position: absolute;
-  left: 48px;
-  bottom: 0;
-  height: 17px;
-  max-height: 17px;
-  text-align: left;
-  opacity: 0;
-  pointer-events: none !important;
-  z-index: 100;
-  background-color: #fff;
-  overflow: hidden;
-  padding-left: 8px;
-  padding-right: 8px;
-  white-space: nowrap;
-}
+  .calendar-column.time {
+    color: #777;
+    font-size: 12px;
+    padding-left: 10px;
+    height: 1000px;
+    border-right: 1px dashed #aaa;
+    text-align: right;
+    flex-direction: column;
+    padding-right: 5px;
+  }
 
-.calendar-column.fixed:hover > .calendar-table-tip {
-  opacity: 1;
-}
-.calendar-column.fixed:hover {
-  background-color: #fff;
-}
+  .calendar-reservation {
+    background-color: rgba($samfundet-blue, 0.9);
+    border-radius: 2px;
+    color: white;
+    height: 14px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    justify-content: center;
+    line-height: 14px;
+    text-align: center;
+    position: absolute;
+    font-size: 11px;
+    left: 0;
+    white-space: nowrap;
+    cursor: pointer;
+  }
 
+  .calendar-reservation-title {
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .calendar-reservation:hover {
+    background-color: rgba($samfundet-blue, 0.75);
+  }
+
+  .calendar-reservation-tip {
+    position: absolute;
+    bottom: 14px;
+    border-radius: 2px;
+    min-width: 200px;
+    min-height: 75px;
+    max-width: 300px;
+    background-color: #fff;
+    opacity: 0;
+    font-size: 14px;
+    padding: 5px;
+    padding-left: 15px;
+    text-align: left;
+    z-index: 1;
+    pointer-events: none !important;
+    transition: .2s;
+    overflow: hidden;
+  }
+
+  .calendar-reservation-tip.left {
+    left: 0;
+  }
+
+  .calendar-reservation-tip.right {
+    right: 0;
+  }
+
+  .calendar-tip-row {
+    font-size: 12px;
+    font-weight: bold;
+    clear: both;
+    float: left;
+    padding-right: 10px;
+    width: 100%;
+    max-width: 100%;
+    max-height: 26px;
+    color: #555;
+    display: inline-block;
+    overflow: hidden;
+  }
+
+  .calendar-tip-title {
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+    display: block;
+    float: left;
+    padding-bottom: 4px;
+  }
+
+  .calendar-tip-edit {
+    font-size: 11px;
+    font-style: italic;
+    color: black;
+    background-color: #eee;
+    border-radius: 4px;
+    padding-left: 12px;
+    padding-right: 12px;
+    height: 16px;
+    line-height: 16px;
+    float: right;
+    cursor: pointer;
+  }
+
+  .calendar-tip-edit:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
+  .calendar-reservation:hover > .calendar-reservation-tip {
+    opacity: 1;
+    transition: .2s;
+    transition-delay: .2s;
+  }
+
+  .calendar-table-tip {
+    position: absolute;
+    left: 48px;
+    bottom: 0;
+    height: 17px;
+    max-height: 17px;
+    text-align: left;
+    opacity: 0;
+    pointer-events: none !important;
+    z-index: 100;
+    background-color: #fff;
+    overflow: hidden;
+    padding-left: 8px;
+    padding-right: 8px;
+    white-space: nowrap;
+  }
+
+  .calendar-column.fixed:hover > .calendar-table-tip {
+    opacity: 1;
+  }
+
+  .calendar-column.fixed:hover {
+    background-color: #fff;
+  }
+
+}
 
 .tool-button {
   float: left;
@@ -299,19 +338,22 @@
   overflow: hidden;
   cursor: pointer;
   transition: .2s;
+  color: black;
 }
+
 .tool-button:first-child {
   border-radius: 0 0 0 5px;
 }
+
 .tool-button:last-child {
   border-radius: 0 0 5px 0;
 }
+
 .tool-button * {
   color: black;
 }
+
 .tool-button:hover {
   background-color: #fff;
   transition: .2s;
 }
-
-
