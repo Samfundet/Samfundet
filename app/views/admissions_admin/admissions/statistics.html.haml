@@ -1,10 +1,9 @@
 %h2= set_and_return_title t('admissions_admin.statistics_page_title', admission: @admission.title)
 
-.admission_buttons
-  - if @admission_int <= @admissions.length
-    = link_to t('admissions_admin.previous_admission'), statistics_admissions_admin_admission_path(@previous_admission)
-
-  - if @admission_int > 0
+- unless @previous_admission.nil?
+  = link_to t('admissions_admin.previous_admission'), statistics_admissions_admin_admission_path(@previous_admission)
+.nextButton
+  - unless @next_admission.nil?
     = link_to t('admissions_admin.next_admission'), statistics_admissions_admin_admission_path(@next_admission)
 
 .section
@@ -40,9 +39,8 @@
             %td= value.count
             %td= @accepted_applicants_per_group[key]
 
-.admission_buttons
-  - if @admission_int <= @admissions.length
-    = link_to t('admissions_admin.previous_admission'), statistics_admissions_admin_admission_path(@previous_admission)
-
-  - if @admission_int > 0
+- unless @previous_admission.nil?
+  = link_to t('admissions_admin.previous_admission'), statistics_admissions_admin_admission_path(@previous_admission)
+.nextButton
+  - unless @next_admission.nil?
     = link_to t('admissions_admin.next_admission'), statistics_admissions_admin_admission_path(@next_admission)
