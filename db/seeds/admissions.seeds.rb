@@ -2,6 +2,7 @@ after :organizers do
   admission_title = "Høstopptak 2010"
 
   puts "Creating admissions"
+=begin
   old_admission_1 = Admission.create!(
       title: "Høstopptak 1917",
       shown_from: 100.years.ago - 2.weeks,
@@ -20,6 +21,8 @@ after :organizers do
       admin_priority_deadline: 34.years.ago + 1.week + 1.hour,
       promo_video: "https://www.youtube.com/embed/T8MjwROd0dc"
   )
+=end
+
   admission = Admission.create!(
     title: admission_title,
     shown_from: 1.week.ago,
