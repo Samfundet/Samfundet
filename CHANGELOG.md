@@ -1,5 +1,24 @@
 # CHANGELOG
 
+## 2020-02-22
+
+### Added
+
+- Add calendar icon for Lyche calendar ([#582](https://github.com/Samfundet/Samfundet/issues/582))
+
+## 2020-02-13
+
+### Changed
+
+- Hide show unlogged applicants because of bugs ([#617](https://github.com/Samfundet/Samfundet/pull/617))
+- Configure ([#610](https://github.com/Samfundet/Samfundet/pull/610)) and later revert ([#611](https://github.com/Samfundet/Samfundet/pull/611)) LiveReload middleware
+
+## 2020-02-11
+
+### Changed
+
+- Update images created in `seeds.rb` ([#609](https://github.com/Samfundet/Samfundet/pull/609))
+
 ## 2020-02-08
 
 ### Added
