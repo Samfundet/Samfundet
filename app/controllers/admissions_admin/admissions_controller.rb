@@ -164,40 +164,38 @@ private
   # Count unique applicants and how many of those were actually admitted to Samfundet
   # This is done both for Samfundet as a whole and for each group
   def count_unique_applicants
-      @unique_applicants_per_group = {}
-      @accepted_applicants_per_group = {}
-      @unique_applicants_total = Set[]
-      @unique_applications_total = 0
+    @unique_applicants_per_group = {}
+    @accepted_applicants_per_group = {}
+    @unique_applicants_total = Set[]
+    @unique_applications_total = 0
 
-      @admission.groups.map do |group|
-      @unique_applicants_per_group[group] = Set[]
-      @accepted_applicants_per_group[group] = Set[]
+    @admission.groups.map do |group|
+    @unique_applicants_per_group[group] = Set[]
+    @accepted_applicants_per_group[group] = Set[]
 
-      group.jobs.where(admission_id: @admission.id).map do |job|
-        job.applicants.map do |app|
-          @unique_applicants_per_group[group].add app.id
-          @unique_applicants_total.add app.id
-          @unique_applications_total += 1
+    group.jobs.where(admission_id: @admission.id).map do |job|
+      job.applicants.map do |app|
+        @unique_applicants_per_group[group].add app.id
+        @unique_applicants_total.add app.id
+        @unique_applications_total += 1
 
-          # An applicant can possibly be considered accepted if he/she/they has/have been logged,
-          # and only any of the following acceptance strings below.
-          log_entries = LogEntry.where(admission_id: @admission.id, applicant_id: app.id)
-          unless log_entries.empty?
-            last_log = log_entries.last
-            if application_is_accepted?(last_log.log)
-              @accepted_applicants_per_group[group].add app.id
-            end
+        # An applicant can possibly be considered accepted if he/she/they has/have been logged,
+        # and only any of the following acceptance strings below.
+        log_entries = LogEntry.where(admission_id: @admission.id, applicant_id: app.id)
+        unless log_entries.empty?
+          last_log = log_entries.last
+          if application_is_accepted?(last_log.log)
+            @accepted_applicants_per_group[group].add app.id
           end
         end
       end
-
-      @accepted_applicants_per_group[group] = @accepted_applicants_per_group[group].count
     end
+
+    @accepted_applicants_per_group[group] = @accepted_applicants_per_group[group].count
+  end
 
     @unique_applicants_total = @unique_applicants_total.count
     @accepted_applicants_total = @accepted_applicants_per_group.flatten.uniq.count
-
-
   end
 end
 
