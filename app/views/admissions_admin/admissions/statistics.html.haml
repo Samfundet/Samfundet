@@ -21,6 +21,9 @@
       admission: @admission.title,
       unique_applicants: @unique_applicants_total,
       admitted_applicants: @accepted_applicants_total)
+  %p
+    = t('admissions_admin.unique_applications_title',
+      unique_applications: @unique_applications_total)
 
   %h3= t('admissions_admin.unique_applicants_groups')
   %h4

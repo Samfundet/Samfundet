@@ -164,11 +164,12 @@ private
   # Count unique applicants and how many of those were actually admitted to Samfundet
   # This is done both for Samfundet as a whole and for each group
   def count_unique_applicants
-    @unique_applicants_per_group = {}
-    @accepted_applicants_per_group = {}
-    @unique_applicants_total = Set[]
+      @unique_applicants_per_group = {}
+      @accepted_applicants_per_group = {}
+      @unique_applicants_total = Set[]
+      @unique_applications_total = 0
 
-    @admission.groups.map do |group|
+      @admission.groups.map do |group|
       @unique_applicants_per_group[group] = Set[]
       @accepted_applicants_per_group[group] = Set[]
 
@@ -176,6 +177,7 @@ private
         job.applicants.map do |app|
           @unique_applicants_per_group[group].add app.id
           @unique_applicants_total.add app.id
+          @unique_applications_total += 1
 
           # An applicant can possibly be considered accepted if he/she/they has/have been logged,
           # and only any of the following acceptance strings below.
@@ -194,6 +196,7 @@ private
 
     @unique_applicants_total = @unique_applicants_total.count
     @accepted_applicants_total = @accepted_applicants_per_group.flatten.uniq.count
+
 
   end
 end

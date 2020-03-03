@@ -20,6 +20,7 @@
     unique_applicants_group_table_header: "Gjeng"
     unique_applicants_unique_applicants_table_header: "Unike søkere"
     unique_applicants_unique_applicants_admitted_table_header: "Unike søkere tatt opp"
+    unique_applications_title: "Opptaket har %{unique_applications} unike søknader."
     applications_per_hour: "Antall søknader per time"
     short_for_persons: "pers."
     applicant_dont_get_position: "Søkere som ikke får stilling, men som gjerne vil ha"
