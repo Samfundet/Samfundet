@@ -10,7 +10,7 @@ class SiteController < ApplicationController
     @banner_event = @upcoming_events.shift
   end
 
-  private
+private
 
   def check_active_notifications
     # from an dto are integers of date_type
