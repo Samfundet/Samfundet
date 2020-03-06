@@ -10,7 +10,7 @@ class SiteController < ApplicationController
     @banner_event = @upcoming_events.shift
   end
 
-private
+  private
 
   def check_active_notifications
     # from an dto are integers of date_type
@@ -27,7 +27,7 @@ private
     def context_ext_url(context = nil, name = nil, options = nil, html_options = {}, &block)
       html_options[:target] = '_blank'
       html_options[:rel] = 'nofollow, noindex, noreferrer'
-      return context.link_to(name, options, html_options, &block)
+      context.link_to(name, options, html_options, &block)
     end
 
     msg1 = t('site.index.sit_samf_series1')
