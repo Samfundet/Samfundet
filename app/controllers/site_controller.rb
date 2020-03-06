@@ -21,23 +21,16 @@ private
     flash_in_date_range = lambda { |date_from, date_to, date_type, msg|
       time_now = Time.now.strftime(date_type).to_i
       return unless time_now.between?(date_from, date_to)
-      flash[:notice] = view_context.sanitize(msg)
+      flash[:notice] = msg
     }
 
-    def context_ext_url(context = nil, name = nil, options = nil, html_options = {}, &block)
-      html_options[:target] = '_blank'
-      html_options[:rel] = 'nofollow, noindex, noreferrer'
-      context.link_to(name, options, html_options, &block)
-    end
+    start_msg = t('site.index.sit_samf_series1')
+    link_text = t('site.index.sit_samf_series2')
+    end_msg = t('site.index.sit_samf_series3')
+    url = 'https://www.youtube.com/watch?v=YRnxoMCZwI8'
+    external_url = "<a target=_'blank' rel='noopener noreferrer' href=#{url}>#{link_text}</a>"
 
-    msg1 = t('site.index.sit_samf_series1')
-
-    link = context_ext_url(view_context,
-                            t('site.index.sit_samf_series2'),
-                            'https://www.youtube.com/watch?v=YRnxoMCZwI8')
-
-    msg2 = t('site.index.sit_samf_series3')
-    message = [msg1, link, msg2].join(' ')
+    message = "#{start_msg} #{external_url} #{end_msg}".html_safe
     flash_in_date_range.call(3, 5, '%m', message)
   end
 end
