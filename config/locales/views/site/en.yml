@@ -25,6 +25,9 @@ en:
       message_frontpage_highjack: "Placeholder"
       show_more: "Show all events"
       recieve_message: "Receive newsletter"
+      sit_samf_series1: "Studentersamfundets' Internal Theatre (SIT) launches a new series march 9th!"
+      sit_samf_series2: "click here"
+      sit_samf_series3: "for a teaser!"
 
     notifications:
       membership:
