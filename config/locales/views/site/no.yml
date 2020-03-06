@@ -26,6 +26,9 @@
       message_frontpage_highjack: "Placeholder"
       show_more: "Vis alle arrangementer"
       recieve_message: "Motta nyhetsbrev"
+      sit_samf_series1: "MSG 1"
+      sit_samf_series2: 'LINK'
+      sit_samf_series3: "MSG 2"
 
     notifications:
       membership:
