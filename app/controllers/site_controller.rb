@@ -24,8 +24,18 @@ class SiteController < ApplicationController
       flash[:notice] = view_context.sanitize(msg)
     }
 
+    def context_ext_url(context = nil, name = nil, options = nil, html_options = {}, &block)
+      html_options[:target] = '_blank'
+      html_options[:rel] = 'nofollow, noindex, noreferrer'
+      return context.link_to(name, options, html_options, &block)
+    end
+
     msg1 = t('site.index.sit_samf_series1')
-    link = view_context.link_to(t('site.index.sit_samf_series2'), 'https://example.com')
+
+    link = context_ext_url(view_context,
+                            t('site.index.sit_samf_series2'),
+                            'https://www.youtube.com/watch?v=YRnxoMCZwI8')
+
     msg2 = t('site.index.sit_samf_series3')
     message = [msg1, link, msg2].join(' ')
     flash_in_date_range.call(3, 5, '%m', message)
