@@ -61,8 +61,8 @@ module ApplicationHelper
       flashes.join
     else
       message = flash[type]
-      hide_link = content_tag(:a, '', href: request.url, class: :hide)
-      content_tag(:div, hide_link + message, class: "flash #{type}") if flash[type]
+      # hide_link = content_tag(:a, '', href: request.url, class: :hide)
+      content_tag(:div, message, class: "flash #{type}") if flash[type]
     end
   end
 

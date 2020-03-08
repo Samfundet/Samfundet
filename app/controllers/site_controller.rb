@@ -13,31 +13,26 @@ class SiteController < ApplicationController
 private
 
   def check_active_notifications
-    # from an dto are integers of date_type
-    # some supported (most useful) types:
-    #   %m - Month, e.g. 8 for August, 1 for January
-    #   %d - Day in month
-    #   %H - Hour of day
-    flash_in_date_range = lambda { |date_from, date_to, date_type, msg|
-      time_now = Time.now.strftime(date_type).to_i
-      return unless time_now.between?(date_from, date_to)
-      flash[:notice] = view_context.sanitize(msg)
-    }
+    valid_date = lambda { |from, to| Time.zone.today.between?(from, to) }
 
-    def context_ext_url(context = nil, name = nil, options = nil, html_options = {}, &block)
-      html_options[:target] = '_blank'
-      html_options[:rel] = 'nofollow, noindex, noreferrer'
-      context.link_to(name, options, html_options, &block)
+    start_msg = t('site.index.sit_samf_series1')
+    link_text = t('site.index.sit_samf_series2')
+    end_msg = t('site.index.sit_samf_series3')
+    url = 'https://www.youtube.com/watch?v=YRnxoMCZwI8'
+    external_url = "<br><br><a target=_'blank' rel='noopener noreferrer' href=#{url}>#{link_text}</a>"
+
+    message = "#{start_msg} #{external_url} #{end_msg}"
+
+    sit_start = Date.new(2020, 3, 6)
+    sit_end = Date.new(2020, 4, 1)
+    if valid_date.call(sit_start, sit_end)
+      flash[:notice] = message.html_safe
     end
 
-    msg1 = t('site.index.sit_samf_series1')
-
-    link = context_ext_url(view_context,
-                            t('site.index.sit_samf_series2'),
-                            'https://www.youtube.com/watch?v=YRnxoMCZwI8')
-
-    msg2 = t('site.index.sit_samf_series3')
-    message = [msg1, link, msg2].join(' ')
-    flash_in_date_range.call(3, 5, '%m', message)
+    ledervalg_start = Date.new(2020, 3, 6)
+    ledervalg_slutt = Date.new(2020, 3, 10)
+    if valid_date.call(ledervalg_start, ledervalg_slutt)
+      flash[:message] = t('site.index.election')
+    end
   end
 end
