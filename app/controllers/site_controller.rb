@@ -13,18 +13,7 @@ class SiteController < ApplicationController
 private
 
   def check_active_notifications
-    # from an dto are integers of date_type
-    # some supported (most useful) types:
-    #   %m - Month, e.g. 8 for August, 1 for January
-    #   %d - Day in month
-    #   %H - Hour of day
-    flash_in_date_range = lambda { |date_from, date_to, msg, flash_type|
-      time_now = Date.new()
-      return unless time_now.between?(date_from, date_to)
-      flash[:notice] = msg
-    }
-
-    valid_date = lambda {|from, to| Time.zone.today.between?(from, to)}
+    valid_date = lambda { |from, to| Time.zone.today.between?(from, to) }
 
     start_msg = t('site.index.sit_samf_series1')
     link_text = t('site.index.sit_samf_series2')
@@ -33,8 +22,6 @@ private
     external_url = "<br><br><a target=_'blank' rel='noopener noreferrer' href=#{url}>#{link_text}</a>"
 
     message = "#{start_msg} #{external_url} #{end_msg}"
-    # message = Rails::Html::LinkSanitizer.new.sanitize(raw_html_message)
-    # message = ApplicationController::Base.helpers.sanitize(raw_html)
 
     sit_start = Date.new(2020, 3, 6)
     sit_end = Date.new(2020, 4, 1)
@@ -45,7 +32,7 @@ private
     ledervalg_start = Date.new(2020, 3, 6)
     ledervalg_slutt = Date.new(2020, 3, 10)
     if valid_date.call(ledervalg_start, ledervalg_slutt)
-      flash[:message] = t("site.index.election")
+      flash[:message] = t('site.index.election')
     end
   end
 end
