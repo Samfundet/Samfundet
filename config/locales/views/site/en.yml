@@ -25,9 +25,9 @@ en:
       message_frontpage_highjack: "Placeholder"
       show_more: "Show all events"
       recieve_message: "Receive newsletter"
-      sit_samf_series1: "Studentersamfundets' Internal Theatre and Markedsføringsgjengen launches a new series march 9th!"
+      sit_samf_series1: "Studentersamfundets' Internal Theatre and Markedsføringsgjengen has launched the first episode in their new series!"
       sit_samf_series2: "click here"
-      sit_samf_series3: "for a teaser!"
+      sit_samf_series3: "for episode 1!"
       election: "The election for Samfundet's new leader, Tuesday March 10th, 6 PM - Be there! All members can vote"
 
     notifications:
