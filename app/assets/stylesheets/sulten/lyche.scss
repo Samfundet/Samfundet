@@ -1,20 +1,33 @@
 
 .lyche-container {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
+  font-family: "Arial", sans-serif;
 
-  font-family: "Advent Pro", sans-serif;
+  background-color: #111;
 
   .front-image {
     background-image: asset-url("sulten/front.jpg");
     background-size: cover;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
+
+    .front-logo {
+      background-image: asset-url("sulten/logo.png");
+      width: 400px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 100px;
+      margin: 0 auto;
+      padding-top: 30%;
+      display: none;
+    }
   }
 
   .section {
     height: 600px;
-    background-color: #efefef;
+    background-color: #0c0c0c;
 
     display: flex;
     flex-direction: row;
@@ -30,28 +43,51 @@
         background-image: asset-url("sulten/cook.jpg");
         background-size: cover;
       }
+
     }
 
-    .title {
-      width: 0;
-      white-space: nowrap;
-      position: relative;
-      top: 50%;
-      left: -300px;
-      font-size: 5em;
-      z-index: 1;
-      color: white;
-    }
+    .info-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
 
-    .description {
-       flex: 1;
+      .title {
+        font-size: 5em;
+        color: white;
+        text-align: center;
+      }
+
+      .description {
+        color: rgb(180, 180, 180);
+        font-size: 2em;
+        max-width: 500px;
+        text-align: center;
+      }
     }
 
   }
+
+
+
   .section:nth-child(odd) {
-    background-color: black;
     flex-direction: row-reverse;
+    background-color: #050505;
+    /*
     color: black;
+
+    .info-container {
+      .title {
+        color: black;
+      }
+      .description {
+
+        color: black;
+      }
+
+    }
+    */
   }
 
   .header-container {
@@ -65,12 +101,12 @@
 
     z-index: 69;
 
-    background: linear-gradient(to bottom, black, transparent);
+    //background: linear-gradient(to bottom, black, transparent);
 
     .header-menu {
       display: flex;
       flex-direction: row;
-      justify-content: space-around;
+      justify-content: space-evenly;
       align-items: center;
       width: 60%;
 
@@ -79,37 +115,48 @@
         text-transform: uppercase;
         cursor: pointer;
         font-size: 1.2em;
+        width: 15%;
+        text-align: center;
+        a {
+          color: white;
+        }
       }
+
       .menu-button:hover {
-        color: orange;
+        color: #aaa;
       }
 
       .lyche-logo {
-        color: orange;
-        font-size: 3.5em;
-        text-transform: uppercase;
+        background-image: asset-url("sulten/logo.png");
+        width: 200px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 80px;
+        margin-top: 10px;
       }
     }
   }
 
 
   .status-box {
-    width: 500px;
-    height: 160px;
-    position: absolute;
-    top: calc(50% - 80px);
-    left: calc(50% - 250px);
+    width: 400px;
+    height: 120px;
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
     color: white;
 
     display: flex;
     flex-direction: column;
 
-    background-color: rgba(orange, 0.15);
+    background-color: rgba(#eee, 0.85);
+    border: 1px solid dimgray;
 
-    backdrop-filter: blur(3px);
-    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
 
-    box-shadow: 2px 2px 15px 2px rgba(0,0,0,0.65);
+    box-shadow: 2px 5px 12px 1px rgba(0,0,0,0.65);
 
     padding: 1em;
     border-radius: 8px;
@@ -117,8 +164,9 @@
     .open-hours {
       flex: 1;
       text-align: center;
-      font-size: 1.5em;
+      font-size: 1.2em;
       padding: .5em;
+      color: dimgray;
     }
 
     .action-container {
@@ -128,11 +176,108 @@
       justify-content: space-around;
       align-items: center;
 
+      .action-button-separator {
+        width: 1px;
+        height: 100%;
+        background-color: black;
+        opacity: .75;
+      }
       .action-button {
-        font-size: 1.5em;
+        font-size: 1em;
+        width: 150px;
+        text-align: center;
+        color: black;
+        cursor: pointer;
+      }
+      .action-button:hover {
+        color: dimgray;
       }
     }
 
   }
 
+  .lyche-menu {
+
+    max-width: 800px;
+    margin: 0 auto;
+    padding-top: 150px;
+
+    color: white;
+
+    .lyche-menu-title {
+      font-size: 2em;
+      text-align: center;
+      color: white;
+      width: 100%;
+      padding-top: 30px;
+      padding-bottom: 30px;
+    }
+
+    .lyche-menu-tab-container {
+
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      padding: 10px;
+      margin-bottom: 20px;
+      background-color: #222;
+
+
+      .lyche-menu-tab {
+        font-size: 1.25em;
+        text-transform: uppercase;
+        color: dimgray;
+        cursor: pointer;
+        padding-right: 25px;
+      }
+      .lyche-menu-tab.selected {
+        color: white;
+      }
+      .lyche-menu-tab:hover {
+        color: orange;
+      }
+
+      .lyche-menu-tab-separator {
+        width: 1px;
+        height: 20px;
+        background-color: dimgray;
+        margin-right: 25px;
+      }
+
+    }
+
+
+    .menu-item {
+      display: flex;
+      flex-direction: column;
+
+
+      .item-name {
+        display: flex;
+        flex-direction: row;
+        font-size: 1.5em;
+        color: orange;
+        margin-bottom: 5px;
+
+        .item-price {
+          color: dimgray;
+          font-size: .75em;
+          margin-left: 20px;
+          margin-top: .25em;
+        }
+      }
+
+      .item-description {
+        color: dimgray;
+        display: block;
+        float: left;
+        margin-bottom: 20px;
+      }
+    }
+
+
+  }
+
+
 }
+

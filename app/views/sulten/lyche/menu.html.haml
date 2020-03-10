@@ -1,0 +1,30 @@
+- content_for(:container) do
+  = render "header_menu"
+
+  .lyche-menu
+
+    .lyche-menu-title
+      Meny
+
+    .lyche-menu-tab-container
+      .lyche-menu-tab.selected
+        Middag
+      .lyche-menu-tab-separator
+      .lyche-menu-tab
+        Drikke
+      .lyche-menu-tab-separator
+      .lyche-menu-tab
+        Store grupper
+
+    - for i in 0..15 do
+      .menu-item
+        .item-name
+          Lyche Burger
+          .item-price
+            23,-
+        .item-description
+          Sykt digg burger med lorem ipsum trallala.
+          Sykt digg burger med lorem ipsum trallala.
+          Sykt digg burger med lorem ipsum trallala.
+          Sykt digg burger med lorem ipsum trallala.
+          Sykt digg burger med lorem ipsum trallala.

@@ -6,4 +6,8 @@ class Sulten::LycheController < Sulten::BaseController
 
   end
 
+  def menu
+
+  end
+
 end
