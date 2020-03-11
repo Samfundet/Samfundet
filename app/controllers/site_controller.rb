@@ -15,24 +15,27 @@ private
   def check_active_notifications
     valid_date = lambda { |from, to| Time.zone.today.between?(from, to) }
 
-    start_msg = t('site.index.sit_samf_series1')
-    link_text = t('site.index.sit_samf_series2')
-    end_msg = t('site.index.sit_samf_series3')
-    url = 'https://www.youtube.com/watch?v=dUAbqJTqmzQ'
-    external_url = "<br><br><a target=_'blank' rel='noopener noreferrer' href=#{url}>#{link_text}</a>"
+    # start_msg = t('site.index.sit_samf_series1')
+    # link_text = t('site.index.sit_samf_series2')
+    # end_msg = t('site.index.sit_samf_series3')
+    # url = 'https://www.youtube.com/watch?v=dUAbqJTqmzQ'
+    # external_url = "<br><br><a target=_'blank' rel='noopener noreferrer' href=#{url}>#{link_text}</a>"
 
-    message = "#{start_msg} #{external_url} #{end_msg}"
+    # message = "#{start_msg} #{external_url} #{end_msg}"
 
     sit_start = Date.new(2020, 3, 6)
     sit_end = Date.new(2020, 4, 1)
     if valid_date.call(sit_start, sit_end)
-      flash[:notice] = message.html_safe
+      # flash[:notice] = message.html_safe
     end
 
-    ledervalg_start = Date.new(2020, 3, 6)
-    ledervalg_slutt = Date.new(2020, 3, 10)
-    if valid_date.call(ledervalg_start, ledervalg_slutt)
-      flash[:message] = t('site.index.election')
+    corona_flash_start = Date.new(2020, 3, 11)
+    corona_flash_end = Date.new(2020, 3, 25)
+    blog_link = 'https://samfundet.no/blogg/17-korona-virus'
+    link = view_context.link_to('her', blog_link)
+    msg = t('site.index.corona') + ' ' + link
+    if valid_date.call(corona_flash_start, corona_flash_end)
+      flash[:notice] = view_context.sanitize(msg)
     end
   end
 end
