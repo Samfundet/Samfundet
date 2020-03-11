@@ -26,9 +26,9 @@
       message_frontpage_highjack: "Placeholder"
       show_more: "Vis alle arrangementer"
       recieve_message: "Motta nyhetsbrev"
-      sit_samf_series1: "Studentersamfundets Interne Teater og Markedsføringsgjengen lanserer en serie 9. mars! "
+      sit_samf_series1: "Studentersamfundets Interne Teater og Markedsføringsgjengen har lansert første episode i sin nye miniserie!"
       sit_samf_series2: "klikk her"
-      sit_samf_series3: "for en liten smakebit"
+      sit_samf_series3: "for episode 1!"
       election: "Ledervalg i storsalen, tirsdag 10. mars kl 18:00! Be there! Alle medlemmer kan stemme"
 
     notifications:

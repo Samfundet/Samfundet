@@ -18,7 +18,7 @@ private
     start_msg = t('site.index.sit_samf_series1')
     link_text = t('site.index.sit_samf_series2')
     end_msg = t('site.index.sit_samf_series3')
-    url = 'https://www.youtube.com/watch?v=YRnxoMCZwI8'
+    url = 'https://www.youtube.com/watch?v=dUAbqJTqmzQ'
     external_url = "<br><br><a target=_'blank' rel='noopener noreferrer' href=#{url}>#{link_text}</a>"
 
     message = "#{start_msg} #{external_url} #{end_msg}"
