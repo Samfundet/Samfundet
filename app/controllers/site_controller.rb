@@ -32,7 +32,7 @@ private
     corona_flash_start = Date.new(2020, 3, 11)
     corona_flash_end = Date.new(2020, 3, 25)
     blog_link = 'https://samfundet.no/blogg/17-korona-virus'
-    link = view_context.link_to('her', blog_link)
+    link = view_context.link_to(t('site.index.corona2'), blog_link)
     msg = t('site.index.corona') + ' ' + link
     if valid_date.call(corona_flash_start, corona_flash_end)
       flash[:notice] = view_context.sanitize(msg)

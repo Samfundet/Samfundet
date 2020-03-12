@@ -28,7 +28,8 @@ en:
       sit_samf_series1: "Studentersamfundets' Internal Theatre and Markedsføringsgjengen has launched the first episode in their new series!"
       sit_samf_series2: "click here"
       sit_samf_series3: "for episode 1!"
-      corona: "According to guidelines from NIPH, selected events at Samfundet will be cancelled/postponed. For more information, click"
+      corona: "Samfundet has closed with immediate effect due to new COVID-19 regulations from the government.<br> For more information, click"
+      corona2: "here"
 
     notifications:
       membership:
