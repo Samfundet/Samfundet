@@ -1,1 +1,0 @@
-Rails.application.config.assets.precompile += %w( admissions/unlogged_applicants.css )

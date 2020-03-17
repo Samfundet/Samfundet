@@ -150,9 +150,6 @@ Rails.application.routes.draw do
         end
         get :show_interested_other_positions, to: 'applicants#show_interested_other_positions'
         get :show_unflagged_applicants, to: 'applicants#show_unflagged_applicants'
-        get :show_unlogged_applicants, to: 'applicants#show_unlogged_applicants'
-        patch :show_unlogged_applicants, to: 'applicants#log_single_applicant'
-        post :show_unlogged_applicants, to: 'applicants#log_all_applicants'
       end
     end
 
