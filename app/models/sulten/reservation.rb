@@ -14,6 +14,7 @@ class Sulten::Reservation < ApplicationRecord
   validates :gdpr_checkbox, acceptance: true
 
   validate :check_opening_hours, :check_amount_of_people,
+           :check_table_availability,
            :reservation_is_one_day_in_future,
            :email, on: :create, unless: :admin_access
 
@@ -73,6 +74,31 @@ class Sulten::Reservation < ApplicationRecord
     elsif people < 1
       errors.add(:people, I18n.t('helpers.models.sulten.reservation.errors.people.too_few_people'))
     end
+  end
+
+  # Check that there is a single table with the correct capacity and that is
+  # available in the date range that this reservation is made for.
+  # 1) Filter out tables that don't have large enough capacity
+  # 2) Filter out tables that end before the start date of this reservation
+  # 3) Filter out tables with reservations that overlap in time with this reservation
+  # 4) Sort the resulting tables by capacity and pick the one with the lowest capacity that is okay
+  def check_table_availability
+    tables_with_correct_capacity = Sulten::Table.all.select { |t| t.capacity >= people }
+
+    tables_with_correct_capacity.select do |table|
+      result = table.reservations
+                 .select { |r| r.reservation_to < reservation_from }
+                 .select { |r| (r.reservation_from...r.reservation_to).overlaps?(reservation_from...reservation_to) }
+
+      !result.empty?
+    end
+
+    # This error might not ever happen, but in the rare case that there are no
+    # tables with the capacity for this reservation, add an error.
+    # There might be a better solution, because this might only happpen when
+    # the reservation is for more than 12 people, in which case an error will
+    # already be added.
+    errors.add(:people, 'No tables available') if tables_with_correct_capacity.empty?
   end
 
   def first_name
