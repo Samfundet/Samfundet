@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2020-03-17
+
+### Removed
+
+- Completely removed the show unlogged applications functionality ([#635](https://github.com/Samfundet/Samfundet/pull/635))
+
 ## 2020-02-22
 
 ### Added
