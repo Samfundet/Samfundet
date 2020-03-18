@@ -20,7 +20,6 @@ after :organizers do
       admin_priority_deadline: 34.years.ago + 1.week + 1.hour,
       promo_video: "https://www.youtube.com/embed/T8MjwROd0dc"
   )
-
   admission = Admission.create!(
     title: admission_title,
     shown_from: 1.week.ago,
