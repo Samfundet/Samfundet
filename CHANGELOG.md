@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2020-03-18
+
+### Added
+
+- Add macOS shell script for onboarding new members ([#602](https://github.com/Samfundet/Samfundet/pull/602))
+
 ## 2020-03-17
 
 ### Removed
