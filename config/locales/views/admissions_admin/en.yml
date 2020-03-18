@@ -20,7 +20,6 @@ en:
     unique_applicants_group_table_header: "Group"
     unique_applicants_unique_applicants_table_header: "Unique applicants"
     unique_applicants_unique_applicants_admitted_table_header: "Unique applicants admitted"
-    unique_applications_title: "Admission has %{unique_applications} unique applications."
     applications_per_hour: "Number of applicants per hour"
     short_for_persons: "ppl."
     applicant_dont_get_position: "Applicants who don't get a position, but would like to"
