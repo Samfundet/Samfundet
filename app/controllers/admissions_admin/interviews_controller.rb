@@ -73,6 +73,12 @@ class AdmissionsAdmin::InterviewsController < AdmissionsAdmin::BaseController
 private
 
   def show_warning_if_other_interviews_take_place_within_30_minutes
+    # If we just removed the time for the inteview, it will be nil and
+    # it won't make sense to compare its time to the time of other job applications.
+    # In fact, removing this early return will spew out horrible error messages
+    # in the interview table.
+    return if @interview.time.nil?
+
     @interview.job_application.applicant.job_applications.each do |application|
       next if (application == @interview.job_application) || application.interview.nil? || application.interview.time.nil?
 
