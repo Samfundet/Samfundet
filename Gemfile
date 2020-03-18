@@ -43,7 +43,7 @@ gem 'jquery-ui-rails', '~> 5.0.0'
 gem 'jquery-turbolinks', '~> 2.1.0'
 
 # used for sorting tables in the admission
-gem 'jquery-tablesorter', '~> 1.22.0'
+gem 'jquery-tablesorter', '~> 1.27.0'
 
 # CoffeeScript is a scripting language. It compiles to JavaScript.
 gem 'coffee-rails', '~> 4.2.0'
