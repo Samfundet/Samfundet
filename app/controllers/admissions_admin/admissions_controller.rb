@@ -48,7 +48,10 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
     @campuses = Campus.order(:name)
     @campus_count = Campus.number_of_applicants_given_admission(@admission)
 
-    count_unique_applicants
+    count_unique_applicants_in_groups
+    calculate_applicants_admitted_ratio
+    total_accepted_applicants
+
     sort_admissions
     admin_applet
 
@@ -161,41 +164,53 @@ private
     end
   end
 
+  def total_accepted_applicants
+    total_applicants = @admission.job_applications.map(&:applicant).uniq
+    @total_accepted_applicants = total_applicants.select do |a|
+      application_is_accepted?(a.log_entries&.last.log)
+    end
+  end
+
+  def calculate_applicants_admitted_ratio
+    @total_applicants = @admission.job_applications.map(&:applicant).uniq
+    @ratio = total_accepted_applicants.count.to_f / @total_applicants.count * 100
+  end
+
+  def calculate_group_applicants_admitted_ratio(accepted_total_hash)
+    accepted = accepted_total_hash[:accepted]
+    total = accepted_total_hash[:total]
+
+    if total.empty?
+      accepted_total_hash[:ratio] = 0
+    else
+      accepted_total_hash[:ratio] = accepted.count.to_f / total.count * 100
+    end
+  end
+
   # Count unique applicants and how many of those were actually admitted to Samfundet
   # This is done both for Samfundet as a whole and for each group
-  def count_unique_applicants
-    @unique_applicants_per_group = {}
-    @accepted_applicants_per_group = {}
-    @unique_applicants_total = Set[]
-    @unique_applications_total = 0
+  def count_unique_applicants_in_groups
+    @applicants = {}
 
     @admission.groups.map do |group|
-    @unique_applicants_per_group[group] = Set[]
-    @accepted_applicants_per_group[group] = Set[]
+      @applicants[group] = { total: Set[], accepted: Set[] }
 
-    group.jobs.where(admission_id: @admission.id).map do |job|
-      job.applicants.map do |app|
-        @unique_applicants_per_group[group].add app.id
-        @unique_applicants_total.add app.id
-        @unique_applications_total += 1
+      applicants = group.job_applications_in_admission(@admission).map(&:applicant).uniq
+      applicants.each do |app|
+        @applicants[group][:total].add app.id
 
-        # An applicant can possibly be considered accepted if he/she/they has/have been logged,
-        # and only any of the following acceptance strings below.
-        log_entries = LogEntry.where(admission_id: @admission.id, applicant_id: app.id)
+        log_entries = LogEntry.where(admission_id: @admission.id, applicant_id: app.id, group_id: group.id)
+
         unless log_entries.empty?
           last_log = log_entries.last
           if application_is_accepted?(last_log.log)
-            @accepted_applicants_per_group[group].add app.id
+            @applicants[group][:accepted].add app.id
           end
         end
       end
+
+      calculate_group_applicants_admitted_ratio(@applicants[group])
     end
-
-    @accepted_applicants_per_group[group] = @accepted_applicants_per_group[group].count
-  end
-
-    @unique_applicants_total = @unique_applicants_total.count
-    @accepted_applicants_total = @accepted_applicants_per_group.flatten.uniq.count
   end
 end
 
