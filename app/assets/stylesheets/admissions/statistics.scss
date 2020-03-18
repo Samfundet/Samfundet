@@ -1,7 +1,5 @@
 .admissions_admin\/admissions.statistics {
-  .admission_buttons {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  .nextButton {
+    float: right;
   }
 }

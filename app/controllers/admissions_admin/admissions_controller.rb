@@ -204,18 +204,14 @@ def application_is_accepted?(log)
 end
 
 def sort_admissions
-  @sorted_admissions = Admission.all
-  @sorted_admissions.sort_by { |shown_from |  }.each_with_index do |admission, index|
-    if @admission === @sorted_admissions[index]
-      @admission_int = index
+  current_index = 0
+  sorted_admissions = Admission.all
+  sorted_admissions.sort_by { |shown_from| }.each_with_index do |admission, index|
+    if @admission === sorted_admissions[index]
+      current_index = index
+      break
     end
   end
-
-  if @admission_int <= @sorted_admissions.length() - 1
-    @previous_admission = @sorted_admissions[(@admission_int + 1)]
-  end
-
-  if @admission_int > 0
-    @next_admission = @sorted_admissions[@admission_int - 1]
-  end
+  @previous_admission = sorted_admissions[current_index + 1] if current_index <= sorted_admissions.length - 1
+  @next_admission = sorted_admissions[current_index - 1] if current_index > 0
 end
