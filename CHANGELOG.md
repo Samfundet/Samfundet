@@ -6,6 +6,10 @@
 
 - Add macOS shell script for onboarding new members ([#602](https://github.com/Samfundet/Samfundet/pull/602))
 
+### Fixed
+
+- Fix UI issues with previous and next admission buttons in statistics view ([#618](https://github.com/Samfundet/Samfundet/pull/618))
+
 ## 2020-03-17
 
 ### Removed
