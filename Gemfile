@@ -227,5 +227,5 @@ group :test do
   gem 'webrat', '~> 0.7.0'
 
   # Simplecov is a code coverage tool
-  gem 'simplecov', '~> 0.12.0', require: false
+  gem 'simplecov', '~> 0.18.0', require: false
 end
