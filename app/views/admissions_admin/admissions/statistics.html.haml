@@ -7,6 +7,19 @@
     = link_to t('admissions_admin.next_admission'), statistics_admissions_admin_admission_path(@next_admission)
 
 .section
+  %table
+    %tbody
+      %tr
+        %td="Søkere tatt opp / Alle søkere"
+        %td="#{@total_accepted_applicants.count} / #{@total_applicants.count} (#{"%.2f" % @ratio} %)"
+      %tr
+        %td='Stillinger'
+        %td=@admission.jobs.count
+      %tr
+        %td='Søknader'
+        %td=@admission.job_applications.count
+
+.section
   %h3= t('admissions_admin.applications_by_group')
   = high_chart('1', @applications_per_group_chart)
   %h3= t('admissions_admin.applications_by_campus')
@@ -16,12 +29,6 @@
   %h3= t('admissions_admin.applications_by_hour')
   = high_chart('4', @applications_per_hour_chart)
 
-  %p
-    = t('admissions_admin.unique_applicants_title',
-      admission: @admission.title,
-      unique_applicants: @unique_applicants_total,
-      admitted_applicants: @accepted_applicants_total)
-
   %h3= t('admissions_admin.unique_applicants_groups')
   %h4
     %table{:border => 1}
@@ -30,14 +37,11 @@
           %td
             %strong= t('admissions_admin.unique_applicants_group_table_header')
           %td
-            %strong= t('admissions_admin.unique_applicants_unique_applicants_table_header')
-          %td
-            %strong= t('admissions_admin.unique_applicants_unique_applicants_admitted_table_header')
-        - @unique_applicants_per_group.each do |key, value|
+            %strong= "#{t('admissions_admin.unique_applicants_unique_applicants_admitted_table_header')} / #{t('admissions_admin.unique_applicants_unique_applicants_table_header')}"
+        - @applicants.each do |key, value|
           %tr
             %td= link_to key.name, admissions_admin_admission_group_path(@admission, key)
-            %td= value.count
-            %td= @accepted_applicants_per_group[key]
+            %td= "#{value[:accepted].count} / #{value[:total].count} (#{"%.2f" % value[:ratio]} %)"
 
 - unless @previous_admission.nil?
   = link_to t('admissions_admin.previous_admission'), statistics_admissions_admin_admission_path(@previous_admission)
