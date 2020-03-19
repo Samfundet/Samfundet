@@ -201,7 +201,7 @@ group :development, :test do
   # RSpec is a unit testing framework.
   # rspec-rails integrates RSpec (v2) and Rails (v3).
   gem 'rails-controller-testing', '~> 1.0.0'
-  gem 'rspec-rails', '~> 3.5.0'
+  gem 'rspec-rails', '~> 3.9.0'
 end
 
 group :test do
@@ -217,7 +217,7 @@ group :test do
   gem 'launchy', '~> 2.4.0'
 
   # The RSpec testing framework.
-  gem 'rspec', '~> 3.5.0'
+  gem 'rspec', '~> 3.9.0'
 
   # Factories for testing
   gem 'factory_bot_rails', '~> 5.1.0'
