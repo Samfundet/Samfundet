@@ -210,7 +210,7 @@ group :test do
 
   # database_cleaner ensures a clean DB state during tests;
   # we use it with Cucumber.
-  gem 'database_cleaner', '~> 1.5.0'
+  gem 'database_cleaner', '~> 1.8.0'
 
   # launchy is an application launcher; it's required for the
   # 'Then show me the page' action in Cucumber
