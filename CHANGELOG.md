@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 2020-03-20
+
+### Fixed
+
+- Make all columns in interview table sortable ([#639](https://github.com/Samfundet/Samfundet/pull/639))
+- Don't compare interview times if it has been removed ([#638](https://github.com/Samfundet/Samfundet/pull/638))
+
+## 2020-03-19
+
+### Fixed
+
+- Upgrade Rails to 5.2.4.2 to fix security vulnerability ([#640](https://github.com/Samfundet/Samfundet/pull/640))
+- Fix admission statistics ([#623](https://github.com/Samfundet/Samfundet/pull/623))
+
 ## 2020-03-18
 
 ### Added
