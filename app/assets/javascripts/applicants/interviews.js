@@ -15,9 +15,36 @@ $(function () {
       type: 'text'
   });
 
+  $.tablesorter.addParser({
+    id: 'input-select',
+    is: function(s) {
+      return false;
+    },
+    format: function(s, table, cell) {
+      const input = $(cell).find('option:selected')[0];
+
+      // If the interview status selector box has not been set, we now display
+      // an empty string. Turns out this means the column won't be sorted.
+      // Therefore, return the string representing the "Not set" state so the
+      // column actually gets sorted properly. To do this, we just read the 'lang'
+      // attribute of the page and return the appropriate string.
+      // This also means if some or all are set to 'Not set', then the table won't
+      // be sorted as all are the same.
+      const theLanguage = $('html').attr('lang');
+
+      if (input.value === "") {
+        return theLanguage === "no" ? "Ikke satt" : "Not set";
+      }
+
+      return input.value;
+    },
+    type: 'select'
+  });
+
   headers[$('.interview-time').index()] = { sorter: 'input' };
   headers[$('.location').index()] = { sorter: 'input-text' };
-  headers[$('.application-status').index()] = { sorter: 'select' };
+  headers[$('.application-status').index()] = { sorter: 'input-select' };
+  headers[$('.open-for-other-positions').index()] = { sorter: 'input-select' };
 
   $("table.applications.sorted").tablesorter({
       headers: headers,

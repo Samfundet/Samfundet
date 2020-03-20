@@ -26,7 +26,7 @@
       %span{ style: "color: #CEC000"}= t('interviews.yellow_explanation')
       %br
       %span{ style: "color: grey"}= t('interviews.grey_explanation')
-      
+
     %p
       %input#hide_withdrawn{type:"checkbox", checked: true}
         =t('interviews.hide_withdrawn_applications')
@@ -56,7 +56,7 @@
           = t('interviews.comment')
         %th
           = t('interviews.latest_log_entry')
-        %td
+        %td.open-for-other-positions
           = t('interviews.interested_other_positions')
 
       %tbody{class: "job_application_table"}
