@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 2020-03-24
+
+### Changed
+
+- Properly encapsulate and translate log entries ([#642](https://github.com/Samfundet/Samfundet/pull/642))
+
+### Fixed
+
+- Correct typo in `/admission` text ([#560](https://github.com/Samfundet/Samfundet/issues/560))
+
 ## 2020-03-20
 
 ### Fixed
