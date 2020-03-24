@@ -10,27 +10,7 @@ class AdmissionsAdmin::JobApplicationsController < AdmissionsAdmin::BaseControll
       admission_id: @job_application.job.admission.id,
       group_id: @job_application.job.group.id
     )
-    if I18n.locale == :no
-      @possible_log_entries = [
-        'Forsøkt ringt, tok ikke telefonen',
-        'Ringt og tilbudt verv, venter på svar',
-        'Ringt, venter fremdeles på svar',
-        'Ringt og tilbudt verv, takket ja',
-        'Ringt og tilbudt verv, takket nei',
-        'Ringt og meddelt ingen tilbud om verv',
-        'Sendt e-post og meddelt ingen tilbud om verv'
-      ]
-    elsif I18n.locale == :en
-      @possible_log_entries = [
-        'Called, no reply',
-        'Called and offered position, awaiting reply',
-        'Called, still waiting for reply',
-        'Called and offered position, the applicant accepted',
-        'Called and offered position, the applicant declined',
-        'Called and notified the applicant of our rejection',
-        'Sent email and notified the applicant of our rejection'
-      ]
-    end
+    @possible_log_entries = LogEntry.possible_log_entries
   end
 
   def hidden_create
