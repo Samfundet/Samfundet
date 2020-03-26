@@ -1,0 +1,67 @@
+#lyche_pusser_opp_image {
+  height: 100%;
+  width: 100%;
+  background: asset-url("lyche/pusser_opp.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  top: 0;
+
+  #lyche_pusser_opp_text {
+    font-family: "Arial Black", arial, sans-serif;
+    width: 100%;
+    position: absolute;
+    bottom: 80px;
+    color: #edac21;
+    font-size: 10vw;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+  }
+}
+
+#lyche_back_button {
+  cursor: pointer;
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: black;
+  border-radius: 10px;
+  padding: 10px;
+  transition: .2s;
+
+  a {
+    color: #edac21;
+    transition: .2s;
+  }
+
+  #lyche_back_arrow {
+    border-style: solid;
+    border-width: 0.25em 0.25em 0 0;
+    content: '';
+    display: inline-block;
+    height: 0.45em;
+    left: 0.15em;
+    position: relative;
+    top: 0.15em;
+    vertical-align: top;
+    width: 0.45em;
+    transform: rotate(-135deg) scale(1.5);
+    margin-top: 5px;
+    margin-right: 10px;
+    margin-left: 5px;
+  }
+
+}
+
+#lyche_back_button:hover {
+  background-color: #222;
+
+  a {
+    color: white;
+  }
+}
