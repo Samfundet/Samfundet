@@ -116,6 +116,18 @@ class Applicant < ApplicationRecord
     group.job_applications_in_admission(admission).select { |ja| ja.applicant == self }
   end
 
+  def log_entries_in_admission(admission, group: nil)
+    unless group.nil?
+      log_entries.select do |l|
+        l.admission_id == admission.id and l.group_id == group.id
+      end
+    end
+
+    log_entries.select do |l|
+      l.admission.id == admission.id
+    end
+  end
+
 private
 
   def lowercase_email

@@ -58,14 +58,30 @@ class ApplicantsController < ApplicationController
       end
     end
 
-    if @applicant.update_attributes(applicant_params)
-      if @current_user.class == Applicant
-        flash[:success] = t('applicants.update_success')
-        redirect_to job_applications_path
-      end
+    # Special handling for when logging the applicant in the interviews table.
+    if params[:applicant].keys.include?('log_entries')
+      log_entry = params[:applicant][:log_entries]
+      group = Group.find(params[:group_id])
+      admission = Admission.find(params[:admission_id])
+
+      @applicant.log_entries << LogEntry.create(
+        log: log_entry,
+        admission: admission,
+        applicant: @applicant,
+        group: group,
+        member: @current_user
+      )
+      @applicant.save!
     else
-      flash[:error] = t('applicants.update_error')
-      render :edit
+      if @applicant.update_attributes(applicant_params)
+        if @current_user.class == Applicant
+          flash[:success] = t('applicants.update_success')
+          redirect_to job_applications_path
+        end
+      else
+        flash[:error] = t('applicants.update_error')
+        render :edit
+      end
     end
   end
 
@@ -177,7 +193,7 @@ private
   end
 
   def applicant_params
-    params.require(:applicant).permit(:firstname, :surname, :phone, :campus_id, :email, :password, :password_confirmation, :interested_other_positions, :gdpr_checkbox)
+    params.require(:applicant).permit(:firstname, :surname, :phone, :campus_id, :email, :password, :password_confirmation, :interested_other_positions, :gdpr_checkbox, :log_entries)
   end
 
   include PendingApplications

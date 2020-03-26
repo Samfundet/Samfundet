@@ -100,9 +100,24 @@
                   = form.actions do
                     != form.action :submit, button_html: { class: "interview_save", value: 'save' }
               %td
-                - if job_application.last_log_entry
+                = semantic_form_for(job_application.applicant, namespace: "interview_#{interview.id}", html: {class: "test custom-form interview"}) do |form|
+                  = hidden_field_tag 'admission_id', @admission.id
+                  = hidden_field_tag 'group_id', @group.id
+                  %strong='Create new log entry'
+                  = form.select(:log_entries, 'Possible log entries': LogEntry.possible_log_entries)
+                  %span{ class: "status" }
+                  = form.actions do
+                    != form.action :submit, button_html: { class: "interview_Save", value: 'save'}
+                %br
+                - unless job_application.applicant.log_entries.where(admission_id: @admission.id).empty?
+                  %strong='Last log entries'
+                  %br
                   = link_to admissions_admin_admission_group_job_job_application_path(@admission, @group, job_application.job, job_application, anchor: 'new_log_entry') do
-                    = job_application.last_log_entry.log
+                    - job_application.applicant.log_entries_in_admission(@admission).last(3).reverse.each do |l|
+                      = interview_log_entries_list_text(@admission, job_application.applicant, l)
+                      %br
+                - else
+                  %em= "Applicant has not been logged yet"
               %td
                 = semantic_form_for(job_application.applicant, namespace: "interview_#{interview.id}", html: {class: "test custom-form interview"}) do |form|
                   = form.inputs do
