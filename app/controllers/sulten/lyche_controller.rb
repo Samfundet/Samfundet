@@ -1,10 +1,8 @@
-# frozen_string_literal: true
-
-# Temporary controller for lyche 'pusser opp' page
+# Temporary controller for lyche 'under_construction' page
 class Sulten::LycheController < Sulten::BaseController
   skip_authorization_check
   layout 'lyche'
 
-  def pusser_opp
+  def under_construction
   end
 end
