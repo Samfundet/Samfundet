@@ -201,7 +201,7 @@ group :development, :test do
   # RSpec is a unit testing framework.
   # rspec-rails integrates RSpec (v2) and Rails (v3).
   gem 'rails-controller-testing', '~> 1.0.0'
-  gem 'rspec-rails', '~> 3.5.0'
+  gem 'rspec-rails', '~> 3.9.0'
 end
 
 group :test do
@@ -210,14 +210,14 @@ group :test do
 
   # database_cleaner ensures a clean DB state during tests;
   # we use it with Cucumber.
-  gem 'database_cleaner', '~> 1.5.0'
+  gem 'database_cleaner', '~> 1.8.0'
 
   # launchy is an application launcher; it's required for the
   # 'Then show me the page' action in Cucumber
   gem 'launchy', '~> 2.4.0'
 
   # The RSpec testing framework.
-  gem 'rspec', '~> 3.5.0'
+  gem 'rspec', '~> 3.9.0'
 
   # Factories for testing
   gem 'factory_bot_rails', '~> 5.1.0'
@@ -227,5 +227,5 @@ group :test do
   gem 'webrat', '~> 0.7.0'
 
   # Simplecov is a code coverage tool
-  gem 'simplecov', '~> 0.12.0', require: false
+  gem 'simplecov', '~> 0.18.0', require: false
 end
