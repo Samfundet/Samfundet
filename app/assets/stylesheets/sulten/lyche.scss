@@ -1,7 +1,7 @@
 #lyche_under_construction_image {
   height: 100%;
   width: 100%;
-  background: asset-url("lyche/pusser_opp.png");
+  background: asset-url("lyche/under_construction.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -9,12 +9,12 @@
   top: 0;
 
   #lyche_under_construction_text {
-    font-family: "Arial Black", arial, sans-serif;
+    font-family: "Futura", arial, sans-serif;
     width: 100%;
     position: absolute;
     bottom: 5%;
-    color: #edac21;
-    font-size: 4em;
+    color: #fbb040;
+    font-size: 6em;
     font-weight: bold;
     text-transform: uppercase;
     text-align: center;
@@ -35,7 +35,8 @@
   transition: .2s;
 
   a {
-    color: #edac21;
+    font-family: "Futura", arial, sans-serif;
+    color: #fbb040;
     transition: .2s;
   }
 
@@ -63,5 +64,18 @@
 
   a {
     color: white;
+  }
+}
+
+// Mobile compatibility
+@media only screen and (max-width: 1000px) {
+  #lyche_under_construction_image {
+    #lyche_under_construction_text {
+      font-size: 2.5em;
+      bottom: 0.5em;
+    }
+  }
+  #lyche_back_button {
+    font-size: 1em;
   }
 }
