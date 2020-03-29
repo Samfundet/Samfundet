@@ -80,6 +80,13 @@
       }
     }
 
+    .opening-hours-link {
+      padding: 10px;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+
     .date-today {
       h2 {
         margin: 0.5em 0 0 0;
@@ -103,7 +110,7 @@
       }
 
       .time { text-align: right; }
-      .area { 
+      .area {
         @include emph-link($samfundet-red);
         font-weight: $font-weight-medium;
       }
