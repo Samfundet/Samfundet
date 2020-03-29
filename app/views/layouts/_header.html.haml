@@ -30,6 +30,6 @@
 
     %nav.right-list
       %ul
-        %li= link_to t('layouts.application.menu.lyche'), sulten_path
+        %li= link_to t('layouts.application.menu.lyche'), page_url(Page.find_by_name("lyche"))
         %li= link_to t('layouts.application.menu.membership'), "https://medlem.samfundet.no/"
         %li= link_to t('layouts.application.menu.admissions'), admissions_path
