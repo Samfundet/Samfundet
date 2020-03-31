@@ -61,9 +61,7 @@ class ApplicationController < ActionController::Base
     else
       flash[:error] = t('common.log_in_to_view_page')
       if request.get? # Regular GET
-        redirect_to login_path(redirect_to: request.path)
-      elsif request.referer.nil?
-        redirect_to root_path
+        redirect_back(fallback_location: root_path)
       else
         redirect_to login_path(redirect_to: request_referer_if_on_current_domain)
       end
