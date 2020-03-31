@@ -93,7 +93,7 @@ class Event < ApplicationRecord
     billig_event.try(:event_location) || area.name
   end
 
-  include PgSearch
+  include PgSearch::Model
   pg_search_scope :search,
                   against: %i[non_billig_title_no title_en
                               short_description_no short_description_en

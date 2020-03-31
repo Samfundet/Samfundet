@@ -29,7 +29,7 @@ class Image < ApplicationRecord
 
   default_scope { order(image_file_updated_at: :desc) }
 
-  include PgSearch
+  include PgSearch::Model
   pg_search_scope :search,
                   against: %i[title
                               image_file_file_name
