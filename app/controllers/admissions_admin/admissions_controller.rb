@@ -167,7 +167,9 @@ private
   def total_accepted_applicants
     total_applicants = @admission.job_applications.map(&:applicant).uniq
     @total_accepted_applicants = total_applicants.select do |a|
-      application_is_accepted?(a.log_entries&.last.log)
+      last_log_entry = LogEntry.where(admission: @admission, applicant: a).last
+      next if last_log_entry.nil?
+      application_is_accepted?(last_log_entry)
     end
   end
 
@@ -203,7 +205,7 @@ private
 
         unless log_entries.empty?
           last_log = log_entries.last
-          if application_is_accepted?(last_log.log)
+          if application_is_accepted?(last_log)
             @applicants[group][:accepted].add app.id
           end
         end
@@ -215,13 +217,7 @@ private
 end
 
 def application_is_accepted?(log)
-  acceptance_strings = [
-
-    'Ringt og tilbudt verv, takket ja',
-    'Called and offered position, the applicant accepted'
-  ]
-
-  acceptance_strings.include?(log)
+  log.is_acceptance_log_entry?
 end
 
 def sort_admissions
