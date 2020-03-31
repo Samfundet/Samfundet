@@ -28,7 +28,7 @@ class Event < ApplicationRecord
   localized_fields :title, :short_description, :long_description
 
   validates :title_en, :non_billig_title_no, :short_description_en, :short_description_no, :non_billig_start_time, :age_limit,
-            :event_type, :status, :area, :organizer, :price_type, :banner_alignment, :image_id, presence: true
+            :event_type, :status, :area, :organizer, :price_type, :banner_alignment, :image_id, :publication_time, presence: true
   validates :age_limit, inclusion: { in: AGE_LIMIT, message: 'Invalid age limit' }
   validates :event_type, inclusion: { in: EVENT_TYPE, message: 'Invalid type' }
   validates :status, inclusion: { in: STATUS, message: 'Invalid status' }
