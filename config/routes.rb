@@ -177,6 +177,8 @@ Rails.application.routes.draw do
     namespace :sulten, path: "lyche" do
       get "/" => "lyche#index"
       get "/menu" => "lyche#menu"
+      get "/about" => "lyche#about"
+      get "/contact" => "lyche#contact"
 
       get "/reservasjon" => "reservations#new"
       get "/reservasjon_admin" => "reservations#admin_new"

@@ -22,7 +22,8 @@
     %meta{ name:"twitter:creator", content:"@Samfundet"}
     = yield :twitter
 
-  %body{ class: ('dev-filter' unless Rails.env.production?) }
+  %body{ class: ('lyche') }
 
     .lyche-container
       = yield :container
+      = render "sulten/lyche/footer"

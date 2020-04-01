@@ -1,7 +1,8 @@
 
 .samfundet-logo
+= javascript_include_tag "lyche/header", defer: true
 
-.header-container
+#lyche-header-container
   .header-menu
 
     .menu-button
@@ -13,6 +14,8 @@
     = link_to sulten_path do
       .lyche-logo
     .menu-button
-      Om oss
+      = link_to sulten_about_path do
+        Om oss
     .menu-button
-      Kontakt
+      = link_to sulten_contact_path do
+        Kontakt

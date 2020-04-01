@@ -10,4 +10,12 @@ class Sulten::LycheController < Sulten::BaseController
 
   end
 
+  def about
+
+  end
+
+  def contact
+
+  end
+
 end
