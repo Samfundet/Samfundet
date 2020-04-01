@@ -107,7 +107,7 @@ gem 'will_paginate', '~> 3.1.0'
 gem 'paperclip', '~> 5.2.0'
 
 # automatic compression of images uploaded via paperclip
-gem 'paperclip-compression', '~> 1.0.0'
+gem 'paperclip-compression', '~> 1.1.0'
 
 # A simple date validator for Rails 3.
 gem 'date_validator', '~> 0.9.0'

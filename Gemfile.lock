@@ -252,7 +252,7 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (~> 0.3.0)
-    paperclip-compression (1.0.2)
+    paperclip-compression (1.1.1)
       os (~> 1.0.0)
       paperclip (>= 5.2.1)
     parallel (1.19.1)
@@ -456,7 +456,7 @@ DEPENDENCIES
   mina (~> 0.3.0)
   neat (~> 1.8.0)
   paperclip (~> 5.2.0)
-  paperclip-compression (~> 1.0.0)
+  paperclip-compression (~> 1.1.0)
   pg (~> 1.1.0)
   pg_search (~> 2.3.0)
   rack-livereload (~> 0.3.17)
