@@ -8,6 +8,7 @@ class SiteController < ApplicationController
     @todays_events = Event.today
     @upcoming_events = Event.front_page_events(11)
     @banner_event = @upcoming_events.shift
+    @opening_hours_url = page_url(Page.find_by_name(t('site.index.opening-hours-page-title')))
   end
 
 private
