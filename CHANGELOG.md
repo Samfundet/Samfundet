@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 2020-04-01
+
+### Fixed
+
+- Fix tests ([#462](https://github.com/Samfundet/Samfundet/issues/462))
+- Upgrade paperclip-compression ([#651](https://github.com/Samfundet/Samfundet/pull/651))
+- Validate `publication_time` when creating an `Event` ([#655](https://github.com/Samfundet/Samfundet/issues/655))
+
+## 2020-03-26
+
+### Fixed
+
+- Fix testing infrastructure ([#641](https://github.com/Samfundet/Samfundet/pull/641))
+
 ## 2020-03-24
 
 ### Changed
