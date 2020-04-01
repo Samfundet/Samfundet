@@ -24,15 +24,15 @@ after :generate_roles do
 
   # Seed member
   seed_member = Member.create(
-      fornavn: "Seed",
-      etternavn: "Boi 64",
-      mail: "xXseedboy64Xx@yahoo.no",
-      telefon: "64646464",
-      passord: "seedboy"
+    fornavn: "Seed",
+    etternavn: "Boi 64",
+    mail: "xXseedboy64Xx@yahoo.no",
+    telefon: "64646464",
+    passord: "seedboy"
   )
 
   # Create a number of applicants
-  accepted_log = LogEntry.possible_log_entries[3]
+  accepted_log = LogEntry.acceptance_log_entry
 
   puts "Creating #{number_of_applicants} applicants, and makes them apply for #{number_of_job_applications_pr_applicant} jobs, and accepting ~#{accept_percent_chance}%"
   distinct_emails(number_of_applicants).each do |email|
@@ -50,38 +50,41 @@ after :generate_roles do
     # Apply jobs
     # puts "New applicant: #{applicant.full_name}"
 
-    jobs = Job.all.sample(number_of_job_applications_pr_applicant)
-    applications = []
-    jobs.each_with_index do |job, priority|
-      job_application = JobApplication.new(
+    Admission.all.each do |admission|
+      jobs = admission.jobs.all.sample(number_of_job_applications_pr_applicant)
+      applications = []
+      jobs.each_with_index do |job, priority|
+        job_application = JobApplication.new(
           motivation: Faker::Lorem.paragraphs(5).join("\n\n"),
           applicant: applicant,
           priority: priority + 1,
           job: job
-      )
-      job_application.created_at = Faker::Time.between(1.week.ago, 2.weeks.from_now)
-      job_application.save
-      Interview.create!(
-        time: Faker::Time.between(1.weeks.from_now, 2.weeks.from_now),
-        acceptance_status: Interview::ACCEPTANCE_STATUSES_NO.keys.sample,
-        job_application_id: job_application.id,
-        location: Faker::Address.city
-      )
-      applications << job_application
-    end
+        )
+        job_application.created_at = Faker::Time.between(1.week.ago, 2.weeks.from_now)
+        job_application.save
+        Interview.create!(
+          time: Faker::Time.between(1.weeks.from_now, 2.weeks.from_now),
+          acceptance_status: Interview::ACCEPTANCE_STATUSES_NO.keys.sample,
+          job_application_id: job_application.id,
+          location: Faker::Address.city
+        )
+        applications << job_application
 
-    if rand(100) < accept_percent_chance
-      job_number = rand(jobs.count)
-      @log_entry = LogEntry.create!(
-          log: accepted_log,
-          admission: Admission.last,
-          applicant: applicant,
-          group: jobs[job_number].group,
-          member: seed_member
-      )
+        if rand(100) < accept_percent_chance
+          job_number = rand(jobs.count)
+          @log_entry = LogEntry.create!(
+            log: accepted_log,
+            admission: admission,
+            applicant: applicant,
+            group: job.group,
+            member: seed_member
+          )
+        end
+      end
     end
-
   end
+
+
   puts "Accepted #{LogEntry.where(admission: Admission.last).count} applicants total for last admission"
   puts "Done applying jobs"
 

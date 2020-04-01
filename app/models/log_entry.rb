@@ -21,6 +21,14 @@ class LogEntry < ApplicationRecord
       I18n.t('activerecord.models.possible_log_entries.emailed_no_offer')
     ]
   end
+
+  def self.acceptance_log_entry
+    possible_log_entries[3]
+  end
+
+  def is_acceptance_log_entry?
+    log == LogEntry.possible_log_entries[3]
+  end
 end
 
 # == Schema Information
