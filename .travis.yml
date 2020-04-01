@@ -18,6 +18,7 @@ install:
 
 script:
     - make test
+    - rspec .
 
 notifications:
       email: false
