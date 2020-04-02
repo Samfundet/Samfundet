@@ -85,17 +85,17 @@ class Group < ApplicationRecord
 end
 
 # == Schema Information
-# Schema version: 20130422173230
 #
 # Table name: groups
 #
-#  id                :integer          not null, primary key
-#  name              :string(255)
-#  abbreviation      :string(255)
-#  website           :string(255)
+#  id                :bigint           not null, primary key
+#  name              :string
+#  abbreviation      :string
+#  website           :string
 #  group_type_id     :integer
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #  short_description :text
 #  long_description  :text
+#  page_id           :integer
 #

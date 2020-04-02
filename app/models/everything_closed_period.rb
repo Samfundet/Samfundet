@@ -28,3 +28,16 @@ class EverythingClosedPeriod < ApplicationRecord
     end
   end
 end
+
+# == Schema Information
+#
+# Table name: everything_closed_periods
+#
+#  id               :bigint           not null, primary key
+#  message_no       :text
+#  closed_from      :datetime
+#  closed_to        :datetime
+#  message_en       :text
+#  event_message_no :text
+#  event_message_en :text
+#

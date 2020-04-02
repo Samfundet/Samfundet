@@ -16,3 +16,16 @@ class Sulten::Table < ApplicationRecord
     number
   end
 end
+
+# == Schema Information
+#
+# Table name: sulten_tables
+#
+#  id         :bigint           not null, primary key
+#  number     :integer
+#  capacity   :integer
+#  comment    :text
+#  available  :boolean
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#

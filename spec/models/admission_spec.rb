@@ -1,5 +1,21 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: admissions
+#
+#  id                             :bigint           not null, primary key
+#  title                          :string
+#  shown_application_deadline     :datetime
+#  user_priority_deadline         :datetime
+#  created_at                     :datetime         not null
+#  updated_at                     :datetime         not null
+#  shown_from                     :datetime
+#  admin_priority_deadline        :datetime
+#  actual_application_deadline    :datetime
+#  promo_video                    :string           default("https://www.youtube.com/embed/T8MjwROd0dc")
+#  groups_with_separate_admission :text
+#
 require 'rails_helper'
 
 describe Admission, '.open_admissions?' do

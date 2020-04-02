@@ -32,12 +32,11 @@ class LogEntry < ApplicationRecord
 end
 
 # == Schema Information
-# Schema version: 20130422173230
 #
 # Table name: log_entries
 #
-#  id           :integer          not null, primary key
-#  log          :string(255)
+#  id           :bigint           not null, primary key
+#  log          :string
 #  admission_id :integer
 #  group_id     :integer
 #  applicant_id :integer

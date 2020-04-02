@@ -1,5 +1,23 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: blogs
+#
+#  id                :bigint           not null, primary key
+#  title_no          :string
+#  content_no        :text
+#  author_id         :integer
+#  published         :boolean
+#  publish_at        :datetime
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  image_id          :integer
+#  lead_paragraph_no :text
+#  title_en          :string
+#  lead_paragraph_en :text
+#  content_en        :text
+#
 require 'rspec'
 require 'rails_helper'
 

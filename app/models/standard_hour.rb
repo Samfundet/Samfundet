@@ -1,18 +1,5 @@
 # frozen_string_literal: true
 
-# == Schema Information
-#
-# Table name: standard_hours
-#
-#  id         :integer          not null, primary key
-#  open_time  :time
-#  close_time :time
-#  area_id    :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  day        :string(255)
-#
-
 class StandardHour < ApplicationRecord
   belongs_to :area
 
@@ -32,3 +19,17 @@ class StandardHour < ApplicationRecord
     where(day: (Time.current - 4.hours).strftime('%A').downcase)
   }
 end
+
+# == Schema Information
+#
+# Table name: standard_hours
+#
+#  id         :bigint           not null, primary key
+#  open       :boolean
+#  open_time  :time
+#  close_time :time
+#  area_id    :integer
+#  day        :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#

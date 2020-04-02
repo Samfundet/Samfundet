@@ -17,12 +17,11 @@ class GroupType < ApplicationRecord
 end
 
 # == Schema Information
-# Schema version: 20130422173230
 #
 # Table name: group_types
 #
-#  id          :integer          not null, primary key
-#  description :string(255)      not null
+#  id          :bigint           not null, primary key
+#  description :string           not null
 #  priority    :integer          default(0), not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null

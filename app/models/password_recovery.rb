@@ -6,12 +6,11 @@ class PasswordRecovery < ApplicationRecord
 end
 
 # == Schema Information
-# Schema version: 20130422173230
 #
 # Table name: password_recoveries
 #
-#  id            :integer          not null, primary key
-#  recovery_hash :string(255)
+#  id            :bigint           not null, primary key
+#  recovery_hash :string
 #  applicant_id  :integer
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null

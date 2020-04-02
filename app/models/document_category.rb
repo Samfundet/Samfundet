@@ -10,3 +10,12 @@ class DocumentCategory < ApplicationRecord
     title
   end
 end
+
+# == Schema Information
+#
+# Table name: document_categories
+#
+#  id       :bigint           not null, primary key
+#  title_en :string
+#  title_no :string
+#

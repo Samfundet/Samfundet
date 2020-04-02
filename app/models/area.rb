@@ -1,16 +1,5 @@
 # frozen_string_literal: true
 
-# == Schema Information
-#
-# Table name: areas
-#
-#  id          :integer          not null, primary key
-#  name        :string(255)
-#  description :text
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#
-
 class Area < ApplicationRecord
   include Rails.application.routes.url_helpers
   belongs_to :page
@@ -39,3 +28,15 @@ class Area < ApplicationRecord
     edit_area_path(self)
   end
 end
+
+# == Schema Information
+#
+# Table name: areas
+#
+#  id          :bigint           not null, primary key
+#  name        :string
+#  description :text
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  page_id     :integer
+#

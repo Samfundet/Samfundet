@@ -74,17 +74,16 @@ private
 end
 
 # == Schema Information
-# Schema version: 20130422173230
 #
 # Table name: jobs
 #
-#  id                         :integer          not null, primary key
+#  id                         :bigint           not null, primary key
 #  group_id                   :integer
 #  admission_id               :integer
-#  title_no                   :string(255)
-#  title_en                   :string(255)
-#  teaser_no                  :string(255)
-#  teaser_en                  :string(255)
+#  title_no                   :string
+#  title_en                   :string
+#  teaser_no                  :string
+#  teaser_en                  :string
 #  description_en             :text
 #  description_no             :text
 #  is_officer                 :boolean

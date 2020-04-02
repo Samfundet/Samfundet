@@ -154,3 +154,22 @@ class Sulten::Reservation < ApplicationRecord
     (from.hour >= 16 && to.hour < 22)
   end
 end
+
+# == Schema Information
+#
+# Table name: sulten_reservations
+#
+#  id                  :bigint           not null, primary key
+#  reservation_from    :datetime
+#  people              :integer
+#  table_id            :integer
+#  reservation_type_id :integer
+#  name                :string
+#  telephone           :string
+#  email               :string
+#  allergies           :string
+#  internal_comment    :string
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  reservation_to      :datetime
+#

@@ -124,16 +124,18 @@ private
 end
 
 # == Schema Information
-# Schema version: 20130422173230
 #
 # Table name: applicants
 #
-#  id              :integer          not null, primary key
-#  firstname       :string(255)
-#  surname         :string(255)
-#  email           :string(255)
-#  hashed_password :string(255)
-#  phone           :string(255)
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
+#  id                         :bigint           not null, primary key
+#  firstname                  :string
+#  surname                    :string
+#  email                      :string
+#  hashed_password            :string
+#  phone                      :string
+#  created_at                 :datetime         not null
+#  updated_at                 :datetime         not null
+#  interested_other_positions :boolean
+#  disabled                   :boolean          default(FALSE)
+#  campus_id                  :integer
 #

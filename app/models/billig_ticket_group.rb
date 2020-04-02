@@ -33,3 +33,18 @@ class BilligTicketGroup < ApplicationRecord
     end
   end
 end
+
+# == Schema Information
+#
+# Table name: billig_ticket_groups
+#
+#  ticket_group            :bigint           not null, primary key
+#  event                   :integer
+#  is_theater_ticket_group :boolean
+#  num                     :integer
+#  num_sold                :integer
+#  ticket_group_name       :string
+#  created_at              :datetime         not null
+#  updated_at              :datetime         not null
+#  ticket_limit            :integer
+#

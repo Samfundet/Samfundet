@@ -21,3 +21,27 @@ class BilligEvent < ApplicationRecord
     billig_ticket_groups.any? { |t| t.ticket_limit? && t.tickets_left? }
   end
 end
+
+# == Schema Information
+#
+# Table name: billig_events
+#
+#  event                 :bigint           not null, primary key
+#  a4_ticket_layout      :integer
+#  dave_id               :integer
+#  dave_time_id          :integer
+#  event_location        :string
+#  event_name            :string
+#  event_note            :string
+#  event_time            :datetime
+#  event_type            :string
+#  external_id           :integer
+#  organisation          :integer
+#  receipt_ticket_layout :integer
+#  sale_from             :datetime
+#  sale_to               :datetime
+#  tp_ticket_layout      :integer
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
+#  hidden                :boolean
+#
