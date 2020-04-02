@@ -18,9 +18,17 @@ copy-config-files:
 copy-travis-files:
 	cp config/database.travis.yml config/database.yml
 
+.PHONY: lint
+lint:
+	bundle exec rubocop -D
+
+.PHONY: format
+format:
+	bundle exec rubocop -x
+
 .PHONY: test
 test:
-	bundle exec rubocop -D
+	rspec .
 
 .PHONY: deploy-production
 deploy-production:
