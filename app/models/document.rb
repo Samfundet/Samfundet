@@ -28,3 +28,20 @@ class Document < ApplicationRecord
     end
   end
 end
+
+# == Schema Information
+#
+# Table name: documents
+#
+#  id                :bigint           not null, primary key
+#  title             :string
+#  publication_date  :date
+#  category_id       :integer
+#  uploader_id       :integer
+#  file_file_name    :string
+#  file_content_type :string
+#  file_file_size    :integer
+#  file_updated_at   :datetime
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#

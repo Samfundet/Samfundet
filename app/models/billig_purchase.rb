@@ -12,3 +12,12 @@ class BilligPurchase < ApplicationRecord
 
   has_one :billig_ticket
 end
+
+# == Schema Information
+#
+# Table name: billig_purchases
+#
+#  purchase        :bigint           not null, primary key
+#  owner_member_id :integer
+#  owner_email     :string
+#

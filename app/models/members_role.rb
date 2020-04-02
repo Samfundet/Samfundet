@@ -10,11 +10,12 @@ class MembersRole < ApplicationRecord
 end
 
 # == Schema Information
-# Schema version: 20130422173230
 #
 # Table name: members_roles
 #
-#  id        :integer          not null, primary key
-#  member_id :integer
-#  role_id   :integer
+#  id         :bigint           not null, primary key
+#  member_id  :integer
+#  role_id    :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #

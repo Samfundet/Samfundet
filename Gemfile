@@ -147,7 +147,7 @@ group :development do
   # annotate adds schema information from the database, in the form of
   # Ruby comments, to model files so that we can see which columns
   # are actually in the database.
-  gem 'annotate', '~> 3.0.3'
+  gem 'annotate', '~> 3.1.0'
 
   # Easier preview of mail in development
   gem 'letter_opener', '~> 1.7.0'

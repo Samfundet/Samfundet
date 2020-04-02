@@ -22,3 +22,14 @@ class Sulten::ClosedPeriod < ApplicationRecord
     errors.add(:closed_to, I18n.t('sulten.closed_periods.times_in_valid_order')) unless closed_from <= closed_to
   end
 end
+
+# == Schema Information
+#
+# Table name: sulten_closed_periods
+#
+#  id          :bigint           not null, primary key
+#  message_no  :string
+#  message_en  :string
+#  closed_from :datetime
+#  closed_to   :datetime
+#

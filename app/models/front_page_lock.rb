@@ -60,13 +60,15 @@ class FrontPageLock < ApplicationRecord
     end
   end
 end
+
 # == Schema Information
 #
 # Table name: front_page_locks
 #
-#  id         :integer          not null, primary key
-#  lockable_id:integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  position   :integer
+#  id            :bigint           not null, primary key
+#  lockable_id   :integer
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  position      :integer
 #  lockable_type :string
+#

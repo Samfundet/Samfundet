@@ -1,5 +1,18 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: job_applications
+#
+#  id           :bigint           not null, primary key
+#  motivation   :text
+#  priority     :integer
+#  applicant_id :integer
+#  job_id       :integer
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  withdrawn    :boolean          default(FALSE)
+#
 require 'rails_helper'
 
 describe JobApplication do

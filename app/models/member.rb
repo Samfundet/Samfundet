@@ -19,3 +19,15 @@ class Member < ActiveRecord::Base
     !membership_card.nil? && membership_card.active?
   end
 end
+
+# == Schema Information
+#
+# Table name: members
+#
+#  medlem_id :bigint           not null, primary key
+#  fornavn   :string
+#  etternavn :string
+#  mail      :string
+#  telefon   :string
+#  passord   :string
+#
