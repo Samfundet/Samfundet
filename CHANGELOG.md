@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 2020-04-02
+
+### Added
+
+- Make applicant phone number and email interactable ([#606](https://github.com/Samfundet/Samfundet/issues/606))
+
+### Changed
+
+- Clean up Makefile ([#662](https://github.com/Samfundet/Samfundet/pull/662))
+
+### Fixed
+
+- Annotate Ruby on Rails model files ([#663](https://github.com/Samfundet/Samfundet/pull/663))
+
 ## 2020-04-01
 
 ### Fixed
