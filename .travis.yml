@@ -17,8 +17,8 @@ install:
     - make
 
 script:
+    - make lint
     - make test
-    - rspec .
 
 notifications:
       email: false
