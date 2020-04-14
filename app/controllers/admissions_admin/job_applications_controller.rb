@@ -18,7 +18,7 @@ class AdmissionsAdmin::JobApplicationsController < AdmissionsAdmin::BaseControll
     if applicant.nil?
       flash[:error] = t('admissions_admin.add_applicant_not_found')
     else
-      job_application = JobApplication.new(applicant_id: applicant.id, motivation: 'Manuelt lagt til av Web', job_id: params[:job_id])
+	    job_application = JobApplication.new(applicant_id: applicant.id, motivation: t('admissions_admin.add_applicant_motivation'), job_id: params[:job_id])
       if job_application.save
 	flash[:success] = t('admissions_admin.add_applicant_success')
       else

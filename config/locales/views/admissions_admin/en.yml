@@ -4,6 +4,7 @@ en:
     statistics_page_title: "Statistics for %{admission}"
     summary: "%{admission} has %{applications} applications and %{jobs} jobs."
     add_applicant_error: "Something went wrong. Applicant not added"
+    add_applicant_motivation: "Manually added by Web"
     add_applicant_not_found: "Did not find applicant"
     add_applicant_success: "Success! You added an applicant"
     applications_by_group: "Distribution of applicants by group"
