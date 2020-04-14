@@ -1,5 +1,8 @@
 'no':
   admissions:
+    add_applicant_error: "Noe gikk galt. Søker ikke lagt til"
+    add_applicant_not_found: "Fant ikke søker"
+    add_applicant_success: "Suksess! Du la til en søker"
     admission_not_yet_open: "Opptaket klargjøres og åpner: "
     admission_promo: |
       Over 1000 studenter bidrar allerede frivllig! Du kan være med å jobbe med blant annet lyd, lys, teater, snekring, IT, artistbooking, korsang, musikk og mye annet. Du kan lære mye av å jobbe på Samfundet, og du blir garantert kjent med mange andre studenter.

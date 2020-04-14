@@ -16,13 +16,13 @@ class AdmissionsAdmin::JobApplicationsController < AdmissionsAdmin::BaseControll
   def hidden_create
     applicant = Applicant.find_by(email: params[:email])
     if applicant.nil?
-      flash[:error] = 'Fant ikke søker'
+      flash[:error] = t('admissions.add_applicant_not_found')
     else
       job_application = JobApplication.new(applicant_id: applicant.id, motivation: 'Manuelt lagt til av Web', job_id: params[:job_id])
       if job_application.save
-        flash[:success] = 'Suksess! Du la til en søker'
+	flash[:success] = t('admissions.add_applicant_success')
       else
-        flash[:error] = 'Noe gikk galt. Søknad ikke lagt til'
+        flash[:error] = t('admissions.add_applicant_error')
       end
     end
     redirect_to admissions_admin_admission_group_job_path(admission_id: params[:admission_id], id: params[:job_id], group_id: params[:group_id])
