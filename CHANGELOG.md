@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2020-04-16
+
+### Fixed
+
+- Fix translations ([#653](https://github.com/Samfundet/Samfundet/issues/653))
+
 ## 2020-04-02
 
 ### Added
