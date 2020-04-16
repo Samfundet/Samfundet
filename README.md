@@ -1,107 +1,165 @@
 # [Samfundet.no](http://samfundet.no)
-![](http://i.imgur.com/8n5hDoC.png)
+
+![samfundet-screenshot](http://i.imgur.com/8n5hDoC.png)
+
+[![Build Status](https://travis-ci.org/Samfundet/Samfundet.svg?branch=master)](https://travis-ci.org/Samfundet/Samfundet)
 
 ## Contributing
 
-### Bug Reports and Feature Requests
+### Bug reports and feature requests
 
-Use the [issue tracker](https://github.com/Samfundet/Samfundet/issues) to report any bugs or request features.
+Use the [issue tracker](https://github.com/Samfundet/Samfundet/issues) to report any bugs or feature requests.
 
-### Developing
+## Developing
+
+> Word of caution: If you're using Windows, you should really try to get some distribution of Linux up and running. That way you will *not* be in a world of hurt.
+
+### Setup
 
 PRs are welcome. Follow these steps to set the website up locally:
 
-Clone repository:
+#### Clone
 
-```
+Clone [Samfundet](https://github.com/Samfundet/Samfundet), our main repository:
+
+```bash
 git clone https://github.com/Samfundet/Samfundet.git
 ```
 
-#### Ubuntu
+We also use two other repositories, [SamfundetAuth](https://github.com/Samfundet/SamfundetAuth) and [SamfundetDomain](https://github.com/Samfundet/SamfundetDomain). These can be cloned with the following commands:
 
-1. Install [RVM](https://github.com/rvm/ubuntu_rvm)
-2. Install Ruby 2.5.5 via RVM using the following command
+```bash
+# SamfundetAuth
+git clone https://github.com/Samfundet/SamfundetAuth.git
+
+# SamfundetDomain
+git clone https://github.com/Samfundet/SamfundetDomain.git
 ```
-source ~/.rvm/scripts/rvm
-rvm install 2.5.5 && rvm use 2.5.5 --default
+
+#### Dependencies
+
+##### macOS: Homebrew and imagemagick
+
+macOS users need [Homebrew](https://brew.sh/), a package manager for macOS. Homebrew can be installed like this:
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 ```
-3. Choose a database password by running
-```echo 'export SAMFDB_DEV_PASS="enteryourpasswordhere"' >> ~/.bashrc && source ~/.bashrc```
-4. Database setup
-  - Option 1 (requires [Docker CE](https://docs.docker.com/install/linux/docker-ce/ubuntu/) & [docker-compose](https://docs.docker.com/compose/install/))
-    1. Start the database: `docker-compose up -d`
-    2. Install Postgres dependency `sudo apt-get install libpq-dev`
-  - Option 2
-    1. Install Postgres:```sudo apt-get install postgresql postgresql-contrib libpq-dev```
-    2. `echo -e "CREATE USER samfundet WITH PASSWORD '$SAMFDB_DEV_PASS';\nALTER USER samfundet CREATEDB;" | sudo -u postgres psql`
-5. Run `bundle install` to install the required Ruby gems
-6. Set up the database by running (_each line is a separate command!_):
+
+macOS users *also* need the `imagemagick` dependency, which can be installed through Homebrew:
+
+```bash
+brew install imagemagick
 ```
+
+##### RVM
+
+Samfundet is a [Ruby on Rails](https://rubyonrails.org/) application and as such needs Ruby. It's recommended to use a Ruby version manager to manage different versions of Ruby. For this, we recommened to install RVM (but you can use others as well, for example [rbenv](https://github.com/rbenv/rbenv)). Install RVM through either of these locations:
+
+- Linux: [ubuntu_rvm](https://github.com/rvm/ubuntu_rvm)
+- macOS: [RVM](https://rvm.io/)
+
+##### Ruby
+
+We now have RVM installed, so we can install Ruby 2.5.5.
+
+> Only for Linux users:
+>
+> ```bash
+> source ~/.rvm/scripts/rvm
+> ```
+
+Run these two commands in succession:
+
+```bash
+rvm install 2.5.5
+rvm use 2.5.5 --default
+```
+
+#### Database
+
+First, we must configure our database password:
+
+```bash
+# Replace '.bashrc' with '.zshrc' if you use ZSH
+echo 'export SAMFDB_DEV_PASS="<PASSWORD-GOES-HERE>"' >> ~/.bashrc
+source ~/.bashrc
+```
+
+#### Setup database
+
+We use PostgreSQL as our database. There are several ways it can be installed depending on your operating system.
+
+##### Linux
+
+###### Option 1 (manually)
+
+- Install PostgreSQL: `sudo apt-get install postgresql postgresql-contrib libpq-dev`
+- Create PostgreSQL user: `echo -e "CREATE USER samfundet WITH PASSWORD '$SAMFDB_DEV_PASS';\nALTER USER samfundet CREATEDB;" | sudo -u postgres psql`
+
+###### Option 2 (Docker)
+
+1. Install [Docker Engine](https://docs.docker.com/install/linux/docker-ce/ubuntu/) and [Docker Compose](https://docs.docker.com/compose/install/).
+2. Start the database: `docker-compose up -d`
+3. Install the PostgreSQL dependency: `sudo apt-get install libpq-dev`
+
+##### macOS
+
+###### Option 1 (PostgreSQL macOS application)
+
+- Install the [PostgreSQL macOS application](https://postgresapp.com/).
+
+###### Option 2 (Docker)
+
+1. Install Docker through Homebrew: `brew cask install docker`
+2. Start the database: `docker-compose up -d`
+3. Install the PostgreSQL dependency: `brew install postgresql`
+
+#### Ruby dependencies (gems)
+
+Samfundet depends on several Ruby dependencies, called gems. To install these, run
+
+```bash
+bundle install # or just 'bundle' or 'bundler'
+```
+
+#### Configure database
+
+First, there are some configuration files that needs to be copied. Run
+
+```bash
 make copy-config-files
-sed -i "s/password:.*/password: $SAMFDB_DEV_PASS/" config/database.yml
+```
+
+> Only for Linux users:
+>
+> ```bash
+> sed -i "s/password:.*/password: $SAMFDB_DEV_PASS/" > config/database.yml
+> ```
+
+Then, setup the database with
+
+```bash
 bundle exec rails db:setup
 ```
-7. Start the Rails server by running `rails server`.
 
-### Mac
+#### Start development server
 
-1. Install [RVM](https://rvm.io/) and [Homebrew](https://brew.sh/) with
-```
-\curl -sSL https://get.rvm.io | bash -s stable --rails &&
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-```
+You are now ready to start the server. Run
 
-2. Set default Rails version to v.2.5.5
-```
-rvm install 2.5.5 && rvm use 2.5.5 --default
+```bash
+make run # or bundle exec rails server
 ```
 
-3. Choose a database password by running
-```
-echo 'export SAMFDB_DEV_PASS="samfundet"' >> ~/.bashrc && source ~/.bashrc
-```
+### Git hooks
 
-4. Install [Docker](https://docs.docker.com/docker-for-mac/install/#install-and-run-docker-desktop-for-mac)
-```
-brew cask install docker
-```
+You can optionally add checks before commits et cetera through `git/hooks`. To apply them run
 
-5. Start the docker program (you can do that by using Spotlight search) and run
-```
-docker-compose up -d
-```
-
-6. Install Postgres dependency
-```
-brew install postgresql
-```
-
-7. Install the required Ruby Gems with
-```
-bundle install
-```
-
-8. Set up the database by running (_each line is a separate command!_):
-```
-make copy-config-files
-brew install imagemagick
-rails db:setup
-```
-
-9. Start the Rails server by running `rails server`
-
-
-#### Add git hooks
-
-You can optionally add checks before commits etc. through git-hooks. To apply them run
-```
+```bash
 make git-hooks
 ```
+
 This will add symbolic links in .git/hooks from the hooks dir.
-
-### Workflow
-
-Make sure that you read the [workflow](docs/github_workflow.md) we have outlined before contributing.
 
 ## License
 
