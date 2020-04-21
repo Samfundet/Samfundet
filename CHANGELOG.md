@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 2020-04-21
+
+### Added
+
+- Add Makefile command for generating controller/model diagrams ([#666](https://github.com/Samfundet/Samfundet/pull/666))
+
+### Improved
+
+- Improve README and setup script for macOS ([#668](https://github.com/Samfundet/Samfundet/pull/668))
+
 ## 2020-04-16
 
 ### Fixed
