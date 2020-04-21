@@ -8,6 +8,8 @@
 
 Follow the steps below in order to setup our project locally.
 
+> For macOS users: You can try running `make setup-mac` in the root directory. That command will essentially do everything that this `README` tells you do to, but we can't guarantee that it works.
+
 ### Clone
 
 Clone our main [repository](https://github.com/Samfundet/Samfundet):
