@@ -50,3 +50,9 @@ truncate:
 
 setup-mac:
 	sh setup-mac.sh
+
+.PHONY: generate-diagrams
+generate-diagrams:
+	[ -d docs/diagrams ] ||  mkdir docs/diagrams
+	railroady -M | neato -Tsvg > docs/diagrams/models.svg
+	railroady -C | neato -Tsvg > docs/diagrams/controllers.svg
