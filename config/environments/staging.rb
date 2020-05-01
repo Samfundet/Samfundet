@@ -63,7 +63,7 @@ Samfundet::Application.configure do
 
     # manually set BilligEvent table_name so it uses db view instead of std table
     BilligEvent.establish_connection(:mdb2_swpay)
-    BilligEvent.table_name = billig_table_prefix + 'event_lim_web'
+    BilligEvent.table_name = billig_table_prefix + 'event'
 
     billig_tables = [BilligTicketGroup, BilligPriceGroup, BilligPaymentError, BilligPaymentErrorPriceGroup, BilligTicket, BilligPurchase, BilligTicketCard]
     billig_tables.each do |table|
