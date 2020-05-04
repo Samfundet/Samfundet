@@ -204,6 +204,7 @@ class EventsController < ApplicationController
         redirect_to buy_event_path(event, bsession: params[:bsession])
       else # Error case no. 2. Show payment error without purchase form.
         flash[:error] = payment_error.message
+        $stderr.puts payment_error.message
         redirect_to root_path
       end
     end
