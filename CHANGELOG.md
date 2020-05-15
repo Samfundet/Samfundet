@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2020-05-15
+
+### Added
+
+- Show preview page for the new Lyche page ([#672](https://github.com/Samfundet/Samfundet/pull/672))
+
 ## 2020-04-21
 
 ### Added
