@@ -111,10 +111,10 @@
           = label_tag "cvc2","CVC2:"
           = text_field_tag "cvc2", nil, maxlength: 3, tabindex: 7, autocomplete: 'off', required: true
       .payment-verified
-        = image_tag('billig/payex-swedbank.png', alt: "PayEx logo and Swedbank logo")
+        = image_tag('billig/swedbank.png', alt: "Swedbank logo")
         = image_tag('billig/vbv-securecode.png', alt:"Verfied by VISA logo and MasterCard SecureCode logo")
-        .payex
-          = link_to t('events.payex'), 'http://payex.no', target: '_blank'
+        .swedbank
+          = link_to t('events.swedbank'), 'http://swedbank.no', target: '_blank'
         .fees
           = t('events.payment_prices')
         .terms

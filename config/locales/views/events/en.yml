@@ -111,7 +111,7 @@ en:
     sum: "Sum"
     total: "Total"
     amount: Amount
-    payex: "The payment is processed by PayEx."
+    swedbank: "The payment is processed by Swedbank."
     payment_prices: "All prices are in norwegian krone and includes all fees."
     terms: Purchase requires acceptance of sales terms.
 
