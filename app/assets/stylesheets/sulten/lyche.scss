@@ -102,7 +102,6 @@ body.lyche {
     }
 
   }
-
   .section:nth-child(odd) {
     flex-direction: row-reverse;
     background-color: #050505;
@@ -121,6 +120,50 @@ body.lyche {
     }
     */
   }
+
+  /*
+    MOBILE SECTION
+    VERTICAL LAYOUT
+  */
+  @media only screen and (max-width: 700px){
+    .section:nth-child(odd) {
+      flex-direction: column;
+      background-color: #050505;
+    }
+    .section {
+      height: 400px;
+      flex-direction: column;
+      padding: 0;
+
+      .image-container {
+        flex-basis: 100%;
+      }
+      .info-container {
+        flex-basis: 80%;
+        justify-content: flex-start;
+        .title {
+          font-size: 2em;
+        }
+        .description {
+          color: rgb(180, 180, 180);
+          font-size: 1em;
+          max-width: 300px;
+        }
+        .section-button {
+          font-size: 1em;
+          padding: 5px 15px 5px 15px;
+          border-radius: 100px;
+          margin-top: 20px;
+          .chevron {
+            display: none;
+          }
+        }
+      }
+
+    }
+
+  }
+
 
   #lyche-header-container {
     position: fixed;
@@ -170,7 +213,48 @@ body.lyche {
       }
     }
 
+    /*
+    MOBILE HEADER
+    */
+    @media only screen and (max-width: 700px){
+      .header-menu {
+        width: 100%;
+        justify-content: space-between;
 
+        .menu-button {
+          display: none;
+        }
+
+        .lyche-logo {
+          width: 150px;
+          height: 80px;
+        }
+
+        .mobile-hamburger {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          width: 32px;
+          height: 24px;
+          margin-left: 32px;
+          .mobile-hamburger-line {
+            width: 100%;
+            height: 4px;
+            background-color: white;
+            border-radius: 1px;
+          }
+        }
+
+        .mobile-reservation {
+          background-image: asset-url("sulten/calendar_add.png");
+          background-size: contain;
+          width: 32px;
+          height: 32px;
+          margin-right: 32px;
+          text-align: center;
+        }
+      }
+    }
 
   }
 
@@ -242,6 +326,14 @@ body.lyche {
       }
     }
 
+  }
+  /*
+    HIDE STATUS BOX MOBILE
+  */
+  @media only screen and (max-width: 700px){
+    .status-box {
+      display: none;
+    }
   }
 
   .lyche-menu {

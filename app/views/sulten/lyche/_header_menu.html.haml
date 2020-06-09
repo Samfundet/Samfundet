@@ -5,17 +5,27 @@
 #lyche-header-container
   .header-menu
 
+    .mobile-hamburger
+      .mobile-hamburger-line
+      .mobile-hamburger-line
+      .mobile-hamburger-line
+
     .menu-button
       Reservasjon
-    .menu-button
-      = link_to sulten_menu_path do
+
+    = link_to sulten_menu_path do
+      .menu-button
         Meny
 
     = link_to sulten_path do
       .lyche-logo
-    .menu-button
-      = link_to sulten_about_path do
+
+    = link_to sulten_about_path do
+      .menu-button
         Om oss
-    .menu-button
-      = link_to sulten_contact_path do
+
+    = link_to sulten_contact_path do
+      .menu-button
         Kontakt
+
+    .mobile-reservation
