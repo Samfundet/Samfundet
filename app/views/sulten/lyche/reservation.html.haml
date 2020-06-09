@@ -1,0 +1,35 @@
+- content_for(:container) do
+  = render "header_menu"
+
+  .lyche_form_title
+    = t("sulten.reservation.form.title")
+
+  = semantic_form_for @reservation, :html => { :class => "custom-form lyche_form"} do |f|
+    = f.inputs do
+      %li
+        %p.inline-hints
+          = t("sulten.reservation.form.too_many")
+          = mail_to "lyche@samfundet.no", "mail."
+      = f.input :people, label: t("sulten.reservation.people"),as: :number
+      = f.input :reservation_from, placeholder: t("sulten.reservation.placeholder_date"), label: t("sulten.reservation.form.from"), input_html: { class: "datetimepicker_lyche"}, as: :string
+      = f.input :reservation_duration, label: t("sulten.reservation.form.duration"), collection: [60, 90, 120, 150, 180], member_label: proc{|d| "#{d} minutter"}, include_blank: false, selected: 60
+
+      .form-divider
+
+      = f.input :reservation_type, label: t("sulten.reservation.reservation_type")
+      %li
+        %p.inline-hints
+          = t("sulten.reservation.form.type_explanation")
+      -# collection: [60, 90, 120, 150, 180] because "mat" is selected at load in prod
+      .form-divider
+      = f.input :name, label: t("sulten.reservation.name")
+      = f.input :telephone, label: t("sulten.reservation.telephone")
+      = f.input :email, label: t("sulten.reservation.email")
+      .form-divider
+      = f.input :allergies, label: t("sulten.reservation.other_messages")
+      %br
+      .gdpr_checkbox
+        != f.input :gdpr_checkbox, as: :boolean, label: raw(t("sulten.reservation.gdpr_checkbox", en_url:'/en/privacy', no_url: '/personvern'))
+
+    = f.actions do
+      = f.submit t("sulten.reservation.form.create")

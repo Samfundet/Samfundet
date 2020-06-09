@@ -1,0 +1,132 @@
+
+
+.lyche_form_title {
+  font-size: 2em;
+  color: white;
+  text-transform: capitalize;
+  text-align: center;
+  padding-top: 130px;
+  padding-bottom: 20px;
+}
+
+.lyche_form {
+
+
+  color: white;
+  margin: 0 auto;
+  margin-bottom: 3em;
+  width: 70%;
+  max-width: 600px;
+
+  background-color: #151515;
+  border-radius: 12px;
+  padding: .5em;
+
+  .inputs {
+
+  }
+
+  .form-divider {
+    width: 100%;
+    height: 1px;
+    background-color: orange;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    opacity: 0.5;
+  }
+
+  li {
+    display: flex;
+
+    flex-direction: row;
+    justify-content: space-between;
+
+    padding-bottom: .4em;
+
+    label {
+      font-size: 1.5em;
+      text-transform: capitalize;
+    }
+    input[type=number],
+    input[type=text],
+    input[type=tel],
+    input[type=email],
+    select {
+      border-radius: 5px;
+      padding: 5px;
+      padding-left: 10px;
+      width: 200px;
+    }
+  }
+
+  .inline-hints {
+    font-size: 0.75em;
+    font-style: italic;
+    color: #aaaaaa;
+    text-align: left;
+  }
+  .inline-hints:first-letter {
+    text-transform: uppercase;
+  }
+
+  li.boolean {
+
+    label {
+      font-size: 0.75em;
+    }
+  }
+
+  ol {
+    padding: 1em;
+    text-align: center;
+    input[type=submit] {
+      background-color: orange;
+      border-radius: 8px;
+      font-size: 1em;
+      font-weight: bold;
+      text-transform: capitalize;
+    }
+
+  }
+
+}
+
+// Mobile layout
+@media only screen and (max-width: 700px) {
+
+  .lyche_form {
+
+    max-width: 700px;
+    width: 100%;
+    border-radius: 0px;
+    padding: 0;
+    margin: 0;
+
+    li {
+      display: flex;
+
+      flex-direction: column;
+      justify-content: space-between;
+      padding-bottom: .4em;
+
+      padding-left: 10vw;
+      padding-right: 10vw;
+
+      label {
+        font-size: 1em;
+        text-align: left;
+      }
+      input[type=number],
+      input[type=text],
+      input[type=tel],
+      input[type=email],
+      select {
+        border-radius: 5px;
+        padding-left: 10px;
+        width: 100%;
+        height: 32px;
+      }
+    }
+
+  }
+}

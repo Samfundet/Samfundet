@@ -10,8 +10,9 @@
       .mobile-hamburger-line
       .mobile-hamburger-line
 
-    .menu-button
-      Reservasjon
+    = link_to sulten_reservation_path do
+      .menu-button
+        Reservasjon
 
     = link_to sulten_menu_path do
       .menu-button
@@ -28,4 +29,28 @@
       .menu-button
         Kontakt
 
-    .mobile-reservation
+    = link_to sulten_reservation_path do
+      .mobile-reservation
+
+
+  .mobile-hamburger-menu
+
+    = link_to sulten_path do
+      .menu-button
+        Hovedside
+
+    = link_to sulten_menu_path do
+      .menu-button
+        Meny
+
+    = link_to sulten_reservation_path do
+      .menu-button
+        Reservasjon
+
+    = link_to sulten_about_path do
+      .menu-button
+        Om oss
+
+    = link_to sulten_contact_path do
+      .menu-button
+        Kontakt

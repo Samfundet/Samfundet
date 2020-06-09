@@ -8,3 +8,11 @@ window.onscroll = function (e) {
         $("#lyche-header-container").removeClass("compact")
     }
 }
+
+$(function() {
+    $(".mobile-hamburger").on('click', function(event) {
+        $(".mobile-hamburger").toggleClass('open');
+        $(".mobile-hamburger-menu").toggleClass('open');
+        event.preventDefault();
+    });
+});
