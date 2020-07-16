@@ -6,7 +6,7 @@ class RegistrationEvent < ApplicationRecord
     belongs_to :arrangement, class_name: :Event
 
     def slots
-        return plasser.to_s + "/" + RegistrationEvent.connection.exec_query('SELECT * FROM paameldingsys.arrangementer WHERE arrangement_id=%d;' % arrangement_id).to_a[0]["plasser"].to_s + " plasser"
+        return plasser.to_s + "/" + RegistrationEvent.connection.exec_query('SELECT * FROM paameldingsys.lim_paameldingsinfo WHERE arrangement_id=%d;' % arrangement_id).to_a[0]["paameldinger"].to_s + " plasser"
       end
     #has_one :arrangement, class_name: :Event
     # attr_accessible :a4_ticket_layout, :dave_id, :dave_time_id, :event_location, :event_name, :event_note, :event_time, :event_type, :external_id, :organisation, :receipt_ticket_layout, :sale_from, :sale_to, :tp_ticket_layout, :hidden
