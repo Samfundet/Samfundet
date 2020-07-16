@@ -6,7 +6,7 @@ class Event < ApplicationRecord
                   luka_event meeting movie music performance quiz
                   samfundet_meeting party_meeting show theater theme_party uka_event debate_event].freeze
   STATUS = %w[active archived canceled].freeze
-  PRICE_TYPE = %w[included custom billig free].freeze
+  PRICE_TYPE = %w[included custom billig free free_registration].freeze
   BANNER_ALIGNMENT = %w[left right hide].freeze
 
   TICKETS_UNAVAILABLE = :tickets_unavailable
@@ -23,6 +23,7 @@ class Event < ApplicationRecord
   #                :primary_color, :secondary_color, :image_id,
   #                :price_groups, :price_type, :banner_alignment, :price_groups_attributes,
   #                :codeword
+  attr_accessor :slots
 
   extend LocalizedFields
   localized_fields :title, :short_description, :long_description
@@ -46,12 +47,14 @@ class Event < ApplicationRecord
   belongs_to :organizer, polymorphic: true
   belongs_to :billig_event
   belongs_to :image
+  has_one :registration_event, :foreign_key => :arrangement_id, class_name: :RegistrationEvent
   has_one :front_page_lock, as: :lockable
   has_many :price_groups, -> { distinct }
 
   accepts_nested_attributes_for :price_groups, allow_destroy: true
 
   validates :price_groups, presence: { if: -> { price_type.eql? 'custom' } }
+
 
   before_save :enforce_price_choice
 
@@ -240,6 +243,8 @@ class Event < ApplicationRecord
       unique_price_groups
     when 'free'
       nil
+    when 'free_registration'
+      nil
     end
   end
 
@@ -280,6 +285,9 @@ class Event < ApplicationRecord
     when 'billig'
       price_groups.clear
     when 'free'
+      price_groups.clear
+      self.billig_event = nil
+    when 'free_registration'
       price_groups.clear
       self.billig_event = nil
     end

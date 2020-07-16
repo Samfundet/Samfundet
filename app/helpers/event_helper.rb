@@ -35,6 +35,11 @@ module EventHelper
            .join(' / ')
     when 'free'
       t('events.ticket_free')
+    when 'free_registration'
+        if event.registration_event
+            event.registration_event.plasser
+            event.registration_event.slots
+        end
     else
       t('events.ticket_included')
     end

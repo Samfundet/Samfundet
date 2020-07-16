@@ -75,6 +75,10 @@ class EventsController < ApplicationController
       if @event.non_billig_start_time < Time.current
         flash[:message] = t('events.time_of_start_has_passed')
       end
+      if @event.price_type.eql? 'free_registration'
+        @registration_event = RegistrationEvent.create(:arrangement=> @event, :plasser=>event_params[:slots])
+        #ActiveRecord::Base.establish_connection(:development)
+      end
       flash[:success] = t('events.create_success')
       redirect_to @event
     else
@@ -103,6 +107,9 @@ class EventsController < ApplicationController
 
   def destroy
     @event = Event.find(params[:id])
+    if @event.price_type.eql? 'free_registration' && @event.registration_event
+        @event.registration_event.destroy
+    end
     @event.destroy
     flash[:success] = t('events.destroy_success')
     redirect_to events_path
@@ -260,6 +267,7 @@ private
       :billig_event_id,
       :organizer_id,
       :codeword,
+      :slots,
       price_groups_attributes: %i(name price id _destroy)
     )
   end
