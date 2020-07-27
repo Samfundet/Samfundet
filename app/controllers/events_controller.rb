@@ -76,7 +76,7 @@ class EventsController < ApplicationController
         flash[:message] = t('events.time_of_start_has_passed')
       end
       if @event.price_type.eql? 'free_registration'
-        @registration_event = RegistrationEvent.create(:arrangement=> @event, :plasser=>event_params[:capcaity])
+        @registration_event = RegistrationEvent.create(:arrangement=> @event, :plasser=>event_params[:capacity])
         #ActiveRecord::Base.establish_connection(:development)
       end
       flash[:success] = t('events.create_success')
@@ -267,7 +267,7 @@ private
       :billig_event_id,
       :organizer_id,
       :codeword,
-      :capcaity,
+      :capacity,
       price_groups_attributes: %i(name price id _destroy)
     )
   end

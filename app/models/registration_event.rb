@@ -14,7 +14,10 @@ class RegistrationEvent < ApplicationRecord
     end
 
     def slots
-        return "%d / %d %s" % [registrations, plasser, I18n.t('events.registrations')]
+        if !registrations.nil? && !plasser.nil?
+            return "%d / %d %s" % [registrations, plasser, I18n.t('events.registrations')]
+        end
+        return ""
     end
 
     def link
@@ -23,7 +26,10 @@ class RegistrationEvent < ApplicationRecord
 
 
     def full?
-        return registrations >= plasser
+        if !registrations.nil? && !plasser.nil? 
+            return registrations >= plasser
+        end
+        return false
     end
     #has_one :arrangement, class_name: :Event
     # attr_accessible :a4_ticket_layout, :dave_id, :dave_time_id, :event_location, :event_name, :event_note, :event_time, :event_type, :external_id, :organisation, :receipt_ticket_layout, :sale_from, :sale_to, :tp_ticket_layout, :hidden

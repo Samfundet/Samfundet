@@ -198,7 +198,7 @@
         create_from_existing: Opprett fra eksisterende arrangement
         pricing_options: Prisalternativer
         free_registration: Gratis med registrering
-        slots: Plasser
+        capacity: Plasser
 
       existing_image: Velg eksisterende bilde
       upload_image: Last opp nytt bilde
