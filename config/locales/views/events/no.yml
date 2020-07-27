@@ -122,6 +122,10 @@
     ticket_included: Billett inkludert i inngang
     ticket_free: Gratis inngang
 
+    registrations: "Påmeldte"
+    sign_up: "Meld på"
+    full: "Fult"
+
     purchase_callback_success:
       title: Kjøp gjennomført
       ticket_purchased: "Du har kjøpt følgende billetter med referansenummer: %{refs}"
@@ -193,6 +197,7 @@
         existing: Eksisterende arrangement
         create_from_existing: Opprett fra eksisterende arrangement
         pricing_options: Prisalternativer
+        free_registration: Gratis med registrering
         slots: Plasser
 
       existing_image: Velg eksisterende bilde

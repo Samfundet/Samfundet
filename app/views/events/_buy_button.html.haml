@@ -17,5 +17,8 @@
   .purchase-button.tickets-sold-out
     = t('events.sold_out')
 -if event.price_type.eql? 'free_registration'
-  .purchase-button.tickets-available
-    = "Meld på"
+  -if event.registration_event.full?
+    .purchase-button.tickets-sold-out
+      = t('events.full')
+  -else
+    = link_to t('Sign up'), event.registration_event.link, class: 'purchase-button tickets-available no-modal'

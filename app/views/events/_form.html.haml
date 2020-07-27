@@ -71,7 +71,8 @@
       = f.label :price_type, value: "free_registration" do
         = t('events.forms.labels.free_registration')
         = f.radio_button :price_type, "free_registration", checked: @event.price_type == "free_registration"
-        = f.input :slots, placeholder: t('events.slots')
+        = f.label :capcaity, value: "capacity" do
+          = f.input :capacity, label: t('events.forms.labels.capacity')
     %li
       = f.label :price_type, value: "custom" do
         = t('events.forms.labels.custom')

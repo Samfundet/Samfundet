@@ -23,7 +23,7 @@ class Event < ApplicationRecord
   #                :primary_color, :secondary_color, :image_id,
   #                :price_groups, :price_type, :banner_alignment, :price_groups_attributes,
   #                :codeword
-  attr_accessor :slots
+  attr_accessor :capacity
 
   extend LocalizedFields
   localized_fields :title, :short_description, :long_description

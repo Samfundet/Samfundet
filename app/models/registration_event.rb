@@ -5,9 +5,26 @@ class RegistrationEvent < ApplicationRecord
     RegistrationEvent.table_name = 'paameldingsys.arrangementer'
     belongs_to :arrangement, class_name: :Event
 
+    def registrations
+        if Rails.env.development?
+            return 50
+        else
+            return RegistrationEvent.connection.exec_query('SELECT * FROM paameldingsys.lim_paameldingsinfo WHERE arrangement_id=%d;' % arrangement_id).to_a[0]["paameldinger"]
+        end
+    end
+
     def slots
-        return plasser.to_s + "/" + RegistrationEvent.connection.exec_query('SELECT * FROM paameldingsys.lim_paameldingsinfo WHERE arrangement_id=%d;' % arrangement_id).to_a[0]["paameldinger"].to_s + " plasser"
-      end
+        return "%d / %d %s" % [registrations, plasser, I18n.t('events.registrations')]
+    end
+
+    def link
+        return "https://medlem.samfundet.no/account/paamelding?id=%d" % [arrangement_id]
+    end
+
+
+    def full?
+        return registrations >= plasser
+    end
     #has_one :arrangement, class_name: :Event
     # attr_accessible :a4_ticket_layout, :dave_id, :dave_time_id, :event_location, :event_name, :event_note, :event_time, :event_type, :external_id, :organisation, :receipt_ticket_layout, :sale_from, :sale_to, :tp_ticket_layout, :hidden
   end

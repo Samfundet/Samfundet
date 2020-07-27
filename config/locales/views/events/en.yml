@@ -118,6 +118,10 @@ en:
     ticket_included: Ticket included with entrance
     ticket_free: Free entrance
 
+    registrations: "Registrations"
+    sign_up: "Sign up"
+    full: "Full"
+
     purchase_callback_success:
       title: Purchase completed
       ticket_purchased: "You have bought the following tickets with references: %{refs}"
@@ -189,7 +193,8 @@ en:
         existing: Existing arrangement
         create_from_existing: Create from existing
         pricing_options: Pricing options
-        slots: Slots
+        free_registration: Free with registration
+        capacity: Capacity
 
       existing_image: Select existing image
       upload_image: Upload new image
