@@ -97,11 +97,44 @@
   font-size: 20px;
   font-weight: $font-weight-normal;
   text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 
   #mainsponsor, #partners, #othersponsors{
     @include media($tablet-desktop) {
       display: inline-block;
     }
+
+    .horizontal-flex {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .trondheim-kommune-container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-right: 50px;
+    }
+
+    .trondheim-kommune-icon {
+      background-image: asset-url("footer/trondheim_kommune.png");
+      background-size: contain;
+      height: 38px;
+      width: 38px;
+      background-repeat: no-repeat;
+    }
+
+    .trondheim-kommune-text {
+      font-family: Calibri, sans-serif;
+      color: black;
+      white-space: nowrap;
+      text-align: left;
+      font-size: 12px;
+    }
+
     .logo, .sponsortext{
       display: block;
       a {
@@ -135,9 +168,11 @@
           background-image: asset-url("footer/uka.png");
         }
 
-				&.muo-icon {
-          background-image: asset-url("footer/muo.png");
+        &.kulturrom-icon {
+          background-image: asset-url("footer/kulturrom.png");
+          background-size: contain;
         }
+
       }
     }
   }

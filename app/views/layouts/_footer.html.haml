@@ -2,8 +2,12 @@
   #othersponsors
     .sponsortext
       = t('layouts.footer.othersponsors')
-    .logo
-      %a.muo-icon{ href: 'http://www.musikkutstyrsordningen.no/', target: '_blank' }
+    .horizontal-flex
+      %a.trondheim-kommune-container{ href: 'http://www.trondheim.kommune.no/', target: '_blank' }
+        .trondheim-kommune-icon
+        .trondheim-kommune-text= "TRONDHEIM KOMMUNE"
+      .logo
+        %a.kulturrom-icon{ href: 'http://www.kulturrom.no/', target: '_blank' }
   #partners
     .sponsortext
       = t('layouts.footer.festivals')
