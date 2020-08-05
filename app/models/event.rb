@@ -318,6 +318,19 @@ class Event < ApplicationRecord
       0
     end
   end
+  def full?
+    if registration_event
+        registration_event.full?
+    end
+    true
+  end
+
+  def link
+    if registration_event
+        registratino_event.link
+    end
+    ""
+  end
 
   def cache_key
     "#{super}-#{purchase_status}-#{few_tickets_left?}"
