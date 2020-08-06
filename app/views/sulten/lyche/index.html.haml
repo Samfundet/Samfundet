@@ -4,25 +4,40 @@
   = render "status_box"
   .section
     .image-container
-      .image
+      .image.reservation
     .info-container
       .title
-        Lyche har digg mat
+        Reservasjon
       .description
-        Bli med til Lyche, og spis digg mat! Har seriøst lyst på Lyche-burger.
+        På grunn av smittevernhensyn er det dessverre ikke mulig med drop-inn på Lyche. Alle besøk, både mat- og drikke relaterte, må reserveres. Dette gjøres gjennom vårt reservasjonssystem eller på e-post.
+      = link_to sulten_reservation_path do
+        .section-button
+          Reserver bord
+          .chevron.right
+
+
+  .section
+    .image-container
+      .image.menu
+    .info-container
+      .title
+        Meny
+      .description
+        Lorem ipsum dolor sit amet adipiscing elit
       = link_to sulten_menu_path do
         .section-button
           Se vår meny
           .chevron.right
 
+
   .section
     .image-container
-      .image.c
+      .image.about
     .info-container
       .title
-        Drevet av frivillige
+        Om Lyche
       .description
-        Tralla la la la Tralla la la la Tralla la la la Tralla la la la Tralla la la la
+        Lyche er en restaurant drevet på frivillig basis. Alle servitørene og kokkene på kjøkkenet jobber frivillig, og vi er en del av Kafé og serveringsgjengen (KSG) ved Studentersamfundet i Trondhjem.
       = link_to sulten_about_path do
         .section-button
           Mer om oss
@@ -30,34 +45,13 @@
 
   .section
     .image-container
-      .image.b
+      .image.contact
     .info-container
       .title
-        Lorem ipsum
+        Kontakt
       .description
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-      .section-button
-        Reserver bord
-        .chevron.right
-
-  .section
-    .image-container
-      .image
-    .info-container
-      .title
-        Lyche kan tilby...
-      .description
-        Lorem ipsum dolor sit amet adipiscing elit
+        Har du spørsmål, henvendelser, forslag til forbedring eller av andre årsaker ønsker å komme i kontakt med oss? Her finner du kontaktinformasjonen vår.
       = link_to sulten_contact_path do
         .section-button
           Kontakt oss
           .chevron.right
-
-  .section
-    .image-container
-      .image.b
-    .info-container
-      .title
-        Lyche har digg mat
-      .description
-        Bli med til Lyche, og spis digg mat! Har seriøst lyst på Lyche-burger.

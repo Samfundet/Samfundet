@@ -49,17 +49,22 @@ body.lyche {
       .image {
         width: 100%;
         height: 100%;
-        background-image: asset-url("sulten/cook.jpg");
         background-size: cover;
         border-radius: 4px;
       }
-      .image.b {
-         background-image: asset-url("sulten/wine.jpg");
+      .image.menu {
+        background-image: asset-url("lyche/front_meny.jpg");
       }
-       .image.c {
-         background-image: asset-url("sulten/table.jpg");
-       }
-       }
+      .image.about {
+        background-image: asset-url("lyche/front_om_oss.jpg");
+      }
+      .image.contact {
+        background-image: asset-url("lyche/front_kontakt.jpg");
+      }
+      .image.reservation {
+        background-image: asset-url("lyche/front_reservasjon.jpg");
+      }
+    }
     .info-container {
       flex: 1;
       display: flex;
@@ -68,18 +73,17 @@ body.lyche {
       justify-content: center;
 
       .title {
-        font-size: 4em;
+        font-size: 3em;
         color: white;
         text-align: center;
       }
 
       .description {
         color: rgb(180, 180, 180);
-        font-size: 1.75em;
+        font-size: 1.25em;
         max-width: 500px;
         text-align: center;
       }
-
 
       .section-button {
         flex: 0;
