@@ -17,29 +17,165 @@
 
         .lyche-menu-title
           Meny
+        .lyche-menu-subtitle
+          Velkommen
 
-        .lyche-menu-tab-container
-          .lyche-menu-tab.selected
-            Middag
-          .lyche-menu-tab-separator
-          .lyche-menu-tab
+        -# Forretter
+
+        .lyche-menu-category
+          .lyche-menu-category-detail.left
+          .lyche-menu-category-title
+            Småretter
+          .lyche-menu-category-detail.right
+
+        .menu-item
+          .item-name
+            Lychebrød
+            .item-price
+              19,- / 29,-
+          .item-description
+            Inspirert av italiensk ciabatta. Serveres med aioli.
+            %br
+            %br
+            %i= "Inneholder: Gluten (hvete), sulfitt og egg"
+
+        .menu-item
+          .item-name
+            Sidesalat
+            .item-price
+              19,- / 29,-
+          .item-description
+            Med cherrytomater og vinaigrette.
+            %br
+            %br
+            %i= "Inneholder: Sulfitt"
+
+        .menu-item
+          .item-name
+            Suppe
+            .item-price
+              49,- / 59,-
+          .item-description
+            Varierer etter sesong. Spør en av våre servitører om dagens suppe.
+            Serveres med Lychebrød og kryddersmør.
+            %br
+            %br
+            %i= "Inneholder: Spør en av våre servitører"
+
+
+        -# BURGERE
+
+        .lyche-menu-category
+          .lyche-menu-category-detail.left
+          .lyche-menu-category-title
+            Burgere
+          .lyche-menu-category-detail.right
+
+        .menu-item
+          .item-name
+            Lycheburger
+            .item-price
+              114,- / 134,-
+          .item-description
+            Dobbel 149,- / 169,-
+            %br
+            %br
+            Aioli, cherrytomater, salat, løkkompott, ost, bacon og pistou
+            til ovnsbakte poteter.
+            %br
+            %br
+            %i= "Inneholder: Egg, gluten (hvete og rug), melk, selleri, sennep og sulfitt"
+            %br
+            %i= "Baren anbefaler: E.C. Dahls Bolt IPA"
+
+        .menu-item
+          .item-name
+            Blåmuggburger
+            .item-price
+              114,- / 134,-
+          .item-description
+            Dobbel 149,- / 169,-
+            %br
+            %br
+            Aioli, cherrytomater, salat, søt og syrlig rips- og rabarbramarmelade , blåmuggost fra Selbu og pistou til ovnsbakte poteter.
+            %br
+            %br
+            %i= "Inneholder: Egg, gluten (hvete og rug), melk, selleri, sennep og sulfitt"
+            %br
+            %i= "Baren anbefaler: Lychelig Trippel"
+
+        .menu-item
+          .item-name
+            Søtpotetburger
+            .item-price
+              89,- / 105,-
+          .item-description
+            Dobbel 105,- / 125,-
+            %br
+            %br
+            Aioli, cherrytomater, salat, syltet sjalottløk, manchego og pistou til ovnsbakte poteter. Vegetar. Kan serveres som veganburger.
+            %br
+            %br
+            %i= "Inneholder: Gluten (hvete og rug), sulfitt, sennep, melk og egg"
+            %br
+            %i= "Baren anbefaler: Brooklyn Lager"
+
+        .lyche-menu-category
+          .lyche-menu-category-detail.left
+          .lyche-menu-category-title
             Drikke
-          .lyche-menu-tab-separator
-          .lyche-menu-tab
-            Store grupper
+          .lyche-menu-category-detail.right
 
-        - for i in 0..15 do
-          .menu-item
-            .item-name
-              Lyche Burger
-              .item-price
-                23,-
-            .item-description
-              Sykt digg burger med lorem ipsum trallala.
-              Sykt digg burger med lorem ipsum trallala.
-              Sykt digg burger med lorem ipsum trallala.
-              Sykt digg burger med lorem ipsum trallala.
-              Sykt digg burger med lorem ipsum trallala.
+        .menu-note
+          Dra innom Lyche for å se den fysiske drikkemenyen.
+
+        %br
+        %br
+        %br
+
+        .menu-note
+          Vi tar forbehold om at det kan oppstå feil i den digitale menyen.
+
+        %br
+        %br
+        %br
+        %br
+
+        -#-# DRIKKE
+        -#
+        -#.lyche-menu-category
+        -#  .lyche-menu-category-detail.left
+        -#  .lyche-menu-category-title
+        -#    Drikke
+        -#  .lyche-menu-category-detail.right
+        -#
+        -#.menu-item
+        -#  .item-name
+        -#    Dahls 0,5L Helg
+        -#    .item-price
+        -#      64,- / 84,-
+        -#.menu-item
+        -#  .item-name
+        -#    Dahls 0,5L Ukedag
+        -#    .item-price
+        -#      49,- / 79,-
+        -#.menu-item
+        -#  .item-name
+        -#    Lychelig trippel 0,4L
+        -#    .item-price
+        -#      84,- / 99,-
+        -#
+        -#.menu-item
+        -#  .item-name
+        -#    Brooklyn Lager 0,5L
+        -#    .item-price
+        -#      79,- / 89,-
+        -#
+        -#.menu-item
+        -#  .item-name
+        -#    1664 Blanc 0,5L
+        -#    .item-price
+        -#      64,- / 84,-
 
     .lyche-header-border.bottom
       .corner.left

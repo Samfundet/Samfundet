@@ -3,7 +3,15 @@ body.lyche {
   background-color: black;
 }
 
+
+@font-face {
+  font-family: 'LemonMilkLight';
+  src: asset-url('LEMONMILK-Light.ttf') format('truetype');
+}
+
 .lyche-container {
+
+
   width: 100%;
   min-height: 100%;
   font-family: "Arial", sans-serif;
@@ -461,6 +469,16 @@ body.lyche {
         border-right: 1px solid white;
 
         .lyche-menu-title {
+          font-size: 3em;
+          text-align: center;
+          color: white;
+          width: 100%;
+          padding-top: 30px;
+          text-transform: uppercase;
+          font-family: 'LemonMilkLight', sans-serif;
+        }
+
+        .lyche-menu-subtitle {
           font-size: 2em;
           text-align: center;
           color: white;
@@ -468,44 +486,53 @@ body.lyche {
           padding-top: 30px;
           padding-bottom: 30px;
           text-transform: uppercase;
+          font-family: 'LemonMilkLight', sans-serif;
         }
 
-        .lyche-menu-tab-container {
+        .lyche-menu-category {
 
           display: flex;
-          flex: 1;
           flex-direction: row;
           justify-content: center;
-          padding: 10px;
-          margin-bottom: 20px;
-          background-color: #222;
-          min-width: 100%;
+          align-items: center;
+          margin-bottom: 3em;
+          margin-top: 2em;
 
-          .lyche-menu-tab {
+          .lyche-menu-category-detail.left {
+            background-image: asset_url("lyche/menu-detail-left.png");
+            height: 17px;
+            width: 128px;
+            background-size: contain;
+            background-repeat: no-repeat;
+          }
+
+          .lyche-menu-category-title {
+            font-family: 'LemonMilkLight', sans-serif;
             font-size: 1.25em;
-            text-transform: uppercase;
-            color: dimgray;
-            cursor: pointer;
-            padding-right: 25px;
-          }
-
-          .lyche-menu-tab.selected {
             color: white;
+            text-transform: uppercase;
+            margin-left: .5em;
+            margin-right: .5em;
           }
 
-          .lyche-menu-tab:hover {
-            color: orange;
+          .lyche-menu-category-detail.right {
+            background-image: asset_url("lyche/menu-detail-right.png");
+            height: 17px;
+            width: 128px;
+            background-size: contain;
+            background-repeat: no-repeat;
           }
-
-          .lyche-menu-tab-separator {
-            width: 1px;
-            height: 20px;
-            background-color: dimgray;
-            margin-right: 25px;
-          }
-
         }
 
+        .menu-note {
+          display: flex;
+          flex-direction: column;
+          max-width: 600px;
+          margin: 0 auto;
+          text-align: center;
+          color: dimgray;
+          font-size: 1.25em;
+        }
 
         .menu-item {
           display: flex;
@@ -513,17 +540,19 @@ body.lyche {
           padding: 5px;
           padding-left: 20px;
           padding-right: 20px;
-          max-width: 800px;
+          max-width: 600px;
+          margin: 0 auto;
 
           .item-name {
             display: flex;
             flex-direction: row;
+            justify-content: space-between;
             font-size: 1.5em;
-            color: orange;
+            color: white;
             margin-bottom: 5px;
+            text-transform: uppercase;
 
             .item-price {
-              color: dimgray;
               font-size: .75em;
               margin-left: 20px;
               margin-top: .25em;
