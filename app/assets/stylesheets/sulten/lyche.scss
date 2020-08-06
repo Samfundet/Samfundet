@@ -320,16 +320,19 @@ body.lyche {
 
   .status-box {
     width: 400px;
-    position: fixed;
-    bottom: 50px;
-    right: 50px;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
     color: white;
+
+    max-width: calc(100vw - 40px);
 
     display: flex;
     flex-direction: column;
 
     background-color: #eee;
     border: 1px solid dimgray;
+
 
     //backdrop-filter: blur(2px);
     //-webkit-backdrop-filter: blur(2px);
