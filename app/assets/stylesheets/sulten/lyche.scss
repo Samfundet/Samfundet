@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 body.lyche {
   background-color: black;
@@ -67,25 +66,31 @@ body.lyche {
     .image-container {
       flex-basis: 50%;
       padding: 2em;
+
       .image {
         width: 100%;
         height: 100%;
         background-size: cover;
         border-radius: 4px;
       }
+
       .image.menu {
         background-image: asset-url("lyche/front_meny.jpg");
       }
+
       .image.about {
         background-image: asset-url("lyche/front_om_oss.jpg");
       }
+
       .image.contact {
         background-image: asset-url("lyche/front_kontakt.jpg");
       }
+
       .image.reservation {
         background-image: asset-url("lyche/front_reservasjon.jpg");
       }
     }
+
     .info-container {
       flex: 1;
       display: flex;
@@ -126,6 +131,7 @@ body.lyche {
     }
 
   }
+
   .section:nth-child(odd) {
     flex-direction: row-reverse;
     background-color: #050505;
@@ -149,7 +155,7 @@ body.lyche {
     MOBILE SECTION
     VERTICAL LAYOUT
   */
-  @media only screen and (max-width: 700px){
+  @media only screen and (max-width: 700px) {
     .section:nth-child(odd) {
       flex-direction: column;
       background-color: #050505;
@@ -162,22 +168,27 @@ body.lyche {
       .image-container {
         flex-basis: 100%;
       }
+
       .info-container {
         flex-basis: 80%;
         justify-content: flex-start;
+
         .title {
           font-size: 2em;
         }
+
         .description {
           color: rgb(180, 180, 180);
           font-size: 1em;
           max-width: 300px;
         }
+
         .section-button {
           font-size: 1em;
           padding: 5px 15px 5px 15px;
           border-radius: 100px;
           margin-top: 20px;
+
           .chevron {
             display: none;
           }
@@ -216,6 +227,7 @@ body.lyche {
         cursor: pointer;
         font-size: 1.2em;
         text-align: center;
+
         a {
           color: white;
         }
@@ -240,10 +252,11 @@ body.lyche {
     /*
     MOBILE HEADER
     */
-    @media only screen and (max-width: 700px){
+    @media only screen and (max-width: 700px) {
       .header-menu {
         width: 100%;
         justify-content: space-around;
+
         .menu-button {
           display: none;
           max-width: 0px;
@@ -262,6 +275,7 @@ body.lyche {
           width: 32px;
           height: 24px;
           margin-left: 32px;
+
           .mobile-hamburger-line {
             width: 100%;
             height: 4px;
@@ -270,6 +284,7 @@ body.lyche {
           }
 
         }
+
         .mobile-hamburger {
           .mobile-hamburger-line {
             transform-origin: center;
@@ -277,16 +292,19 @@ body.lyche {
             transition: .2s;
           }
         }
+
         .mobile-hamburger.open {
           .mobile-hamburger-line:nth-child(1) {
             transform-origin: center;
             transform: translateY(10px) rotate(-45deg);
             transition: .2s;
           }
+
           .mobile-hamburger-line:nth-child(2) {
             opacity: 0;
             transition: .2s;
           }
+
           .mobile-hamburger-line:nth-child(3) {
             transform-origin: center;
             transform: translateY(-10px) rotate(45deg);
@@ -369,6 +387,7 @@ body.lyche {
         background-color: black;
         opacity: .75;
       }
+
       .action-button {
         font-size: 1em;
         width: 150px;
@@ -376,16 +395,18 @@ body.lyche {
         color: black;
         cursor: pointer;
       }
+
       .action-button:hover {
         color: dimgray;
       }
     }
 
   }
+
   /*
     HIDE STATUS BOX MOBILE
   */
-  @media only screen and (max-width: 700px){
+  @media only screen and (max-width: 700px) {
     .status-box {
       display: none;
     }
@@ -407,7 +428,7 @@ body.lyche {
       margin-right: 3em;
     }
 
-    @media only screen and (max-width: 700px){
+    @media only screen and (max-width: 700px) {
       .about-us-image {
         display: none;
       }
@@ -447,9 +468,11 @@ body.lyche {
         display: flex;
         align-items: center;
       }
+
       .corner.left {
         transform: translateX(16px);
       }
+
       .corner.right {
         transform: translateX(-16px);
       }
@@ -498,6 +521,7 @@ body.lyche {
           background-position: center;
           margin: 0 auto;
         }
+
         .lyche-menu-title {
           font-size: 2.5em;
           text-align: center;
@@ -646,6 +670,7 @@ body.lyche {
       padding-bottom: .5em;
     }
   }
+
   .mobile-hamburger-menu.open {
     opacity: 1;
     transition: .3s;
@@ -699,10 +724,12 @@ body.lyche {
           text-align: left;
           font-size: 18px;
         }
+
         td {
           text-align: right;
           color: #aaa;
         }
+
         tr, tr:nth-child(even) {
           padding-top: 10px;
           background-color: transparent;
@@ -727,7 +754,7 @@ body.lyche {
   }
 
 
-  @media only screen and (max-width: 700px){
+  @media only screen and (max-width: 700px) {
     .about {
       flex-direction: column;
     }
@@ -753,120 +780,59 @@ body.lyche {
 
   // Chevrons
   .chevron::before {
-=======
-#lyche_under_construction_image {
-  height: 100%;
-  width: 100%;
-  background: asset-url("lyche/under_construction.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  position: absolute;
-  top: 0;
 
-  #lyche_under_construction_text {
-    font-family: "Futura", arial, sans-serif;
-    width: 100%;
+    cursor: pointer;
     position: absolute;
-    bottom: 5%;
-    color: #fbb040;
-    font-size: 6em;
-    font-weight: bold;
+    top: 30px;
+    left: 30px;
     text-transform: uppercase;
-    text-align: center;
-  }
-}
-
-#lyche_back_button {
-  cursor: pointer;
-  position: absolute;
-  top: 30px;
-  left: 30px;
-  text-transform: uppercase;
-  font-size: 20px;
-  font-weight: bold;
-  background-color: black;
-  border-radius: 10px;
-  padding: 10px;
-  transition: .2s;
-
-  a {
-    font-family: "Futura", arial, sans-serif;
-    color: #fbb040;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: black;
+    border-radius: 10px;
+    padding: 10px;
     transition: .2s;
-  }
 
-  #lyche_back_arrow {
->>>>>>> master
-    border-style: solid;
-    border-width: 0.25em 0.25em 0 0;
-    content: '';
-    display: inline-block;
-<<<<<<< HEAD
-    height: 15px;
-    left: 0.15em;
-    position: relative;
-    top: 0.15em;
-    transform: rotate(-45deg);
-    vertical-align: top;
-    width: 15px;
-  }
+    a {
+      font-family: "Futura", arial, sans-serif;
+      color: #fbb040;
+      transition: .2s;
+    }
 
-  .chevron.right:before {
-    left: 0;
-    transform: rotate(45deg);
-  }
+    #lyche_back_arrow {
+      border-style: solid;
+      border-width: 0.25em 0.25em 0 0;
+      content: '';
+      display: inline-block;
+      height: 15px;
+      left: 0.15em;
+      position: relative;
+      top: 0.15em;
+      transform: rotate(-45deg);
+      vertical-align: top;
+      width: 15px;
+    }
 
-  .chevron.bottom:before {
-    top: 0;
-    transform: rotate(135deg);
-  }
+    .chevron.right:before {
+      left: 0;
+      transform: rotate(45deg);
+    }
 
-  .chevron.left:before {
-    left: 0.25em;
-    transform: rotate(-135deg);
-  }
-  .chevron {
-    display: inline;
-    padding-right: 8px;
-    padding-left: 5px;
-  }
+    .chevron.bottom:before {
+      top: 0;
+      transform: rotate(135deg);
+    }
 
-}
+    .chevron.left:before {
+      left: 0.25em;
+      transform: rotate(-135deg);
+    }
 
-=======
-    height: 0.45em;
-    left: 0.15em;
-    position: relative;
-    top: 0.15em;
-    vertical-align: top;
-    width: 0.45em;
-    transform: rotate(-135deg) scale(1.5);
-    margin-top: 5px;
-    margin-right: 10px;
-    margin-left: 5px;
-  }
-
-}
-
-#lyche_back_button:hover {
-  background-color: #222;
-
-  a {
-    color: white;
-  }
-}
-
-// Mobile compatibility
-@media only screen and (max-width: 1000px) {
-  #lyche_under_construction_image {
-    #lyche_under_construction_text {
-      font-size: 2.5em;
-      bottom: 0.5em;
+    .chevron {
+      display: inline;
+      padding-right: 8px;
+      padding-left: 5px;
     }
   }
-  #lyche_back_button {
-    font-size: 1em;
-  }
 }
->>>>>>> master
+
