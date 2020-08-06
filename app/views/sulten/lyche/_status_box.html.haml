@@ -2,13 +2,28 @@
 .status-box
 
   .open-hours
-    Åpent idag fra 18:00 til 00:00
-
-  .action-container
-
-    =link_to sulten_menu_path do
-      .action-button
-        Meny
-    .action-button-separator
-    .action-button
-      Reserver Bord
+    %table
+      %tr
+        %td{colspan: 2}
+          %b= "Åpningstider"
+      %tr
+        %td= "10.08 - 12.08"
+        %td= "22:00 - 02:00 (bar)"
+      %tr
+        %td= "13.08 - 28.08"
+        %td= "16:00 - 22:00 (restaurant)"
+      %tr
+        %td= ""
+        %td= "22:00 - 02:00 (spritbar)"
+      %tr
+        %td{colspan: 2}
+          %b= "Etter fadderukene"
+      %tr
+        %td="Hverdager"
+        %td="16:00-23:00 (restaurant)"
+      %tr
+        %td="Helger"
+        %td="16:00-22:00 (restaurant)"
+      %tr
+        %td=""
+        %td="22:00-02:00 (spritbar)"

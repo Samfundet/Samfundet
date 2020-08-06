@@ -8,9 +8,21 @@ body.lyche {
   font-family: 'LemonMilkLight';
   src: asset-url('LEMONMILK-Light.ttf') format('truetype');
 }
+@font-face {
+  font-family: 'Lora';
+  src: asset-url('Lora.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Lora';
+  src: asset-url('Lora-Italic.ttf') format('truetype');
+  font-style: italic;
+}
 
 .lyche-container {
 
+  a {
+    color: #fbb042;
+  }
 
   width: 100%;
   min-height: 100%;
@@ -97,7 +109,7 @@ body.lyche {
         flex: 0;
         font-size: 20px;
         font-weight: bold;
-        background-color: orange;
+        background-color: #fbb042;
         color: white;
         border-radius: 4px;
         margin-top: 30px;
@@ -142,7 +154,7 @@ body.lyche {
       background-color: #050505;
     }
     .section {
-      height: 400px;
+      height: 500px;
       flex-direction: column;
       padding: 0;
 
@@ -308,7 +320,6 @@ body.lyche {
 
   .status-box {
     width: 400px;
-    height: 120px;
     position: fixed;
     bottom: 50px;
     right: 50px;
@@ -327,6 +338,11 @@ body.lyche {
 
     padding: 1em;
     border-radius: 8px;
+
+    .open-hours-title {
+      color: black;
+      text-align: center;
+    }
 
     .open-hours {
       flex: 1;
@@ -467,9 +483,19 @@ body.lyche {
         margin-left: 14px;
         border-left: 1px solid white;
         border-right: 1px solid white;
+        padding-top: 3em;
 
+        .lyche-menu-logo {
+          background-image: asset_url("lyche/menu_logo.png");
+          max-width: 80%;
+          height: 100px;
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-position: center;
+          margin: 0 auto;
+        }
         .lyche-menu-title {
-          font-size: 3em;
+          font-size: 2.5em;
           text-align: center;
           color: white;
           width: 100%;
@@ -479,11 +505,10 @@ body.lyche {
         }
 
         .lyche-menu-subtitle {
-          font-size: 2em;
+          font-size: 1.25em;
           text-align: center;
           color: white;
           width: 100%;
-          padding-top: 30px;
           padding-bottom: 30px;
           text-transform: uppercase;
           font-family: 'LemonMilkLight', sans-serif;
@@ -497,6 +522,8 @@ body.lyche {
           align-items: center;
           margin-bottom: 3em;
           margin-top: 2em;
+          margin-left: 10px;
+          margin-right: 10px;
 
           .lyche-menu-category-detail.left {
             background-image: asset_url("lyche/menu-detail-left.png");
@@ -547,15 +574,17 @@ body.lyche {
             display: flex;
             flex-direction: row;
             justify-content: space-between;
-            font-size: 1.5em;
+            font-size: 1.25em;
             color: white;
             margin-bottom: 5px;
             text-transform: uppercase;
+            font-family: "LemonMilkLight", sans-serif;
 
             .item-price {
               font-size: .75em;
               margin-left: 20px;
               margin-top: .25em;
+              font-family: "Lora", sans-serif;
             }
           }
 
@@ -564,6 +593,7 @@ body.lyche {
             display: block;
             float: left;
             margin-bottom: 20px;
+            font-family: "Lora", sans-serif;
           }
         }
       }
