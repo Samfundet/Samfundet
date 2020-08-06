@@ -10,3 +10,12 @@ class BilligTicketCard < ApplicationRecord
     membership_ends >= Time.zone.today
   end
 end
+
+# == Schema Information
+#
+# Table name: billig_ticket_cards
+#
+#  card            :bigint           primary key
+#  owner_member_id :integer
+#  membership_ends :date
+#

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 body.lyche {
   background-color: black;
@@ -752,10 +753,56 @@ body.lyche {
 
   // Chevrons
   .chevron::before {
+=======
+#lyche_under_construction_image {
+  height: 100%;
+  width: 100%;
+  background: asset-url("lyche/under_construction.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  top: 0;
+
+  #lyche_under_construction_text {
+    font-family: "Futura", arial, sans-serif;
+    width: 100%;
+    position: absolute;
+    bottom: 5%;
+    color: #fbb040;
+    font-size: 6em;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+  }
+}
+
+#lyche_back_button {
+  cursor: pointer;
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: black;
+  border-radius: 10px;
+  padding: 10px;
+  transition: .2s;
+
+  a {
+    font-family: "Futura", arial, sans-serif;
+    color: #fbb040;
+    transition: .2s;
+  }
+
+  #lyche_back_arrow {
+>>>>>>> master
     border-style: solid;
     border-width: 0.25em 0.25em 0 0;
     content: '';
     display: inline-block;
+<<<<<<< HEAD
     height: 15px;
     left: 0.15em;
     position: relative;
@@ -787,3 +834,39 @@ body.lyche {
 
 }
 
+=======
+    height: 0.45em;
+    left: 0.15em;
+    position: relative;
+    top: 0.15em;
+    vertical-align: top;
+    width: 0.45em;
+    transform: rotate(-135deg) scale(1.5);
+    margin-top: 5px;
+    margin-right: 10px;
+    margin-left: 5px;
+  }
+
+}
+
+#lyche_back_button:hover {
+  background-color: #222;
+
+  a {
+    color: white;
+  }
+}
+
+// Mobile compatibility
+@media only screen and (max-width: 1000px) {
+  #lyche_under_construction_image {
+    #lyche_under_construction_text {
+      font-size: 2.5em;
+      bottom: 0.5em;
+    }
+  }
+  #lyche_back_button {
+    font-size: 1em;
+  }
+}
+>>>>>>> master

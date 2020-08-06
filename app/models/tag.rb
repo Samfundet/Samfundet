@@ -12,12 +12,11 @@ class Tag < ActiveRecord::Base
 end
 
 # == Schema Information
-# Schema version: 20130422173230
 #
 # Table name: tags
 #
-#  id         :integer          not null, primary key
-#  name       :string(255)
+#  id         :bigint           not null, primary key
+#  name       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

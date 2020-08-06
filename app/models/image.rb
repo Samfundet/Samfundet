@@ -29,7 +29,7 @@ class Image < ApplicationRecord
 
   default_scope { order(image_file_updated_at: :desc) }
 
-  include PgSearch
+  include PgSearch::Model
   pg_search_scope :search,
                   against: %i[title
                               image_file_file_name
@@ -81,16 +81,16 @@ class Image < ApplicationRecord
 end
 
 # == Schema Information
-# Schema version: 20130422173230
 #
 # Table name: images
 #
-#  id                      :integer          not null, primary key
-#  title                   :string(255)
-#  created_at              :datetime         not null
-#  updated_at              :datetime         not null
-#  image_file_file_name    :string(255)
-#  image_file_content_type :string(255)
+#  id                      :bigint           not null, primary key
+#  title                   :string
+#  uploader_id             :integer
+#  image_file_file_name    :string
+#  image_file_content_type :string
 #  image_file_file_size    :integer
 #  image_file_updated_at   :datetime
+#  created_at              :datetime         not null
+#  updated_at              :datetime         not null
 #

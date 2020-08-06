@@ -58,12 +58,23 @@ after :documents do
     name_en: Page::MENU_NAME,
     content_no: "- **Generelt**\n"\
                 "\t- [Saksdokumenter](/saksdokumenter)\n"\
+                "\t- [Åpningstider](/aapningstider)\n"\
                 "\t- **Gjenger**\n#{Group.all.map { |p| "\t\t- [#{p.page.title_no}](/informasjon/#{p.page.name_no})" }.join("\n")}\n"\
                 "\t- **Lokaler**\n#{Area.all.map { |p|  "\t\t- [#{p.page.title_no}](/informasjon/#{p.page.name_no})" }.join("\n")}\n",
     content_en: "- **General**\n"\
                 "\t- [Documents](/dokuments)\n"\
+                "\t- [Opening hours](/opening-hours)\n"\
                 "\t- **Groups**\n#{Group.all.map { |p| "\t\t- [#{p.page.title_en}](/informasjon/#{p.page.name_en})" }.join("\n")}\n"\
                 "\t- **Areas**\n#{Area.all.map { |p|  "\t\t- [#{p.page.title_en}](/informasjon/#{p.page.name_en})" }.join("\n")}\n",
+    role_id: Role.super_user.id
+  )
+
+  puts "Creating opening hours page"
+  Page.create!(
+    name_no: "aapningstider",
+    name_en: "opening-hours",
+    content_no: "# Åpningstider",
+    content_en: "# Opening hours",
     role_id: Role.super_user.id
   )
 

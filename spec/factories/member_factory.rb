@@ -1,5 +1,16 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: members
+#
+#  medlem_id :bigint           not null, primary key
+#  fornavn   :string
+#  etternavn :string
+#  mail      :string
+#  telefon   :string
+#  passord   :string
+#
 FactoryBot.define do
   factory :member do
     fornavn { 'Fornavn' }

@@ -18,9 +18,17 @@ copy-config-files:
 copy-travis-files:
 	cp config/database.travis.yml config/database.yml
 
+.PHONY: lint
+lint:
+	bundle exec rubocop -D
+
+.PHONY: format
+format:
+	bundle exec rubocop -x
+
 .PHONY: test
 test:
-	bundle exec rubocop -D
+	rspec .
 
 .PHONY: deploy-production
 deploy-production:
@@ -39,3 +47,12 @@ localseed:
 
 truncate:
 	RAILS_ENV=development rake db:seed:development:truncate
+
+setup-mac:
+	sh setup-mac.sh
+
+.PHONY: generate-diagrams
+generate-diagrams:
+	[ -d docs/diagrams ] ||  mkdir docs/diagrams
+	railroady -M | neato -Tsvg > docs/diagrams/models.svg
+	railroady -C | neato -Tsvg > docs/diagrams/controllers.svg

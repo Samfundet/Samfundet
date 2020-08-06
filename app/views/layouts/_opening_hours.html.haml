@@ -21,3 +21,5 @@
                 = format '%s–%s',
                     I18n.l(hours.open_time, format: :time),
                     I18n.l(hours.close_time, format: :time)
+      .opening-hours-link
+        = link_to t('site.index.all-opening-hours'), @opening_hours_url

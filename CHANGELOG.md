@@ -1,5 +1,114 @@
 # CHANGELOG
 
+## 2020-05-15
+
+### Added
+
+- Show preview page for the new Lyche page ([#672](https://github.com/Samfundet/Samfundet/pull/672))
+
+## 2020-04-21
+
+### Added
+
+- Add Makefile command for generating controller/model diagrams ([#666](https://github.com/Samfundet/Samfundet/pull/666))
+
+### Improved
+
+- Improve README and setup script for macOS ([#668](https://github.com/Samfundet/Samfundet/pull/668))
+
+## 2020-04-16
+
+### Fixed
+
+- Fix translations ([#653](https://github.com/Samfundet/Samfundet/issues/653))
+
+## 2020-04-02
+
+### Added
+
+- Make applicant phone number and email interactable ([#606](https://github.com/Samfundet/Samfundet/issues/606))
+
+### Changed
+
+- Clean up Makefile ([#662](https://github.com/Samfundet/Samfundet/pull/662))
+
+### Fixed
+
+- Annotate Ruby on Rails model files ([#663](https://github.com/Samfundet/Samfundet/pull/663))
+
+## 2020-04-01
+
+### Fixed
+
+- Fix tests ([#462](https://github.com/Samfundet/Samfundet/issues/462))
+- Upgrade paperclip-compression ([#651](https://github.com/Samfundet/Samfundet/pull/651))
+- Validate `publication_time` when creating an `Event` ([#655](https://github.com/Samfundet/Samfundet/issues/655))
+
+## 2020-03-26
+
+### Fixed
+
+- Fix testing infrastructure ([#641](https://github.com/Samfundet/Samfundet/pull/641))
+
+## 2020-03-24
+
+### Changed
+
+- Properly encapsulate and translate log entries ([#642](https://github.com/Samfundet/Samfundet/pull/642))
+
+### Fixed
+
+- Correct typo in `/admission` text ([#560](https://github.com/Samfundet/Samfundet/issues/560))
+
+## 2020-03-20
+
+### Fixed
+
+- Make all columns in interview table sortable ([#639](https://github.com/Samfundet/Samfundet/pull/639))
+- Don't compare interview times if it has been removed ([#638](https://github.com/Samfundet/Samfundet/pull/638))
+
+## 2020-03-19
+
+### Fixed
+
+- Upgrade Rails to 5.2.4.2 to fix security vulnerability ([#640](https://github.com/Samfundet/Samfundet/pull/640))
+- Fix admission statistics ([#623](https://github.com/Samfundet/Samfundet/pull/623))
+
+## 2020-03-18
+
+### Added
+
+- Add macOS shell script for onboarding new members ([#602](https://github.com/Samfundet/Samfundet/pull/602))
+
+### Fixed
+
+- Fix UI issues with previous and next admission buttons in statistics view ([#618](https://github.com/Samfundet/Samfundet/pull/618))
+
+## 2020-03-17
+
+### Removed
+
+- Completely remove the show unlogged applications functionality ([#635](https://github.com/Samfundet/Samfundet/pull/635))
+
+## 2020-02-22
+
+### Added
+
+- Add calendar icon for Lyche calendar ([#582](https://github.com/Samfundet/Samfundet/issues/582))
+
+## 2020-02-13
+
+### Changed
+
+- Hide show unlogged applicants because of bugs ([#617](https://github.com/Samfundet/Samfundet/pull/617))
+- Configure ([#610](https://github.com/Samfundet/Samfundet/pull/610)) and later revert ([#611](https://github.com/Samfundet/Samfundet/pull/611)) LiveReload middleware
+
+## 2020-02-11
+
+### Changed
+
+- Update images created in `seeds.rb` ([#609](https://github.com/Samfundet/Samfundet/pull/609))
+
 ## 2020-02-08
 
 ### Added

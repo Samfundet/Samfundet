@@ -50,7 +50,15 @@ module Samfundet
     # like 'javascript_include_tag' to find them
     config.assets.paths << Rails.root.join('app', 'assets', 'javascripts', 'interviews')
     config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
-    config.assets.precompile += ['chartkick.js', 'linkgraph.js', 'old_samfundet/interviews.js', 'job_applications/job_applications.js', 'old_samfundet/jobs_search.js', 'applicants/admissions_admin_applicants.js', 'job_applications/admissions_admin_job_applications.js', 'sulten/duration.js', 'lyche/header.js']
+    config.assets.precompile += %w(chartkick.js)
+    config.assets.precompile += %w(linkgraph.js)
+    config.assets.precompile += %w(applicants/interviews.js)
+    config.assets.precompile += %w(job_applications/job_applications.js)
+    config.assets.precompile += %w(old_samfundet/jobs_search.js)
+    config.assets.precompile += %w(applicants/admissions_admin_applicants.js)
+    config.assets.precompile += %w(job_applications/admissions_admin_job_applications.js)
+    config.assets.precompile += %w(sulten/duration.js)
+    config.assets.precompile += %w(sulten/calendar.js)
 
     # Load local env variables into rails config
     config.before_configuration do

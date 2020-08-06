@@ -55,14 +55,15 @@ class Interview < ApplicationRecord
 end
 
 # == Schema Information
-# Schema version: 20130422173230
 #
 # Table name: interviews
 #
-#  id                 :integer          not null, primary key
+#  id                 :bigint           not null, primary key
 #  time               :datetime
 #  acceptance_status  :string(10)
 #  job_application_id :integer
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
+#  location           :string
+#  comment            :text
 #

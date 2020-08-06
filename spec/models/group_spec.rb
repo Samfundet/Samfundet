@@ -1,5 +1,20 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: groups
+#
+#  id                :bigint           not null, primary key
+#  name              :string
+#  abbreviation      :string
+#  website           :string
+#  group_type_id     :integer
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  short_description :text
+#  long_description  :text
+#  page_id           :integer
+#
 require 'rails_helper'
 
 describe Group, 'short_name' do

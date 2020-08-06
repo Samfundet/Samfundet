@@ -17,6 +17,7 @@ install:
     - make
 
 script:
+    - make lint
     - make test
 
 notifications:

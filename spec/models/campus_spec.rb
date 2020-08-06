@@ -1,5 +1,15 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: campus
+#
+#  id         :bigint           not null, primary key
+#  name       :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  active     :boolean          default(TRUE)
+#
 require 'rspec'
 require 'rails_helper'
 require 'pp'
@@ -36,20 +46,14 @@ describe Campus do
   end
 
   it 'should have an applicant if someone has applied from a particular campus current' do
-    DatabaseCleaner.clean
+    applicant = create(:applicant, :with_job_applications)
+    admission = create(:admission_with_jobs)
+    campus = create(:campus)
 
-    applicant = create(:applicant)
-    job = create(:job)
-    admission = create(:admission)
-    _ = create(:job_application, job: job, applicant: applicant)
+    campus.applicants << applicant
+    admission.jobs.first.job_applications << applicant.job_applications
 
-    admission.user_priority_deadline = 1.week.ago
-
-    # number_of_applicants_given_admission returns a dictionary.
-    # Calling first returns an array [key, value], so accessing the second value
-    # returns the actual number we're looking for.
-    # TODO: Improve this test.
-    number_of_applicants = Campus.number_of_applicants_current_admission.first.second
+    number_of_applicants = Campus.number_of_applicants_current_admission[campus.id]
 
     expect(number_of_applicants).to eq(1)
   end

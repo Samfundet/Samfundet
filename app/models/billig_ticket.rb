@@ -14,3 +14,17 @@ class BilligTicket < ApplicationRecord
       .billig_event
   end
 end
+
+# == Schema Information
+#
+# Table name: billig_tickets
+#
+#  ticket          :bigint           not null, primary key
+#  price_group     :integer          not null
+#  purchase        :integer          not null
+#  used            :datetime
+#  refunded        :datetime
+#  on_card         :boolean          not null
+#  refunder        :text
+#  point_of_refund :integer
+#

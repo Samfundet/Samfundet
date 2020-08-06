@@ -43,7 +43,7 @@ gem 'jquery-ui-rails', '~> 5.0.0'
 gem 'jquery-turbolinks', '~> 2.1.0'
 
 # used for sorting tables in the admission
-gem 'jquery-tablesorter', '~> 1.22.0'
+gem 'jquery-tablesorter', '~> 1.27.0'
 
 # CoffeeScript is a scripting language. It compiles to JavaScript.
 gem 'coffee-rails', '~> 4.2.0'
@@ -107,7 +107,7 @@ gem 'will_paginate', '~> 3.1.0'
 gem 'paperclip', '~> 5.2.0'
 
 # automatic compression of images uploaded via paperclip
-gem 'paperclip-compression', '~> 1.0.0'
+gem 'paperclip-compression', '~> 1.1.0'
 
 # A simple date validator for Rails 3.
 gem 'date_validator', '~> 0.9.0'
@@ -147,7 +147,7 @@ group :development do
   # annotate adds schema information from the database, in the form of
   # Ruby comments, to model files so that we can see which columns
   # are actually in the database.
-  gem 'annotate', '~> 3.0.3'
+  gem 'annotate', '~> 3.1.0'
 
   # Easier preview of mail in development
   gem 'letter_opener', '~> 1.7.0'
@@ -201,7 +201,7 @@ group :development, :test do
   # RSpec is a unit testing framework.
   # rspec-rails integrates RSpec (v2) and Rails (v3).
   gem 'rails-controller-testing', '~> 1.0.0'
-  gem 'rspec-rails', '~> 3.5.0'
+  gem 'rspec-rails', '~> 3.9.0'
 end
 
 group :test do
@@ -210,14 +210,14 @@ group :test do
 
   # database_cleaner ensures a clean DB state during tests;
   # we use it with Cucumber.
-  gem 'database_cleaner', '~> 1.5.0'
+  gem 'database_cleaner', '~> 1.8.0'
 
   # launchy is an application launcher; it's required for the
   # 'Then show me the page' action in Cucumber
   gem 'launchy', '~> 2.4.0'
 
   # The RSpec testing framework.
-  gem 'rspec', '~> 3.5.0'
+  gem 'rspec', '~> 3.9.0'
 
   # Factories for testing
   gem 'factory_bot_rails', '~> 5.1.0'
@@ -227,5 +227,5 @@ group :test do
   gem 'webrat', '~> 0.7.0'
 
   # Simplecov is a code coverage tool
-  gem 'simplecov', '~> 0.12.0', require: false
+  gem 'simplecov', '~> 0.18.0', require: false
 end

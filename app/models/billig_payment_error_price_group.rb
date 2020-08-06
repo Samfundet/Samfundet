@@ -11,3 +11,14 @@ class BilligPaymentErrorPriceGroup < ApplicationRecord
       .samfundet_event
   end
 end
+
+# == Schema Information
+#
+# Table name: billig_payment_error_price_groups
+#
+#  error             :string
+#  price_group       :integer
+#  number_of_tickets :integer
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#

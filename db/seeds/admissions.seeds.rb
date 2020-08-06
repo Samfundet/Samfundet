@@ -36,17 +36,19 @@ after :organizers do
   possible_number_of_jobs_in_group = [1, 2, 3]
   puts "Creating jobs"
 
-  Group.all.each do |group|
-    number_of_jobs = possible_number_of_jobs_in_group.sample
-    puts number_of_jobs.to_s + " jobs to be created for #{group.short_name}"
-    number_of_jobs.times do |n|
-      group.jobs.create!(
-        admission: admission,
-        title_no: Faker::Company.catch_phrase,
-        teaser_no: Faker::Lorem.sentence(1),
-        description_no: "En fantastisk stilling du bare MÅ søke. " + ("lorem ipsum boller og brus" * 30),
-        is_officer: (rand > 0.5)
-      )
+  Admission.all.each do |a|
+    Group.all.each do |group|
+      number_of_jobs = possible_number_of_jobs_in_group.sample
+      puts number_of_jobs.to_s + " jobs to be created for #{group.short_name}"
+      number_of_jobs.times do |n|
+        group.jobs.create!(
+          admission: a,
+          title_no: Faker::Company.catch_phrase,
+          teaser_no: Faker::Lorem.sentence(1),
+          description_no: "En fantastisk stilling du bare MÅ søke. " + ("lorem ipsum boller og brus" * 30),
+          is_officer: (rand > 0.5)
+        )
+      end
     end
   end
   puts "Done with creating jobs"

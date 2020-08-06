@@ -11,37 +11,32 @@ class LogEntry < ApplicationRecord
   default_scope { order(created_at: :asc) }
 
   def self.possible_log_entries
-    if I18n.locale == :no
-      [
-        'Forsøkt ringt, tok ikke telefonen',
-        'Ringt og tilbudt verv, venter på svar',
-        'Ringt, venter fremdeles på svar',
-        'Ringt og tilbudt verv, takket ja',
-        'Ringt og tilbudt verv, takket nei',
-        'Ringt og meddelt ingen tilbud om verv',
-        'Sendt e-post og meddelt ingen tilbud om verv'
-      ]
-    elsif I18n.locale == :en
-      [
-        'Called, no reply',
-        'Called and offered position, awaiting reply',
-        'Called, still waiting for reply',
-        'Called and offered position, the applicant accepted',
-        'Called and offered position, the applicant declined',
-        'Called and notified the applicant of our rejection',
-        'Sent email and notified the applicant of our rejection'
-      ]
-    end
+    [
+      I18n.t('activerecord.models.possible_log_entries.called_no_answer'),
+      I18n.t('activerecord.models.possible_log_entries.called_offered_job_waiting'),
+      I18n.t('activerecord.models.possible_log_entries.called_still_waiting'),
+      I18n.t('activerecord.models.possible_log_entries.called_offered_job_accepted'),
+      I18n.t('activerecord.models.possible_log_entries.called_offered_job_declined'),
+      I18n.t('activerecord.models.possible_log_entries.called_no_offer'),
+      I18n.t('activerecord.models.possible_log_entries.emailed_no_offer')
+    ]
+  end
+
+  def self.acceptance_log_entry
+    possible_log_entries[3]
+  end
+
+  def is_acceptance_log_entry?
+    log == LogEntry.possible_log_entries[3]
   end
 end
 
 # == Schema Information
-# Schema version: 20130422173230
 #
 # Table name: log_entries
 #
-#  id           :integer          not null, primary key
-#  log          :string(255)
+#  id           :bigint           not null, primary key
+#  log          :string
 #  admission_id :integer
 #  group_id     :integer
 #  applicant_id :integer
