@@ -15,13 +15,13 @@ body.lyche {
   }
 
   .front-image {
-    background-image: asset-url("sulten/front.jpg");
+    background-image: asset-url("lyche/front.jpg");
     background-size: cover;
     width: 100vw;
     height: 100vh;
 
     .front-logo {
-      background-image: asset-url("sulten/logo.png");
+      background-image: asset-url("lyche/logo.png");
       width: 400px;
       background-size: contain;
       background-repeat: no-repeat;
@@ -179,7 +179,7 @@ body.lyche {
     transition: .2s;
     z-index: 69;
 
-    //background: linear-gradient(to bottom, black, transparent);
+    background: linear-gradient(to bottom, black, transparent);
 
     .header-menu {
       flex: 1;
@@ -360,6 +360,36 @@ body.lyche {
   @media only screen and (max-width: 700px){
     .status-box {
       display: none;
+    }
+  }
+
+
+  .about-us-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 3em;
+
+    .about-us-image {
+      background-size: cover;
+      border-radius: 4px;
+      background-image: asset-url("lyche/front_om_oss.jpg");
+      flex-basis: 40%;
+      margin-right: 3em;
+    }
+
+    @media only screen and (max-width: 700px){
+      .about-us-image {
+        display: none;
+      }
+    }
+
+    .about-us-description {
+      font-size: 1.25em;
+      color: gray;
+      flex: 1;
+      padding: 1em;
     }
   }
 
