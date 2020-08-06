@@ -711,6 +711,7 @@ body.lyche {
       margin: 2em;
       opacity: 0.8;
     }
+
   }
 
 
@@ -718,6 +719,12 @@ body.lyche {
     .about {
       flex-direction: column;
     }
+  }
+
+  .reservation-info {
+    max-width: 600px;
+    margin: 0 auto;
+    color: dimgray;
   }
 
 

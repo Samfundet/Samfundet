@@ -1,9 +1,22 @@
 - content_for(:container) do
   = render "header_menu"
 
+
   .lyche_form_title
     = t("sulten.reservation.form.title")
 
+
+  .reservation-info
+    På grunn av løpende smittevernhensyn så er det dessverre ikke mulig med drop-inn på Lyche. Alle besøk, både mat- og drikke relaterte, må reserveres i forveien. Dette gjøres gjennom vårt reservasjonssystem, eller på e-post.
+    Det er mulig å forhåndsbestille mat hvis dere kontakter oss med bestillingen på e-post minst et døgn i forveien av reservasjonen. Da kan vi ha maten klar til avtalt tidspunkt, og dere trenger ikke å vente på maten.
+    %br
+    %br
+    Man kan være 12 personer per reservasjon. Hvis dere er flere enn dette, så ta kontakt på e-post. Vi kan ikke garantere at alle får sittet sammen.
+    %br
+    %br
+    Reservasjonssystemet vårt er fortsatt under utvikling, og ber om forbehold om at feil kan forekomme.
+    %br
+    %br
   = semantic_form_for @reservation, :html => { :class => "custom-form lyche_form"} do |f|
     = f.inputs do
       %li
