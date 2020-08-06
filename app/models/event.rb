@@ -320,16 +320,18 @@ class Event < ApplicationRecord
   end
   def full?
     if registration_event
-        registration_event.full?
+        return registration_event.full?
+    else
+        return true
     end
-    true
   end
 
   def link
     if registration_event
-        registratino_event.link
+        return registration_event.link
+    else
+        return ""
     end
-    ""
   end
 
   def cache_key
