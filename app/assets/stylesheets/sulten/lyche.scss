@@ -393,91 +393,152 @@ body.lyche {
     }
   }
 
+
   .lyche-menu {
 
     max-width: 1200px;
     margin: 0 auto;
-    border: 2px solid #222;
-    border-radius: 5px;
     color: white;
 
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    .lyche-menu-title {
-      font-size: 2em;
-      text-align: center;
-      color: white;
+    .lyche-header-border {
+      height: 32px;
       width: 100%;
-      padding-top: 30px;
-      padding-bottom: 30px;
-    }
-
-    .lyche-menu-tab-container {
 
       display: flex;
-      flex: 1;
-      flex-direction: row;
-      justify-content: center;
-      padding: 10px;
-      margin-bottom: 20px;
-      background-color: #222;
-      min-width: 100%;
+      align-items: flex-end;
+      align-content: center;
 
-      .lyche-menu-tab {
-        font-size: 1.25em;
-        text-transform: uppercase;
-        color: dimgray;
-        cursor: pointer;
-        padding-right: 25px;
-      }
-      .lyche-menu-tab.selected {
-        color: white;
-      }
-      .lyche-menu-tab:hover {
-        color: orange;
-      }
-
-      .lyche-menu-tab-separator {
-        width: 1px;
-        height: 20px;
-        background-color: dimgray;
-        margin-right: 25px;
-      }
-
-    }
-
-
-    .menu-item {
-      display: flex;
-      flex-direction: column;
-      padding: 5px;
-      padding-left: 20px;
-      padding-right: 20px;
-      max-width: 800px;
-
-      .item-name {
+      .corner {
+        width: 32px;
+        height: 32px;
+        border: 1px solid white;
         display: flex;
-        flex-direction: row;
-        font-size: 1.5em;
-        color: orange;
-        margin-bottom: 5px;
+        align-items: center;
+      }
+      .corner.left {
+        transform: translateX(16px);
+      }
+      .corner.right {
+        transform: translateX(-16px);
+      }
 
-        .item-price {
-          color: dimgray;
-          font-size: .75em;
-          margin-left: 20px;
-          margin-top: .25em;
+      .middle {
+        flex: 1;
+        height: 16px;
+        border: 1px solid white;
+
+        display: flex;
+        justify-content: space-between;
+
+        .dot {
+          width: 4px;
+          height: 4px;
+          margin: 5px;
+          background-color: white;
+        }
+      }
+    }
+
+    .lyche-header-border.bottom {
+      align-items: flex-start;
+    }
+
+    .lyche-menu-border {
+
+      border-left: 1px solid white;
+      border-right: 1px solid white;
+      width: calc(100% - 64px);
+
+      .lyche-menu-inner-border {
+
+        margin-right: 14px;
+        margin-left: 14px;
+        border-left: 1px solid white;
+        border-right: 1px solid white;
+
+        .lyche-menu-title {
+          font-size: 2em;
+          text-align: center;
+          color: white;
+          width: 100%;
+          padding-top: 30px;
+          padding-bottom: 30px;
+          text-transform: uppercase;
+        }
+
+        .lyche-menu-tab-container {
+
+          display: flex;
+          flex: 1;
+          flex-direction: row;
+          justify-content: center;
+          padding: 10px;
+          margin-bottom: 20px;
+          background-color: #222;
+          min-width: 100%;
+
+          .lyche-menu-tab {
+            font-size: 1.25em;
+            text-transform: uppercase;
+            color: dimgray;
+            cursor: pointer;
+            padding-right: 25px;
+          }
+
+          .lyche-menu-tab.selected {
+            color: white;
+          }
+
+          .lyche-menu-tab:hover {
+            color: orange;
+          }
+
+          .lyche-menu-tab-separator {
+            width: 1px;
+            height: 20px;
+            background-color: dimgray;
+            margin-right: 25px;
+          }
+
+        }
+
+
+        .menu-item {
+          display: flex;
+          flex-direction: column;
+          padding: 5px;
+          padding-left: 20px;
+          padding-right: 20px;
+          max-width: 800px;
+
+          .item-name {
+            display: flex;
+            flex-direction: row;
+            font-size: 1.5em;
+            color: orange;
+            margin-bottom: 5px;
+
+            .item-price {
+              color: dimgray;
+              font-size: .75em;
+              margin-left: 20px;
+              margin-top: .25em;
+            }
+          }
+
+          .item-description {
+            color: dimgray;
+            display: block;
+            float: left;
+            margin-bottom: 20px;
+          }
         }
       }
 
-      .item-description {
-        color: dimgray;
-        display: block;
-        float: left;
-        margin-bottom: 20px;
-      }
     }
 
 
