@@ -6,8 +6,9 @@ class RegistrationEvent < ApplicationRecord
     belongs_to :arrangement, class_name: :Event
 
     def registrations
+        # Return 0 if in development, elsewise return how many registrations the event has
         if Rails.env.development?
-            return 50
+            return 0
         else
             return RegistrationEvent.connection.exec_query('SELECT * FROM paameldingsys.lim_paameldingsinfo WHERE arrangement_id=%d;' % arrangement_id).to_a[0]["paameldinger"]
         end

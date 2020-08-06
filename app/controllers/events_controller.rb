@@ -77,7 +77,6 @@ class EventsController < ApplicationController
       end
       if @event.price_type.eql? 'free_registration'
         @registration_event = RegistrationEvent.create(:arrangement=> @event, :plasser=>event_params[:capacity])
-        #ActiveRecord::Base.establish_connection(:development)
       end
       flash[:success] = t('events.create_success')
       redirect_to @event
