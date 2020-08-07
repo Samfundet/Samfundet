@@ -20,6 +20,10 @@ class Sulten::LycheController < Sulten::BaseController
 
   end
 
+  def reservation_failure
+
+  end
+
   def menu
 
   end

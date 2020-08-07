@@ -175,6 +175,7 @@ Rails.application.routes.draw do
       get "/" => "lyche#index"
       get "/reservation" => "lyche#reservation"
       get "/reservation/success" => "lyche#reservation_success"
+      get "/reservation/failure" => "lyche#reservation_failure"
       get "/menu" => "lyche#menu"
       get "/about" => "lyche#about"
       get "/contact" => "lyche#contact"

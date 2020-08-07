@@ -35,14 +35,14 @@ class Sulten::ReservationsController < Sulten::BaseController
     @reservation = Sulten::Reservation.new(reservation_params)
     if @reservation.in_closed_period?
       flash.now[:error] = t('helpers.models.sulten.reservation.errors.in_closed_period')
-      render :new
+      redirect_to sulten_reservation_failure_path
     elsif @reservation.save
       SultenNotificationMailer.send_reservation_email(@reservation).deliver
       flash[:success] = t('helpers.models.sulten.reservation.success.create')
       redirect_to sulten_reservation_success_path
     else
       flash.now[:error] = t('helpers.models.sulten.reservation.errors.creation_fail')
-      render :new
+      redirect_to sulten_reservation_failure_path
     end
   end
 
