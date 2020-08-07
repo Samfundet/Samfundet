@@ -59,6 +59,7 @@ module Samfundet
     config.assets.precompile += %w(job_applications/admissions_admin_job_applications.js)
     config.assets.precompile += %w(sulten/duration.js)
     config.assets.precompile += %w(sulten/calendar.js)
+    config.assets.precompile += %w(sulten/header.js)
 
 
     # Load local env variables into rails config
