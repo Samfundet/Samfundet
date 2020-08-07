@@ -49,6 +49,7 @@ module Samfundet
     # file must be added to config.assets.paths in order for helper functions
     # like 'javascript_include_tag' to find them
     config.assets.paths << Rails.root.join('app', 'assets', 'javascripts', 'interviews')
+    config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
     config.assets.precompile += %w(chartkick.js)
     config.assets.precompile += %w(linkgraph.js)
     config.assets.precompile += %w(applicants/interviews.js)
@@ -58,6 +59,8 @@ module Samfundet
     config.assets.precompile += %w(job_applications/admissions_admin_job_applications.js)
     config.assets.precompile += %w(sulten/duration.js)
     config.assets.precompile += %w(sulten/calendar.js)
+    config.assets.precompile += %w(sulten/header.js)
+
 
     # Load local env variables into rails config
     config.before_configuration do

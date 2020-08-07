@@ -1,10 +1,40 @@
 # frozen_string_literal: true
 
-# Temporary controller for lyche 'under_construction' page
+# Controller for redesigned Lyche page
+# samfundet.no/lyche
+
 class Sulten::LycheController < Sulten::BaseController
   skip_authorization_check
-  layout 'lyche'
+  layout "lyche"
 
-  def under_construction
+  def index
+
   end
+
+  def reservation
+    @closed_periods = Sulten::ClosedPeriod.current_and_future_closed_times.sort_by(&:closed_from)
+    @reservation = Sulten::Reservation.new
+  end
+
+  def reservation_success
+
+  end
+
+  def reservation_failure
+
+  end
+
+  def menu
+
+  end
+
+  def about
+
+  end
+
+  def contact
+
+  end
+
 end
+

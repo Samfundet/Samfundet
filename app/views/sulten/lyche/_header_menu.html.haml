@@ -1,0 +1,56 @@
+
+.samfundet-logo
+= javascript_include_tag "sulten/header", defer: true
+
+#lyche-header-container
+  .header-menu
+
+    .mobile-hamburger
+      .mobile-hamburger-line
+      .mobile-hamburger-line
+      .mobile-hamburger-line
+
+    = link_to sulten_reservation_path do
+      .menu-button
+        Reservasjon
+
+    = link_to sulten_menu_path do
+      .menu-button
+        Meny
+
+    = link_to sulten_path do
+      .lyche-logo
+
+    = link_to sulten_about_path do
+      .menu-button
+        Om oss
+
+    = link_to sulten_contact_path do
+      .menu-button
+        Kontakt
+
+    = link_to sulten_reservation_path do
+      .mobile-reservation
+
+
+  .mobile-hamburger-menu
+
+    = link_to sulten_path do
+      .menu-button
+        Hovedside
+
+    = link_to sulten_menu_path do
+      .menu-button
+        Meny
+
+    = link_to sulten_reservation_path do
+      .menu-button
+        Reservasjon
+
+    = link_to sulten_about_path do
+      .menu-button
+        Om oss
+
+    = link_to sulten_contact_path do
+      .menu-button
+        Kontakt

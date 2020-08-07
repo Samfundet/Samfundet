@@ -22,5 +22,8 @@
     %meta{ name:"twitter:creator", content:"@Samfundet"}
     = yield :twitter
 
-  %body
-    = yield
+  %body{ class: ('lyche') }
+    .lyche-container
+      = yield :container
+      = render "sulten/lyche/footer"
+
