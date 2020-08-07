@@ -16,6 +16,10 @@ class Sulten::LycheController < Sulten::BaseController
     @reservation = Sulten::Reservation.new
   end
 
+  def reservation_success
+
+  end
+
   def menu
 
   end

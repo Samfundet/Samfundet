@@ -39,7 +39,7 @@ class Sulten::ReservationsController < Sulten::BaseController
     elsif @reservation.save
       SultenNotificationMailer.send_reservation_email(@reservation).deliver
       flash[:success] = t('helpers.models.sulten.reservation.success.create')
-      redirect_to success_sulten_reservations_path
+      redirect_to sulten_reservation_success_path
     else
       flash.now[:error] = t('helpers.models.sulten.reservation.errors.creation_fail')
       render :new
