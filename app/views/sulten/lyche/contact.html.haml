@@ -1,0 +1,40 @@
+- content_for(:container) do
+  = render "header_menu"
+
+  .top-padding
+  .about
+
+    .left
+      .title
+        Kontakt
+      .description
+        Har du spørsmål, henvendelser, forslag til forbedring eller av andre årsaker ønsker å komme i kontakt med oss?
+        Her finner du kontaktinformasjonen vår. Reservasjoner gjøres enten via e-post eller via reservasjonssystemet vårt.
+        Vi tar ikke imot reservasjoner på sosiale medier. Du kan henvise deg til våre sosiale medier for informasjon.
+        %br
+        %br
+        Vi håper å se deg i Lyche!
+        %br
+        %br
+        For generelle henvendelser:
+      %table
+        %tr
+          %th= "Adresse"
+          %td= "Elgeseter gate 1"
+        %tr
+          %th= "Epost"
+          %td= "lyche@samfundet.no"
+        %tr
+          %th= "Instagram"
+          %td
+            %a{href: "https://www.instagram.com/lychekjokkenogbar/"}= "@lychekjokkenogbar"
+        %tr
+          %th= "Facebook"
+          %td
+            %a{href: "https://www.facebook.com/samfundet.lyche"}= "Link"
+
+
+
+    .right
+
+  .top-padding

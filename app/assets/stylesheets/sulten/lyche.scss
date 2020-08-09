@@ -1,81 +1,838 @@
-#lyche_under_construction_image {
-  height: 100%;
-  width: 100%;
-  background: asset-url("lyche/under_construction.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  position: absolute;
-  top: 0;
 
-  #lyche_under_construction_text {
-    font-family: "Futura", arial, sans-serif;
-    width: 100%;
-    position: absolute;
-    bottom: 5%;
-    color: #fbb040;
-    font-size: 6em;
-    font-weight: bold;
-    text-transform: uppercase;
-    text-align: center;
-  }
-}
-
-#lyche_back_button {
-  cursor: pointer;
-  position: absolute;
-  top: 30px;
-  left: 30px;
-  text-transform: uppercase;
-  font-size: 20px;
-  font-weight: bold;
+body.lyche {
   background-color: black;
-  border-radius: 10px;
-  padding: 10px;
-  transition: .2s;
-
-  a {
-    font-family: "Futura", arial, sans-serif;
-    color: #fbb040;
-    transition: .2s;
-  }
-
-  #lyche_back_arrow {
-    border-style: solid;
-    border-width: 0.25em 0.25em 0 0;
-    content: '';
-    display: inline-block;
-    height: 0.45em;
-    left: 0.15em;
-    position: relative;
-    top: 0.15em;
-    vertical-align: top;
-    width: 0.45em;
-    transform: rotate(-135deg) scale(1.5);
-    margin-top: 5px;
-    margin-right: 10px;
-    margin-left: 5px;
-  }
-
 }
 
-#lyche_back_button:hover {
-  background-color: #222;
 
-  a {
-    color: white;
-  }
+@font-face {
+  font-family: 'LemonMilkLight';
+  src: asset-url('LEMONMILK-Light.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Lora';
+  src: asset-url('Lora.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Lora';
+  src: asset-url('Lora-Italic.ttf') format('truetype');
+  font-style: italic;
 }
 
-// Mobile compatibility
-@media only screen and (max-width: 1000px) {
-  #lyche_under_construction_image {
-    #lyche_under_construction_text {
-      font-size: 2.5em;
-      bottom: 0.5em;
+.lyche-container {
+
+  a {
+    color: #fbb042;
+  }
+
+  width: 100%;
+  min-height: 100%;
+  font-family: "Arial", sans-serif;
+
+  background-color: #050505;
+
+  .top-padding {
+    height: 130px;
+  }
+
+  .front-image {
+    background-image: asset-url("lyche/front.jpg");
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+
+    .front-logo {
+      background-image: asset-url("lyche/logo.png");
+      width: 400px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 100px;
+      margin: 0 auto;
+      padding-top: 30%;
+      display: none;
     }
   }
-  #lyche_back_button {
-    font-size: 1em;
+
+  .section {
+    height: 600px;
+
+    display: flex;
+    flex-direction: row;
+
+    background-color: #0c0c0c;
+
+    padding: 2em 5em;
+
+    .image-container {
+      flex-basis: 50%;
+      padding: 2em;
+
+      .image {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        border-radius: 4px;
+      }
+
+      .image.menu {
+        background-image: asset-url("lyche/front_meny.jpg");
+      }
+
+      .image.about {
+        background-image: asset-url("lyche/front_om_oss.jpg");
+      }
+
+      .image.contact {
+        background-image: asset-url("lyche/front_kontakt.jpg");
+      }
+
+      .image.reservation {
+        background-image: asset-url("lyche/front_reservasjon.jpg");
+      }
+    }
+
+    .info-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      .title {
+        font-size: 3em;
+        color: white;
+        text-align: center;
+      }
+
+      .description {
+        color: rgb(180, 180, 180);
+        font-size: 1.25em;
+        max-width: 500px;
+        text-align: center;
+      }
+
+      .section-button {
+        flex: 0;
+        font-size: 20px;
+        font-weight: bold;
+        background-color: #fbb042;
+        color: white;
+        border-radius: 4px;
+        margin-top: 30px;
+        padding: 10px;
+      }
+
+      .section-button:hover {
+        cursor: pointer;
+        filter: brightness(1.1);
+        -webkit-filter: brightness(1.1);
+      }
+
+    }
+
+  }
+
+  .section:nth-child(odd) {
+    flex-direction: row-reverse;
+    background-color: #050505;
+    /*
+    color: black;
+
+    .info-container {
+      .title {
+        color: black;
+      }
+      .description {
+
+        color: black;
+      }
+
+    }
+    */
+  }
+
+  /*
+    MOBILE SECTION
+    VERTICAL LAYOUT
+  */
+  @media only screen and (max-width: 700px) {
+    .section:nth-child(odd) {
+      flex-direction: column;
+      background-color: #050505;
+    }
+    .section {
+      height: 500px;
+      flex-direction: column;
+      padding: 0;
+
+      .image-container {
+        flex-basis: 100%;
+      }
+
+      .info-container {
+        flex-basis: 80%;
+        justify-content: flex-start;
+
+        .title {
+          font-size: 2em;
+        }
+
+        .description {
+          color: rgb(180, 180, 180);
+          font-size: 1em;
+          max-width: 300px;
+        }
+
+        .section-button {
+          font-size: 1em;
+          padding: 5px 15px 5px 15px;
+          border-radius: 100px;
+          margin-top: 20px;
+
+          .chevron {
+            display: none;
+          }
+        }
+      }
+
+    }
+
+  }
+
+
+  #lyche-header-container {
+    position: fixed;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100px;
+    transition: .2s;
+    z-index: 69;
+
+    background: linear-gradient(to bottom, black, transparent);
+
+    .header-menu {
+      flex: 1;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: center;
+      min-width: 100%;
+
+      .menu-button {
+        color: white;
+        text-transform: uppercase;
+        cursor: pointer;
+        font-size: 1.2em;
+        text-align: center;
+
+        a {
+          color: white;
+        }
+      }
+
+      .menu-button:hover {
+        color: #aaa;
+      }
+
+      .lyche-logo {
+        background-image: asset-url("sulten/logo.png");
+        width: 200px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 100px;
+        margin-top: 10px;
+        transition: .5s;
+      }
+    }
+
+    /*
+    MOBILE HEADER
+    */
+    @media only screen and (max-width: 700px) {
+      .header-menu {
+        width: 100%;
+        justify-content: space-around;
+
+        .menu-button {
+          display: none;
+          max-width: 0px;
+        }
+
+        .lyche-logo {
+          width: 150px;
+          height: 80px;
+          margin-left: 16px;
+        }
+
+        .mobile-hamburger {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          width: 32px;
+          height: 24px;
+          margin-left: 32px;
+
+          .mobile-hamburger-line {
+            width: 100%;
+            height: 4px;
+            background-color: white;
+            border-radius: 1px;
+          }
+
+        }
+
+        .mobile-hamburger {
+          .mobile-hamburger-line {
+            transform-origin: center;
+            transform: none;
+            transition: .2s;
+          }
+        }
+
+        .mobile-hamburger.open {
+          .mobile-hamburger-line:nth-child(1) {
+            transform-origin: center;
+            transform: translateY(10px) rotate(-45deg);
+            transition: .2s;
+          }
+
+          .mobile-hamburger-line:nth-child(2) {
+            opacity: 0;
+            transition: .2s;
+          }
+
+          .mobile-hamburger-line:nth-child(3) {
+            transform-origin: center;
+            transform: translateY(-10px) rotate(45deg);
+            transition: .2s;
+          }
+        }
+
+        .mobile-reservation {
+          background-image: asset-url("sulten/calendar_add.png");
+          background-size: contain;
+          width: 32px;
+          height: 32px;
+          margin-right: 32px;
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  #lyche-header-container.compact {
+    background-color: black;
+    height: 60px;
+    background: linear-gradient(to bottom, black, transparent);
+    transition: .5s;
+
+    .lyche-logo {
+      height: 50px;
+      transition: .5s;
+    }
+  }
+
+
+  .status-box {
+    width: 400px;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    color: white;
+
+    max-width: calc(100vw - 40px);
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: #eee;
+    border: 1px solid dimgray;
+
+
+    //backdrop-filter: blur(2px);
+    //-webkit-backdrop-filter: blur(2px);
+
+    //box-shadow: 2px 5px 12px 1px rgba(0,0,0,0.65);
+
+    padding: 1em;
+    border-radius: 8px;
+
+    .open-hours-title {
+      color: black;
+      text-align: center;
+    }
+
+    .open-hours {
+      flex: 1;
+      text-align: center;
+      font-size: 1.2em;
+      padding: .5em;
+      color: dimgray;
+    }
+
+    .action-container {
+      flex: 1;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+
+      .action-button-separator {
+        width: 1px;
+        height: 100%;
+        background-color: black;
+        opacity: .75;
+      }
+
+      .action-button {
+        font-size: 1em;
+        width: 150px;
+        text-align: center;
+        color: black;
+        cursor: pointer;
+      }
+
+      .action-button:hover {
+        color: dimgray;
+      }
+    }
+
+  }
+
+  /*
+    HIDE STATUS BOX MOBILE
+  */
+  @media only screen and (max-width: 700px) {
+    .status-box {
+      display: none;
+    }
+  }
+
+
+  .about-us-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 3em;
+
+    .about-us-image {
+      background-size: cover;
+      border-radius: 4px;
+      background-image: asset-url("lyche/front_om_oss.jpg");
+      flex-basis: 40%;
+      margin-right: 3em;
+    }
+
+    @media only screen and (max-width: 700px) {
+      .about-us-image {
+        display: none;
+      }
+    }
+
+    .about-us-description {
+      font-size: 1.25em;
+      color: gray;
+      flex: 1;
+      padding: 1em;
+    }
+  }
+
+
+  .lyche-menu {
+
+    max-width: 1200px;
+    margin: 0 auto;
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .lyche-header-border {
+      height: 32px;
+      width: 100%;
+
+      display: flex;
+      align-items: flex-end;
+      align-content: center;
+
+      .corner {
+        width: 32px;
+        height: 32px;
+        border: 1px solid white;
+        display: flex;
+        align-items: center;
+      }
+
+      .corner.left {
+        transform: translateX(16px);
+      }
+
+      .corner.right {
+        transform: translateX(-16px);
+      }
+
+      .middle {
+        flex: 1;
+        height: 16px;
+        border: 1px solid white;
+
+        display: flex;
+        justify-content: space-between;
+
+        .dot {
+          width: 4px;
+          height: 4px;
+          margin: 5px;
+          background-color: white;
+        }
+      }
+    }
+
+    .lyche-header-border.bottom {
+      align-items: flex-start;
+    }
+
+    .lyche-menu-border {
+
+      border-left: 1px solid white;
+      border-right: 1px solid white;
+      width: calc(100% - 64px);
+
+      .lyche-menu-inner-border {
+
+        margin-right: 14px;
+        margin-left: 14px;
+        border-left: 1px solid white;
+        border-right: 1px solid white;
+        padding-top: 3em;
+
+        .lyche-menu-logo {
+          background-image: asset_url("lyche/menu_logo.png");
+          max-width: 80%;
+          height: 100px;
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-position: center;
+          margin: 0 auto;
+        }
+
+        .lyche-menu-title {
+          font-size: 2.5em;
+          text-align: center;
+          color: white;
+          width: 100%;
+          padding-top: 30px;
+          text-transform: uppercase;
+          font-family: 'LemonMilkLight', sans-serif;
+        }
+
+        .lyche-menu-subtitle {
+          font-size: 1.25em;
+          text-align: center;
+          color: white;
+          width: 100%;
+          padding-bottom: 30px;
+          text-transform: uppercase;
+          font-family: 'LemonMilkLight', sans-serif;
+        }
+
+        .lyche-menu-open-hours {
+          font-size: 1em;
+          text-align: center;
+          color: dimgray;
+          max-width: 600px;
+          padding-bottom: 30px;
+          text-transform: uppercase;
+          font-family: 'Lora', sans-serif;
+          margin: 0 auto;
+        }
+
+        .lyche-menu-category {
+
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          margin-bottom: 3em;
+          margin-top: 2em;
+          margin-left: 10px;
+          margin-right: 10px;
+
+          .lyche-menu-category-detail.left {
+            background-image: asset_url("lyche/menu-detail-left.png");
+            height: 17px;
+            width: 128px;
+            background-size: contain;
+            background-repeat: no-repeat;
+          }
+
+          .lyche-menu-category-title {
+            font-family: 'LemonMilkLight', sans-serif;
+            font-size: 1.25em;
+            color: white;
+            text-transform: uppercase;
+            margin-left: .5em;
+            margin-right: .5em;
+          }
+
+          .lyche-menu-category-detail.right {
+            background-image: asset_url("lyche/menu-detail-right.png");
+            height: 17px;
+            width: 128px;
+            background-size: contain;
+            background-repeat: no-repeat;
+          }
+        }
+
+        .menu-note {
+          display: flex;
+          flex-direction: column;
+          max-width: 600px;
+          margin: 0 auto;
+          text-align: center;
+          color: dimgray;
+          font-size: 1.25em;
+        }
+
+        .menu-item {
+          display: flex;
+          flex-direction: column;
+          padding: 5px;
+          padding-left: 20px;
+          padding-right: 20px;
+          max-width: 600px;
+          margin: 0 auto;
+
+          .item-name {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            font-size: 1.25em;
+            color: white;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            font-family: "LemonMilkLight", sans-serif;
+
+            .item-price {
+              font-size: .75em;
+              margin-left: 20px;
+              margin-top: .25em;
+              font-family: "Lora", sans-serif;
+            }
+          }
+
+          .item-description {
+            color: dimgray;
+            display: block;
+            float: left;
+            margin-bottom: 20px;
+            font-family: "Lora", sans-serif;
+          }
+        }
+      }
+
+    }
+
+
+  }
+
+  /*
+   MOBILE MENU (fullscreen page when hamburger menu is open)
+  */
+  .mobile-hamburger-menu {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    z-index: -1;
+
+    // Fade in animation
+    opacity: 0;
+    transition: .3s;
+    pointer-events: none !important;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .menu-button {
+      color: white;
+      font-size: 2em;
+      text-align: center;
+      padding-top: .5em;
+      padding-bottom: .5em;
+    }
+  }
+
+  .mobile-hamburger-menu.open {
+    opacity: 1;
+    transition: .3s;
+    pointer-events: all !important;
+  }
+
+  .about {
+
+    max-width: 1200px;
+    margin: 0 auto;
+
+    color: white;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    .left {
+      flex-basis: 50%;
+      max-width: 500px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+
+      padding: 50px;
+
+      .title {
+        font-size: 24px;
+        color: #fff;
+        width: 100%;
+        text-align: left;
+        margin-bottom: .35em;
+      }
+
+      .description {
+        font-size: 18px;
+        color: #aaa;
+        padding-bottom: 30px;
+      }
+
+      table {
+        background-color: transparent;
+        border-collapse: collapse;
+        border-width: 0;
+
+        tr, td, th {
+          border-width: 0;
+          background-color: transparent;
+          text-align: left;
+          font-size: 18px;
+        }
+
+        td {
+          text-align: right;
+          color: #aaa;
+        }
+
+        tr, tr:nth-child(even) {
+          padding-top: 10px;
+          background-color: transparent;
+        }
+      }
+
+    }
+
+    .right {
+      float: right;
+      flex-basis: 50%;
+      min-height: 300px;
+      background-color: darkolivegreen;
+      background-image: asset-url("lyche/map.png");
+      background-size: cover;
+      background-position: center;
+      border-radius: 5px;
+      margin: 2em;
+      opacity: 0.8;
+    }
+
+  }
+
+
+  @media only screen and (max-width: 700px) {
+    .about {
+      flex-direction: column;
+    }
+  }
+
+  .reservation-info {
+    max-width: 600px;
+    margin: 0 auto;
+    color: dimgray;
+    padding: 1em;
+  }
+
+
+  .footer {
+    height: 150px;
+    width: 100%;
+    background-color: #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #555;
+  }
+
+  // Chevrons
+  .chevron::before {
+
+    cursor: pointer;
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: black;
+    border-radius: 10px;
+    padding: 10px;
+    transition: .2s;
+
+    a {
+      font-family: "Futura", arial, sans-serif;
+      color: #fbb040;
+      transition: .2s;
+    }
+
+    #lyche_back_arrow {
+      border-style: solid;
+      border-width: 0.25em 0.25em 0 0;
+      content: '';
+      display: inline-block;
+      height: 15px;
+      left: 0.15em;
+      position: relative;
+      top: 0.15em;
+      transform: rotate(-45deg);
+      vertical-align: top;
+      width: 15px;
+    }
+
+    .chevron.right:before {
+      left: 0;
+      transform: rotate(45deg);
+    }
+
+    .chevron.bottom:before {
+      top: 0;
+      transform: rotate(135deg);
+    }
+
+    .chevron.left:before {
+      left: 0.25em;
+      transform: rotate(-135deg);
+    }
+
+    .chevron {
+      display: inline;
+      padding-right: 8px;
+      padding-left: 5px;
+    }
   }
 }
+
