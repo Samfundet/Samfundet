@@ -38,5 +38,15 @@ private
     if valid_date.call(corona_flash_start, corona_flash_end)
       flash[:notice] = view_context.sanitize(msg)
     end
+
+    coronaH20_flash_start = Date.new(2020, 8, 10)
+    coronaH20_flash_end = Date.new(2020, 12, 31)
+    blogH20_link = 'https://www.samfundet.no/blogg/18-samfundet-apner-igjen'
+    linkH20 = view_context.link_to(t('site.index.corona_H20_2'), blogH20_link)
+    msgH20 = t('site.index.corona_H20') + ' ' + linkH20
+    if valid_date.call(coronaH20_flash_start, coronaH20_flash_end)
+      flash[:notice] = view_context.sanitize(msgH20)
+    end
+
   end
 end

@@ -30,6 +30,10 @@ en:
       sit_samf_series3: "for episode 1!"
       corona: "Samfundet has closed with immediate effect due to new COVID-19 regulations from the government.<br> For more information, click"
       corona2: "here"
+
+      corona_H20: "Samfundet will operate differently this year, following government regulations. For more information, click"
+      corona_H20_2: "here"
+
       opening-hours-page-title: "opening-hours"
       all-opening-hours: "All opening hours"
 
