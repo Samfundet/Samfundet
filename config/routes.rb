@@ -173,7 +173,7 @@ Rails.application.routes.draw do
 
     namespace :sulten, path: "lyche" do
       get "/" => "lyche#index"
-      get "/reservation" => "lyche#reservation"
+      get "/make_reservation" => "lyche#reservation"
       get "/reservation/success" => "lyche#reservation_success"
       get "/reservation/failure" => "lyche#reservation_failure"
       get "/menu" => "lyche#menu"
