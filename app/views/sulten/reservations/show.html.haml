@@ -17,7 +17,11 @@
     %th
       = t("sulten.reservation.table")
     %td
-      = @reservation.table
+      - if @reservation.missing_table
+        %span{style: "color:red"}
+          = t("sulten.reservation.missing_table")
+      - else
+        = @reservation.table.number
   %tr
     %th
       = t("sulten.reservation.reservation_type")
