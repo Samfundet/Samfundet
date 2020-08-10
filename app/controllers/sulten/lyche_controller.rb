@@ -24,6 +24,7 @@ class Sulten::LycheController < Sulten::BaseController
 
   end
 
+  # Shown when reservation fails due to not being one day in future
   def reservation_failure_day
 
   end
