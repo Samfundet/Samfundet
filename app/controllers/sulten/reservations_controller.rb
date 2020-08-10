@@ -33,7 +33,9 @@ class Sulten::ReservationsController < Sulten::BaseController
   def create
     @closed_periods = Sulten::ClosedPeriod.current_and_future_closed_times.sort_by(&:closed_from)
     @reservation = Sulten::Reservation.new(reservation_params)
-    if @reservation.in_closed_period?
+    if @reservation.reservation_is_one_day_in_future
+      redirect_to sulten_reservation_failure_day_path
+    elsif @reservation.in_closed_period?
       flash.now[:error] = t('helpers.models.sulten.reservation.errors.in_closed_period')
       redirect_to sulten_reservation_failure_path
     elsif @reservation.save
