@@ -53,6 +53,9 @@ class EventsController < ApplicationController
       end
     else
       # Only paginate if there are results to display
+      
+      # Set page to 1 if page input is invalid
+      params[:page] = 1 if !params[:page].is_a? Numeric
       @events = @events.paginate(page: params[:page], per_page: 20)
       render '_archive_list', locals: { search_active: true }
     end
@@ -150,7 +153,8 @@ class EventsController < ApplicationController
 
   def archive
     @events, @event_types, @event_areas = Event.archived_events_types_areas
-
+    # Set page to 1 if page input is invalid
+    params[:page] = 1 if !params[:page].is_a? Numeric
     @events = @events.paginate(page: params[:page], per_page: 20)
   end
 
