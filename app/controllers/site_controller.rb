@@ -9,6 +9,9 @@ class SiteController < ApplicationController
     @upcoming_events = Event.front_page_events(11)
     @banner_event = @upcoming_events.shift
     @opening_hours_url = page_url(Page.find_by_name(t('site.index.opening-hours-page-title')))
+    @open_admissions = Admission.appliable.includes(
+        group_types: { groups: :jobs }
+    )
   end
 
 private
