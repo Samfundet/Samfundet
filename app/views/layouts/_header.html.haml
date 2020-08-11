@@ -32,7 +32,7 @@
       %ul
         %li= link_to t('layouts.application.menu.lyche'), sulten_path
         %li= link_to t('layouts.application.menu.membership'), "https://medlem.samfundet.no/"
-        - if not @open_admissions or @open_admissions.empty?
-          %li= link_to t('layouts.application.menu.admissions'), admissions_path
-        - else
+        - if @show_admissions_animation == true
           %li.waggle= link_to t('layouts.application.menu.admissions'), admissions_path
+        - else
+          %li= link_to t('layouts.application.menu.admissions'), admissions_path

@@ -9,9 +9,14 @@ class SiteController < ApplicationController
     @upcoming_events = Event.front_page_events(11)
     @banner_event = @upcoming_events.shift
     @opening_hours_url = page_url(Page.find_by_name(t('site.index.opening-hours-page-title')))
-    @open_admissions = Admission.appliable.includes(
+    open_admissions = Admission.appliable.includes(
         group_types: { groups: :jobs }
     )
+    if open_admissions and not open_admissions.empty?
+      @show_admissions_animation = true
+    else
+      @show_admissions_animation = false
+    end
   end
 
 private
