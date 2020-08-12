@@ -352,7 +352,7 @@ body.lyche {
     display: flex;
     flex-direction: column;
 
-    background-color: #eee;
+    background-color: #111;
     border: 1px solid dimgray;
 
 
@@ -363,6 +363,14 @@ body.lyche {
 
     padding: 1em;
     border-radius: 8px;
+
+    table, tr, td, th {
+      border-width: 0;
+      background: #111;
+    }
+    td.title {
+        color: #fbb042
+    }
 
     .open-hours-title {
       color: black;
