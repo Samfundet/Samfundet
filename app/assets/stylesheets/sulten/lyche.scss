@@ -25,15 +25,33 @@ body.lyche {
   }
 
   .back-to-samfundet {
+    display: flex;
+    flex-direction: row;
     position: absolute;
     left: 1em;
-    bottom: 1em;
-    background-image: url("logo-trans.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    height: 2em;
-    width: 25em;
-    max-width: calc(100% - 2em);
+    bottom: .5em;
+    color: white;
+    .chevron {
+        border-style: solid;
+        border-width: 0.25em 0.25em 0 0;
+        content: '';
+        display: inline-block;
+        height: 15px;
+        right: 0.15em;
+        position: relative;
+        top: 0.15em;
+        transform: rotate(225deg);
+        width: 15px;
+        margin-right: 5px;
+    }
+    .image {
+      background-image: url("logo-trans.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      height: 2em;
+      width: 25em;
+      max-width: calc(100% - 2em - 60px);
+    }
   }
 
   width: 100%;
