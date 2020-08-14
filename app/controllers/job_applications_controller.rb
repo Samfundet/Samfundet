@@ -35,8 +35,7 @@ class JobApplicationsController < ApplicationController
 
   def update
     @job_application = JobApplication.find(params[:id])
-
-    if @job_application.update(update_job_application_params)
+    if @job_application.update(job_application_params)
       @job_application.update_attributes(withdrawn: false)
       flash[:success] = t('job_applications.application_updated')
       if current_user.class == Applicant
@@ -118,9 +117,5 @@ private
 
   def job_application_params
     params.require(:job_application).permit(:job_id, :motivation)
-  end
-
-  def update_job_application_params
-    params.permit(:job_id, :motiation)
   end
 end
