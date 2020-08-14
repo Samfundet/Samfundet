@@ -193,7 +193,7 @@ h3 {
         .left-list {
             @include span-columns(6 of 12);
             ul { 
-                text-align: right;
+                text-align: center;
             }
             padding-right: 5px;
 
@@ -204,7 +204,7 @@ h3 {
 
         .right-list {
             @include span-columns(6 of 12); 
-            ul { text-align: left; }
+            ul { text-align: center; }
             padding-left: 5px;
 
             @include media($tablet-desktop) { 
@@ -222,6 +222,49 @@ h3 {
             @include omega();
         }
     }
+
+  .waggle {
+    animation: waggle;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+    animation-delay: 1s;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes waggle {
+    0% {
+      transform: none;
+    }
+    15% {
+      transform: none;
+    }
+    25% {
+      transform: rotateZ(-14deg) scale(1.05);
+    }
+    30% {
+      transform: rotateZ(18deg) scale(1.05);
+    }
+    33.75% {
+      transform: rotateZ(-11deg) scale(1.05);
+    }
+    37.5% {
+      transform: rotateZ(11deg) scale(1.1);
+    }
+    41.25% {
+      transform: rotateZ(-7deg) scale(1.05);
+    }
+    42.5% {
+      transform: rotateZ(-7deg) scale(1.05);
+    }
+    50% {
+      transform: rotateZ(0) scale(1);
+    }
+    100% {
+      transform: rotateZ(0) scale(1);
+    }
+  }
+
 }
 
 #content {
