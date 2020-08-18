@@ -76,6 +76,14 @@ class EventsController < ApplicationController
         flash[:message] = t('events.time_of_start_has_passed')
       end
       if @event.price_type.eql? 'free_registration'
+        @capacity = Integer(event_params[:capacity]) rescue nil
+        # Prevent users from creating registration events without capacity
+        if @capacity.nil?
+            @event.destroy
+            flash[:error] = t('events.create_error_capacity')
+            render :new
+            return
+        end
         @registration_event = RegistrationEvent.create(:arrangement=> @event, :plasser=>event_params[:capacity])
       end
       flash[:success] = t('events.create_success')

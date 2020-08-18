@@ -7,6 +7,7 @@
     ical_short_text: iCal
     create_success: Arrangementet er opprettet.
     create_error: Arrangementet ble ikke opprettet.
+    create_error_capacity: Arrangementet ble ikke opprettet. Du må fylle inn antall plasser.
     update_success: Arrangementet er oppdatert.
     update_error: Arrangementet ble ikke oppdatert.
     confirm_delete: Er du sikker på at du vil slette dette arrangementet?
@@ -124,7 +125,7 @@
 
     registrations: "Påmeldte"
     sign_up: "Meld på"
-    full: "Fult"
+    full: "Fullt"
 
     purchase_callback_success:
       title: Kjøp gjennomført

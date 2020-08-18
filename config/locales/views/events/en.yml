@@ -7,6 +7,7 @@ en:
     ical_short_text: iCal
     create_success: Successfully created the event.
     create_error: Could not create event.
+    create_error_capacity: Could not create event. You have to specify the capacity.
     update_success: Successfully updated the event.
     update_error: Could not update the event.
     confirm_delete: Are you sure you want to delete this event?
