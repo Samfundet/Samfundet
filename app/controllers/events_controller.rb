@@ -84,7 +84,7 @@ class EventsController < ApplicationController
             render :new
             return
         end
-        @registration_event = RegistrationEvent.create(:arrangement=> @event, :plasser=>event_params[:capacity])
+        @registration_event = RegistrationEvent.create(:arrangement=> @event, :plasser=>@capacity)
       end
       flash[:success] = t('events.create_success')
       redirect_to @event
@@ -101,6 +101,10 @@ class EventsController < ApplicationController
   def update
     @event = Event.find params[:id]
     if @event.update_attributes(event_params)
+      if (@event.price_type.eql? 'free_registration') && @event.registration_event.nil?
+        @capacity = Integer(event_params[:capacity]) rescue 0
+        @registration_event = RegistrationEvent.create(:arrangement=> @event, :plasser=>@capacity)
+      end
       if @event.non_billig_start_time < Time.current
         flash[:message] = t('events.time_of_start_has_passed')
       end
