@@ -148,7 +148,7 @@ private
       f.chart({ defaultSeriesType: 'pie', margin: [50, 200, 60, 170] })
       series = {
         type: 'pie',
-        name: t('admissions_admin.applicants'),
+        name: t('admissions_admin.applications'),
         data: @applications_per_group
       }
       f.series(series)

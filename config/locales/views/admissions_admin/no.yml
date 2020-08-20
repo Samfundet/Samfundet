@@ -7,7 +7,7 @@
     add_applicant_motivation: "Manuelt lagt til av Web"
     add_applicant_not_found: "Fant ikke søker"
     add_applicant_success: "Suksess! Du la til en søker"
-    applications_by_group: "Fordeling av søkere per gjeng"
+    applications_by_group: "Fordeling av søknader per gjeng"
     applications_by_day: "Antall søknader per dag"
     applications_by_hour: "Antall søkere per time"
     applications_by_campus: "Antall søkere per campus"

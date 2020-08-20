@@ -7,7 +7,7 @@ en:
     add_applicant_motivation: "Manually added by Web"
     add_applicant_not_found: "Did not find applicant"
     add_applicant_success: "Success! You added an applicant"
-    applications_by_group: "Distribution of applicants by group"
+    applications_by_group: "Distribution of applications by group"
     applications_by_day: "Number of applications per day"
     applications_by_hour: "Number of applications per hour"
     applications_by_campus: "Number of applications per campus"
