@@ -122,6 +122,7 @@ en:
     registrations: "Registrations"
     sign_up: "Sign up"
     full: "Full"
+    free_registration: "Registration"
 
     purchase_callback_success:
       title: Purchase completed

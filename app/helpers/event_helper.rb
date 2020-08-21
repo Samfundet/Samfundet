@@ -36,9 +36,7 @@ module EventHelper
     when 'free'
       t('events.ticket_free')
     when 'free_registration'
-        if event.registration_event
-            event.registration_event.slots
-        end
+        t('events.free_registration')
     else
       t('events.ticket_included')
     end

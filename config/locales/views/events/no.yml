@@ -126,6 +126,7 @@
     registrations: "Påmeldte"
     sign_up: "Meld på"
     full: "Fullt"
+    free_registration: "Påmelding"
 
     purchase_callback_success:
       title: Kjøp gjennomført
