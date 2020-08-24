@@ -21,6 +21,7 @@ en:
     grey_explanation: "Grey: This person has withdrawn their application"
     blue_explanation: "Blue. This person will go to this job, click the name for more information."
     bright_blue_explanation: "Bright blue: This person is reserved for this job, click the name for more information."
+    applicant_number: "Number"
     applicant_name: "Name"
     applicant_phone_number: "Telephone"
     applicant_email_address: "Email address"
