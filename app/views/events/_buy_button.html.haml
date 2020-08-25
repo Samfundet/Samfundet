@@ -16,7 +16,7 @@
 - when Event::TICKETS_SOLD_OUT
   .purchase-button.tickets-sold-out
     = t('events.sold_out')
--if event.price_type.eql? 'free_registration'
+-if (!event.over?) && (event.price_type.eql? 'free_registration')
   -if event.full?
     .purchase-button.tickets-sold-out
       = t('events.full')

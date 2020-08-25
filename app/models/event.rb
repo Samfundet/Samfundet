@@ -92,6 +92,10 @@ class Event < ApplicationRecord
     start_time + duration.minutes
   end
 
+  def over?
+    Time.current > end_time
+  end
+
   def area_title
     billig_event.try(:event_location) || area.name
   end
