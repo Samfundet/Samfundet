@@ -19,7 +19,7 @@ class Sulten::AdminController < Sulten::BaseController
     end_timeline = @calendar_date.beginning_of_day + 26.hours
     length_timeline = (end_timeline - start_timeline).seconds
 
-    @reservations = Sulten::Reservation.where(reservation_from: @calendar_date.beginning_of_week..@calendar_date.end_of_week)
+    @reservations = Sulten::Reservation.where(reservation_from: @calendar_date.beginning_of_week..@calendar_date.end_of_week+1.day)
     @reservations_today = Sulten::Reservation.where(reservation_from: start_timeline..end_timeline)
     @tables = Sulten::Table.order(:number).all
 
