@@ -16,3 +16,9 @@
 - when Event::TICKETS_SOLD_OUT
   .purchase-button.tickets-sold-out
     = t('events.sold_out')
+-if (!event.over?) && (event.price_type.eql? 'free_registration')
+  -if event.full?
+    .purchase-button.tickets-sold-out
+      = t('events.full')
+  -else
+    = link_to t('events.sign_up'), event.link, class: 'purchase-button tickets-available no-modal'

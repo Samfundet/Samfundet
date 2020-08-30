@@ -1,4 +1,4 @@
-'no':
+"no":
   events:
     rss_title: Arrangementer på Studentersamfundet i Trondhjem
     rss_alt_text: Samfundets RSS feed.
@@ -7,6 +7,7 @@
     ical_short_text: iCal
     create_success: Arrangementet er opprettet.
     create_error: Arrangementet ble ikke opprettet.
+    create_error_capacity: Arrangementet ble ikke opprettet. Du må fylle inn antall plasser.
     update_success: Arrangementet er oppdatert.
     update_error: Arrangementet ble ikke oppdatert.
     confirm_delete: Er du sikker på at du vil slette dette arrangementet?
@@ -71,15 +72,15 @@
     here: her
 
     social:
-        facebook_link_title: Arrangementet på Facebook
-        youtube_link_title: Youtube
-        spotify_link_title: Artisten på Spotify
-        soundcloud_link_title: Artisten på Soundcloud
-        instagram_link_title: Artisten på Instagram
-        twitter_link_title: Artisten på Twitter
-        lastfm_link_title: Artisten på Last FM
-        vimeo_link_title: Vimeo
-        general_link_title: Vimeo
+      facebook_link_title: Arrangementet på Facebook
+      youtube_link_title: Youtube
+      spotify_link_title: Artisten på Spotify
+      soundcloud_link_title: Artisten på Soundcloud
+      instagram_link_title: Artisten på Instagram
+      twitter_link_title: Artisten på Twitter
+      lastfm_link_title: Artisten på Last FM
+      vimeo_link_title: Vimeo
+      general_link_title: Vimeo
 
     organizers:
       group: Gjeng
@@ -89,7 +90,7 @@
     archived: Arkivert
     canceled: Avlyst
 
-    index_title:  Kommende arrangementer
+    index_title: Kommende arrangementer
     information: Informasjon
     ticket_limit_single: "0/%{ticket_limit} billett"
     ticket_limit_multiple: "0/%{ticket_limit} billetter"
@@ -122,22 +123,27 @@
     ticket_included: Billett inkludert i inngang
     ticket_free: Gratis inngang
 
-    purchase_callback_success:
-        title: Kjøp gjennomført
-        ticket_purchased: "Du har kjøpt følgende billetter med referansenummer: %{refs}"
-        download_tickets: Last ned billetter i PDF-format
-        confirmation_mail_confirmation: Du vil også motta billetten(e) på epost.
+    registrations: "Påmeldte"
+    sign_up: "Meld på"
+    full: "Fullt"
+    free_registration: "Påmelding"
 
-        event: Arrangement
-        time: Tidspunkt
-        on_member_card: På medlemskort
-        total: Total
+    purchase_callback_success:
+      title: Kjøp gjennomført
+      ticket_purchased: "Du har kjøpt følgende billetter med referansenummer: %{refs}"
+      download_tickets: Last ned billetter i PDF-format
+      confirmation_mail_confirmation: Du vil også motta billetten(e) på epost.
+
+      event: Arrangement
+      time: Tidspunkt
+      on_member_card: På medlemskort
+      total: Total
 
     action:
-        new: Opprett arrangement
-        delete: Slett arrangement
-        edit: Rediger arrangement
-        buy: Kjøp arrengement
+      new: Opprett arrangement
+      delete: Slett arrangement
+      edit: Rediger arrangement
+      buy: Kjøp arrengement
 
     admin:
       title: Rediger arrangementer
@@ -150,56 +156,57 @@
       title: Arrangementer
 
     forms:
-        labels:
-            title_no: Tittel (Norsk)
-            title_en: Tittel (Engelsk)
-            start_time: Starttidspunkt
-            short_description_no: Kort beskrivelse (Norsk)
-            short_description_en: Kort beskrivelse (Engelsk)
-            long_description_no: Lang beskrivelse (Norsk)
-            long_description_en: Lang beskrivelse (Engelsk)
-            age_limit: Aldersgrense
-            area: Lokale
-            event_type: Type
-            organizer: Arrangør
-            ticket: Billett
-            status: Status
-            primary_color: Primærfarge
-            secondary_color: Sekundærfarge
-            banner_alignment: Tekstplassering
-            duration: Varighet
-            publication_time: Publiseringstid
-            free: Gratis
-            included: Inkludert i inngang
-            custom: Tilpasset
-            information: Informasjon
-            datetime: Tidspunkt
-            social: Sosiale medier
-            spotify_description: Legg til spotify URI-en til en spilleliste, og en widget med denne listen vil dukke opp på arrangementsiden.
-            facebook_description: Legg til Facebook-lenken til arrangementet
-            youtube_description: Legg til Youtube-film som skal linkes til
-            youtube_embed_description: Legg til Youtube-film som skal embeddes, så vil den vises på arrangementsiden.
-            soundcloud_description: Legg til en lenke til artisten på Soundcloud
-            instagram_description: Legg til en lenke til artisten på Instagram
-            twitter_description: Legg til en lenke til artisten på Twitter
-            lastfm_description: Legg til en lenke til artisten på Last.fm
-            vimeo_description: Legg til en lenke til artisten på Vimeo
-            general_link_description: Legg til en vilkårlig lenke du vil ha sammen med andre sosiale media
-            add_time: Legg til tidspunkt
-            remove_time: Fjern
-            count: Totalt
-            banner_styling: Bannerstil
-            image: Velg bilde for dette arrangementet
-            existing: Eksisterende arrangement
-            create_from_existing: Opprett fra eksisterende arrangement
-            pricing_options: Prisalternativer
+      labels:
+        title_no: Tittel (Norsk)
+        title_en: Tittel (Engelsk)
+        start_time: Starttidspunkt
+        short_description_no: Kort beskrivelse (Norsk)
+        short_description_en: Kort beskrivelse (Engelsk)
+        long_description_no: Lang beskrivelse (Norsk)
+        long_description_en: Lang beskrivelse (Engelsk)
+        age_limit: Aldersgrense
+        area: Lokale
+        event_type: Type
+        organizer: Arrangør
+        ticket: Billett
+        status: Status
+        primary_color: Primærfarge
+        secondary_color: Sekundærfarge
+        banner_alignment: Tekstplassering
+        duration: Varighet
+        publication_time: Publiseringstid
+        free: Gratis
+        included: Inkludert i inngang
+        custom: Tilpasset
+        information: Informasjon
+        datetime: Tidspunkt
+        social: Sosiale medier
+        spotify_description: Legg til spotify URI-en til en spilleliste, og en widget med denne listen vil dukke opp på arrangementsiden.
+        facebook_description: Legg til Facebook-lenken til arrangementet
+        youtube_description: Legg til Youtube-film som skal linkes til
+        youtube_embed_description: Legg til Youtube-film som skal embeddes, så vil den vises på arrangementsiden.
+        soundcloud_description: Legg til en lenke til artisten på Soundcloud
+        instagram_description: Legg til en lenke til artisten på Instagram
+        twitter_description: Legg til en lenke til artisten på Twitter
+        lastfm_description: Legg til en lenke til artisten på Last.fm
+        vimeo_description: Legg til en lenke til artisten på Vimeo
+        general_link_description: Legg til en vilkårlig lenke du vil ha sammen med andre sosiale media
+        add_time: Legg til tidspunkt
+        remove_time: Fjern
+        count: Totalt
+        banner_styling: Bannerstil
+        image: Velg bilde for dette arrangementet
+        existing: Eksisterende arrangement
+        create_from_existing: Opprett fra eksisterende arrangement
+        pricing_options: Prisalternativer
+        free_registration: Gratis med registrering
+        capacity: Plasser
 
-        existing_image: Velg eksisterende bilde
-        upload_image: Last opp nytt bilde
-        contact_layout_or_redaksjonen: Du må kontakte Layout eller Redaksjonen i Markedsføringsgjengen for å få lagt til nye bilder i systemet.
-
+      existing_image: Velg eksisterende bilde
+      upload_image: Last opp nytt bilde
+      contact_layout_or_redaksjonen: Du må kontakte Layout eller Redaksjonen i Markedsføringsgjengen for å få lagt til nye bilder i systemet.
 
     search:
-        title: Søk i arrangementer
-        area: Velg lokale
-        type: Velg type
+      title: Søk i arrangementer
+      area: Velg lokale
+      type: Velg type

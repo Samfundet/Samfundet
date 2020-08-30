@@ -7,6 +7,7 @@ en:
     ical_short_text: iCal
     create_success: Successfully created the event.
     create_error: Could not create event.
+    create_error_capacity: Could not create event. You have to specify the capacity.
     update_success: Successfully updated the event.
     update_error: Could not update the event.
     confirm_delete: Are you sure you want to delete this event?
@@ -31,7 +32,7 @@ en:
     hide: hide text
 
     yes: yes
-    nei: 'No'
+    nei: "No"
 
     add_price_group: Add price group
     remove_price_group: Remove this price group
@@ -67,15 +68,15 @@ en:
     here: here
 
     social:
-        facebook_link_title: This event on Facebook
-        youtube_link_title: Youtube
-        spotify_link_title: Artist on Spotify
-        soundcloud_link_title: Artist on Soundcloud
-        instagram_link_title: Artist on Instagram
-        twitter_link_title: Artist on Twitter
-        lastfm_link_title: Artist on Last FM
-        vimeo_link_title: Vimeo
-        general_link_title: Vimeo
+      facebook_link_title: This event on Facebook
+      youtube_link_title: Youtube
+      spotify_link_title: Artist on Spotify
+      soundcloud_link_title: Artist on Soundcloud
+      instagram_link_title: Artist on Instagram
+      twitter_link_title: Artist on Twitter
+      lastfm_link_title: Artist on Last FM
+      vimeo_link_title: Vimeo
+      general_link_title: Vimeo
 
     organizers:
       group: Group
@@ -85,7 +86,7 @@ en:
     archived: Archived
     canceled: Canceled
 
-    index_title:  Upcoming events
+    index_title: Upcoming events
     information: Information
     ticket_limit_single: "0/%{ticket_limit} ticket"
     ticket_limit_multiple: "0/%{ticket_limit} tickets"
@@ -118,22 +119,27 @@ en:
     ticket_included: Ticket included with entrance
     ticket_free: Free entrance
 
-    purchase_callback_success:
-        title: Purchase completed
-        ticket_purchased: "You have bought the following tickets with references: %{refs}"
-        download_tickets: Download tickets as PDF
-        confirmation_mail_confirmation: You will also receive your tickets on email.
+    registrations: "Registrations"
+    sign_up: "Sign up"
+    full: "Full"
+    free_registration: "Registration"
 
-        event: Event
-        time: When
-        on_member_card: On membership card
-        total: Sum
+    purchase_callback_success:
+      title: Purchase completed
+      ticket_purchased: "You have bought the following tickets with references: %{refs}"
+      download_tickets: Download tickets as PDF
+      confirmation_mail_confirmation: You will also receive your tickets on email.
+
+      event: Event
+      time: When
+      on_member_card: On membership card
+      total: Sum
 
     action:
-        new: Create event
-        delete: Delete event
-        edit: Edit event
-        buy: Buy event
+      new: Create event
+      delete: Delete event
+      edit: Edit event
+      buy: Buy event
 
     admin:
       title: Edit events
@@ -146,55 +152,57 @@ en:
       title: Events
 
     forms:
-        labels:
-            title_en: Title (English)
-            title_no: Title (Norwegian)
-            start_time: Start time
-            short_description_en: Short description (English)
-            short_description_no: Short description (Norwegian)
-            long_description_en: Long description (English)
-            long_description_no: Long description (Norwegian)
-            age_limit: Age limit
-            area: Area
-            event_type: Type
-            organizer: Organizer
-            ticket: Ticket
-            status: Status
-            primary_color: Primary color
-            secondary_color: Secondary color
-            banner_alignment: Text alignment
-            duration: Duration
-            publication_time: Publication time
-            free: Free
-            included: Included with entrance
-            custom: Custom
-            information: Information
-            datetime: Date and time
-            social: Social media
-            spotify_description: Add the Spotify URI of a playlist, and a widget will appear on the event page with the chosen playlist.
-            facebook_description: Add the Facebook link of the event
-            youtube_description: Add a link to a Youtube movie
-            youtube_embed_description: Add a link to a Youtube movie to be embedded, and it will appear on the event page.
-            soundcloud_description: Add a link to the artist on Soundcloud
-            instagram_description: Add a link to the artist on Instagram
-            twitter_description: Add a link to the artist on Twitter
-            lastfm_description: Add a link to the artist on Last.fm
-            vimeo_description: Add a link to the artist on Vimeo
-            general_link_description: Add a arbitrary link which you want to appear among the other social medias
-            add_time: Add time
-            remove_time: Remove
-            count: In total
-            banner_styling: Banner styling
-            image: Chose image for this event
-            existing: Existing arrangement
-            create_from_existing: Create from existing
-            pricing_options: Pricing options
+      labels:
+        title_en: Title (English)
+        title_no: Title (Norwegian)
+        start_time: Start time
+        short_description_en: Short description (English)
+        short_description_no: Short description (Norwegian)
+        long_description_en: Long description (English)
+        long_description_no: Long description (Norwegian)
+        age_limit: Age limit
+        area: Area
+        event_type: Type
+        organizer: Organizer
+        ticket: Ticket
+        status: Status
+        primary_color: Primary color
+        secondary_color: Secondary color
+        banner_alignment: Text alignment
+        duration: Duration
+        publication_time: Publication time
+        free: Free
+        included: Included with entrance
+        custom: Custom
+        information: Information
+        datetime: Date and time
+        social: Social media
+        spotify_description: Add the Spotify URI of a playlist, and a widget will appear on the event page with the chosen playlist.
+        facebook_description: Add the Facebook link of the event
+        youtube_description: Add a link to a Youtube movie
+        youtube_embed_description: Add a link to a Youtube movie to be embedded, and it will appear on the event page.
+        soundcloud_description: Add a link to the artist on Soundcloud
+        instagram_description: Add a link to the artist on Instagram
+        twitter_description: Add a link to the artist on Twitter
+        lastfm_description: Add a link to the artist on Last.fm
+        vimeo_description: Add a link to the artist on Vimeo
+        general_link_description: Add a arbitrary link which you want to appear among the other social medias
+        add_time: Add time
+        remove_time: Remove
+        count: In total
+        banner_styling: Banner styling
+        image: Chose image for this event
+        existing: Existing arrangement
+        create_from_existing: Create from existing
+        pricing_options: Pricing options
+        free_registration: Free with registration
+        capacity: Capacity
 
-        existing_image: Select existing image
-        upload_image: Upload new image
-        contact_layout_or_redaksjonen: You must contact Layout or Redaksjonen in Markedsføringsgjengen to add new images to the system.
+      existing_image: Select existing image
+      upload_image: Upload new image
+      contact_layout_or_redaksjonen: You must contact Layout or Redaksjonen in Markedsføringsgjengen to add new images to the system.
 
     search:
-        title: Search for events
-        area: Select venue
-        type: Select type
+      title: Search for events
+      area: Select venue
+      type: Select type

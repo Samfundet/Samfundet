@@ -68,6 +68,12 @@
         = t('events.forms.labels.included')
         = f.radio_button :price_type, "included", checked: @event.price_type == "included"
     %li
+      = f.label :price_type, value: "free_registration" do
+        = t('events.forms.labels.free_registration')
+        = f.radio_button :price_type, "free_registration", checked: @event.price_type == "free_registration"
+        = f.label :capcaity, value: "capacity" do
+          = f.input :capacity, label: t('events.forms.labels.capacity'), input_html: {value: f.object.capacity || '0'} 
+    %li
       = f.label :price_type, value: "custom" do
         = t('events.forms.labels.custom')
         = f.radio_button :price_type, "custom", checked: @event.price_type == "custom"

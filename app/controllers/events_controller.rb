@@ -75,6 +75,17 @@ class EventsController < ApplicationController
       if @event.non_billig_start_time < Time.current
         flash[:message] = t('events.time_of_start_has_passed')
       end
+      if @event.price_type.eql? 'free_registration'
+        @capacity = Integer(event_params[:capacity]) rescue nil
+        # Prevent users from creating registration events without capacity
+        if @capacity.nil?
+            @event.destroy
+            flash[:error] = t('events.create_error_capacity')
+            render :new
+            return
+        end
+        @registration_event = RegistrationEvent.create(:arrangement=> @event, :plasser=>@capacity)
+      end
       flash[:success] = t('events.create_success')
       redirect_to @event
     else
@@ -90,6 +101,10 @@ class EventsController < ApplicationController
   def update
     @event = Event.find params[:id]
     if @event.update_attributes(event_params)
+      if (@event.price_type.eql? 'free_registration') && @event.registration_event.nil?
+        @capacity = Integer(event_params[:capacity]) rescue 0
+        @registration_event = RegistrationEvent.create(:arrangement=> @event, :plasser=>@capacity)
+      end
       if @event.non_billig_start_time < Time.current
         flash[:message] = t('events.time_of_start_has_passed')
       end
@@ -103,6 +118,9 @@ class EventsController < ApplicationController
 
   def destroy
     @event = Event.find(params[:id])
+    if @event.price_type.eql? 'free_registration' && @event.registration_event
+        @event.registration_event.destroy
+    end
     @event.destroy
     flash[:success] = t('events.destroy_success')
     redirect_to events_path
@@ -260,6 +278,7 @@ private
       :billig_event_id,
       :organizer_id,
       :codeword,
+      :capacity,
       price_groups_attributes: %i(name price id _destroy)
     )
   end

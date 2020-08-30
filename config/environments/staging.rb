@@ -68,6 +68,11 @@ Samfundet::Application.configure do
       table.establish_connection(:billig)
       table.table_name = billig_table_prefix + table.name.gsub(/Billig/, '').underscore
     end
+    paamelding_table_prefix = 'paameldingsys.'
+
+    # manually set RegistrationEvent table_name so it uses db view instead of std table
+    RegistrationEvent.establish_connection(:paamelding)
+    RegistrationEvent.table_name = paamelding_table_prefix + 'arrangementer'
   end
 end
 
