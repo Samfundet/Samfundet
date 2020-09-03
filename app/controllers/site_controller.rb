@@ -55,6 +55,5 @@ private
     if valid_date.call(coronaH20_flash_start, coronaH20_flash_end)
       flash[:notice] = view_context.sanitize(msgH20)
     end
-
   end
 end

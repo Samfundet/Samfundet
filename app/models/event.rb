@@ -47,7 +47,7 @@ class Event < ApplicationRecord
   belongs_to :organizer, polymorphic: true
   belongs_to :billig_event
   belongs_to :image
-  has_one :registration_event, :foreign_key => :arrangement_id, class_name: :RegistrationEvent
+  has_one :registration_event, foreign_key: :arrangement_id, class_name: :RegistrationEvent
   has_one :front_page_lock, as: :lockable
   has_many :price_groups, -> { distinct }
 
@@ -324,17 +324,17 @@ class Event < ApplicationRecord
   end
   def full?
     if registration_event
-        return registration_event.full?
+      registration_event.full?
     else
-        return true
+      true
     end
   end
 
   def link
     if registration_event
-        return registration_event.link
+      registration_event.link
     else
-        return ""
+      ''
     end
   end
 

@@ -5,10 +5,9 @@
 
 class Sulten::LycheController < Sulten::BaseController
   skip_authorization_check
-  layout "lyche"
+  layout 'lyche'
 
   def index
-
   end
 
   def reservation
@@ -17,29 +16,21 @@ class Sulten::LycheController < Sulten::BaseController
   end
 
   def reservation_success
-
   end
 
   def reservation_failure
-
   end
 
   # Shown when reservation fails due to not being one day in future
   def reservation_failure_day
-
   end
 
   def menu
-
   end
 
   def about
-
   end
 
   def contact
-
   end
-
 end
-
