@@ -68,7 +68,7 @@ class Sulten::Reservation < ApplicationRecord
   end
 
   def check_amount_of_people
-    if people > 12
+    if people > 8
       errors.add(:people, I18n.t('helpers.models.sulten.reservation.errors.people.too_many_people'))
     elsif people < 1
       errors.add(:people, I18n.t('helpers.models.sulten.reservation.errors.people.too_few_people'))
