@@ -52,14 +52,6 @@ Samfundet::Application.configure do
   config.billig_path = 'http://localhost:4567/pay'
   config.billig_ticket_path = 'https://billig.samfundet.no/pdf?'
 
-  config.after_initialize do
-    paamelding_table_prefix = 'paameldingsys.'
-
-    # manually set BilligEvent table_name so it uses db view instead of std table
-    RegistrationEvent.establish_connection(:paamelding)
-    RegistrationEvent.table_name = paamelding_table_prefix + 'arrangementer'
-  end
-
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
