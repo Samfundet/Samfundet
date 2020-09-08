@@ -60,6 +60,7 @@ module Samfundet
     config.assets.precompile += %w(sulten/duration.js)
     config.assets.precompile += %w(sulten/calendar.js)
     config.assets.precompile += %w(sulten/header.js)
+    config.assets.precompile += %w(sulten/lyche/calendar.js)
 
 
     # Load local env variables into rails config
