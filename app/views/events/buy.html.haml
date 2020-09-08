@@ -81,18 +81,18 @@
       = label_tag "ticket_type_card", t('events.ticketless'), class: 'radio-label'
       = text_field_tag "membercard", @payment_error.try(:owner_cardno) || (current_user.try(:membership_card).try(:card) if isMember), tabindex: 2, disabled: !isMember
 
-    %p.payment-choice
-      = radio_button_tag "ticket_type", "paper", @payment_error.try(:owner_email).present?, checked: !isMember
-      = label_tag "ticket_type_paper", t('events.paperticket'), class: 'radio-label'
-      = email_field_tag :email, @payment_error.try(:owner_email), tabindex: 2, disabled: isMember
+    -#%p.payment-choice
+      -#= radio_button_tag "ticket_type", "paper", @payment_error.try(:owner_email).present?, checked: !isMember
+      -#= label_tag "ticket_type_paper", t('events.paperticket'), class: 'radio-label'
+      -#= email_field_tag :email, @payment_error.try(:owner_email), tabindex: 2, disabled: isMember
 
     %h4
       = t('events.about_ticket')
     %ul
       %li
         = t('events.about_ticketless_html')
-      %li
-        = t('events.about_paperticket_html')
+      -#%li
+        -#= t('events.about_paperticket_html')
 
     .payment-wrapper
       %h3
