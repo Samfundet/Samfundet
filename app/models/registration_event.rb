@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
 class RegistrationEvent < ApplicationRecord
-    if !Rails.env.development?
-        RegistrationEvent.establish_connection(:paamelding)
-        RegistrationEvent.table_name = 'paameldingsys.arrangementer'
-    end
+    RegistrationEvent.establish_connection(:paamelding)
+    RegistrationEvent.table_name = 'paameldingsys.arrangementer'
     belongs_to :arrangement, class_name: :Event
 
     def registrations
