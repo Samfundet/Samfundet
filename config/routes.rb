@@ -180,7 +180,7 @@ Rails.application.routes.draw do
       get "/menu" => "lyche#menu"
       get "/about" => "lyche#about"
       get "/contact" => "lyche#contact"
-      get "/reservasjon" => "reservations#new"
+      #get "/reservasjon" => "reservations#new"
       get "/reservasjon_admin" => "reservations#admin_new"
       post "/reservasjon_admin" => "reservations#admin_create"
       get :admin, to: "admin#index"
