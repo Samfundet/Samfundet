@@ -171,7 +171,7 @@ Rails.application.routes.draw do
       post :search, on: :collection
     end
 
-    namespace :sulten do
+    namespace :sulten, path: "lyche" do
       get "/" => "lyche#index"
       get "/make_reservation" => "lyche#reservation"
       get "/reservation/success" => "lyche#reservation_success"
