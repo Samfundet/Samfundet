@@ -37,7 +37,7 @@ en:
         intro1_admin: "This is what users see:"
         intro2: "Currently you may only make reservations for time periods between 4 pm and 10 pm, and a reservation must be made no later than the day before it begins."
         intro3: "In order to change or cancel a reservation, please send an email to "
-        too_many: "more than 12 persons? send us a "
+        too_many: "more than 8 persons? send us a "
         from: "beginning time of reservation"
         duration: "duration"
         type_explanation: "what is the purpose of the visit? this helps determine the sort of table you will be given"
