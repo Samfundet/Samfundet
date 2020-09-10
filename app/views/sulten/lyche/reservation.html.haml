@@ -5,21 +5,24 @@
   .lyche_form_title
     = t("sulten.reservation.form.title")
 
-
   .reservation-info
-    Bord må reserveres senest en dag før og gjøres over e-post.
-    Det er mulig å forhåndsbestille mat hvis dere kontakter oss med bestillingen minst et døgn i forveien av reservasjonen.
-    Da kan vi ha maten klar til avtalt tidspunkt, og dere trenger ikke å vente på maten.
-    Merk at flertallet av personer må være medlem for å reservere og at alle må være over 20 år etter kl 20:00 i helger. Med hensyn til smittevern kan vi ikke garantere at alle får sittet sammen.
+
+    Bord må reserveres senest en dag i forveien. Mat kan forhåndsbestilles slik at dere ikke trenger å vente når dere kommer.
+    Merk at flertallet av personer må være medlem for å reservere og at alle må være over 20 år etter kl 20:00 i helger.
+    Med hensyn til smittevern kan vi ikke garantere at alle får sittet sammen.
     %br
     %br
-    Klikk her for å sende mail:
+    Klikk her for å bestille via epost:
     %br
     = mail_to "lyche@samfundet.no"
     %br
     %br
     Reservasjonssystemet vårt er fortsatt under utvikling, og ber om forbehold om at feil kan forekomme.
     %br
+    %br
+    - @closed_periods.each do |c|
+      %i
+        = "Lyche holder stengt i perioden " + l(c.closed_from, format: :short_date) + " - " + l(c.closed_to, format: :short_date)
     %br
   = semantic_form_for @reservation, :html => { :class => "custom-form lyche_form"} do |f|
     = f.inputs do

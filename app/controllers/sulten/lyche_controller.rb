@@ -13,6 +13,9 @@ class Sulten::LycheController < Sulten::BaseController
 
   def reservation
     @closed_periods = Sulten::ClosedPeriod.current_and_future_closed_times.sort_by(&:closed_from)
+    unless @closed_periods.empty?
+      @closed_periods = [@closed_periods.first]
+    end
     @reservation = Sulten::Reservation.new
   end
 
