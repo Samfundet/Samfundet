@@ -39,7 +39,7 @@
         intro1_admin: "Dette er hva brukere ser:"
         intro2: "Foreløpig kan en bare reservere bord mellom kl. 16:00 - 22:00 og reservasjonen må gjøres minst ett døgn i forveien."
         intro3: "For å endre eller avbestille en reservasjon, vennligst send mail til "
-        too_many: "Flere enn 12 personer? Send oss en "
+        too_many: "Flere enn 8 personer? Send oss en "
         from: "Tidspunkt"
         duration: "Varighet"
         type_explanation: "Vi bruker dette for å tildele et passende bord."

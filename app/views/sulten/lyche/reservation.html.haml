@@ -6,18 +6,13 @@
     = t("sulten.reservation.form.title")
 
   .reservation-info
-
     Bord må reserveres senest en dag i forveien. Mat kan forhåndsbestilles slik at dere ikke trenger å vente når dere kommer.
     Merk at flertallet av personer må være medlem for å reservere og at alle må være over 20 år etter kl 20:00 i helger.
     Med hensyn til smittevern kan vi ikke garantere at alle får sittet sammen.
     %br
     %br
-    Klikk her for å bestille via epost:
-    %br
+    Reservasjonssystemet vårt er fortsatt under utvikling, og vi ber om forbehold om at feil kan forekomme. Klikk her for å bestille via epost:
     = mail_to "lyche@samfundet.no"
-    %br
-    %br
-    Reservasjonssystemet vårt er fortsatt under utvikling, og ber om forbehold om at feil kan forekomme.
     %br
     %br
     - @closed_periods.each do |c|
