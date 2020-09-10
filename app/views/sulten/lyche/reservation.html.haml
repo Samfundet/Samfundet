@@ -26,17 +26,26 @@
 
   = semantic_form_for @reservation, :html => { :class => "custom-form lyche_form"} do |f|
     = f.inputs do
+
+
+      = f.input :reservation_type, label: t("sulten.reservation.reservation_type")
+      %li
+        %p.inline-hints
+          = t("sulten.reservation.form.type_explanation")
+      -# collection: [60, 90, 120, 150, 180] because "mat" is selected at load in prod
+      .form-divider
+
       %li
         %p.inline-hints
           = t("sulten.reservation.form.too_many")
           = mail_to "lyche@samfundet.no", "mail."
-      = f.input :people, label: t("sulten.reservation.people"),as: :number
+        = f.input :people, label: t("sulten.reservation.people"),as: :number
 
+      .form-divider
 
-
+      .date Dato*
       .calendar
-        .label Dato* help
-        #lyche-datepicker
+        #lyche-datepicker.datepicker()
 
       .box
         %p 17:00  17:30  18:00  19:30  20:00
@@ -47,12 +56,6 @@
 
       .form-divider
 
-      = f.input :reservation_type, label: t("sulten.reservation.reservation_type")
-      %li
-        %p.inline-hints
-          = t("sulten.reservation.form.type_explanation")
-      -# collection: [60, 90, 120, 150, 180] because "mat" is selected at load in prod
-      .form-divider
       = f.input :name, label: t("sulten.reservation.name")
       = f.input :telephone, label: t("sulten.reservation.telephone")
       = f.input :email, label: t("sulten.reservation.email")
