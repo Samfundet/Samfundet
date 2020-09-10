@@ -23,6 +23,7 @@
     Reservasjonssystemet vårt er fortsatt under utvikling, og ber om forbehold om at feil kan forekomme.
     %br
     %br
+
   = semantic_form_for @reservation, :html => { :class => "custom-form lyche_form"} do |f|
     = f.inputs do
       %li
@@ -30,10 +31,15 @@
           = t("sulten.reservation.form.too_many")
           = mail_to "lyche@samfundet.no", "mail."
       = f.input :people, label: t("sulten.reservation.people"),as: :number
-      #lyche-datepicker.datepicker()
 
 
 
+      .calendar
+        %label.label Dato* help
+        #lyche-datepicker.datepicker()
+
+      .box
+        %p 17:00  17:30  18:00  19:30  20:00
 
 
       -# = f.input :reservation_from, placeholder: t("sulten.reservation.placeholder_date"), label: t("sulten.reservation.form.from"), input_html: { class: "datetimepicker_lyche"}, as: :string
