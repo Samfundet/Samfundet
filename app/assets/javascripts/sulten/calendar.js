@@ -2,6 +2,7 @@
     Handles datetime popup for lyche calendar
 */
 $(function() {
+    console.log("yo")
     $("#calendar-header-title").on('click', function(e) {
         $("#calendar-datepicker-container").toggleClass('open');
         e.stopPropagation();

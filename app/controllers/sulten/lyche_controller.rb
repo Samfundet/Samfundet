@@ -41,5 +41,7 @@ class Sulten::LycheController < Sulten::BaseController
 
   end
 
+
+
 end
 

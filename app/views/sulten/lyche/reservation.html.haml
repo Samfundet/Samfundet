@@ -1,4 +1,4 @@
-= javascript_include_tag "sulten/lyche/calendar", defer: true
+= javascript_include_tag "sulten/calendar", defer: true
 
 - content_for(:container) do
   = render "header_menu"
@@ -35,8 +35,8 @@
 
 
       .calendar
-        %label.label Dato* help
-        #lyche-datepicker.datepicker()
+        .label Dato* help
+        #lyche-datepicker
 
       .box
         %p 17:00  17:30  18:00  19:30  20:00

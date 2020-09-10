@@ -1,6 +1,7 @@
 /* Datepicker for lyche reservation form */
 
 $(function() {
+    console.log("hello yellow")
    $('#lyche-datepicker').datepicker({
        dateFormat: 'dd-mm-yy',
        onSelect: function(dateText) {
