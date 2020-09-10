@@ -40,7 +40,7 @@ class Sulten::Reservation < ApplicationRecord
   after_validation(on: :create, unless: :admin_access) do
     self.table = Sulten::Reservation.find_table(reservation_from, reservation_to, people, reservation_type_id)
 
-    unless table
+    if table.nil? or table.number == -1
       errors.add(:reservation_from,
                  I18n.t('helpers.models.sulten.reservation.errors.reservation_from.no_table_available'))
     end
