@@ -5,48 +5,46 @@
   .lyche_form_title
     = t("sulten.reservation.form.title")
 
-
   .reservation-info
-    Bord må reserveres senest en dag før og gjøres over e-post.
-    Det er mulig å forhåndsbestille mat hvis dere kontakter oss med bestillingen minst et døgn i forveien av reservasjonen.
-    Da kan vi ha maten klar til avtalt tidspunkt, og dere trenger ikke å vente på maten.
-    Merk at flertallet av personer må være medlem for å reservere og at alle må være over 20 år etter kl 20:00 i helger. Med hensyn til smittevern kan vi ikke garantere at alle får sittet sammen.
+    Bord må reserveres senest en dag i forveien. Mat kan forhåndsbestilles slik at dere ikke trenger å vente når dere kommer.
+    Merk at flertallet av personer må være medlem for å reservere og at alle må være over 20 år etter kl 20:00 i helger.
+    Med hensyn til smittevern kan vi ikke garantere at alle får sittet sammen.
     %br
     %br
-    Klikk her for å sende mail:
-    %br
+    Reservasjonssystemet vårt er fortsatt under utvikling, og vi ber om forbehold om at feil kan forekomme. Klikk her for å bestille via epost:
     = mail_to "lyche@samfundet.no"
     %br
     %br
-    -#Reservasjonssystemet vårt er fortsatt under utvikling, og ber om forbehold om at feil kan forekomme.
-    -#%br
-    -#%br
-  -#= semantic_form_for @reservation, :html => { :class => "custom-form lyche_form"} do |f|
-  -#  = f.inputs do
-  -#    %li
-  -#      %p.inline-hints
-  -#        = t("sulten.reservation.form.too_many")
-  -#        = mail_to "lyche@samfundet.no", "mail."
-  -#    = f.input :people, label: t("sulten.reservation.people"),as: :number
-  -#    = f.input :reservation_from, placeholder: t("sulten.reservation.placeholder_date"), label: t("sulten.reservation.form.from"), input_html: { class: "datetimepicker_lyche"}, as: :string
-  -#    = f.input :reservation_duration, label: t("sulten.reservation.form.duration"), collection: [60, 90, 120, 150, 180], member_label: proc{|d| "#{d} minutter"}, include_blank: false, selected: 60
-  -#
-  -#    .form-divider
-  -#
-  -#    = f.input :reservation_type, label: t("sulten.reservation.reservation_type")
-  -#    %li
-  -#      %p.inline-hints
-  -#        = t("sulten.reservation.form.type_explanation")
-  -#    -# collection: [60, 90, 120, 150, 180] because "mat" is selected at load in prod
-  -#    .form-divider
-  -#    = f.input :name, label: t("sulten.reservation.name")
-  -#    = f.input :telephone, label: t("sulten.reservation.telephone")
-  -#    = f.input :email, label: t("sulten.reservation.email")
-  -#    .form-divider
-  -#    = f.input :allergies, label: t("sulten.reservation.other_messages")
-  -#    %br
-  -#    .gdpr_checkbox
-  -#      != f.input :gdpr_checkbox, as: :boolean, label: raw(t("sulten.reservation.gdpr_checkbox", en_url:'/en/privacy', no_url: '/personvern'))
-  -#
-  -#  = f.actions do
-  -#    = f.submit t("sulten.reservation.form.create")
+    - @closed_periods.each do |c|
+      %i
+        = "Lyche holder stengt i perioden " + l(c.closed_from, format: :short_date) + " - " + l(c.closed_to, format: :short_date)
+    %br
+  = semantic_form_for @reservation, :html => { :class => "custom-form lyche_form"} do |f|
+    = f.inputs do
+      %li
+        %p.inline-hints
+          = t("sulten.reservation.form.too_many")
+          = mail_to "lyche@samfundet.no", "mail."
+      = f.input :people, label: t("sulten.reservation.people"),as: :number
+      = f.input :reservation_from, placeholder: t("sulten.reservation.placeholder_date"), label: t("sulten.reservation.form.from"), input_html: { class: "datetimepicker_lyche"}, as: :string
+      = f.hidden_field :reservation_duration, value: 120
+
+      .form-divider
+
+      = f.input :reservation_type, label: t("sulten.reservation.reservation_type")
+      %li
+        %p.inline-hints
+          = t("sulten.reservation.form.type_explanation")
+      -# collection: [60, 90, 120, 150, 180] because "mat" is selected at load in prod
+      .form-divider
+      = f.input :name, label: t("sulten.reservation.name")
+      = f.input :telephone, label: t("sulten.reservation.telephone")
+      = f.input :email, label: t("sulten.reservation.email")
+      .form-divider
+      = f.input :allergies, label: t("sulten.reservation.other_messages")
+      %br
+      .gdpr_checkbox
+        != f.input :gdpr_checkbox, as: :boolean, label: raw(t("sulten.reservation.gdpr_checkbox", en_url:'/en/privacy', no_url: '/personvern'))
+
+    = f.actions do
+      = f.submit t("sulten.reservation.form.create")

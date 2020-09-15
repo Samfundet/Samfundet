@@ -40,7 +40,7 @@ class Sulten::Reservation < ApplicationRecord
   after_validation(on: :create, unless: :admin_access) do
     self.table = Sulten::Reservation.find_table(reservation_from, reservation_to, people, reservation_type_id)
 
-    unless table
+    if table.nil? or table.number == -1
       errors.add(:reservation_from,
                  I18n.t('helpers.models.sulten.reservation.errors.reservation_from.no_table_available'))
     end
@@ -68,7 +68,7 @@ class Sulten::Reservation < ApplicationRecord
   end
 
   def check_amount_of_people
-    if people > 12
+    if people > 8
       errors.add(:people, I18n.t('helpers.models.sulten.reservation.errors.people.too_many_people'))
     elsif people < 1
       errors.add(:people, I18n.t('helpers.models.sulten.reservation.errors.people.too_few_people'))
@@ -91,7 +91,7 @@ class Sulten::Reservation < ApplicationRecord
     (1..Sulten::ReservationType.count).each do |i|
       Sulten::Table.where('capacity >= ? and available = ?', people, true).order('capacity ASC').tables_with_i_reservation_types(i).find do |t|
         next unless t.reservation_types.pluck(:id).include? reservation_type_id
-        if t.reservations.where('reservation_from > ? or reservation_to < ?', to, from).count == t.reservations.count
+        if t.reservations.where('reservation_from >= ? or reservation_to <= ?', to, from).count == t.reservations.count
           return t
         end
       end
