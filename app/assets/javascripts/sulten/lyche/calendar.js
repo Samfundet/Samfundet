@@ -8,7 +8,7 @@ $(function() {
            if (path.indexOf("?") > -1){
                path = path.substr(0, path.indexOf("?"))
            }
-           window.location.href = path + "?date=" + dateText;
+           window.location.href = path + "?date=" + dateText + "/#calendar";
 
        }
    })

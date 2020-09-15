@@ -1,6 +1,6 @@
-= javascript_include_tag "sulten/lyche/calendar", defer: true
-
 - content_for(:container) do
+  = javascript_include_tag "sulten/lyche/calendar", defer: true
+
   = render "header_menu"
 
 
@@ -32,11 +32,11 @@
           = mail_to "lyche@samfundet.no", "mail."
       = f.input :people, label: t("sulten.reservation.people"),as: :number
 
-
-
       .calendar
-        %label.label Dato* help
-        #lyche-datepicker.datepicker()
+        .lyche-datepicker
+          %a{:name => "calendar"}
+          %label.label Dato* help
+          #lyche-datepicker
 
       .box
         %p 17:00  17:30  18:00  19:30  20:00
