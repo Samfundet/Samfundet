@@ -1,28 +1,14 @@
-= javascript_include_tag "sulten/calendar", defer: true
 
 - content_for(:container) do
   = render "header_menu"
-
+  = javascript_include_tag "sulten/lyche/calendar", defer: true
 
   .lyche_form_title
     = t("sulten.reservation.form.title")
 
-
   .reservation-info
-    Reservasjoner gjøres over e-post.
-    Det er mulig å forhåndsbestille mat hvis dere kontakter oss med bestillingen minst et døgn i forveien av reservasjonen.
-    Da kan vi ha maten klar til avtalt tidspunkt, og dere trenger ikke å vente på maten.
-    Merk at flertallet av personer må være medlem for å reservere og at alle må være over 20 år etter kl 20:00 i helger. Med hensyn til smittevern kan vi ikke garantere at alle får sittet sammen.
-    %br
-    %br
-    Klikk her for å sende mail:
-    %br
-    = mail_to "lyche@samfundet.no"
-    %br
-    %br
     Reservasjonssystemet vårt er fortsatt under utvikling, og ber om forbehold om at feil kan forekomme.
-    %br
-    %br
+
 
   = semantic_form_for @reservation, :html => { :class => "custom-form lyche_form"} do |f|
     = f.inputs do
@@ -45,10 +31,10 @@
 
       .date Dato*
       .calendar
-        #lyche-datepicker.datepicker()
+        #lyche-datepicker
 
       .box
-        %p 17:00  17:30  18:00  19:30  20:00
+        %p 17:00  17:30  18:00  19:30  20:00  21:00  22:00
 
 
       -# = f.input :reservation_from, placeholder: t("sulten.reservation.placeholder_date"), label: t("sulten.reservation.form.from"), input_html: { class: "datetimepicker_lyche"}, as: :string
