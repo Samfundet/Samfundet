@@ -54,7 +54,7 @@ Samfundet::Application.configure do
   }
 
   config.billig_path = 'https://billettsalg-test.uka.no/pay'
-  config.billig_ticket_path = 'https://billig.samfundet.no/pdf?'
+  config.billig_ticket_path = 'https://erlinvan.billig.samfundet.no/pdf?'
 
   config.after_initialize do
     billig_table_prefix = 'billig.'
