@@ -4,6 +4,10 @@
 - if can?(:manage, Admission)
   = link_to t('admissions.create_admission'), new_admissions_admin_admission_path
 
+%br
+- if can?(:manage, Admission)
+  = link_to t('admissions.closed_admissions'), admissions_admin_list_path
+
 - @admissions.each do |admission|
   %h3
     = admission.title

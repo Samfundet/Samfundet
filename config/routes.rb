@@ -125,12 +125,13 @@ Rails.application.routes.draw do
     # If a resource is logically nested within another, the routes should
     # reflect that
     namespace :admissions_admin do
+      get "list" => "admissions#list"
       resources :campus, path: 'campus' do
         get :admin, on: :collection
         get :deactivate, to: "campus#deactivate"
         get :activate, to: "campus#activate"
       end
-      resources :admissions, only: [:show, :new, :create, :edit, :update] do
+      resources :admissions, only: [:show, :new, :create, :edit, :update, :list] do
         get :statistics, on: :member
         resources :groups, only: :show do
           get :applications, on: :member

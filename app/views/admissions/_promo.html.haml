@@ -25,7 +25,6 @@
       = link_to admissions_admin_admission_path(admission) do
         = t('admissions.administer_my_group')
       ]
-
     - if can? :statistics, Admission
       [
       = link_to statistics_admissions_admin_admission_path(admission) do
