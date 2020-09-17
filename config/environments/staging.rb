@@ -53,19 +53,21 @@ Samfundet::Application.configure do
     arguments: '-i'
   }
 
-  config.billig_path = 'https://billettsalg-test.uka.no/pay'
+  # config.billig_path = 'https://billettsalg-test.uka.no/pay'
+  # updated for new payex merge with swedbank
+  config.billig_path = 'https://okkupasjon-erlinvan.samfundet.no/pay'
   config.billig_ticket_path = 'https://erlinvan.billig.samfundet.no/pdf?'
 
   config.after_initialize do
     billig_table_prefix = 'billig.'
 
     # manually set BilligEvent table_name so it uses db view instead of std table
-    BilligEvent.establish_connection(:mdb2_swpay)
+    BilligEvent.establish_connection(:billig)
     BilligEvent.table_name = billig_table_prefix + 'event_lim_web'
 
     billig_tables = [BilligTicketGroup, BilligPriceGroup, BilligPaymentError, BilligPaymentErrorPriceGroup, BilligTicket, BilligPurchase, BilligTicketCard]
     billig_tables.each do |table|
-      table.establish_connection(:mdb2_swpay)
+      table.establish_connection(:billig)
       table.table_name = billig_table_prefix + table.name.gsub(/Billig/, '').underscore
     end
     paamelding_table_prefix = 'paameldingsys.'
