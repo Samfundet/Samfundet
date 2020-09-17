@@ -43,6 +43,7 @@
         from: "Tidspunkt"
         duration: "Varighet"
         type_explanation: "Vi bruker dette for å tildele et passende bord."
+        find_times: "Finn ledige tidspunkt"
         create: "opprett reservasjon"
         update: "oppdater reservasjon"
         closed: "Reservasjoner er stengt fra %{from} til og med %{to}"

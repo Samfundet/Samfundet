@@ -26,15 +26,17 @@
           = t("sulten.reservation.form.too_many")
           = mail_to "lyche@samfundet.no", "mail."
       = f.input :people, label: t("sulten.reservation.people"),as: :number
-      = f.input :reservation_from, placeholder: t("sulten.reservation.placeholder_date"), label: t("sulten.reservation.form.from"), input_html: { class: "datetimepicker_lyche"}, as: :string
+      = f.input :reservation_from, placeholder: "01.10.1910", label: t("sulten.reservation.summary.date"), input_html: { class: "datepicker"}, as: :string
       = f.hidden_field :reservation_duration, value: 120
-
-      .form-divider
-
       = f.input :reservation_type, label: t("sulten.reservation.reservation_type")
+
       %li
         %p.inline-hints
           = t("sulten.reservation.form.type_explanation")
+
+      = f.actions do
+        = f.submit t("sulten.reservation.form.find_times")
+
       -# collection: [60, 90, 120, 150, 180] because "mat" is selected at load in prod
       .form-divider
       = f.input :name, label: t("sulten.reservation.name")
