@@ -12,10 +12,16 @@ class Sulten::LycheController < Sulten::BaseController
   end
 
   def reservation
+
     @closed_periods = Sulten::ClosedPeriod.current_and_future_closed_times.sort_by(&:closed_from)
     @reservation = Sulten::Reservation.new
-    @available_times = Sulten::Reservation.find_available_times(params[:date], params[:duration].to_i, params[:people].to_i, params[:type_id].to_i)
-    puts(@available_times)
+
+    request = params[:sulten_reservation]
+    if not request.nil?
+      @available_times = [] #Sulten::Reservation.find_available_times(params[:date], params[:duration].to_i, params[:people].to_i, params[:type_id].to_i)
+    end
+
+
   end
 
   def reservation_success

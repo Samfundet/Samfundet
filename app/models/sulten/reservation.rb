@@ -100,6 +100,8 @@ class Sulten::Reservation < ApplicationRecord
   end
 
   def self.find_available_times(date, duration, people, type_id)
+    puts("hallaa")
+    puts(date)
     now = Time.parse(date).utc
     default_open = now.change(hour: 16, min: 0, sec: 0)
     default_close = now.change(hour: 22, min: 0, sec: 0)
@@ -145,8 +147,8 @@ class Sulten::Reservation < ApplicationRecord
   end
 
   def self.lyche_open?(from, to)
-    # TODO: Change these defaults when admin can set them
-    # The values 16 .. 22 are the openinghours
+     #TODO: Change these defaults when admin can set them
+     #The values 16 .. 22 are the openinghours
     (from.hour >= 16 && to.hour < 22)
   end
 

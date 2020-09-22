@@ -1,4 +1,3 @@
-
 - content_for(:container) do
   = render "header_menu"
   = javascript_include_tag "sulten/lyche/calendar", defer: true
@@ -9,45 +8,45 @@
   .reservation-info
     Reservasjonssystemet vårt er fortsatt under utvikling, og ber om forbehold om at feil kan forekomme.
 
+  - if @available_times.nil?
+    = semantic_form_for @reservation, :url => {:controller => "lyche", :action => "reservation" }, :html => { :class => "custom-form lyche_form"}, data: {type: 'json'} do |f|
+      = f.inputs do
+        = f.input :reservation_type, label: t("sulten.reservation.reservation_type")
+        %li
+          %p.inline-hints
+            = t("sulten.reservation.form.type_explanation")
+        -# collection: [60, 90, 120, 150, 180] because "mat" is selected at load in prod
+        .form-divider
 
-  = semantic_form_for @reservation, :html => { :class => "custom-form lyche_form"} do |f|
-    = f.inputs do
-
-
-      = f.input :reservation_type, label: t("sulten.reservation.reservation_type")
-      %li
-        %p.inline-hints
-          = t("sulten.reservation.form.type_explanation")
-      -# collection: [60, 90, 120, 150, 180] because "mat" is selected at load in prod
-      .form-divider
-
-      %li
-        %p.inline-hints
-          = t("sulten.reservation.form.too_many")
-          = mail_to "lyche@samfundet.no", "mail."
+        %li
+          %p.inline-hints
+            = t("sulten.reservation.form.too_many")
+            = mail_to "lyche@samfundet.no", "mail."
         = f.input :people, label: t("sulten.reservation.people"), as: :number
 
-      .form-divider
+        .form-divider
 
-      = f.input :reservation_from, label: "Dato", input_html: { class: "datepicker", value: @reservation.reservation_from}, as: :string
+        = f.input :reservation_from, label: "Dato", input_html: { class: "datepicker", value: @reservation.reservation_from}, as: :string
 
-      .box
-        %p 17:00  17:30  18:00  19:30  20:00  21:00  22:00
+        -# = f.input :reservation_from, placeholder: t("sulten.reservation.placeholder_date"), label: t("sulten.reservation.form.from"), input_html: { class: "datetimepicker_lyche"}, as: :string
+        -# = f.input :reservation_duration, label: t("sulten.reservation.form.duration"), collection: [60, 90, 120, 150, 180], member_label: proc{|d| "#{d} minutter"}, include_blank: false, selected: 60
 
-
-      -# = f.input :reservation_from, placeholder: t("sulten.reservation.placeholder_date"), label: t("sulten.reservation.form.from"), input_html: { class: "datetimepicker_lyche"}, as: :string
-      -# = f.input :reservation_duration, label: t("sulten.reservation.form.duration"), collection: [60, 90, 120, 150, 180], member_label: proc{|d| "#{d} minutter"}, include_blank: false, selected: 60
-
-      .form-divider
-
-      = f.input :name, label: t("sulten.reservation.name")
-      = f.input :telephone, label: t("sulten.reservation.telephone")
-      = f.input :email, label: t("sulten.reservation.email")
-      .form-divider
-      = f.input :allergies, label: t("sulten.reservation.other_messages")
-      %br
-      .gdpr_checkbox
-        != f.input :gdpr_checkbox, as: :boolean, label: raw(t("sulten.reservation.gdpr_checkbox", en_url:'/en/privacy', no_url: '/personvern'))
-
-    = f.actions do
-      = f.submit t("sulten.reservation.form.create")
+        .form-divider
+        = f.actions do
+          = f.submit t("sulten.reservation.form.create")
+  - else
+    %p
+      = "HEI DER"
+    -#= semantic_form_for @reservation, :html => { :class => "custom-form lyche_form"} do |f|
+    -#  = f.inputs do
+    -#    = f.input :name, label: t("sulten.reservation.name")
+    -#    = f.input :telephone, label: t("sulten.reservation.telephone")
+    -#    = f.input :email, label: t("sulten.reservation.email")
+    -#    .form-divider
+    -#    = f.input :allergies, label: t("sulten.reservation.other_messages")
+    -#    %br
+    -#    .gdpr_checkbox
+    -#      != f.input :gdpr_checkbox, as: :boolean, label: raw(t("sulten.reservation.gdpr_checkbox", en_url:'/en/privacy', no_url: '/personvern'))
+    -#
+    -#  = f.actions do
+    -#    = f.submit t("sulten.reservation.form.create")
