@@ -1,3 +1,7 @@
-%h2 
-  = t("roles.admin_applet_title")
-%p= link_to t("roles.admin_applet_description"), roles_path
+.top
+  %h2
+    = t("roles.admin_applet_title")
+.options
+  %ul
+    %li
+      = link_to t("roles.admin_applet_description"), roles_path

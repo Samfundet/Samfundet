@@ -1,8 +1,9 @@
-%h2
-  = t('blogs.admin_applet.title')
-
-%ul
-  %li
-    = link_to t('blogs.admin_applet.new_blog'), new_blog_path
-  %li
-    = link_to t('blogs.admin_applet.administrate'), admin_blogs_path
+.top
+  %h2
+    = t('blogs.admin_applet.title')
+.options
+  %ul
+    %li
+      = link_to t('blogs.admin_applet.new_blog'), new_blog_path
+    %li
+      = link_to t('blogs.admin_applet.administrate'), admin_blogs_path

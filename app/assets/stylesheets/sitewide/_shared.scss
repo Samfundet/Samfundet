@@ -26,7 +26,7 @@ ul {
 body {
     font-family: "futura-pt", "Lato", sans-serif;
 
-    &.dev-filter {
+    /*&.dev-filter {
         background: repeating-linear-gradient(
             45deg,
             transparentize($samfundet-light-grey, 0.3),
@@ -34,7 +34,7 @@ body {
             white 10px,
             white 20px
         );
-    }
+    }*/
 }
 
 img {

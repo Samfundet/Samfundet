@@ -1,10 +1,11 @@
-%h2
-  = t("admissions.admin_applet.title")
+.top
+  %h2
+    = t("admissions.admin_applet.title")
+.options
+  - if can?(:manage, Admission)
+    = link_to t('admissions.create_admission'), new_admissions_admin_admission_path
 
-- if can?(:manage, Admission)
-  = link_to t('admissions.create_admission'), new_admissions_admin_admission_path
-
-- @admissions.each do |admission|
-  %h3
-    = admission.title
-  = link_to t('admissions.administer_my_group'), admissions_admin_admission_path(admission)
+  - @admissions.each do |admission|
+    %h3
+      = admission.title
+    = link_to t('admissions.administer_my_group'), admissions_admin_admission_path(admission)
