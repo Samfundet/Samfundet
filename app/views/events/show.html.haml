@@ -59,8 +59,6 @@
       :markdown
         #{@event.long_description}
 
-    %i= t("events.member_notice")
-    
     %p.ticket_exchange_info
       = t('events.ticket_change_html', href: link_to(t('events.here'), Page.tickets))
 
