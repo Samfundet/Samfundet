@@ -98,6 +98,7 @@ en:
 
     buy_title: Buy ticket for %{event_title}
     ticketless: "Ticketless on your membership card:"
+    member_notice: "Member tickets can only be used by members of Samfundet. Bring your membership card!"
     paperticket: "Digital ticket by email:"
     confirm_email: "Confirm email:"
     about_ticket: "About ticket types:"
