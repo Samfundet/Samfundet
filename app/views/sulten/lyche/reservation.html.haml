@@ -25,13 +25,11 @@
         %p.inline-hints
           = t("sulten.reservation.form.too_many")
           = mail_to "lyche@samfundet.no", "mail."
-        = f.input :people, label: t("sulten.reservation.people"),as: :number
+        = f.input :people, label: t("sulten.reservation.people"), as: :number
 
       .form-divider
 
-      .date Dato*
-      .calendar
-        #lyche-datepicker
+      = f.input :reservation_from, label: "Dato", input_html: { class: "datepicker", value: @reservation.reservation_from}, as: :string
 
       .box
         %p 17:00  17:30  18:00  19:30  20:00  21:00  22:00
