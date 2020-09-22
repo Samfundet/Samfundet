@@ -1,11 +1,12 @@
-%h2
-  = t("events.admin_applet.title")
-
-%ul
-  - if can? :create, Event
+.top
+  %h2
+    = t("events.admin_applet.title")
+.options
+  %ul
+    - if can? :create, Event
+      %li
+        = link_to t("events.action.new"), new_event_path
     %li
-      = link_to t("events.action.new"), new_event_path
-  %li
-    = link_to t("events.admin.title"), admin_events_path
-  %li
-    = link_to t("events.archive.title"), archive_events_path
+      = link_to t("events.admin.title"), admin_events_path
+    %li
+      = link_to t("events.archive.title"), archive_events_path
