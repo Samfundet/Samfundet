@@ -1,13 +1,13 @@
 form:not(.custom-form) {
   @include span-columns(12);
 
-  background-color: $samfundet-light-grey;
+  background-color: transparent;
   padding-top: 10px;
   padding-bottom: 7px;
   margin-bottom: 40px;
 
   .inputs {
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: rgba(0, 0, 0, 0.1);
     padding: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -33,12 +33,10 @@ form:not(.custom-form) {
       width: 100%;
       text-align: center;
       margin-bottom: 10px;
-
       span {
-        font-size: 1.3em;
+        font-size: 1.4em;
         padding: 5px;
         border-radius: 10px;
-        background-color: rgba(238, 238, 238, 1);
         margin-bottom: 10px;
       }
     }
@@ -70,7 +68,7 @@ form:not(.custom-form) {
           text-transform: lowercase;
           display: block;
           padding-top: 12px;
-
+          background-color: transparent;
           @include span-columns(12 of 12);
           @include media ($tablet-desktop) {
             text-align: right;
@@ -110,7 +108,11 @@ form:not(.custom-form) {
           }
 
           &[type=submit] {
-            width: auto;
+            width: 50%;
+            height: 64px;
+            font-weight: bolder;
+            font-size: 1.5em;
+            border-radius: 10px;
           }
 
           &[type=color] {
@@ -138,7 +140,14 @@ form:not(.custom-form) {
       }
     }
   }
-
+  li {
+    td {
+      background-color: red;
+      input[type=radio] {
+        color: blue;
+      }
+    }
+  }
   fieldset.actions {
     ol {
       input {

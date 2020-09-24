@@ -6,8 +6,9 @@
         = text_field_tag :create_from_existing, nil, class: :typeahead
 
   = f.inputs name: t('events.forms.labels.information') do
-    = f.input :non_billig_title_no, label: t('events.forms.labels.title_no')
-    = f.input :title_en, label: t('events.forms.labels.title_en')
+    %tr
+      = f.input :non_billig_title_no, label: t('events.forms.labels.title_no')
+      = f.input :title_en, label: t('events.forms.labels.title_en')
     = f.input :short_description_no, label: t('events.forms.labels.short_description_no'), input_html: { rows: 2 }
     = f.input :short_description_en, label: t('events.forms.labels.short_description_en'), input_html: { rows: 2 }
     = f.input :long_description_no, label: t('events.forms.labels.long_description_no'), hint: t('common.markdown_hint').html_safe
@@ -60,19 +61,24 @@
 
   = f.inputs name: t('events.forms.labels.pricing_options') do
     %li
-      = f.label :price_type, value: "free" do
-        = t('events.forms.labels.free')
-        = f.radio_button :price_type, "free", checked: @event.price_type == "free"
+      %td
+        = f.label :price_type, value: "free" do
+          = t('events.forms.labels.free')
+          = f.radio_button :price_type, "free", checked: @event.price_type == "free"
+        = f.label :price_type, value: "included" do
+          = t('events.forms.labels.included')
+          = f.radio_button :price_type, "included", checked: @event.price_type == "included"
+        = f.label :price_type, value: "free_registration" do
+          = t('events.forms.labels.free_registration')
+          = f.radio_button :price_type, "free_registration", checked: @event.price_type == "free_registration"
+          = f.label :capcaity, value: "capacity" do
+            = f.input :capacity, label: t('events.forms.labels.capacity'), input_html: {value: f.object.capacity || '0'}
     %li
-      = f.label :price_type, value: "included" do
-        = t('events.forms.labels.included')
-        = f.radio_button :price_type, "included", checked: @event.price_type == "included"
-    %li
-      = f.label :price_type, value: "free_registration" do
-        = t('events.forms.labels.free_registration')
-        = f.radio_button :price_type, "free_registration", checked: @event.price_type == "free_registration"
-        = f.label :capcaity, value: "capacity" do
-          = f.input :capacity, label: t('events.forms.labels.capacity'), input_html: {value: f.object.capacity || '0'} 
+      = f.label :price_type, value: "billig" do
+        = "billig"
+        = f.radio_button :price_type, "billig", checked: @event.price_type == "billig"
+      = f.select :billig_event_id, BilligEvent.sale_applicable.sort_by(&:event_time).map { |e| [e.describe, e.id] }
+    //= f.input :billig_event_id, as: :select, collection: BilligEvent.sale_applicable.sort_by(&:event_time).map { |e| [e.describe, e.id] }
     %li
       = f.label :price_type, value: "custom" do
         = t('events.forms.labels.custom')
@@ -82,12 +88,6 @@
           = pg.inputs do
             = render 'price_group_fields', f: pg
         = link_to_add_association t('events.add_price_group'), f, :price_groups
-
-    %li
-      = f.label :price_type, value: "billig" do
-        = "billig"
-        = f.radio_button :price_type, "billig", checked: @event.price_type == "billig"
-      = f.input :billig_event_id, as: :select, collection: BilligEvent.sale_applicable.sort_by(&:event_time).map { |e| [e.describe, e.id] }
 
   = f.actions do
     = f.action :submit
