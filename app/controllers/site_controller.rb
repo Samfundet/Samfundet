@@ -21,6 +21,8 @@ class SiteController < ApplicationController
     # Cache prevention for billig purchase errors
     if params[:no_cache].present?
       @no_cache = true
+      @error_msg = params[:error]
+      flash[:error] = params[:error]
     end
 
   end

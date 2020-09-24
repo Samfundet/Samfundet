@@ -1,6 +1,6 @@
 
 - if @no_cache
-  = "NO CACHE!"
+  = @error_msg
 
 = render 'admissions_frontpage_highjack'
 - set_open_graph_params({ title: t('site.index.og_title'), description: t('site.index.og_description'), image: 'https://www.samfundet.no/upload/images/image_files/000/001/669/original/logo_samf.no.png?1538501206'})
