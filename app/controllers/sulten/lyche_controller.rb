@@ -4,21 +4,26 @@
 # samfundet.no/lyche
 
 class Sulten::LycheController < Sulten::BaseController
-  skip_authorization_check
-  layout "lyche"
+    skip_authorization_check
+    layout "lyche"
 
-  def index
+    def index
 
-  end
+    end
 
-  def reservation
+    def reservation
 
-    @closed_periods = Sulten::ClosedPeriod.current_and_future_closed_times.sort_by(&:closed_from)
-    @reservation = Sulten::Reservation.new
+      @closed_periods = Sulten::ClosedPeriod.current_and_future_closed_times.sort_by(&:closed_from)
+      @reservation = Sulten::Reservation.new
 
-    request = params[:sulten_reservation]
+      request = params[:sulten_reservation]
+      print(request)
     if not request.nil?
-      @available_times = [] #Sulten::Reservation.find_available_times(params[:date], params[:duration].to_i, params[:people].to_i, params[:type_id].to_i)
+      puts(request[:reservation_from])
+      puts(request[:reservation_type_id])
+      puts(request[:people])
+      @available_times = Sulten::Reservation.find_available_times(request[:reservation_from], 150, request[:people].to_i, request[:reservation_type_id].to_i)
+      puts(@available_times)
     end
 
 

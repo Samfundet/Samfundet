@@ -102,6 +102,7 @@ class Sulten::Reservation < ApplicationRecord
   def self.find_available_times(date, duration, people, type_id)
     puts("hallaa")
     puts(date)
+    puts("fuck")
     now = Time.parse(date).utc
     default_open = now.change(hour: 16, min: 0, sec: 0)
     default_close = now.change(hour: 22, min: 0, sec: 0)

@@ -33,20 +33,21 @@
 
         .form-divider
         = f.actions do
-          = f.submit t("sulten.reservation.form.create")
+          = f.submit t("sulten.reservation.form.find_times")
   - else
     %p
       = "HEI DER"
-    -#= semantic_form_for @reservation, :html => { :class => "custom-form lyche_form"} do |f|
-    -#  = f.inputs do
-    -#    = f.input :name, label: t("sulten.reservation.name")
-    -#    = f.input :telephone, label: t("sulten.reservation.telephone")
-    -#    = f.input :email, label: t("sulten.reservation.email")
-    -#    .form-divider
-    -#    = f.input :allergies, label: t("sulten.reservation.other_messages")
-    -#    %br
-    -#    .gdpr_checkbox
-    -#      != f.input :gdpr_checkbox, as: :boolean, label: raw(t("sulten.reservation.gdpr_checkbox", en_url:'/en/privacy', no_url: '/personvern'))
-    -#
-    -#  = f.actions do
-    -#    = f.submit t("sulten.reservation.form.create")
+      = semantic_form_for @reservation, :html => { :class => "custom-form lyche_form"} do |f|
+        = @available_times
+        = f.inputs do
+          = f.input :name, label: t("sulten.reservation.name")
+          = f.input :telephone, label: t("sulten.reservation.telephone")
+          = f.input :email, label: t("sulten.reservation.email")
+          .form-divider
+          = f.input :allergies, label: t("sulten.reservation.other_messages")
+          %br
+          .gdpr_checkbox
+            != f.input :gdpr_checkbox, as: :boolean, label: raw(t("sulten.reservation.gdpr_checkbox", en_url:'/en/privacy', no_url: '/personvern'))
+
+        = f.actions do
+          = f.submit t("sulten.reservation.form.create")
