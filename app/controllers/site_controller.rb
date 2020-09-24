@@ -17,6 +17,12 @@ class SiteController < ApplicationController
     else
       @show_admissions_animation = false
     end
+
+    # Cache prevention for billig purchase errors
+    if params[:no_cache].present?
+      @no_cache = true
+    end
+
   end
 
 private

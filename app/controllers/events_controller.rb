@@ -129,6 +129,10 @@ class EventsController < ApplicationController
   def buy
     @event = Event.find(params[:id])
 
+    if params[:no_cache].present?
+      @no_cache = true
+    end
+
     unless @event.codeword.empty?
       if params[:codeword].nil?
         flash[:error] = t('events.please_enter_codeword')
@@ -212,16 +216,22 @@ class EventsController < ApplicationController
 
     if payment_error.blank? # Error case no. 1: Database error.
       flash[:error] = t('events.purchase_generic_error')
-      redirect_to buy_event_path(event, bsession: params[:bsession])
+      payment_error_price_group = BilligPaymentErrorPriceGroup.where(error: params[:bsession]).first
+      if payment_error_price_group.present? # Error case no. 3. Field errors.
+        event = payment_error_price_group.samfundet_event
+        redirect_to buy_event_path(event, bsession: params[:bsession])
+      else
+        flash[:error] = payment_error.message
+        redirect_to root_path, no_cache: true
+      end
     else
       payment_error_price_group = BilligPaymentErrorPriceGroup.where(error: params[:bsession]).first
-      event = payment_error_price_group.samfundet_event
-
       if payment_error_price_group.present? # Error case no. 3. Field errors.
+        event = payment_error_price_group.samfundet_event
         redirect_to buy_event_path(event, bsession: params[:bsession])
       else # Error case no. 2. Show payment error without purchase form.
         flash[:error] = payment_error.message
-        redirect_to buy_event_path(event, bsession: params[:bsession])
+        redirect_to root_path, no_cache: true
       end
     end
   end

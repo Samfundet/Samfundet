@@ -1,13 +1,20 @@
 !!!5
 %html{ lang: I18n.locale, xmlns:"http://www.w3.org/1999/xhtml", "xmlns:og" => "http://ogp.me/ns#", "xmlns:fb" => "https://www.facebook.com/2008/fbml"}
   %head
+    - if @no_cache
+      %meta{:content => "no-cache, no-store, must-revalidate", "http-equiv" => "Cache-Control"}
+      %meta{:content => "no-cache", "http-equiv" => "Pragma"}
+      %meta{:content => "0", "http-equiv" => "Expires"}
+      %title
+        NO CACHE
+    - else
+      %title
+        - unless (yield :title).blank?
+          #{yield(:title)} -
+        Samfundet.no
     %meta{ charset: "UTF-8" }
     %meta{ name: "viewport", content: "width=device-width, initial-scale=1.0" }
     != yield :head
-    %title
-      - unless (yield :title).blank?
-        #{yield(:title)} - 
-      Samfundet.no
     %link{ rel: "stylesheet", href: "//fonts.googleapis.com/css?family=Lato" }
     %link{ rel: "icon", href: asset_path("favicon.ico") }
     = stylesheet_link_tag :application
