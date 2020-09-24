@@ -18,11 +18,14 @@ class SiteController < ApplicationController
       @show_admissions_animation = false
     end
 
-    # Cache prevention for billig purchase errors
-    if params[:no_cache].present?
-      @no_cache = true
-      @error_msg = params[:error]
-      flash[:error] = params[:error]
+    # Billig redirect purchase error
+    if params[:bsession].present?
+      payment_error = BilligPaymentError.where(error: params[:bsession]).first
+      if payment_error.blank?
+        flash[:error] = t('events.purchase_generic_error')
+      else
+        flash[:error] = payment_error.message
+      end
     end
 
   end
