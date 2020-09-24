@@ -53,8 +53,10 @@ Samfundet::Application.configure do
     arguments: '-i'
   }
 
-  config.billig_path = 'https://billettsalg-test.uka.no/pay'
-  config.billig_ticket_path = 'https://billig.samfundet.no/pdf?'
+  # config.billig_path = 'https://billettsalg-test.uka.no/pay'
+  # updated for new payex merge with swedbank
+  config.billig_path = 'https://okkupasjon-erlinvan.samfundet.no/pay'
+  config.billig_ticket_path = 'https://erlinvan.billig.samfundet.no/pdf?'
 
   config.after_initialize do
     billig_table_prefix = 'billig.'
