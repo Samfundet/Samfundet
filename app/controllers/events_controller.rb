@@ -222,7 +222,7 @@ class EventsController < ApplicationController
         redirect_to buy_event_path(event, bsession: params[:bsession])
       else
         flash[:error] = payment_error.message
-        redirect_to root_path, no_cache: true
+        redirect_to root_path(no_cache: 1)
       end
     else
       payment_error_price_group = BilligPaymentErrorPriceGroup.where(error: params[:bsession]).first
@@ -231,7 +231,7 @@ class EventsController < ApplicationController
         redirect_to buy_event_path(event, bsession: params[:bsession])
       else # Error case no. 2. Show payment error without purchase form.
         flash[:error] = payment_error.message
-        redirect_to root_path, no_cache: true
+        redirect_to root_path(no_cache: 1)
       end
     end
   end
