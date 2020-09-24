@@ -212,7 +212,7 @@ class EventsController < ApplicationController
 
     if payment_error.blank? # Error case no. 1: Database error.
       flash[:error] = t('events.purchase_generic_error')
-      redirect_to root_path
+      redirect_to buy_event_path(event, bsession: params[:bsession])
     else
       payment_error_price_group =
         BilligPaymentErrorPriceGroup.where(error: params[:bsession]).first
@@ -221,7 +221,8 @@ class EventsController < ApplicationController
         event = payment_error_price_group.samfundet_event
         redirect_to buy_event_path(event, bsession: params[:bsession])
       else # Error case no. 2. Show payment error without purchase form.
-        redirect_to root_path, :flash => {:error => payment_error.message}
+        flash[:error] = payment_error.message
+        redirect_to buy_event_path(event, bsession: params[:bsession])
       end
     end
   end
