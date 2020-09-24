@@ -91,8 +91,9 @@ class Sulten::Reservation < ApplicationRecord
     (1..Sulten::ReservationType.count).each do |i|
       Sulten::Table.where('capacity >= ? and available = ?', people, true).order('capacity ASC').tables_with_i_reservation_types(i).find do |t|
         next unless t.reservation_types.pluck(:id).include? reservation_type_id
-        if t.reservations.where('reservation_from >= ? or reservation_to <= ?', to, from).count == t.reservations.count
-          return t
+        -# We add 30 minutes before and after the reservation because Lyche wants time between reservations to clean up!
+        if t.reservations.where('reservation_from >= ? or reservation_to <= ?', to + 30.minutes , from - 30.minutes).count == t.reservations.count
+            return t
         end
       end
     end
