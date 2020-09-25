@@ -38,6 +38,9 @@
     %p
       = "HEI DER"
       = semantic_form_for @reservation, :html => { :class => "custom-form lyche_form"} do |f|
+        .box
+          %p
+            = @available_times
         = @available_times
         = f.inputs do
           = f.input :name, label: t("sulten.reservation.name")
