@@ -16,13 +16,10 @@
     .title-row
       .title
         = link_to event.title, event
-      .purchase-button.tickets-available
-        = t("events.purchase")
+      = render "events/buy_button", event: event
 
     = render 'front_page_lock', index: index
 
-
-  -#= render "events/buy_button", event: event
 
   -#.description
     -#= render "events/buy_button", event: event

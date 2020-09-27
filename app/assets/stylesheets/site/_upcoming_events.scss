@@ -17,7 +17,7 @@
       margin: .5em;
 
       background-color: white;
-      //box-shadow: 2px 2px 20px 5px rgba(0,0,0,0.05);
+      box-shadow: 2px 2px 20px 5px rgba(0,0,0,0.05);
 
       border: 1px solid rgb(230, 230, 230);
       border-radius: .25em;
@@ -68,7 +68,7 @@
         .title-row {
           display: flex;
           flex-direction: row;
-          align-items: flex-start;
+          align-items: flex-end;
           margin-top: .5em;
 
           .title {
