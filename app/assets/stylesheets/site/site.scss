@@ -5,9 +5,38 @@
 @import "_mailing_list";
 
 .show-more-events {
-  text-align: center;
-  font-weight: $font-weight-normal;
+  cursor: pointer;
+  padding: 7px 20px 7px 20px;
   text-transform: uppercase;
-  color: #a03033;
-  font-size: 35px;
+  text-align: center;
+  width: max-content;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  color: white;
+  background-color: #337ab7;
+  box-shadow: 2px 2px 20px 5px rgba(0,0,0,0.05);
+  border: 1px solid rgb(230, 230, 230);
+  border-radius: .25em;
+  a {
+    color: white;
+  }
+}
+.show-more-events:hover {
+  filter: brightness(110%);
+}
+
+.chevron {
+  position: relative;
+  top: 100px;
+  text-align: center;
+  padding: 12px;
+  margin-bottom: 6px;
+  height: 60px;
+  width: 200px;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+  color: red;
 }

@@ -3,7 +3,7 @@
     %h2
       = I18n.l(DateTime.current-4.hours, format: "%-d. %b")
   .events-today
-    %h2= t 'site.index.events_today'
+    .hero-section-title= t 'site.index.events_today'
     - if @todays_events.present?
       %table.custom-table
         %tbody

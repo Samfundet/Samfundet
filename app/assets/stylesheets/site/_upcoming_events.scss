@@ -1,30 +1,47 @@
 .site {
-  .upcoming-events, .banner-event-mobile {
-    @include span-columns(12);
+  .upcoming-events {
+
+    clear: top;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    width: 100%;
+    margin-bottom: 2em;
 
     .upcoming-event, .upcoming-blog {
-      margin-bottom: 40px;
 
-      @include span-columns(12 of 12);
-      @include media($tablet-desktop) {
-        @include span-columns(6 of 12);
+      cursor: pointer;
 
-        &:nth-child(4n - 1) {
-          @include span-columns(7 of 12);
-        }
+      flex-basis: calc(50% - 1em);
+      margin: .5em;
 
-        &:nth-child(4n) {
-          @include span-columns(5 of 12);
-        }
+      background-color: white;
+      //box-shadow: 2px 2px 20px 5px rgba(0,0,0,0.05);
 
-        @include omega(2n);
+      border: 1px solid rgb(230, 230, 230);
+      border-radius: .25em;
+      overflow: hidden;
+
+      @include media($mobile) {
+        flex-basis: 100%;
+        margin: 0.5em 0 0.5em 0em;
+
       }
 
       .picture {
-        @include autoscale-picture(180px);
-        margin-bottom: 10px;
+        width: 100%;
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        @include media($mobile) {
+          height: 120px;
+        }
       }
 
+      /*
       .locked-border {
         border-style: solid;
         border-width: 10px;
@@ -37,42 +54,48 @@
           height: 60px;
         }
       }
+      */
 
-      .description {
-        margin-top: 15px;
+      .event-info {
 
-        .purchase-button {
-          float: right;
-          margin-left: 0.3em;
-          margin-bottom: 0.2em;
-          a { display: inline-block; }
-        }
-      }
+        padding: 1em;
 
-      .what {
-        text-transform: uppercase;
-        font-weight: lighter;
-        font-size: 22px;
-      }
-
-      h2 {
-        color: $samfundet-red;
-        margin: 0 0 2px 0;
-
-        a { @include emph-link($samfundet-red); }
-
-        @include media($mobile) {
-          word-break: break-all;
+        .what {
+          font-weight: lighter;
+          font-size: 1em;
         }
 
-        @include media($tablet-desktop) {
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
+        .title-row {
+          display: flex;
+          flex-direction: row;
+          align-items: flex-start;
+          margin-top: .5em;
+
+          .title {
+            font-weight: bold;
+            font-size: 1.75em;
+            flex: 1;
+
+            a {
+              color: black;
+            }
+
+            @include media($mobile) {
+              font-size: 1em;
+            }
+          }
+
+          .purchase-button {
+            float: right;
+            margin-left: 0.3em;
+            margin-bottom: 0.2em;
+
+            a {
+              display: inline-block;
+            }
+          }
         }
       }
-
-      img { width: 100%; }
     }
 
     .upcoming-blog {
@@ -87,8 +110,20 @@
       display: none;
     }
   }
+
+  .upcoming-event:hover {
+    .picture {
+      filter: brightness(110%);
+    }
+    .title {
+      text-decoration: underline;
+    }
+  }
+
+
 }
 
 .front-page-lock-actions a {
   margin-right: 10px;
 }
+

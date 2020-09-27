@@ -27,13 +27,13 @@ body {
     font-family: "futura-pt", "Lato", sans-serif;
 
     &.dev-filter {
-        background: repeating-linear-gradient(
+        /*background: repeating-linear-gradient(
             45deg,
             transparentize($samfundet-light-grey, 0.3),
             transparentize($samfundet-light-grey, 0.3) 10px,
             white 10px,
             white 20px
-        );
+        );*/
     }
 }
 
@@ -103,20 +103,29 @@ input[type=submit] {
 
 .purchase-button {
     color: white;
-    padding: 10px;
+    padding: 3px 8px 3px 8px;
     display: inline-block;
     text-decoration: none;
+    box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.2);
+    border-radius: .25em;
+    min-width: 5em;
+    text-align: center;
+    cursor: pointer;
+    transition: .2s;
 
     &.tickets-available {
         background-color: $samfundet-red;
-
         &:hover {
-            background-color: shade($samfundet-red, 60%);
+            filter: brightness(110%);
+            transform: translateY(-1px);
+            transition: .2s;
+            box-shadow: 1px 2px 5px 1px rgba(0,0,0,0.15);
         }
     }
 
     &.tickets-sold-out {
-        background-color: $samfundet-medium-grey;
+      background-color: $samfundet-medium-grey;
+      cursor: default;
     }
 }
 

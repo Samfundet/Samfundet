@@ -155,9 +155,13 @@ h3 {
                 display: none;
             }
 
-            background-color: $samfundet-light-grey;
+            background-color: white;
+            box-shadow: 2px 2px 20px 5px rgba(0,0,0,0.05);
+            //border: 1px solid rgb(230, 230, 230);
+            border-radius: .25em;
 
-            h2 {
+
+            .hero-section-title {
                 text-align: center;
                 text-transform: uppercase;
                 margin: 0;
@@ -175,7 +179,6 @@ h3 {
 
             table {
                 margin: 20px auto;
-                width: 100%;
 
                 @include media($not-mobile) {
                     width: auto;
@@ -183,13 +186,29 @@ h3 {
                 }
 
                 td {
-                    padding: 3px 5px;
+                    padding: 3px 10px;
                     vertical-align: top;
 
                     a {
                         @include emph-link($samfundet-red);
                     }
                 }
+                .time { text-align: right; }
+            }
+
+            .opening-hours-link {
+              cursor: pointer;
+              padding: 5px 12px 5px 10px;
+              text-transform: uppercase;
+              text-align: center;
+              width: max-content;
+              margin: 0 auto;
+              margin-bottom: 30px;
+              color: white;
+              background-color: #337ab7;
+              box-shadow: 2px 2px 20px 5px rgba(0,0,0,0.05);
+              border: 1px solid rgb(230, 230, 230);
+              border-radius: .25em;
             }
         }
 

@@ -1,13 +1,18 @@
 .flash {
     padding: 20px;
-    margin-bottom: 20px;
     text-align: center;
     text-transform: uppercase;
     font-weight: $font-weight-bold;
     color: $samfundet-white;
+    margin-bottom: 20px;
+
+    box-shadow: 2px 2px 20px 5px rgba(0,0,0,0.05);
+    //border: 1px solid rgb(230, 230, 230);
+    border-radius: .25em;
 
     &.error {
         background-color: $samfundet-red;
+
     }
 
     &.success {
@@ -19,6 +24,10 @@
     }
 
     &.notice {
-        background-color: $samfundet-orange;
+      background-color: #337ab7;
+      border: 1px solid rgb(53, 109, 136);
+      a {
+        color: orange;
+      }
     }
 }

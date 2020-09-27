@@ -3,7 +3,7 @@
     .date-today
       %h2
         = I18n.l(Date.current, format: :short)
-    %h2
+    .hero-section-title
       = t "site.index.opening_hours_today"
 
     - if samfundet_closed?
@@ -21,5 +21,7 @@
                 = format '%s–%s',
                     I18n.l(hours.open_time, format: :time),
                     I18n.l(hours.close_time, format: :time)
-      .opening-hours-link
-        = link_to t('site.index.all-opening-hours'), @opening_hours_url
+      = link_to @opening_hours_url do
+        .opening-hours-link
+          =  t('site.index.all-opening-hours')
+

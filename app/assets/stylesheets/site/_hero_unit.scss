@@ -29,9 +29,12 @@
   }
 
   .hero-unit {
-    background-color: #eee;
-    position: relative;
-    margin: 0 0 20px 0;
+    background-color: white;
+    margin: 0 0 30px 0;
+
+    box-shadow: 2px 2px 20px 5px rgba(0,0,0,0.05);
+    border: 1px solid rgb(230, 230, 230);
+    border-radius: .25em;
 
     @include span-columns(12);
     @include media($tablet-desktop) {
@@ -54,10 +57,12 @@
         @include span-columns(6 of 12);
       }
 
-      h2 {
+      .hero-section-title {
         text-align: center;
         text-transform: uppercase;
         margin-top: 0;
+        font-weight: bold;
+        font-size: 1.5em;
       }
 
       table {
@@ -81,11 +86,22 @@
     }
 
     .opening-hours-link {
-      padding: 10px;
+      cursor: pointer;
+      padding: 5px 12px 5px 10px;
       text-transform: uppercase;
       text-align: center;
+      width: max-content;
+      margin: 0 auto;
+      margin-bottom: 30px;
+      color: white;
+      background-color: #337ab7;
+      box-shadow: 2px 2px 20px 5px rgba(0,0,0,0.05);
+      border: 1px solid rgb(230, 230, 230);
+      border-radius: .25em;
     }
-
+    .opening-hours-link:hover {
+      filter: brightness(110%);
+    }
 
     .date-today {
       h2 {
@@ -119,6 +135,9 @@
           display: none;
         }
       }
+      .time > a:hover, .area > a:hover {
+        text-decoration: underline;
+      }
     }
 
     .events-today {
@@ -127,6 +146,9 @@
         a {
           @include emph-link($samfundet-red);
           font-weight: $font-weight-medium;
+        }
+        a:hover {
+          text-decoration: underline;
         }
       }
       .area { text-transform: uppercase; }
