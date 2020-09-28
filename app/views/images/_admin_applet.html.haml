@@ -1,9 +1,10 @@
-%h2
-  = t('images.admin_applet.title')
-
-%ul
-  %li
-    = link_to t('images.admin_applet.view'), images_path
-  - if can? :new, Image
+.top
+  %h2
+    = t('images.admin_applet.title')
+.options
+  %ul
     %li
-      = link_to t('images.admin_applet.new'), new_image_path
+      = link_to t('images.admin_applet.view'), images_path
+    - if can? :new, Image
+      %li
+        = link_to t('images.admin_applet.new'), new_image_path

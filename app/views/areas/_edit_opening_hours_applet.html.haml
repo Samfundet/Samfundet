@@ -1,5 +1,7 @@
-%h2= t('areas.edit_title.generic')
-%p= link_to t('everything_closed_periods.applet_link'), everything_closed_periods_path
-%ul
-  - @areas.each do |area|
-    %li= link_to area.name, edit_area_path(area)
+.top
+  %h2= t('areas.edit_title.generic')
+.options
+  %p= link_to t('everything_closed_periods.applet_link'), everything_closed_periods_path
+  %ul
+    - @areas.each do |area|
+      %li= link_to area.name, edit_area_path(area)
