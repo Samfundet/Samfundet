@@ -1,6 +1,6 @@
 puts "Creating events and billig tables"
 
-possible_number_of_events_per_area = [5, 8, 12]
+possible_number_of_events_per_area = [8, 10, 15]
 possible_payment_errors = [
 "Vennligst fyll inn antall billetter.",
 "Arrangementet er utsolgt, eller har for få billetter igjen til å tilfredsstille ordren din.",
@@ -50,6 +50,9 @@ Area.all.each do |area|
       when 'free'
         billig_event = nil
         custom_price_groups = []
+      when 'free_registration'
+        billig_event = nil
+        custom_price_groups = []
       when 'custom'
         billig_event = nil
         custom_price_groups = PriceGroup.all.sample(2)
@@ -74,14 +77,18 @@ Area.all.each do |area|
           ticket_group: billig_ticket_group.ticket_group,
           price: 100,
           price_group_name: "Member",
-          netsale: true
+          netsale: true,
+          membership_needed: true
         )
-        BilligPriceGroup.create!(
-          ticket_group: billig_ticket_group.ticket_group,
-          price: 170,
-          price_group_name: "Not member",
-          netsale: true
-        )
+        if rand(2) == 0
+          BilligPriceGroup.create!(
+            ticket_group: billig_ticket_group.ticket_group,
+            price: 170,
+            price_group_name: "Not member",
+            netsale: true,
+            membership_needed: false
+          )
+        end
         if rand(2) == 0
           extra_billig_ticket_group = BilligTicketGroup.create!(
             event: billig_event.event,
@@ -94,13 +101,15 @@ Area.all.each do |area|
             ticket_group: extra_billig_ticket_group.ticket_group,
             price: 100,
             price_group_name: "Member",
-            netsale: true
+            netsale: true,
+            membership_needed: true
           )
           BilligPriceGroup.create!(
             ticket_group: extra_billig_ticket_group.ticket_group,
             price: 150,
             price_group_name: "Not member",
-            netsale: true
+            netsale: true,
+            membership_needed: false
           )
         end
         custom_price_groups = []

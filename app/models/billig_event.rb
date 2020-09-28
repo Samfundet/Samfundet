@@ -17,6 +17,15 @@ class BilligEvent < ApplicationRecord
     billig_ticket_groups.select { |btg| btg.billig_price_groups.any?(&:netsale) }
   end
 
+  def has_non_member_tickets?
+    netsale_billig_ticket_groups.each do |g|
+      if not g.non_member_price_groups.empty?
+        return true
+      end
+    end
+    false
+  end
+
   def ticket_limit?
     billig_ticket_groups.any? { |t| t.ticket_limit? && t.tickets_left? }
   end
