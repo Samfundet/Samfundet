@@ -162,9 +162,8 @@ form:not(.custom-form) {
   margin-bottom: 24px;
 
   input {
-    padding: 10px;
     border: 1px solid rgba(0, 0, 0, 0.5);
-    font-size: 20px;
+    font-size: 1em;
     width: 52%;
     margin-right: 4px;
   }
@@ -172,9 +171,8 @@ form:not(.custom-form) {
   select {
     display: inline-block;
     margin: 20px 3px 0 0;
-    font-size: 16px;
+    font-size: 1em;
     background-color: white;
-
     &:last-child {
       margin-right: 0;
     }
@@ -187,11 +185,9 @@ form:not(.custom-form) {
 
     input {
       flex:1;
-      padding: 40px;
-      font-size: 32px;
       width: 100%;
-      min-height: 24px;
       margin-right: 0;
+      padding: 5px;
     }
 
     select {
