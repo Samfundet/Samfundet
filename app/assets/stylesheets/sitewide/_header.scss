@@ -290,8 +290,11 @@ h3 {
 }
 
 #content {
-    @include span-columns(12);
-    @include omega();
+  @include span-columns(12);
+  @include omega();
+  @include media($tablet-desktop) {
+    padding: 1em;
+  }
 }
 
 .caret-wrapper {

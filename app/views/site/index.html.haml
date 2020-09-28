@@ -6,17 +6,20 @@
 
 -# = safe_join(flash[:success], "<br>".html_safe)
 - content_for :banner_image do
-  - if can? :manage, FrontPageLock
-    - if @banner_event.try(:front_page_lock)
-      = link_to edit_front_page_lock_path(@banner_event.front_page_lock), id: 'banner-image-edit' do
-        = t('site.index.change_banner_lock')
-    - else
-      = link_to edit_front_page_lock_path(FrontPageLock::BANNER_ID), id: 'banner-image-edit'  do
-        = t('site.index.add_banner_lock')
+  %div{:style => "max-height: 0; overflow: visible; position:relative; top:-36px;"}
+    - if can? :manage, FrontPageLock
+      - if @banner_event.try(:front_page_lock)
+        = link_to edit_front_page_lock_path(@banner_event.front_page_lock), id: 'banner-image-edit' do
+          .samf-button.black.center.small
+            = t('site.index.change_banner_lock')
+      - else
+        = link_to edit_front_page_lock_path(FrontPageLock::BANNER_ID), id: 'banner-image-edit' do
+          .samf-button.black.center.small
+            = t('site.index.add_banner_lock')
 
 
 = render 'hero_unit'
 = render 'upcoming_events'
 
-.show-more-events
+.samf-button.blue.center
   = link_to t('site.index.show_more'), events_path

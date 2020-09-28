@@ -29,57 +29,57 @@
   }
 
   .hero-unit {
+
     background-color: white;
-    margin: 0 0 30px 0;
+    color: black;
 
     box-shadow: 2px 2px 20px 5px rgba(0,0,0,0.05);
     border: 1px solid rgb(230, 230, 230);
-    border-radius: .25em;
+    border-radius: 4px;
+    margin-bottom: 1em;
 
-    @include span-columns(12);
-    @include media($tablet-desktop) {
-      margin-top: 20px;
+    display: flex;
+    flex-direction: column;
 
-      &:first-child:after {
-        content: "";
-        position: absolute;
-        top: 23%;
-        bottom: 10%;
-        left: 50%;
-        border-left: 1px solid $samfundet-medium-grey;
-      }
-    }
+    .sections {
 
-    .opening-hours, .events-today {
+      display: flex;
+      flex-direction: row;
 
-      @include span-columns(12 of 12);
-      @include media($tablet-desktop) {
-        @include span-columns(6 of 12);
-      }
+      .opening-hours, .events-today {
 
-      .hero-section-title {
-        text-align: center;
-        text-transform: uppercase;
-        margin-top: 0;
-        font-weight: bold;
-        font-size: 1.5em;
-      }
+        flex-basis: 50%;
 
-      table {
-        margin: 20px auto;
-        width: 100%;
-
-        @include media($not-mobile) {
-          width: auto;
-          min-width: 250px;
+        @include media($mobile-and-tablet-portrait) {
+          flex: 1;
+          margin-top: 1em;
+          margin-bottom: 1em;
         }
 
-        td {
-          padding: 3px 5px;
-          vertical-align: top;
+        .hero-section-title {
+          text-align: center;
+          text-transform: uppercase;
+          margin-top: 0;
+          font-weight: bold;
+          font-size: 1.5em;
+        }
+
+        table {
+          margin: 20px auto;
+          width: 100%;
 
           @include media($not-mobile) {
-            padding: 3px 10px;
+            width: auto;
+            min-width: 250px;
+          }
+
+          td {
+            padding: 3px 5px;
+            vertical-align: top;
+
+            @include media($not-mobile) {
+              padding: 3px 10px;
+            }
           }
         }
       }
@@ -93,8 +93,8 @@
       width: max-content;
       margin: 0 auto;
       margin-bottom: 30px;
-      color: white;
-      background-color: #337ab7;
+      color: black;
+      background-color: white;
       box-shadow: 2px 2px 20px 5px rgba(0,0,0,0.05);
       border: 1px solid rgb(230, 230, 230);
       border-radius: .25em;
@@ -109,7 +109,7 @@
         font-size: 1.2em;
         text-align: center;
         text-transform: initial;
-        color: $samfundet-medium-grey;
+        color: black;
       }
     }
 
@@ -125,10 +125,17 @@
         display: block;
       }
 
-      .time { text-align: right; }
+      .time {
+        text-align: right;
+      }
       .area {
-        @include emph-link($samfundet-red);
+        text-transform: uppercase;
         font-weight: $font-weight-medium;
+        color: white;
+        a {
+          color: $samfundet-red;
+          text-decoration: underline;
+        }
       }
       .date-today {
         @include media($tablet-desktop) {
@@ -144,14 +151,18 @@
       .title {
         word-break: break-word;
         a {
-          @include emph-link($samfundet-red);
           font-weight: $font-weight-medium;
+          color: $samfundet-red;
+          text-decoration: underline;
+          text-transform: uppercase;
         }
         a:hover {
           text-decoration: underline;
         }
       }
-      .area { text-transform: uppercase; }
+      .area {
+        text-transform: uppercase;
+      }
       .no-events {
         text-align: center;
         margin: 1em;

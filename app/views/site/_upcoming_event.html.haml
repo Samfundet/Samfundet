@@ -9,9 +9,12 @@
       = render 'events/corner_ribbon', event: event
 
   .event-info
+
     .what
-      = "%s // %s" % [t_event_type(event), event.area_title]
-      = I18n.l(event.start_time, format: :short)
+      .type-area
+        = "%s // %s" % [t_event_type(event), event.area_title]
+      .datetime
+        = I18n.l(event.start_time, format: :short)
 
     .title-row
       .title
@@ -25,3 +28,4 @@
     -#= render "events/buy_button", event: event
     -#%p
       -#= event.short_description
+

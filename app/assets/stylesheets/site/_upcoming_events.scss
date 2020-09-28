@@ -5,22 +5,20 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-between;
 
     width: 100%;
     margin-bottom: 2em;
 
     .upcoming-event, .upcoming-blog {
 
-      cursor: pointer;
-
-      flex-basis: calc(50% - 1em);
-      margin: .5em;
+      flex-basis: calc(50% - .5em);
+      margin-bottom: 1em;
 
       background-color: white;
       box-shadow: 2px 2px 20px 5px rgba(0,0,0,0.05);
-
+      border-radius: 4px;
       border: 1px solid rgb(230, 230, 230);
-      border-radius: .25em;
       overflow: hidden;
 
       @include media($mobile) {
@@ -32,16 +30,25 @@
       .picture {
         width: 100%;
         height: 200px;
+        max-height: 200px;
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
+        cursor: pointer;
+        transition: .5s;
+        overflow: hidden;
 
         @include media($mobile) {
           height: 120px;
         }
       }
 
-      /*
+      .picture:hover {
+        filter: brightness(105%);
+        transform: scale(1.02);
+        transition: .5s;
+      }
+
       .locked-border {
         border-style: solid;
         border-width: 10px;
@@ -54,7 +61,6 @@
           height: 60px;
         }
       }
-      */
 
       .event-info {
 
@@ -63,6 +69,15 @@
         .what {
           font-weight: lighter;
           font-size: 1em;
+          display: flex;
+          flex-direction: row;
+
+          .type-area {
+            flex: 1;
+          }
+          .datetime {
+            color: rgb(120,120,120);
+          }
         }
 
         .title-row {
@@ -75,6 +90,7 @@
             font-weight: bold;
             font-size: 1.75em;
             flex: 1;
+            cursor: pointer;
 
             a {
               color: black;
@@ -83,6 +99,10 @@
             @include media($mobile) {
               font-size: 1em;
             }
+          }
+
+          .title:hover {
+            text-decoration: underline;
           }
 
           .purchase-button {
@@ -111,19 +131,10 @@
     }
   }
 
-  .upcoming-event:hover {
-    .picture {
-      filter: brightness(110%);
-    }
-    .title {
-      text-decoration: underline;
-    }
-  }
-
-
 }
 
-.front-page-lock-actions a {
-  margin-right: 10px;
+.front-page-lock-actions {
+  display: flex;
+  flex-direction: row;
 }
 
