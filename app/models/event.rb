@@ -322,8 +322,9 @@ class Event < ApplicationRecord
       0
     end
   end
+
   def full?
-    if registration_event
+    if not Rails.env.development? and registration_event
         return registration_event.full?
     else
         return true
@@ -331,7 +332,7 @@ class Event < ApplicationRecord
   end
 
   def link
-    if registration_event
+    if not Rails.env.development? and registration_event
         return registration_event.link
     else
         return ""
