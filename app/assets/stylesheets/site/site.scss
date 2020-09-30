@@ -65,8 +65,6 @@
       padding: 0;
     }
   }
-
-
 }
 
 /*
@@ -77,6 +75,10 @@
 }
 .w100 {
   min-width: 100%;
+}
+.flex-row {
+  display: flex;
+  flex-direction: row;
 }
 // Padding
 .p-1 { padding: .25em; }

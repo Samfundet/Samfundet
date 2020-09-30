@@ -42,9 +42,8 @@ img {
 }
 
 h1 {
-  @include emph-link($samfundet-red);
-
-  font-size: 60px;
+  //@include emph-link($samfundet-red);
+  font-size: 48px;
   line-height: 1;
   margin-bottom: 8px;
   padding-top: 0px;
