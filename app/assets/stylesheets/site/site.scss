@@ -4,9 +4,44 @@
 @import "_banner";
 @import "_mailing_list";
 
-html {
-  //background: asset-url("header/side_art.png") repeat-y 0 0;
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  align-content: stretch;
+  min-width: 100vw;
+
+  .side-graphics {
+    width: 120px;
+    background: asset-url("header/side_art.png") repeat-y 0 0;
+    background-size: contain;
+    background-position: center;
+    align-self: stretch;
+  }
+
+  .side-graphics.right {
+    right: 0;
+    left: auto;
+    transform: scaleX(-1);
+    background-position-y: 50vh;
+  }
+
+  @media only screen and (max-width: 1450px) {
+    .side-graphics {
+      opacity: 0;
+      transition: .3s;
+    }
+  }
+
+  @include media($mobile) {
+    .side-graphics {
+      display: none;
+    }
+  }
 }
+
 /*
  Page setup
 */

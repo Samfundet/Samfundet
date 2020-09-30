@@ -79,10 +79,7 @@ input[type=submit] {
 }
 
 .container {
-    margin-bottom: 40px;
-
     @include outer-container;
-
 }
 
 .lyche-container {

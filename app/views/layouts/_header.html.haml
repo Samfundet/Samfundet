@@ -1,7 +1,15 @@
+
 #header
+  #header-items-mobile
+    = link_to root_path do
+      .samfundet-logo
+    #header-hamburger-menu
+      .hamburger-line.top
+      .hamburger-line.mid
+      .hamburger-line.bot
   #header-items
     = link_to root_path do
-      #samfundet-logo
+      .samfundet-logo
     .header-item
       = link_to t('layouts.application.menu.events'), events_path
     .header-item
@@ -30,24 +38,66 @@
           = current_user.full_name
 
     = link_to change_language do
-      #change-language{class: "#{I18n.locale}", :style => "margin-left: 2em;"}
+      .change-language{class: "#{I18n.locale}", :style => "margin-left: 2em;"}
 
     - if logged_in?
-      -# Control panel and applications
-      - if current_user.is_a?(Applicant)
-        = "TODO"
-        -#= link_to t('job_applications.mine'), job_applications_path, class: 'my-applications'
-      - elsif has_control_panel_applets?
-        = link_to members_control_panel_path do
-          #controlpanel
-
       -# Logout
       = link_to logout_path, method: :post do
         .samf-button.small
           = t('layouts.application.menu.logout')
     - else
-
-
       = link_to login_path(redirect_to: request.path) do
         .samf-button.small
           = t('layouts.application.menu.login')
+
+
+#header-popup-menu
+
+
+  .header-item
+    = link_to t('layouts.application.menu.info'), pages_path
+
+  .header-item
+    = link_to t('layouts.application.menu.lyche'), sulten_path
+
+  .header-item
+    = link_to t('layouts.application.menu.events'), events_path
+
+  .header-item
+    = link_to t('layouts.application.menu.membership'), "https://medlem.samfundet.no/"
+  - if @show_admissions_animation
+    .header-item.highlight
+      = link_to t('layouts.application.menu.admissions'), admissions_path
+  - else
+    .header-item
+      = link_to t('layouts.application.menu.admissions'), admissions_path
+
+
+  %br
+  %br
+
+  - if logged_in?
+    -# Logout
+    = link_to logout_path, method: :post do
+      .samf-button.small.mt-3
+        = t('layouts.application.menu.logout')
+  - else
+    = link_to login_path(redirect_to: request.path) do
+      .samf-button.small.mt-3
+        = t('layouts.application.menu.login')
+
+  .header-item.mt-3{:style=>"font-size: 1em;"}
+    = link_to t('layouts.application.menu.change_language'), change_language
+
+  %br
+
+  - if logged_in?
+    - if has_control_panel_applets?
+      = link_to members_control_panel_path do
+        .username
+          .icon
+          = current_user.full_name
+    - else
+      .username.idle
+        .icon
+        = current_user.full_name

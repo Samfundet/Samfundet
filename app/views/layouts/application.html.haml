@@ -23,6 +23,7 @@
     = yield :twitter
 
   %body{ class: ('dev-filter' unless Rails.env.production?) }
+
     #sticky-footer-wrapper
 
       - cache [I18n.locale, 'titlebar', request.fullpath, current_user, Time.current.to_date] do
@@ -38,7 +39,6 @@
           -#= render 'layouts/titlebar'
         .container
           .side-graphics.left
-          .side-graphics.right
           #content{ class: "#{params[:controller]} #{controller.action_name}" }
             != display_flash
             - if Rails.application.config.billig_offline
@@ -48,6 +48,8 @@
                 - else
                   = Rails.application.config.billig_message_en
             = yield
+          .side-graphics.right
+
 
       #sticky-footer-wrapper-footer
 

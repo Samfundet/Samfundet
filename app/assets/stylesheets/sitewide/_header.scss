@@ -2,7 +2,7 @@
 
   padding-top: 1em;
   padding-bottom: 1em;
-  box-shadow: 0 0 15px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.1);
   position: fixed;
   z-index: 100;
   width: 100%;
@@ -15,101 +15,209 @@
   background-color: #111;
   border-bottom: 1px solid rgb(50, 50, 50);
   color: white;
+}
 
-  #header-items {
+#header-items, #header-items-mobile, #header-popup-menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  align-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: .5em;
+  padding-right: .5em;
+
+  font-size: 16px;
+  line-height: 24px;
+
+
+  .samfundet-logo {
+    background-image: asset-url("header/Samfundetlogo_hvit.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 250px;
+    height: 20px;
+    margin-right: 2em;
+  }
+
+  .change-language {
+    width: 28px;
+    height: 20px;
+    margin-right: 10px;
+
+    background-image: asset-url("header/english.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 3px;
+
+    box-shadow: 1px 1px 10px 2px rgba(0, 0, 0, 0.1);
+
+  }
+
+  .change-language.en {
+    background-image: asset-url("header/norwegian.png");
+  }
+
+  .username {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
     align-items: center;
-    align-content: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding-left: .5em;
-    padding-right: .5em;
+    color: #777;
+    margin-left: 1em;
+    white-space: nowrap;
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 1px;
+    padding-left: 6px;
+    padding-right: 6px;
+    transition: .2s;
+    background-color: inherit;
 
-    font-size: 16px;
-    line-height: 24px;
-
-
-    #samfundet-logo {
-      background-image: asset-url("header/Samfundetlogo_hvit.png");
-      background-repeat: no-repeat;
-      background-size: contain;
-      width: 250px;
-      height: 20px;
-      margin-right: 2em;
-    }
-
-    #change-language {
-      width: 28px;
-      height: 20px;
-      margin-right: 10px;
-
-      background-image: asset-url("header/english.png");
+    .icon {
+      background-image: asset-url("header/user.png");
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
-      border-radius: 3px;
-
-      box-shadow: 1px 1px 10px 2px rgba(0,0,0,0.1);
-
-    }
-    #change-language.en {
-      background-image: asset-url("header/norwegian.png");
-    }
-
-    .username {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      color: #777;
-      margin-left: 1em;
-      white-space: nowrap;
-      cursor: pointer;
-      border-radius: 4px;
-      padding: 1px;
-      padding-left: 6px;
-      padding-right: 6px;
-      transition: .2s;
-      background-color: inherit;
-
-      .icon {
-        background-image: asset-url("header/user.png");
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-        width: 16px;
-        height: 16px;
-        margin-right: 4px;
-      }
-
-    }
-    .username:hover {
-      background-color: #222;
-      transition: .2s;
-    }
-    // No button (idle)
-    .username.idle {
-      cursor: default;
-    }
-    .username.idle:hover {
-      background-color: white;
-    }
-
-    .header-item {
-      flex: 1;
-      text-transform: uppercase;
-      text-align: center;
-
-      a {
-        color: #eee;
-      }
-    }
-
-    .header-item.login {
-      text-align: right;
+      width: 16px;
+      height: 16px;
+      margin-right: 4px;
     }
 
   }
 
+  .username:hover {
+    background-color: #222;
+    transition: .2s;
+  }
+
+  // No button (idle)
+  .username.idle {
+    cursor: default;
+  }
+
+  .username.idle:hover {
+    background-color: white;
+  }
+
+  .header-item {
+    flex: 1;
+    text-transform: uppercase;
+    text-align: center;
+
+    a {
+      color: #eee;
+    }
+  }
+
+  .header-item.login {
+    text-align: right;
+  }
+
+}
+
+#header-items-mobile {
+  display: none;
+
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+
+  padding-left: 20px;
+  padding-right: 20px;
+
+  .samfundet-logo {
+    margin-right: 0;
+  }
+
+  @media only screen and (max-width: 300px) {
+    .samfundet-logo {
+      background-image: asset-url("header/samfundet_128.png");
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  #header-hamburger-menu {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    .hamburger-line {
+      width: 32px;
+      height: 4px;
+      background-color: white;
+      transition: .2s;
+    }
+  }
+
+  #header-hamburger-menu.open {
+    .hamburger-line.mid {
+      opacity: 0;
+    }
+
+    .hamburger-line.bot {
+      transform: translateY(-9px) rotate(-45deg);
+    }
+
+    .hamburger-line.top {
+      transform: translateY(9px) rotate(45deg);
+    }
+  }
+
+}
+
+
+@include media($mobile) {
+  #header-items {
+    display: none;
+  }
+  #header-items-mobile {
+    display: flex;
+  }
+}
+
+
+#header-popup-menu {
+  position: fixed;
+  left: 0;
+  top: 64px;
+  height: calc(100vh - 64px);
+  width: 100vw;
+  background-color: #111;
+  z-index: 1000;
+
+  display: none;
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .header-item {
+    flex: 0;
+    font-size: 1.5em;
+    margin-bottom: .75em;
+    margin-left: 0;
+  }
+
+  .username {
+    margin: 0;
+  }
+  
+  .change-language {
+    margin-left: 0;
+    margin-bottom: .5em;
+    width: 48px;
+    height: 32px;
+  }
+
+}
+
+#header-popup-menu.open {
+  display: flex;
 }

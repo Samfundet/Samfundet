@@ -94,10 +94,7 @@
 }
 #footer-separator {
   width: 100%;
-  background-color: rgb(230,230,230);
-  height: 1px;
-  margin-top: 3em;
-  margin-bottom: 1em;
+  border-bottom: 1px solid rgb(230,230,230);
 }
 #sponsors{
   font-size: 20px;
@@ -109,7 +106,9 @@
   color: rgb(150,150,150);
   max-width: 100%;
   overflow-x: hidden;
-
+  padding-top: 1em;
+  background-color: rgba(255,255,255,0.9);
+  z-index: 1;
   @include media($mobile) {
     flex-direction: column;
   }
