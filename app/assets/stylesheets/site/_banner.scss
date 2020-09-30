@@ -2,8 +2,10 @@
     $banner-height: 400px;
     display: none;
 
+
     @include media($tablet-desktop) {
         display: block;
+      width: 100%;
 
         #banner-image-link {
             display: block;

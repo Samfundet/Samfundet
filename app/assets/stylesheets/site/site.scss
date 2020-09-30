@@ -4,6 +4,29 @@
 @import "_banner";
 @import "_mailing_list";
 
+html {
+  //background: asset-url("header/side_art.png") repeat-y 0 0;
+}
+/*
+ Page setup
+*/
+#site-header-offset {
+  margin-top: 64px; // Height of header
+  width: 100%;
+  #content {
+    padding: .5em;
+    padding-top: 1em;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: white;
+
+    @include media($mobile-and-tablet-portrait) {
+      padding: 0;
+    }
+  }
+
+
+}
 
 /*
   Utility
@@ -91,9 +114,15 @@
   color: black;
   background-color: white;
 }
+.samf-button.white:hover {
+  color: #333;
+  background-color: #eee;
+  filter: brightness(100%);
+}
 .samf-button.black {
   color: white;
   background-color: black;
-  border: 1px solid white;
+  border: 1px solid #444;
 }
+
 

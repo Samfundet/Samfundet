@@ -24,24 +24,30 @@
 
   %body{ class: ('dev-filter' unless Rails.env.production?) }
     #sticky-footer-wrapper
-      = yield :admissions_frontpage_highjack
+
       - cache [I18n.locale, 'titlebar', request.fullpath, current_user, Time.current.to_date] do
-        = render 'layouts/titlebar'
-      = yield :banner_image
+        = render 'layouts/header'
 
-      .container
-        - cache [I18n.locale, 'header', cache_key_for_standard_hours] do
-          = render 'layouts/header'
+      #site-header-offset
+        = yield :admissions_frontpage_highjack
+        = yield :banner_image
 
-        #content{ class: "#{params[:controller]} #{controller.action_name}" }
-          != display_flash
-          - if Rails.application.config.billig_offline
-            .billig-offline
-              - if I18n.locale == :no
-                = Rails.application.config.billig_message_no
-              - else
-                = Rails.application.config.billig_message_en
-          = yield
+
+
+        -# cache [I18n.locale, 'titlebar', request.fullpath, current_user, Time.current.to_date] do
+          -#= render 'layouts/titlebar'
+        .container
+          .side-graphics.left
+          .side-graphics.right
+          #content{ class: "#{params[:controller]} #{controller.action_name}" }
+            != display_flash
+            - if Rails.application.config.billig_offline
+              .billig-offline
+                - if I18n.locale == :no
+                  = Rails.application.config.billig_message_no
+                - else
+                  = Rails.application.config.billig_message_en
+            = yield
 
       #sticky-footer-wrapper-footer
 

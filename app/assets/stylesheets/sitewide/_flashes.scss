@@ -4,7 +4,7 @@
     text-transform: uppercase;
     font-weight: $font-weight-bold;
     color: $samfundet-white;
-    margin-bottom: 20px;
+    margin-bottom: 1em;
 
     box-shadow: 2px 2px 20px 5px rgba(0,0,0,0.05);
     //border: 1px solid rgb(230, 230, 230);
@@ -28,5 +28,9 @@
       a {
         color: orange;
       }
+    }
+
+    @include media($mobile){
+      border-radius: 0;
     }
 }

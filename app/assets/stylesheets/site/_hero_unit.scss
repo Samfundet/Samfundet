@@ -30,7 +30,7 @@
 
   .hero-unit {
 
-    background-color: white;
+    background-color: #eaeaea;
     color: black;
 
     box-shadow: 2px 2px 20px 5px rgba(0,0,0,0.05);
@@ -49,6 +49,8 @@
       .opening-hours, .events-today {
 
         flex-basis: 50%;
+        padding-left: 1em;
+        padding-right: 1em;
 
         @include media($mobile-and-tablet-portrait) {
           flex: 1;
@@ -109,7 +111,7 @@
         font-size: 1.2em;
         text-align: center;
         text-transform: initial;
-        color: black;
+        color: #555;
       }
     }
 

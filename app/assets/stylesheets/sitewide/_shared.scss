@@ -82,10 +82,7 @@ input[type=submit] {
     margin-bottom: 40px;
 
     @include outer-container;
-    @include media($not-desktop) {
-      margin-left: 20px;
-      margin-right: 20px;
-    }
+
 }
 
 .lyche-container {

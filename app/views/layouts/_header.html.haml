@@ -1,38 +1,53 @@
 #header
-  #dropdown-header
-    .dropdown-button-wrapper
-      %a.dropdown-button.opening-hours{ href: "#" }
-        = t('layouts.application.menu.opening_hours')
-        .caret-wrapper
-          .caret
+  #header-items
+    = link_to root_path do
+      #samfundet-logo
+    .header-item
+      = link_to t('layouts.application.menu.events'), events_path
+    .header-item
+      = link_to t('layouts.application.menu.info'), pages_path
+    .header-item
+      = link_to t('layouts.application.menu.lyche'), sulten_path
+    .header-item
+      = link_to t('layouts.application.menu.membership'), "https://medlem.samfundet.no/"
+    - if @show_admissions_animation
+      .header-item.highlight
+        = link_to t('layouts.application.menu.admissions'), admissions_path
+    - else
+      .header-item
+        = link_to t('layouts.application.menu.admissions'), admissions_path
 
-    .icon-wrapper
-      %a.samfundet-icon{ href: root_path }
 
-    .dropdown-button-wrapper
-      %a.dropdown-button.menu-items{ href: "#" }
-        = t('layouts.application.menu.menu')
-        .caret-wrapper
-          .caret
+    - if logged_in?
+      - if has_control_panel_applets?
+        = link_to members_control_panel_path do
+          .username
+            .icon
+            = current_user.full_name
+      - else
+        .username.idle
+          .icon
+          = current_user.full_name
 
-  .dropdown-content-wrapper.opening-hours
-    = render 'layouts/opening_hours'
+    = link_to change_language do
+      #change-language{class: "#{I18n.locale}", :style => "margin-left: 2em;"}
 
-  .dropdown-content-wrapper.menu-items
-    %nav.left-list
-      %ul
-        %li= link_to t('layouts.application.menu.home'), root_path
-        %li= link_to t('layouts.application.menu.events'), events_path
-        %li= link_to t('layouts.application.menu.info'), pages_path
+    - if logged_in?
+      -# Control panel and applications
+      - if current_user.is_a?(Applicant)
+        = "TODO"
+        -#= link_to t('job_applications.mine'), job_applications_path, class: 'my-applications'
+      - elsif has_control_panel_applets?
+        = link_to members_control_panel_path do
+          #controlpanel
 
-    .icon-wrapper
-      %a.samfundet-icon{ href: root_path }
+      -# Logout
+      = link_to logout_path, method: :post do
+        .samf-button.small
+          = t('layouts.application.menu.logout')
+    - else
 
-    %nav.right-list
-      %ul
-        %li= link_to t('layouts.application.menu.lyche'), sulten_path
-        %li= link_to t('layouts.application.menu.membership'), "https://medlem.samfundet.no/"
-        - if @show_admissions_animation == true
-          %li.waggle= link_to t('layouts.application.menu.admissions'), admissions_path
-        - else
-          %li= link_to t('layouts.application.menu.admissions'), admissions_path
+
+      = link_to login_path(redirect_to: request.path) do
+        .samf-button.small
+          = t('layouts.application.menu.login')

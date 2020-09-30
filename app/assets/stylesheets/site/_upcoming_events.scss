@@ -8,6 +8,7 @@
     justify-content: space-between;
 
     width: 100%;
+    max-width: 100%;
     margin-bottom: 2em;
 
     .upcoming-event, .upcoming-blog {
@@ -23,8 +24,9 @@
 
       @include media($mobile) {
         flex-basis: 100%;
-        margin: 0.5em 0 0.5em 0em;
-
+        margin-left: 0;
+        margin-right: 0;
+        border-radius: 0;
       }
 
       .picture {
@@ -37,9 +39,10 @@
         cursor: pointer;
         transition: .5s;
         overflow: hidden;
+        filter: brightness(100%);
 
         @include media($mobile) {
-          height: 120px;
+          height: 150px;
         }
       }
 
