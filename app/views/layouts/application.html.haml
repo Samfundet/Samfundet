@@ -33,11 +33,9 @@
         = yield :admissions_frontpage_highjack
         = yield :banner_image
 
-
-
         -# cache [I18n.locale, 'titlebar', request.fullpath, current_user, Time.current.to_date] do
           -#= render 'layouts/titlebar'
-        .container
+        #container
           .side-graphics.left
           #content{ class: "#{params[:controller]} #{controller.action_name}" }
             != display_flash

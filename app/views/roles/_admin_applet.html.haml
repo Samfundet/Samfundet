@@ -4,4 +4,6 @@
 .options
   %ul
     %li
-      = link_to t("roles.admin_applet_description"), roles_path
+      = link_to roles_path do
+        .samf-button.plain.w100
+          = t("roles.admin_applet_description")

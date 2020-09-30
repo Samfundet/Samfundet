@@ -78,10 +78,6 @@ input[type=submit] {
     font-size: 1em;
 }
 
-.container {
-    @include outer-container;
-}
-
 .lyche-container {
   width: 100%;
   min-height: 100%;

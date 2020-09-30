@@ -22,11 +22,12 @@
       border: 1px solid rgb(230, 230, 230);
       overflow: hidden;
 
-      @include media($mobile) {
+      @include media($mobile-and-tablet-portrait) {
         flex-basis: 100%;
         margin-left: 0;
         margin-right: 0;
         border-radius: 0;
+        margin-bottom: .5em;
       }
 
       .picture {

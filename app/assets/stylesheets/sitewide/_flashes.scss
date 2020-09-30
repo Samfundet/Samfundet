@@ -5,10 +5,11 @@
     font-weight: $font-weight-bold;
     color: $samfundet-white;
     margin-bottom: 1em;
+    border-radius: 5px;
 
     box-shadow: 2px 2px 20px 5px rgba(0,0,0,0.05);
     //border: 1px solid rgb(230, 230, 230);
-    border-radius: 5px;
+
 
     &.error {
         background-color: $samfundet-red;
@@ -30,8 +31,5 @@
       }
     }
 
-    @include media($mobile){
-      border-radius: 0;
-      margin-bottom: 0;
-    }
 }
+

@@ -77,9 +77,9 @@
     }
 
     .mobile-banner {
-        @include media($tablet-desktop) {
+        //@include media($tablet-desktop) {
           display: none;
-        }
+        //}
 
         h2 {
             margin-top: 0;

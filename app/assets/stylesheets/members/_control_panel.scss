@@ -1,16 +1,29 @@
 .members.control_panel {
-  h1 {
+  h2 {
     text-align: center;
     text-transform: uppercase;
+  }
+  h3 {
+    text-align: center;
+    text-transform: uppercase;
+    color: $samfundet-medium-grey;
+    margin-bottom: 1em;
   }
 
   #applets {
     .applet {
+
       background-color: rgba($samfundet-light-grey, 0.3);
       text-align: center;
       margin-bottom: 20px;
       margin-top: 2px;
-      box-shadow: 2px 6px 5px #888888;
+      box-shadow: 2px 2px 15px 4px rgba(0,0,0,0.1);
+      border-radius: 4px;
+      overflow: hidden;
+
+      border: 1px solid #bbb;
+      min-height: 300px;
+
       @include span-columns(12);
 
       @include media($tablet-portrait) {
@@ -30,7 +43,7 @@
       .top {
         background: $samfundet-red;
         width: 100%;
-        padding: 12px;
+        padding: 8px;
       }
       .options {
         padding: 16px;
@@ -39,7 +52,7 @@
         text-transform: uppercase;
         margin: 0;
         color: white;
-        font-size: 32px;
+        font-size: 1.25em;
       }
       p {
           margin: 4px 0;

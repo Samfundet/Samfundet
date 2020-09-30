@@ -27,7 +27,12 @@
 
 
     - if logged_in?
-      - if has_control_panel_applets?
+      - if current_user.is_a?(Applicant)
+        = link_to job_applications_path do
+          .username
+            .icon
+            = current_user.full_name
+      - elsif has_control_panel_applets?
         = link_to members_control_panel_path do
           .username
             .icon
@@ -92,7 +97,12 @@
   %br
 
   - if logged_in?
-    - if has_control_panel_applets?
+    - if current_user.is_a?(Applicant)
+      = link_to job_applications_path do
+        .username
+          .icon
+          = current_user.full_name
+    - elsif has_control_panel_applets?
       = link_to members_control_panel_path do
         .username
           .icon

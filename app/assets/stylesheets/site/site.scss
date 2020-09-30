@@ -5,19 +5,23 @@
 @import "_mailing_list";
 
 
-.container {
+#container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: stretch;
   align-content: stretch;
   min-width: 100vw;
+  min-height: calc(100vh - 200px);
+  padding: 12px;
 
   .side-graphics {
     width: 120px;
+    min-height: calc(100vh - 200px);
     background: asset-url("header/side_art.png") repeat-y 0 0;
     background-size: contain;
-    background-position: center;
+    background-position-y: 0;
+    background-position-x: left;
     align-self: stretch;
   }
 
@@ -28,16 +32,18 @@
     background-position-y: 50vh;
   }
 
-  @media only screen and (max-width: 1450px) {
+  #content {
+    flex: 1;
+    max-width: 1200px;
+  }
+}
+
+@media only screen and (max-width: 1450px) {
+  #container {
     .side-graphics {
       opacity: 0;
       transition: .3s;
-    }
-  }
-
-  @include media($mobile) {
-    .side-graphics {
-      display: none;
+      max-width: 0;
     }
   }
 }
@@ -68,6 +74,9 @@
 */
 .center {
   margin: 0 auto;
+}
+.w100 {
+  min-width: 100%;
 }
 // Padding
 .p-1 { padding: .25em; }
@@ -145,9 +154,17 @@
   color: white;
   background-color: #337ab7;
 }
+.samf-button.green {
+  color: white;
+  background-color: #4ab74c;
+}
 .samf-button.white {
   color: black;
   background-color: white;
+}
+.samf-button.gray {
+  color: white;
+  background-color: $samfundet-medium-grey;
 }
 .samf-button.white:hover {
   color: #333;
@@ -158,6 +175,18 @@
   color: white;
   background-color: black;
   border: 1px solid #444;
+}
+.samf-button.plain {
+  color: black;
+  background-color: transparent;
+  border: 1px solid #888;
+  box-shadow: none;
+}
+.samf-button.plain:hover {
+  transform: none;
+  color: $samfundet-red;
+  border: 1px solid $samfundet-red;
+  transition: 0s;
 }
 
 

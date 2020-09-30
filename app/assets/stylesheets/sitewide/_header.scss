@@ -105,6 +105,8 @@
     flex: 1;
     text-transform: uppercase;
     text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
 
     a {
       color: #eee;
@@ -172,8 +174,8 @@
 
 }
 
-
-@include media($mobile) {
+// Small screens use mobile menu
+@media only screen and (max-width: 800px) {
   #header-items {
     display: none;
   }
