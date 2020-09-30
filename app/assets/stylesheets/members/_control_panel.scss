@@ -1,13 +1,14 @@
 .members.control_panel {
-  h2 {
+  h1 {
     text-align: center;
     text-transform: uppercase;
   }
-  h3 {
+  .name {
     text-align: center;
     text-transform: uppercase;
     color: $samfundet-medium-grey;
     margin-bottom: 1em;
+    font-size: 1.25em;
   }
 
   #applets {

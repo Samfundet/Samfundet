@@ -27,11 +27,11 @@
   - @categories.each do |category|
     %tbody
       %tr.category
-        %td{colspan: 4}
+        %td{colspan: 5}
           = category.title
       - if category.documents.empty?
         %tr.empty
-          %td{colspan: 4}= t('documents.no_documents')
+          %td{colspan: 5}= t('documents.no_documents')
       - else
         - category.documents.each do |document|
           %tr

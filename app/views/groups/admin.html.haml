@@ -1,20 +1,25 @@
-%h2= set_and_return_title(t("groups.admin.title"))
+%h1= set_and_return_title(t("groups.admin.title"))
+
+= link_to members_control_panel_path do
+  .samf-button.plain.mr-2
+    = t("common.back")
+
 
 .section
   - @group_types.each do |type|
-    %h2
-      :markdown
-        #{type.description}
+    %h2.mt-3
+      = type.description
     %table
-      %tr
-        %th
-          Gjeng
-        %th
-          Forkortelse
-        %th
-          Webside
-        %th
-          &nbsp;
+      %thead
+        %tr
+          %th
+            Gjeng
+          %th
+            Forkortelse
+          %th
+            Webside
+          %th
+            &nbsp;
       - type.groups.each do |group|
         %tr
           %td
@@ -31,7 +36,11 @@
             - if can?(:update, group)
               = link_to edit_group_path(group) do
                 Redigér gjeng
+
   - if can?(:create, Group)
-    %p
-      = link_to new_group_path, {class: "sexybutton sexysimple sexyred"} do
-        Opprett gjeng
+    %br
+    %br
+    %br
+    = link_to new_group_path do
+      .samf-button.green.mt-3
+        = "Opprett gjeng"
