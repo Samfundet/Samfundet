@@ -4,7 +4,7 @@
 @import "admin";
 @import "history";
 
-.pages .content {
+.content {
     table {
         @extend .table-highlight-rows !optional;
     }

@@ -52,13 +52,6 @@ h1 {
   }
 }
 
-h2 {
-  font-size: 1.5em;
-  @include media($mobile-and-tablet-portrait) {
-    font-size: 1.25em;
-  }
-}
-
 h2, h3, h4, h5, h6 {
   color: $samfundet-dark-grey;
   font-weight: $font-weight-medium;
@@ -67,6 +60,13 @@ h2, h3, h4, h5, h6 {
   margin-top: 10px;
   margin-left: -1.8px;
   font-size: 1em;
+}
+
+h2 {
+  font-size: 1.5em;
+  @include media($mobile-and-tablet-portrait) {
+    font-size: 1.25em;
+  }
 }
 
 a {

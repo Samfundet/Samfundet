@@ -22,34 +22,29 @@
     %meta{ name:"twitter:creator", content:"@Samfundet"}
     = yield :twitter
 
-  %body{ class: ('dev-filter' unless Rails.env.production?) }
+  %body.modern-design{ class: ('dev-filter' unless Rails.env.production?) }
 
-    #sticky-footer-wrapper
+    - cache [I18n.locale, 'titlebar', request.fullpath, current_user, Time.current.to_date] do
+      = render 'layouts/header'
 
-      - cache [I18n.locale, 'titlebar', request.fullpath, current_user, Time.current.to_date] do
-        = render 'layouts/header'
+    #site-header-offset
+      = yield :admissions_frontpage_highjack
+      = yield :banner_image
 
-      #site-header-offset
-        = yield :admissions_frontpage_highjack
-        = yield :banner_image
-
-        -# cache [I18n.locale, 'titlebar', request.fullpath, current_user, Time.current.to_date] do
-          -#= render 'layouts/titlebar'
-        #container
-          .side-graphics.left
-          #content{ class: "#{params[:controller]} #{controller.action_name}" }
-            != display_flash
-            - if Rails.application.config.billig_offline
-              .billig-offline
-                - if I18n.locale == :no
-                  = Rails.application.config.billig_message_no
-                - else
-                  = Rails.application.config.billig_message_en
-            = yield
-          .side-graphics.right
-
-
-      #sticky-footer-wrapper-footer
+      -# cache [I18n.locale, 'titlebar', request.fullpath, current_user, Time.current.to_date] do
+        -#= render 'layouts/titlebar'
+      #container
+        .side-graphics.left
+        #content{ class: "#{params[:controller]} #{controller.action_name}" }
+          != display_flash
+          - if Rails.application.config.billig_offline
+            .billig-offline
+              - if I18n.locale == :no
+                = Rails.application.config.billig_message_no
+              - else
+                = Rails.application.config.billig_message_en
+          = yield
+        .side-graphics.right
 
     - cache [I18n.locale, 'footer'] do
       = render 'layouts/footer'

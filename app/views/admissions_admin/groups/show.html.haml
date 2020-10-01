@@ -1,20 +1,27 @@
 - set_title T('job_applications.applications_for_group', group_name: @group.name)
 
 .section
-  %h2
+  %h1
     = @group.name
     &ndash;
     = @admission.title
-  %p
-    = t('admissions.group_information', group_name: @group.name, n_applications: @n_applications, n_jobs: @n_jobs, n_applicants: @n_applicants)
+  = link_to members_control_panel_path do
+    .samf-button.plain
+      = T('common.back')
 
-  %p
-    != succeed '.' do
-      != link_to t('admissions.show_all_applications'), applications_admissions_admin_admission_group_path(@admission, @group)
-  %p
-    = link_to t('admissions_admin.show_interested_other_positions'), admissions_admin_admission_show_interested_other_positions_path(@admission)
-  %p
-    = link_to t('admissions_admin.reject_calls', group_name: @group.name), reject_calls_admissions_admin_admission_group_path
+  %br
+
+  %h2.mb-3
+    = t("jobs.job")
+
+  .flex-row.mb-3
+    - if can?(:create, Job)
+      = link_to new_admissions_admin_admission_group_job_path(@admission, @group) do
+        .samf-button.green.mr-2
+          = t('jobs.create')
+    = link_to applications_admissions_admin_admission_group_path(@admission, @group) do
+      .samf-button.plain
+        = t('admissions.show_all_applications')
 
   %table
     %thead
@@ -48,11 +55,25 @@
             %td
               - if can?(:destroy, Job, job) && !job.job_applications.exists?
                 != link_to t('groups.delete_job'), admissions_admin_admission_group_job_path(@admission, @group, job), method: "delete", data: { confirm: t('crud.confirm') }
+  %p
+    = t('admissions.group_information', group_name: @group.name, n_applications: @n_applications, n_jobs: @n_jobs, n_applicants: @n_applicants)
 
-  - if can?(:create, Job)
-    %p
-      = link_to new_admissions_admin_admission_group_job_path(@admission, @group), { class: "sexybutton sexysimple sexyred" } do
-        = T('jobs.create')
+  .flex-row.wrap.mt-3
+
+    = link_to admissions_admin_admission_show_interested_other_positions_path(@admission) do
+      .samf-button.small.plain.mr-2.mb-2
+        = t('admissions_admin.show_interested_other_positions')
+    = link_to reject_calls_admissions_admin_admission_group_path do
+      .samf-button.small.plain.mr-3.mb-2
+        = t('admissions_admin.reject_calls', group_name: @group.name)
+
+
+
+  %br
+  %br
+
+  %h2.mb-3
+    = t("admissions.statistics")
 
   %p
     = high_chart('1', @applications_per_day_chart)
