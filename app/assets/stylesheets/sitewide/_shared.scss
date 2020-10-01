@@ -43,14 +43,20 @@ img {
 
 h1 {
   //@include emph-link($samfundet-red);
-  font-size: 48px;
+  font-size: 2em;
   line-height: 1;
   margin-bottom: 8px;
   padding-top: 0px;
+  @include media($mobile-and-tablet-portrait) {
+    font-size: 1.5em;
+  }
 }
 
 h2 {
-  font-size: 36px;
+  font-size: 1.5em;
+  @include media($mobile-and-tablet-portrait) {
+    font-size: 1.25em;
+  }
 }
 
 h2, h3, h4, h5, h6 {
@@ -60,6 +66,7 @@ h2, h3, h4, h5, h6 {
   margin-bottom: 4px;
   margin-top: 10px;
   margin-left: -1.8px;
+  font-size: 1em;
 }
 
 a {

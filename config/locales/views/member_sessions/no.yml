@@ -1,10 +1,10 @@
 "no":
   member_sessions:
     new:
-      title: "Logg inn som medlem"
+      title: "Logg inn som intern"
     forms:
       login:
-        heading: "Medlemmer"
-        submit: "Logg inn som medlem"
+        heading: "Interne medlemmer"
+        submit: "Logg inn som intern"
         member_login_id: "E-post eller medlemsnummer"
         forgot_password: "Glemt passordet ditt?"

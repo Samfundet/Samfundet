@@ -1,5 +1,5 @@
 
-#header
+#header{ class: "#{params[:controller]} #{controller.action_name}" }
   #header-items-mobile
     = link_to root_path do
       .samfundet-logo
@@ -10,19 +10,19 @@
   #header-items
     = link_to root_path do
       .samfundet-logo
-    .header-item
+    .header-item.events
       = link_to t('layouts.application.menu.events'), events_path
-    .header-item
+    .header-item.info
       = link_to t('layouts.application.menu.info'), pages_path
     .header-item
       = link_to t('layouts.application.menu.lyche'), sulten_path
     .header-item
       = link_to t('layouts.application.menu.membership'), "https://medlem.samfundet.no/"
-    - if @show_admissions_animation
-      .header-item.highlight
+    - if open_admission?
+      .header-item.volunteer.highlight
         = link_to t('layouts.application.menu.admissions'), admissions_path
     - else
-      .header-item
+      .header-item.volunteer
         = link_to t('layouts.application.menu.admissions'), admissions_path
 
 
@@ -51,30 +51,35 @@
         .samf-button.small
           = t('layouts.application.menu.logout')
     - else
-      = link_to login_path(redirect_to: request.path) do
-        .samf-button.small
-          = t('layouts.application.menu.login')
+      - if open_admission?
+        = link_to login_path(redirect_to: request.path) do
+          .samf-button.small
+            = t('layouts.application.menu.login')
+      - else
+        = link_to login_path(redirect_to: request.path) do
+          .samf-button.small
+            = t('layouts.application.menu.internal')
 
 
 #header-popup-menu
 
 
-  .header-item
+  .header-item.info
     = link_to t('layouts.application.menu.info'), pages_path
 
   .header-item
     = link_to t('layouts.application.menu.lyche'), sulten_path
 
-  .header-item
+  .header-item.events
     = link_to t('layouts.application.menu.events'), events_path
 
   .header-item
     = link_to t('layouts.application.menu.membership'), "https://medlem.samfundet.no/"
-  - if @show_admissions_animation
+  - if @open_admission
     .header-item.highlight
       = link_to t('layouts.application.menu.admissions'), admissions_path
   - else
-    .header-item
+    .header-item.volunteer
       = link_to t('layouts.application.menu.admissions'), admissions_path
 
 

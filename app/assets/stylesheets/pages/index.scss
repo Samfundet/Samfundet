@@ -1,4 +1,4 @@
-.pages, .documents {
+#content.pages, #content.documents {
     font-weight: $font-weight-normal;
 
     .menu-button {
@@ -35,11 +35,8 @@
         }
 
         h1 {
-            color: $samfundet-red;
             margin: 0;
             padding-top: 15px;
-            text-transform: uppercase;
-            font-weight: $font-weight-normal;
 
             &:first-child {
                 padding-top: 0;

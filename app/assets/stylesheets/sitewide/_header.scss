@@ -10,6 +10,7 @@
   overflow: hidden;
   font-size: 16px;
   top: 0;
+  z-index: 1;
 
   background-color: #111;
   border-bottom: 1px solid rgb(50, 50, 50);
@@ -111,7 +112,17 @@
       color: #eee;
     }
   }
+  .header-item > a:hover {
+    color: #bbb;
+  }
 
+  // Highlight during admission
+  .header-item.highlight > a {
+    border: 2px solid $samfundet-blue;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 100px;
+  }
   .header-item.login {
     text-align: right;
   }
@@ -183,6 +194,38 @@
   }
 }
 
+// Highlight user on control panel page
+#header.members {
+  #header-items, #header-popup-menu {
+    .username {
+      background-color: white;
+    }
+  }
+}
+// Highlight events tab
+#header.events.index {
+  #header-items, #header-popup-menu {
+    .header-item.events > a {
+      border-bottom: 2px solid $samfundet-blue;
+    }
+  }
+}
+// Highlight info tab
+#header.pages.index {
+  #header-items, #header-popup-menu {
+    .header-item.info > a {
+      border-bottom: 2px solid $samfundet-blue;
+    }
+  }
+}
+// Highlight volunteer tab
+#header.admissions.index {
+  #header-items, #header-popup-menu {
+    .header-item.volunteer > a {
+      border-bottom: 2px solid $samfundet-blue;
+    }
+  }
+}
 
 #header-popup-menu {
   position: fixed;
