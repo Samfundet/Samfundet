@@ -1,7 +1,6 @@
 form:not(.custom-form) {
   @include span-columns(12);
 
-  background-color: $samfundet-light-grey;
   padding-top: 10px;
   padding-bottom: 7px;
   margin-bottom: 40px;

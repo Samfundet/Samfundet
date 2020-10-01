@@ -5,14 +5,14 @@
   .flash.message
     = T('interviews.possible_to_set_status', date: @admission.admin_priority_deadline)
 
+= link_to admissions_admin_admission_group_path(@job.admission, @job.group) do
+  .samf-button.plain.mb-3
+    = t("common.back")
+
 %h1
   = t("interviews.administer_interviews")
 
-= link_to admissions_admin_admission_group_path(@job.admission, @job.group) do
-  .samf-button.plain
-    = t("common.back")
-
-%h2.mt-3
+%h2
   = t('interviews.job_title', job: @job.title)
 
 = render 'jobs_show', job_application_groupings: [@job.job_applications], show_job_titles: false

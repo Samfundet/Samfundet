@@ -202,6 +202,14 @@
     }
   }
 }
+// Highlight user on my applications page
+#header.job_applications.index {
+  #header-items, #header-popup-menu {
+    .username {
+      background-color: white;
+    }
+  }
+}
 // Highlight events tab
 #header.events.index {
   #header-items, #header-popup-menu {
