@@ -1,7 +1,17 @@
 - set_title t("events.admin.title")
 
-- if can? :new, Event
-  %p.new
-    = link_to t("events.action.new"), new_event_path
+%h1.mb-2.mt-2
+  = t("events.admin.title")
+
+.flex-row.mb-3
+  = link_to members_control_panel_path do
+    .samf-button.plain.mr-2
+      = t("common.back")
+
+  - if can? :new, Event
+    = link_to new_event_path do
+      .samf-button.green
+        = t("events.action.new")
+
 
 = render 'admin_list'

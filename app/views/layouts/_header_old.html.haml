@@ -1,0 +1,38 @@
+#header
+  #dropdown-header
+    .dropdown-button-wrapper
+      %a.dropdown-button.opening-hours{ href: "#" }
+        = t('layouts.application.menu.opening_hours')
+        .caret-wrapper
+          .caret
+
+    .icon-wrapper
+      %a.samfundet-icon{ href: root_path }
+
+    .dropdown-button-wrapper
+      %a.dropdown-button.menu-items{ href: "#" }
+        = t('layouts.application.menu.menu')
+        .caret-wrapper
+          .caret
+
+  .dropdown-content-wrapper.opening-hours
+    = render 'layouts/opening_hours'
+
+  .dropdown-content-wrapper.menu-items
+    %nav.left-list
+      %ul
+        %li= link_to t('layouts.application.menu.home'), root_path
+        %li= link_to t('layouts.application.menu.events'), events_path
+        %li= link_to t('layouts.application.menu.info'), pages_path
+
+    .icon-wrapper
+      %a.samfundet-icon{ href: root_path }
+
+    %nav.right-list
+      %ul
+        %li= link_to t('layouts.application.menu.lyche'), sulten_path
+        %li= link_to t('layouts.application.menu.membership'), "https://medlem.samfundet.no/"
+        - if @open_admission == true
+          %li.waggle= link_to t('layouts.application.menu.admissions'), admissions_path
+        - else
+          %li= link_to t('layouts.application.menu.admissions'), admissions_path

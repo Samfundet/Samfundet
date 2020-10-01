@@ -1,4 +1,7 @@
 - cache cache_key_for_events_index(@events) do
+  %h1
+    = t("navigation.main.events")
+
   = render 'search_form', post_path: search_events_path
 
   .ajax-search
@@ -11,6 +14,7 @@
           %tbody
             = render events.sort_by{|event| event.start_time}
 
+
   .bottom-links
     %a{ href: archive_events_path, title: t('events.archive.title')}
       = image_tag("archive.svg")
@@ -21,3 +25,5 @@
     %a{ href: '/arrangement/ical', title: t('events.ical_alt_text')}
       = image_tag("calendar.svg")
       = t('events.ical_short_text')
+
+

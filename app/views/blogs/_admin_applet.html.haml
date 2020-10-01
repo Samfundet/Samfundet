@@ -4,6 +4,10 @@
 .options
   %ul
     %li
-      = link_to t('blogs.admin_applet.new_blog'), new_blog_path
+      = link_to new_blog_path do
+        .samf-button.green.w100.mb-2
+          = t('blogs.admin_applet.new_blog')
     %li
-      = link_to t('blogs.admin_applet.administrate'), admin_blogs_path
+      = link_to admin_blogs_path do
+        .samf-button.plain.w100.mb-2
+          = t('blogs.admin_applet.administrate')

@@ -1,9 +1,9 @@
 = render 'admission_header', admission_video: true
 
-#promo
-  %h2
+%div{:style => "text-align: center; padding-top: 1em;"}
+  %h1
     = admission.title
-    %br
+  %h2
     = "#{t('admissions.deadline')}:"
     =l admission.shown_application_deadline, format: :short
     - if admission.shown_application_deadline < Time.current
@@ -11,22 +11,18 @@
       %span{ style: "color: #a03033; text-decoration: underline; font-size: 0.9em;" }
         Utvidet til
         = l admission.actual_application_deadline, format: :short
-  %p
+  .center{:style=>"max-width: 800px;"}
     = simple_format t('admissions.admission_promo')
-    %br
+  .flex-row.center.mb-3
     - if can? :manage, Admission
-      [
       = link_to edit_admissions_admin_admission_path(admission) do
-        = t('admissions.edit_admission')
-      ]
-
+        .samf-button.plain.mr-2
+          = t('admissions.edit_admission')
     - if can? :show, Admission
-      [
       = link_to admissions_admin_admission_path(admission) do
-        = t('admissions.administer_my_group')
-      ]
+        .samf-button.plain.mr-2
+          = t('admissions.administer_my_group')
     - if can? :statistics, Admission
-      [
       = link_to statistics_admissions_admin_admission_path(admission) do
-        = t('admissions.statistics')
-      ]
+        .samf-button.plain
+          = t('admissions.statistics')

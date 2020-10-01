@@ -2,25 +2,46 @@
   h1 {
     text-align: center;
     text-transform: uppercase;
+    margin-top: 1em;
+  }
+  .name {
+    text-align: center;
+    text-transform: uppercase;
+    color: $samfundet-medium-grey;
+    margin-bottom: 1em;
+    font-size: 1.25em;
+    @include media($mobile) {
+      margin-bottom: 2em;
+    }
   }
 
   #applets {
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
     .applet {
+
       background-color: rgba($samfundet-light-grey, 0.3);
       text-align: center;
       margin-bottom: 20px;
       margin-top: 2px;
-      box-shadow: 2px 6px 5px #888888;
-      @include span-columns(12);
+      box-shadow: 2px 2px 15px 4px rgba(0,0,0,0.1);
+      border-radius: 4px;
+      overflow: hidden;
 
-      @include media($tablet-portrait) {
-        @include span-columns(6 of 12);
-        @include omega(2n);
-      } 
+      border: 1px solid #eee;
+      min-height: 300px;
 
-      @include media($tablet-desktop) {
-        @include span-columns(4 of 12);
-        @include omega(3n);
+      flex-basis: calc(33.33% - 1em);
+
+      @media only screen and (max-width: 1000px) {
+        flex-basis: calc(50% - .5em)
+      }
+      @media only screen and (max-width: 600px) {
+        flex-basis: 100%;
       }
 
       ul {
@@ -30,7 +51,7 @@
       .top {
         background: $samfundet-red;
         width: 100%;
-        padding: 12px;
+        padding: 8px;
       }
       .options {
         padding: 16px;
@@ -39,7 +60,7 @@
         text-transform: uppercase;
         margin: 0;
         color: white;
-        font-size: 32px;
+        font-size: 1.25em;
       }
       p {
           margin: 4px 0;

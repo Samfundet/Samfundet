@@ -1,6 +1,19 @@
-.image-actions
+
+
+%h1.mb-2.mt-2
+  = t("images.admin_applet.title")
+
+.flex-row.mb-3
+  = link_to members_control_panel_path do
+    .samf-button.plain.mr-2
+      = t("common.back")
+
   - if can? :new, Image
-    %p= link_to t('images.admin_applet.new'), new_image_path
+    = link_to new_image_path do
+      .samf-button.green
+        = t('images.admin_applet.new')
+
+%br
 
 = render 'search_form'
 
