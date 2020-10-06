@@ -7,6 +7,10 @@
   width: 100%;
 }
 
+.text-Align{
+  text-align: center;
+}
+
 // Padding
 .p-1 { padding: .25em; }
 .p-2 { padding: .5em; }
@@ -48,3 +52,8 @@
 .mr-1 { margin-right: .25em; }
 .mr-2 { margin-right: .5em; }
 .mr-3 { margin-right: 1em; }
+
+// Border-radius
+.br-1 {border-radius: .25em;}
+.br-2 {border-radius: .5em;}
+.br-3 {border-radius: 1em;}

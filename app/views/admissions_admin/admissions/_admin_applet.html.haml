@@ -7,6 +7,9 @@
       .samf-button.green.w100.mb-2
         = t('admissions.create_admission')
 
+- if can?(:list, Admission)
+  %br
+  = link_to t('admissions.closed_admissions'), admissions_admin
   - @admissions.each do |admission|
     = link_to admissions_admin_admission_path(admission) do
       .samf-button.plain.w100.mb-2
