@@ -2,14 +2,14 @@
 #header{ class: "#{params[:controller]} #{controller.action_name}" }
   #header-items-mobile
     = link_to root_path do
-      .samfundet-logo
+      .samfundet-logo{class: "#{Rails.env.production? ? "" : "beta"}"}
     #header-hamburger-menu
       .hamburger-line.top
       .hamburger-line.mid
       .hamburger-line.bot
   #header-items
     = link_to root_path do
-      .samfundet-logo
+      .samfundet-logo{class: "#{Rails.env.production? ? "" : "beta"}"}
     .header-item.events
       = link_to t('layouts.application.menu.events'), events_path
     .header-item.info
