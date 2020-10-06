@@ -99,10 +99,13 @@ class Sulten::Reservation < ApplicationRecord
     nil
   end
 
-  def self.find_available_times(date, duration, people, type_id)
-    puts("hallaa")
-    puts(date)
-    now = Time.parse(date).utc
+  def self.testfunction(reservation_from)
+    puts("TEST3:", reservation_from)
+    reservation_from
+  end
+
+  def self.find_available_times(reservation_from, duration, people, reservation_type)
+    now = Time.parse(reservation_from)
     default_open = now.change(hour: 16, min: 0, sec: 0)
     default_close = now.change(hour: 22, min: 0, sec: 0)
     possible_times = []
@@ -110,12 +113,12 @@ class Sulten::Reservation < ApplicationRecord
     times_to_check = time_frame.step(30.minutes).to_a
     (1..Sulten::ReservationType.count).each do |i|
       Sulten::Table.where('capacity >= ? and available = ?', people, true).order('capacity ASC').tables_with_i_reservation_types(i).find do |t|
-        next unless t.reservation_types.pluck(:id).include? type_id
+        next unless t.reservation_types.pluck(:id).include? reservation_type
         time_frame.step(30.minutes) do |time_step|
           return possible_times if times_to_check.empty?
           next if times_to_check.exclude? time_step
           reservation_from = Time.zone.at(time_step)
-          reservation_to = Time.zone.at(time_step + duration.minutes)
+          reservation_to = Time.zone.at(time_step + 150)
 
           busy_start = t.reservations.where('reservation_from >= ? and reservation_from < ?',
                                             reservation_from,
