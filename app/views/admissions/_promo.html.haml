@@ -1,11 +1,10 @@
-.flex-row.center
+.flex-row.center.bxs
   - if not @open_admissions.first.promo_video.empty?
-    .youtube-video
-      %iframe{ src: @open_admissions.first.promo_video, frameborder: 0, allowfullscreen: true }
+    %iframe{ src: @open_admissions.first.promo_video, frameborder: 0, allowfullscreen: true, style:"width: 100%; height: 76vh;" }
 
 %div.text-Align.pt-3
-  %div.flex-row
-    %div.samf-container.grey.flex-column
+  %div.flex-row.mb-3.samf-container.grey.br-3.bxs{style:"align-items: center;"}
+    %div.center
       %h1
         = admission.title
       %h2
@@ -19,7 +18,7 @@
     .center{:style=>"max-width: 500px;"}
       = simple_format t('admissions.admission_promo')
 
-  .flex-row.center.mt-2.mb-3.mt-3
+  .flex-row.center.mt-2.mt-3
     - if current_user.kind_of? Applicant
       = link_to job_applications_path do
         .samf-button.plain.mr-2
@@ -29,7 +28,7 @@
         .samf-button.blue
           = t('applicants.register_as_an_applicant')
 
-  .flex-row.center.mb-3
+  .flex-row.center.mt-3
     - if can? :manage, Admission
       = link_to edit_admissions_admin_admission_path(admission) do
         .samf-button.plain.mr-2

@@ -1,20 +1,15 @@
-.section#group-types
-  - admission.group_types.sort_by(&:description).each do |group_type|
-    .header
-      %h3= group_type.description
-
-    .jobs
-      - group_type.groups.each do |group|
-        - group.jobs_in_admission(admission).sort_by(&:title).each do |job|
-          .job{ id: "#{admission.to_param}/#{group.to_param}" }
-            .title
-              %span.bullet{ class: job.is_officer ? "officer_position" : "non_officer_position" }
-              %a{ href: job_path(job) }
-                = truncate job.title, length: 40
-            .group
+- admission.group_types.sort_by(&:description).each do |group_type|
+  .samf-container.grey.m-3.br-3.bxs
+    %h3= group_type.description
+    - group_type.groups.each do |group|
+      - group.jobs_in_admission(admission).sort_by(&:title).each do |job|
+        .samf-container.medium-grey.mb-3.br-2{ id: "#{admission.to_param}/#{group.to_param}"}
+          %span.bullet{ class: job.is_officer ? "officer_position" : "non_officer_position"}
+          %a{ href: job_path(job)}
+          .flex-row.space-around
+            %div{style:"width:30%"}
+              = truncate job.title, length: 40
+            %div{style:"width:30%"}
               = group_link group, abbreviate_treshold: 20
-            .teaser
+            %div{style:"width:30%"}
               #{job.teaser.first(75)}
-
-#overlay.modal-dialog
-  .contentWrap

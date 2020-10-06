@@ -2,10 +2,15 @@
 Samfundet containers
  */
 
-.samf-containter{
+.samf-container {
+  padding: 1em;
 }
 
 // container Variants
 .samf-container.grey {
   background-color: $samfundet-light-grey;
+}
+
+.samf-container.medium-grey {
+  background-color: $samfundet-medium-grey;
 }

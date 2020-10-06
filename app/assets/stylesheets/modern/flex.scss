@@ -13,3 +13,6 @@
   flex-wrap: wrap;
 }
 
+.flex-row.space-around, flex-column.space-around {
+  justify-content: space-around;
+}

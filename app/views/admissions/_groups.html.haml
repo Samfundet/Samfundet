@@ -1,9 +1,0 @@
-.section#groups-with-jobs.br-3.pt-2.pb-2
-  .header
-    %h2
-      = t('admissions.groups_with_admission')
-  %ul
-    - admission.groups.each do |group|
-      %li
-        = link_to "##{admission.to_param}/#{group.to_param}" do
-          = group.name
