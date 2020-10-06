@@ -148,6 +148,9 @@ class EventsController < ApplicationController
 
     @ticket_groups = @event.billig_event.netsale_billig_ticket_groups
 
+    # Check if non-member tickets available (to show email purchase option)
+    @non_member_ticket_available = @event.billig_event.has_non_member_tickets?
+
     if params.key? :bsession
       @payment_error = BilligPaymentError.where(error: params[:bsession]).first
       @payment_error_price_groups =

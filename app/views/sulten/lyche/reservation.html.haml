@@ -6,7 +6,19 @@
     = t("sulten.reservation.form.title")
 
   .reservation-info
-    Reservasjonssystemet vårt er fortsatt under utvikling, og ber om forbehold om at feil kan forekomme.
+    Bord må reserveres senest en dag i forveien. Mat kan forhåndsbestilles slik at dere ikke trenger å vente når dere kommer.
+    Merk at flertallet av personer må være medlem for å reservere og at alle må være over 20 år etter kl 20:00 i helger.
+    Med hensyn til smittevern kan vi ikke garantere at alle får sittet sammen.
+    %br
+    %br
+    Reservasjonssystemet vårt er fortsatt under utvikling, og vi ber om forbehold om at feil kan forekomme. Klikk her for å bestille via epost:
+    = mail_to "lyche@samfundet.no"
+    %br
+    %br
+    - @closed_periods.each do |c|
+      %i
+        = "Lyche holder stengt i perioden " + l(c.closed_from, format: :short_date) + " - " + l(c.closed_to, format: :short_date)
+      %br
 
   - if @available_times.nil?
     = semantic_form_for @reservation, :url => {:controller => "lyche", :action => "reservation" }, :html => { :class => "custom-form lyche_form"}, data: {type: 'json'} do |f|
@@ -55,3 +67,4 @@
 
       = f.actions do
         = f.submit t("sulten.reservation.form.create")
+

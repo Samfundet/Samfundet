@@ -1,6 +1,7 @@
-%h2
-  = t('documents.applet_title')
-
-%ul
-  %li= link_to t('documents.new_document'), new_document_path
-  %li= link_to t('documents.admin'), admin_documents_path
+.top
+  %h2
+    = t('documents.applet_title')
+.options
+  %ul
+    %li= link_to t('documents.new_document'), new_document_path
+    %li= link_to t('documents.admin'), admin_documents_path

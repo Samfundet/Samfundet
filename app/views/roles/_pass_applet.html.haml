@@ -1,16 +1,17 @@
-%h2
-  = t("roles.pass")
+.top
+  %h2
+    = t("roles.pass")
+.options
+  %p
+    = t("roles.pass_description")
 
-%p
-  = t("roles.pass_description")
-
-%ul
-  - @roles.each do |role|
-    %li
-      = form_tag pass_role_path(role), method: "post" do
-        %p
-          = role.title
-        %p
-          = text_field_tag "member_id", nil, placeholder: t("members.search_placeholder"), class: "textfield member_autocomplete"
-        %p
-          = submit_tag t("roles.pass")
+  %ul
+    - @roles.each do |role|
+      %li
+        = form_tag pass_role_path(role), method: "post" do
+          %p
+            = role.title
+          %p
+            = text_field_tag "member_id", nil, placeholder: t("members.search_placeholder"), class: "textfield member_autocomplete"
+          %p
+            = submit_tag t("roles.pass")
