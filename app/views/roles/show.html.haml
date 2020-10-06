@@ -1,52 +1,66 @@
-.section
-  %h2
-    - if @role.group
-      = set_and_return_title "#{@role.name}: #{@role.title} (#{@role.group.name})"
-    - else
-      = set_and_return_title "#{@role.name}: #{@role.title}"
+
+= link_to roles_path do
+  .samf-button.plain.mb-3
+    = t("common.back")
+
+%h1
+  - if @role.group
+    = set_and_return_title "#{@role.name}: #{@role.title} (#{@role.group.name})"
+  - else
+    = set_and_return_title "#{@role.name}: #{@role.title}"
+%p
+  = @role.description
+- if @role.role
   %p
-    = @role.description
-  - if @role.role
-    %p
-      -# 'roles.child_role_of' contains HTML, hence html_safe
-      = t('roles.child_role_of',
-          role: link_to(@role.role.title, @role.role)).html_safe
-  - unless @role.roles.empty?
-    %p
-      -# 'roles.has_child_roles' also contains HTML
-      = t('roles.has_child_roles',
-          roles: @role.roles.map{ |r| link_to r.title, r }.join(' ')).html_safe
-  - if can?(:edit, @role)
-    %p
-      - if can?(:edit, @role)
-        = link_to t('roles.edit_role'), edit_role_path(@role),
-                  { class: "sexybutton sexysimple sexyred" }
-  - unless @role.members_roles.empty?
-    %table
+    -# 'roles.child_role_of' contains HTML, hence html_safe
+    = t('roles.child_role_of',
+        role: link_to(@role.role.title, @role.role)).html_safe
+- unless @role.roles.empty?
+  %p
+    -# 'roles.has_child_roles' also contains HTML
+    = t('roles.has_child_roles',
+        roles: @role.roles.map{ |r| link_to r.title, r }.join(' ')).html_safe
+- if can?(:edit, @role)
+  = link_to edit_role_path(@role) do
+    .samf-button.blue
+      = t('roles.edit_role')
+
+
+%hr
+
+%h2.mb-3.mt-3
+  = t("roles.members")
+
+- unless @role.members_roles.empty?
+  %table
+    %thead
       %tr
         %th= t('roles.member_name')
         %th= t('roles.active_membership')
         %th= t('roles.date_assigned')
         %th= t('roles.one_year_old')
         %th &nbsp;
-      - @role.members_roles.each do |members_role|
-        %tr
-          %td
-            = members_role.member.full_name
-          %td
-            = t(members_role.member.active_membership?)
-          %td
-            = members_role.created_at
-          %td
-            = t((members_role.created_at < 1.year.ago).to_s)
-          %td
-            = link_to t('roles.remove_member'),
-                      [@role, members_role],
-                      method: :delete,
-                      data: { confirm: t('crud.confirm') }
-  %h2= t('roles.add_member')
-  = form_tag role_members_roles_path(@role), method: :post do
-    %p
-      != label_tag "member_autocomplete", t('roles.member_autocomplete_label')
-      != text_field_tag "member_id", nil, class: "member_autocomplete"
-      != submit_tag t('roles.add_member_submit')
+    - @role.members_roles.each do |members_role|
+      %tr
+        %td
+          = members_role.member.full_name
+        %td
+          = t(members_role.member.active_membership?)
+        %td
+          = members_role.created_at
+        %td
+          = t((members_role.created_at < 1.year.ago).to_s)
+        %td{:style => "float:right;"}
+          = link_to [@role, members_role], method: :delete, data: { confirm: t('crud.confirm') } do
+            .samf-button.small
+              = t('roles.remove_member')
+
+%hr
+
+%h2.mt-3
+  = t('roles.add_member')
+= form_tag role_members_roles_path(@role), method: :post do
+  %p
+    != label_tag "member_autocomplete", t('roles.member_autocomplete_label')
+    != text_field_tag "member_id", nil, class: "member_autocomplete", style: "border: 1px solid gray;"
+    != submit_tag t('roles.add_member_submit')

@@ -1,9 +1,16 @@
 - set_title t("pages.admin")
 
+= link_to members_control_panel_path do
+  .samf-button.plain.mb-3
+    = t("common.back")
+
+%h1.mt-3.mb-2
+  = t("pages.admin")
+
 - if can? :new, Page
-  %p.new
-    = link_to t("pages.new_page"), new_page_path
-    = link_to t("pages.graph"), {controller: :pages, action: :graph}
+  = link_to new_page_path do
+    .samf-button.green.mb-3
+      = t("pages.new_page")
 
 - if @pages.empty?
   = t("pages.no_editable_pages")
@@ -23,8 +30,13 @@
           %td= link_to page.name, page
           %td= page.title
           %td= page.role
-          %td= link_to l(page.revisions.last.created_at), history_page_path(page)
-          %td= link_to t("crud.edit"), edit_page_path(page)
+          %td= alink_to l(page.revisions.last.created_at), history_page_path(page)
+          %td
+            = link_to edit_page_path(page) do
+              .samf-button.small.blue
+                = t("crud.edit")
           %td
             - if can? :destroy, page
-              = link_to t("crud.destroy"), page, data: { confirm: t("pages.confirm_delete") }, method: :delete
+              = link_to page, data: { confirm: t("pages.confirm_delete") }, method: :delete do
+                .samf-button.small
+                  = t("crud.destroy")

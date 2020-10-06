@@ -20,7 +20,7 @@
 - if can?(:hidden_create, JobApplication)
   = form_tag(hidden_create_admissions_admin_admission_group_job_job_applications_path(@admission, @group, @job)) do
     = label_tag(:email, "Email")
-    = text_field_tag(:email)
+    = text_field_tag :email, nil, style: "border: 1px solid gray;"
     = submit_tag("Legg til søknad")
 
 
