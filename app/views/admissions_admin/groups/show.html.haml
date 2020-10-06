@@ -44,15 +44,19 @@
             = t('common.officer')
           - else
             = t('common.group_member')
-        %td
-          != link_to t('groups.job_listing'), job
-        %td
+        %td{:style => "float:right;"}
           - if can?(:edit, Job, job)
-            != link_to t('groups.edit_job'), edit_admissions_admin_admission_group_job_path(@admission, @group, job)
+            != link_to edit_admissions_admin_admission_group_job_path(@admission, @group, job) do
+              .samf-button.small.blue
+                = t('groups.edit_job')
         - if @should_show_delete_button
           %td
             - if can?(:destroy, Job, job) && !job.job_applications.exists?
               != link_to t('groups.delete_job'), admissions_admin_admission_group_job_path(@admission, @group, job), method: "delete", data: { confirm: t('crud.confirm') }
+        %td{:style => "float:right;"}
+          != link_to job do
+            .samf-button.small.plain
+              = t('groups.job_listing')
 %p
   = t('admissions.group_information', group_name: @group.name, n_applications: @n_applications, n_jobs: @n_jobs, n_applicants: @n_applicants)
 
