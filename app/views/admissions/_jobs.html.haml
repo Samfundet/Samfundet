@@ -5,11 +5,10 @@
       - group.jobs_in_admission(admission).sort_by(&:title).each do |job|
         .samf-container.medium-grey.mb-3.br-2{ id: "#{admission.to_param}/#{group.to_param}"}
           %span.bullet{ class: job.is_officer ? "officer_position" : "non_officer_position"}
-          %a{ href: job_path(job)}
           .flex-row.space-around
-            %div{style:"width:30%"}
+            %a{href: job_path(job), style:"flex-basis: 30%"}
               = truncate job.title, length: 40
-            %div{style:"width:30%"}
+            %div{style:"flex-basis: 30%"}
               = group_link group, abbreviate_treshold: 20
-            %div{style:"width:30%"}
+            %div{style:"flex-basis: 30%"}
               #{job.teaser.first(75)}
