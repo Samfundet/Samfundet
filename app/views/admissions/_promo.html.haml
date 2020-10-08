@@ -1,5 +1,6 @@
-- if not @open_admissions.first.promo_video.empty?
-  %iframe{ src: @open_admissions.first.promo_video, frameborder: 0, allowfullscreen: true, style:"width: 100%; height:76vh" }
+.youtube-wrapper
+  - if not @open_admissions.first.promo_video.empty?
+    %iframe.youtube-embed{ src: @open_admissions.first.promo_video, frameborder: 0, allowfullscreen: true }
 
 %div.text-Align.pt-3
   %div.flex-row.wrap.mb-3.samf-container.white.br-3.bxs{style:"align-items: center;"}

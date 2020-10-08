@@ -5,10 +5,10 @@
       - group.jobs_in_admission(admission).sort_by(&:title).each do |job|
         .mb-3.br-2.pb-2{ id: "#{admission.to_param}/#{group.to_param}"}
           %span.bullet{ class: job.is_officer ? "officer_position" : "non_officer_position"}
-          .flex-row.space-around.jobandtitle
+          .flex-row.space-around.jobRow
             %a{href: job_path(job), style:"flex-basis: 30%"}
               = truncate job.title, length: 40
             %div{style:"flex-basis: 30%;"}
               = group_link group, abbreviate_treshold: 20
-            %div.teaser{style:"flex-basis: 30%;"}
+            %div.description{style:"flex-basis: 30%;"}
               #{job.teaser.first(75)}
