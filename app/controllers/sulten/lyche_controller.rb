@@ -25,8 +25,6 @@ class Sulten::LycheController < Sulten::BaseController
       @available_times = Sulten::Reservation.find_available_times(request[:reservation_from], 150, request[:people].to_i, request[:reservation_type_id].to_i)
       puts(@available_times)
     end
-
-
   end
 
   def reservation_success

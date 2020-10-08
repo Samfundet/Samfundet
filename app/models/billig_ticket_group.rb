@@ -13,6 +13,10 @@ class BilligTicketGroup < ApplicationRecord
     billig_price_groups.where(netsale: true)
   end
 
+  def non_member_price_groups
+    billig_price_groups.where(membership_needed: false)
+  end
+
   def tickets_left?
     num_sold < num
   end

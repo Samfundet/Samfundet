@@ -75,16 +75,19 @@
         %td.totalSum.ticket-data{class: currency_unit_class}
           = "0"
 
+    %i= t("events.member_notice")
+
     - isMember = current_user.is_a?(Member)
     %p.payment-choice
       = radio_button_tag "ticket_type", "card", @payment_error.try(:owner_cardno).present?, checked: isMember
       = label_tag "ticket_type_card", t('events.ticketless'), class: 'radio-label'
       = text_field_tag "membercard", @payment_error.try(:owner_cardno) || (current_user.try(:membership_card).try(:card) if isMember), tabindex: 2, disabled: !isMember
 
-    -#%p.payment-choice
-      -#= radio_button_tag "ticket_type", "paper", @payment_error.try(:owner_email).present?, checked: !isMember
-      -#= label_tag "ticket_type_paper", t('events.paperticket'), class: 'radio-label'
-      -#= email_field_tag :email, @payment_error.try(:owner_email), tabindex: 2, disabled: isMember
+    - if @non_member_ticket_available
+      %p.payment-choice
+        = radio_button_tag "ticket_type", "paper", @payment_error.try(:owner_email).present?, checked: !isMember
+        = label_tag "ticket_type_paper", t('events.paperticket'), class: 'radio-label'
+        = email_field_tag :email, @payment_error.try(:owner_email), tabindex: 2, disabled: isMember
 
     %h4
       = t('events.about_ticket')

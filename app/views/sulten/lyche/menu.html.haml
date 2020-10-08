@@ -19,10 +19,26 @@
 
         .lyche-menu-title
           Meny
-        .lyche-menu-subtitle
-          Velkommen
-
         %br
+        .menu-item
+          .item-description
+            Lyche er en restaurant og spritbar som drives utelukkende av frivillige
+            studenter. Om lag 100 engasjerte amatører jobber som kokker
+            og barservitører og gjør sitt beste for at du som gjest skal få en
+            hyggelig opplevelse.
+            %br
+            %br
+            I Lyche ønsker vi å legge vekt på mat og drikke av høy kvalitet. Derfor har vi både et variert og godt gjennomtenkt utvalg.
+            Vi har fokus på å lage rettene våre fra bunnen av og med lokale råvarer.
+            %br
+            %br
+            I menyen oppgis det to priser på både mat og drikke.
+            Den førstnevnte er medlemspris for medlemmer av
+            Studentersamfundet. Denne gis ved fremvisning av medlemskap.
+            %br
+
+        .lyche-menu-subtitle
+          Velbekomne!
         %br
 
         .lyche-menu-subtitle{style: "color:#fbb042;"}
@@ -106,7 +122,7 @@
             til ovnsbakte poteter.
             %br
             %br
-            %i= "Inneholder: Egg, gluten (hvete og rug), melk, selleri, sennep og sulfitt"
+            %i= "Inneholder: Svin, egg, gluten (hvete, rug, bygg), melk, selleri, sennep og sulfitt"
             %br
             %br
             %i= "Baren anbefaler: E.C. Dahls Bolt IPA"
@@ -123,7 +139,7 @@
             Aioli, cherrytomater, salat, søt og syrlig rips- og rabarbramarmelade , blåmuggost fra Selbu og pistou til ovnsbakte poteter.
             %br
             %br
-            %i= "Inneholder: Egg, gluten (hvete og rug), melk, selleri, sennep og sulfitt"
+            %i= "Inneholder: Svin, egg, gluten (hvete, rug, bygg), melk, selleri, sennep og sulfitt"
             %br
             %br
             %i= "Baren anbefaler: Lychelig Trippel"
@@ -140,10 +156,82 @@
             Aioli, cherrytomater, salat, syltet sjalottløk, manchego og pistou til ovnsbakte poteter. Vegetar. Kan serveres som veganburger.
             %br
             %br
-            %i= "Inneholder: Gluten (hvete og rug), sulfitt, sennep, melk og egg"
+            %i= "Inneholder: Gluten (hvete, rug, bygg), sulfitt, sennep, melk og egg"
             %br
             %br
             %i= "Baren anbefaler: Brooklyn Lager"
+
+        -# HOVEDRETTER
+
+        .lyche-menu-category
+          .lyche-menu-category-detail.left
+          .lyche-menu-category-title
+            Hovedretter
+          .lyche-menu-category-detail.right
+
+        .menu-item
+          .item-name
+            Nordisk falafel
+            .item-price
+              89,- / 109,-
+          .item-description
+            Falafel laget med en base av tradisjonsrike ingredienser fra Norge.
+            Serveres med ovnsbakt lompe, råkostsalat, yoghurtdressing med urter og syltet sopp med tyttebær
+            %br
+            %br
+            %i= "Inneholder: Gluten (hvete), melk, selleri og sulfitt"
+            %br
+            %br
+            %i= "Baren anbefaler: E.C. Dahls Bolt IPA"
+
+        .menu-item
+          .item-name
+            Sesongens salat
+            .item-price
+              99,- / 119,-
+          .item-description
+            Varieres gjennom året med sesongens smaker. Spør en av våre barservitører for mer informasjon.
+            Serveres med lychebrød og kryddersmør.
+            %br
+            %br
+            %i= "Inneholder: Spør en av våre barservitører."
+            %br
+            %br
+            %i= "Baren anbefaler: Bourgogne Chardonnay"
+
+        -# DESSERT
+        .lyche-menu-category
+          .lyche-menu-category-detail.left
+          .lyche-menu-category-title
+            Dessert
+          .lyche-menu-category-detail.right
+
+        .menu-item
+          .item-name
+            Iskrem
+            .item-price
+              35,- / 45,-
+          .item-description
+            Fløteiskrem og/eller sorbet. Spør en av våre barservitører om dagens smaker.
+            %br
+            %br
+            %i= "Inneholder: Spør en av våre barservitører."
+
+
+        .menu-item
+          .item-name
+            Appelsinsjokolademousse
+            .item-price
+              49,- / 69,-
+          .item-description
+            Sjokolademousse med appelsinsmak toppet med kandisert appelsin.
+            %br
+            %br
+            %i= "Inneholder: Melk, egg og soya."
+            %br
+            %br
+            %i= "Baren anbefaler: Barbera d`Asti Superiore Storica"
+
 
         -# DRIKKE
 
@@ -182,12 +270,18 @@
             .item-price
               64,- / 84,-
 
+        .menu-item
+          .item-name
+            Spesialøl fra Daglighallen
+          .item-description
+            Spør om type i baren
+
         -# Flaskeøl
 
         .lyche-menu-category
           .lyche-menu-category-detail.left
           .lyche-menu-category-title
-            Flaskeøl
+            Øl på flaske
           .lyche-menu-category-detail.right
 
         .menu-item
@@ -209,7 +303,7 @@
           .item-name
             Sør 0,33L. 4,7% (glutenfri):
             .item-price
-              40,- / 49,-
+              49,- / 59,-
         .menu-item
           .item-name
             Carlsberg 0,33L. 4,5%:
@@ -258,7 +352,7 @@
           .item-name
             Smirnoff ice 0,33L:
             .item-price
-              59,- / 79,-
+              64,- / 84,-
         .menu-item
           .item-name
             somersby pære 0,33L:
@@ -266,7 +360,7 @@
               59,- / 79,-
         .menu-item
           .item-name
-            Somersby DP 0,33L:
+            Somersby Doubel Press 0,33L:
             .item-price
               59,- / 79,-
         .menu-item
@@ -285,7 +379,14 @@
 
         .menu-item
           .item-name
-            all brus 0,33L:
+            Mineralvann 0,33L:
+            .item-price
+              30,- / 35,-
+          .item-description
+            Utvalg: Pepsi, Pepsi Max, Solo, 7up free, Eplemost
+        .menu-item
+          .item-name
+            Munkholm:
             .item-price
               35,- / 39,-
         .menu-item
@@ -297,7 +398,7 @@
           .item-name
             Weihenstephaner weiss 0,5L:
             .item-price
-              50,- / 89,-
+              39,- / 49,-
         .menu-item
           .item-name
             Brooklyn special effects 0,33L:
@@ -315,37 +416,37 @@
 
         .menu-item
           .item-name
-            Sancerre la Croix au Garde
+            Sancerre la Croix au Grande
             .item-price
-              79,- / 89,-
+              Glass: 79,- / 89,-
               %br
-              399,- / 449,-
+              Flaske: 399,- / 449,-
         .menu-item
           .item-name
             Garganega Pinot Grigio
             .item-price
-              59,- / 85,-
+              59,- / 69,-
               %br
-              229,- / 269,-
+              299,- / 349,-
         .menu-item
           .item-name
-            Wachenheimer Riesling
+            Villa Wolf Riesling Dry
             .item-price
-              79,- /59 ,-
+              59,- / 69,-
               %br
-              429,- /379 ,-
+              299,- /  349,-
         .menu-item
           .item-name
             Bourgogne Chardonnay
             .item-price
-              99 ,- / 79,-
+              79 ,- / 89,-
               %br
-              429,- / 379,-
+              349,- / 399,-
         .menu-item
           .item-name
             Vignana Prosecco Extra Dry
             .item-price
-              379,- / 429,-
+              299,- / 349,-
 
 
         -# Rødvin
@@ -360,9 +461,9 @@
           .item-name
             Villa wolf Pinot Noir
             .item-price
-              59,- / 69,-
+              Glass: 59,- / 69,-
               %br
-              259,- / 299,-
+              Flaske: 299,- / 349,-
         .menu-item
           .item-name
             Le Rondini Langhe Nebbiolo
@@ -376,14 +477,14 @@
             .item-price
               69,- / 79,-
               %br
-              299,- / 349,-
+              319,- / 369,-
         .menu-item
           .item-name
             Onix Classic
             .item-price
               69,- / 79,-
               %br
-              299,- / 349,-
+              319,- / 369,-
 
         %br
         %br

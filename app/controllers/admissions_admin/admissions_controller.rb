@@ -34,6 +34,15 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
   def edit
   end
 
+  def list
+    @open_admissions = Admission.appliable.includes(
+        group_types: { groups: :jobs }
+    )
+    @closed_admissions = Admission.no_longer_appliable
+    @upcoming_admissions = Admission.upcoming
+
+  end
+
   def update
     if @admission.update_attributes(admission_params)
       flash[:success] = t('admissions_admin.admission_updated')

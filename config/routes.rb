@@ -130,7 +130,8 @@ Rails.application.routes.draw do
         get :deactivate, to: "campus#deactivate"
         get :activate, to: "campus#activate"
       end
-      resources :admissions, only: [:show, :new, :create, :edit, :update] do
+      resources :admissions, only: [:show, :new, :create, :edit, :update, :list] do
+
         get :statistics, on: :member
         resources :groups, only: :show do
           get :applications, on: :member
@@ -150,7 +151,9 @@ Rails.application.routes.draw do
         end
         get :show_interested_other_positions, to: 'applicants#show_interested_other_positions'
         get :show_unflagged_applicants, to: 'applicants#show_unflagged_applicants'
+
       end
+      get :list, to: "admissions#list"
     end
 
     post "applicant/steal_identity", to: "applicants#steal_identity", as: :applicants_steal_identity
@@ -181,7 +184,7 @@ Rails.application.routes.draw do
       get "/menu" => "lyche#menu"
       get "/about" => "lyche#about"
       get "/contact" => "lyche#contact"
-      get "/reservasjon" => "reservations#new"
+      #get "/reservasjon" => "reservations#new"
       get "/reservasjon_admin" => "reservations#admin_new"
       post "/reservasjon_admin" => "reservations#admin_create"
       get :admin, to: "admin#index"

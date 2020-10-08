@@ -1,0 +1,26 @@
+-set_title t('admissions.closed_admissions')
+
+- if AdmissionsAdminAbility.new(current_user).can?(:show, Admission)
+  .section
+    %h2= t('admissions.closed_admissions')
+    - if @closed_admissions.empty?
+      %p= t('admissions.no_closed_admissions')
+    - else
+      %table
+        %tr
+          %th= t('admissions.name')
+          %th= t('admissions.application_deadline')
+          %th= t('admissions.priority_deadline')
+          - if AdmissionsAdminAbility.new(current_user).can?(:manage, Admission)
+            %th
+              &nbsp;
+            %th
+              &nbsp;
+        - (@upcoming_admissions + @closed_admissions).each do |admission|
+          %tr
+            %td= link_to admission.title, admissions_admin_admission_path(admission)
+            %td= admission.shown_application_deadline
+            %td= admission.user_priority_deadline
+            - if AdmissionsAdminAbility.new(current_user).can?(:manage, Admission)
+              %td= link_to t('admissions.edit_admission'), edit_admissions_admin_admission_path(admission)
+              %td= link_to t('admissions.statistics'), statistics_admissions_admin_admission_path(admission)
