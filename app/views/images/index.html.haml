@@ -1,24 +1,25 @@
 
+= link_to members_control_panel_path do
+  .samf-button.plain.mb-3
+    = t("common.back")
 
 %h1.mb-2.mt-2
   = t("images.admin_applet.title")
 
-.flex-row.mb-3
-  = link_to members_control_panel_path do
-    .samf-button.plain.mr-2
-      = t("common.back")
+- if can? :new, Image
+  = link_to new_image_path do
+    .samf-button.green
+      = t('images.admin_applet.new')
 
-  - if can? :new, Image
-    = link_to new_image_path do
-      .samf-button.green
-        = t('images.admin_applet.new')
-
-%br
+%hr
 
 = render 'search_form'
 
-%p
+%hr
+
+%h2
   = t('images.search_results')
+
 
 .ajax-results
 .existing-results

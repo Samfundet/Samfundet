@@ -40,6 +40,9 @@
     height: 20px;
     margin-right: 2em;
   }
+  .samfundet-logo.beta {
+    background-image: asset-url("header/Samfundetlogo_hvit_beta.png");
+  }
 
   .change-language {
     width: 28px;
@@ -196,6 +199,14 @@
 
 // Highlight user on control panel page
 #header.members {
+  #header-items, #header-popup-menu {
+    .username {
+      background-color: white;
+    }
+  }
+}
+// Highlight user on my applications page
+#header.job_applications.index {
   #header-items, #header-popup-menu {
     .username {
       background-color: white;

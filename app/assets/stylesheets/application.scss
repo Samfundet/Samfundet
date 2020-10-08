@@ -47,12 +47,11 @@
 @import "admissions/unflagged_applicants";
 @import "documents/documents";
 @import "documents/list";
-@import "blogs/blogs";
+//@import "blogs/blogs";
 @import "contact/contact";
 @import "members/members";
-@import "areas/areas";
+
 @import "billig/billig";
-@import "everything_closed_periods/everything_closed_periods";
 @import "images_show";
 @import "search/search";
 @import "applicants/_form";
@@ -66,3 +65,6 @@
 
 // New modern design
 @import "modern";
+
+// Updated CSS files
+@import "areas/areas";

@@ -1,17 +1,27 @@
-%h1
+
+= link_to members_control_panel_path do
+  .samf-button.plain.mb-3
+    = t("common.back")
+
+%h1.mb-2
   = @admission.title
-.section
-  %p
-    = link_to t("admissions_admin.show_interested_other_positions")+"...", admissions_admin_admission_show_interested_other_positions_path(@admission)
-    %br
-    = link_to t("admissions_admin.show_unflagged_applicants")+"...", admissions_admin_admission_show_unflagged_applicants_path(@admission)
-.section
-  %h2= set_and_return_title T('admissions.my_groups')
-  %ul
-    - @my_groups.sort.each do |group|
-      %li
-        = link_to admissions_admin_admission_group_path(@admission, group) do
-          = group.name
-    - if @my_groups.empty?
-      %li
-        %p= t('admissions.no_groups')
+.flex-column
+  = link_to admissions_admin_admission_show_interested_other_positions_path(@admission) do
+    .samf-button.blue.small.mb-2
+      = t("admissions_admin.show_interested_other_positions")+"..."
+  = link_to admissions_admin_admission_show_unflagged_applicants_path(@admission) do
+    .samf-button.blue.small
+      = t("admissions_admin.show_unflagged_applicants")+"..."
+
+
+%h1.mt-3.mb-2
+  = set_and_return_title T('admissions.my_groups')
+
+.flex-row.wrap
+  - @my_groups.sort.each do |group|
+    = link_to admissions_admin_admission_group_path(@admission, group) do
+      .samf-button.plain.small.mb-2.mr-2
+        = group.name
+  - if @my_groups.empty?
+    %li
+      %p= t('admissions.no_groups')

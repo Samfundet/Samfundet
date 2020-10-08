@@ -1,37 +1,38 @@
 - set_title t('roles.title')
 
-.section
-  %h1
-    = t('roles.heading')
-  .flex-row.mb-3
-    = link_to members_control_panel_path do
-      .samf-button.plain.mr-2
-        = t("common.back")
+= link_to members_control_panel_path do
+  .samf-button.plain.mb-3
+    = t("common.back")
 
-    = link_to one_year_old_roles_path do
-      .samf-button.plain.mr-2
-        = t('roles.one_year_old_title')
-    - if can?(:create, Role)
-      = link_to new_role_path do
-        .samf-button.green.mr-2
-          = t('roles.create_role')
-  %br
+%h1
+  = t('roles.heading')
 
-  %table.table-highlight-rows
-    %thead
-      %tr
-        %th= t('roles.role_title')
-        %th= t('roles.role_description')
-        %th
-          &nbsp;
-    - @roles.each do |role|
-      %tr
-        %td
-          = link_to role_path role do
-            = role.title
-        %td
-          = role.description
-        %td
-          - if can?(:edit, Role)
-            = link_to t('roles.edit_role'), edit_role_path(role)
+.flex-row.mb-3
+  = link_to one_year_old_roles_path do
+    .samf-button.plain.mr-2
+      = t('roles.one_year_old_title')
+  - if can?(:create, Role)
+    = link_to new_role_path do
+      .samf-button.green.mr-2
+        = t('roles.create_role')
+
+%table
+  %thead
+    %tr
+      %th= t('roles.role_title')
+      %th= t('roles.role_description')
+      %th
+        &nbsp;
+  - @roles.each do |role|
+    %tr
+      %td
+        = link_to role_path role do
+          = role.title
+      %td
+        = role.description
+      %td
+        - if can?(:edit, Role)
+          = link_to edit_role_path(role) do
+            .samf-button.blue.small
+              = t('roles.edit_role')
 

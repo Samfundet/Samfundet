@@ -1,19 +1,16 @@
 
+= link_to members_control_panel_path do
+  .samf-button.plain.mr-2
+    = t("common.back")
+
 %h1.mb-2.mt-2
   = t("blogs.admin_applet.administrate")
 
 .flex-row.mb-3
-  = link_to members_control_panel_path do
-    .samf-button.plain.mr-2
-      = t("common.back")
-
   - if can? :new, Blog
     = link_to new_blog_path do
       .samf-button.green
         = t('blogs.admin_applet.new_blog')
-
-%br
-%br
 
 %table
   %thead
@@ -46,7 +43,11 @@
             = t('blogs.admin_applet.no_time_certified')
 
         %td
-          = link_to t("crud.edit"), edit_blog_path(article)
+          = link_to edit_blog_path(article) do
+            .samf-button.blue.small
+              = t("crud.edit")
         %td
           - if can? :destroy, article
-            = link_to t("crud.destroy"), article, data: { confirm: t("crud.confirm") }, method: :delete
+            = link_to article, data: { confirm: t("crud.confirm") }, method: :delete do
+              .samf-button.small
+                =  t("crud.destroy")

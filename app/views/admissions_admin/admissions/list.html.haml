@@ -1,14 +1,11 @@
 -set_title t('admissions.closed_admissions')
 
-%h1.mb-2.mt-2
+= link_to members_control_panel_path do
+  .samf-button.plain.mr-2
+    = t("common.back")
+
+%h1.mb-2.mt-3
   = t("admissions.closed_admissions")
-
-.flex-row.mb-3
-  = link_to members_control_panel_path do
-    .samf-button.plain.mr-2
-      = t("common.back")
-
-%br
 
 - if AdmissionsAdminAbility.new(current_user).can?(:show, Admission)
   .section

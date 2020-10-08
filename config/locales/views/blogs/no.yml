@@ -3,7 +3,7 @@
     admin_applet:
       title: Blogginnlegg
       new_blog: Nytt innlegg
-      administrate: Administrer blogginlegg
+      administrate: Administrer blogginnlegg
 
       future_categories: Framtidige kategorier
       written_by: Skrevet av
