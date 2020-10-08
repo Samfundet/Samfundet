@@ -6,6 +6,7 @@ en:
     application_deadline: "Application deadline"
     back_to_overview: "Back to the job overview"
     show_all_applications: "Show all applications"
+    all_applications: "All applications"
     check_back_at_start_of_term: "Ordinary admissions are held at Samfundet at the beginning of each term. Stay tuned on this page!"
     closed_admissions: "Closed admissions"
     create_admission: "Create admission"

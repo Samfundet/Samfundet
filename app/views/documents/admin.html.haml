@@ -36,7 +36,11 @@
             %td= document.uploader.full_name
             %td
               - if can? :edit, document
-                = link_to t('crud.edit'), edit_document_path(document)
+                = link_to edit_document_path(document) do
+                  .samf-button.small.blue
+                    = t('crud.edit')
             %td
               - if can? :destroy, document
-                = link_to t('crud.destroy'), document, data: { confirm: t('documents.confirm_delete') }, method: :delete
+                = link_to document, data: { confirm: t('documents.confirm_delete') }, method: :delete do
+                  .samf-button.small
+                    = t('crud.destroy')

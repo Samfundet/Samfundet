@@ -13,7 +13,7 @@
   = t("interviews.administer_interviews")
 
 %h2
-  = t('interviews.job_title', job: @job.title)
+  = t('interviews.job_title', job: @job.title) + " - " + @group.name
 
 = render 'jobs_show', job_application_groupings: [@job.job_applications], show_job_titles: false
 
