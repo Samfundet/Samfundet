@@ -4,13 +4,10 @@
   .samf-button.plain.mb-3
     = T('common.back')
 
-%h1.mt-3
+%h1.mt-3.mb-2
   = @group.name
   &ndash;
   = @admission.title
-
-%h2.mb-3.mt-3
-  = t("jobs.job")
 
 .flex-row.mb-3
   - if can?(:create, Job)
@@ -25,8 +22,8 @@
   %thead
     %tr
       %th= t('groups.job_title')
-      %th= t('groups.applicants')
       %th= t('groups.job_type')
+      %th= t('groups.applicants')
       %th
       %th
       - if @should_show_delete_button
@@ -38,12 +35,12 @@
           = link_to admissions_admin_admission_group_job_path(@admission, @group, job) do
             = job.title
         %td
-          = job.job_applications.count
-        %td
           - if job.is_officer
             = t('common.officer')
           - else
             = t('common.group_member')
+        %td
+          = job.job_applications.count
         %td{:style => "float:right;"}
           - if can?(:edit, Job, job)
             != link_to edit_admissions_admin_admission_group_job_path(@admission, @group, job) do
