@@ -90,6 +90,7 @@ class Sulten::Reservation < ApplicationRecord
   def self.find_table(from, to, people, reservation_type_id)
     (1..Sulten::ReservationType.count).each do |i|
       Sulten::Table.where('capacity >= ? and available = ?', people, true).order('capacity ASC').tables_with_i_reservation_types(i).find do |t|
+        puts(t)
         next unless t.reservation_types.pluck(:id).include? reservation_type_id
         if t.reservations.where('reservation_from > ? or reservation_to < ?', to, from).count == t.reservations.count
           return t
@@ -114,20 +115,7 @@ class Sulten::Reservation < ApplicationRecord
           next if times_to_check.exclude? time_step
           reservation_from = Time.zone.at(time_step)
           reservation_to = Time.zone.at(time_step + duration.minutes)
-
-          busy_start = t.reservations.where('reservation_from >= ? and reservation_from < ?',
-                                            reservation_from,
-                                            reservation_to).any?
-
-          busy_end = t.reservations.where('reservation_to > ? and reservation_to < ?',
-                                          reservation_from,
-                                          reservation_to).any?
-
-          busy_table = busy_start || busy_end
-          unless busy_table
-            possible_times.push(reservation_from.utc)
-            times_to_check.delete(time_step)
-          end
+          self.find_table(reservation_from, reservation_to, people, type_id)
         end
       end
     end
