@@ -22,7 +22,7 @@ class Sulten::LycheController < Sulten::BaseController
       puts(request[:reservation_from])
       puts(request[:reservation_type_id])
       puts(request[:people])
-      @available_times = Sulten::Reservation.find_available_times(request[:reservation_from], 150, request[:people].to_i, request[:reservation_type_id].to_i)
+      @available_times = Sulten::Reservation.find_available_times(request[:reservation_from], 120, request[:people].to_i, request[:reservation_type_id].to_i)
       puts(@available_times)
     end
   end
