@@ -1,8 +1,9 @@
-.image-list
+.flex-row.wrap
   - if @images.present?
     - @images.each do |image|
-      = link_to image, class: 'image', data: { image: image.id, url: image.image_file.url } do
-        = "#{image.title}, tags: (#{image.tagstring})"
-        = background_image_helper 'image-archive-image', image.image_file, size: :medium
+      = link_to image, class: 'image-container', data: { image: image.id, url: image.image_file.url } do
+        .image{:style => "background-image: url(#{image.image_file});"}
+          .title= "#{image.title}"
+          .tags= "#{image.tagstring}"
   - else
     %p= t('search.no_results')

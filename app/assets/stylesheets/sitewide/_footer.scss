@@ -51,7 +51,7 @@
         padding-top: 35px;
 
         @include outer-container;
-
+      
         ul {
             list-style-type: none;
             padding-left: 0;
@@ -92,7 +92,10 @@
 
         }
 }
-
+#footer-separator {
+  width: 100%;
+  border-bottom: 1px solid rgb(230,230,230);
+}
 #sponsors{
   font-size: 20px;
   font-weight: $font-weight-normal;
@@ -100,11 +103,20 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+  color: rgb(150,150,150);
+  max-width: 100%;
+  overflow-x: hidden;
+  padding-top: 1em;
+  background-color: rgba(255,255,255,0.9);
+  z-index: 1;
+  @include media($mobile) {
+    flex-direction: column;
+  }
 
   #mainsponsor, #partners, #othersponsors{
-    @include media($tablet-desktop) {
-      display: inline-block;
-    }
+
+    padding-left: 1em;
+    padding-right: 1em;
 
     .horizontal-flex {
       display: flex;
@@ -112,7 +124,6 @@
       align-items: center;
       flex-wrap: wrap;
       justify-content: center;
-      margin-top: 20px;
     }
 
     .trondheim-kommune-container {
@@ -178,17 +189,6 @@
         }
 
       }
-    }
-  }
-  #mainsponsor{
-    @include media($tablet-desktop) {
-      padding-right: 80px;
-    }
-  }
-  #othersponsors{
-    @include media($tablet-desktop) {
-      padding-right: 130px;
-      padding-left: 80px;
     }
   }
 }

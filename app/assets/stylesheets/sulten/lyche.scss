@@ -394,14 +394,6 @@ body.lyche {
     padding: 1em;
     border-radius: 8px;
 
-    table, tr, td, th {
-      border-width: 0;
-      background: #111;
-    }
-    td.title {
-      color: #fbb042;
-      font-family: "LemonMilkLight", sans-serif;
-    }
 
     .open-hours-title {
       color: black;
@@ -414,6 +406,15 @@ body.lyche {
       font-size: 1.2em;
       padding: .5em;
       color: dimgray;
+      table, tr, td, th {
+        border-width: 0;
+        background: #111;
+        color: white;
+      }
+      td.title {
+        color: #fbb042;
+        font-family: "LemonMilkLight", sans-serif;
+      }
     }
 
     .action-container {

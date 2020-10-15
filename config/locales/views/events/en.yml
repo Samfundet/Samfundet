@@ -171,6 +171,7 @@ en:
         primary_color: Primary color
         secondary_color: Secondary color
         banner_alignment: Text alignment
+        banner_description: Hide is recommended. Use banner options only when the image does not contain a name.
         duration: Duration
         publication_time: Publication time
         free: Free
