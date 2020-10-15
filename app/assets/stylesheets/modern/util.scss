@@ -58,6 +58,9 @@
 .br-2 {border-radius: .5em;}
 .br-3 {border-radius: 1em;}
 
+// Background-color
+.background-color.red {background-color: $samfundet-red;}
+
 //Box Shadow
 .bxs {box-shadow: 2px 2px 15px 4px rgba(0,0,0,0.1);}
 
@@ -69,4 +72,3 @@ hr {
   margin-top: 1.5em;
   margin-bottom: 1.5em;
 }
-

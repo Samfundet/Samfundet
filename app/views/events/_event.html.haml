@@ -1,20 +1,13 @@
-%tr
-  %td.event-title
+.flex-row.mb-2.mt-2
+  .p-1.ml-3{style:"flex-basis: 30%;"}
     = link_to event.title, event
 
-  %td.event-area-start-time
+  .p-1{style:"flex-basis: 17.5%;"}
     = from_to_string event
-    %br
+
+  .p-1{style:"flex-basis: 17.5%;"}
     = area_link event.area
-
-  %td.event-start-time
-    = from_to_string event
-
-  %td.event-area
-    = area_link event.area, event.area_title
-
-  %td.event-price
+  .p-1{style:"flex-basis: 25%;"}
     = inline_event_price event
-
-  %td.event-buy
+  .p-1.ml-3{style:"flex-basis: 10%;"}
     = render "buy_button", event: event
