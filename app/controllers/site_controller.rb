@@ -17,6 +17,17 @@ class SiteController < ApplicationController
     else
       @show_admissions_animation = false
     end
+
+    # Catch session token for ticket purchase errors redirecting to index
+    if params[:bsession].present?
+      payment_error = BilligPaymentError.where(error: params[:bsession]).first
+      if payment_error.blank?
+        flash[:error] = t('events.purchase_generic_error')
+      else
+        flash[:error] = payment_error.message
+      end
+    end
+
   end
 
 private
