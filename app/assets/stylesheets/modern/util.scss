@@ -11,6 +11,13 @@
   text-align: center;
 }
 
+.title.red{
+  color: white;
+  margin:0;
+  border-radius:0.25em 0.25em 0 0;
+  text-transform: uppercase;
+}
+
 // Padding
 .p-1 { padding: .25em; }
 .p-2 { padding: .5em; }

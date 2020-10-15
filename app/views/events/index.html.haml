@@ -1,15 +1,16 @@
 - cache cache_key_for_events_index(@events) do
-  %h1
+  %h1.text-Align
     = t("navigation.main.events")
 
-  = render 'search_form', post_path: search_events_path
+  .text-Align
+    = render 'search_form', post_path: search_events_path
 
   .ajax-search
 
-  .flex-column
+  .flex-column.mobile-event
     - @events.group_by {|i| i.start_time.to_date }.sort.each do |date, events|
       %div.samf-container.white.m-3{style: "padding-top: 0;"}
-        %h2.text-Align.p-1.background-color.red{style:"color: white; margin:0; border-radius:0.5em 0.5em 0 0;"}= l(date, format: :medium_long)
+        %h2.text-Align.p-1.background-color.red.title.red= l(date, format: :medium_long)
         %tbody
           = render events.sort_by{|event| event.start_time}
 
