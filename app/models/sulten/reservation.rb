@@ -93,7 +93,7 @@ class Sulten::Reservation < ApplicationRecord
         next unless t.reservation_types.pluck(:id).include? reservation_type_id
         # We add 30 minutes before and after the reservation because Lyche wants time between reservations to clean up!
         if t.reservations.where('reservation_from >= ? or reservation_to <= ?', to + 30.minutes , from - 30.minutes).count == t.reservations.count
-          return from
+          return (from.to_s)[10, 14] + " - " + (to.to_s)[10, 14]
         end
       end
     end
@@ -103,7 +103,11 @@ class Sulten::Reservation < ApplicationRecord
   def self.find_available_times(date, duration, people, type_id)
     now = Time.parse(date)
     default_open = now.change(hour: 16, min: 0, sec: 0)
-    default_close = now.change(hour: 21, min: 0, sec: 0)
+    if (date.to_datetime).friday? or (date.to_datetime).saturday?
+      default_close = now.change(hour: 20, min: 0, sec: 0)
+    else
+      default_close = now.change(hour: 21, min: 0, sec: 0)
+    end
     puts("testtimer")
     puts(default_close-default_open)
     possible_times = []

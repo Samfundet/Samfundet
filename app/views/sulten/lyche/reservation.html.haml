@@ -49,7 +49,7 @@
     %p
       = @times = []
       = @available_times.each do |f|
-        = @times.push(f.strftime("%H:%M"))
+        = @times.push(f)
       = "HEI DER"
       = semantic_form_for @reservation, :html => { :class => "custom-form lyche_form"} do |f|
         = f.inputs do
