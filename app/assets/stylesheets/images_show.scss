@@ -1,7 +1,7 @@
 #content.images, .modal {
 
   .existing-results, .ajax-results {
-    .image-container {
+    .image {
       flex-basis: calc(33.333% - 1em);
 
       @media only screen and (max-width: 900px) {
@@ -21,7 +21,7 @@
       min-height: 300px;
       transition: .2s;
 
-      .image {
+      .image-inner {
 
         width: 100%;
         height: 100%;
