@@ -93,8 +93,7 @@ class Sulten::Reservation < ApplicationRecord
         next unless t.reservation_types.pluck(:id).include? reservation_type_id
         # We add 30 minutes before and after the reservation because Lyche wants time between reservations to clean up!
         if t.reservations.where('reservation_from >= ? or reservation_to <= ?', to + 30.minutes , from - 30.minutes).count == t.reservations.count
-          puts(String(from))
-          return from
+          return (from.to_s)[10,14] + " - " + (to.to_s)[10,14]
         end
       end
     end
@@ -104,7 +103,7 @@ class Sulten::Reservation < ApplicationRecord
   def self.find_available_times(date, duration, people, type_id)
     now = Time.parse(date)
     default_open = now.change(hour: 16, min: 0, sec: 0)
-    default_close = now.change(hour: 23, min: 0, sec: 0)
+    default_close = now.change(hour: 21, min: 0, sec: 0)
     puts("testtimer")
     puts(default_close-default_open)
     possible_times = []
@@ -114,24 +113,8 @@ class Sulten::Reservation < ApplicationRecord
       return possible_times if times_to_check.empty?
       next if times_to_check.exclude? time_step
       reservation_from = Time.zone.at(time_step)
-      if String(reservation_from).ends_with? "21:30"
-        puts(duration)
-        duration = duration - 30
-        reservation_to = Time.zone.at(time_step + duration.minutes)
-        t =self.find_table(reservation_from, reservation_to, people, type_id)
-      elsif String(reservation_from).ends_with? "22:00"
-        puts(duration)
-        duration = duration - 30
-        reservation_to = Time.zone.at(time_step + duration.minutes)
-        t = self.find_table(reservation_from, reservation_to, people, type_id)
-      elsif String(reservation_from).ends_with? "22:30"
-        puts("nothing")
-      elsif String(reservation_from).ends_with? "23:00"
-        puts("nothing")
-      else
-        reservation_to = Time.zone.at(time_step + duration.minutes)
-        t = self.find_table(reservation_from, reservation_to, people, type_id)
-      end
+      reservation_to = Time.zone.at(time_step + duration.minutes)
+      t = self.find_table(reservation_from, reservation_to, people, type_id)
       if t
         possible_times.insert(-1, t)
       end
