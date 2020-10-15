@@ -44,7 +44,11 @@
   .sections {
 
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+
+    @include media($mobile) {
+      flex-direction: column;
+    }
 
     .opening-hours, .events-today {
 
@@ -68,7 +72,7 @@
 
       table {
         margin: 20px auto;
-        width: 100%;
+        width: 50%;
 
         @include media($not-mobile) {
           width: auto;
@@ -116,7 +120,7 @@
   }
 
   .opening-hours {
-    display: none;
+    display: block;
 
     .everything-closed {
       margin-left: 10px;
@@ -170,4 +174,6 @@
       margin: 1em;
     }
   }
+
+
 }
