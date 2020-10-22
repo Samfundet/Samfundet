@@ -1,7 +1,9 @@
 /* Datepicker for lyche reservation form */
 
 $(function() {
-    $('#lyche-datepicker').datepicker({
+    $('#lyche-datepicker').datepicker( {
+        monthNames: [ "Januar", "Februar", "Marts", "April", "Maj", "Juni", "Juli", "August", "September", "Oktober", "November", "December" ],
+        maxDate: new Date(2020, 1 - 1, 1),
         dateFormat: 'dd-mm-yy',
         onSelect: function(dateText) {
             var path = window.location.href

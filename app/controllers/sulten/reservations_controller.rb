@@ -31,8 +31,20 @@ class Sulten::ReservationsController < Sulten::BaseController
   end
 
   def create
+    date = reservation_params[:reservation_from]
+    time = reservation_params[:reservation_duration]
+    hour, min = time.split(":").map(&:to_i)
+    datetime = date.to_time.change({hour: hour, min: min})
+
+    # New reservation_params because reservation_from has to be a datetime
+    params = {"people"=> reservation_params[:people], "reservation_from"=>datetime,
+              "reservation_duration"=>"180", "name"=>reservation_params[:name],
+              "reservation_type_id"=>reservation_params[:reservation_type_id],
+              "telephone"=>reservation_params[:telephone], "email"=>reservation_params[:email],
+              "allergies"=>reservation_params[:allergies], "gdpr_checkbox"=>reservation_params[:gdpr_checkbox]}
+
     @closed_periods = Sulten::ClosedPeriod.current_and_future_closed_times.sort_by(&:closed_from)
-    @reservation = Sulten::Reservation.new(reservation_params)
+    @reservation = Sulten::Reservation.new(params)
     if @reservation.reservation_is_one_day_in_future
       redirect_to sulten_reservation_failure_day_path
     elsif @reservation.in_closed_period?

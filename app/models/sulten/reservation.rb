@@ -100,9 +100,17 @@ class Sulten::Reservation < ApplicationRecord
     nil
   end
 
-  def self.testfunction(reservation_from)
-    puts("TEST3:", reservation_from)
-    reservation_from
+  def self.find_times(reservation_from, people, reservation_type_id)
+    now = Time.parse(reservation_from)
+    default_open = now.change(hour: 16, min: 0, sec: 0)
+    default_close = now.change(hour: 22, min: 0, sec: 0)
+    possible_times = []
+    (1..Sulten::ReservationType.count).each do |i| #fra 1 til ant. reservasjonstyper
+      #Finn bord der capacity >= people og ledig, sorter etter størrelse, og for hver av bord typene
+      Sulten::Table.where('capacity >= ? and available = ?', people, true).order('capacity ASC').tables_with_i_reservation_types(i).find do |t|
+        t.reservations
+      end
+    end
   end
 
   def self.find_available_times(reservation_from, duration, people, reservation_type)

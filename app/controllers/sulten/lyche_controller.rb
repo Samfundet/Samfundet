@@ -12,7 +12,7 @@ class Sulten::LycheController < Sulten::BaseController
   end
 
   def reservation
-    @test = Sulten::Reservation.testfunction(params[:reservation_from].to_s)
+
     @closed_periods = Sulten::ClosedPeriod.current_and_future_closed_times.sort_by(&:closed_from)
     unless @closed_periods.empty?
       # Show only if less than 60 days in future
@@ -26,13 +26,12 @@ class Sulten::LycheController < Sulten::BaseController
 
     request = params[:sulten_reservation]
 
-    puts("HALLA")
-    puts(request)
-
     if not request.nil?
-
-      @available_times = Sulten::Reservation.find_available_times(request[:reservation_from], params[:duration].to_i, request[:people].to_i, request[:reservation_type_id].to_i)
-      puts("HER", @available_times)
+      available_times = Sulten::Reservation.find_available_times(request[:reservation_from], params[:duration].to_i, request[:people].to_i, request[:reservation_type_id].to_i)
+      @times = available_times.map { |a| a.strftime("%H:%M") }
+      @reservation_type = request[:reservation_type_id]
+      @number_of_guests = request[:people]
+      @reservation_date = request[:reservation_from]
     end
   end
 

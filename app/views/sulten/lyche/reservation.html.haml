@@ -19,8 +19,8 @@
       %i
         = "Lyche holder stengt i perioden " + l(c.closed_from, format: :short_date) + " - " + l(c.closed_to, format: :short_date)
       %br
-
-  - if @available_times.nil?
+  -# If there is available times for chosen date, show the rest of the form
+  - if @times.nil?
     = semantic_form_for @reservation, :url => {:controller => "lyche", :action => "reservation" }, :html => { :class => "custom-form lyche_form"}, data: {type: 'json'} do |f|
       = f.inputs do
         = f.input :reservation_type, label: t("sulten.reservation.reservation_type")
@@ -40,22 +40,24 @@
 
         = f.input :reservation_from, label: "Dato", input_html: { class: "datepicker", value: @reservation.reservation_from}, as: :string
 
-        -# = f.input :reservation_from, placeholder: t("sulten.reservation.placeholder_date"), label: t("sulten.reservation.form.from"), input_html: { class: "datetimepicker_lyche"}, as: :string
-        -# = f.input :reservation_duration, label: t("sulten.reservation.form.duration"), collection: [60, 90, 120, 150, 180], member_label: proc{|d| "#{d} minutter"}, include_blank: false, selected: 60
-
         .form-divider
         = f.actions do
           = f.submit "Finn ledige tidspunkt"
   - else
-    = @available_times.each do |f|
-      = @times = []
-      = @times.push(f.strftime("%H:%M"))
-      = puts(@times)
-      = # Legg alle tidspunktene i en liste, legg listen inn i input/form slik at man kan velge inputet.
 
     = semantic_form_for @reservation, :html => { :class => "custom-form lyche_form"} do |f|
+      .reservation-info
+        = "Antall gjester: " + @number_of_guests
+        %br
+        = "Valgt dato: " + @reservation_date
       = f.inputs do
-        = f.input :reservation_duration, label: "Tidspunkt", collection: @times, member_label: proc{|d| "#{d} "}, include_blank: false, selected: 60
+        = f.input :reservation_type_id,  input_html: {value: @reservation_type}, as: :hidden
+        = f.input :people, input_html: {value: @number_of_guests}, as: :hidden
+        = f.input :reservation_from, label: "Dato", input_html: { value: @reservation_date}, as: :hidden
+
+
+        = f.input :reservation_duration, label: "Tidspunkt*", collection: @times, member_label: proc{|d| "#{d} "}, include_blank: false
+        .form-divider
         = f.input :name, label: t("sulten.reservation.name")
         = f.input :telephone, label: t("sulten.reservation.telephone")
         = f.input :email, label: t("sulten.reservation.email")
