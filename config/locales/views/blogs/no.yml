@@ -14,5 +14,8 @@
       no_time_certified: Intet tidspunkt sertifisert
 
     new:
-      blog_post: Bloginnlegg
+      blog_post: Blogginnlegg
+
+    new_blog: Nytt blogginnlegg
+    edit_blog: Rediger blogginnlegg
 
