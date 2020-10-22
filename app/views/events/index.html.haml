@@ -10,7 +10,7 @@
   .flex-column.mobile-event
     - @events.group_by {|i| i.start_time.to_date }.sort.each do |date, events|
       %div.samf-container.white.m-3{style: "padding-top: 0;"}
-        %h2.text-Align.p-1.background-color.red.title.red= l(date, format: :medium_long)
+        %h2.text-Align.p-1.background-color.red.title.white= l(date, format: :medium_long)
         %tbody
           = render events.sort_by{|event| event.start_time}
 

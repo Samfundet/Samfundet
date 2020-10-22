@@ -1,6 +1,6 @@
 - admission.group_types.sort_by(&:description).each do |group_type|
   .samf-container.white.m-3.pb-2.br-3.bxs
-    %h2.text-Align.p-1.background-color.red.title.red= group_type.description
+    %h2.text-Align.p-1.background-color.red.title.white= group_type.description
     - group_type.groups.each do |group|
       - group.jobs_in_admission(admission).sort_by(&:title).each do |job|
         .m-3.br-2.pb-2{ id: "#{admission.to_param}/#{group.to_param}"}
