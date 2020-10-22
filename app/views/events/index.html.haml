@@ -14,11 +14,11 @@
         %tbody
           = render events.sort_by{|event| event.start_time}
 
-.flex-column
+.flex-column.mt-3
   %a.samf-button.blue.center.mb-3{ href: archive_events_path, title: t('events.archive.title')}
     = t('events.archive.title')
-  .center
-    %a.samf-button.blue.mr-3{ href: '/rss', title: t('events.rss_alt_text')}
+  .center.flex-row
+    %a.samf-button.plain.mr-2{ href: '/rss', title: t('events.rss_alt_text')}
       = t('events.rss_short_text')
-    %a.samf-button.blue.ml-3{ href: '/arrangement/ical', title: t('events.ical_alt_text')}
+    %a.samf-button.plain.ml-2{ href: '/arrangement/ical', title: t('events.ical_alt_text')}
       = t('events.ical_short_text')
