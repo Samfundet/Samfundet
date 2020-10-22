@@ -12,4 +12,9 @@ class AdmissionsAdmin::ApplicantsController < AdmissionsAdmin::BaseController
     @admission = Admission.find(params[:admission_id])
     @applicants = Applicant.unflagged_applicants(@admission)
   end
+
+  def send_rejection_email
+    AdmissionRejectionMailer.send_rejection_email("test")
+    puts "Button calls controller function"
+  end
 end
