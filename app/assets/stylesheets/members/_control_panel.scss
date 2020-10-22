@@ -42,6 +42,7 @@
       }
       @media only screen and (max-width: 600px) {
         flex-basis: 100%;
+        min-height: 0;
       }
 
       ul {
