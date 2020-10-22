@@ -11,8 +11,6 @@ class AdmissionRejectionMailer < ActionMailer::Base
     }
   end
 
-
-
   def send_rejection_email(applicant)
     puts "Controller calls mailer"
     @applicant = applicant

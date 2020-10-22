@@ -14,7 +14,8 @@ class AdmissionsAdmin::ApplicantsController < AdmissionsAdmin::BaseController
   end
 
   def send_rejection_email
-    AdmissionRejectionMailer.send_rejection_email("test")
+    AdmissionRejectionMailer.send_rejection_email("test").deliver
+    redirect_to admissions_path
     puts "Button calls controller function"
   end
 end
