@@ -8,6 +8,7 @@
   text-transform: uppercase;
   cursor: pointer;
 
+
   @include span-columns(12);
   @include media($tablet-desktop) {
     display: none;
@@ -17,6 +18,8 @@
 
 .show-menu-content {
   display: block !important;
+  max-width: 95vw !important;
+
 }
 
 .wide {

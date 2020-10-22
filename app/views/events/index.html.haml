@@ -1,29 +1,24 @@
 - cache cache_key_for_events_index(@events) do
-  %h1
+  %h1.text-Align
     = t("navigation.main.events")
 
-  = render 'search_form', post_path: search_events_path
+  .text-Align
+    = render 'search_form', post_path: search_events_path
 
   .ajax-search
 
-  .upcoming-events
+  .flex-column.mobile-event
     - @events.group_by {|i| i.start_time.to_date }.sort.each do |date, events|
-      .event-group
-        %h2= l(date, format: :medium_long)
-        %table.custom-table
-          %tbody
-            = render events.sort_by{|event| event.start_time}
+      %div.samf-container.white.m-3{style: "padding-top: 0;"}
+        %h2.text-Align.p-1.background-color.red.title.white= l(date, format: :medium_long)
+        %tbody
+          = render events.sort_by{|event| event.start_time}
 
-
-  .bottom-links
-    %a{ href: archive_events_path, title: t('events.archive.title')}
-      = image_tag("archive.svg")
-      = t('events.archive.title')
-    %a{ href: '/rss', title: t('events.rss_alt_text')}
-      = image_tag("rss.svg")
+.flex-column
+  %a.samf-button.blue.center.mb-3{ href: archive_events_path, title: t('events.archive.title')}
+    = t('events.archive.title')
+  .center
+    %a.samf-button.blue.mr-3{ href: '/rss', title: t('events.rss_alt_text')}
       = t('events.rss_short_text')
-    %a{ href: '/arrangement/ical', title: t('events.ical_alt_text')}
-      = image_tag("calendar.svg")
+    %a.samf-button.blue.ml-3{ href: '/arrangement/ical', title: t('events.ical_alt_text')}
       = t('events.ical_short_text')
-
-
