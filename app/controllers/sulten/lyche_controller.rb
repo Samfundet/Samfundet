@@ -19,11 +19,8 @@ class Sulten::LycheController < Sulten::BaseController
       request = params[:sulten_reservation]
       print(request)
     if not request.nil?
-      puts(request[:reservation_from])
-      puts(request[:reservation_type_id])
-      puts(request[:people])
+      @selected_date = request[:reservation_from]
       @available_times = Sulten::Reservation.find_available_times(request[:reservation_from], 120, request[:people].to_i, request[:reservation_type_id].to_i)
-      puts(@available_times)
     end
   end
 

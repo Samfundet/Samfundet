@@ -51,13 +51,15 @@
       = @available_times.each do |f|
         = @times.push(f)
       = "HEI DER"
+      = @selected_date
       = semantic_form_for @reservation, :html => { :class => "custom-form lyche_form"} do |f|
         = f.inputs do
           = f.input :reservation_duration, label: "Tidspunkt*", collection: @times, member_label: proc{|d| "#{d} "}, include_blank: false
           = f.input :name, label: t("sulten.reservation.name")
           = f.input :telephone, label: t("sulten.reservation.telephone")
           = f.input :email, label: t("sulten.reservation.email")
-          .form-divider
+          = f.hidden_field :reservation_from, value: @selected_date
+          .form-divid
           = f.input :allergies, label: t("sulten.reservation.other_messages")
           %br
           .gdpr_checkbox
