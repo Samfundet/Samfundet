@@ -11,18 +11,14 @@
   text-align: center;
 }
 
-.title.white{
-  color: $samfundet-white;
+.title {
   margin:0;
   border-radius:0.25em 0.25em 0 0;
   text-transform: uppercase;
 }
 
-.title.red{
-  color: $samfundet-red;
-  margin:0;
-  border-radius:0.25em 0.25em 0 0;
-  text-transform: uppercase;
+.title.white {
+  color: $samfundet-white;
 }
 
 
@@ -74,7 +70,8 @@
 .br-3 {border-radius: 1em;}
 
 // Background-color
-.background-color.red {background-color: $samfundet-red;}
+.bg-red {background-color: $samfundet-red;}
+.bg-blue {background-color: $samfundet-blue;}
 
 //Box Shadow
 .bxs {box-shadow: 2px 2px 15px 4px rgba(0,0,0,0.1);}

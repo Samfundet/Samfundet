@@ -1,5 +1,5 @@
 .text-Align
-  %h2.title.red
+  %h2{style:"color: $samfundet-red"}
     - if admissions.any?
       = t('admissions.admission_not_yet_open')
       = admissions.upcoming.first.shown_from
