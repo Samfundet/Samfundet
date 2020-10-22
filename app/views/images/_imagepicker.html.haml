@@ -1,4 +1,4 @@
-= f.inputs name: t('events.forms.labels.images') do
+= f.inputs name: t('events.forms.labels.image') do
   = f.input :image_id, as: :hidden, input_html: { value: Image.image_for(f.object).id, class: 'image_id_input' }
   = image_tag Image.image_for(f.object).image_file.url, class: 'image-preview'
 

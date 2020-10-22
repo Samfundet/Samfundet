@@ -1,6 +1,6 @@
 = semantic_form_for @event do |f|
   - if @event.new_record?
-    = f.inputs t('events.forms.labels.existing') do
+    = f.inputs do
       %li
         = f.label t("events.forms.labels.create_from_existing")
         = text_field_tag :create_from_existing, nil, class: :typeahead
