@@ -38,7 +38,7 @@ class Sulten::ReservationsController < Sulten::BaseController
 
     # New reservation_params because reservation_from has to be a datetime
     params = {"people"=> reservation_params[:people], "reservation_from"=>datetime,
-              "reservation_duration"=>"180", "name"=>reservation_params[:name],
+              "reservation_duration"=>"120", "name"=>reservation_params[:name],
               "reservation_type_id"=>reservation_params[:reservation_type_id],
               "telephone"=>reservation_params[:telephone], "email"=>reservation_params[:email],
               "allergies"=>reservation_params[:allergies], "gdpr_checkbox"=>reservation_params[:gdpr_checkbox]}
