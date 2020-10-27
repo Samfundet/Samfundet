@@ -38,7 +38,7 @@ class Sulten::ReservationsController < Sulten::BaseController
 
     # New reservation_params because reservation_from has to be a datetime
     params = {"people"=> reservation_params[:people], "reservation_from"=>datetime,
-              "reservation_duration"=>"180", "name"=>reservation_params[:name],
+              "reservation_duration"=>"120", "name"=>reservation_params[:name],
               "reservation_type_id"=>reservation_params[:reservation_type_id],
               "telephone"=>reservation_params[:telephone], "email"=>reservation_params[:email],
               "allergies"=>reservation_params[:allergies], "gdpr_checkbox"=>reservation_params[:gdpr_checkbox]}
@@ -79,7 +79,7 @@ class Sulten::ReservationsController < Sulten::BaseController
   end
 
   def available
-    @available_times = Sulten::Reservation.find_available_times(params[:date], params[:duration].to_i, params[:people].to_i, params[:type_id].to_i)
+    @available_times = Sulten::Reservation.find_available_times(params[:date], params[:people].to_i, params[:type_id].to_i)
     render json: available_times
   end
 
