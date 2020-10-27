@@ -3,8 +3,9 @@
 - set_twitter_params({ card: "summary_large_image", title: @event.title, description: @event.short_description, "image:src" => asset_url(@event.image_or_default.url(:large)) })
 = render 'site/banner_image', banner_event: @event
 
-- cache cache_key_for_event_show(@event) do
-  = render 'admin_choices'
+.text-Align
+  - cache cache_key_for_event_show(@event) do
+    = render 'admin_choices'
 
   .text-Align.title
     %h2= @event
@@ -14,17 +15,18 @@
       = render 'events/corner_ribbon', event: @event
 
   .flex-row.center
-    %table.custom-table{style:"border-collapse: collapse;"}
+    %table.custom-table.up-ca{style:"border-collapse: collapse;"}
       %tr
-        %td.bw-r= t('events.area')
-        %td.p-2= area_link @event.area, @event.area_title
+        %td.bw-r.thin= t('events.area')
+        //If problems add ", @event.area_title"
+        %td.p-2= area_link @event.area
 
       %tr
-        %td.bw-r= t('events.organizer')
+        %td.bw-r.thin= t('events.organizer')
         %td.p-2= organizer_link @event
 
       %tr
-        %td.bw-r= t('time.date')
+        %td.bw-r.thin= t('time.date')
         - if (@event.start_time.year == Time.current.year)
           %td.p-2
             = l(@event.start_time, format: :short_datetime)
@@ -32,21 +34,21 @@
           %td.p-2
             = l(@event.start_time, format: :long_datetime)
       %tr
-        %td.bw-r= t('time.time')
+        %td.bw-r.thin= t('time.time')
         %td.p-2= from_to_string @event
 
       %tr
-        %td.bw-r= t('events.ticket')
+        %td.bw-r.thin= t('events.ticket')
         %td.p-2= inline_event_price @event
 
       - if @event.ticket_limit?
         %tr
           - pluralize = @event.total_ticket_limit > 1 ? 'multiple' : 'single'
-          %td.pr-2.bw-r= t('events.ticket_limit_event_show')
+          %td.pr-2.bw-r.thin= t('events.ticket_limit_event_show')
           %td.p-2= t("events.tickets_#{pluralize}", total_ticket_limit: @event.total_ticket_limit)
 
       %tr
-        %td.pr-2.bw-r= t('events.age_limit')
+        %td.pr-2.bw-r.thin= t('events.age_limit')
         %td.p-2= t_event_age_limit(@event)
 
   .text-Align.mt-3.pt-3

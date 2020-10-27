@@ -28,14 +28,14 @@
         .samf-button.blue
           = t('applicants.register_as_an_applicant')
 
-  .flex-row.center.m-3
+  .flex-row.center.m-3.wrap
     - if can? :manage, Admission
       = link_to edit_admissions_admin_admission_path(admission) do
-        .samf-button.plain.mr-2
+        .samf-button.plain.mr-2.mb-2
           = t('admissions.edit_admission')
     - if can? :show, Admission
       = link_to admissions_admin_admission_path(admission) do
-        .samf-button.plain.mr-2
+        .samf-button.plain.mr-2.mb-2
           = t('admissions.administer_my_group')
     - if can? :statistics, Admission
       = link_to statistics_admissions_admin_admission_path(admission) do

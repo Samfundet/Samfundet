@@ -3,7 +3,7 @@
     %h3= t('search.results_title')
     - if @events.present?
       - @events.group_by {|i| i.start_time.to_date }.sort.each do |date, events|
-        .samf-container.white
+        .samf-container.white.mb-3
           %h2.text-Align.p-1.bg-blue.title.white= l(date, format: :medium_long)
           %table
             %tbody
