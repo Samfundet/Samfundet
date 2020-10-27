@@ -48,7 +48,7 @@ module Samfundet
     # Files under app/assets/ which are not included in a Sprockets manifest
     # file must be added to config.assets.paths in order for helper functions
     # like 'javascript_include_tag' to find them
-    config.assets.paths << Rails.root.join('app', 'assets', 'javascripts', 'interviews')
+    config.assets.paths << Rails.root.join('app', 'assets', 'javascripts', 'interviews', "sulten/lyche/calendar.js")
     config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
     config.assets.precompile += %w(chartkick.js)
     config.assets.precompile += %w(linkgraph.js)

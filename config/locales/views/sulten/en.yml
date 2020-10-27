@@ -41,6 +41,7 @@ en:
         from: "beginning time of reservation"
         duration: "duration"
         type_explanation: "what is the purpose of the visit? this helps determine the sort of table you will be given"
+        find_times: "Find available times"
         create: "make reservation"
         update: "update reservation"
         closed: "Reservations are closed from %{from} to %{to}"

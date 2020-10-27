@@ -21,11 +21,13 @@ class Sulten::Reservation < ApplicationRecord
 
   before_validation(on: :create) do
     unless [30, 60, 90, 120, 180].include? reservation_duration.to_i
+      puts("duration error")
       errors.add(:reservation_duration, I18n.t('helpers.models.sulten.reservation.errors.check_reservation_duration'))
       throw(:abort)
     end
 
     if reservation_from.nil?
+      puts("invalid_reservation_format")
       errors.add(:reservation_from, I18n.t('helpers.models.sulten.reservation.errors.invalid_reservation_format'))
       throw(:abort)
     end
@@ -41,6 +43,7 @@ class Sulten::Reservation < ApplicationRecord
     self.table = Sulten::Reservation.find_table(reservation_from, reservation_to, people, reservation_type_id)
 
     if table.nil? or table.number == -1
+      puts("no tables")
       errors.add(:reservation_from,
                  I18n.t('helpers.models.sulten.reservation.errors.reservation_from.no_table_available'))
     end
@@ -57,20 +60,24 @@ class Sulten::Reservation < ApplicationRecord
 
   def reservation_is_one_day_in_future
     if reservation_from < Date.tomorrow
+      puts("one day in future")
       errors.add(:reservation_from, I18n.t('helpers.models.sulten.reservation.errors.reservation_from.reservation_is_one_day_in_future'))
     end
   end
 
   def check_opening_hours
-    unless Sulten::Reservation.lyche_open?(reservation_from, reservation_to)
+    puts("is closed")
+    unless Sulten::Reservation.lyche_open?(reservation_from, reservation_to - 1.minutes)
       errors.add(:reservation_from, I18n.t('helpers.models.sulten.reservation.errors.reservation_from.check_opening_hours'))
     end
   end
 
   def check_amount_of_people
     if people > 8
+      puts("too many people")
       errors.add(:people, I18n.t('helpers.models.sulten.reservation.errors.people.too_many_people'))
     elsif people < 1
+      puts("too few people")
       errors.add(:people, I18n.t('helpers.models.sulten.reservation.errors.people.too_few_people'))
     end
   end
@@ -93,6 +100,7 @@ class Sulten::Reservation < ApplicationRecord
         next unless t.reservation_types.pluck(:id).include? reservation_type_id
         # We add 30 minutes before and after the reservation because Lyche wants time between reservations to clean up!
         if t.reservations.where('reservation_from >= ? or reservation_to <= ?', to + 30.minutes , from - 30.minutes).count == t.reservations.count
+          puts("find_table works")
           return t
         end
       end
@@ -100,49 +108,39 @@ class Sulten::Reservation < ApplicationRecord
     nil
   end
 
-  def self.find_times(reservation_from, people, reservation_type_id)
-    now = Time.parse(reservation_from)
-    default_open = now.change(hour: 16, min: 0, sec: 0)
-    default_close = now.change(hour: 22, min: 0, sec: 0)
-    possible_times = []
-    (1..Sulten::ReservationType.count).each do |i| #fra 1 til ant. reservasjonstyper
-      #Finn bord der capacity >= people og ledig, sorter etter størrelse, og for hver av bord typene
-      Sulten::Table.where('capacity >= ? and available = ?', people, true).order('capacity ASC').tables_with_i_reservation_types(i).find do |t|
-        t.reservations
-      end
-    end
-  end
-
-  def self.find_available_times(reservation_from, duration, people, reservation_type)
-    now = Time.parse(reservation_from)
-    default_open = now.change(hour: 16, min: 0, sec: 0)
-    default_close = now.change(hour: 22, min: 0, sec: 0)
-    possible_times = []
-    time_frame = default_open.to_i..default_close.to_i
-    times_to_check = time_frame.step(30.minutes).to_a
+  def self.check_if_time_is_valid(from, to, people, reservation_type_id)
     (1..Sulten::ReservationType.count).each do |i|
       Sulten::Table.where('capacity >= ? and available = ?', people, true).order('capacity ASC').tables_with_i_reservation_types(i).find do |t|
-        next unless t.reservation_types.pluck(:id).include? reservation_type
-        time_frame.step(30.minutes) do |time_step|
-          return possible_times if times_to_check.empty?
-          next if times_to_check.exclude? time_step
-          reservation_from = Time.zone.at(time_step)
-          reservation_to = Time.zone.at(time_step + 150)
-
-          busy_start = t.reservations.where('reservation_from >= ? and reservation_from < ?',
-                                            reservation_from,
-                                            reservation_to).any?
-
-          busy_end = t.reservations.where('reservation_to > ? and reservation_to < ?',
-                                          reservation_from,
-                                          reservation_to).any?
-
-          busy_table = busy_start || busy_end
-          unless busy_table
-            possible_times.push(reservation_from.utc)
-            times_to_check.delete(time_step)
-          end
+        next unless t.reservation_types.pluck(:id).include? reservation_type_id
+        # We add 30 minutes before and after the reservation because Lyche wants time between reservations to clean up!
+        if t.reservations.where('reservation_from >= ? or reservation_to <= ?', to + 30.minutes , from - 30.minutes).count == t.reservations.count
+          return from
         end
+      end
+    end
+    nil
+  end
+
+  def self.find_available_times(date, people, type_id)
+    duration = 120
+    now = Time.parse(date)
+    reservation_open = now.change(hour: 16, min: 0, sec: 0)
+    if (date.to_datetime).friday? or (date.to_datetime).saturday?
+      reservation_close = now.change(hour: 20, min: 0, sec: 0)
+    else
+      reservation_close = now.change(hour: 21, min: 0, sec: 0)
+    end
+    possible_times = []
+    time_frame = reservation_open.to_i..reservation_close.to_i
+    times_to_check = time_frame.step(30.minutes).to_a
+    time_frame.step(30.minutes) do |time_step|
+      return possible_times if times_to_check.empty?
+      next if times_to_check.exclude? time_step
+      reservation_from = Time.zone.at(time_step)
+      reservation_to = Time.zone.at(time_step + duration.minutes)
+      t = self.check_if_time_is_valid(reservation_from, reservation_to, people, type_id)
+      if t
+        possible_times.insert(-1, t)
       end
     end
     possible_times
@@ -159,13 +157,13 @@ class Sulten::Reservation < ApplicationRecord
   end
 
   def self.lyche_open?(from, to)
-     #TODO: Change these defaults when admin can set them
-     #The values 16 .. 22 are the openinghours
-    (from.hour >= 16 && to.hour < 22)
+    # TODO: Change these defaults when admin can set them
+    # The values 16 .. 22 are the openinghours
+    (from.hour >= 16 && to.hour < 23)
   end
 
   def self.kitchen_open?(from, to)
-    (from.hour >= 16 && to.hour < 22)
+    (from.hour >= 16 && to.hour < 23)
   end
 end
 
