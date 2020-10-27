@@ -20,6 +20,9 @@
 .title.white {
   color: $samfundet-white;
 }
+.title.red {
+  color: $samfundet-red;
+}
 
 
 // Padding
@@ -68,6 +71,9 @@
 .br-1 {border-radius: .25em;}
 .br-2 {border-radius: .5em;}
 .br-3 {border-radius: 1em;}
+
+// Border width
+.bw-r{border-right-width: 1px; border-style: solid}
 
 // Background-color
 .bg-red {background-color: $samfundet-red;}

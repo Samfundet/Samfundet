@@ -1,5 +1,5 @@
 .search-results
-  .event-group
+  .flex-column.mobile-event
     %h3= t('search.results_title')
     - if @events.present?
       - @events.group_by {|i| i.start_time.to_date }.sort.each do |date, events|
