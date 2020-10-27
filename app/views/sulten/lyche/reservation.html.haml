@@ -34,7 +34,8 @@
           %p.inline-hints
             = t("sulten.reservation.form.too_many")
             = mail_to "lyche@samfundet.no", "mail."
-        = f.input :people, label: t("sulten.reservation.people"),  collection: [1, 2, 3], member_label: proc{|d| "#{d} "}
+            - # Quickfix: Using reservation_duraion to get a dropdown, but should change the f.input :people (which is an input field) to be dropdown instead.
+        = f.input :reservation_duration, label: t("sulten.reservation.people"),  collection: [1, 2, 3, 4, 5, 6, 7, 8], member_label: proc{|d| "#{d} "}
 
         .form-divider
 
@@ -51,11 +52,13 @@
         %br
         = "Valgt dato: " + @reservation_date
       = f.inputs do
+        - # Setting the values from the first form
         = f.input :reservation_type_id,  input_html: {value: @reservation_type}, as: :hidden
         = f.input :people, input_html: {value: @number_of_guests}, as: :hidden
+        - # This is the input for the reservation date
         = f.input :reservation_from, label: "Dato", input_html: { value: @reservation_date}, as: :hidden
 
-
+        - # This is the input field for the time the reservation will start
         = f.input :reservation_duration, label: "Tidspunkt", collection: @times, member_label: proc{|d| "#{d} "}, include_blank: false
         .form-divider
         = f.input :name, label: t("sulten.reservation.name")

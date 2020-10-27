@@ -30,7 +30,8 @@ class Sulten::LycheController < Sulten::BaseController
       available_times = Sulten::Reservation.find_available_times(request[:reservation_from], params[:duration].to_i, request[:people].to_i, request[:reservation_type_id].to_i)
       @times = available_times.map { |a| a.strftime("%H:%M") }
       @reservation_type = request[:reservation_type_id]
-      @number_of_guests = request[:people]
+      @number_of_guests = request[:reservation_duration] #Using the reservation_duration to get a dropdown.
+      puts("jjj", @number_of_guests)
       @reservation_date = request[:reservation_from]
     end
   end
