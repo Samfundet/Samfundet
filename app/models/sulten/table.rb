@@ -4,8 +4,9 @@ class Sulten::Table < ApplicationRecord
   has_many :table_reservation_types
   has_many :reservation_types, through: :table_reservation_types
   has_many :reservations
+  has_many :neighbour_tables
 
-  # attr_accessible :number, :capacity, :available, :comment, :reservation_type_ids
+  # attr_accessible :number, :capacity, :available, :comment, :reservation_type_ids, :neighbour_tables
 
   validates :number, :capacity, presence: true
   validates :number, uniqueness: true
@@ -15,6 +16,11 @@ class Sulten::Table < ApplicationRecord
   def to_s
     number
   end
+
+  def is_neighbour?
+    neighbour_tables.map { |n| n.neighbour_id }.include?(number)
+  end
+
 end
 
 # == Schema Information

@@ -13,10 +13,17 @@ class Sulten::TablesController < Sulten::BaseController
 
   def edit
     @table = Sulten::Table.find(params[:id])
+    @other_tables = Sulten::Table.where.not(id: @table.id).order(:number).all
+    puts("HELLO DUDE:::::::::::::")
+    puts(@other_tables.map{ |t| t.number })
+    puts("HELLO DUDE:::::::::::::")
+
   end
 
   def update
     @table = Sulten::Table.find(params[:id])
+    puts("UPDATE TABLE::::")
+    puts(params)
     if @table.update_attributes(table_params)
       redirect_to sulten_tables_path
     else
@@ -31,6 +38,7 @@ class Sulten::TablesController < Sulten::BaseController
 
   def new
     @table = Sulten::Table.new
+    @tables = Sulten::Table.order(:number).all
   end
 
   def create
