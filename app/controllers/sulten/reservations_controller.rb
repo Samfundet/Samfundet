@@ -79,7 +79,12 @@ class Sulten::ReservationsController < Sulten::BaseController
   end
 
   def available
-    @available_times = Sulten::Reservation.find_available_times(params[:date], params[:people].to_i, params[:type_id].to_i)
+    #The amount of people is for now stored in the reservation_duration parameter!
+    #This is because of the dropdown menu feature, for selecting the amount of people
+    #Should be changed to :people later, but needs to be changed in other files as well
+    amount_people = request[:reservation_duration].to_i
+
+    @available_times = Sulten::Reservation.find_available_times(params[:date], amount_people, params[:type_id].to_i)
     render json: available_times
   end
 
