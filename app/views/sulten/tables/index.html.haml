@@ -6,6 +6,8 @@
   %th
     = t("sulten.reservation.table")
   %th
+    = "Nabobord"
+  %th
     = t("sulten.table.capacity")
   %th
     = t("sulten.table.comment")
@@ -20,6 +22,9 @@
     %tr
       %td
         = link_to t.number, t
+        %div{style: "display:none;"}= "(#{t.id})"
+      %td
+        = t.neighbour_string
       %td
         = t.capacity
       %td
@@ -43,3 +48,9 @@
         = link_to t("crud.destroy"), t, data: { confirm: t("crud.confirm") }, method: :delete
 %p
   = link_to t("common.back"), sulten_admin_path
+
+- # For potential problem resolution in production
+%div{style: "display:none;"}
+  - @neighbour_relations.each do |n|
+    = "From (" + n.table_id.to_s + ") to (" + n.neighbour_id.to_s + ")"
+    %br

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_11_211127) do
+ActiveRecord::Schema.define(version: 2020_10_27_181213) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -486,6 +486,11 @@ ActiveRecord::Schema.define(version: 2020_07_11_211127) do
     t.datetime "closed_to"
   end
 
+  create_table "sulten_neighbour_tables", force: :cascade do |t|
+    t.integer "table_id"
+    t.integer "neighbour_id"
+  end
+
   create_table "sulten_reservation_types", id: :serial, force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -548,4 +553,6 @@ ActiveRecord::Schema.define(version: 2020_07_11_211127) do
   add_foreign_key "registration_events", "events", column: "arrangement_id"
   add_foreign_key "roles", "groups", name: "roles_group_id_fk"
   add_foreign_key "roles", "roles", name: "roles_role_id_fk"
+  add_foreign_key "sulten_neighbour_tables", "sulten_tables", column: "neighbour_id"
+  add_foreign_key "sulten_neighbour_tables", "sulten_tables", column: "table_id"
 end

@@ -52,6 +52,9 @@ Samfundet::Application.configure do
   config.billig_path = 'http://localhost:4567/pay'
   config.billig_ticket_path = 'https://billig.samfundet.no/pdf?'
 
+  # Silence model logs
+  config.active_record.logger = nil
+
   config.after_initialize do
     paamelding_table_prefix = 'paameldingsys.'
 
