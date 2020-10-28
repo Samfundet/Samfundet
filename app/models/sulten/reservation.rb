@@ -37,15 +37,6 @@ class Sulten::Reservation < ApplicationRecord
     self.reservation_to = reservation_from + reservation_duration.to_i.minutes
   end
 
-  after_validation(on: :create, unless: :admin_access) do
-    self.table = Sulten::Reservation.find_table(reservation_from, reservation_to, people, reservation_type_id)
-
-    if table.nil? or table.number == -1
-      errors.add(:reservation_from,
-                 I18n.t('helpers.models.sulten.reservation.errors.reservation_from.no_table_available'))
-    end
-  end
-
   # If table was deleted, return a dummy table to prevent null-pointer exceptions
   def table
     super || Sulten::Table.new(number: -1, capacity: 0, available: false)
@@ -87,17 +78,93 @@ class Sulten::Reservation < ApplicationRecord
     @reservation_duration ||= ((reservation_to - reservation_from) / 60).to_i unless reservation_to.nil? || reservation_from.nil?
   end
 
-  def self.find_table(from, to, people, reservation_type_id)
-    (1..Sulten::ReservationType.count).each do |i|
-      Sulten::Table.where('capacity >= ? and available = ?', people, true).order('capacity ASC').tables_with_i_reservation_types(i).find do |t|
-        next unless t.reservation_types.pluck(:id).include? reservation_type_id
-        # We add 30 minutes before and after the reservation because Lyche wants time between reservations to clean up!
-        if t.reservations.where('reservation_from >= ? or reservation_to <= ?', to + 30.minutes , from - 30.minutes).count == t.reservations.count
-          return t
+  # Finds available table(s) for a reservation
+  # Single tables are prioritized by smallest capacity
+  #   - For tables of same size, the one with fewest neighbours is preferred
+  # Group tables are prioritized by smallest total capacity
+  def self.find_tables(from, to, people, reservation_type_id)
+
+    table = nil
+
+    # Find available single tables
+    Sulten::Table.where('capacity >= ? and available = ?', people, true).each do |t|
+      # Table does not support reservation type
+      unless t.reservation_types.pluck(:id).include? reservation_type_id
+        next
+      end
+      # Table is larger than one already found
+      if not table.nil? and t.capacity > table.capacity
+        next
+      end
+      # Table is same size but has more neighbours (prefer edge tables)
+      if not table.nil? and t.capacity == table.capacity and t.neighbour_count > table.neigbour_count
+        next
+      end
+      # Finally check if table is available (done last to reduce SQL fetches)
+      # We add 30 minutes before and after the reservation because Lyche wants time between reservations to clean up!
+      if t.reservations.where('reservation_from >= ? or reservation_to <= ?', to + 30.minutes, from - 30.minutes).count == t.reservations.count
+        table = t
+      end
+    end
+
+    # Found single table!
+    unless table.nil?
+      return [table]
+    end
+
+    # First find all possible tables that can be part of a group
+    available_group_tables = []
+    Sulten::Table.where('available = ?', true).each do |t|
+      # Table has no neighbours (and thus cannot be in a table group)
+      if t.neighbour_count == 0
+        next
+      end
+      # Table does not support reservation type
+      unless t.reservation_types.pluck(:id).include? reservation_type_id
+        next
+      end
+      # Table has a reservation already
+      if t.reservations.where('reservation_from >= ? or reservation_to <= ?', to + 30.minutes, from - 30.minutes).count != t.reservations.count
+        next
+      end
+      available_group_tables << t
+    end
+
+    # No groups possible
+    if available_group_tables.size == 0
+      nil
+    end
+
+    # Find the best table group
+    group = []
+    group_capacity = 0
+
+    available_group_tables.each do |t|
+      # Fetch possible neighbour groups
+      # NOTE: This function does not consider availability of tables
+      groups = t.neighbour_groups
+
+      groups.each do |g|
+        # Check that all tables in group are in fact available group tables
+        ok_tables = g.select { |x| available_group_tables.include? x }
+        if ok_tables.size != g.size
+          next
+        end
+        # Check that total capacity is sufficient
+        capacity = g.inject(0){ |sum, x| sum + x.capacity }
+        if capacity < people
+          next
+        end
+        # If no group found yet or capacity lower (prefer smallest group)
+        if group.empty? or capacity < group_capacity
+          group = g
+          group_capacity = capacity
         end
       end
     end
-    nil
+
+    return group
+
   end
 
   def self.find_available_times(date, duration, people, type_id)

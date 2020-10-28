@@ -40,6 +40,11 @@ class Sulten::Table < ApplicationRecord
     (left_neighbours + right_neighbours).flatten.uniq
   end
 
+  # Get neighbour count faster than neighbours function
+  def neighbour_count
+    (left_neighbour_associations + right_neighbour_associations).flatten.uniq.size
+  end
+
   def is_neighbour?(tbl_id)
     # Safety check for stack overflow
     # Self is newer considered a neighbour
@@ -59,6 +64,32 @@ class Sulten::Table < ApplicationRecord
       end
       neighbour_numbers.join(", ")
     end
+  end
+
+  # Finds the possible neighbour groups for this table
+  # Given a table layout of A-B-C-D the result will be
+  # a list of all possible groups [[A,B], [A,B,C], [A,B,C,D]]
+  def neighbour_groups(depth = 0, exclude = [])
+    # Stackoverflow protection
+    # Shouldn't happen in Lyche keeps their promise to not create looped groups
+    if depth >= 5
+      return
+    end
+    # Iterate neighbours of table
+    groups = []
+    neighbours.select { |v| not exclude.include? v }.each do |n|
+      # Add 2 table group
+      groups << [self, n]
+      # If neighbour has additional neighbours, recursive search
+      if n.neighbours.select { |v| v.id != id }.count > 0
+        # Find child groups, excluding the current table from search
+        child_groups = n.neighbour_groups(depth + 1, exclude + [self])
+        # Add groups with current table first
+        groups += child_groups.map { |c| [self] + c }
+      end
+
+    end
+    groups
   end
 
 end
