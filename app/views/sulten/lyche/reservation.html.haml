@@ -78,4 +78,8 @@
           = "Antall gjester: " + @number_of_guests
           %br
           = "Valgt dato: " + @reservation_date
-        = "Desverre er det ikke ledige bord for dette antallet personer denne dagen."
+          .reservation_no_available
+            = "Desverre er det ikke ledige bord for dette antallet personer denne dagen."
+      .link-back-when-no-reservations
+        %p
+          = link_to t("common.back").capitalize, "/lyche/make_reservation"

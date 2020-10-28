@@ -809,6 +809,19 @@ body.lyche {
     padding: 1em;
   }
 
+  .reservation_no_available {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    padding: 20px;
+  }
+
+  .link-back-when-no-reservations {
+    max-width: 600px;
+    margin: 0 auto;
+    color: yellow;
+  }
+
 
   .footer {
     height: 150px;
