@@ -15,13 +15,13 @@
       \-
       = applicant.email
     - applicant.job_applications.each do |application|
-      .application{id:"application-#{application.id}", class: "display-none #{application.interview.acceptance_status == nil ? 'not_set display-not-set' : ''} #{application.interview.acceptance_status == :reserved ? 'reserved display-reserved' : ''}"}
-        - if application.interview.acceptance_status == :reserved || application.interview.acceptance_status == nil
+      .application{id:"application-#{application.id}", class: "display-none #{application.interview.priority == nil ? 'not_set display-not-set' : ''} #{application.interview.priority == :reserved ? 'reserved display-reserved' : ''}"}
+        - if application.interview.priority == :reserved || application.interview.priority == nil
           %p
             = application.job.group.name
             \-
             = link_to application.job.title, admissions_admin_admission_group_job_path(@admission, application.job.group, application.job)
-            %strong{:style => "color: #961E21"}= application.interview.acceptance_status_string
+            %strong{:style => "color: #961E21"}= application.interview.priority_string
     %br
 
 - if @applicants.blank?

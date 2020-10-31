@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_11_211127) do
+ActiveRecord::Schema.define(version: 2020_10_31_205138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -322,7 +322,7 @@ ActiveRecord::Schema.define(version: 2020_07_11_211127) do
 
   create_table "interviews", id: :serial, force: :cascade do |t|
     t.datetime "time"
-    t.string "acceptance_status", limit: 10
+    t.string "priority", limit: 10
     t.integer "job_application_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -38,12 +38,12 @@ class AdmissionsAdmin::InterviewsController < AdmissionsAdmin::BaseController
     if params[:interview][:comment]
       @interview.comment = params[:interview][:comment]
     end
-    if params[:interview][:acceptance_status]
-      @interview.acceptance_status = params[:interview][:acceptance_status]
+    if params[:interview][:priority]
+      @interview.priority = params[:interview][:priority]
     end
 
-    if @interview.past_set_status_deadline? && @interview.acceptance_status_changed?
-      raise t('interviews.cannot_set_status_past_deadline')
+    if @interview.past_set_status_deadline? && @interview.priority_changed?
+      raise t('interviews.cannot_set_priority_past_deadline')
     else
       @interview.save!
 

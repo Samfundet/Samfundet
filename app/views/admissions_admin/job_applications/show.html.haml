@@ -88,7 +88,7 @@
             %td
               = group_link(job_application.job.group)
             %td
-              = job_application.find_or_create_interview.acceptance_status_string
+              = job_application.find_or_create_interview.priority_string
             %td
               - if job_application.find_or_create_interview.time.nil?
                 = t('job_applications.not_set')

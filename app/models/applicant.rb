@@ -43,10 +43,10 @@ class Applicant < ApplicationRecord
     self.hashed_password = BCrypt::Password.create(@password, cost: cost)
   end
 
-  def assigned_job_application(admission, acceptance_status: %w[wanted reserved])
+  def assigned_job_application(admission, priority: %w[wanted reserved])
     job_applications.where(withdrawn: false)
                     .joins(:interview)
-                    .where(interviews: { acceptance_status: acceptance_status })
+                    .where(interviews: {priority: priority })
                     .find { |application| application.job.admission == admission }
   end
 
@@ -73,7 +73,7 @@ class Applicant < ApplicationRecord
   def self.interested_other_positions(admission)
     where(disabled: false).where(interested_other_positions: true).select do |applicant|
       # If not wanted by any
-      applicant.assigned_job_application(admission, acceptance_status: %w[wanted]).nil? && !applicant.jobs_applied_to(admission).empty?
+      applicant.assigned_job_application(admission, priority: %w[wanted]).nil? && !applicant.jobs_applied_to(admission).empty?
     end
   end
 
@@ -97,15 +97,15 @@ class Applicant < ApplicationRecord
   end
 
   def unwanted?(admission)
-    assigned_job_application(admission, acceptance_status: ['wanted', 'reserved', '']).nil?
+    assigned_job_application(admission, priority: ['wanted', 'reserved', '']).nil?
   end
 
   def flagged?(admission)
-    assigned_job_application(admission, acceptance_status: ['', nil]).nil?
+    assigned_job_application(admission, priority: ['', nil]).nil?
   end
 
   def reserved?(admission)
-    !assigned_job_application(admission, acceptance_status: 'reserved').nil?
+    !assigned_job_application(admission, priority: 'reserved').nil?
   end
 
   def jobs_applied_to(admission)

@@ -63,10 +63,10 @@ after :generate_roles do
         job_application.created_at = Faker::Time.between(1.week.ago, 2.weeks.from_now)
         job_application.save
         Interview.create!(
-          time: Faker::Time.between(1.weeks.from_now, 2.weeks.from_now),
-          acceptance_status: Interview::ACCEPTANCE_STATUSES_NO.keys.sample,
-          job_application_id: job_application.id,
-          location: Faker::Address.city
+            time: Faker::Time.between(1.weeks.from_now, 2.weeks.from_now),
+            priority: Interview::PRIORITIES_NO.keys.sample,
+            job_application_id: job_application.id,
+            location: Faker::Address.city
         )
         applications << job_application
 

@@ -53,7 +53,7 @@
         %th.location
           = t('interviews.location')
         %th.application-status
-          = t('interviews.interview_status')
+          = t('interviews.interview_priority')
         %th
           = t('interviews.comment')
         %th
@@ -92,7 +92,7 @@
               %td
                 = semantic_form_for([:admissions_admin, @admission, @group, job_application.job, job_application, interview = job_application.find_or_create_interview], namespace: "interview_#{interview.id}", html: {class: "test custom-form"}) do |form|
                   = form.inputs do
-                    != form.input :acceptance_status, name: "acceptance_status", as: :select, label: false, required: true, value: interview.acceptance_status, collection: interview.acceptance_statuses.invert.sort, input_html: { id: "interview_#{job_application.id}_acceptance_status", disabled: interview.past_set_status_deadline? }
+                    != form.input :priority, name: "priority", as: :select, label: false, required: true, value: interview.priority, collection: interview.priorities.invert.sort, input_html: { id: "interview_#{job_application.id}_priority", disabled: interview.past_set_status_deadline? }
                   = form.actions do
                     != form.action :submit, button_html: { class: "interview_save", value: t('interviews.save_interview_status') }
                   %span{ class: "status" }

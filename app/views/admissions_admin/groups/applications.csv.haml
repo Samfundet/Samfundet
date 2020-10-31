@@ -8,7 +8,7 @@
             t('interviews.job'),
             t('interviews.interview_time'),
             t('interviews.location'),
-            t('interviews.interview_status'),
+            t('interviews.interview_priority'),
             t('interviews.comment'),
             t('interviews.latest_log_entry')]
 
@@ -21,7 +21,7 @@
       job_application.title,
       job_application.find_or_create_interview.time,
       job_application.find_or_create_interview.location,
-      job_application.find_or_create_interview.acceptance_status]
+      job_application.find_or_create_interview.priority]
 
       - unless job_application.find_or_create_interview.comment.nil?
         - csv_array += [job_application.find_or_create_interview.comment.squish]  # Squish to remove tabs and newlines
