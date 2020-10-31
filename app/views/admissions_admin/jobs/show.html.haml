@@ -3,7 +3,7 @@
 
 .section
   .flash.message
-    = T('interviews.possible_to_set_status', date: @admission.admin_priority_deadline)
+    = T('interviews.possible_to_set_priority', date: @admission.admin_priority_deadline)
   .flash.message.hidden
   %h2= t('interviews.job_title', job: @job.title)
 
