@@ -4,7 +4,6 @@
 .section
   .flash.message
     = T('interviews.possible_to_set_priority', date: @admission.admin_priority_deadline)
-  .flash.message.hidden
   %h2= t('interviews.job_title', job: @job.title)
 
 = render 'jobs_show', job_application_groupings: [@job.job_applications], show_job_titles: false

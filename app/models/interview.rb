@@ -10,19 +10,36 @@ class Interview < ApplicationRecord
                    reserved: 'Reserve',
                    not_wanted: 'Vil ikke ha',
                    nil => 'Ikke satt' }.freeze
+
   PRIORITIES_EN = {wanted: 'Wanted',
                    reserved: 'Backup',
                    not_wanted: 'Not wanted',
                    nil => 'Not set' }.freeze
 
+  APPLICANT_STATUS_NO = {accepted: 'Tatt opp',
+                   declined: 'Takket nei',
+                   rejected: 'Ikke tatt opp',
+                   rejected_m: 'Kontaktet om avslag',
+                   nil => 'Ikke satt' }.freeze
+
+  APPLICANT_STATUS_EN = {accepted: 'Accepted',
+                   declined: 'Declined offer',
+                   rejected: 'Not accepted',
+                   rejected_m: 'Contacted about rejection',
+                   nil => 'Not set' }.freeze
+
   validates :priority,
             inclusion: { in: PRIORITIES_NO.keys,
-                         message: 'Invalid acceptance status' }
+                         message: 'Invalid priority' }
+
+  validates :applicant_status,
+            inclusion: { in: APPLICANT_STATUS_NO.keys,
+                         message: 'Invalid applicant status' }
 
   def priority
     field = self[:priority]
     field = nil if field&.empty?
-    return field.to_sym if field.present?
+    field.to_sym if field.present?
   end
 
   def priority=(value)
@@ -49,9 +66,36 @@ class Interview < ApplicationRecord
     end
   end
 
+  def applicant_status
+    field = self[:applicant_status]
+    field = nil if field&.empty?
+    field.to_sym if field.present?
+  end
+
+  def applicant_status=(value)
+    self[:applicant_status] = value.to_s
+  end
+
+  def applicant_status_string
+    if I18n.locale == :no
+      APPLICANT_STATUS_NO[applicant_status]
+    elsif I18n.locale == :en
+      APPLICANT_STATUS_NO[applicant_status]
+    end
+  end
+
+  def applicant_statuses
+    if I18n.locale == :no
+      APPLICANT_STATUS_NO
+    elsif I18n.locale == :en
+      APPLICANT_STATUS_EN
+    end
+  end
+
   def past_set_status_deadline?
     job_application.job.admission.admin_priority_deadline < Time.current
   end
+
 end
 
 # == Schema Information

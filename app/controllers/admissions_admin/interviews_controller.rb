@@ -42,6 +42,10 @@ class AdmissionsAdmin::InterviewsController < AdmissionsAdmin::BaseController
       @interview.priority = params[:interview][:priority]
     end
 
+    if params[:interview][:applicant_status]
+      @interview.applicant_status = params[:interview][:applicant_status]
+    end
+
     if @interview.past_set_status_deadline? && @interview.priority_changed?
       raise t('interviews.cannot_set_priority_past_deadline')
     else

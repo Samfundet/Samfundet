@@ -328,6 +328,7 @@ ActiveRecord::Schema.define(version: 2020_10_31_205138) do
     t.datetime "updated_at", null: false
     t.string "location"
     t.text "comment"
+    t.string "applicant_status", limit: 10
   end
 
   create_table "job_applications", id: :serial, force: :cascade do |t|
