@@ -5,6 +5,7 @@ en:
     login_title: "Log in as an applicant"
     email: "Email"
     register_as_an_applicant: "Register as an applicant"
+    already_registered: "Already registered?"
     registration_success: "You are now registered as an applicant."
     update_success: "Your details have been updated."
     registration_error: "The registration failed. Se details below."

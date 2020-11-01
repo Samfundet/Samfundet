@@ -5,6 +5,7 @@
     login_title: "Logg inn som søker"
     email: "E-post"
     register_as_an_applicant: "Registrer meg som søker"
+    already_registered: "Allerede registrert som søker?"
     registration_success: "Du har blitt registrert som søker."
     update_success: "Dine detaljer har blitt oppdatert."
     registration_error: "Registreringen feilet. Se detaljer nedenfor."

@@ -11,6 +11,10 @@
         .samf-button.plain.mr-2
           = t('jobs.your_applications')
     - else
-      = link_to applicants_login_path do
-        .samf-button.blue
-          = t('applicants.register_as_an_applicant')
+      .flex-row.wrap
+        = link_to applicants_login_path do
+          .samf-button.blue
+            = t('applicants.register_as_an_applicant')
+        = link_to login_path do
+          .samf-button.plain
+            = t('applicants.login_title')
