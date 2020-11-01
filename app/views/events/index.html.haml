@@ -7,18 +7,18 @@
 
   .ajax-search
 
-  .flex-column.mobile-event
+  .flex-column.mt-3
     - @events.group_by {|i| i.start_time.to_date }.sort.each do |date, events|
-      %div.samf-container.white.m-3{style: "padding-top: 0;"}
+      %div.samf-container.white.mb-3{style: "padding-top: 0;"}
         %h2.text-Align.p-1.title.white.bg-red= l(date, format: :medium_long)
         %tbody
           = render events.sort_by{|event| event.start_time}
 
-.flex-column
-  %a.samf-button.blue.center.mb-3{ href: archive_events_path, title: t('events.archive.title')}
+.flex-row.center.mb-3.wrap{:style => "align-items:center;"}
+  %a.samf-button.blue.mr-2.mt-2{ href: archive_events_path, title: t('events.archive.title')}
     = t('events.archive.title')
-  .center
-    %a.samf-button.blue.mr-3{ href: '/rss', title: t('events.rss_alt_text')}
+  .flex-row.mt-2
+    %a.samf-button.plain.mr-1{ href: '/rss', title: t('events.rss_alt_text')}
       = t('events.rss_short_text')
-    %a.samf-button.blue.ml-3{ href: '/arrangement/ical', title: t('events.ical_alt_text')}
+    %a.samf-button.plain.ml-1{ href: '/arrangement/ical', title: t('events.ical_alt_text')}
       = t('events.ical_short_text')

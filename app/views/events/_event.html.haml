@@ -1,15 +1,11 @@
 .flex-row.mb-2.mt-2.event-div
-  .p-1.ml-3{style:"flex-basis: 30%;"}
+  .column
     = link_to event.title, event
-
-  .flex-row.wrap{style:"flex-basis: 35%;"}
-    .p-1.from_to_string{style:"flex-basis: 50%;"}
-      = from_to_string event
-
-    .p-1{style:"flex-basis: 50%;"}
-      = area_link event.area
-
-  .inline_event_price.p-1{style:"flex-basis: 25%;"}
+  .column.time
+    = from_to_string event
+    %br
+    = area_link event.area
+  .column.inline-price
     = inline_event_price event
-  .p-1.ml-3.mr-3{style:"flex-basis: 10%;"}
+  .column.button
     = render "buy_button", event: event
