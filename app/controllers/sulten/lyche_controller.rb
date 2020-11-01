@@ -8,7 +8,14 @@ class Sulten::LycheController < Sulten::BaseController
   layout "lyche"
 
   def index
-
+    # Check if in closed period
+    @closed = nil
+    closed_periods = Sulten::ClosedPeriod.current_and_future_closed_times.sort_by(&:closed_from)
+    unless closed_periods.empty?
+      if closed_periods.first.closed_from < Time.now and closed_periods.first.closed_to > Time.now
+        @closed = closed_periods.first
+      end
+    end
   end
 
   def reservation

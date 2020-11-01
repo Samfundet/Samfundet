@@ -129,7 +129,7 @@ body.lyche {
       justify-content: center;
 
       .title {
-        font-size: 3em;
+        font-size: 2em;
         color: white;
         text-align: center;
         font-family: "LemonMilkLight", sans-serif;
@@ -144,7 +144,7 @@ body.lyche {
 
       .section-button {
         flex: 0;
-        font-size: 20px;
+        font-size: 1em;
         font-weight: bold;
         background-color: #fbb042;
         color: white;
@@ -192,10 +192,14 @@ body.lyche {
       flex-direction: column;
       background-color: #050505;
     }
+    .back-to-samfundet {
+      display: none;
+    }
     .section {
       height: 500px;
       flex-direction: column;
       padding: 0;
+
 
       .image-container {
         flex-basis: 100%;
@@ -206,7 +210,7 @@ body.lyche {
         justify-content: flex-start;
 
         .title {
-          font-size: 2em;
+          font-size: 1.5em;
         }
 
         .description {
@@ -371,13 +375,13 @@ body.lyche {
 
 
   .status-box {
-    width: 400px;
+    width: 350px;
     position: absolute;
     bottom: 20px;
     right: 20px;
     color: white;
 
-    max-width: calc(100vw - 40px);
+    max-width: calc(100% - 40px);
 
     display: flex;
     flex-direction: column;
@@ -451,7 +455,17 @@ body.lyche {
   */
   @media only screen and (max-width: 700px) {
     .status-box {
-      display: none;
+      padding: .2em;
+      .open-hours {
+        flex: 1;
+        font-size: 1em;
+        padding: 0;
+        color: dimgray;
+        text-align: center;
+        .title {
+          text-align: center;
+        }
+      }
     }
   }
 
@@ -682,8 +696,8 @@ body.lyche {
 
     }
 
-
   }
+
 
   /*
    MOBILE MENU (fullscreen page when hamburger menu is open)
