@@ -51,6 +51,17 @@
         display: none !important;
       } } }
 
+  .hide-rejected {
+    tr.rejected {
+      display: none;
+    }
+  }
+  .hide-withdrawn {
+    tr.withdrawn {
+      display: none;
+    }
+  }
+
   .colorblind{
     tr.this_job {
       color: #FFFFFF !important;

@@ -1,7 +1,13 @@
 $(function() {
   $("#hide_withdrawn").click(function (event) {
-    $(".withdrawn").toggleClass('display-none');
+      $(".job_application_table").toggleClass('hide-withdrawn');
   });
+});
+
+$(function() {
+    $("#hide_rejected").click(function (event) {
+        $(".job_application_table").toggleClass('hide-rejected');
+    });
 });
 
 $(function() {
@@ -10,3 +16,4 @@ $(function() {
     $(".color_description").toggleClass('display-none')
   });
 });
+

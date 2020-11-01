@@ -36,6 +36,10 @@ class JobApplication < ApplicationRecord
     end
   end
 
+  def rejected_and_not_contacted?
+    find_or_create_interview.applicant_status == :rejected
+  end
+
   def validate_applicant?
     !@skip_applicant_validation
   end

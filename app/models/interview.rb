@@ -16,10 +16,10 @@ class Interview < ApplicationRecord
                    not_wanted: 'Not wanted',
                    nil => 'Not set' }.freeze
 
-  APPLICANT_STATUS_NO = {accepted: 'Tatt opp',
-                   declined: 'Takket nei',
-                   rejected: 'Ikke tatt opp',
-                   rejected_m: 'Kontaktet om avslag',
+  APPLICANT_STATUS_NO = {accepted: 'Tilbud, takket ja',
+                   declined: 'Tilbud, takket nei',
+                   rejected: 'Send avslag på epost',
+                   rejected_m: 'Avslag, kontaktet direkte',
                    nil => 'Ikke satt' }.freeze
 
   APPLICANT_STATUS_EN = {accepted: 'Accepted',
@@ -92,7 +92,7 @@ class Interview < ApplicationRecord
     end
   end
 
-  def past_set_status_deadline?
+  def past_set_priority_deadline?
     job_application.job.admission.admin_priority_deadline < Time.current
   end
 
