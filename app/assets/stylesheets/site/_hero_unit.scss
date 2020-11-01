@@ -46,6 +46,17 @@
     display: flex;
     flex-direction: row;
 
+    @include media($mobile) {
+      flex-direction: column;
+    }
+    #opening-hours-button {
+      display: block;
+
+      @include media($not-mobile) {
+        display: none;
+      }
+    }
+
     .opening-hours, .events-today {
 
       flex-basis: 50%;
@@ -57,7 +68,7 @@
         margin-top: 1em;
         margin-bottom: 1em;
       }
-
+      
       .hero-section-title {
         text-align: center;
         text-transform: uppercase;
@@ -116,15 +127,16 @@
   }
 
   .opening-hours {
-    display: none;
+    display: block;
 
     .everything-closed {
       margin-left: 10px;
       padding-bottom: 10px;
     }
 
-    @include media($tablet-desktop) {
-      display: block;
+    @include media($mobile) {
+      display: None;
+      &.open{display: block;}
     }
 
     .time {

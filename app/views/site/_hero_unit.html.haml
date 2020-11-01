@@ -1,3 +1,4 @@
+=javascript_include_tag 'site/opening-hours-mobile-header'
 .hero-unit
   .date-today
     %h2
@@ -21,4 +22,10 @@
         %p.no-events
           = t 'site.index.no_events_today'
 
+    #opening-hours-button
+      .samf-button.red.center
+        = t 'site.index.opening_hours_today'
+
+
     = render 'layouts/opening_hours'
+
