@@ -46,14 +46,24 @@
     display: flex;
     flex-direction: row;
 
-    @include media($mobile) {
+    @include media($mobile-and-tablet-portrait) {
       flex-direction: column;
     }
     #opening-hours-button {
       display: block;
 
-      @include media($not-mobile) {
+      @include media($tablet-desktop) {
         display: none;
+      }
+
+      .hide {
+        display: none;
+      }
+      &.open > .show {
+        display: none;
+      }
+      &.open > .hide {
+        display: block;
       }
     }
 
@@ -67,6 +77,8 @@
         flex: 1;
         margin-top: 1em;
         margin-bottom: 1em;
+        padding-left: .2em;
+        padding-right: .2em;
       }
       
       .hero-section-title {
@@ -136,7 +148,9 @@
 
     @include media($mobile) {
       display: None;
-      &.open{display: block;}
+    }
+    @include media($not-mobile) {
+      display: block !important;
     }
 
     .time {

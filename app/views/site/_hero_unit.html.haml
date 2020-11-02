@@ -23,9 +23,9 @@
           = t 'site.index.no_events_today'
 
     #opening-hours-button
-      .samf-button.red.center
-        = t 'site.index.opening_hours_today'
-
+      .samf-button.plain.center.show
+        = t 'site.index.show_opening_hours'
+      .samf-button.plain.center.hide
+        = t 'site.index.hide_opening_hours'
 
     = render 'layouts/opening_hours'
-
