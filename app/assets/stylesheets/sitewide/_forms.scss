@@ -11,6 +11,16 @@ form:not(.custom-form) {
     color: #888;
   }
 
+  p.inline-errors {
+    font-weight: bold;
+    color: red;
+    font-size: 1em;
+    text-align: left;
+  }
+  p.inline-errors:first-letter {
+    text-transform: uppercase;
+  }
+
   fieldset {
 
     legend {
@@ -34,17 +44,28 @@ form:not(.custom-form) {
       list-style-type: none;
       padding-left: 0;
 
+      // Spacing between link and text necessary for GDPR checkbox on applicant register form
+      #applicant_gdpr_checkbox_input {
+        label {
+          a {
+            margin-left: .25em;
+          }
+        }
+      }
+
       li {
         flex: 1;
         padding-left: .25em;
         padding-right: .25em;
 
-        input[type="text"] {
+        input {
           padding: .5em;
+          min-width: 250px;
+          max-height: 32px;
+          min-height: 32px;
         }
 
         textarea {
-          padding: .5em;
           min-height: 80px;
         }
 
@@ -56,9 +77,6 @@ form:not(.custom-form) {
 
         }
 
-        input[type="number"] {
-          padding: .5em;
-        }
 
         input[type="submit"] {
           background-color: $samfundet-green;

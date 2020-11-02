@@ -32,7 +32,7 @@ en:
         motivational_question: "Ready to apply?"
         application_explanation: "Write a little bit about yourself, your motivation for applying and your qualifications for this job. You don’t have to send in a full CV or references from previous employers - a short text is enough. We look forward to hearing from you!"
         prioritation_explanation: "When you have registered as an applicant, you can log in and check the status of your applications. If you apply for more than one job, you must prioritize which one you want the most. Note that you will only be offered one job."
-        register_to_apply_button: "Register before you can apply"
+        register_to_apply_button: "You must register before you can apply!"
         register_to_apply: "You can write your application here after registering as an applicant"
       edit:
         heading: "Your application"

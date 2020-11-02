@@ -10,10 +10,10 @@
 
   != f.hidden_field :job_id, value: @job_application.job_id
   %p
-    = f.text_area :motivation, id: "motivation", value: (@already_applied ? @job_application.motivation : @job.default_motivation_text), rows: 9, class: "w100", style: "border: 1px solid #888;"
+    = f.text_area :motivation, id: "motivation", value: (@already_applied ? @job_application.motivation : @job.default_motivation_text), rows: 9, class: "w100", style: "border: 1px solid #888;", disabled: @current_user.nil?
   %p.submit-button-container
     - if @current_user.nil?
-      = submit_tag  t('job_applications.forms.new.register_to_apply_button'), disabled: true
+      %h2= t('job_applications.forms.new.register_to_apply_button')
     - else
       = submit_tag (@already_applied and !@job_application.withdrawn) ? t('job_applications.forms.edit.submit') : t('job_applications.forms.new.submit')
 
