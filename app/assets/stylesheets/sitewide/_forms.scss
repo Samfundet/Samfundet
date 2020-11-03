@@ -58,7 +58,7 @@ form:not(.custom-form) {
         padding-left: .25em;
         padding-right: .25em;
 
-        input {
+        input:not([type='checkbox']):not([type='radio']) {
           padding: .5em;
           min-width: 250px;
           max-height: 32px;
