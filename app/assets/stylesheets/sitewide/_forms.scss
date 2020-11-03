@@ -63,6 +63,7 @@ form:not(.custom-form) {
           min-width: 250px;
           max-height: 32px;
           min-height: 32px;
+          height: 32px;
         }
 
         textarea {
@@ -71,6 +72,11 @@ form:not(.custom-form) {
 
         select {
           width: 100%;
+          border: 1px solid #aaa;
+          border-radius: 4px;
+          max-height: 32px;
+          min-height: 32px;
+          height: 32px;
         }
 
         input[type="checkbox"] {
@@ -87,7 +93,6 @@ form:not(.custom-form) {
           padding-right: 1em;
           margin: 0 auto;
           width: fit-content;
-
         }
 
         input[type="submit"]:hover {
@@ -121,5 +126,17 @@ form:not(.custom-form) {
 
       }
     }
+  }
+}
+
+form.custom-form.search-form,
+form.custom-form.archive-search-form {
+  input#search, select {
+    padding: .5em;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+  }
+  input#search {
+    min-width: 250px;
   }
 }
