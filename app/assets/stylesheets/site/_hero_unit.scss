@@ -109,7 +109,7 @@
         display: block;
       }
 
-      .time { text-align: right; }
+      .time { text-align: right; color: black; }
       .area {
         @include emph-link($samfundet-red);
         font-weight: $font-weight-medium;
@@ -130,6 +130,7 @@
         }
       }
       .area { text-transform: uppercase; }
+      .time { color: black; }
       .no-events {
         text-align: center;
         margin: 1em;
