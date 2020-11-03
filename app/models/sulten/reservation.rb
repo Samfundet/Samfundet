@@ -125,7 +125,7 @@ class Sulten::Reservation < ApplicationRecord
     duration = 120
     now = Time.parse(date)
     reservation_open = now.change(hour: 16, min: 0, sec: 0)
-    if (date.to_datetime).friday? or (date.to_datetime).saturday?
+    if (date.to_datetime).friday? or (date.to_datetime).saturday? or (date.to_datetime).sunday?
       reservation_close = now.change(hour: 20, min: 0, sec: 0)
     else
       reservation_close = now.change(hour: 21, min: 0, sec: 0)
