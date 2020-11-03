@@ -15,6 +15,7 @@
     .samf-button.plain.mt-2
       = t('jobs.all_jobs')
 
+
 %br
 
 .flex-row.wrap
@@ -29,10 +30,11 @@
         != t('jobs.type_explanation_html')
       = t('jobs.at')
       = group_link @job.group
-    %p
-      = @job.teaser
-    :markdown
-      #{@job.description}
+    .pr-2
+      %p
+        = @job.teaser
+      :markdown
+        #{@job.description}
 
   %div.mb-3{:style=>"flex-basis: 20%;"}
     - unless @similar_available_jobs.empty?

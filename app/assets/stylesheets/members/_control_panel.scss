@@ -20,7 +20,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
 
     .applet {
 
@@ -35,14 +35,16 @@
       border: 1px solid #eee;
       min-height: 300px;
 
-      flex-basis: calc(33.33% - 1em);
+      flex-basis: calc(33.333% - 2em);
+      margin-right: 1em;
 
       @media only screen and (max-width: 1000px) {
-        flex-basis: calc(50% - .5em)
+        flex-basis: calc(50% - 1.5em)
       }
       @media only screen and (max-width: 600px) {
         flex-basis: 100%;
         min-height: 0;
+        margin-right: 0;
       }
 
       ul {
