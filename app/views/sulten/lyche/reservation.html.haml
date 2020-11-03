@@ -1,12 +1,12 @@
 - content_for(:container) do
   = render "header_menu"
-
+  = javascript_include_tag "sulten/lyche/calendar", defer: true
 
   .lyche_form_title
     = t("sulten.reservation.form.title")
 
   .reservation-info
-    Bord må reserveres senest en dag i forveien. Mat kan forhåndsbestilles slik at dere ikke trenger å vente når dere kommer.
+    Bord må reserveres minst en dag i forveien. Mat kan forhåndsbestilles slik at dere ikke trenger å vente når dere kommer.
     Merk at flertallet av personer må være medlem for å reservere og at alle må være over 20 år etter kl 20:00 i helger.
     Med hensyn til smittevern kan vi ikke garantere at alle får sittet sammen.
     %br
@@ -18,33 +18,68 @@
     - @closed_periods.each do |c|
       %i
         = "Lyche holder stengt i perioden " + l(c.closed_from, format: :short_date) + " - " + l(c.closed_to, format: :short_date)
-    %br
-  = semantic_form_for @reservation, :html => { :class => "custom-form lyche_form"} do |f|
-    = f.inputs do
-      %li
-        %p.inline-hints
-          = t("sulten.reservation.form.too_many")
-          = mail_to "lyche@samfundet.no", "mail."
-      = f.input :people, label: t("sulten.reservation.people"),as: :number
-      = f.input :reservation_from, placeholder: t("sulten.reservation.placeholder_date"), label: t("sulten.reservation.form.from"), input_html: { class: "datetimepicker_lyche"}, as: :string
-      = f.hidden_field :reservation_duration, value: 120
-
-      .form-divider
-
-      = f.input :reservation_type, label: t("sulten.reservation.reservation_type")
-      %li
-        %p.inline-hints
-          = t("sulten.reservation.form.type_explanation")
-      -# collection: [60, 90, 120, 150, 180] because "mat" is selected at load in prod
-      .form-divider
-      = f.input :name, label: t("sulten.reservation.name")
-      = f.input :telephone, label: t("sulten.reservation.telephone")
-      = f.input :email, label: t("sulten.reservation.email")
-      .form-divider
-      = f.input :allergies, label: t("sulten.reservation.other_messages")
       %br
-      .gdpr_checkbox
-        != f.input :gdpr_checkbox, as: :boolean, label: raw(t("sulten.reservation.gdpr_checkbox", en_url:'/en/privacy', no_url: '/personvern'))
+  -# If there is available times for chosen date, show the rest of the form
+  - if @times.nil?
+    = semantic_form_for @reservation, :url => {:controller => "lyche", :action => "reservation" }, :html => { :class => "custom-form lyche_form"}, data: {type: 'json'} do |f|
+      = f.inputs do
+        = f.input :reservation_type, label: t("sulten.reservation.reservation_type")
+        %li
+          %p.inline-hints
+            = t("sulten.reservation.form.type_explanation")
+        -# collection: [60, 90, 120, 150, 180] because "mat" is selected at load in prod
+        .form-divider
 
-    = f.actions do
-      = f.submit t("sulten.reservation.form.create")
+        %li
+          %p.inline-hints
+            = t("sulten.reservation.form.too_many")
+            = mail_to "lyche@samfundet.no", "mail."
+            - # Quickfix: Using reservation_duraion to get a dropdown, but should change the f.input :people (which is an input field) to be dropdown instead.
+        = f.input :reservation_duration, label: t("sulten.reservation.people"),  collection: [1, 2, 3, 4, 5, 6, 7, 8], member_label: proc{|d| "#{d} "}
+
+        .form-divider
+
+        = f.input :reservation_from, label: "Dato", input_html: { class: "datepicker", value: @reservation.reservation_from}, as: :string
+
+        .form-divider
+        = f.actions do
+          = f.submit "Finn ledige tidspunkt"
+  - else
+    - if @times.length > 0
+      = semantic_form_for @reservation, :html => { :class => "custom-form lyche_form"} do |f|
+        .reservation-info
+          = "Antall gjester: " + @number_of_guests
+          %br
+          = "Valgt dato: " + @reservation_date
+        = f.inputs do
+          - # Setting the values from the first form
+          = f.input :reservation_type_id,  input_html: {value: @reservation_type}, as: :hidden
+          = f.input :people, input_html: {value: @number_of_guests}, as: :hidden
+          - # This is the input for the reservation date
+          = f.input :reservation_from, label: "Dato", input_html: { value: @reservation_date}, as: :hidden
+
+          - # This is the input field for the time the reservation will start
+          = f.input :reservation_duration, label: "Tidspunkt", collection: @times, member_label: proc{|d| "#{d} "}, include_blank: false
+          .form-divider
+          = f.input :name, label: t("sulten.reservation.name")
+          = f.input :telephone, label: t("sulten.reservation.telephone")
+          = f.input :email, label: t("sulten.reservation.email")
+          .form-divider
+          = f.input :allergies, label: t("sulten.reservation.other_messages")
+          %br
+          .gdpr_checkbox
+            != f.input :gdpr_checkbox, as: :boolean, label: raw(t("sulten.reservation.gdpr_checkbox", en_url:'/en/privacy', no_url: '/personvern'))
+
+        = f.actions do
+          = f.submit t("sulten.reservation.form.create")
+    - else
+      = semantic_form_for @reservation, :html => { :class => "custom-form lyche_form"} do |f|
+        .reservation-info
+          = "Antall gjester: " + @number_of_guests
+          %br
+          = "Valgt dato: " + @reservation_date
+          .reservation_no_available
+            = "Desverre er det ikke ledige bord for dette antallet personer denne dagen."
+      .link-back-when-no-reservations
+        %p
+          = link_to t("common.back").capitalize, "/lyche/make_reservation"

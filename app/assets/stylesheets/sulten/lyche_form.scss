@@ -130,3 +130,19 @@
 
   }
 }
+
+.calendar {
+  flex-direction: row;
+  justify-content: center;
+  display: flex;
+}
+
+.date {
+  font-size: 1.5em;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.box {
+  background-color: mediumseagreen;
+}
