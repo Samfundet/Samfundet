@@ -12,9 +12,9 @@
           = t('jobs.your_applications')
     - else
       .flex-row.wrap
-        = link_to applicants_login_path do
+        = link_to applicants_new_path do
           .samf-button.blue
             = t('applicants.register_as_an_applicant')
-        = link_to login_path do
+        = link_to applicants_login_path do
           .samf-button.plain
             = t('applicants.login_title')

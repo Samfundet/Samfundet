@@ -20,5 +20,5 @@
 
   - if @already_applied and !@job_application.withdrawn
     = link_to @job_application, { method: :delete, id: "delete_job_application", data: { confirm: t('crud.confirm') } } do
-      .samf-button.plain
+      .samf-button.plain.small
         = t('job_applications.forms.edit.withdraw')

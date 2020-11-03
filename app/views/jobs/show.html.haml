@@ -2,17 +2,19 @@
 .flex-row.wrap
   - if current_user.kind_of? Applicant
     = link_to job_applications_path do
-      .samf-button.blue.mr-2.mb-2
+      .samf-button.blue.mr-2.mb-2.mt-2
         = t('jobs.your_applications')
   - else
     = link_to applicants_login_path do
-      .samf-button.blue.mr-2.mb-2
+      .samf-button.blue.mr-2.mb-2.mt-2
         = t('applicants.register_as_an_applicant')
+    = link_to applicant_login_path do
+      .samf-button.plain.mr-2.mb-2.mt-2
+        = t('user_sessions.new.title')
   = link_to admissions_path do
-    .samf-button.plain
+    .samf-button.plain.mt-2
       = t('jobs.all_jobs')
 
-%br
 %br
 
 .flex-row.wrap
@@ -21,7 +23,7 @@
       = set_and_return_title @job.title
     %h2
       = t('jobs.job_as')
-      %a
+      %i
         = @job.is_officer ? "Funksjonær" : "Gjengmedlem"
       .tooltip
         != t('jobs.type_explanation_html')

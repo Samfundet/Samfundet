@@ -16,8 +16,6 @@
       = link_to t('layouts.application.menu.info'), pages_path
     .header-item
       = link_to t('layouts.application.menu.lyche'), sulten_path
-    .header-item
-      = link_to t('layouts.application.menu.membership'), "https://medlem.samfundet.no/"
     - if open_admission?
       .header-item.volunteer.highlight
         = link_to t('layouts.application.menu.admissions'), admissions_path
@@ -45,20 +43,21 @@
     = link_to change_language do
       .change-language{class: "#{I18n.locale}", :style => "margin-left: 2em;"}
 
+    = link_to "https://medlem.samfundet.no/" do
+      .samf-button.small.mr-2
+        = t("layouts.application.menu.membership")
+
     - if logged_in?
       -# Logout
       = link_to logout_path, method: :post do
-        .samf-button.small
+        .samf-button.white.small
           = t('layouts.application.menu.logout')
     - else
-      - if open_admission?
-        = link_to login_path(redirect_to: request.path) do
-          .samf-button.small
-            = t('layouts.application.menu.login')
-      - else
-        = link_to login_path(redirect_to: request.path) do
-          .samf-button.small
-            = t('layouts.application.menu.internal')
+      = link_to login_path(redirect_to: request.path) do
+        .samf-button.white.small
+          = t('layouts.application.menu.internal')
+
+
 
 
 #header-popup-menu

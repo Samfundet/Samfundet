@@ -61,6 +61,8 @@
   background-color: transparent;
   border: 1px solid #888;
   box-shadow: none;
+  // Reduce padding equivalent to border to match size of other buttons
+  padding: 6px 19px 6px 19px;
 }
 .samf-button.plain:hover {
   transform: none;
