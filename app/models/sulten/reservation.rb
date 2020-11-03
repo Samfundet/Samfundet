@@ -21,13 +21,11 @@ class Sulten::Reservation < ApplicationRecord
 
   before_validation(on: :create) do
     unless [30, 60, 90, 120, 180].include? reservation_duration.to_i
-      puts("duration error")
       errors.add(:reservation_duration, I18n.t('helpers.models.sulten.reservation.errors.check_reservation_duration'))
       throw(:abort)
     end
 
     if reservation_from.nil?
-      puts("invalid_reservation_format")
       errors.add(:reservation_from, I18n.t('helpers.models.sulten.reservation.errors.invalid_reservation_format'))
       throw(:abort)
     end
@@ -43,7 +41,6 @@ class Sulten::Reservation < ApplicationRecord
     self.table = Sulten::Reservation.find_table(reservation_from, reservation_to, people, reservation_type_id)
 
     if table.nil? or table.number == -1
-      puts("no tables")
       errors.add(:reservation_from,
                  I18n.t('helpers.models.sulten.reservation.errors.reservation_from.no_table_available'))
     end
@@ -60,13 +57,11 @@ class Sulten::Reservation < ApplicationRecord
 
   def reservation_is_one_day_in_future
     if reservation_from < Date.tomorrow
-      puts("one day in future")
       errors.add(:reservation_from, I18n.t('helpers.models.sulten.reservation.errors.reservation_from.reservation_is_one_day_in_future'))
     end
   end
 
   def check_opening_hours
-    puts("is closed")
     unless Sulten::Reservation.lyche_open?(reservation_from, reservation_to - 1.minutes)
       errors.add(:reservation_from, I18n.t('helpers.models.sulten.reservation.errors.reservation_from.check_opening_hours'))
     end
@@ -74,10 +69,8 @@ class Sulten::Reservation < ApplicationRecord
 
   def check_amount_of_people
     if people > 8
-      puts("too many people")
       errors.add(:people, I18n.t('helpers.models.sulten.reservation.errors.people.too_many_people'))
     elsif people < 1
-      puts("too few people")
       errors.add(:people, I18n.t('helpers.models.sulten.reservation.errors.people.too_few_people'))
     end
   end
@@ -100,7 +93,6 @@ class Sulten::Reservation < ApplicationRecord
         next unless t.reservation_types.pluck(:id).include? reservation_type_id
         # We add 30 minutes before and after the reservation because Lyche wants time between reservations to clean up!
         if t.reservations.where('reservation_from >= ? or reservation_to <= ?', to + 30.minutes , from - 30.minutes).count == t.reservations.count
-          puts("find_table works")
           return t
         end
       end

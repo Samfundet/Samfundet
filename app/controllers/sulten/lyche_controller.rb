@@ -12,15 +12,23 @@ class Sulten::LycheController < Sulten::BaseController
     @closed = nil
     closed_periods = Sulten::ClosedPeriod.current_and_future_closed_times.sort_by(&:closed_from)
     unless closed_periods.empty?
-      if closed_periods.first.closed_from < Time.now and closed_periods.first.closed_to + 1.days > Time.now 
+      if closed_periods.first.closed_from < Time.now and closed_periods.first.closed_to + 1.days > Time.now
         @closed = closed_periods.first
       end
     end
   end
-  
+
   def reservation
 
     @closed_periods = Sulten::ClosedPeriod.current_and_future_closed_times.sort_by(&:closed_from)
+    unless @closed_periods.empty?
+       # Show only if less than 60 days in future
+       if (@closed_periods.first.closed_from - Time.now) < 60.days
+         @closed_periods = [@closed_periods.first]
+       else
+         @closed_periods = []
+       end
+    end
     @reservation = Sulten::Reservation.new
 
     request = params[:sulten_reservation]
@@ -37,7 +45,7 @@ class Sulten::LycheController < Sulten::BaseController
       @number_of_guests = request[:reservation_duration] #Using the reservation_duration to get a dropdown.
       @reservation_date = request[:reservation_from]
     end
-    
+
   end
 
   def reservation_success
