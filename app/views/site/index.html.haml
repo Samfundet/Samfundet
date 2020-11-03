@@ -24,8 +24,9 @@
 = render 'hero_unit'
 = render 'upcoming_events'
 
-.samf-button.blue.center
-  = link_to t('site.index.show_more'), events_path
+= link_to events_path do
+  .samf-button.plain.center
+    = t('site.index.show_more')
 
 %br
 %br
