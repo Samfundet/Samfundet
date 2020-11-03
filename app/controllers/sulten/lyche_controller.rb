@@ -4,17 +4,24 @@
 # samfundet.no/lyche
 
 class Sulten::LycheController < Sulten::BaseController
-    skip_authorization_check
-    layout "lyche"
+  skip_authorization_check
+  layout "lyche"
 
-    def index
-
+  def index
+    # Check if in closed period
+    @closed = nil
+    closed_periods = Sulten::ClosedPeriod.current_and_future_closed_times.sort_by(&:closed_from)
+    unless closed_periods.empty?
+      if closed_periods.first.closed_from < Time.now and closed_periods.first.closed_to + 1.days > Time.now 
+        @closed = closed_periods.first
+      end
     end
+  end
+  
+  def reservation
 
-    def reservation
-
-      @closed_periods = Sulten::ClosedPeriod.current_and_future_closed_times.sort_by(&:closed_from)
-      @reservation = Sulten::Reservation.new
+    @closed_periods = Sulten::ClosedPeriod.current_and_future_closed_times.sort_by(&:closed_from)
+    @reservation = Sulten::Reservation.new
 
     request = params[:sulten_reservation]
 
@@ -28,9 +35,9 @@ class Sulten::LycheController < Sulten::BaseController
       @times = available_times.map { |a| a.strftime("%H:%M") }
       @reservation_type = request[:reservation_type_id]
       @number_of_guests = request[:reservation_duration] #Using the reservation_duration to get a dropdown.
-      puts("jjj", @number_of_guests)
       @reservation_date = request[:reservation_from]
     end
+    
   end
 
   def reservation_success

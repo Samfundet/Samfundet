@@ -224,7 +224,6 @@ class EventsController < ApplicationController
         event = payment_error_price_group.samfundet_event
         redirect_to buy_event_path(event, bsession: params[:bsession])
       else
-        flash[:error] = payment_error.message
         redirect_to root_path(bsession: params[:bsession])
       end
     else
