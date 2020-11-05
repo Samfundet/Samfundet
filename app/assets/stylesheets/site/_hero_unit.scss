@@ -178,22 +178,58 @@
   .events-today {
     .title {
       word-break: break-word;
+
       a {
-        font-weight: $font-weight-medium;
-        color: $samfundet-red;
-        text-decoration: underline;
+        .time {
+          text-align: right;
+          color: black;
+        }
+
+        .area {
+          @include emph-link($samfundet-red);
+          font-weight: $font-weight-medium;
+          color: $samfundet-red;
+          text-decoration: underline;
+          text-transform: uppercase;
+        }
+
+        a:hover {
+          text-decoration: underline;
+        }
+      }
+
+      .area {
         text-transform: uppercase;
       }
-      a:hover {
-        text-decoration: underline;
+
+      .no-events {
+        text-align: center;
+        margin: 1em;
       }
-    }
-    .area {
-      text-transform: uppercase;
-    }
-    .no-events {
-      text-align: center;
-      margin: 1em;
+
+      .events-today {
+        .title {
+          word-break: break-word;
+
+          a {
+            @include emph-link($samfundet-red);
+            font-weight: $font-weight-medium;
+          }
+        }
+
+        .area {
+          text-transform: uppercase;
+        }
+
+        .time {
+          color: black;
+        }
+
+        .no-events {
+          text-align: center;
+          margin: 1em;
+        }
+      }
     }
   }
 }
