@@ -3,7 +3,7 @@
     %h2.text-Align.p-1.bg-red.title.white= group_type.description
     - group_type.groups.each do |group|
       - group.jobs_in_admission(admission).sort_by(&:title).each do |job|
-        .m-3.br-2.pb-2{ id: "#{admission.to_param}/#{group.to_param}"}
+        .m-3.pb-2.jobs{ id: "#{admission.to_param}/#{group.to_param}"}
           %span.bullet{ class: job.is_officer ? "officer_position" : "non_officer_position"}
           .flex-row.space-around.jobRow
             %a{href: job_path(job), style:"flex-basis: 30%"}
