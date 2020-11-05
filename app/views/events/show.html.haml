@@ -4,13 +4,14 @@
 = render 'site/banner_image', banner_event: @event
 
 
-- cache cache_key_for_event_show(@event) do
-  .w100
-    = render 'admin_choices'
+.text-Align
+  - cache cache_key_for_event_show(@event) do
+    .w100
+      = render 'admin_choices'
 
-= background_image_helper "banner-image", @event.image_or_default, size: :large
-.m-3
-  = render 'events/corner_ribbon', event: @event
+  = background_image_helper "banner-image", @event.image_or_default, size: :large
+  .m-3
+    = render 'events/corner_ribbon', event: @event
 
 .flex-row.center.w100
   %table.custom-table.up-ca{style:"border-collapse: collapse;"}
