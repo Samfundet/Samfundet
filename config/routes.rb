@@ -179,6 +179,7 @@ Rails.application.routes.draw do
     namespace :sulten, path: "lyche" do
       get "/" => "lyche#index"
       get "/make_reservation" => "lyche#reservation"
+      post "/make_reservation" => "lyche#reservation"
       get "/reservation/success" => "lyche#reservation_success"
       get "/reservation/failure" => "lyche#reservation_failure"
       get "/reservation/failure_day" => "lyche#reservation_failure_day"
@@ -192,7 +193,6 @@ Rails.application.routes.draw do
       get :kjempelars, to: "admin#index"
       get "reservations/archive" => "reservations#archive"
       get "reservations/export" => "reservations#export"
-      get "/available" => "reservations#available"
       get "/admin/index" => "admin#index", as: :lyche_admin
 
 
