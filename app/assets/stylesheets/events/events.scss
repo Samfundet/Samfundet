@@ -8,34 +8,53 @@
   align-items: center;
 
   .column {
-    flex-basis: 25%;
+    flex: 1;
+    flex-basis: 33%;
     padding-left: .2em;
     padding-right: .2em;
   }
 
   .column.button {
     text-align: right;
+    flex-basis: 100px;
   }
+
+  .column.timeArea {
+    display: flex;
+    flex-direction: row;
+  }
+  .time{
+    flex-basis: 50%;
+    min-width: 100px;
+  }
+  .area {
+    flex-basis: 50%;
+  }
+
 
   &:not(:last-child) {
     border-bottom: 1px solid #ddd;
+  }
+
+  @media only screen and (max-width: 800px) {
+    .column.timeArea {
+      display: flex;
+      flex-direction: column;
+    }
+
   }
 
   @media only screen and (max-width: 600px) {
     .column.inline-price {
       display: none;
     }
-    .column {
-      flex-basis: 33.33%;
-    }
-
   }
 
-  @media only screen and (max-width: 320px) {
+  @media only screen and (max-width: 380px) {
     .column {
       flex-basis: 50%;
     }
-    .column.time {
+    .time, .area {
       text-align: right;
     }
     .column.button {
