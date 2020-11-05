@@ -21,6 +21,8 @@
       no_events_because_closed: "Samfundet er stengt"
       no_events_today: "Samfundet er åpent! Se åpningstidene for mer informasjon om når de enkelte lokalene er åpne"
       opening_hours_today: "Åpningstider"
+      show_opening_hours: "Åpningstider"
+      hide_opening_hours: "Skjul åpningstider"
 
       admissions_frontpage_highjack: "&lt;!-- Hjelp! Samfundet.no trenger webutviklere for å fikse denne feilen. <u>Søk MG::Web i dag!</u> -->"
       message_frontpage_highjack: "Placeholder"

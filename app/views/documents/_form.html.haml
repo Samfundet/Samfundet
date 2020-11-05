@@ -1,19 +1,13 @@
 = semantic_form_for @document, html: { multipart: true } do |f|
-  = f.inputs :general do
+  = f.inputs do
     = f.input :title, label: t('documents.title')
-    = f.input :category, collection: DocumentCategory.all, include_blank: false, label: t('documents.category')
+    .flex-row
 
-  = f.inputs :document do
-    %li
-      = f.input :file, as: :file, label: t('documents.choose_file')
-
-    %li
       = f.input :publication_date, input_html: { class: "datetimepicker" }, as: :string, label: t('documents.publication_date')
-
-    %li
-      %p.inline-hints
-        = t('documents.publication_date_explanation')
+      = f.input :category, collection: DocumentCategory.all, include_blank: false, label: t('documents.category')
+    %p.inline-hints
+      = t('documents.publication_date_explanation')
+    = f.input :file, as: :file, label: t('documents.choose_file')
 
   = f.actions do
     = f.action :submit, label: t('documents.upload')
-    %li= link_to t('common.back'), admin_documents_path

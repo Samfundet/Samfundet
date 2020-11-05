@@ -1,7 +1,16 @@
 - set_title t('documents.admin')
 
-%p.new
-  = link_to t('documents.new_document'), new_document_path
+= link_to members_control_panel_path do
+  .samf-button.plain.mb-3
+    = t("common.back")
+
+%h1.mb-2.mt-2
+  = t("documents.admin")
+
+- if can? :new, Event
+  = link_to new_document_path do
+    .samf-button.green.mb-3
+      = t('documents.new_document')
 
 %table
   %thead
@@ -14,11 +23,11 @@
   - @categories.each do |category|
     %tbody
       %tr.category
-        %td{colspan: 4}
+        %td{colspan: 5}
           = category.title
       - if category.documents.empty?
         %tr.empty
-          %td{colspan: 4}= t('documents.no_documents')
+          %td{colspan: 5}= t('documents.no_documents')
       - else
         - category.documents.each do |document|
           %tr
@@ -27,7 +36,11 @@
             %td= document.uploader.full_name
             %td
               - if can? :edit, document
-                = link_to t('crud.edit'), edit_document_path(document)
+                = link_to edit_document_path(document) do
+                  .samf-button.small.blue
+                    = t('crud.edit')
             %td
               - if can? :destroy, document
-                = link_to t('crud.destroy'), document, data: { confirm: t('documents.confirm_delete') }, method: :delete
+                = link_to document, data: { confirm: t('documents.confirm_delete') }, method: :delete do
+                  .samf-button.small
+                    = t('crud.destroy')

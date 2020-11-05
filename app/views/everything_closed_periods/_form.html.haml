@@ -1,11 +1,14 @@
 = semantic_form_for @everything_closed_period do |f|
   = f.inputs do
-    = f.input :message_no
-    = f.input :message_en
-    = f.input :event_message_no
-    = f.input :event_message_en
-    = f.input :closed_from, as: :string,
-      input_html: { class: "datepicker", value: f.object.closed_from.to_date }
-    = f.input :closed_to, as: :string,
-      input_html: { class: "datepicker", value: f.object.closed_to.to_date }
+    .flex-row
+      = f.input :message_no
+      = f.input :message_en
+    .flex-row
+      = f.input :event_message_no
+      = f.input :event_message_en
+    .flex-row
+      = f.input :closed_from, as: :string,
+        input_html: { class: "datepicker", value: f.object.closed_from.to_date }
+      = f.input :closed_to, as: :string,
+        input_html: { class: "datepicker", value: f.object.closed_to.to_date }
   = f.actions
