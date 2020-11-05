@@ -20,8 +20,6 @@ en:
       no_events_because_closed: "Samfundet is closed today"
       no_events_today: "Samfundet is open today! See the opening hours for more information about when the different venues are open."
       opening_hours_today: "Opening hours"
-      show_opening_hours: "Opening hours"
-      hide_opening_hours: "Hide opening hours"
 
       admissions_frontpage_highjack: "&lt;!-- Help! Samfundet.no needs developers to fix this error. <u>Apply to MG::Web today!</u> -->"
       message_frontpage_highjack: "Placeholder"

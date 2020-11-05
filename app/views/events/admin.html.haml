@@ -1,21 +1,7 @@
 - set_title t("events.admin.title")
 
-= link_to members_control_panel_path do
-  .samf-button.plain.mr-2
-    = t("common.back")
-
-%h1.mb-2.mt-2
-  = t("events.admin.title")
-
-.flex-row.wrap.mb-3
-  = link_to archive_events_path do
-    .samf-button.plain.mr-2
-      = t("events.archive.title")
-  - if can? :new, Event
-    = link_to new_event_path do
-      .samf-button.green
-        = t("events.action.new")
-
-
+- if can? :new, Event
+  %p.new
+    = link_to t("events.action.new"), new_event_path
 
 = render 'admin_list'

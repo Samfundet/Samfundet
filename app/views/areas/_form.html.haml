@@ -1,13 +1,11 @@
 = semantic_form_for @area, html: { class: 'custom-form' } do |f|
-  = f.input :page, member_label: :name
-  .day-container
+  .standard-hours
     = f.semantic_fields_for :standard_hours, f.object.week do |h|
-      .day
-        .head
-          %h2= t("days.#{h.object.day}")
-        .body
-          = h.input :open, as: :boolean
-          = h.input :open_time, as: :time_picker
-          = h.input :close_time, as: :time_picker
-          = h.input :day, as: :hidden
+      .standard-hour
+        %h2= t("days.#{h.object.day}")
+        = h.input :open, as: :boolean
+        = h.input :open_time, as: :time_picker
+        = h.input :close_time, as: :time_picker
+        = h.input :day, as: :hidden
+  = f.input :page, member_label: :name
   = f.actions

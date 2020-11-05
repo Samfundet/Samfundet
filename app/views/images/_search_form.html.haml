@@ -1,11 +1,11 @@
 = form_tag search_images_path, method: :get, class: 'custom-form search-form images-search-form', autocomplete: 'off' do
   = search_field_tag 'search', params[:search], placeholder: t('images.search')
 
-%h2
+%p
   = t('images.tags')
-.flex-row.wrap
+%ul.tag-list
   - @tags.each do |tag|
-    = link_to search_images_path({ search: tag.name }), data: { tag: tag.name } do
-      .samf-button.small.plain.mr-2.mb-2
+    %li
+      = link_to search_images_path({ search: tag.name }), data: { tag: tag.name }, class: 'tag' do
         = "#{tag.name} (#{tag.images_count})"
 = will_paginate @tags, :param_name => "tags"

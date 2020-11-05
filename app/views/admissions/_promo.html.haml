@@ -1,48 +1,32 @@
-.youtube-wrapper
-  - if not @open_admissions.first.promo_video.empty?
-    %iframe.youtube-embed{ src: @open_admissions.first.promo_video, frameborder: 0, allowfullscreen: true }
+= render 'admission_header', admission_video: true
 
-%div.text-Align.pt-3
-  %div.flex-row.wrap.mb-3.samf-container.white.br-3.bxs{style:"align-items: center;"}
-    %div.p-3.center
-      %h1
-        = admission.title
-      %h2
-        = t('admissions.deadline')
-        = l admission.shown_application_deadline, format: :short
-      - if admission.shown_application_deadline < Time.current
-        %br
-        %span{ style: "color: #a03033; text-decoration: underline; font-size: 0.9em;" }
-          Utvidet til
-          = l admission.actual_application_deadline, format: :short
-    .center.p-3{:style=>"max-width: 500px;"}
-      = simple_format t('admissions.admission_promo')
-
-
-    .flex-row.w100.center.p-3.mb-3
-      - if current_user.kind_of? Applicant
-        = link_to job_applications_path do
-          .samf-button.plain.mr-2
-            = t('jobs.your_applications')
-      - else
-        .flex-row.wrap.center
-          = link_to new_applicant_path do
-            .samf-button.blue.mr-2.mb-2
-              = t('applicants.register_as_an_applicant')
-          = link_to applicant_login_path do
-            .samf-button.plain
-              = t('applicants.login_title')
-
-  .flex-row.center.m-3.wrap
+#promo
+  %h2
+    = admission.title
+    %br
+    = "#{t('admissions.deadline')}:"
+    =l admission.shown_application_deadline, format: :short
+    - if admission.shown_application_deadline < Time.current
+      %br
+      %span{ style: "color: #a03033; text-decoration: underline; font-size: 0.9em;" }
+        Utvidet til
+        = l admission.actual_application_deadline, format: :short
+  %p
+    = simple_format t('admissions.admission_promo')
+    %br
     - if can? :manage, Admission
+      [
       = link_to edit_admissions_admin_admission_path(admission) do
-        .samf-button.plain.mr-2.mb-2
-          = t('admissions.edit_admission')
+        = t('admissions.edit_admission')
+      ]
+
     - if can? :show, Admission
+      [
       = link_to admissions_admin_admission_path(admission) do
-        .samf-button.plain.mr-2.mb-2
-          = t('admissions.administer_my_group')
+        = t('admissions.administer_my_group')
+      ]
     - if can? :statistics, Admission
+      [
       = link_to statistics_admissions_admin_admission_path(admission) do
-        .samf-button.plain
-          = t('admissions.statistics')
+        = t('admissions.statistics')
+      ]

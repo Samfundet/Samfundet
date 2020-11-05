@@ -1,91 +1,60 @@
 .areas.edit, .areas.update {
+    text-align: center;
 
-  form {
-    list-style-type: none;
-
-    input[type="submit"] {
-      margin-top: 1em;
+    h2 {
+        text-transform: uppercase;
     }
 
+    form {
+        list-style-type: none;
 
-    #area_page_input {
-      label {
-        margin-right: .5em;
-      }
+        @include span-columns(12);
+
+        .standard-hours {
+            @include span-columns(12);
+
+            .standard-hour {
+                background-color: rgba($samfundet-light-grey, 0.5);
+                padding: 20px;
+                margin-bottom: 20px;
+
+                @include span-columns(12);
+                @include media($tablet-portrait) {
+                    @include span-columns(6 of 12);
+                    &:nth-child(4n-1) {
+                        @include omega();
+                    }
+                } 
+                @include media($tablet-desktop) {
+                    @include span-columns(4 of 12);
+                    &:nth-child(6n-1) {
+                        @include omega();
+                    }
+                }
+
+                h2 {
+                    text-transform: uppercase;
+                    color: $samfundet-red;
+                }
+
+                & > li {
+                    margin: 5px 0;
+
+                    label { display: block; }
+                }
+            }
+        }
+
+        fieldset {
+            border: none;
+
+            ol {
+                list-style-type: none;
+
+                li {
+                    padding: 0;
+                }
+            }
+        }
     }
-
-    .day-container {
-
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      margin-top: .5em;
-
-      .day {
-
-        flex-basis: calc(33.33% - 1em);
-        margin: .5em;
-        overflow: hidden;
-        background-color: rgba($samfundet-light-grey, 0.3);
-        box-shadow: 2px 2px 15px 4px rgba(0,0,0,0.1);
-        border-radius: 4px;
-        border: 1px solid #eee;
-
-        @media only screen and (max-width: 900px) {
-          flex-basis: calc(50% - 1em);
-        }
-        @media only screen and (max-width: 600px) {
-          flex-basis: calc(100% - 1em);
-        }
-
-        .head {
-          background-color: $samfundet-blue;
-          padding: .2em;
-          h2 {
-            text-transform: uppercase;
-            color: white;
-            margin: 0;
-            text-align: center;
-          }
-        }
-
-        .body {
-
-          padding: .5em;
-
-          li.boolean {
-            input[type="checkbox"] {
-              margin-right: 10px;
-            }
-
-            border-bottom: 2px solid #ddd;
-            margin-bottom: .5em;
-            padding-bottom: .5em;
-          }
-
-          li.time_picker {
-            display: flex;
-            flex-direction: row;
-
-            label {
-              flex-basis: 30%;
-              margin-right: .1em;
-            }
-
-            input {
-              flex: 1;
-              text-align: right;
-              background-color: #eee;
-              padding: .5em;
-            }
-
-            margin-bottom: .5em;
-          }
-        }
-      }
-
-
-    }
-
-  }
 }

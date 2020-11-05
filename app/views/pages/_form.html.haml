@@ -1,45 +1,48 @@
 .form
-  = semantic_form_for @page do |form|
+  = semantic_form_for @page, html: { class: 'custom-form' } do |form|
     = form.inputs do
+      .pages-input
+        .form-content-header
+          %h1
+            = t("pages.norwegian_fields")
+          .form-content-content
+            - if can? :edit_non_content_fields, @page
+              = form.input :name_no
+            = form.input :title_no
+            = form.input :content_no, as: :text, hint: t('common.markdown_hint').html_safe
 
-      %h1
-        = t("pages.norwegian_fields")
+          .form-content-header
+            %h1
+              = t("pages.english_fields")
+          .form-content-content
+            - if can? :edit_non_content_fields, @page
+              = form.input :name_en
+            = form.input :title_en
+            = form.input :content_en, as: :text, hint: t('common.markdown_hint').html_safe
 
-      .flex-row
-        %div{style: "flex: 1; margin-right: 1em;"}
           - if can? :edit_non_content_fields, @page
-            = form.input :name_no
-          = form.input :title_no
-          = form.input :content_no, as: :text, hint: t('common.markdown_hint').html_safe
-        #content_preview_no{style: "flex-basis: 50%; border: 1px solid #aaa; border-radius: 8px; padding: 1em; overflow-y:scroll; max-height: 480px;"}
+            .form-content-header
+              = t("pages.other_fields")
+            .form-content-content
+              = form.input :content_type, collection: PageRevision::CONTENT_TYPES,
+                include_blank: false
+              = form.input :role, collection: Role.all
+              = form.input :hide_menu, label: t("pages.hide_menu")
+          - else
+            -#
+              This field exists so the live preview knows which content_type
+              we are using. It is ignored in the controller.
+            = form.input :content_type, as: :hidden
 
-      %hr
-
-      %h1
-        = t("pages.english_fields")
-
-      .flex-row
-        %div{style: "flex: 1; margin-right: 1em;"}
-          - if can? :edit_non_content_fields, @page
-            = form.input :name_en
-          = form.input :title_en
-          = form.input :content_en, as: :text, hint: t('common.markdown_hint').html_safe
-        #content_preview_en{style: "flex-basis: 50%; border: 1px solid #aaa; border-radius: 8px; padding: 1em; overflow-y:scroll; max-height: 480px;"}
-
-      - if can? :edit_non_content_fields, @page
-        %h2
-          = t("pages.other_fields")
-        = form.input :content_type, collection: PageRevision::CONTENT_TYPES, include_blank: false
-        = form.input :role, collection: Role.all
-        = form.input :hide_menu, label: t("pages.hide_menu")
-      - else
-        -#
-          This field exists so the live preview knows which content_type
-          we are using. It is ignored in the controller.
-        = form.input :content_type, as: :hidden
-
-      %br
-      %br
+      .pages-preview
+        %h1
+          = t("pages.norwegian_fields")
+        .preview-container
+          #content_preview_no
+        %h1
+          = t("pages.english_fields")
+        .preview-container
+          #content_preview_en
 
       .pages-submition
         = form.actions do

@@ -2,48 +2,38 @@ $border-color: rgba(200, 200, 200, 0.4);
 $alternate-cell-color: rgba(200, 200, 200, 0.15);
 
 table:not(.custom-table):not(.ui-datepicker-calendar) {
+  border: 1px solid $border-color;
   width: 100%;
   font-size: 17px;
   font-weight: $font-weight-normal;
-  border-collapse: collapse;
-
-  background: white;
-  border-radius: 5px;
-  overflow: hidden;
-  margin: 0 auto;
-  position: relative;
-
-
+  margin-bottom: 20px;
 
   tr {
+    border-bottom: 1px solid $border-color;
     padding: 10px 0;
   }
-  th:first-child, td:first-child {
-    padding-left: 15px;
-  }
+
   th, td {
+    border-right: 1px solid $border-color;
     padding: 10px 5px;
     font-weight: $font-weight-normal;
     text-align: left;
-    color: #111;
 
     &:last-child {
       border-right: none;
     }
   }
-  thead > tr, tr.category {
-    background-color: $samfundet-red;
-    td, th {
-      font-size: 1.25em;
-      color: white;
-    }
-  }
-  tr.category {
-    background-color: $samfundet-blue;
+  th {
+    font-size: 25px;
   }
 
-  tbody > tr:nth-child(even) {
+  thead > tr, tbody > tr:nth-child(even) {
     background-color: $alternate-cell-color;
+  }
+
+  tr.summation > td,
+  tr.summation:nth-child(even) > td {
+    border-top: 3px solid $samfundet-red;
   }
 
 }

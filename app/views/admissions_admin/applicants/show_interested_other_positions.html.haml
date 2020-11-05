@@ -1,33 +1,22 @@
-
-= link_to admissions_admin_admission_path(@admission) do
-  .samf-button.plain.mb-3
-    = t("common.back")
-
-%h1=t('admissions_admin.applicant_dont_get_position')
-%p=t('admissions_admin.reserved_applicants')
-
-%hr
+%h2 #{t('admissions_admin.applicant_dont_get_position')}
+%p #{t('admissions_admin.reserved_applicants')}
 
 - @applicants.each do |applicant|
-  .flex-row
-    %h2
-      = applicant.full_name
-      -#= link_to applicant.full_name, applicant
-  .flex-column
-    .flex-row
-      %strong.mr-2= t("helpers.label.applicant.phone") + ":"
+  .applicant
+    %h3
+      = link_to applicant.full_name, applicant
+      \-
       = applicant.phone
-    .flex-row
-      %strong.mr-2= t("helpers.label.applicant.email") + ":"
+      \-
       = applicant.email
-  %br
-  - applicant.job_applications.each do |application|
-    .flex-row
-      %div{:style => "flex-basis:33%;"}= application.job.group.name
-      %div{:style => "flex-basis:33%;"}= application.job.title
-      %strong{:style => "flex-basis:33%;"}= application.interview.acceptance_status_string
-  %hr
+    - applicant.job_applications.each do |application|
+      %p
+        = application.job.group.name
+        \-
+        = application.job.title
+        %strong= application.interview.acceptance_status_string
 
+  %br
 
 - if @applicants.blank?
   %p

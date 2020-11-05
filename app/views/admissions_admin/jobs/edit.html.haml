@@ -1,11 +1,11 @@
-= link_to admissions_admin_admission_group_path(@job.admission, @job.group) do
-  .samf-button.plain.mb-3
-    = t("common.back")
-
-%h1
-  = t("groups.edit_job")
-%h2
-  = set_and_return_title(@job.group.name + " - " + @job.admission.title)
-
-!= render 'form'
+.section
+  %h2
+    = set_and_return_title(@job.group.name + " - " + @job.admission.title)
+  %p
+    = "Redigér verv under opptak #{@job.admission.title} for gjeng #{@job.group.name}."
   
+  != render 'form'
+  
+  %p
+    = link_to admissions_admin_admission_group_path(@job.admission, @job.group) do
+      « Tilbake

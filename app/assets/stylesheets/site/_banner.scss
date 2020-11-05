@@ -1,112 +1,106 @@
 .banner {
-  $banner-height: 400px;
+    $banner-height: 400px;
+    display: none;
 
-  display: block;
-  width: 100%;
+    @include media($tablet-desktop) {
+        display: block;
 
-  #banner-image-link {
-    display: block;
+        #banner-image-link {
+            display: block;
 
-    .banner-image {
-      @include autoscale-picture($banner-height);
+            .banner-image {
+                @include autoscale-picture($banner-height);
 
-      @include media($mobile) {
-        @include autoscale-picture(200px);
-      }
+                .container {
+                    position: relative;
+                    height: $banner-height;
 
-      .container {
-        position: relative;
-        height: $banner-height;
+                    .image-text {
+                        $base-image-font-size: 65pt;
+                        line-height: 1;
+                        margin: 30px 15px;
+                        position: absolute;
 
-        @include media($mobile) {
-          height: 200px;
+                        &.right {
+                            text-align: right;
+                            right: 0;
+                            bottom: 0;
+
+                            .wrapper {
+                                float: right;
+                                clear: right;
+                            }
+                        }
+
+                        &.left {
+                            text-align: left;
+                            left: 0;
+                            bottom: 0;
+
+                            .wrapper {
+                                float: left;
+                                clear: left;
+                            }
+                        }
+
+                        &.hide {
+                          display: none;
+                        }
+
+                        .wrapper {
+                            margin-bottom: 15px;
+
+                            &:last-child {
+                                margin-bottom: 0px;
+                            }
+                        }
+
+                        .front-elem {
+                            display: inline;
+                            line-height: 1.2;
+                            padding: 0 5px;
+                        }
+
+                        .date, .where, .type {
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                        }
+
+                        .date, .where, .type, .title {
+                            text-transform: uppercase;
+                        }
+
+                        .date, .where, .title {
+                            font-weight: $font-weight-medium;
+                        }
+
+                        .date {
+                            font-size: $base-image-font-size;
+                        }
+
+                        .where {
+                            font-size: $base-image-font-size * 0.7;
+                        }
+
+                        .type {
+                            font-size: $base-image-font-size * 0.7;
+                        }
+
+                        .title {
+                            font-size: $base-image-font-size * 0.6;
+                        }
+                    }
+                }
+            }
         }
-
-        .image-text {
-          $base-image-font-size: 65pt;
-          line-height: 1;
-          margin: 30px 15px;
-          position: absolute;
-
-          &.right {
-            text-align: right;
-            right: 0;
-            bottom: 0;
-
-            .wrapper {
-              float: right;
-              clear: right;
-            }
-          }
-
-          &.left {
-            text-align: left;
-            left: 0;
-            bottom: 0;
-
-            .wrapper {
-              float: left;
-              clear: left;
-            }
-          }
-
-          &.hide {
-            display: none;
-          }
-
-          .wrapper {
-            margin-bottom: 15px;
-
-            &:last-child {
-              margin-bottom: 0px;
-            }
-          }
-
-          .front-elem {
-            display: inline;
-            line-height: 1.2;
-            padding: 0 5px;
-          }
-
-          .date, .where, .type {
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-          }
-
-          .date, .where, .type, .title {
-            text-transform: uppercase;
-          }
-
-          .date, .where, .title {
-            font-weight: $font-weight-medium;
-          }
-
-          .date {
-            font-size: $base-image-font-size;
-          }
-
-          .where {
-            font-size: $base-image-font-size * 0.7;
-          }
-
-          .type {
-            font-size: $base-image-font-size * 0.7;
-          }
-
-          .title {
-            font-size: $base-image-font-size * 0.6;
-          }
-        }
-      }
     }
-  }
 }
 
 #banner-image-edit {
-  margin-top: 16px;
-  display: block;
-  text-align: center;
+    margin-top: 16px;
+    display: block;
+    text-align: center;
 }
 
 // The banner of events that don't have text in the image itself, we overlay a

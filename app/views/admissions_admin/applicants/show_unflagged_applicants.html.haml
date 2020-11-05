@@ -1,40 +1,28 @@
 = javascript_include_tag 'applicants/admissions_admin_applicants', defer: true
-
-= link_to admissions_admin_admission_path(@admission) do
-  .samf-button.plain.mb-3
-    = t("common.back")
-
-%h1
-  = t('admissions_admin.applicants_set_to_reserve')
+%h2 #{t('admissions_admin.applicants_set_to_reserve')}
 %p
   %input#show_reserved{type:"checkbox", checked: true}
-    = t('admissions_admin.show_reserved_applicants')
-  %br
+    =t('admissions_admin.show_reserved_applicants')
+%p
   %input#show_not_set{type:"checkbox", checked: true}
-    = t('admissions_admin.show_not_set_applicants')
-
-%hr
-
+  =t('admissions_admin.show_not_set_applicants')
 - @applicants.each do |applicant|
-  .applicant{class: "display-none #{applicant.flagged?(@admission) ? '' : 'not_set display-not-set'} #{applicant.reserved?(@admission) ? 'reserved display-reserved' : ''}"}
-    .flex-row
-      %h2
-        = applicant.full_name
-    .flex-column.mb-3
-      .flex-row
-        %strong.mr-2= t("helpers.label.applicant.phone") + ":"
-        = applicant.phone
-      .flex-row
-        %strong.mr-2= t("helpers.label.applicant.email") + ":"
-        = applicant.email
+  .applicant{id:"applicant-#{applicant.id}", class: "display-none #{applicant.flagged?(@admission) ? '' : 'not_set display-not-set'} #{applicant.reserved?(@admission) ? 'reserved display-reserved' : ''}"}
+    %h3
+      %strong= applicant.full_name
+      \-
+      = applicant.phone
+      \-
+      = applicant.email
     - applicant.job_applications.each do |application|
       .application{id:"application-#{application.id}", class: "display-none #{application.interview.acceptance_status == nil ? 'not_set display-not-set' : ''} #{application.interview.acceptance_status == :reserved ? 'reserved display-reserved' : ''}"}
         - if application.interview.acceptance_status == :reserved || application.interview.acceptance_status == nil
-          .flex-row
-            %div{:style=>"flex-basis: 33%;"}= application.job.group.name
-            %div{:style=>"flex-basis: 33%;"}= link_to application.job.title, admissions_admin_admission_group_job_path(@admission, application.job.group, application.job)
-            %strong{:style=>"flex-basis: 33%;"}= application.interview.acceptance_status_string
-    %hr
+          %p
+            = application.job.group.name
+            \-
+            = link_to application.job.title, admissions_admin_admission_group_job_path(@admission, application.job.group, application.job)
+            %strong{:style => "color: #961E21"}= application.interview.acceptance_status_string
+    %br
 
 - if @applicants.blank?
   %p

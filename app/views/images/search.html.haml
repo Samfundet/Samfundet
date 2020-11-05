@@ -1,11 +1,6 @@
 //= render 'search_form'
-= link_to images_path do
-  .samf-button.plain
-    = t("common.back")
+%h3= link_to t("common.back"), images_path
 %br
-
-%h1=t("search.results_title")
-
 .ajax-results
 .existing-results
   = render 'image_list'

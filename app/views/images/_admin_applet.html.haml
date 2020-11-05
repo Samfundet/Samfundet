@@ -3,13 +3,8 @@
     = t('images.admin_applet.title')
 .options
   %ul
+    %li
+      = link_to t('images.admin_applet.view'), images_path
     - if can? :new, Image
       %li
-        = link_to new_image_path do
-          .samf-button.green.w100.mb-2
-            = t('images.admin_applet.new')
-    %li
-      = link_to images_path do
-        .samf-button.plain.w100.mb-2
-          = t('images.admin_applet.view')
-
+        = link_to t('images.admin_applet.new'), new_image_path

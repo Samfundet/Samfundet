@@ -1,12 +1,11 @@
 .search-results
-  .flex-column.mobile-event
-    %h2= t('search.results_title')
+  .event-group
+    %h3= t('search.results_title')
     - if @events.present?
       - @events.group_by {|i| i.start_time.to_date }.sort.each do |date, events|
-        .samf-container.white.mb-3
-          %h2.text-Align.p-1.bg-blue.title.white= l(date, format: :medium_long)
-          %table
-            %tbody
-              = render events.sort_by{|event| event.start_time}
+        %h2= l(date, format: :medium_long)
+        %table.custom-table
+          %tbody
+            = render events.sort_by{|event| event.start_time}
     - else
       %p= t('search.no_results')

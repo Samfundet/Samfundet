@@ -2,19 +2,9 @@
   - if admission_video and not @open_admissions.first.promo_video.empty?
     .youtube-video
       %iframe{ src: @open_admissions.first.promo_video, frameborder: 0, allowfullscreen: true }
-  .flex-row.center.mt-2.mb-3
-    = link_to admissions_path do
-      .samf-button.plain.mr-2
-        = t('jobs.all_jobs')
+  #navigation
+    = link_to  t('jobs.all_jobs'), admissions_path
     - if current_user.kind_of? Applicant
-      = link_to job_applications_path do
-        .samf-button.plain.mr-2
-          = t('jobs.your_applications')
+      = link_to t('jobs.your_applications'), job_applications_path
     - else
-      .flex-row.wrap
-        = link_to applicants_new_path do
-          .samf-button.blue
-            = t('applicants.register_as_an_applicant')
-        = link_to applicants_login_path do
-          .samf-button.plain
-            = t('applicants.login_title')
+      = link_to t('applicants.register_as_an_applicant'), applicants_login_path

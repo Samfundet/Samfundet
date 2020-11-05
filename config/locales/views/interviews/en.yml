@@ -36,15 +36,3 @@ en:
     hide_withdrawn_applications: "Hide withdrawn applications"
     colorblind_mode: "Colorblind mode"
     jobs_applicant_has_applied_to: "Jobs that this applicant has applied to"
-
-    important_title: "Important Information"
-    important_description: "Related to the changes for admission."
-
-    important_priority_title: "Remember to prioritize applicants!"
-    important_priority_description: "This makes it much easier to distribute applicants between groups, and makes the distribution meeting more chill."
-
-    important_status_title: "All applicants MUST be given a status!"
-    important_status_description: |
-      This is extremely important to ensure automatic rejection emails are sent to the correct applicants.
-      Applicants with status "Accepted", "Offered, but said no" and "Rejected, contacted directly" will NOT GET A REJECTION EMAIL.
-      Rejections are only for this job, so if the applicant is given a different job you must still set the status to rejected.

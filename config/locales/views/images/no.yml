@@ -13,7 +13,6 @@
     chose_image: Velg bilde
     uploaded_at: Lastet opp %{time}
     uploaded_by: av %{name}
-    edit_image: Rediger bilde
 
     create_success: Bildet er skapt
     update_success: Bildet er oppdatert

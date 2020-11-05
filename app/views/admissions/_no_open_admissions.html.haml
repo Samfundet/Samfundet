@@ -1,28 +1,29 @@
-.text-Align
-  %h2{style:"color: $samfundet-red"}
-    - if admissions.any?
-      = t('admissions.admission_not_yet_open')
-      = admissions.upcoming.first.shown_from
-    - else
-      = t('admissions.no_admissions.header')
-  %p
-    = simple_format t('admissions.no_admissions.motivation_text')
-  %p
-    = simple_format  t('admissions.admission_promo')
+.section
+  #no-admissions
+    %h2
+      - if admissions.any?
+        = t('admissions.admission_not_yet_open')
+        = admissions.upcoming.first.shown_from
+      - else
+        = t('admissions.no_admissions.header')
+    %p
+      = simple_format t('admissions.no_admissions.motivation_text')
+    %p
+      = simple_format  t('admissions.admission_promo')
 
-  %p
-    = t('admissions.no_admissions.more_information')
-    %strong
-      = link_to t('admissions.no_admissions.click_here'), t('navigation.main.contactinfo')
+    %p
+      = t('admissions.no_admissions.more_information')
+      %strong
+        = link_to t('admissions.no_admissions.click_here'), t('navigation.main.contactinfo')
 
-  %p
-    - if current_user.kind_of? Applicant
-      = t('admissions.no_admissions.see_applications_text')
-      %strong
-        = link_to t('admissions.no_admissions.see_applications_link'), job_applications_path
-    - else
-      = t('admissions.no_admissions.already_applied')
-      %strong
-        = link_to t('admissions.no_admissions.log_in'), login_path(redirect_to: job_applications_path)
-      = t('admissions.no_admissions.log_in_text')
-  = render 'no_admissions_header'
+    %p
+      - if current_user.kind_of? Applicant
+        = t('admissions.no_admissions.see_applications_text')
+        %strong
+          = link_to t('admissions.no_admissions.see_applications_link'), job_applications_path
+      - else
+        = t('admissions.no_admissions.already_applied')
+        %strong
+          = link_to t('admissions.no_admissions.log_in'), login_path(redirect_to: job_applications_path)
+        = t('admissions.no_admissions.log_in_text')
+    = render 'no_admissions_header'

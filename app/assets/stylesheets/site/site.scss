@@ -1,7 +1,13 @@
 @import "_admissions_frontpage_highjack";
 @import "_hero_unit";
 @import "_upcoming_events";
-@import "_mailing_list";
 @import "_banner";
+@import "_mailing_list";
 
-
+.show-more-events {
+  text-align: center;
+  font-weight: $font-weight-normal;
+  text-transform: uppercase;
+  color: #a03033;
+  font-size: 35px;
+}

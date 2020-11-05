@@ -1,73 +1,64 @@
 = javascript_include_tag 'job_applications/job_applications', defer: true
 
-
-= link_to admissions_path do
-  .samf-button.plain
-    = t('admissions.back_to_overview')
-
-%br
-%br
-
-%h1
-  = set_and_return_title t('jobs.your_applications')
-
-%h3
-  = t("jobs.gdpr")
-
-%br
-- if @admissions.empty?
-  %p
-    = t('jobs.no_applications')
-- else
-  - @admissions.each_pair do |admission, job_applications|
-    %h2
-      = t('jobs.applications_to') + " #{admission.title}"
-    - if admission.actual_application_deadline < Time.current && admission.user_priority_deadline > Time.current
-      .flash.message
-        Dette opptaket er stengt, men du kan fremdeles omprioritere dine søknader.
-    - elsif admission.user_priority_deadline < Time.current
-      .flash.error
-        Dette er søknader fra et eldre opptak.
-    %h4.mb-3
-      = t('jobs.repriorization_deadline') + ": " + admission.user_priority_deadline.to_s
-    %table
-      %thead
-        %tr
-          %th{ colspan: "2" }= t('jobs.priority')
-          %th= t('jobs.job')
-          %th= t('jobs.group')
-          %th= t('jobs.interview_time')
-          %th= t('interviews.location')
-      %tbody.sortable
-        - job_applications.each_with_index do |job_application, index|
-          %tr
-            %td.priority
-              #{index + 1}
-            %td
-              - if admission.user_priority_deadline > Time.current
-                = form_tag up_job_application_path(job_application), method: :post, class: 'up custom-form' do
-                  != image_submit_tag 'icons/big-arrow-up.png', alt: t('common.up')
-                = form_tag down_job_application_path(job_application), method: :post, class: 'down custom-form' do
-                  != image_submit_tag 'icons/big-arrow-down.png', alt: t('common.down')
-            %td
-              = link_to job_path(job_application.job) do
-                = job_application.job.title
-            %td
-              = group_link job_application.job.group
-            %td
-              = job_application.find_or_create_interview.try(:time) || t('jobs.not_set')
-            %td
-              = job_application.find_or_create_interview.try(:location) || t('jobs.not_set')
+.section
+  %h1= set_and_return_title t('jobs.your_applications')
+  %h3= t("jobs.gdpr")
+  %br
+  - if @admissions.empty?
     %p
-      = link_to check_box_tag("", "", @current_user.interested_other_positions), applicant_path(@current_user, applicant: { interested_other_positions: !@current_user.interested_other_positions }), method: :put, confirm: t('crud.confirm')
-      = t('job_applications.offer_other_positions')
-    - if admission.appliable? && @current_user.similar_jobs_not_applied_to.any?
-      %h3= t('jobs.similar_jobs_not_applied_to')
-      %ul
-        - @current_user.similar_jobs_not_applied_to.each do |similar_job|
-          %li
-            = link_to job_path(similar_job) do
-              = similar_job.title
-            hos
-            = group_link similar_job.group
-
+      = t('jobs.no_applications')
+  - else
+    - @admissions.each_pair do |admission, job_applications|
+      %h2
+        = t('jobs.applications_to') + " #{admission.title}"
+      - if admission.actual_application_deadline < Time.current && admission.user_priority_deadline > Time.current
+        .flash.message
+          Dette opptaket er stengt, men du kan fremdeles omprioritere dine søknader.
+      - elsif admission.user_priority_deadline < Time.current
+        .flash.error
+          Dette er søknader fra et eldre opptak.
+      %h4
+        = t('jobs.repriorization_deadline') + ": " + admission.user_priority_deadline.to_s
+      %p
+        = link_to check_box_tag("", "", @current_user.interested_other_positions), applicant_path(@current_user, applicant: { interested_other_positions: !@current_user.interested_other_positions }), method: :put, confirm: t('crud.confirm')
+        = t('job_applications.offer_other_positions')
+      %table
+        %thead
+          %tr
+            %th{ colspan: "2" }= t('jobs.priority')
+            %th= t('jobs.job')
+            %th= t('jobs.group')
+            %th= t('jobs.interview_time')
+            %th= t('interviews.location')
+        %tbody.sortable
+          - job_applications.each_with_index do |job_application, index|
+            %tr
+              %td.priority
+                #{index + 1}
+              %td
+                - if admission.user_priority_deadline > Time.current
+                  = form_tag up_job_application_path(job_application), method: :post, class: 'up custom-form' do
+                    != image_submit_tag 'icons/big-arrow-up.png', alt: t('common.up')
+                  = form_tag down_job_application_path(job_application), method: :post, class: 'down custom-form' do
+                    != image_submit_tag 'icons/big-arrow-down.png', alt: t('common.down')
+              %td
+                = link_to job_path(job_application.job) do
+                  = job_application.job.title
+              %td
+                = group_link job_application.job.group
+              %td
+                = job_application.find_or_create_interview.try(:time) || t('jobs.not_set')
+              %td
+                = job_application.find_or_create_interview.try(:location) || t('jobs.not_set')
+      - if admission.appliable? && @current_user.similar_jobs_not_applied_to.any?
+        %h3= t('jobs.similar_jobs_not_applied_to')
+        %ul
+          - @current_user.similar_jobs_not_applied_to.each do |similar_job|
+            %li
+              = link_to job_path(similar_job) do
+                = similar_job.title
+              hos
+              = group_link similar_job.group
+  %p
+    = link_to admissions_path do
+      = "« #{T('admissions.back_to_overview')}"

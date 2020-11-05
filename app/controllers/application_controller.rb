@@ -20,7 +20,6 @@ class ApplicationController < ActionController::Base
 
   # Helper methods that are also used in controllers
   helper_method :current_user, :logged_in?
-  helper_method :open_admission?
 
   def handle_unverified_request
     raise ActionController::InvalidAuthenticityToken
@@ -57,13 +56,6 @@ class ApplicationController < ActionController::Base
 
   def logged_in?
     !current_user.nil?
-  end
-
-  def open_admission?
-    open_admissions = Admission.appliable.includes(
-        group_types: { groups: :jobs }
-    )
-    open_admissions and not open_admissions.empty?
   end
 
   def permission_denied

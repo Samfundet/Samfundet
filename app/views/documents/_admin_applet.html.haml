@@ -3,11 +3,5 @@
     = t('documents.applet_title')
 .options
   %ul
-    %li
-      = link_to new_document_path do
-        .samf-button.green.w100.mb-2
-          = t('documents.new_document')
-    %li
-      = link_to admin_documents_path do
-        .samf-button.plain.w100
-          = t('documents.admin')
+    %li= link_to t('documents.new_document'), new_document_path
+    %li= link_to t('documents.admin'), admin_documents_path

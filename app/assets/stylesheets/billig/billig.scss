@@ -6,9 +6,6 @@
     table {
         @extend .table-highlight-rows !optional;
 
-        border: 1px solid $border-color;
-        font-weight: $font-weight-normal;
-
         font-size: 1.15em;
         width: 100%;
         margin-bottom: 20px;
@@ -16,34 +13,6 @@
         word-wrap: break-word;
         overflow: scroll;
         color: $samfundet-black;
-
-        tr {
-          border-bottom: 1px solid $border-color;
-          padding: 10px 0;
-        }
-
-        th, td {
-          border-right: 1px solid $border-color;
-          padding: 10px 5px;
-          font-weight: $font-weight-normal;
-          text-align: left;
-
-          &:last-child {
-            border-right: none;
-          }
-        }
-        th {
-          font-size: 25px;
-        }
-
-        thead > tr, tbody > tr:nth-child(even) {
-          background-color: $alternate-cell-color;
-        }
-
-        tr.summation > td,
-        tr.summation:nth-child(even) > td {
-          border-top: 3px solid $samfundet-red;
-        }
 
         tr .ticket-limit-hd {
           text-align: center;
@@ -110,11 +79,7 @@
         }
     }
 
-
     h2 {
-        text-transform: uppercase;
-        color: $samfundet-red;
-        line-height: 1.2;
         font-weight: $font-weight-normal;
         font-size: 1.8em;
         margin: 20px 0 10px;

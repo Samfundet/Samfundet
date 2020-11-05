@@ -1,78 +1,78 @@
+.pages, .documents {
+    font-weight: $font-weight-normal;
 
-#content.pages {
-  .menu-button {
-    display: block;
-    padding: 10px;
-    background-color: $samfundet-red;
-    color: white;
-    text-align: center;
-    text-transform: uppercase;
-    cursor: pointer;
+    .menu-button {
+        display: block;
+        padding: 10px;
+        background-color: $samfundet-red;
+        color: white;
+        text-align: center;
+        text-transform: uppercase;
+        cursor: pointer;
 
-
-    @include span-columns(12);
-    @include media($tablet-desktop) {
-      display: none;
-      background-color: transparent;
-    }
-  }
-
-  .show-menu-content {
-    display: block !important;
-    max-width: 95vw !important;
-
-  }
-
-  .wide {
-    width: 100% !important;
-  }
-
-  .content {
-
-    @include span-columns(12);
-    @include omega();
-    @include media($tablet-desktop) {
-      padding: 0 1.7em;
-      @include span-columns(8.5 of 12);
+        @include span-columns(12);
+        @include media($tablet-desktop) {
+            display: none;
+            background-color: transparent;
+        }
     }
 
-    h1 {
-      margin: 0;
-      padding-top: 15px;
+    .show-menu-content {
+        display: block !important;
+    }
 
-      &:first-child {
-        padding-top: 0;
+    .wide {
+      width: 100% !important;
+    }
+
+    .content {
+
+        @include span-columns(12);
+        @include omega();
+        @include media($tablet-desktop) {
+            padding: 0 1.7em;
+            @include span-columns(8.5 of 12);
+        }
+
+        h1 {
+            color: $samfundet-red;
+            margin: 0;
+            padding-top: 15px;
+            text-transform: uppercase;
+            font-weight: $font-weight-normal;
+
+            &:first-child {
+                padding-top: 0;
+            }
+
+            @include media($mobile-and-tablet-portrait) {
+                font-size: 30px;
+            }
+        }
+
+      h2 {
+        @include media($mobile-and-tablet-portrait) {
+          font-size: 27px;
+        }
       }
 
-      @include media($mobile-and-tablet-portrait) {
-        font-size: 30px;
-      }
+        p {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+        .youtube-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+
+            iframe.youtube-embed {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+            }
+        }
     }
 
-    h2 {
-      @include media($mobile-and-tablet-portrait) {
-        font-size: 27px;
-      }
-    }
-
-    p {
-      margin-top: 0;
-      margin-bottom: 20px;
-    }
-
-    .youtube-wrapper {
-      position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-
-      iframe.youtube-embed {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-      }
-    }
-  }
 }
-

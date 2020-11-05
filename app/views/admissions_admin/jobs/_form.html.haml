@@ -1,19 +1,15 @@
 = semantic_form_for [:admissions_admin, @job.admission, @job.group, @job] do |form|
   = form.inputs do
-    .flex-row
-      != form.input :title_no
-      != form.input :title_en
-    .flex-row
-      != form.input :teaser_no
-      != form.input :teaser_en
-    .flex-row
-      != form.input :description_no, as: :text,
-                    hint: t('common.markdown_hint').html_safe
-      != form.input :description_en, as: :text,
-                    hint: t('common.markdown_hint').html_safe
-    .flex-row
-      != form.input :default_motivation_text_no, as: :text
-      != form.input :default_motivation_text_en, as: :text
+    != form.input :title_no
+    != form.input :title_en
+    != form.input :teaser_no
+    != form.input :teaser_en
+    != form.input :description_no, as: :text,
+                  hint: t('common.markdown_hint').html_safe
+    != form.input :description_en, as: :text,
+                  hint: t('common.markdown_hint').html_safe
+    != form.input :default_motivation_text_no, as: :text
+    != form.input :default_motivation_text_en, as: :text
     != form.input :is_officer, as: :boolean
     != form.input :tag_titles, as: :string, :placeholder => t('jobs.create_tags_example')
   = form.actions do

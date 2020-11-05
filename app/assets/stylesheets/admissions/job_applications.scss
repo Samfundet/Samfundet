@@ -60,6 +60,11 @@
 }
 
 .jobs.show {
+  h2 {
+    background-color: $samfundet-light-grey;
+    padding: 15px;
+  }
+
   .section {
     @include span-columns(12);
 

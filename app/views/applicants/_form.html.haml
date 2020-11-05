@@ -1,22 +1,21 @@
 = semantic_form_for applicant, html: { class: 'soon-to-be-default-styling' } do |form|
   != hidden_field_tag "redirect_to", html_escape(@redirect_to) if @redirect_to
-  .center{style:"max-width:750px"}
-    = form.inputs name: t("applicants.forms.register.personal_information") do
-      .flex-row.wrap
-        != form.input :firstname
-        != form.input :surname
-      .flex-row.wrap
-        != form.input :phone
-        != form.input :campus_id, as: :select, collection: Campus.order(:name)
+  = form.inputs name: t("applicants.forms.register.personal_information") do
+    != form.input :firstname
+    != form.input :surname
+    != form.input :phone
+    != form.input :campus_id, as: :select, collection: Campus.order(:name)
 
-    = form.inputs name: t("applicants.forms.register.login_information") do
-      != form.input :email
-      != form.input :password, input_html: {value: ""}
-      != form.input :password_confirmation, input_html: {value: ""}
+  = form.inputs name: t("applicants.forms.register.login_information") do
+    != form.input :email
+    != form.input :password, input_html: {value: ""}
+    != form.input :password_confirmation, input_html: {value: ""}
 
-    = form.inputs name: t("applicants.forms.register.extra_information") do
+  = form.inputs name: t("applicants.forms.register.extra_information") do
+    .select
       != form.input :interested_other_positions, as: :select, hint: t("applicants.interested_other_positions_hint")
+    .gdpr_checkbox
       != form.input :gdpr_checkbox, as: :boolean, label: raw(t("applicants.forms.register.gdpr_checkbox", en_url:'/en/information/privacy', no_url: '/informasjon/personvern'))
 
-    = form.actions do
-      != submit_tag t("applicants.forms.register.submit")
+  = form.actions do
+    != submit_tag t("applicants.forms.register.submit")

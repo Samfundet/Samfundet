@@ -1,10 +1,6 @@
-
-= link_to everything_closed_periods_path do
-  .samf-button.plain.mb-3
-    = t('common.back')
-
-%h1
+%h2
   = set_and_return_title t('everything_closed_periods.edit_title')
 
 = render 'form'
 
+= link_to t('common.back'), everything_closed_periods_path

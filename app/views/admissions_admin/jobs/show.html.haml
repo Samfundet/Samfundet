@@ -4,43 +4,17 @@
 .section
   .flash.message
     = T('interviews.possible_to_set_status', date: @admission.admin_priority_deadline)
-
-= link_to admissions_admin_admission_group_path(@job.admission, @job.group) do
-  .samf-button.plain.mb-3
-    = t("common.back")
-
-%h1
-  = t("interviews.administer_interviews")
-
-%h2
-  = t('interviews.job_title', job: @job.title) + " - " + @group.name
-
--#.samf-container.p-3.mt-3
--#  %h2{style:"color: red; text-transform: uppercase;"}= t("interviews.important_title")
--#  %p{style:"color:black; margin: 0;"}
--#    = t("interviews.important_description")
--#  %hr
--#  .flex-row.flex-justify-between
--#    %b{style: "flex-basis: 30%;"}
--#      = t("interviews.important_status_title")
--#    %p{style:"color:black; flex-basis: 70%; margin: 0;"}
--#      = t("interviews.important_status_description")
--#  %hr
--#  .flex-row.flex-justify-between.mb-2
--#    %b{style: "flex-basis: 30%;"}
--#      = t("interviews.important_priority_title")
--#    %p{style:"color:black; flex-basis: 70%; margin: 0;"}
--#      = t("interviews.important_priority_description")
-
-
+  .flash.message.hidden
+  %h2= t('interviews.job_title', job: @job.title)
 
 = render 'jobs_show', job_application_groupings: [@job.job_applications], show_job_titles: false
 
 - if can?(:hidden_create, JobApplication)
   = form_tag(hidden_create_admissions_admin_admission_group_job_job_applications_path(@admission, @group, @job)) do
     = label_tag(:email, "Email")
-    = text_field_tag :email, nil, style: "border: 1px solid gray;"
+    = text_field_tag(:email)
     = submit_tag("Legg til søknad")
 
-
-
+%p
+  = link_to admissions_admin_admission_group_path(@job.admission, @job.group) do
+    = "« #{T('common.back')}"

@@ -1,12 +1,3 @@
-
-= link_to admin_blogs_path do
-  .samf-button.plain.mb-3
-    = t("common.back")
-
-%h1
-  = t("blogs.edit_blog")
-%h2.mb-3
-  = @article.title
-
+%h2= @article.title
 = render 'form'
 

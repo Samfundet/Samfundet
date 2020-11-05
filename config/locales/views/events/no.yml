@@ -175,7 +175,6 @@
         primary_color: Primærfarge
         secondary_color: Sekundærfarge
         banner_alignment: Tekstplassering
-        banner_description: Skjul anbefales. Bruk kun banner dersom bildet ikke inneholder tittelen på arrangementet.
         duration: Varighet
         publication_time: Publiseringstid
         free: Gratis

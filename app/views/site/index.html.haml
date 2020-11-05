@@ -6,28 +6,17 @@
 
 -# = safe_join(flash[:success], "<br>".html_safe)
 - content_for :banner_image do
-  %div{:style => "max-height: 0; overflow: visible; position:relative; top:-36px;"}
-    - if can? :manage, FrontPageLock
-      - if @banner_event.try(:front_page_lock)
-        = link_to edit_front_page_lock_path(@banner_event.front_page_lock), id: 'banner-image-edit' do
-          .samf-button.black.center.small
-            = t('site.index.change_banner_lock')
-      - else
-        = link_to edit_front_page_lock_path(FrontPageLock::BANNER_ID), id: 'banner-image-edit' do
-          .samf-button.black.center.small
-            = t('site.index.add_banner_lock')
+  - if can? :manage, FrontPageLock
+    - if @banner_event.try(:front_page_lock)
+      = link_to edit_front_page_lock_path(@banner_event.front_page_lock), id: 'banner-image-edit' do
+        = t('site.index.change_banner_lock')
+    - else
+      = link_to edit_front_page_lock_path(FrontPageLock::BANNER_ID), id: 'banner-image-edit'  do
+        = t('site.index.add_banner_lock')
 
-.flash.notice
-  =  t('site.index.corona_H20')
-  = link_to(t('site.index.corona_H20_2'), Page.corona_info)
 
 = render 'hero_unit'
 = render 'upcoming_events'
 
-= link_to events_path do
-  .samf-button.plain.center
-    = t('site.index.show_more')
-
-%br
-%br
-%br
+.show-more-events
+  = link_to t('site.index.show_more'), events_path

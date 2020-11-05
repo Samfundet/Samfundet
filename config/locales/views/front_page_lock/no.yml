@@ -1,7 +1,6 @@
 'no':
   front_page_lock:
-    title: "Oppdater lås for posisjon %{position}"
-    title_banner: "Oppdater banner"
+    title: "Oppdater lås for position %{position}"
 
     update_success: "Låsen ble endret."
     update_failure: "Låsen ble ikke oppdatert."

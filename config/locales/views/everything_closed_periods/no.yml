@@ -4,7 +4,7 @@
     new_title: "Opprett en ny periode når Samfundet skal holde stengt"
     edit_title: "Endre periode Samfundet holder stengt"
 
-    table_caption: "Planlagte perioder Samfundet skal holde stengt"
+    table_caption: "Plantagte perioder Samfundet skal holde stengt"
     message: "Melding"
     event_message: "Event Melding"
     from: "Stengt fra og med"

@@ -13,7 +13,6 @@ en:
     chose_image: Chose image
     uploaded_at: Uploaded %{time}
     uploaded_by: by %{name}
-    edit_image: Edit image
 
     create_success: Image sucessfully created
     update_success: Image sucessfully updated

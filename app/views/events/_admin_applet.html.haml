@@ -4,14 +4,9 @@
 .options
   %ul
     - if can? :create, Event
-      = link_to new_event_path do
-        .samf-button.green.w100.mb-2
-          = t("events.action.new")
+      %li
+        = link_to t("events.action.new"), new_event_path
     %li
-      = link_to admin_events_path do
-        .samf-button.plain.w100.mb-2
-          = t("events.admin.title")
+      = link_to t("events.admin.title"), admin_events_path
     %li
-      = link_to archive_events_path do
-        .samf-button.plain.w100
-          = t("events.archive.title")
+      = link_to t("events.archive.title"), archive_events_path

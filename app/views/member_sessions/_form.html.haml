@@ -1,5 +1,7 @@
 = form_tag members_login_path, method: :post, class: "custom-form", id: "member_login_form" do
-
+  
+  %h3
+    = t("member_sessions.forms.login.heading")
   
   = hidden_field_tag "redirect_to", html_escape(redirect_to) if local_assigns[:redirect_to]
 
@@ -18,7 +20,7 @@
       required: true
 
   %p
-    != submit_tag t("sessions.login"), id: "member_login",
+    != submit_tag t("member_sessions.forms.login.submit"), id: "member_login",
       disable_with: t("sessions.login_wait")
   
   %p.quiet

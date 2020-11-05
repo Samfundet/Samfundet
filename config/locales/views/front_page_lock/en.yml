@@ -1,7 +1,6 @@
 'en':
   front_page_lock:
     title: "Update lock for position %{position}"
-    title_banner: "Update banner lock"
 
     update_success: "Lock updated."
     update_failure: "Lock not updated."

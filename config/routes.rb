@@ -86,9 +86,8 @@ Rails.application.routes.draw do
     # instead of applicants#show(login).
     scope "/applicants" do
       # ApplicantSessionsController
-      get "new", to: "applicant_sessions#new", as: :applicants_login
-      post "new" => "applicant_sessions#create",  as: :connect_applicant
-      get "login", to: "user_sessions#new_applicant", as: :applicant_login
+      get "login", to: "applicant_sessions#new", as: :applicants_login
+      post "login" => "applicant_sessions#create",  as: :connect_applicant
 
       # ApplicantsController
       patch "change_password/:id", to: "applicants#change_password", as: :change_password
@@ -160,7 +159,6 @@ Rails.application.routes.draw do
     post "applicant/steal_identity", to: "applicants#steal_identity", as: :applicants_steal_identity
     get "konsert-og-uteliv", to: "site#concert", as: :concert
     get "login", to: "user_sessions#new", as: :login
-
     post "logout" => "user_sessions#destroy", as: :logout
     get "members/control_panel" => "members#control_panel", as: :members_control_panel
     get "members/search.:format" => "members#search", as: :members_search

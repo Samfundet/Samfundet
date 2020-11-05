@@ -1,4 +1,4 @@
-%table
+%table.upcoming-events
   %thead
     %tr
       %th= t("events.title")
@@ -26,13 +26,7 @@
         %td= event.area
 
         - if can? :edit, event
-          %td
-            = link_to edit_event_path(event) do
-              .samf-button.small.blue
-                = t("crud.edit")
+          %td= link_to t("crud.edit"), edit_event_path(event)
 
         - if can? :destroy, event
-          %td
-            = link_to event, data: { confirm: t("events.confirm_delete") }, method: :delete do
-              .samf-button.small
-                =  t("crud.destroy")
+          %td= link_to t("crud.destroy"), event, data: { confirm: t("events.confirm_delete") }, method: :delete

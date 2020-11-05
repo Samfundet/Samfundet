@@ -13,9 +13,9 @@ class SiteController < ApplicationController
         group_types: { groups: :jobs }
     )
     if open_admissions and not open_admissions.empty?
-      @open_admission = true
+      @show_admissions_animation = true
     else
-      @open_admission = false
+      @show_admissions_animation = false
     end
 
     # Catch session token for ticket purchase errors redirecting to index
