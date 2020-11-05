@@ -1,8 +1,11 @@
 - set_title t("applicant_sessions.new.title")
 
-= render 'admissions/admission_header', admission_video: false
+%h1.text-Align.mb-3=t("applicants.register_as_an_applicant")
 
 = render 'applicants/form', applicant: @applicant, redirect_to: @redirect_to
 
-.login-form
-  = render 'applicant_sessions/form', applicant_login_email: @applicant_login_email, redirect_to: @redirect_to
+%p.text-Align.mt-3=t("applicants.already_registered")
+
+= link_to applicant_login_path do
+  .samf-button.plain.mb-3.center
+    = t("sessions.login")

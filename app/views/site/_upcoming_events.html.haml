@@ -1,11 +1,4 @@
 - cache cache_key_for_frontpage_events(@upcoming_events + [@banner_event]) do
-  - if @banner_event.present?
-    .banner-event-mobile
-      - if @banner_event.is_a? Event
-        = render 'site/upcoming_event', event: @banner_event, index: FrontPageLock::BANNER_ID
-      - elsif @banner_event.is_a? Blog
-        = render 'site/upcoming_blog', blog: @banner_event, index: FrontPageLock::BANNER_ID
-
   .upcoming-events
     - @upcoming_events.each.with_index(1) do |event, index|
       - cache cache_key_for_frontpage_event(event, index) do
