@@ -1,8 +1,5 @@
 = form_tag applicants_login_path, method: :post, class: "custom-form", id: "applicant_login_form" do
 
-  %h3
-    = t("applicant_sessions.forms.login.heading")
-
   = hidden_field_tag "redirect_to", html_escape(redirect_to) if local_assigns[:redirect_to]
 
   %p
@@ -20,7 +17,7 @@
       required: true
 
   %p
-    != submit_tag t("applicant_sessions.forms.login.submit"), id: "applicant_login",
+    != submit_tag t("user_sessions.new.title"), id: "applicant_login",
       disable_with: t("sessions.login_wait")
 
   %p.quiet

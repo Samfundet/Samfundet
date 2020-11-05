@@ -10,6 +10,11 @@ class UserSessionsController < ApplicationController
     @active_admissions_exist = Admission.active_admissions?
   end
 
+  def new_applicant
+    @redirect_to = params[:redirect_to]
+    @active_admissions_exist = Admission.active_admissions?
+  end
+
   def destroy
     session[:applicant_id] = nil
     session[:member_id]    = nil

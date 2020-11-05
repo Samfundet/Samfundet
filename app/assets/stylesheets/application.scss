@@ -1,4 +1,5 @@
-// Gem imports
+// Gem importss
+
 @import "jquery-ui/core";
 @import "jquery-ui/datepicker";
 @import "jquery-ui/autocomplete";
@@ -37,20 +38,22 @@
 @import "sitewide/_ribbon";
 @import "sitewide/_pagination";
 
-// Sass files for different modules
+// ==================================== //
+//   Sass files for different modules   //
+// ==================================== //
+
 @import "site/site";
 @import "events/events";
+@import "pages/pages";
 @import "admissions/admissions";
 @import "admissions/unflagged_applicants";
 @import "documents/documents";
 @import "documents/list";
-@import "pages/pages";
-@import "blogs/blogs";
+//@import "blogs/blogs";
 @import "contact/contact";
 @import "members/members";
-@import "areas/areas";
+
 @import "billig/billig";
-@import "everything_closed_periods/everything_closed_periods";
 @import "images_show";
 @import "search/search";
 @import "applicants/_form";
@@ -60,3 +63,11 @@
 @import "admissions_admin";
 @import "admissions/statistics";
 @import "sulten/lyche";
+
+
+
+// New modern design
+@import "modern";
+
+// Updated CSS files
+@import "areas/areas";

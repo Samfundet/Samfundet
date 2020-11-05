@@ -1,5 +1,8 @@
 .nested-fields
   = f.inputs do
-    = f.input :name, placeholder: t('events.price_group')
-    = f.input :price, placeholder: t('events.price')
-    = link_to_remove_association t('events.remove_price_group'), f
+    .flex-row{:style => "align-items: flex-end;"}
+      = f.input :name, placeholder: t('events.price_group')
+      = f.input :price, placeholder: t('events.price')
+      = link_to_remove_association f do
+        .samf-button.small
+          = t('crud.destroy')

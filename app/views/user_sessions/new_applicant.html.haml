@@ -1,0 +1,22 @@
+- set_title t("user_sessions.new.title")
+
+%h1.text-Align=t("applicants.login_title")
+
+- if @active_admissions_exist
+  .login-form.applicant
+    = render 'applicant_sessions/form', redirect_to: @redirect_to
+
+  %hr
+
+  .text-Align
+    %p=t("applicants.are_you_not_registered")
+    = link_to new_applicant_path do
+      .center.samf-button.plain
+        = t("applicants.register_as_an_applicant")
+
+- else
+  %h2=t("admissions.no_admissions.header")
+
+  = link_to root_path do
+    .samf-button.plain
+      = t("common.back")

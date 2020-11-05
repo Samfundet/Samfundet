@@ -1,63 +1,92 @@
-.site {
-  .countdown-unit {
-    background-color: #eee;
-    padding: 20px;
 
-    text-align: center;
+.countdown-unit {
+  background-color: #eee;
+  padding: 20px;
 
-    margin-bottom: 20px;
-    @include media($tablet-desktop) {
-      margin-bottom: 0px;
-    }
+  text-align: center;
 
-    @include span-columns(12);
-
-    h2 {
-      text-transform: uppercase;
-      margin-top: 0;
-    }
-
-    .time-left {
-      font-size: 1.5em;
-
-      div {
-        display: inline;
-        color: $samfundet-red;
-        font-weight: $font-weight-bold;
-      }
-    }
+  margin-bottom: 20px;
+  @include media($tablet-desktop) {
+    margin-bottom: 0px;
   }
 
-  .hero-unit {
-    background-color: #eee;
-    position: relative;
-    margin: 0 0 20px 0;
+  @include span-columns(12);
 
-    @include span-columns(12);
-    @include media($tablet-desktop) {
-      margin-top: 20px;
+  h2 {
+    text-transform: uppercase;
+    margin-top: 0;
+  }
 
-      &:first-child:after {
-        content: "";
-        position: absolute;
-        top: 23%;
-        bottom: 10%;
-        left: 50%;
-        border-left: 1px solid $samfundet-medium-grey;
+  .time-left {
+    font-size: 1.5em;
+
+    div {
+      display: inline;
+      color: $samfundet-red;
+      font-weight: $font-weight-bold;
+    }
+  }
+}
+
+.hero-unit {
+
+  color: black;
+
+  //background-color: #eaeaea;
+  //box-shadow: 2px 2px 20px 5px rgba(0,0,0,0.05);
+  //border: 1px solid rgb(230, 230, 230);
+  border-radius: 4px;
+  margin-bottom: 1em;
+
+  display: flex;
+  flex-direction: column;
+
+  .sections {
+
+    display: flex;
+    flex-direction: row;
+
+    @include media($mobile-and-tablet-portrait) {
+      flex-direction: column;
+    }
+    #opening-hours-button {
+      display: block;
+
+      @include media($tablet-desktop) {
+        display: none;
+      }
+
+      .hide {
+        display: none;
+      }
+      &.open > .show {
+        display: none;
+      }
+      &.open > .hide {
+        display: block;
       }
     }
 
     .opening-hours, .events-today {
 
-      @include span-columns(12 of 12);
-      @include media($tablet-desktop) {
-        @include span-columns(6 of 12);
-      }
+      flex-basis: 50%;
+      padding-left: 1em;
+      padding-right: 1em;
 
-      h2 {
+      @include media($mobile-and-tablet-portrait) {
+        flex: 1;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        padding-left: .2em;
+        padding-right: .2em;
+      }
+      
+      .hero-section-title {
         text-align: center;
         text-transform: uppercase;
         margin-top: 0;
+        font-weight: bold;
+        font-size: 1.5em;
       }
 
       table {
@@ -79,61 +108,127 @@
         }
       }
     }
+  }
 
-    .opening-hours-link {
-      padding: 10px;
-      text-transform: uppercase;
+  .opening-hours-link {
+    cursor: pointer;
+    padding: 5px 12px 5px 10px;
+    text-transform: uppercase;
+    text-align: center;
+    width: max-content;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    color: black;
+    background-color: white;
+    box-shadow: 2px 2px 20px 5px rgba(0,0,0,0.05);
+    border: 1px solid rgb(230, 230, 230);
+    border-radius: .25em;
+  }
+  .opening-hours-link:hover {
+    filter: brightness(110%);
+  }
+
+  .date-today {
+    h2 {
+      margin: 0.5em 0 0 0;
+      font-size: 1.2em;
       text-align: center;
+      text-transform: initial;
+      color: #555;
+    }
+  }
+
+  .opening-hours {
+    display: block;
+
+    .everything-closed {
+      margin-left: 10px;
+      padding-bottom: 10px;
     }
 
+    @include media($mobile) {
+      display: None;
+    }
+    @include media($not-mobile) {
+      display: block !important;
+    }
 
+    .time {
+      text-align: right;
+    }
+    .area {
+      text-transform: uppercase;
+      font-weight: $font-weight-medium;
+      color: white;
+      a {
+        color: $samfundet-red;
+        text-decoration: underline;
+      }
+    }
     .date-today {
-      h2 {
-        margin: 0.5em 0 0 0;
-        font-size: 1.2em;
-        text-align: center;
-        text-transform: initial;
-        color: $samfundet-medium-grey;
-      }
-    }
-
-    .opening-hours {
-      display: none;
-
-      .everything-closed {
-        margin-left: 10px;
-        padding-bottom: 10px;
-      }
-
       @include media($tablet-desktop) {
-        display: block;
-      }
-
-      .time { text-align: right; color: black; }
-      .area {
-        @include emph-link($samfundet-red);
-        font-weight: $font-weight-medium;
-      }
-      .date-today {
-        @include media($tablet-desktop) {
-          display: none;
-        }
+        display: none;
       }
     }
+    .time > a:hover, .area > a:hover {
+      text-decoration: underline;
+    }
+  }
 
-    .events-today {
-      .title {
-        word-break: break-word;
-        a {
+  .events-today {
+    .title {
+      word-break: break-word;
+
+      a {
+        .time {
+          text-align: right;
+          color: black;
+        }
+
+        .area {
           @include emph-link($samfundet-red);
           font-weight: $font-weight-medium;
+          color: $samfundet-red;
+          text-decoration: underline;
+          text-transform: uppercase;
+        }
+
+        a:hover {
+          text-decoration: underline;
         }
       }
-      .area { text-transform: uppercase; }
-      .time { color: black; }
+
+      .area {
+        text-transform: uppercase;
+      }
+
       .no-events {
         text-align: center;
         margin: 1em;
+      }
+
+      .events-today {
+        .title {
+          word-break: break-word;
+
+          a {
+            @include emph-link($samfundet-red);
+            font-weight: $font-weight-medium;
+          }
+        }
+
+        .area {
+          text-transform: uppercase;
+        }
+
+        .time {
+          color: black;
+        }
+
+        .no-events {
+          text-align: center;
+          margin: 1em;
+        }
       }
     }
   }

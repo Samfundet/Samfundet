@@ -44,8 +44,9 @@
     padding-bottom: .4em;
 
     label {
-      font-size: 1.5em;
+      font-size: 1em;
       text-transform: capitalize;
+      text-align: left;
     }
     input[type=number],
     input[type=text],
@@ -55,7 +56,8 @@
       border-radius: 5px;
       padding: 5px;
       padding-left: 10px;
-      width: 200px;
+      min-width: 200px;
+      max-width: 200px;
     }
   }
 
