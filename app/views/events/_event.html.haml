@@ -1,10 +1,11 @@
 .flex-row.mb-2.mt-2.event-div
   .column
     = link_to event.title, event
-  .column.time
-    = from_to_string event
-    %br
-    = area_link event.area
+  .column.timeArea.wrap
+    .time
+      = from_to_string event
+    .area
+      = area_link event.area
   .column.inline-price
     = inline_event_price event
   .column.button

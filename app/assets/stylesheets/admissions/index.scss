@@ -1,4 +1,11 @@
 #content.admissions.index {
+
+  .jobs{
+    &:not(:last-child) {
+      border-bottom: 1px solid #ddd;
+    }
+  }
+
   .jobRow{
     @include media($mobile) {
       border-style: none;
