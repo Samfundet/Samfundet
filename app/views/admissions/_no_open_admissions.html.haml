@@ -1,11 +1,12 @@
 .text-Align
-  %h2{style:"color: $samfundet-red"}
+  %h1{style:"color: $samfundet-red"}
     - if admissions.any?
       = t('admissions.admission_not_yet_open')
       = admissions.upcoming.first.shown_from
     - else
       = t('admissions.no_admissions.header')
-  %p
+%div{style:"max-width: 700px; margin: 0 auto"}
+  %div
     = simple_format t('admissions.no_admissions.motivation_text')
   %p
     = simple_format  t('admissions.admission_promo')
@@ -25,4 +26,6 @@
       %strong
         = link_to t('admissions.no_admissions.log_in'), login_path(redirect_to: job_applications_path)
       = t('admissions.no_admissions.log_in_text')
+
+.text-Align
   = render 'no_admissions_header'
