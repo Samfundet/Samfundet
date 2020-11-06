@@ -8,26 +8,30 @@
   = t("admissions.closed_admissions")
 
 - if AdmissionsAdminAbility.new(current_user).can?(:show, Admission)
-  .section
-    - if @closed_admissions.empty?
-      %p= t('admissions.no_closed_admissions')
-    - else
-      %table
-        %thead
-          %tr
-            %th= t('admissions.name')
-            %th= t('admissions.application_deadline')
-            %th= t('admissions.priority_deadline')
-            - if AdmissionsAdminAbility.new(current_user).can?(:manage, Admission)
-              %th
-                &nbsp;
-              %th
-                &nbsp;
-        - (@upcoming_admissions + @closed_admissions).each do |admission|
-          %tr
-            %td= link_to admission.title, admissions_admin_admission_path(admission)
-            %td= admission.shown_application_deadline
-            %td= admission.user_priority_deadline
-            - if AdmissionsAdminAbility.new(current_user).can?(:manage, Admission)
-              %td= link_to t('admissions.edit_admission'), edit_admissions_admin_admission_path(admission)
-              %td= link_to t('admissions.statistics'), statistics_admissions_admin_admission_path(admission)
+  - if @closed_admissions.empty?
+    %p= t('admissions.no_closed_admissions')
+  - else
+    %table
+      %thead
+        %tr
+          %th= t('admissions.name')
+          %th= t('admissions.application_deadline')
+          %th= t('admissions.priority_deadline')
+          - if AdmissionsAdminAbility.new(current_user).can?(:manage, Admission)
+            %th
+              &nbsp;
+      - (@upcoming_admissions + @closed_admissions).each do |admission|
+        %tr
+          %td= link_to admission.title, admissions_admin_admission_path(admission)
+          %td= admission.shown_application_deadline
+          %td= admission.user_priority_deadline
+          - if AdmissionsAdminAbility.new(current_user).can?(:manage, Admission)
+            %td{style: "float: right;"}
+              .flex-row
+                = link_to statistics_admissions_admin_admission_path(admission) do
+                  .samf-button.plain.small.mr-2
+                    = t('admissions.statistics')
+                = link_to edit_admissions_admin_admission_path(admission) do
+                  .samf-button.blue.small
+                    = t('admissions.edit_admission')
+

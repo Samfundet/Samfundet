@@ -1,5 +1,5 @@
 
-.event-div{
+.event-div {
 
   padding: .2em;
   padding-left: 1em;
@@ -26,9 +26,13 @@
   .time{
     flex-basis: 50%;
     min-width: 100px;
+    color: black;
   }
   .area {
     flex-basis: 50%;
+  }
+  .inline-price {
+    color: gray;
   }
 
 

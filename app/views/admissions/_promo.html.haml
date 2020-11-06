@@ -11,8 +11,7 @@
         = t('admissions.deadline')
         = l admission.shown_application_deadline, format: :short
       - if admission.shown_application_deadline < Time.current
-        %br
-        %span{ style: "color: #a03033; text-decoration: underline; font-size: 0.9em;" }
+        %p{style: "font-size: 1em; color: #aaa;"}
           Utvidet til
           = l admission.actual_application_deadline, format: :short
     .center.p-3{:style=>"max-width: 500px;"}
