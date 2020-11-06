@@ -64,6 +64,9 @@
   // Reduce padding equivalent to border to match size of other buttons
   padding: 6px 19px 6px 19px;
 }
+.samf-button.plain.small {
+  padding: 3px 11px 3px 11px;
+}
 .samf-button.plain:hover {
   transform: none;
   color: $samfundet-red;

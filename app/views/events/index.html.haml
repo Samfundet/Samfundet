@@ -6,7 +6,7 @@
 
   .ajax-search
 
-  .flex-column.mt-3
+  .upcoming-events.flex-column.mt-3
     - @events.group_by {|i| i.start_time.to_date }.sort.each do |date, events|
       %div.samf-container.white.mb-3{style: "padding-top: 0;"}
         %h2.text-Align.p-1.title.white.bg-red= l(date, format: :medium_long)

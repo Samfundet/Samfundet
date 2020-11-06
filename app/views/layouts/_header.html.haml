@@ -62,7 +62,6 @@
 
 #header-popup-menu
 
-
   .header-item.info
     = link_to t('layouts.application.menu.info'), pages_path
 
@@ -72,8 +71,6 @@
   .header-item.events
     = link_to t('layouts.application.menu.events'), events_path
 
-  .header-item
-    = link_to t('layouts.application.menu.membership'), "https://medlem.samfundet.no/"
   - if @open_admission
     .header-item.highlight
       = link_to t('layouts.application.menu.admissions'), admissions_path
@@ -83,24 +80,27 @@
 
 
   %br
-  %br
-
-  - if logged_in?
-    -# Logout
-    = link_to logout_path, method: :post do
-      .samf-button.small.mt-3
-        = t('layouts.application.menu.logout')
-  - else
-    = link_to login_path(redirect_to: request.path) do
-      .samf-button.small.mt-3
-        = t('layouts.application.menu.login')
 
   .header-item.mt-3{:style=>"font-size: 1em;"}
     = link_to t('layouts.application.menu.change_language'), change_language
 
-  %br
+  = link_to "https://medlem.samfundet.no/" do
+    .samf-button.mb-2
+      = t("layouts.application.menu.membership")
 
   - if logged_in?
+    -# Logout
+    = link_to logout_path, method: :post do
+      .samf-button.white
+        = t('layouts.application.menu.logout')
+  - else
+    = link_to login_path(redirect_to: request.path) do
+      .samf-button.white
+        = t('layouts.application.menu.internal')
+
+
+  - if logged_in?
+    %br
     - if current_user.is_a?(Applicant)
       = link_to job_applications_path do
         .username

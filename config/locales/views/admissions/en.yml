@@ -44,7 +44,5 @@ en:
 
         see_applications_text: "You can see your applications"
         see_applications_link: "here."
-        already_applied: "If you have already applied you can"
-        log_in: "log in as applicant"
-        log_in_text: "to prioritize and track your applications."
+        already_applied: "If you have already applied you can log in as applicant to prioritize and track your applications."
         click_here: "click here."

@@ -4,7 +4,7 @@
     - if @events.present?
       - @events.group_by {|i| i.start_time.to_date }.sort.each do |date, events|
         .samf-container.white.mb-3
-          %h2.text-Align.p-1.bg-blue.title.white= l(date, format: :medium_long)
+          %h2.text-Align.p-1.bg-red.title.white= l(date, format: :medium_long)
           %table
             %tbody
               = render events.sort_by{|event| event.start_time}
