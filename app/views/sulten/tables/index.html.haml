@@ -1,21 +1,33 @@
+= link_to sulten_admin_path do
+  .samf-button
+    = t("common.back")
+
 %h2
-  = t("helpers.models.sulten.all", :n => t("helpers.models.sulten.table.other"))
-  \ - 
-  = link_to t("helpers.models.sulten.new_thing", :n => t("helpers.models.sulten.table.one")), new_sulten_table_path
+  .text-Align
+    = t("helpers.models.sulten.all", :n => t("helpers.models.sulten.table.other"))
+
+%p
+  = link_to new_sulten_table_path do
+    .samf-button.center.green
+      = t("helpers.models.sulten.new_thing", :n => t("helpers.models.sulten.table.one"))
+
 %table
-  %th
-    = t("sulten.reservation.table")
-  %th
-    = t("sulten.table.capacity")
-  %th
-    = t("sulten.table.comment")
-  %th
-    = t("sulten.table.available")
-  %th
-    = t("sulten.table.next")
-  - Sulten::ReservationType.all.each do |t|
+  %thead
     %th
-      = t
+      = t("sulten.reservation.table")
+    %th
+      = t("sulten.table.capacity")
+    %th
+      = t("sulten.table.comment")
+    %th
+      = t("sulten.table.available")
+    %th
+      = t("sulten.table.next")
+    - Sulten::ReservationType.all.each do |t|
+      %th
+        = t
+    %th
+    %th
   - @tables.each do |t|
     %tr
       %td
@@ -38,8 +50,10 @@
           - if t.reservation_types.include? r
             X
       %td
-        = link_to t("crud.edit"), edit_sulten_table_path(t)
+        = link_to edit_sulten_table_path(t) do
+          .samf-button.blue
+            = t("crud.edit")
       %td
-        = link_to t("crud.destroy"), t, data: { confirm: t("crud.confirm") }, method: :delete
-%p
-  = link_to t("common.back"), sulten_admin_path
+        = link_to t, data: { confirm: t("crud.confirm") }, method: :delete do
+          .samf-button
+            = t("crud.destroy")
