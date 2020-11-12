@@ -127,6 +127,15 @@ form:not(.custom-form) {
       }
     }
   }
+  fieldset.choices
+    legend {
+      background-color: $samfundet-red;
+      font-size: 1.25em;
+      label{
+        margin: 0;
+        text-transform: capitalize;
+      }
+  }
 }
 
 form.custom-form.search-form,

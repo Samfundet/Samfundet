@@ -1,9 +1,21 @@
+%h2
+  .text-Align
+    = t("helpers.models.sulten.new_thing", :n => t("helpers.models.sulten.table.one"))
+
 = semantic_form_for @table do |f|
   = f.inputs do
-    = f.input :number, label: t("sulten.table.number")
-    = f.input :capacity, label: t("sulten.table.capacity")
+    .flex-row
+      = f.input :number, label: t("sulten.table.number")
+      = f.input :capacity, label: t("sulten.table.capacity")
     = f.input :comment, label: t("sulten.table.comment")
-    = f.input :available, label: t("sulten.table.available")
-    = f.input :reservation_types, label: t("helpers.models.sulten.reservation_type.other"), as: :check_boxes
+    %p
+      = f.input :available, label: t("sulten.table.available")
+    %p
+      = f.input :reservation_types, label: t("helpers.models.sulten.reservation_type.other"), as: :check_boxes
   = f.actions do
     = f.submit t("formtastic.create", :model => t("helpers.models.sulten.table.one"))
+
+%p
+  = link_to sulten_admin_path do
+    .nextButton
+      = t("common.back")
