@@ -1,3 +1,7 @@
+= link_to sulten_admin_path do
+  .samf-button
+    = t("common.back")
+
 %h2
   .text-Align
     = t("helpers.models.sulten.new_thing", :n => t("helpers.models.sulten.table.one"))
@@ -14,8 +18,3 @@
       = f.input :reservation_types, label: t("helpers.models.sulten.reservation_type.other"), as: :check_boxes
   = f.actions do
     = f.submit t("formtastic.create", :model => t("helpers.models.sulten.table.one"))
-
-%p
-  = link_to sulten_admin_path do
-    .nextButton
-      = t("common.back")
