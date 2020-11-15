@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_11_211127) do
+ActiveRecord::Schema.define(version: 2020_11_12_180053) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -328,6 +328,8 @@ ActiveRecord::Schema.define(version: 2020_07_11_211127) do
     t.datetime "updated_at", null: false
     t.string "location"
     t.text "comment"
+    t.index ["acceptance_status"], name: "index_interviews_on_acceptance_status"
+    t.index ["job_application_id"], name: "index_interviews_on_job_application_id"
   end
 
   create_table "job_applications", id: :serial, force: :cascade do |t|
@@ -338,6 +340,8 @@ ActiveRecord::Schema.define(version: 2020_07_11_211127) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "withdrawn", default: false
+    t.index ["job_id"], name: "index_job_applications_on_job_id"
+    t.index ["withdrawn"], name: "index_job_applications_on_withdrawn"
   end
 
   create_table "job_tags", id: :serial, force: :cascade do |t|
@@ -365,6 +369,7 @@ ActiveRecord::Schema.define(version: 2020_07_11_211127) do
     t.datetime "updated_at", null: false
     t.text "default_motivation_text_no"
     t.text "default_motivation_text_en"
+    t.index ["admission_id"], name: "index_jobs_on_admission_id"
   end
 
   create_table "log_entries", id: :serial, force: :cascade do |t|
