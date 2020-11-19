@@ -1,10 +1,20 @@
+
+- if logged_in? and has_control_panel_applets?
+  .flex-row.mb-3
+    = link_to members_control_panel_path do
+      .samf-button.plain.mr-2
+        = t("common.back")
+
+%h1.mt-3
+  = t("events.archive.title")
+
 = render 'search_form_archive', post_path: archive_search_events_path
 
 -# Display search results header if a search has been performed
 - if local_assigns[:search_active]
   %h3= t('search.results_title')
 
-.event-group
+.event-group.mt-2
   %table
     %thead
       %tr

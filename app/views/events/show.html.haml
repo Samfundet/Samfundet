@@ -3,108 +3,111 @@
 - set_twitter_params({ card: "summary_large_image", title: @event.title, description: @event.short_description, "image:src" => asset_url(@event.image_or_default.url(:large)) })
 = render 'site/banner_image', banner_event: @event
 
-- cache cache_key_for_event_show(@event) do
-  = render 'admin_choices'
 
-  .mobile-banner
-    %h2= @event
+.text-Align
+  - cache cache_key_for_event_show(@event) do
+    .w100
+      = render 'admin_choices'
 
-    .ribbon-image-wrapper
-      = background_image_helper "banner-image", @event.image_or_default, size: :large
-      = render 'events/corner_ribbon', event: @event
+  = background_image_helper "banner-image", @event.image_or_default, size: :large
+  .m-3
+    = render 'events/corner_ribbon', event: @event
 
-  .details
-    %table.custom-table
+.flex-row.center.w100
+  %table.custom-table.up-ca{style:"border-collapse: collapse;"}
+    %tr
+      %td.bw-r.thin= t('events.area')
+      //If problems add ", @event.area_title"
+      %td.p-2= area_link @event.area
+
+    %tr
+      %td.bw-r.thin= t('events.organizer')
+      %td.p-2= organizer_link @event
+
+    %tr
+      %td.bw-r.thin= t('time.date')
+      - if (@event.start_time.year == Time.current.year)
+        %td.p-2
+          = l(@event.start_time, format: :short_datetime)
+      - else
+        %td.p-2
+          = l(@event.start_time, format: :long_datetime)
+    %tr
+      %td.bw-r.thin= t('time.time')
+      %td.p-2= from_to_string @event
+
+    %tr
+      %td.bw-r.thin= t('events.ticket')
+      %td.p-2= inline_event_price @event
+
+    - if @event.ticket_limit?
       %tr
-        %td= t('events.area')
-        %td= area_link @event.area, @event.area_title
+        - pluralize = @event.total_ticket_limit > 1 ? 'multiple' : 'single'
+        %td.pr-2.bw-r.thin= t('events.ticket_limit_event_show')
+        %td.p-2= t("events.tickets_#{pluralize}", total_ticket_limit: @event.total_ticket_limit)
 
-      %tr
-        %td= t('events.organizer')
-        %td= organizer_link @event
+    %tr
+      %td.pr-2.bw-r.thin= t('events.age_limit')
+      %td.p-2= t_event_age_limit(@event)
 
-      %tr
-        %td= t('time.date')
-        - if (@event.start_time.year == Time.current.year)
-          %td
-            = l(@event.start_time, format: :short_datetime)
-        - else
-          %td
-            = l(@event.start_time, format: :long_datetime)
-      %tr
-        %td= t('time.time')
-        %td= from_to_string @event
+.text-Align.mb-3.pt-3.pb-3
+  = render "buy_button", event: @event, button_only: false
 
-      %tr
-        %td= t('events.ticket')
-        %td= inline_event_price @event
+.text-Align.title
+  %h1= @event
 
-      - if @event.ticket_limit?
-        %tr
-          - pluralize = @event.total_ticket_limit > 1 ? 'multiple' : 'single'
-          %td= t('events.ticket_limit_event_show')
-          %td= t("events.tickets_#{pluralize}", total_ticket_limit: @event.total_ticket_limit)
+.center{style:"max-width: 850px; text-align: left;"}
+  %p.description-short{style: "font-weight: bold;"}
+    = @event.short_description
+  .description-long
+    :markdown
+      #{@event.long_description}
 
-      %tr
-        %td= t('events.age_limit')
-        %td= t_event_age_limit(@event)
-
-  .show-purchase-button
-    = render "buy_button", event: @event, button_only: false
-
-  .description
-    %p.description-short
-      = @event.short_description
-    .description-long
-      :markdown
-        #{@event.long_description}
-
-    %p.ticket_exchange_info
-      = t('events.ticket_change_html', href: link_to(t('events.here'),Page.corona_info))
+  %p.ticket_exchange_info
+    = t('events.ticket_change_html', href: link_to(t('events.here'),Page.corona_info))
 
 
-    %p.adaptation
-      = t('events.adaptation_html', href: link_to(t('events.here'), Page.handicap_info))
+  %p.adaptation
+    = t('events.adaptation_html', href: link_to(t('events.here'), Page.handicap_info))
 
-    - if @event.youtube_embed.present?
-      .embed-container
-        = embed @event
+  - if @event.youtube_embed.present?
+    .embed-container
+      = embed @event
 
-    .social
-      .social-sites
-        %ul.social-element
-          - if @event.facebook_link.present?
-            %li
-              = link_to @event.facebook_link, id: 'social-link', title: t('events.social.facebook_link_title') do
-                = image_tag 'facebook_36.png', alt: 'Facebook'
-          - if @event.youtube_link.present?
-            %li
-              = link_to @event.youtube_link, id: 'social-link', title: t('events.social.youtube_link_title') do
-                = image_tag 'youtube_36.png', alt: 'Youtube'
-          - if @event.soundcloud_link.present?
-            %li
-              = link_to @event.soundcloud_link, id: 'social-link', title: t('events.social.soundcloud_link_title') do
-                = image_tag 'soundcloud_36.png', alt: 'Sound Cloud'
-          - if @event.instagram_link.present?
-            %li
-              = link_to @event.instagram_link, id: 'social-link', title: t('events.social.instagram_link_title') do
-                = image_tag 'instagram.png', alt: 'Instagram'
-          - if @event.twitter_link.present?
-            %li
-              = link_to @event.twitter_link, id: 'social-link', title: t('events.social.twitter_link_title') do
-                = image_tag 'twitter_36.png', alt: 'Twitter'
-          - if @event.lastfm_link.present?
-            %li
-              = link_to @event.lastfm_link, id: 'social-link', title: t('events.social.lastfm_link_title') do
-                = image_tag 'lastfm_36.png', alt: 'Last FM'
-          - if @event.vimeo_link.present?
-            %li
-              = link_to @event.vimeo_link, id: 'social-link', title: t('events.social.vimeo_link_title') do
-                = image_tag 'vimeo_36.png', alt: 'Vimeo'
-          - if @event.general_link.present?
-            %li
-              = link_to @event.general_link, id: 'social-link', title: t('events.social.general_link_title') do
-                = image_tag 'link_36.png', alt: 'Artist link'
+  .flex-column
+    %ul.flex-row.center
+      - if @event.facebook_link.present?
+        %li.p-2
+          = link_to @event.facebook_link, id: 'social-link', title: t('events.social.facebook_link_title') do
+            = image_tag 'facebook_36.png', alt: 'Facebook'
+      - if @event.youtube_link.present?
+        %li.p-2
+          = link_to @event.youtube_link, id: 'social-link', title: t('events.social.youtube_link_title') do
+            = image_tag 'youtube_36.png', alt: 'Youtube'
+      - if @event.soundcloud_link.present?
+        %li.p-2
+          = link_to @event.soundcloud_link, id: 'social-link', title: t('events.social.soundcloud_link_title') do
+            = image_tag 'soundcloud_36.png', alt: 'Sound Cloud'
+      - if @event.instagram_link.present?
+        %li.p-2
+          = link_to @event.instagram_link, id: 'social-link', title: t('events.social.instagram_link_title') do
+            = image_tag 'instagram.png', alt: 'Instagram'
+      - if @event.twitter_link.present?
+        %li.p-2
+          = link_to @event.twitter_link, id: 'social-link', title: t('events.social.twitter_link_title') do
+            = image_tag 'twitter_36.png', alt: 'Twitter'
+      - if @event.lastfm_link.present?
+        %li.p-2
+          = link_to @event.lastfm_link, id: 'social-link', title: t('events.social.lastfm_link_title') do
+            = image_tag 'lastfm_36.png', alt: 'Last FM'
+      - if @event.vimeo_link.present?
+        %li.p-2
+          = link_to @event.vimeo_link, id: 'social-link', title: t('events.social.vimeo_link_title') do
+            = image_tag 'vimeo_36.png', alt: 'Vimeo'
+      - if @event.general_link.present?
+        %li.p-2
+          = link_to @event.general_link, id: 'social-link', title: t('events.social.general_link_title') do
+            = image_tag 'link_36.png', alt: 'Artist link'
 
-      .spotify-box
-        = render "spotify_play_box", locals: { event: @event }
+    .center
+      = render "spotify_play_box", locals: { event: @event }

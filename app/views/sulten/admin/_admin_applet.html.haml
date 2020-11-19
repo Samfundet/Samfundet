@@ -4,4 +4,6 @@
 .options
   %ul
     %li
-      = link_to t("Admin"), sulten_admin_path
+      = link_to sulten_admin_path do
+        .samf-button.plain.w100
+          = t("Admin")
