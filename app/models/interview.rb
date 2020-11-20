@@ -18,14 +18,14 @@ class Interview < ApplicationRecord
 
   APPLICANT_STATUS_NO = {accepted: 'Tilbud, takket ja',
                    declined: 'Tilbud, takket nei',
-                   rejected: 'Send avslag på epost',
-                   rejected_m: 'Avslag, kontaktet direkte',
+                   rejected: 'Automatisk avslag',
+                         #rejected_m: 'Avslag (kontaktet)',
                    nil => 'Ikke satt' }.freeze
 
   APPLICANT_STATUS_EN = {accepted: 'Accepted',
                    declined: 'Declined offer',
-                   rejected: 'Not accepted',
-                   rejected_m: 'Contacted about rejection',
+                   rejected: 'Automatic rejection',
+                         #rejected_m: 'Rejected (contacted)',
                    nil => 'Not set' }.freeze
 
   validates :priority,
@@ -35,6 +35,7 @@ class Interview < ApplicationRecord
   validates :applicant_status,
             inclusion: { in: APPLICANT_STATUS_NO.keys,
                          message: 'Invalid applicant status' }
+
 
   def priority
     field = self[:priority]
@@ -73,7 +74,11 @@ class Interview < ApplicationRecord
   end
 
   def applicant_status=(value)
-    self[:applicant_status] = value.to_s
+    if value == nil
+      self[:applicant_status] = nil
+    else
+      self[:applicant_status] = value.to_s
+    end
   end
 
   def applicant_status_string

@@ -1,99 +1,111 @@
 = javascript_include_tag 'job_applications/admissions_admin_job_applications', defer: true
 - set_title "#{@job_application.applicant.full_name} - #{t('jobs.view_application')}"
 
-.section
-  .content
-    %h2.applicant_name
-      = @job_application.applicant.full_name
-    .information
-      = facebook_search_link(@job_application.applicant)
-      %table
-        %tr
-          %td= t('interviews.applicant_phone_number')+ ":"
-          %td= @job_application.applicant.phone
-        %tr
-          %td= t('interviews.applicant_email_address')+ ":"
-          %td= @job_application.applicant.email
-        %tr
-          %td= t('interviews.applicant_campus')+ ":"
-          %td=@job_application.applicant.campus
-      - if @job_application.withdrawn
-        %h2{style:"color: red; margin-bottom: 30px; margin-top: -20px;"}
-          ="Denne søknaden er blitt trukket!"
-      -#
-        %p.subtitle
-         'job_applications.applicant_for' contains HTML, hence html_safe
-        = t('job_applications.applicant_for', job: link_to(@job_application.job.title, admissions_admin_admission_group_job_path(@job_application.job.admission, @job_application.job.group, @job_application.job)), group: @job_application.job.group.name).html_safe
 
-    %h3= t('job_applications.application')
-    != simple_format(html_escape(@job_application.motivation))
+= link_to admissions_admin_admission_group_job_path(@job_application.job.admission, @job_application.job.group, @job_application.job) do
+  .samf-button.plain.mb-3
+    = t("common.back")
 
-    - if can?(:withdraw, JobApplication)
-      - if !@job_application.withdrawn
-        %h3= link_to 'Trekk søknad', job_application_path(@job_application), method: :delete, data: { confirm: "Er du sikker?" }
-      - else
-        %h3= link_to 'Aktiver søknad', job_application_path(@job_application), method: :put, data: { confirm: "Er du sikker?" }
+%h1
+  = @job_application.applicant.full_name
+= facebook_search_link(@job_application.applicant)
 
-  .log
-    %h3= t('job_applications.log_entries.log_entries')
-    %p= t('job_applications.log_entries.description')
-  = semantic_form_for [:admissions_admin, @job_application.job.admission, @job_application.job.group, @job_application.applicant, LogEntry.new] do |form|
-    %input{ type: :hidden, name: :job_application_id, value: @job_application.id }
-    = form.inputs do
-      != form.input :log, as: :select, collection: @possible_log_entries
-    = form.actions do
-      != form.action(:submit)
+%hr
 
-  - unless @log_entries.empty?
-    %table
-      %thead
-        %tr
-          %th= t('job_applications.log_entries.date_and_time')
-          %th= t('job_applications.log_entries.entry')
-          %th= t('job_applications.log_entries.logged_by')
-          %th &nbsp;
-      - @log_entries.each_with_index do |log_entry, index|
-        %tr
-          %td
-            = log_entry.created_at
-          %td
-            = log_entry.log
-          %td
-            = log_entry.member.full_name
-          %td
-            = link_to t('crud.destroy').humanize, [:admissions_admin, @job_application.job.admission,
-            @job_application.job.group, @job_application.applicant, log_entry], method: "delete", data: { confirm: t('crud.confirm') }
+%table
+  %tr
+    %td= t('interviews.applicant_phone_number')
+    %td= @job_application.applicant.phone
+  %tr
+    %td= t('interviews.applicant_email_address')
+    %td= @job_application.applicant.email
+  %tr
+    %td= t('interviews.applicant_campus')
+    %td=@job_application.applicant.campus
+  %tr
+    %td= t('job_applications.offer_other_positions')
+    %td= t(@job_application.applicant.interested_other_positions.to_s)
 
-  .soknader
-    %h3= t('job_applications.applications')
-    %input#hide_withdrawn{type:"checkbox", checked: true}
-      =t('job_applications.hide_withdrawn_applications')
-    %table
-      %thead
-        %tr
-          %th= t('job_applications.job')
-          %th= t('job_applications.group')
-          %th= t('job_applications.status')
-          %th= t('job_applications.interview_time')
-      %tbody
-        - @job_application.applicant.job_applications.select {|application| application.job.admission == @job_application.job.admission}.each_with_index do |job_application, index|
+%hr
 
-          %tr{ class: [job_application == @job_application ? 'current' : 'other', job_application.assignment_status], class: [job_application.withdrawn ? 'withdrawn display-none' : ''] }
-            %td
-              - if job_application != @job_application && can?(:show, :admissions_admin_job_applications)
-                = link_to admissions_admin_admission_group_job_job_application_path(job_application.job.admission, job_application.job.group, job_application.job, job_application) do
-                  = job_application.job.title
-              - else
-                = job_application.job.title
-            %td
-              = group_link(job_application.job.group)
-            %td
-              = job_application.find_or_create_interview.priority_string
-            %td
-              - if job_application.find_or_create_interview.time.nil?
-                = t('job_applications.not_set')
-              - else
-                = job_application.find_or_create_interview.time
-    %p
-      = link_to admissions_admin_admission_group_job_path(@job_application.job.admission, @job_application.job.group, @job_application.job) do
-        = "« #{T('common.back')}"
+%h1= t('job_applications.application') + " - " + @job_application.job.title
+!= simple_format(html_escape(@job_application.motivation))
+
+- if @job_application.withdrawn
+  %h2.m-3{style:"color: red; font-weight: bold;"}
+    ="Denne søknaden er blitt trukket!"
+
+- if can?(:withdraw, JobApplication)
+  - if !@job_application.withdrawn
+    = link_to job_application_path(@job_application), method: :delete, data: { confirm: "Er du sikker?" } do
+      .samf-button.red.center
+        = 'Trekk søknad'
+  -# TODO This does not work (not in production either)
+  -# - else
+  -#   = link_to job_application_path(@job_application), method: :put, data: { confirm: "Er du sikker?" } do
+  -#     .samf-button.plain.center
+  -#       = 'Aktiver søknad'
+
+  -#.log
+  -#  %h3= t('job_applications.log_entries.log_entries')
+  -#  %p= t('job_applications.log_entries.description')
+  -#= semantic_form_for [:admissions_admin, @job_application.job.admission, @job_application.job.group, @job_application.applicant, LogEntry.new] do |form|
+  -#  %input{ type: :hidden, name: :job_application_id, value: @job_application.id }
+  -#  = form.inputs do
+  -#    != form.input :log, as: :select, collection: @possible_log_entries
+  -#  = form.actions do
+  -#    != form.action(:submit)
+  -#
+  -#- unless @log_entries.empty?
+  -#  %table
+  -#    %thead
+  -#      %tr
+  -#        %th= t('job_applications.log_entries.date_and_time')
+  -#        %th= t('job_applications.log_entries.entry')
+  -#        %th= t('job_applications.log_entries.logged_by')
+  -#        %th &nbsp;
+  -#    - @log_entries.each_with_index do |log_entry, index|
+  -#      %tr
+  -#        %td
+  -#          = log_entry.created_at
+  -#        %td
+  -#          = log_entry.log
+  -#        %td
+  -#          = log_entry.member.full_name
+  -#        %td
+  -#          = link_to t('crud.destroy').humanize, [:admissions_admin, @job_application.job.admission,
+  -#          @job_application.job.group, @job_application.applicant, log_entry], method: "delete", data: { confirm: t('crud.confirm') }
+
+%hr
+
+%h1= t('admissions.all_applications')
+%p
+  %input#hide_withdrawn{type:"checkbox", checked: true}
+    = t('job_applications.hide_withdrawn_applications')
+%table
+  %thead
+    %tr
+      %th= t('job_applications.job')
+      %th= t('job_applications.group')
+      %th= t('job_applications.status')
+      %th= t('job_applications.interview_time')
+  %tbody
+    - @job_application.applicant.job_applications.select {|application| application.job.admission == @job_application.job.admission}.each_with_index do |job_application, index|
+
+      %tr{ class: [job_application == @job_application ? 'current' : 'other', job_application.assignment_status], class: [job_application.withdrawn ? 'withdrawn display-none' : ''] }
+        %td
+          - if job_application != @job_application && can?(:show, :admissions_admin_job_applications)
+            = link_to admissions_admin_admission_group_job_job_application_path(job_application.job.admission, job_application.job.group, job_application.job, job_application) do
+              = job_application.job.title
+          - else
+            = job_application.job.title
+        %td
+          = group_link(job_application.job.group)
+        %td
+          = job_application.find_or_create_interview.priority_string
+        %td
+          - if job_application.find_or_create_interview.time.nil?
+            = t('job_applications.not_set')
+          - else
+            = job_application.find_or_create_interview.time
+

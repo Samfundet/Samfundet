@@ -66,6 +66,47 @@ class Job < ApplicationRecord
     job_applications - job_applications_with_interviews
   end
 
+  def total_processed_applications
+    job_applications.where(withdrawn: false)
+        .joins(:interview)
+        .where.not(interviews: { applicant_status: nil })
+        .count
+  end
+
+  def total_active_applications
+    job_applications.where(withdrawn: false).count
+  end
+
+  def unprocessed_applications
+    job_applications.where(withdrawn: false)
+        .joins(:interview)
+        .where(interviews: { applicant_status: nil }) + job_applications_without_interviews
+  end
+
+  def accepted_applications
+    job_applications
+        .where(withdrawn: false)
+        .joins(:interview)
+        .where(interviews: { applicant_status: :accepted })
+  end
+
+  def contacted_applications
+    job_applications
+        .where(withdrawn: false)
+        .joins(:interview)
+        .where(
+            'interviews.applicant_status=? OR interviews.applicant_status=? OR interviews.applicant_status=?',
+            :accepted, :declined, :rejected_m
+        )
+  end
+
+  def automatically_rejected_applications
+    job_applications
+        .where(withdrawn: false)
+        .joins(:interview)
+        .where(interviews: {applicant_status: :rejected })
+  end
+
 private
 
   def appliable_admission_ids

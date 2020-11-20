@@ -1,67 +1,59 @@
 = javascript_include_tag 'job_applications/admissions_admin_job_applications', defer: true
-%p{class:"color_description"}
-  %span{ style: "color: #932822"}= t('interviews.red_explanation')
-  %br
-  %span{ style: "color: #DC706A"}= t('interviews.pink_explanation')
-  %br
-  %span{ style: "color: #009402"}= t('interviews.green_explanation')
-  %br
-  %span{ style: "color: #00C703"}= t('interviews.bright_green_explanation')
-  %br
-  %span{ style: "color: #CEC000"}= t('interviews.yellow_explanation')
-  %br
-  %span{ style: "color: grey"}= t('interviews.grey_explanation')
 
-%p{class:"color_description display-none"}
-  %span{ style: "color: #d65252"}= t('interviews.red_explanation')
-  %br
-  %span{ style: "color: #e66a6a"}= t('interviews.pink_explanation')
-  %br
-  %span{ style: "color: #16536A"}= t('interviews.blue_explanation')
-  %br
-  %span{ style: "color: #38758B"}= t('interviews.bright_blue_explanation')
-  %br
-  %span{ style: "color: #CEC000"}= t('interviews.yellow_explanation')
-  %br
-  %span{ style: "color: grey"}= t('interviews.grey_explanation')
+.flex-row.flex-align-center
+  #show_color_explanations.samf-button.plain.small
+    = t("interviews.show_color_explanation")
+  .p-2
+    %input#colorblind_mode{type:"checkbox", checked: false}
+      =t('interviews.colorblind_mode')
 
-%p
-  %input#hide_withdrawn{type:"checkbox", checked: true}
-    =t('interviews.hide_withdrawn_applications')
-  %br
-  %input#hide_rejected{type:"checkbox", checked: true}
-    =t('interviews.hide_rejected_applications')
-  %br
-  %input#colorblind_mode{type:"checkbox", checked: false}
-    =t('interviews.colorblind_mode')
+#color_explanations.display-none
+  .samf-container.mt-3{class:"color_description", style:"overflow:hidden; color: white;"}
+    %div.p-1{ style: "background-color: #009402"}= t('interviews.green_explanation')
+    %div.p-1{ style: "background-color: #00C703"}= t('interviews.bright_green_explanation')
+    %div.p-1{ style: "background-color: #CEC000"}= t('interviews.yellow_explanation')
+    %div.p-1{ style: "background-color: #DC706A"}= t('interviews.pink_explanation')
+    %div.p-1{ style: "background-color: #932822"}= t('interviews.red_explanation')
+    -#%div.p-1{ style: "background-color: grey"}= t('interviews.grey_explanation')
+
+  .samf-container.mt-3{class:"color_description display-none", style:"overflow:hidden; color: white;"}
+    %div.p-1{ style: "background-color: #16536A"}= t('interviews.blue_explanation')
+    %div.p-1{ style: "background-color: #38758B"}= t('interviews.bright_blue_explanation')
+    %div.p-1{ style: "background-color: #CEC000"}= t('interviews.yellow_explanation')
+    %div.p-1{ style: "background-color: #e66a6a"}= t('interviews.pink_explanation')
+    %div.p-1{ style: "background-color: #d65252"}= t('interviews.red_explanation')
+    -#%div.p-1{ style: "color: grey"}= t('interviews.grey_explanation')
+
+
+
 
 %table.applications.custom-table.sorted
   %thead
-    %th
+    %th.number
       = t('interviews.applicant_number')
-    %th
+    %th.name
       = t('interviews.applicant_name')
-    %th
+    %th.phone
       = t('interviews.applicant_phone_number')
-    %th
+    %th.email
       = t('interviews.applicant_email_address')
-    %th
+    %th.campus
       = t('interviews.applicant_campus')
     - if show_job_titles
-      %th
+      %th.job_title
         = t('interviews.job')
     %th.interview-time
       = t('interviews.interview_time')
     %th.location
       = t('interviews.location')
-    %th
-      = t('interviews.comment')
     %th.application-status
       = t('interviews.interview_priority')
-    %th
+    %th.status
       = "Status"
-    %th.open-for-other-positions
-      = t('interviews.interested_other_positions')
+    -#%th.open-for-other-positions
+    -#  = t('interviews.interested_other_positions')
+    %th.comment
+      = t('interviews.comment')
 
   %tbody{class: "job_application_table hide-rejected hide-withdrawn"}
     - job_application_groupings.each do |job_applications|
@@ -99,17 +91,10 @@
           %td
             = semantic_form_for([:admissions_admin, @admission, @group, job_application.job, job_application, interview = job_application.find_or_create_interview], namespace: "interview_#{interview.id}", html: {class: "test custom-form"}) do |form|
               = form.inputs do
-                != form.input :comment, label: false, input_html: { rows: 2, cols: 7}
-              %span{ class: "status" }
-              = form.actions do
-                != form.action :submit, button_html: { class: "interview_save", value: 'save' }
-          %td
-            = semantic_form_for([:admissions_admin, @admission, @group, job_application.job, job_application, interview = job_application.find_or_create_interview], namespace: "interview_#{interview.id}", html: {class: "test custom-form"}) do |form|
-              = form.inputs do
                 != form.input :priority, name: "priority", as: :select, label: false, required: true, value: interview.priority, collection: interview.priorities.invert.sort, input_html: { id: "interview_#{job_application.id}_priority", disabled: interview.past_set_priority_deadline? }
+              %span{ class: "status" }
               = form.actions do
                 != form.action :submit, button_html: { class: "interview_save", value: t('interviews.save_interview_status') }
-              %span{ class: "status" }
           %td
             = semantic_form_for([:admissions_admin, @admission, @group, job_application.job, job_application, interview = job_application.find_or_create_interview], namespace: "interview_#{interview.id}", html: {class: "test custom-form"}) do |form|
               = form.inputs do
@@ -121,13 +106,20 @@
           -#  - if job_application.last_log_entry
           -#    = link_to admissions_admin_admission_group_job_job_application_path(@admission, @group, job_application.job, job_application, anchor: 'new_log_entry') do
           -#      = job_application.last_log_entry.log
+          -#%td
+          -#  = semantic_form_for(job_application.applicant, namespace: "interview_#{interview.id}", html: {class: "test custom-form interview"}) do |form|
+          -#    = form.inputs do
+          -#      != form.input :interested_other_positions, label: false, as: :select, required: true
+          -#    %span{ class: "status" }
+          -#    = form.actions do
+          -#      != form.action :submit, button_html: { class: "interview_Save", value: 'save'}
           %td
-            = semantic_form_for(job_application.applicant, namespace: "interview_#{interview.id}", html: {class: "test custom-form interview"}) do |form|
+            = semantic_form_for([:admissions_admin, @admission, @group, job_application.job, job_application, interview = job_application.find_or_create_interview], namespace: "interview_#{interview.id}", html: {class: "test custom-form"}) do |form|
               = form.inputs do
-                != form.input :interested_other_positions, label: false, as: :select, required: true
+                != form.input :comment, label: false, input_html: { rows: 2, cols: 7}
               %span{ class: "status" }
               = form.actions do
-                != form.action :submit, button_html: { class: "interview_Save", value: 'save'}
+                != form.action :submit, button_html: { class: "interview_save", value: 'save' }
 
 
 - if job_application_groupings.empty?

@@ -9,12 +9,10 @@
   .samf-button.plain.mb-3
     = t("common.back")
 
-%h1
-  = t("interviews.administer_interviews")
-
 %h2
   = t('interviews.job_title', job: @job.title) + " - " + @group.name
 
+-# Important info box
 -#.samf-container.p-3.mt-3
 -#  %h2{style:"color: red; text-transform: uppercase;"}= t("interviews.important_title")
 -#  %p{style:"color:black; margin: 0;"}
@@ -31,15 +29,116 @@
 -#      = t("interviews.important_priority_title")
 -#    %p{style:"color:black; flex-basis: 70%; margin: 0;"}
 -#      = t("interviews.important_priority_description")
+-#%hr
 
+-# Overview
+-#%table.mt-3
+-#  %tbody
+-#    %tr{style: "background-color: #eee;"}
+-#      %th
+-#        %b= t("admissions_admin.applications")
+-#      %td= @job.total_active_applications
+-#    %tr
+-#      %th= t("interviews.unprocessed_applicants")
+-#      %td= @unprocessed_applications.count.to_s
+-#    %tr{style: "background-color: #ccf9cd;"}
+-#      %th= t("interviews.accepted_applicants")
+-#      %td= @accepted_applications.count.to_s
+-#    %tr{style: "background-color: #f9cccd;"}
+-#      %th= t("interviews.not_contacted_applicants")
+-#      %td= @auto_rejected_applications.count.to_s
+-#%hr
 
-= render 'jobs_show', job_application_groupings: [@job.job_applications], show_job_titles: false
+-# Unprocessed applications
+
+%hr
+
+%h1= t("interviews.unprocessed_applicants") + " (" + @unprocessed_applications.count.to_s + ")"
+
+- if @unprocessed_applications.count > 0
+  %p
+    = t("interviews.unprocessed_explanation")
+  = render 'jobs_show', job_application_groupings: [@unprocessed_applications], show_job_titles: false
+- else
+  %p= t("interviews.no_unprocessed_applicants")
 
 - if can?(:hidden_create, JobApplication)
   = form_tag(hidden_create_admissions_admin_admission_group_job_job_applications_path(@admission, @group, @job)) do
-    = label_tag(:email, "Email")
-    = text_field_tag :email, nil, style: "border: 1px solid gray;"
-    = submit_tag("Legg til søknad")
+    .flex-row
+      = text_field_tag :email, nil, style: "border: 1px solid gray; padding: .25em;", placeholder: "Email"
+      = submit_tag("Legg til søknad", :class=>"samf-button small green ml-2")
+
+%hr
+
+-# Contacted applicants
+
+%h2= t("interviews.contacted_applicants") + " (" + @contacted_applications.count.to_s + ")"
+
+- if @contacted_applications.count == 0
+  %p= t("interviews.no_contacted_applicants")
+- else
+  %p= t("interviews.contacted_applicants_explanation")
+
+  %table.mt-3
+    %thead
+      %th= "Navn"
+      %th= "Telefon"
+      %th= "Epost"
+      %th= "Intervjutid"
+      %th= "Intervjusted"
+      %th= "Status"
+      %th
+
+    %tbody
+      - @contacted_applications.each do |application|
+        - status = application.find_or_create_interview.applicant_status
+        - color = status == :accepted ? '#ccf9cd;' : '#f9cccd'
+        %tr{style: "background-color: #{color}"}
+          %td
+            = link_to admissions_admin_admission_group_job_job_application_path(@admission, @group, @job, application) do
+              = application.applicant.full_name
+          %td= application.applicant.phone
+          %td= application.applicant.email
+          %td= application.find_or_create_interview.time
+          %td= application.find_or_create_interview.location
+          %td= application.find_or_create_interview.applicant_status_string
+          %td{style: "float: right;"}
+            = link_to admissions_admin_admission_group_job_job_application_reset_status_path(@admission, @group, @job, application), method: :get, data: { confirm: t("interviews.remove_status_prompt") } do
+              .samf-button.plain.small
+                = t("interviews.remove_status")
 
 
+%hr
+
+
+%h2= t("interviews.not_contacted_applicants") + " (" + @auto_rejected_applications.count.to_s + ")"
+
+- if @auto_rejected_applications.count == 0
+  %p= t("interviews.no_not_contacted_applicants")
+- else
+  %p= t("interviews.not_contacted_applicants_explanation")
+  %table.mt-3
+    %thead
+      %th= "Navn"
+      %th= "Telefon"
+      %th= "Epost"
+      %th= "Intervjutid"
+      %th= "Intervjusted"
+      %th= "Status"
+      %th
+    %tbody
+      - @auto_rejected_applications.each do |application|
+        %tr{style: "background-color: #f9cccd"}
+          %td
+            = link_to admissions_admin_admission_group_job_job_application_path(@admission, @group, @job, application) do
+              = application.applicant.full_name
+          %td= application.applicant.phone
+          %td= application.applicant.email
+          %td= application.find_or_create_interview.time
+          %td= application.find_or_create_interview.location
+          %td= application.find_or_create_interview.applicant_status_string
+          %td{style: "float: right;"}
+            = link_to admissions_admin_admission_group_job_job_application_reset_status_path(@admission, @group, @job, application), method: :get, data: { confirm: t("interviews.remove_status_prompt")  } do
+              .samf-button.plain.small
+                = t("interviews.remove_status")
 

@@ -22,6 +22,12 @@ class AdmissionsAdmin::JobsController < AdmissionsAdmin::BaseController
     @job = Job.find(params[:id])
     @group = Group.find(params[:group_id])
     @admission = Admission.find(params[:admission_id])
+
+    @accepted_applications = @job.accepted_applications
+    @unprocessed_applications = @job.unprocessed_applications
+    @contacted_applications = @job.contacted_applications
+    @auto_rejected_applications = @job.automatically_rejected_applications
+
   end
 
   def search

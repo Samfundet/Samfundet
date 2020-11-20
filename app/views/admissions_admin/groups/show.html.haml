@@ -24,10 +24,8 @@
       %th= t('groups.job_title')
       %th= t('groups.job_type')
       %th= t('groups.applicants')
+      %th= t('admissions_admin.processed_applications')
       %th
-      %th
-      - if @should_show_delete_button
-        %th
   %tbody
     - @jobs.each do |job|
       %tr
@@ -41,19 +39,25 @@
             = t('common.group_member')
         %td
           = job.job_applications.count
-        %td{:style => "float:right;"}
+        %td
+          - if job.total_processed_applications == job.total_active_applications
+            %span{style: "color:green"}= job.total_processed_applications.to_s + "/" + job.total_active_applications.to_s
+          - else
+            %span{style: "color:red"}= job.total_processed_applications.to_s + "/" + job.total_active_applications.to_s
+        %td.flex-row{:style => "float:right;"}
+          - if @should_show_delete_button
+            - if can?(:destroy, Job, job) && !job.job_applications.exists?
+              = link_to admissions_admin_admission_group_job_path(@admission, @group, job), method: "delete", data: { confirm: t('crud.confirm') } do
+                .samf-button.small.red.mr-2
+                  = t('groups.delete_job')
+          != link_to job do
+            .samf-button.small.plain.mr-2
+              = t('groups.job_listing')
           - if can?(:edit, Job, job)
             != link_to edit_admissions_admin_admission_group_job_path(@admission, @group, job) do
               .samf-button.small.blue
                 = t('groups.edit_job')
-        - if @should_show_delete_button
-          %td
-            - if can?(:destroy, Job, job) && !job.job_applications.exists?
-              != link_to t('groups.delete_job'), admissions_admin_admission_group_job_path(@admission, @group, job), method: "delete", data: { confirm: t('crud.confirm') }
-        %td{:style => "float:right;"}
-          != link_to job do
-            .samf-button.small.plain
-              = t('groups.job_listing')
+
 %p
   = t('admissions.group_information', group_name: @group.name, n_applications: @n_applications, n_jobs: @n_jobs, n_applicants: @n_applicants)
 

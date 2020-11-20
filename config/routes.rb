@@ -141,6 +141,7 @@ Rails.application.routes.draw do
             get :search, on: :collection
             resources :job_applications, only: :show do
               post :hidden_create, on: :collection
+              get :reset_status
               resources :interviews, only: [:update, :show]
             end
           end

@@ -37,9 +37,28 @@ en:
     hide_rejected_applications: "Hide rejected applications"
     colorblind_mode: "Colorblind mode"
     jobs_applicant_has_applied_to: "Jobs that this applicant has applied to"
+
+    show_color_explanation: "Color explanation"
+
     accepted_applicants: "Accepted applications"
     rejected_applicants: "Rejected applications"
     unprocessed_applicants: "Unprocessed applications"
+    unprocessed_explanation: |
+      This list only contains unprocessed applications (applications where status is not set).
+      The admission is complete when the list is empty.
+
+    contacted_applicants: "Applicants we have contacted."
+    contacted_applicants_explanation: "These will NOT get an automatic rejection email."
+
+    not_contacted_applicants: "Automatically rejected applicants."
+    not_contacted_applicants_explanation: "These will get an automatic rejection email if they are not accepted for a different job."
+
+    no_contacted_applicants: "No applicants are marked as contacted."
+    no_not_contacted_applicants: "No applicants are marked to receive an automatic rejection email."
+    no_unprocessed_applicants: "No unprocessed applicants."
+
+    remove_status: "Remove status"
+    remove_status_prompt: "Are you sure? The application will be moved to unprocessed applications and the status must be set again."
 
     important_title: "Important Information"
     important_description: "Related to the changes for admission."
