@@ -60,6 +60,12 @@ en:
     withdrawn_applications: "Withdrawn applications"
     no_withdrawn_applications: "No withdrawn applications."
 
+    loading_title: "Loading applications..."
+    loading_description: "This may take a while. Remember to set statuses which makes this quicker next time!"
+
+    refresh_page: "Refresh Page"
+    refresh_notice: "It is smart to refresh often, especially when many work on the same admission."
+
     remove_status: "Remove status"
     remove_status_prompt: "Are you sure? The application will be moved to unprocessed applications and the status must be set again."
 

@@ -1,0 +1,12 @@
+.loading-indicator {
+  width: 32px;
+  height: 32px;
+  background-image: asset-url("icons/loading.gif");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.loading-indicator.large {
+  width: 64px;
+  height: 64px;
+}

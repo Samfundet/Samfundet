@@ -13,7 +13,16 @@
   &ndash;
   = @admission.title
 
-= render 'admissions_admin/jobs/jobs_show', job_application_groupings: @job_application_groupings, show_job_titles: true
+-# TODO async controller method must support groupings, probably move to group controller instead of job
+-# Not sure if this page is necessary
+
+-# = render_async admissions_admin_admission_group_job_show_unprocessed_path(@admission, @group, groupings: @job_application_groupings) do
+-#   .samf-container.flex-col.p-3.text-Align.mb-3
+-#     %h2= t("interviews.loading_title")
+-#     %p.mb-2= t("interviews.loading_description")
+-#     .loading-indicator.large.center
+
+-#= render 'admissions_admin/jobs/jobs_show', job_application_groupings: @job_application_groupings, show_job_titles: true
 
 = link_to applications_admissions_admin_admission_group_path(@admission, @group, format: :csv) do
   .samf-button.plain

@@ -1,5 +1,6 @@
 .admissions_admin\/jobs.show,
-.admissions_admin\/groups.applications {
+.admissions_admin\/groups.applications,
+#async_unprocessed_list {
   table fieldset {
     display: inline;
   }
@@ -14,6 +15,7 @@
       th {
         background-color: #eee;
         color: black;
+        font-weight: normal;
       }
       th.number {
         max-width: 16px;
@@ -39,7 +41,6 @@
       content: '';
       display: block;
       height: 15px;
-
     }
     tbody:last-child:after {
       height: 0px;

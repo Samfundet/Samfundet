@@ -2,6 +2,10 @@
 $(function () {
   var headers = {};
 
+  $(document).on('render_async_load', function(event) {
+
+  $('.datetimepicker').datetimepicker();
+
   $.tablesorter.addParser({
       id: 'input-text',
       is: function(s) {
@@ -113,4 +117,6 @@ $(function () {
   }
 
   refreshTitles();
+
+  });
 });

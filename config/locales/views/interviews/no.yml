@@ -61,6 +61,12 @@
     withdrawn_applications: "Trekte søknader"
     no_withdrawn_applications: "Ingen trekte søknader."
 
+    loading_title: "Laster inn søknader..."
+    loading_description: "Dette kan ta litt tid. Marker søkere med status så går det raskere neste gang!"
+
+    refresh_page: "Oppdater Side"
+    refresh_notice: "Det er smart å oppdatere gjevnlig, spesielt hvis flere jobber med samme opptak."
+
     remove_status: "Fjern status"
     remove_status_prompt: "Er du sikker? Søknaden blir flyttet til ubehandlede søknader og status må settes på nytt."
 

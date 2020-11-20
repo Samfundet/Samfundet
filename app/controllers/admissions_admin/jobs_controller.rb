@@ -29,7 +29,14 @@ class AdmissionsAdmin::JobsController < AdmissionsAdmin::BaseController
     @auto_rejected_applications = @job.automatically_rejected_applications
     @withdrawn_applications = @job.withdrawn_applications
 
+  end
 
+  def show_unprocessed
+    @job = Job.find(params[:job_id])
+    @groupings = [@job.unprocessed_applications]
+    @group = Group.find(params[:group_id])
+    @admission = Admission.find(params[:admission_id])
+    render partial: "jobs_show"
   end
 
   def search

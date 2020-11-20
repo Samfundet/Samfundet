@@ -139,6 +139,7 @@ Rails.application.routes.draw do
           get :reject_calls, on: :member
           resources :jobs, only: [:show, :new, :create, :edit, :update, :destroy] do
             get :search, on: :collection
+            get :show_unprocessed
             resources :job_applications, only: :show do
               post :hidden_create, on: :collection
               get :reset_status

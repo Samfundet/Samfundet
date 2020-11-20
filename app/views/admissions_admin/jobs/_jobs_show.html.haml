@@ -1,4 +1,8 @@
-= javascript_include_tag 'job_applications/admissions_admin_job_applications', defer: true
+
+
+- if @groupings.present?
+  - job_application_groupings = @groupings
+  - show_job_titles = false
 
 .flex-row.flex-align-center
   #show_color_explanations.samf-button.plain.small

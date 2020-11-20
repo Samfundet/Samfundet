@@ -40,6 +40,7 @@
                 = Rails.application.config.billig_message_no
               - else
                 = Rails.application.config.billig_message_en
+          = content_for :render_async
           = yield
         .side-graphics.right
 

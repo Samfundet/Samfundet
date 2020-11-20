@@ -1,15 +1,22 @@
-- set_title(t('interviews.administer_interviews'))
+= javascript_include_tag 'job_applications/admissions_admin_job_applications', defer: true
 = javascript_include_tag 'applicants/interviews', defer: true
 
-.section
-  .flash.message
-    = T('interviews.possible_to_set_priority', date: @admission.admin_priority_deadline)
+- set_title(t('interviews.administer_interviews'))
 
-= link_to admissions_admin_admission_group_path(@job.admission, @job.group) do
-  .samf-button.plain.mb-3
-    = t("common.back")
+.flash.message
+  = T('interviews.possible_to_set_priority', date: @admission.admin_priority_deadline)
 
-%h2
+.flex-row.flex-align-center
+  = link_to admissions_admin_admission_group_path(@job.admission, @job.group) do
+    .samf-button.plain
+      = t("common.back")
+  = link_to "", { :onclick => "history.go(0)" } do
+    .samf-button.blue.ml-2
+      = t("interviews.refresh_page")
+  %i.ml-2{style: "color: #666"}= t("interviews.refresh_notice")
+
+
+%h1.mt-3
   = t('interviews.job_title', job: @job.title) + " - " + @group.name
 
 -# Important info box
@@ -53,12 +60,18 @@
 
 %hr
 
-%h1= t("interviews.unprocessed_applicants") + " (" + @unprocessed_applications.count.to_s + ")"
+%h2= t("interviews.unprocessed_applicants") + " (" + @unprocessed_applications.count.to_s + ")"
 
 - if @unprocessed_applications.count > 0
   %p
     = t("interviews.unprocessed_explanation")
-  = render 'jobs_show', job_application_groupings: [@unprocessed_applications], show_job_titles: false
+
+  = render_async admissions_admin_admission_group_job_show_unprocessed_path(job_id: @job) do
+    .samf-container.flex-col.p-3.text-Align.mb-3
+      %h2= t("interviews.loading_title")
+      %p.mb-2{style: "color: #666;"}= t("interviews.loading_description")
+      .loading-indicator.large.center
+
 - else
   %p= t("interviews.no_unprocessed_applicants")
 
