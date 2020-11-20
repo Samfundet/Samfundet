@@ -57,6 +57,8 @@ en:
     no_not_contacted_applicants: "No applicants are marked to receive an automatic rejection email."
     no_unprocessed_applicants: "No unprocessed applicants."
 
+    all: "All"
+
     withdrawn_applications: "Withdrawn applications"
     no_withdrawn_applications: "No withdrawn applications."
 

@@ -46,10 +46,11 @@
     unprocessed_explanation: |
       Denne listen inneholder kun ubehandlede søknader (søknader der status ikke er satt).
       Alle søkere som ikke blir tatt opp må markeres med avslag, uansett om de blir tatt opp i et annet verv.
-      Opptaket for vervet er ferdig først når denne listen er tom.
+      Det anbefales å fortløpende markere søkere som ikke blir tatt opp med avslag slik at listen blir lettere å forholde seg til.
+      Alle søknader må være ferdig behandlet på kvelden etter fordelingsmøtet.
 
     contacted_applicants: "Søkere vi har kontaktet"
-    contacted_applicants_explanation: "Disse vil IKKE få en automatisk epost om avslag."
+    contacted_applicants_explanation: "Disse vil IKKE få en automatisk epost om avslag. Det er derfor veldig viktig å bekrefte at listen er korrekt."
 
     not_contacted_applicants: "Søkere som får automatisk avslag"
     not_contacted_applicants_explanation: "Disse vil få en automatisk epost om avslag dersom de ikke får tilbud om et annet verv."
@@ -58,6 +59,8 @@
     no_not_contacted_applicants: "Ingen søkere vil få automatisk avslag på epost."
     no_unprocessed_applicants: "Ingen ubehandlede søknader gjenstår."
 
+    all: "Alle"
+
     withdrawn_applications: "Trekte søknader"
     no_withdrawn_applications: "Ingen trekte søknader."
 
@@ -65,7 +68,7 @@
     loading_description: "Dette kan ta litt tid. Marker søkere med status så går det raskere neste gang!"
 
     refresh_page: "Oppdater Side"
-    refresh_notice: "Det er smart å oppdatere gjevnlig, spesielt hvis flere jobber med samme opptak."
+    refresh_notice: "Det kan være smart å oppdatere siden gjevnlig, spesielt hvis flere jobber med samme opptak."
 
     remove_status: "Fjern status"
     remove_status_prompt: "Er du sikker? Søknaden blir flyttet til ubehandlede søknader og status må settes på nytt."

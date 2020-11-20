@@ -19,43 +19,6 @@
 %h1.mt-3
   = t('interviews.job_title', job: @job.title) + " - " + @group.name
 
--# Important info box
--#.samf-container.p-3.mt-3
--#  %h2{style:"color: red; text-transform: uppercase;"}= t("interviews.important_title")
--#  %p{style:"color:black; margin: 0;"}
--#    = t("interviews.important_description")
--#  %hr
--#  .flex-row.flex-justify-between
--#    %b{style: "flex-basis: 30%;"}
--#      = t("interviews.important_status_title")
--#    %p{style:"color:black; flex-basis: 70%; margin: 0;"}
--#      = t("interviews.important_status_description")
--#  %hr
--#  .flex-row.flex-justify-between.mb-2
--#    %b{style: "flex-basis: 30%;"}
--#      = t("interviews.important_priority_title")
--#    %p{style:"color:black; flex-basis: 70%; margin: 0;"}
--#      = t("interviews.important_priority_description")
--#%hr
-
--# Overview
--#%table.mt-3
--#  %tbody
--#    %tr{style: "background-color: #eee;"}
--#      %th
--#        %b= t("admissions_admin.applications")
--#      %td= @job.total_active_applications
--#    %tr
--#      %th= t("interviews.unprocessed_applicants")
--#      %td= @unprocessed_applications.count.to_s
--#    %tr{style: "background-color: #ccf9cd;"}
--#      %th= t("interviews.accepted_applicants")
--#      %td= @accepted_applications.count.to_s
--#    %tr{style: "background-color: #f9cccd;"}
--#      %th= t("interviews.not_contacted_applicants")
--#      %td= @auto_rejected_applications.count.to_s
--#%hr
-
 -# Unprocessed applications
 
 %hr
@@ -92,7 +55,7 @@
 - else
   %p= t("interviews.contacted_applicants_explanation")
 
-  %table.mt-3
+  %table.compact.mt-3
     %thead
       %th= "Navn"
       %th= "Telefon"
@@ -130,7 +93,7 @@
   %p= t("interviews.no_not_contacted_applicants")
 - else
   %p= t("interviews.not_contacted_applicants_explanation")
-  %table.mt-3
+  %table.compact.mt-3
     %thead
       %th= "Navn"
       %th= "Telefon"
@@ -164,7 +127,7 @@
 - if @withdrawn_applications.count == 0
   %p= t("interviews.no_withdrawn_applications")
 - else
-  %table.mt-3
+  %table.compact.mt-3
     %thead
       %th= "Navn"
       %th= "Telefon"
