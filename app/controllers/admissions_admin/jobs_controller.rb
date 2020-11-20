@@ -27,6 +27,8 @@ class AdmissionsAdmin::JobsController < AdmissionsAdmin::BaseController
     @unprocessed_applications = @job.unprocessed_applications
     @contacted_applications = @job.contacted_applications
     @auto_rejected_applications = @job.automatically_rejected_applications
+    @withdrawn_applications = @job.withdrawn_applications
+
 
   end
 

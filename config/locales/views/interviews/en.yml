@@ -57,6 +57,9 @@ en:
     no_not_contacted_applicants: "No applicants are marked to receive an automatic rejection email."
     no_unprocessed_applicants: "No unprocessed applicants."
 
+    withdrawn_applications: "Withdrawn applications"
+    no_withdrawn_applications: "No withdrawn applications."
+
     remove_status: "Remove status"
     remove_status_prompt: "Are you sure? The application will be moved to unprocessed applications and the status must be set again."
 

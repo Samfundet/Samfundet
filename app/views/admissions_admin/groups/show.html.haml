@@ -41,7 +41,7 @@
           = job.job_applications.count
         %td
           - if job.total_processed_applications == job.total_active_applications
-            %span{style: "color:green"}= job.total_processed_applications.to_s + "/" + job.total_active_applications.to_s
+            %b{style: "color:green"}= job.total_processed_applications.to_s + "/" + job.total_active_applications.to_s
           - else
             %span{style: "color:red"}= job.total_processed_applications.to_s + "/" + job.total_active_applications.to_s
         %td.flex-row{:style => "float:right;"}
@@ -66,9 +66,9 @@
   = link_to admissions_admin_admission_show_interested_other_positions_path(@admission) do
     .samf-button.small.plain.mr-2.mb-2
       = t('admissions_admin.show_interested_other_positions')
-  = link_to reject_calls_admissions_admin_admission_group_path do
-    .samf-button.small.plain.mr-3.mb-2
-      = t('admissions_admin.reject_calls', group_name: @group.name)
+  -# = link_to reject_calls_admissions_admin_admission_group_path do
+  -#   .samf-button.small.plain.mr-3.mb-2
+  -#     = t('admissions_admin.reject_calls', group_name: @group.name)
 
 
 %hr

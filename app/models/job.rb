@@ -107,6 +107,10 @@ class Job < ApplicationRecord
         .where(interviews: {applicant_status: :rejected })
   end
 
+  def withdrawn_applications
+    job_applications.where(withdrawn: true)
+  end
+
 private
 
   def appliable_admission_ids

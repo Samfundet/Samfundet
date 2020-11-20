@@ -142,3 +142,31 @@
               .samf-button.plain.small
                 = t("interviews.remove_status")
 
+%hr
+
+-# Withdrawn applications
+
+%h2= t("interviews.withdrawn_applications") + " (" + @withdrawn_applications.count.to_s + ")"
+
+- if @withdrawn_applications.count == 0
+  %p= t("interviews.no_withdrawn_applications")
+- else
+  %table.mt-3
+    %thead
+      %th= "Navn"
+      %th= "Telefon"
+      %th= "Epost"
+      %th= "Intervjutid"
+      %th= "Intervjusted"
+      %th= "Status"
+    %tbody
+      - @withdrawn_applications.each do |application|
+        %tr{style: "background-color: #bbb;"}
+          %td
+            = link_to admissions_admin_admission_group_job_job_application_path(@admission, @group, @job, application) do
+              = application.applicant.full_name
+          %td= application.applicant.phone
+          %td= application.applicant.email
+          %td= application.find_or_create_interview.time
+          %td= application.find_or_create_interview.location
+          %td= application.find_or_create_interview.applicant_status_string

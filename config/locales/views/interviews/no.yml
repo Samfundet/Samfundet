@@ -58,6 +58,9 @@
     no_not_contacted_applicants: "Ingen søkere vil få automatisk avslag på epost."
     no_unprocessed_applicants: "Ingen ubehandlede søknader gjenstår."
 
+    withdrawn_applications: "Trekte søknader"
+    no_withdrawn_applications: "Ingen trekte søknader."
+
     remove_status: "Fjern status"
     remove_status_prompt: "Er du sikker? Søknaden blir flyttet til ubehandlede søknader og status må settes på nytt."
 
