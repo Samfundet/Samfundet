@@ -78,9 +78,12 @@ class Job < ApplicationRecord
   end
 
   def unprocessed_applications
-    job_applications.where(withdrawn: false)
+    unprocessed = job_applications.where(withdrawn: false)
         .joins(:interview)
         .where(interviews: { applicant_status: nil }) + job_applications_without_interviews
+    # Must add those without an interview model too
+    no_interview_model_created = job_applications - job_applications.joins(:interview)
+    unprocessed + no_interview_model_created
   end
 
   def accepted_applications
