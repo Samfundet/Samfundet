@@ -91,6 +91,12 @@ hr {
   margin-bottom: 1.5em;
 }
 
+hr.compact {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  height: 1px;
+}
+
 // To uppercase
 .up-ca { text-transform: uppercase;}
 
