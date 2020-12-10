@@ -39,3 +39,6 @@
     previous_admission: "Forrige opptak"
     processed_applications: "Behandlet"
     accepted_applicants: "Tatt opp"
+    overview_title: "Opptaksoversikt"
+    overview_processed: "Totalt har %{processed} av %{total} søknader blitt behandlet."
+    overview_accepted: "%{accepted} av %{total} søkere har blitt tatt opp, og %{rejected} vil per nå få avslag på epost."

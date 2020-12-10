@@ -134,6 +134,8 @@ Rails.application.routes.draw do
       resources :admissions, only: [:show, :new, :create, :edit, :update, :list] do
 
         get :statistics, on: :member
+        get :overview, on: :member
+
         resources :groups, only: :show do
           get :applications, on: :member
           get :reject_calls, on: :member

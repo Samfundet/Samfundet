@@ -16,6 +16,45 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
     redirect_to admissions_admin_admission_group_path(@admission, @my_groups.first) if @my_groups.length == 1
   end
 
+  # Admission overview for admission leader
+  def overview
+    @groups = Group.all
+
+    @applications = []
+    @processed = []
+    @accepted = []
+    @auto_reject = []
+
+    @groups.each do |g|
+      jobs = g.jobs_in_admission(@admission)
+      tot_procs = tot_rej = []
+      tot_acct = tot_apps = []
+      jobs.each do |j|
+        tot_apps += j.active_applications
+        tot_procs += j.processed_applications
+        tot_rej += j.automatically_rejected_applications
+        tot_acct += j.accepted_applications
+      end
+      @applications.append(tot_apps)
+      @processed.append(tot_procs)
+      @auto_reject.append(tot_rej)
+      @accepted.append(tot_acct)
+    end
+
+    # TODO find conflicts when two groups accept same person
+    @conflicts = {}
+    @groups.each_with_index do |g, i|
+
+    end
+
+    @total_applications = @applications.flatten.count
+    @total_processed = @processed.flatten.count
+    @total_unique_applicants = @applications.flatten.map { |x| x.applicant }.uniq.count
+    @total_unique_accepted = @accepted.flatten.map { |x| x.applicant }.uniq.count
+    @total_unique_rejected = @auto_reject.flatten.map { |x| x.applicant }.uniq.count
+
+  end
+
   def new
     @admission = Admission.new
   end

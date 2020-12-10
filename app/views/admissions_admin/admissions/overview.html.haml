@@ -1,0 +1,52 @@
+
+= link_to members_control_panel_path do
+  .samf-button.plain.mb-3
+    = t("common.back")
+
+%h1
+  = t("admissions_admin.overview_title") + " - " + @admission.title
+
+- # Progress bar
+%div{style: "width: 100%; height: 32px; border-radius: 16px; background: #eee; overflow: hidden;"}
+  - width = (@total_processed * 100.0 / @total_applications)
+  %div{style: "position: relative; left: 0; top: 0; width: #{width.to_s + "%"}; height: 32px; background: #81e67c;"}
+  %div{style: "position: relative; left: 20px; top: -27px; color: black;"}
+    - # Ensure 100% is never shown before complete
+    - if width.round(1).to_s == "100.0" and @total_processed < @total_applications
+      %b= "99%"
+    -else
+      %b= width.round(1).to_s + "%"
+
+%p
+  = t("admissions_admin.overview_processed", processed: @total_processed, total: @total_applications)
+%p
+  = t("admissions_admin.overview_accepted", accepted: @total_unique_accepted, total: @total_unique_applicants, rejected: @total_unique_rejected)
+
+%table
+  %thead
+    %th= t("job_applications.group")
+    %th= t("admissions_admin.applications")
+    %th= t("admissions_admin.processed_applications")
+    %th= t("admissions_admin.accepted_applicants")
+    %th= t("interviews.not_contacted_applicants_short")
+  %tbody
+    - @groups.each_with_index do |g, i|
+      - if @applications[i].count > 0 and @processed[i].count < @applications[i].count
+        %tr{style: "background-color: #f9cccd; border-bottom: 1px solid #fff;"}
+          %td
+            = link_to admissions_admin_admission_group_path(@admission, g) do
+              = g.name
+          %td= @applications[i].count.to_s
+          %td= @processed[i].count.to_s + "/" + @applications[i].count.to_s
+          %td= @accepted[i].count.to_s
+          %td= @auto_reject[i].count.to_s
+    - @groups.each_with_index do |g, i|
+      - if @applications[i].count > 0 and @processed[i].count == @applications[i].count
+        %tr{style: "background-color: #ccf9cd; border-bottom: 1px solid #fff;"}
+          %td
+            = link_to admissions_admin_admission_group_path(@admission, g) do
+              = g.name
+          %td= @applications[i].count.to_s
+          %td= @processed[i].count.to_s + "/" + @applications[i].count.to_s
+          %td= @accepted[i].count.to_s
+          %td= @auto_reject[i].count.to_s

@@ -77,6 +77,16 @@ class Job < ApplicationRecord
     job_applications.where(withdrawn: false).count
   end
 
+  def processed_applications
+    job_applications.where(withdrawn: false)
+        .joins(:interview)
+        .where.not(interviews: { applicant_status: nil })
+  end
+
+  def active_applications
+    job_applications.where(withdrawn: false)
+  end
+
   def unprocessed_applications
     unprocessed = job_applications.where(withdrawn: false)
         .joins(:interview)

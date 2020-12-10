@@ -54,6 +54,7 @@
 
     not_contacted_applicants: "Søkere som får automatisk avslag"
     not_contacted_applicants_explanation: "Disse vil få en automatisk epost om avslag dersom de ikke får tilbud om et annet verv."
+    not_contacted_applicants_short: "Avslag"
 
     no_contacted_applicants: "Ingen søkere er markert som kontaktet."
     no_not_contacted_applicants: "Ingen søkere vil få automatisk avslag på epost."

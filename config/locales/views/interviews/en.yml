@@ -52,6 +52,7 @@ en:
 
     not_contacted_applicants: "Automatically rejected applicants."
     not_contacted_applicants_explanation: "These will get an automatic rejection email if they are not accepted for a different job."
+    not_contacted_applicants_short: "Rejected"
 
     no_contacted_applicants: "No applicants are marked as contacted."
     no_not_contacted_applicants: "No applicants are marked to receive an automatic rejection email."

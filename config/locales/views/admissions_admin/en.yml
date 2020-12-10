@@ -39,3 +39,6 @@ en:
     previous_admission: "Previous admission"
     processed_applications: "Processed"
     accepted_applicants: "Accepted"
+    overview_title: "Admission Overview"
+    overview_processed: "%{processed} of %{total} applications have been processed."
+    overview_accepted: "%{accepted} of %{total} applicants have been accepted, and %{rejected} will receive rejection emails."
