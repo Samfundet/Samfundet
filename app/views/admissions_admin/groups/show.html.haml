@@ -26,6 +26,7 @@
       %th= t('groups.job_type')
       %th= t('groups.applicants')
       %th= t('admissions_admin.processed_applications')
+      %th= t('admissions_admin.accepted_applicants')
       %th
   %tbody
     - @jobs.each do |job|
@@ -45,6 +46,8 @@
             %b{style: "color:green"}= t("interviews.all")
           - else
             %span{style: "color:red"}= job.total_processed_applications.to_s + "/" + job.total_active_applications.to_s
+        %td
+          = job.accepted_applications.count
         %td.flex-row{:style => "float:right;"}
           - if @should_show_delete_button
             - if can?(:destroy, Job, job) && !job.job_applications.exists?

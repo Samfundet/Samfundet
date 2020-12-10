@@ -86,6 +86,7 @@ class Job < ApplicationRecord
     unprocessed + no_interview_model_created
   end
 
+  # Accepted applications (that also said yes)
   def accepted_applications
     job_applications
         .where(withdrawn: false)
