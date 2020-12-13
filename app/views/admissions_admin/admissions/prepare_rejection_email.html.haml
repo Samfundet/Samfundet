@@ -10,13 +10,9 @@
     = form_with(id: "rejection_email_form", url: {:controller=>'admissions_admin/admissions', :action=>'review_rejection_email'}) do |f|
       %fieldset
         %ol
-          .flex-row
-            %li
-              = f.label :subject, "Tittel"
-              = f.text_field :subject, placeholder: "f.eks 'Takk for at du søkte Samfundet'"
-            %li
-              = f.label :reply_to, "Svar Til"
-              = f.text_field :reply_to, placeholder: "f.eks 'opptaksansvarlig@samfundet.no'"
+          %li
+            = f.label :subject, "Tittel"
+            = f.text_field :subject, placeholder: "f.eks 'Takk for at du søkte Samfundet'"
           %li
             = f.label :introduction, "Tekst før navn"
             = f.text_field :introduction, placeholder: "Introduksjon før navnet, f.eks 'Kjære' blir til 'Kjære Ola Normann,'"

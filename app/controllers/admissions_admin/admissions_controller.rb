@@ -62,9 +62,8 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
   # Review automatic rejection email
   def review_rejection_email
     # For email preview/send
-    @email = {
+    @template = {
         subject: params[:subject],
-        reply_to: params[:reply_to],
         intro: params[:introduction],
         content: params[:content]
     }
@@ -87,6 +86,11 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
   # Sends rejection email to recipients
   def send_rejection_email
     @recipients = automatically_rejected_applicants
+    @template = {
+        subject: params[:subject],
+        intro: params[:intro],
+        content: params[:content]
+    }
   end
 
   # Async response for send rejection email
@@ -94,12 +98,29 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
     # Get recipients
     @recipients = automatically_rejected_applicants
 
+    puts(params)
+    puts(request.raw_post)
+
+    @template = {
+        subject: params[:subject],
+        intro: params[:intro],
+        content: params[:content]
+    }
+
     @success = []
     @failure = []
+    @errors = []
 
     @recipients.each do |r|
       # Send rejection email
-      # TODO
+      begin
+        AdmissionRejectionMailer.send_rejection_email(r, @template).deliver
+        @success.append(r)
+      rescue Net::SMTPAuthenticationError, Net::SMTPServerBusy, Net::SMTPSyntaxError, Net::SMTPFatalError, Net::SMTPUnknownError => e
+        @failure.append(r)
+        @errors.append(e)
+        Rails.logger.error "Failed to send rejection email to #{r.firstname} - #{r.email}"
+      end
     end
 
     render partial: "send_rejection_email_result"

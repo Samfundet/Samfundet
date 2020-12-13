@@ -10,17 +10,11 @@
     %b{style: "color: white;"}= "Avslagsepost"
   .pl-2.pr-2
     %p
-      %b= @email[:subject]
-      %br
-      %u= "from:"
-      %i= " no-reply@samfundet.no"
-      %br
-      %u= "reply-to:"
-      %i= " " + @email[:reply_to]
+      %b= @template[:subject]
     %hr.compact
     %p
-      %p= @email[:intro] + " Pernille,"
-      %p{style: "white-space: pre-wrap;"}!= @email[:content]
+      %p= @template[:intro] + " Pernille,"
+      %p{style: "white-space: pre-wrap;"}= @template[:content]
 
 %br
 %hr.compact
@@ -42,6 +36,9 @@
 
 = form_with(id: "send_rejection_email_form", url: {:controller=>'admissions_admin/admissions', :action=>'send_rejection_email'}) do |f|
   = f.hidden_field :recipients, :value => @recipients
+  = f.hidden_field :subject, :value => @template[:subject]
+  = f.hidden_field :intro, :value => @template[:intro]
+  = f.hidden_field :content, :value => @template[:content]
   = f.submit "Send Epost"
 
 %hr

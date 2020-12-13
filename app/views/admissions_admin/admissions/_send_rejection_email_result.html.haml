@@ -1,9 +1,26 @@
 
 %hr
 
-%h1= "Ferdig!"
-
-= @recipients
-= @success
+%h1{style: "color: green;"}= "Ferdig!"
 
 %h2= @success.count.to_s + " av " + @recipients.count.to_s + " eposter ble sendt."
+
+- if @failure.count > 0
+  %hr
+  %h1{style: "color: red"}= "ADVARSEL!"
+  %h3= @failure.count.to_s + " epost(er) ble ikke sendt! Kontakt mg-web@samfundet.no ASAP og ikke forlat denne siden!"
+
+  %textarea.w100{style: "border: 1px solid gray", disabled: true}
+    = @failure.map { |x| x.email }.join(", ")
+
+  %table.compact
+    %thead
+      %th= "Navn"
+      %th= "Epost"
+      %th= "Error"
+    %tbody
+      - @failure.each_with_index do |f, i|
+        %tr
+          %td= f.full_name
+          %td= f.email
+          %td= @errors[i].message
