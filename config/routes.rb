@@ -135,6 +135,10 @@ Rails.application.routes.draw do
 
         get :statistics, on: :member
         get :overview, on: :member
+        get :prepare_rejection_email, on: :member
+        post :review_rejection_email, on: :member
+        post :send_rejection_email, on: :member
+        get :send_rejection_email_result, on: :member
 
         resources :groups, only: :show do
           get :applications, on: :member

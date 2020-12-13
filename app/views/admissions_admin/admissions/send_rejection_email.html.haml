@@ -1,0 +1,16 @@
+
+
+
+.samf-container.flex-col.p-3.text-Align.mb-3
+  %h1.mt-3
+    = t("admissions_admin.sending_rejection_email") + " - " + @admission.title
+
+  = render_async send_rejection_email_result_admissions_admin_admission_path(@admission, recipients: @recipients) do
+    %div
+      %p.mb-2{style: "color: #666;"}
+        = t("admissions_admin.sending_rejection_email_notice", count: @recipients.count)
+      .loading-indicator.large.center
+
+-#%p
+  -#= t("admissions_admin.review_rejection_text", rejected: @recipients.count, total: @total_unique_applicants)
+

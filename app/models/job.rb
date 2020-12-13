@@ -118,7 +118,7 @@ class Job < ApplicationRecord
     job_applications
         .where(withdrawn: false)
         .joins(:interview)
-        .where(interviews: {applicant_status: :rejected })
+        .where(interviews: { applicant_status: :rejected })
   end
 
   def withdrawn_applications

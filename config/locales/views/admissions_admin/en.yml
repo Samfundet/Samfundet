@@ -42,3 +42,14 @@ en:
     overview_title: "Admission Overview"
     overview_processed: "%{processed} of %{total} applications have been processed."
     overview_accepted: "%{accepted} of %{total} applicants have been accepted, and %{rejected} will receive rejection emails."
+    overview_not_complete: "Some groups have not processed all their applications, so it is not possible to send emails yet."
+    overview_complete: "All groups have processed their applications"
+    overview_prepare_email: "Prepare to send rejection email"
+
+    prepare_email_title: "Create rejection email"
+    review_email_button: "Continue and review recipients"
+    review_rejection_email: "Review rejection email & recipients"
+    review_rejection_text: "%{rejected} / %{total} applicants will receive a rejection email."
+
+    sending_rejection_email: "Sending rejection emails"
+    sending_rejection_email_notice: "Sending %{count} emails. This may take a while..."

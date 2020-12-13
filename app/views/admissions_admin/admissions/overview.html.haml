@@ -22,6 +22,16 @@
 %p
   = t("admissions_admin.overview_accepted", accepted: @total_unique_accepted, total: @total_unique_applicants, rejected: @total_unique_rejected)
 
+%p
+  - if @admission_complete
+    .flex-column
+      %i= t("admissions_admin.overview_complete")
+      = link_to prepare_rejection_email_admissions_admin_admission_path(@admission) do
+        .samf-button.plain
+          = t("admissions_admin.overview_prepare_email")
+  - else
+    %i= t("admissions_admin.overview_not_complete")
+
 %table
   %thead
     %th= t("job_applications.group")

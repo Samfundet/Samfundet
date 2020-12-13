@@ -32,7 +32,6 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
       jobs.each do |j|
         tot_apps += j.active_applications
         tot_procs += j.processed_applications
-        tot_rej += j.automatically_rejected_applications
         tot_acct += j.accepted_applications
       end
       @applications.append(tot_apps)
@@ -42,17 +41,68 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
     end
 
     # TODO find conflicts when two groups accept same person
-    @conflicts = {}
-    @groups.each_with_index do |g, i|
-
-    end
+    # @conflicts = {}
+    # @groups.each_with_index do |g, i|
+    # end
 
     @total_applications = @applications.flatten.count
     @total_processed = @processed.flatten.count
     @total_unique_applicants = @applications.flatten.map { |x| x.applicant }.uniq.count
     @total_unique_accepted = @accepted.flatten.map { |x| x.applicant }.uniq.count
-    @total_unique_rejected = @auto_reject.flatten.map { |x| x.applicant }.uniq.count
+    @total_unique_rejected = automatically_rejected_applicants.count
+    @admission_complete = @total_processed == @total_applications
 
+  end
+
+  # Prepare automatic rejection email
+  def prepare_rejection_email
+
+  end
+
+  # Review automatic rejection email
+  def review_rejection_email
+    # For email preview/send
+    @email = {
+        subject: params[:subject],
+        reply_to: params[:reply_to],
+        intro: params[:introduction],
+        content: params[:content]
+    }
+
+    # Find total number of applicants
+    all_applications = []
+    Group.all.each do |g|
+      jobs = g.jobs_in_admission(@admission)
+      jobs.each do |j|
+        all_applications += j.active_applications
+      end
+    end
+
+    # Recipients are all applicants with a rejected application except those who were accepted at least once
+    @recipients = automatically_rejected_applicants
+    @total_unique_applicants = all_applications.flatten.map { |a| a.applicant }.uniq.count
+
+  end
+
+  # Sends rejection email to recipients
+  def send_rejection_email
+    @recipients = automatically_rejected_applicants
+  end
+
+  # Async response for send rejection email
+  def send_rejection_email_result
+    # Get recipients
+    @recipients = automatically_rejected_applicants
+
+    @success = []
+    @failure = []
+
+    @recipients.each do |r|
+      # Send rejection email
+      # TODO
+    end
+
+    render partial: "send_rejection_email_result"
   end
 
   def new
@@ -79,7 +129,6 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
     )
     @closed_admissions = Admission.no_longer_appliable
     @upcoming_admissions = Admission.upcoming
-
   end
 
   def update
@@ -137,6 +186,28 @@ protected
   end
 
 private
+
+  # Calculates who should receive automatic rejection email
+  def automatically_rejected_applicants
+    rejected_somewhere = []
+    accepted_somewhere = []
+
+    Group.all.each do |g|
+      jobs = g.jobs_in_admission(@admission)
+      jobs.each do |j|
+        rejected_somewhere += j.automatically_rejected_applications
+        accepted_somewhere += j.accepted_applications
+      end
+    end
+
+    # Convert to unique applicants
+    rejected_somewhere = rejected_somewhere.flatten.map { |x| x.applicant }.uniq
+    accepted_somewhere = accepted_somewhere.flatten.map { |x| x.applicant }.uniq
+
+    # Return those rejected somewhere if not accepted anywhere
+    rejected_somewhere - accepted_somewhere
+  end
+
 
   def applications_per_day_chart
     admission_start = @admission.shown_from.to_date

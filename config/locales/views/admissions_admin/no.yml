@@ -42,3 +42,14 @@
     overview_title: "Opptaksoversikt"
     overview_processed: "Totalt har %{processed} av %{total} søknader blitt behandlet."
     overview_accepted: "%{accepted} av %{total} søkere har blitt tatt opp, og %{rejected} vil per nå få avslag på epost."
+    overview_not_complete: "Alle søknader er enda ikke behandlet. Det er derfor ikke mulig å sende avslagsepost enda."
+    overview_complete: "Alle søknader er ferdigbehandlet. Jippi!"
+    overview_prepare_email: "Opprett automatisk avslagsepost"
+
+    prepare_email_title: "Opprett avslagsepost"
+    review_email_button: "Gå videre og se gjennom mottakere"
+    review_rejection_email: "Se gjennom avslagsepost og mottakere"
+    review_rejection_text: "%{rejected} / %{total} søkere vil få avslagsepost."
+
+    sending_rejection_email: "Sender avslagseposter"
+    sending_rejection_email_notice: "Sender %{count} eposter. Dette kan ta en liten stund..."

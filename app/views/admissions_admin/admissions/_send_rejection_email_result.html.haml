@@ -1,0 +1,9 @@
+
+%hr
+
+%h1= "Ferdig!"
+
+= @recipients
+= @success
+
+%h2= @success.count.to_s + " av " + @recipients.count.to_s + " eposter ble sendt."

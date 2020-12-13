@@ -1,0 +1,49 @@
+= javascript_include_tag 'applicants/admissions_admin_email', defer: true
+
+%h1
+  = t("admissions_admin.review_rejection_email") + " - " + @admission.title
+
+%hr
+
+%div.bxs{style: "border: 1px solid #aaa; border-radius: 6px; overflow: hidden;"}
+  %div.p-1{style: "background: #555;"}
+    %b{style: "color: white;"}= "Avslagsepost"
+  .pl-2.pr-2
+    %p
+      %b= @email[:subject]
+      %br
+      %u= "from:"
+      %i= " no-reply@samfundet.no"
+      %br
+      %u= "reply-to:"
+      %i= " " + @email[:reply_to]
+    %hr.compact
+    %p
+      %p= @email[:intro] + " Pernille,"
+      %p{style: "white-space: pre-wrap;"}!= @email[:content]
+
+%br
+%hr.compact
+
+%p
+  = t("admissions_admin.review_rejection_text", rejected: @recipients.count, total: @total_unique_applicants)
+
+%table.compact
+  %thead
+    %th= t("interviews.applicant_name")
+    %th= t("interviews.applicant_email_address")
+  %tbody
+    - @recipients.each do |r|
+      %tr
+        %td= r.full_name
+        %td= r.email
+
+%hr
+
+= form_with(id: "send_rejection_email_form", url: {:controller=>'admissions_admin/admissions', :action=>'send_rejection_email'}) do |f|
+  = f.hidden_field :recipients, :value => @recipients
+  = f.submit "Send Epost"
+
+%hr
+
+
