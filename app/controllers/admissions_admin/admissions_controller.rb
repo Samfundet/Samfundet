@@ -33,6 +33,7 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
         tot_apps += j.active_applications
         tot_procs += j.processed_applications
         tot_acct += j.accepted_applications
+        tot_rej += j.automatically_rejected_applications
       end
       @applications.append(tot_apps)
       @processed.append(tot_procs)
