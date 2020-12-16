@@ -47,7 +47,8 @@
       Denne listen inneholder kun ubehandlede søknader (søknader der status ikke er satt).
       Alle søkere som ikke blir tatt opp må markeres med avslag, uansett om de blir tatt opp i et annet verv.
       Det anbefales å fortløpende markere søkere som ikke blir tatt opp med avslag slik at listen blir lettere å forholde seg til.
-      Alle søknader må være ferdig behandlet på kvelden etter fordelingsmøtet.
+      Søkere skal ikke markeres som tatt opp før de har blitt kontaktet. Dersom andre gjenger ønsker samme søker må dette avklares først
+      på fordelingsmøtet. Alle søknader må være ferdig behandlet på kvelden etter fordelingsmøtet.
 
     contacted_applicants: "Søkere vi har kontaktet"
     contacted_applicants_explanation: "Disse vil IKKE få en automatisk epost om avslag. Det er derfor veldig viktig å bekrefte at listen er korrekt."
