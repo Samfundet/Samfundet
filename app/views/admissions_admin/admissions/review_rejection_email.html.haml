@@ -39,7 +39,7 @@
   = f.hidden_field :subject, :value => @template[:subject]
   = f.hidden_field :intro, :value => @template[:intro]
   = f.hidden_field :content, :value => @template[:content]
-  = f.submit "Send Epost"
+  = f.submit "Send Epost", data: { confirm: "Er du sikker på at avslagsepost skal sendes til #{@recipients.count} søkere? Eposter vil bli sendt og dette kan ikke angres." }
 
 %hr
 
