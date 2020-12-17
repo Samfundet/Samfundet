@@ -5,6 +5,7 @@ class Admission < ApplicationRecord
   has_many :job_applications, -> { distinct }, through: :jobs
   has_many :groups, -> { distinct }, through: :jobs
   has_many :group_types, -> { distinct }, through: :groups
+  has_many :rejection_emails
 
   validates :title, :shown_from, :shown_application_deadline,
             :actual_application_deadline, :user_priority_deadline,

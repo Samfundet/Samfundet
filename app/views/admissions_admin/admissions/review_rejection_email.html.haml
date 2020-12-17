@@ -17,15 +17,23 @@
       %p{style: "white-space: pre-wrap;"}= @template[:content]
 
 %br
+
 %hr.compact
+
+%h2= t("admissions_admin.review_recipients_title")
 
 %p
   = t("admissions_admin.review_rejection_text", rejected: @recipients.count, total: @total_unique_applicants)
+
+- if @sent_rejection_emails.count > 0
+  %p= t("admissions_admin.review_already_sent", count: @sent_rejection_emails.count)
+
 
 %table.compact
   %thead
     %th= t("interviews.applicant_name")
     %th= t("interviews.applicant_email_address")
+    %th
   %tbody
     - @recipients.each do |r|
       %tr

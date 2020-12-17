@@ -5,13 +5,17 @@
 
 %h2= @success.count.to_s + " av " + @recipients.count.to_s + " eposter ble sendt."
 
+= link_to overview_admissions_admin_admission_path(@admission) do
+  .samf-button.plain.mb-2.center.mt-3
+    = t("common.back")
+
 - if @failure.count > 0
   %hr
   %h1{style: "color: red"}= "ADVARSEL!"
-  %h3= @failure.count.to_s + " epost(er) ble ikke sendt! Kontakt mg-web@samfundet.no ASAP og ikke forlat denne siden!"
+  %p= "Noe gikk galt og " + @failure.count.to_s + " epost(er) ble ikke sendt!"
+  %p= "Prøv på nytt eller kontakt mg-web@samfundet.no for hjelp."
 
-  %textarea.w100{style: "border: 1px solid gray", disabled: true}
-    = @failure.map { |x| x.email }.join(", ")
+  %hr
 
   %table.compact
     %thead

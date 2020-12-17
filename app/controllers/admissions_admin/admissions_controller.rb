@@ -50,8 +50,20 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
     @total_processed = @processed.flatten.count
     @total_unique_applicants = @applications.flatten.map { |x| x.applicant }.uniq.count
     @total_unique_accepted = @accepted.flatten.map { |x| x.applicant }.uniq.count
-    @total_unique_rejected = automatically_rejected_applicants.count
+    auto_rejected = automatically_rejected_applicants
+    @total_unique_rejected = auto_rejected.count
     @admission_complete = @total_processed == @total_applications
+
+    rejection_emails = @admission.rejection_emails
+    @sent_rejection_emails = rejection_emails.count
+
+    # Calculates if any applicants that should received email
+    # has not received one yet. Usually sends should only be done once,
+    # but this is a safety mechanism in case something goes wrong.
+    if @sent_rejection_emails > 0
+      @missing = auto_rejected.map { |r| r.id } - rejection_emails.map { |r| r.applicant_id }
+      @missing = @missing.uniq
+    end
 
   end
 
@@ -79,14 +91,16 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
     end
 
     # Recipients are all applicants with a rejected application except those who were accepted at least once
-    @recipients = automatically_rejected_applicants
+    @recipients = calculate_rejection_recipients
     @total_unique_applicants = all_applications.flatten.map { |a| a.applicant }.uniq.count
+    @sent_rejection_emails = @admission.rejection_emails
+    @already_rejected_applicants = @sent_rejection_emails.map { |r| r.applicant_id }
 
   end
 
   # Sends rejection email to recipients
   def send_rejection_email
-    @recipients = automatically_rejected_applicants
+    @recipients = calculate_rejection_recipients
     @template = {
         subject: params[:subject],
         intro: params[:intro],
@@ -97,10 +111,7 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
   # Async response for send rejection email
   def send_rejection_email_result
     # Get recipients
-    @recipients = automatically_rejected_applicants
-
-    puts(params)
-    puts(request.raw_post)
+    @recipients = calculate_rejection_recipients
 
     @template = {
         subject: params[:subject],
@@ -113,18 +124,29 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
     @errors = []
 
     @recipients.each do |r|
-      # Send rejection email
+      # Rejection email database save
+      rej = RejectionEmail.new(
+          admission: @admission,
+          applicant: r,
+          sent_at: Time.now
+      )
+      # Safely send emails
       begin
+        rej.save!
         AdmissionRejectionMailer.send_rejection_email(r, @template).deliver
         @success.append(r)
-      rescue Net::SMTPAuthenticationError, Net::SMTPServerBusy, Net::SMTPSyntaxError, Net::SMTPFatalError, Net::SMTPUnknownError => e
+      rescue Error => e
+        rej.delete!
         @failure.append(r)
         @errors.append(e)
-        Rails.logger.error "Failed to send rejection email to #{r.firstname} - #{r.email}"
       end
     end
 
     render partial: "send_rejection_email_result"
+  end
+
+  def rejection_email_list
+    @rejection_emails = @admission.rejection_emails.joins(:applicant).order('surname asc')
   end
 
   def new
@@ -209,7 +231,16 @@ protected
 
 private
 
-  # Calculates who should receive automatic rejection email
+  # Calculate who should receive rejection email
+  # Excludes those who already received an email
+  def calculate_rejection_recipients
+    rejected = automatically_rejected_applicants
+    already_sent = @admission.rejection_emails.map { |r| r.applicant_id }
+    # Select all not already sent
+    rejected.select { |r| not already_sent.include?(r.id) }
+  end
+
+  # Calculates who are marked to receive automatic rejection email
   def automatically_rejected_applicants
     rejected_somewhere = []
     accepted_somewhere = []
