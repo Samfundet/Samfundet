@@ -1,6 +1,9 @@
 .info_box{
   margin-bottom: 2em;
 
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   background-color: white;
   box-shadow: 2px 2px 20px 5px rgba(0, 0, 0, 0.05);
   border-radius: 4px;
@@ -9,6 +12,7 @@
 
   @include media($mobile-and-tablet-portrait) {
     flex-basis: 100%;
+    flex-direction: column;
     margin-left: 0;
     margin-right: 0;
     border-radius: 0;
@@ -16,7 +20,8 @@
   }
 
   .picture {
-    width: calc(50% - 1em);
+    flex-basis: calc(50%);
+    width: 100%;
     height: 200px;
     max-height: 200px;
     background-size: cover;
@@ -50,7 +55,7 @@
   }
   .info_text{
     flex-basis: calc(50% - 1em);
-    padding-left: 3em;
+    padding-left: 2em;
     .title {
       font-weight: bold;
       font-size: 1.75em;
@@ -60,6 +65,7 @@
 
       @include media($mobile) {
         font-size: 1em;
+        padding: 1em;
       }
   }
     .title:hover {
@@ -69,6 +75,9 @@
       font-weight: lighter;
       font-size: 1em;
       color: black;
+      @include media($mobile-and-tablet-portrait){
+        display: none;
+      }
     }
 
   }
