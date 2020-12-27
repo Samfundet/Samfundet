@@ -1,11 +1,13 @@
 
 .info_box.flex-row.flex-align-center
   .picture
-    = link_to 'https://www.samfundet.no/nybygg', target: "_blank" do
+    = link_to Page.new_building_info, target: "_blank" do
       .locked-border
       = image_tag 'ny_bygg.png', alt: 'Ny bygg er veldig kult!'
 
   .info_text
-    = link_to 'https://www.samfundet.no/nybygg', target: "_blank" do
-      .title.p-2
-        Samfunndet bygger ut!
+    = link_to Page.new_building_info, target: "_blank" do
+      .title
+        = t('site.index.info_box_title')
+      .info_text_body
+        = t('site.index.info_box_body')

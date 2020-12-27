@@ -7,6 +7,7 @@ class Page < ApplicationRecord
   TICKETS_NAME = 'tickets'
   CORONA_INFO_NAME = 'covid-19'
   HANDICAP_INFO_NAME = 'other-info'
+  NEW_BUILDING_INFO_NAME = 'nybygg'
   REVISION_FIELDS = %i[title_no title_en content_no content_en content_type].freeze
 
   extend LocalizedFields
@@ -107,6 +108,13 @@ class Page < ApplicationRecord
   def self.handicap_info
     find_or_create_by(name_en: HANDICAP_INFO_NAME) do |page|
       page.name_no = HANDICAP_INFO_NAME
+      page.role = Role.super_user
+    end
+  end
+
+  def self.new_building_info
+    find_or_create_by(name_en: NEW_BUILDING_INFO_NAME) do |page|
+      page.name_no = NEW_BUILDING_INFO_NAME
       page.role = Role.super_user
     end
   end

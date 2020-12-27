@@ -50,7 +50,7 @@
   }
   .info_text{
     flex-basis: calc(50% - 1em);
-    padding-left: 2em;
+    padding-left: 3em;
     .title {
       font-weight: bold;
       font-size: 1.75em;
@@ -65,5 +65,11 @@
     .title:hover {
       text-decoration: underline;
     }
+    .info_text_body{
+      font-weight: lighter;
+      font-size: 1em;
+      color: black;
+    }
+
   }
 }

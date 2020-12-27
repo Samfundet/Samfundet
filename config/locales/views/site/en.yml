@@ -16,6 +16,9 @@ en:
       max_ticket_limit_single_long: "Max %{total_ticket_limit} ticket"
       max_ticket_limit_multiple_long: "Max %{total_ticket_limit} tickets"
 
+      info_box_title: "The Student Society is finally expanding!"
+      info_box_body: "On this website you will find relevant information about the project"
+
       events_today: "What's happening?"
       no_events_because_closed: "Samfundet is closed today"
       no_events_today: "Samfundet is open today! See the opening hours for more information about when the different venues are open."
