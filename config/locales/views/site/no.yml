@@ -17,7 +17,7 @@
       max_ticket_limit_single_long: "Maks %{total_ticket_limit} billett"
       max_ticket_limit_multiple_long: "Maks %{total_ticket_limit} billetter"
 
-      info_box_title: "Samfunndet bygger ut!"
+      info_box_title: "Studentersamfundet bygger ut!"
       info_box_body: "På denne siden kan du finne informasjon om nybyggprosjektet"
 
       events_today: "Hva skjer?"
