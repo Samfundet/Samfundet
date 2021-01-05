@@ -243,22 +243,22 @@ private
   # Calculates who are marked to receive automatic rejection email
   def automatically_rejected_applicants
     rejected_somewhere = []
-    accepted_somewhere = []
+    contacted_somewhere = []
 
     Group.all.each do |g|
       jobs = g.jobs_in_admission(@admission)
       jobs.each do |j|
         rejected_somewhere += j.automatically_rejected_applications
-        accepted_somewhere += j.accepted_applications
+        contacted_somewhere += j.contacted_applications
       end
     end
 
     # Convert to unique applicants
     rejected_somewhere = rejected_somewhere.flatten.map { |x| x.applicant }.uniq
-    accepted_somewhere = accepted_somewhere.flatten.map { |x| x.applicant }.uniq
+    contacted_somewhere = contacted_somewhere.flatten.map { |x| x.applicant }.uniq
 
     # Return those rejected somewhere if not accepted anywhere
-    rejected_somewhere - accepted_somewhere
+    rejected_somewhere - contacted_somewhere
   end
 
 
