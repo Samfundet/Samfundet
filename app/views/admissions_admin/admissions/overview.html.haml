@@ -59,29 +59,26 @@
 
 %p= t("admissions_admin.overview_sent_emails", count: @sent_rejection_emails)
 
-%p
-  - if @admission_complete
-
-    - if @sent_rejection_emails > 0
-      %div
-        = link_to rejection_email_list_admissions_admin_admission_path(@admission) do
-          .samf-button.plain
-            = "Se liste over mottakere"
-        - if @missing.count > 0
-          %hr
-          %p{style: "color: red; font-weight: bold;"}= t("admissions_admin.overview_missing", count: @missing.count)
-          = link_to prepare_rejection_email_admissions_admin_admission_path(@admission) do
-            .samf-button.plain
-              = t("admissions_admin.overview_prepare_email")
-
-    - else
-      %span= t("admissions_admin.overview_complete")
-      %div
-        = link_to prepare_rejection_email_admissions_admin_admission_path(@admission) do
-          .samf-button.plain
-            = t("admissions_admin.overview_prepare_email")
+- if @sent_rejection_emails > 0
+  %div
+    = link_to rejection_email_list_admissions_admin_admission_path(@admission) do
+      .samf-button.plain
+        = "Se liste over mottakere"
 
 
-  - else
+- if @admission_complete
+  %p
+    %span= t("admissions_admin.overview_complete")
+  %div
+    = link_to prepare_rejection_email_admissions_admin_admission_path(@admission) do
+      .samf-button.plain
+        = t("admissions_admin.overview_prepare_email")
+
+- else
+  %p
     %span= t("admissions_admin.overview_not_complete")
 
+
+- if @sent_rejection_emails > 0 and (@missing.count > 0 or not @admission_complete)
+  %hr
+  %p{style: "color: red; font-weight: bold;"}= t("admissions_admin.overview_missing", count: @missing.count)

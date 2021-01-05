@@ -47,7 +47,7 @@
     overview_prepare_email: "Opprett automatisk avslagsepost"
     overview_rejection_email_title: "Avslagseposter"
     overview_sent_emails: "%{count} avslagseposter har blitt sendt for dette opptaket."
-    overview_missing: "Advarsel: %{count} avslåtte søkere har fortsatt ikke fått epost! Dette kan være fordi noen har endret opptaket i ettertid, eller fordi det skjedde noe feil under sendingen."
+    overview_missing: "Advarsel: Opptaket ser ut til å ha blitt endret etter avslagseposter ble sendt. %{count} avslåtte søkere har per nå ikke fått avslagsepost."
 
     prepare_email_title: "Opprett avslagsepost"
     review_email_button: "Gå videre og se gjennom mottakere"
