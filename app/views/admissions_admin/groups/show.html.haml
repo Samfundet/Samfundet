@@ -42,10 +42,10 @@
         %td
           = job.job_applications.count
         %td
-          - if job.total_processed_applications == job.total_active_applications
+          - if job.processed_applications.count == job.active_applications.count
             %b{style: "color:green"}= t("interviews.all")
           - else
-            %span{style: "color:red"}= job.total_processed_applications.to_s + "/" + job.total_active_applications.to_s
+            %span{style: "color:red"}= job.processed_applications.count.to_s + "/" + job.active_applications.count.to_s
         %td
           = job.accepted_applications.count
         %td.flex-row{:style => "float:right;"}
