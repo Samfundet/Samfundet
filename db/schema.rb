@@ -28,13 +28,6 @@ ActiveRecord::Schema.define(version: 2020_12_17_132844) do
     t.text "groups_with_separate_admission"
   end
 
-  create_table "applicant_admission_status", force: :cascade do |t|
-    t.integer "applicant_id"
-    t.integer "admission_id"
-    t.integer "accepted_job_id"
-    t.boolean "did_send_rejection_email"
-  end
-
   create_table "applicants", id: :serial, force: :cascade do |t|
     t.string "firstname"
     t.string "surname"
