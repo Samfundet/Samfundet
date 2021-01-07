@@ -47,3 +47,13 @@ table:not(.custom-table):not(.ui-datepicker-calendar) {
   }
 
 }
+
+table.compact:not(.custom-table):not(.ui-datepicker-calendar) {
+  font-size: 14px;
+  tr {
+    padding: 6px 0px;
+  }
+  th, td {
+    padding: 4px 5px;
+  }
+}

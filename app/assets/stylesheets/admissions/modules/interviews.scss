@@ -1,37 +1,63 @@
 .admissions_admin\/jobs.show,
-.admissions_admin\/groups.applications {
+.admissions_admin\/groups.applications,
+#async_unprocessed_list {
   table fieldset {
     display: inline;
   }
 
   table.applications {
+
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid #aaa;
+
     thead {
-      background-image: -o-linear-gradient(white,#EEE);
-      background-image: -ms-linear-gradient(white,#EEE);
-      background-image: -moz-linear-gradient(white,#EEE);
-      background-image: -webkit-linear-gradient(white,#EEE);
-      background-image: linear-gradient(white,#EEE); }
+      th {
+        background-color: #eee;
+        color: black;
+        font-weight: normal;
+      }
+      th.number {
+        max-width: 16px;
+      }
+      th.interview-time {
+        width: 105px !important;
+      }
+      th.location {
+        width: 120px !important;
+      }
+      th.status {
+        width: 100px !important;
+      }
+      th.application-status {
+        width: 100px !important;
+      }
+      th.comment {
+        width: 100px !important;
+      }
+    }
     tbody::after
     {
       content: '';
       display: block;
       height: 15px;
-
     }
     tbody:last-child:after {
       height: 0px;
     }
 
     td {
-      border: 1px solid #cccccc; } }
+      border-right: 1px solid #cccccc;
+    }
+  }
 
   form.interview ol {
     font-size: 0.85em;
     margin-bottom: 0;
+
     li {
       display: inline !important;
       input[type=text] {
-        width: 12em !important;
         margin: 0 !important;
         padding: 0 !important;
         border-radius: 0 !important;
@@ -39,6 +65,12 @@
           box-shadow: none !important;
           -moz-box-shadow: none !important;
           -webkit-box-shadow: none !important;
+      }
+      textarea {
+        resize: vertical !important;
+        min-width: 120px;
+        min-height: 32px;
+        padding: 2px;
       }
       input[type=submit] {
         display: none;
@@ -50,6 +82,12 @@
       &:after {
         display: none !important;
       } } }
+
+  .hide-withdrawn {
+    tr.withdrawn {
+      display: none;
+    }
+  }
 
   .colorblind{
     tr.this_job {
@@ -94,7 +132,7 @@
   }
 
   tr.this_job {
-    background-color: #AEFE9A;
+    background-color: #81fc62;
   }
 
   tr.this_job_reserved {
@@ -137,4 +175,11 @@
       }
     }
   }
+
+  span.status {
+    width: 100% !important;
+    clear: both;
+    float: right;
+  }
+
 }

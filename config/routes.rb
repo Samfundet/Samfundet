@@ -134,13 +134,22 @@ Rails.application.routes.draw do
       resources :admissions, only: [:show, :new, :create, :edit, :update, :list] do
 
         get :statistics, on: :member
+        get :overview, on: :member
+        get :prepare_rejection_email, on: :member
+        post :review_rejection_email, on: :member
+        post :send_rejection_email, on: :member
+        post :send_rejection_email_result, on: :member
+        get :rejection_email_list, on: :member
+
         resources :groups, only: :show do
           get :applications, on: :member
           get :reject_calls, on: :member
           resources :jobs, only: [:show, :new, :create, :edit, :update, :destroy] do
             get :search, on: :collection
+            get :show_unprocessed
             resources :job_applications, only: :show do
               post :hidden_create, on: :collection
+              get :reset_status
               resources :interviews, only: [:update, :show]
             end
           end

@@ -1,0 +1,25 @@
+
+
+= link_to overview_admissions_admin_admission_path(@admission) do
+  .samf-button.plain.mb-3
+    = t("common.back")
+
+%h1
+  = "Sendte avslagseposter (" + @rejection_emails.count.to_s + ")"
+
+%hr
+
+%table.compact
+  %thead
+    %th= t("interviews.applicant_name")
+    %th= t("interviews.applicant_email_address")
+    %th= t("time.time")
+  %tbody
+    - @rejection_emails.each do |r|
+      %tr
+        %td= r.applicant.full_name
+        %td= r.applicant.email
+        %td= r.sent_at.to_s
+
+
+

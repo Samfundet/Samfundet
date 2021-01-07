@@ -6,12 +6,16 @@
 %h1.mb-2
   = @admission.title
 .flex-column
+  = link_to overview_admissions_admin_admission_path(@admission) do
+    .samf-button.plain.mb-2
+      = t("admissions_admin.overview_title")
   = link_to admissions_admin_admission_show_interested_other_positions_path(@admission) do
     .samf-button.blue.small.mb-2
       = t("admissions_admin.show_interested_other_positions")+"..."
   = link_to admissions_admin_admission_show_unflagged_applicants_path(@admission) do
     .samf-button.blue.small
       = t("admissions_admin.show_unflagged_applicants")+"..."
+
 
 
 %h1.mt-3.mb-2

@@ -62,6 +62,7 @@ module Samfundet
     config.assets.precompile += %w(sulten/header.js)
     config.assets.precompile += %w(sulten/lyche/calendar.js)
     config.assets.precompile += %w(site/opening-hours-mobile-header.js)
+    config.assets.precompile += %w(applicants/admissions_admin_email.js)
 
     # Load local env variables into rails config
     config.before_configuration do
