@@ -36,8 +36,8 @@ class AdmissionsAdminAbility
       opptaksansvarlig
 
       can [:show, :applications, :reject_calls], Group, id: group.id
-      can [:new, :create, :search, :edit, :update, :show, :destroy], Job, group_id: group.id
-      can :show, JobApplication, job: { group: { id: group.id } }
+      can [:new, :create, :search, :edit, :update, :show, :show_unprocessed, :destroy], Job, group_id: group.id
+      can [:show, :reset_status], JobApplication, job: { group: { id: group.id } }
       can [:show, :update], Interview, job_application: { job: { group: { id: group.id } } }
       can [:create, :destroy], LogEntry, group_id: group.id
     end
