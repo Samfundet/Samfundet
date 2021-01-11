@@ -84,7 +84,7 @@ gem 'route_translator', '~> 5.6.0'
 
 # RedCarpet renders Markdown, a light-weight markup language, to HTML.
 # See: config/initializers/haml_markdown.rb
-gem 'redcarpet', '~> 3.5.0'
+gem 'redcarpet', '~> 3.5.1'
 
 # route_downcaser adds transparent support for case-insensive routes by downcasing requested URLs.
 gem 'route_downcaser', '~> 1.2.0'
