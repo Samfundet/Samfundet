@@ -170,6 +170,8 @@ Rails.application.routes.draw do
     get "konsert-og-uteliv", to: "site#concert", as: :concert
     get "login", to: "user_sessions#new", as: :login
 
+    get "brosjyre", to: "site#brochure"
+
     post "logout" => "user_sessions#destroy", as: :logout
     get "members/control_panel" => "members#control_panel", as: :members_control_panel
     get "members/search.:format" => "members#search", as: :members_search
