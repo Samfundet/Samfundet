@@ -32,7 +32,7 @@ class SiteController < ApplicationController
 
   def brochure
     pdf_filename = File.join(Rails.root, "app/assets/files/Brosjyre.pdf")
-    send_file(pdf_filename, :filename => "your_document.pdf", :disposition => 'inline', :type => "application/pdf")
+    send_file(pdf_filename, :filename => "samfundet-brosjyre.pdf", :disposition => 'inline', :type => "application/pdf")
   end
 
 private
