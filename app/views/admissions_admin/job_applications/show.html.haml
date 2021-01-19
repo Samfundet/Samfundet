@@ -24,7 +24,10 @@
     %td=@job_application.applicant.campus
   %tr
     %td= t('job_applications.offer_other_positions')
-    %td= t(@job_application.applicant.interested_other_positions.to_s)
+    - if @job_application.applicant.interested_other_positions == nil
+      %td= t(false.to_s)
+    - else
+      %td= t(@job_application.applicant.interested_other_positions.to_s)
 
 %hr
 
