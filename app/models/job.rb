@@ -67,9 +67,9 @@ class Job < ApplicationRecord
   end
 
   def processed_applications
-    job_applications.where(withdrawn: false)
+    processed = job_applications.where(withdrawn: false)
         .joins(:interview)
-        .where.not(interviews: { applicant_status: nil })
+    processed.select { |u| u.interview.applicant_status.present? }
   end
 
   def active_applications
