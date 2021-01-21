@@ -131,6 +131,9 @@ gem 'slack-notifier', '~> 1.5.0'
 # Cocoon makes nested forms for price groups under events a lot easier. Adds some buttons and stuff
 gem 'cocoon', '~> 1.2.0'
 
+# Render async allows easy async loading of partial views to improve page performance
+gem 'render_async'
+
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'listen', '~> 3.2.1'

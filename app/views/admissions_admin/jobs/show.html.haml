@@ -1,20 +1,148 @@
-- set_title(t('interviews.administer_interviews'))
+= javascript_include_tag 'job_applications/admissions_admin_job_applications', defer: true
 = javascript_include_tag 'applicants/interviews', defer: true
 
-.section
-  .flash.message
-    = T('interviews.possible_to_set_status', date: @admission.admin_priority_deadline)
-  .flash.message.hidden
-  %h2= t('interviews.job_title', job: @job.title)
+- set_title(t('interviews.administer_interviews'))
 
-= render 'jobs_show', job_application_groupings: [@job.job_applications], show_job_titles: false
+.flash.message
+  = T('interviews.possible_to_set_priority', date: @admission.admin_priority_deadline)
+
+.flex-row.flex-align-center
+  = link_to admissions_admin_admission_group_path(@job.admission, @job.group) do
+    .samf-button.plain
+      = t("common.back")
+  = link_to "", { :onclick => "history.go(0)" } do
+    .samf-button.blue.ml-2
+      = t("interviews.refresh_page")
+  %i.ml-2{style: "color: #666"}= t("interviews.refresh_notice")
+
+
+%h1.mt-3
+  = t('interviews.job_title', job: @job.title) + " - " + @group.name
+
+-# Unprocessed applications
+
+%hr
+
+%h2= t("interviews.unprocessed_applicants") + " (" + @unprocessed_applications.count.to_s + ")"
+
+- if @unprocessed_applications.count > 0
+  %p
+    = t("interviews.unprocessed_explanation")
+
+  = render_async admissions_admin_admission_group_job_show_unprocessed_path(job_id: @job) do
+    .samf-container.flex-col.p-3.text-Align.mb-3
+      %h2= t("interviews.loading_title")
+      %p.mb-2{style: "color: #666;"}= t("interviews.loading_description")
+      .loading-indicator.large.center
+
+- else
+  %p= t("interviews.no_unprocessed_applicants")
 
 - if can?(:hidden_create, JobApplication)
   = form_tag(hidden_create_admissions_admin_admission_group_job_job_applications_path(@admission, @group, @job)) do
-    = label_tag(:email, "Email")
-    = text_field_tag(:email)
-    = submit_tag("Legg til søknad")
+    .flex-row
+      = text_field_tag :email, nil, style: "border: 1px solid gray; padding: .25em;", placeholder: "Email"
+      = submit_tag("Legg til søknad", :class=>"samf-button small green ml-2")
 
-%p
-  = link_to admissions_admin_admission_group_path(@job.admission, @job.group) do
-    = "« #{T('common.back')}"
+%hr
+
+-# Contacted applicants
+
+%h2= t("interviews.contacted_applicants") + " (" + @contacted_applications.count.to_s + ")"
+
+- if @contacted_applications.count == 0
+  %p= t("interviews.no_contacted_applicants")
+- else
+  %p= t("interviews.contacted_applicants_explanation")
+
+  %table.compact.mt-3
+    %thead
+      %th= "Navn"
+      %th= "Telefon"
+      %th= "Epost"
+      %th= "Intervjutid"
+      %th= "Intervjusted"
+      %th= "Status"
+      %th
+
+    %tbody
+      - @contacted_applications.each do |application|
+        - status = application.find_or_create_interview.applicant_status
+        - color = status == :accepted ? '#ccf9cd;' : '#f9cccd'
+        %tr{style: "background-color: #{color}"}
+          %td
+            = link_to admissions_admin_admission_group_job_job_application_path(@admission, @group, @job, application) do
+              = application.applicant.full_name
+          %td= application.applicant.phone
+          %td= application.applicant.email
+          %td= application.find_or_create_interview.time
+          %td= application.find_or_create_interview.location
+          %td= application.find_or_create_interview.applicant_status_string
+          %td{style: "float: right;"}
+            = link_to admissions_admin_admission_group_job_job_application_reset_status_path(@admission, @group, @job, application), method: :get, data: { confirm: t("interviews.remove_status_prompt") } do
+              .samf-button.plain.small
+                = t("interviews.remove_status")
+
+
+%hr
+
+
+%h2= t("interviews.not_contacted_applicants") + " (" + @auto_rejected_applications.count.to_s + ")"
+
+- if @auto_rejected_applications.count == 0
+  %p= t("interviews.no_not_contacted_applicants")
+- else
+  %p= t("interviews.not_contacted_applicants_explanation")
+  %table.compact.mt-3
+    %thead
+      %th= "Navn"
+      %th= "Telefon"
+      %th= "Epost"
+      %th= "Intervjutid"
+      %th= "Intervjusted"
+      %th= "Status"
+      %th
+    %tbody
+      - @auto_rejected_applications.each do |application|
+        %tr{style: "background-color: #f9cccd"}
+          %td
+            = link_to admissions_admin_admission_group_job_job_application_path(@admission, @group, @job, application) do
+              = application.applicant.full_name
+          %td= application.applicant.phone
+          %td= application.applicant.email
+          %td= application.find_or_create_interview.time
+          %td= application.find_or_create_interview.location
+          %td= application.find_or_create_interview.applicant_status_string
+          %td{style: "float: right;"}
+            = link_to admissions_admin_admission_group_job_job_application_reset_status_path(@admission, @group, @job, application), method: :get, data: { confirm: t("interviews.remove_status_prompt")  } do
+              .samf-button.plain.small
+                = t("interviews.remove_status")
+
+%hr
+
+-# Withdrawn applications
+
+%h2= t("interviews.withdrawn_applications") + " (" + @withdrawn_applications.count.to_s + ")"
+
+- if @withdrawn_applications.count == 0
+  %p= t("interviews.no_withdrawn_applications")
+- else
+  %table.compact.mt-3
+    %thead
+      %th= "Navn"
+      %th= "Telefon"
+      %th= "Epost"
+      %th= "Intervjutid"
+      %th= "Intervjusted"
+      %th= "Status"
+    %tbody
+      - @withdrawn_applications.each do |application|
+        %tr{style: "background-color: #bbb;"}
+          %td
+            = link_to admissions_admin_admission_group_job_job_application_path(@admission, @group, @job, application) do
+              = application.applicant.full_name
+          %td= application.applicant.phone
+          %td= application.applicant.email
+          %td= application.find_or_create_interview.time
+          %td= application.find_or_create_interview.location
+          %td= application.find_or_create_interview.applicant_status_string

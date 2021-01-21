@@ -1,11 +1,11 @@
 'no':
   interviews:
-    administer_interviews: "Planlegg intervjuer"
+    administer_interviews: "Administrer søknader"
     interviews: "intervjuer"
     n_unorganized: "%{n} uorganiserte intervjuer"
     no_unorganized: "ingen uorganiserte intervjuer"
-    possible_to_set_status: "Du kan sette statusflagg på søkere helt frem til %{date}."
-    cannot_set_status_past_deadline: "Du kan ikke sette statusflag på søkere etter fristen."
+    possible_to_set_priority: "Du kan sette prioritet på søkere helt frem til %{date}."
+    cannot_set_priority_past_deadline: "Du kan ikke sette prioritet på søkere etter fristen."
     other_interviews_are_nigh: "Advarsel: %{applicant} har et annet intervju %{time}."
     job_title: "Søknader på %{job}"
     ical_summary: "Intervju med %{group}"
@@ -21,18 +21,69 @@
     grey_explanation: "Grå: Denne personen har trukket søknaden sin."
     blue_explanation: "Blå: Denne personen vil gå til denne stillingen slik ting er satt nå."
     bright_blue_explanation: "Lyseblå: Denne personen er reservert for denne stillingen slik ting er satt nå."
-    applicant_number: "Søker nr."
+    applicant_number: "#"
     applicant_name: "Navn"
     applicant_phone_number: "Telefon"
     applicant_email_address: "E-postadresse"
     interview_time: "Intervjutid"
-    interview_status: "Intervjustatus"
+    interview_priority: "Prioritet"
     comment: "Kommentar"
     location: "Intervjusted"
     applicant_campus: "Campus"
+    applicant_status: "Status"
     latest_log_entry: "Siste loggføring"
     job: "Stilling"
-    interested_other_positions: "Ønsker tilbud om andre verv"
+    interested_other_positions: "Ønsker andre tilbud"
     hide_withdrawn_applications: "Skjul trekte søknader"
+    hide_rejected_applications: "Skjul søkere som får automatisk avslag på epost"
     colorblind_mode: "Fargeblind modus"
     jobs_applicant_has_applied_to: "Stillinger denne søkeren har søkt"
+
+    show_color_explanation: "Fargeforklaringer"
+
+    accepted_applicants: "Søkere som blir tatt opp"
+    rejected_applicants: "Søkere som ikke blir tatt opp"
+    unprocessed_applicants: "Ubehandlede søknader"
+    unprocessed_explanation: |
+      Denne listen inneholder kun ubehandlede søknader (søknader der status ikke er satt).
+      Alle søkere som ikke blir tatt opp må markeres med avslag, uansett om de blir tatt opp i et annet verv.
+      Det anbefales å fortløpende markere søkere som ikke blir tatt opp med avslag slik at listen blir lettere å forholde seg til.
+      Søkere skal ikke markeres som tatt opp før de har blitt kontaktet. Dersom andre gjenger ønsker samme søker må dette avklares først
+      på fordelingsmøtet. Alle søknader må være ferdig behandlet på kvelden etter fordelingsmøtet.
+
+    contacted_applicants: "Søkere vi har kontaktet"
+    contacted_applicants_explanation: "Disse vil IKKE få en automatisk epost om avslag. Det er derfor veldig viktig å bekrefte at listen er korrekt."
+
+    not_contacted_applicants: "Søkere som får automatisk avslag"
+    not_contacted_applicants_explanation: "Disse vil få en automatisk epost om avslag dersom de ikke får tilbud om et annet verv."
+    not_contacted_applicants_short: "Avslag"
+
+    no_contacted_applicants: "Ingen søkere er markert som kontaktet."
+    no_not_contacted_applicants: "Ingen søkere vil få automatisk avslag på epost."
+    no_unprocessed_applicants: "Ingen ubehandlede søknader gjenstår."
+
+    all: "Alle"
+
+    withdrawn_applications: "Trekte søknader"
+    no_withdrawn_applications: "Ingen trekte søknader."
+
+    loading_title: "Laster inn søknader..."
+    loading_description: "Dette kan ta litt tid. Marker søkere med status så går det raskere neste gang!"
+
+    refresh_page: "Oppdater Side"
+    refresh_notice: "Det kan være smart å oppdatere siden gjevnlig, spesielt hvis flere jobber med samme opptak."
+
+    remove_status: "Fjern status"
+    remove_status_prompt: "Er du sikker? Søknaden blir flyttet til ubehandlede søknader og status må settes på nytt."
+
+    important_title: "Viktig Informasjon"
+    important_description: "I forbindelse med endringene i opptaksinstruksen."
+
+    important_priority_title: "Husk å prioritere søkere!"
+    important_priority_description: "Dette gjør det enklere å fordele søkere blant gjenger, og gjør fordelingsmøtet mye mer chill."
+
+    important_status_title: "Alle søkere MÅ markeres med status!"
+    important_status_description: |
+      Dette er ekstremt viktig slik at automatiske eposter om avslag sendes til riktige personer.
+      Søkere markert "Tatt opp", "Takket nei" og "Avslag, kontaktet direkte" vil IKKE FÅ EPOST OM AVSLAG.
+      Avslag gjelder kun for dette vervet, så selv om en søker blir tatt opp i et annet verv skal dere sette status til avslag.

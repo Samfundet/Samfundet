@@ -16,3 +16,5 @@ en:
     new:
       blog_post: Blog post
 
+    new_blog: New blog entry
+    edit_blog: Edit blog entry

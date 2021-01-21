@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_27_181213) do
+ActiveRecord::Schema.define(version: 2020_12_17_132844) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -322,12 +322,15 @@ ActiveRecord::Schema.define(version: 2020_10_27_181213) do
 
   create_table "interviews", id: :serial, force: :cascade do |t|
     t.datetime "time"
-    t.string "acceptance_status", limit: 10
+    t.string "priority", limit: 10
     t.integer "job_application_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "location"
     t.text "comment"
+    t.string "applicant_status", limit: 10
+    t.index ["job_application_id"], name: "index_interviews_on_job_application_id"
+    t.index ["priority"], name: "index_interviews_on_priority"
   end
 
   create_table "job_applications", id: :serial, force: :cascade do |t|
@@ -338,6 +341,8 @@ ActiveRecord::Schema.define(version: 2020_10_27_181213) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "withdrawn", default: false
+    t.index ["job_id"], name: "index_job_applications_on_job_id"
+    t.index ["withdrawn"], name: "index_job_applications_on_withdrawn"
   end
 
   create_table "job_tags", id: :serial, force: :cascade do |t|
@@ -365,6 +370,7 @@ ActiveRecord::Schema.define(version: 2020_10_27_181213) do
     t.datetime "updated_at", null: false
     t.text "default_motivation_text_no"
     t.text "default_motivation_text_en"
+    t.index ["admission_id"], name: "index_jobs_on_admission_id"
   end
 
   create_table "log_entries", id: :serial, force: :cascade do |t|
@@ -444,6 +450,12 @@ ActiveRecord::Schema.define(version: 2020_10_27_181213) do
   create_table "registration_events", force: :cascade do |t|
     t.integer "arrangement_id"
     t.integer "plasser"
+  end
+
+  create_table "rejection_emails", force: :cascade do |t|
+    t.integer "admission_id"
+    t.integer "applicant_id"
+    t.datetime "sent_at", null: false
   end
 
   create_table "roles", id: :serial, force: :cascade do |t|
@@ -551,6 +563,8 @@ ActiveRecord::Schema.define(version: 2020_10_27_181213) do
   add_foreign_key "page_revisions", "pages", name: "page_revisions_page_id_fk"
   add_foreign_key "password_recoveries", "applicants", name: "password_recoveries_applicant_id_fk"
   add_foreign_key "registration_events", "events", column: "arrangement_id"
+  add_foreign_key "rejection_emails", "admissions", name: "rejection_emails_admission_id_fk"
+  add_foreign_key "rejection_emails", "applicants", name: "rejection_emails_applicant_id_fk"
   add_foreign_key "roles", "groups", name: "roles_group_id_fk"
   add_foreign_key "roles", "roles", name: "roles_role_id_fk"
   add_foreign_key "sulten_neighbour_tables", "sulten_tables", column: "neighbour_id"

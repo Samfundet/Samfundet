@@ -1,17 +1,48 @@
-%h1
+
+= link_to members_control_panel_path do
+  .samf-button.plain.mb-3
+    = t("common.back")
+
+%h1.mb-2
   = @admission.title
-.section
-  %p
-    = link_to t("admissions_admin.show_interested_other_positions")+"...", admissions_admin_admission_show_interested_other_positions_path(@admission)
-    %br
-    = link_to t("admissions_admin.show_unflagged_applicants")+"...", admissions_admin_admission_show_unflagged_applicants_path(@admission)
-.section
-  %h2= set_and_return_title T('admissions.my_groups')
-  %ul
-    - @my_groups.sort.each do |group|
-      %li
-        = link_to admissions_admin_admission_group_path(@admission, group) do
-          = group.name
-    - if @my_groups.empty?
-      %li
-        %p= t('admissions.no_groups')
+.flex-column
+  = link_to overview_admissions_admin_admission_path(@admission) do
+    .samf-button.plain.mb-2
+      = t("admissions_admin.overview_title")
+  = link_to admissions_admin_admission_show_interested_other_positions_path(@admission) do
+    .samf-button.blue.small.mb-2
+      = t("admissions_admin.show_interested_other_positions")+"..."
+  = link_to admissions_admin_admission_show_unflagged_applicants_path(@admission) do
+    .samf-button.blue.small
+      = t("admissions_admin.show_unflagged_applicants")+"..."
+
+
+
+%h1.mt-3.mb-2
+  = set_and_return_title T('admissions.my_groups')
+
+%div
+  - if @my_groups.empty?
+    %li
+      %p= t('admissions.no_groups')
+  - elsif @my_groups.count < 5
+    -# Dont group by letter if < 5
+    .flex-row.wrap
+      - @my_groups.sort.each do |g|
+        = link_to admissions_admin_admission_group_path(@admission, g) do
+          .samf-button.plain.small.mb-1.mt-1.mr-2{style: "float: left;"}
+            = g.name
+  - else
+    -# Group by letter
+    - ("A".."Å").each do |l|
+      - groups = @my_groups.select { |g| g.name[0].upcase == l }.sort
+      - if groups.count > 0
+        %hr.compact
+        .flex-row.flex-align-center
+          %h1.mr-3{style: "color: #aaa; font-family: monospace;"}= l
+
+          .flex-row.wrap
+            - groups.each do |group|
+              = link_to admissions_admin_admission_group_path(@admission, group) do
+                .samf-button.plain.small.mb-1.mt-1.mr-2{style: "float: left;"}
+                  = group.name

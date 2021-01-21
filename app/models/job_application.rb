@@ -27,13 +27,17 @@ class JobApplication < ApplicationRecord
     elsif assigned_job_application.nil?
       :no_job
     else
-      acceptance_status = assigned_job_application.find_or_create_interview.acceptance_status
+      priority = assigned_job_application.find_or_create_interview.priority
       if assigned_job_application.job == job
-        acceptance_status == :reserved ? :this_job_reserved : :this_job
+        priority == :reserved ? :this_job_reserved : :this_job
       else
-        acceptance_status == :reserved ? :other_job_reserved : :other_job
+        priority == :reserved ? :other_job_reserved : :other_job
       end
     end
+  end
+
+  def rejected_and_not_contacted?
+    find_or_create_interview.applicant_status == :rejected
   end
 
   def validate_applicant?

@@ -23,14 +23,6 @@ td.link {
   padding-left: 10%;
 }
 
-.admissions, .jobs {
-  h2, h3 {
-    text-align: center;
-    text-transform: uppercase;
-    font-weight: $font-weight-normal;
-  }
-}
-
 #admission-header {
   @include span-columns(12);
 

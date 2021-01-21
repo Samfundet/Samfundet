@@ -13,6 +13,17 @@ class AdmissionsAdmin::JobApplicationsController < AdmissionsAdmin::BaseControll
     @possible_log_entries = LogEntry.possible_log_entries
   end
 
+  def reset_status
+    application = JobApplication.find(params[:job_application_id])
+    if application != nil
+      interview = application.find_or_create_interview
+      interview.applicant_status = nil
+      interview.save
+      application.save
+    end
+    redirect_back(fallback_location: root_path)
+  end
+
   def hidden_create
     applicant = Applicant.find_by(email: params[:email])
     if applicant.nil?

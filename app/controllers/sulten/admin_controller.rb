@@ -15,6 +15,8 @@ class Sulten::AdminController < Sulten::BaseController
       @is_today = true
     end
 
+
+
     start_timeline = @calendar_date.beginning_of_day + 15.hours
     end_timeline = @calendar_date.beginning_of_day + 26.hours
     length_timeline = (end_timeline - start_timeline).seconds

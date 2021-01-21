@@ -3,13 +3,25 @@
     = t("admissions.admin_applet.title")
 .options
   - if can?(:manage, Admission)
-    = link_to t('admissions.create_admission'), new_admissions_admin_admission_path
+    = link_to new_admissions_admin_admission_path do
+      .samf-button.green.w100.mb-2
+        = t('admissions.create_admission')
+
+  - @admissions.each do |admission|
+    = link_to admissions_admin_admission_path(admission) do
+      .samf-button.plain.w100.mb-2
+        %b= admission.title
+        %br
+        = t('admissions.administer_my_group')
+
+  - if can? :manage, Admission and @admissions.count > 0
+    = link_to edit_admissions_admin_admission_path(@admissions.first) do
+      .samf-button.plain.mr-2.mb-2.w100
+        = t('crud.edit') + " " + @admissions.first.title
 
   - if can?(:list, Admission)
-    %br
-    = link_to t('admissions.closed_admissions'), admissions_admin_list_path
-    
-  - @admissions.each do |admission|
-    %h3
-      = admission.title
-    = link_to t('admissions.administer_my_group'), admissions_admin_admission_path(admission)
+    = link_to admissions_admin_list_path do
+      .samf-button.plain.w100
+        = t('admissions.closed_admissions')
+
+

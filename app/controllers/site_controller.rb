@@ -13,9 +13,9 @@ class SiteController < ApplicationController
         group_types: { groups: :jobs }
     )
     if open_admissions and not open_admissions.empty?
-      @show_admissions_animation = true
+      @open_admission = true
     else
-      @show_admissions_animation = false
+      @open_admission = false
     end
 
     # Catch session token for ticket purchase errors redirecting to index
@@ -28,6 +28,11 @@ class SiteController < ApplicationController
       end
     end
 
+  end
+
+  def brochure
+    pdf_filename = File.join(Rails.root, "app/assets/files/Brosjyre.pdf")
+    send_file(pdf_filename, :filename => "samfundet-brosjyre.pdf", :disposition => 'inline', :type => "application/pdf")
   end
 
 private
@@ -49,22 +54,21 @@ private
       # flash[:notice] = message.html_safe
     end
 
-    corona_flash_start = Date.new(2020, 3, 11)
-    corona_flash_end = Date.new(2020, 3, 25)
-    blog_link = 'https://samfundet.no/blogg/17-korona-virus'
-    link = view_context.link_to(t('site.index.corona2'), blog_link)
-    msg = t('site.index.corona') + ' ' + link
-    if valid_date.call(corona_flash_start, corona_flash_end)
-      flash[:notice] = view_context.sanitize(msg)
-    end
-
     coronaH20_flash_start = Date.new(2020, 8, 10)
-    coronaH20_flash_end = Date.new(2020, 12, 31)
+    coronaH20_flash_end = Date.new(2020, 11, 5)
     blogH20_link = Page.corona_info
     linkH20 = view_context.link_to(t('site.index.corona_H20_2'), blogH20_link)
     msgH20 = t('site.index.corona_H20') + ' ' + linkH20
     if valid_date.call(coronaH20_flash_start, coronaH20_flash_end)
       flash[:notice] = view_context.sanitize(msgH20)
     end
+
+    closed_H20_flash_start = Date.new(2020, 11, 6)
+    closed_H20_flash_end = Date.new(2020, 12, 31)
+    msgH20_closed = t('site.index.corona_H20_closed')
+    if valid_date.call(closed_H20_flash_start, closed_H20_flash_end)
+      flash[:notice] = view_context.sanitize(msgH20_closed)
+    end
+
   end
 end

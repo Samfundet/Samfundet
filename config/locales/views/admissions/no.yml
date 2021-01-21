@@ -6,6 +6,7 @@
     application_deadline: "Søknadsfrist"
     back_to_overview: "Tilbake til stillingsoversikten"
     show_all_applications: "Vis alle søknader"
+    all_applications: "Alle søknader"
     check_back_at_start_of_term: "Samfundet har sine ordinære opptak i begynnelsen av hvert semester. Følg med på denne siden!"
     closed_admissions: "Eldre opptak"
     create_admission: "Opprett opptak"
@@ -43,7 +44,5 @@
 
         see_applications_text: "Du kan se dine søknader"
         see_applications_link: "her."
-        already_applied: "Hvis du allerede har søkt kan du"
-        log_in: "logge inn som søker"
-        log_in_text: "for å prioritere og følge med på dine søknader."
+        already_applied: "Hvis du allerede har søkt kan du logge inn som søker for å prioritere og følge med på dine søknader."
         click_here: "klikk her."

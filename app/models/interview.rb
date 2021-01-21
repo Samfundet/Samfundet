@@ -6,52 +6,101 @@ class Interview < ApplicationRecord
 
   scope :with_time_set, -> { where('time > 0') }
 
-  ACCEPTANCE_STATUSES_NO = { wanted: 'Vil ha',
-                             reserved: 'Reserve',
-                             not_wanted: 'Vil ikke ha',
-                             nil => 'Ikke satt' }.freeze
-  ACCEPTANCE_STATUSES_EN = { wanted: 'Wanted',
-                             reserved: 'Backup',
-                             not_wanted: 'Not wanted',
-                             nil => 'Not set' }.freeze
+  PRIORITIES_NO = {wanted: 'Vil ha',
+                   reserved: 'Reserve',
+                   not_wanted: 'Vil ikke ha',
+                   nil => 'Ikke satt' }.freeze
 
-  validates :acceptance_status,
-            inclusion: { in: ACCEPTANCE_STATUSES_NO.keys,
-                         message: 'Invalid acceptance status' }
+  PRIORITIES_EN = {wanted: 'Wanted',
+                   reserved: 'Backup',
+                   not_wanted: 'Not wanted',
+                   nil => 'Not set' }.freeze
 
-  def acceptance_status
-    field = self[:acceptance_status]
+  APPLICANT_STATUS_NO = {accepted: 'Tilbud, takket ja',
+                   declined: 'Tilbud, takket nei',
+                   rejected: 'Automatisk avslag',
+                         #rejected_m: 'Avslag (kontaktet)',
+                   nil => 'Ikke satt' }.freeze
+
+  APPLICANT_STATUS_EN = {accepted: 'Accepted',
+                   declined: 'Declined offer',
+                   rejected: 'Automatic rejection',
+                         #rejected_m: 'Rejected (contacted)',
+                   nil => 'Not set' }.freeze
+
+  validates :priority,
+            inclusion: { in: PRIORITIES_NO.keys,
+                         message: 'Invalid priority' }
+
+  validates :applicant_status,
+            inclusion: { in: APPLICANT_STATUS_NO.keys,
+                         message: 'Invalid applicant status' }
+
+
+  def priority
+    field = self[:priority]
     field = nil if field&.empty?
-    return field.to_sym if field.present?
+    field.to_sym if field.present?
   end
 
-  def acceptance_status=(value)
-    self[:acceptance_status] = value.to_s
+  def priority=(value)
+    self[:priority] = value.to_s
   end
 
   def group
     job_application.job.group
   end
 
-  def acceptance_status_string
+  def priority_string
     if I18n.locale == :no
-      ACCEPTANCE_STATUSES_NO[acceptance_status]
+      PRIORITIES_NO[priority]
     elsif I18n.locale == :en
-      ACCEPTANCE_STATUSES_EN[acceptance_status]
+      PRIORITIES_EN[priority]
     end
   end
 
-  def acceptance_statuses
+  def priorities
     if I18n.locale == :no
-      ACCEPTANCE_STATUSES_NO
+      PRIORITIES_NO
     elsif I18n.locale == :en
-      ACCEPTANCE_STATUSES_EN
+      PRIORITIES_EN
     end
   end
 
-  def past_set_status_deadline?
+  def applicant_status
+    field = self[:applicant_status]
+    field = nil if field&.empty?
+    field.to_sym if field.present?
+  end
+
+  def applicant_status=(value)
+    if value == nil
+      self[:applicant_status] = nil
+    else
+      self[:applicant_status] = value.to_s
+    end
+  end
+
+  def applicant_status_string
+    if I18n.locale == :no
+      APPLICANT_STATUS_NO[applicant_status]
+    elsif I18n.locale == :en
+      APPLICANT_STATUS_NO[applicant_status]
+    end
+  end
+
+  def applicant_statuses
+    if I18n.locale == :no
+      APPLICANT_STATUS_NO
+    elsif I18n.locale == :en
+      APPLICANT_STATUS_EN
+    end
+  end
+
+  def past_set_priority_deadline?
     job_application.job.admission.admin_priority_deadline < Time.current
   end
+
 end
 
 # == Schema Information
@@ -60,7 +109,7 @@ end
 #
 #  id                 :bigint           not null, primary key
 #  time               :datetime
-#  acceptance_status  :string(10)
+#  priority  :string(10)
 #  job_application_id :integer
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null

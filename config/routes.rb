@@ -86,8 +86,9 @@ Rails.application.routes.draw do
     # instead of applicants#show(login).
     scope "/applicants" do
       # ApplicantSessionsController
-      get "login", to: "applicant_sessions#new", as: :applicants_login
-      post "login" => "applicant_sessions#create",  as: :connect_applicant
+      get "new", to: "applicant_sessions#new", as: :applicants_login
+      post "new" => "applicant_sessions#create",  as: :connect_applicant
+      get "login", to: "user_sessions#new_applicant", as: :applicant_login
 
       # ApplicantsController
       patch "change_password/:id", to: "applicants#change_password", as: :change_password
@@ -133,13 +134,22 @@ Rails.application.routes.draw do
       resources :admissions, only: [:show, :new, :create, :edit, :update, :list] do
 
         get :statistics, on: :member
+        get :overview, on: :member
+        get :prepare_rejection_email, on: :member
+        post :review_rejection_email, on: :member
+        post :send_rejection_email, on: :member
+        post :send_rejection_email_result, on: :member
+        get :rejection_email_list, on: :member
+
         resources :groups, only: :show do
           get :applications, on: :member
           get :reject_calls, on: :member
           resources :jobs, only: [:show, :new, :create, :edit, :update, :destroy] do
             get :search, on: :collection
+            get :show_unprocessed
             resources :job_applications, only: :show do
               post :hidden_create, on: :collection
+              get :reset_status
               resources :interviews, only: [:update, :show]
             end
           end
@@ -159,6 +169,9 @@ Rails.application.routes.draw do
     post "applicant/steal_identity", to: "applicants#steal_identity", as: :applicants_steal_identity
     get "konsert-og-uteliv", to: "site#concert", as: :concert
     get "login", to: "user_sessions#new", as: :login
+
+    get "brosjyre", to: "site#brochure"
+
     post "logout" => "user_sessions#destroy", as: :logout
     get "members/control_panel" => "members#control_panel", as: :members_control_panel
     get "members/search.:format" => "members#search", as: :members_search
@@ -177,6 +190,7 @@ Rails.application.routes.draw do
     namespace :sulten, path: "lyche" do
       get "/" => "lyche#index"
       get "/make_reservation" => "lyche#reservation"
+      post "/make_reservation" => "lyche#reservation"
       get "/reservation/success" => "lyche#reservation_success"
       get "/reservation/failure" => "lyche#reservation_failure"
       get "/reservation/failure_day" => "lyche#reservation_failure_day"
@@ -190,7 +204,6 @@ Rails.application.routes.draw do
       get :kjempelars, to: "admin#index"
       get "reservations/archive" => "reservations#archive"
       get "reservations/export" => "reservations#export"
-      get "/available" => "reservations#available"
       get "/admin/index" => "admin#index", as: :lyche_admin
 
 

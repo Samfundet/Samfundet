@@ -1,20 +1,12 @@
-%tr
-  %td.event-title
+.flex-row.mb-2.mt-2.event-div
+  .column
     = link_to event.title, event
-
-  %td.event-area-start-time
-    = from_to_string event
-    %br
-    = area_link event.area
-
-  %td.event-start-time
-    = from_to_string event
-
-  %td.event-area
-    = area_link event.area, event.area_title
-
-  %td.event-price
+  .column.timeArea.wrap
+    .time
+      = from_to_string event
+    .area
+      = area_link event.area
+  .column.inline-price
     = inline_event_price event
-
-  %td.event-buy
+  .column.button
     = render "buy_button", event: event

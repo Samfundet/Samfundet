@@ -1,16 +1,47 @@
 - set_title T('job_applications.applications_for_group', :group_name => @group.name)
 = javascript_include_tag 'applicants/interviews', defer: true
 
-.section
-  %h2
-    = @group.name
-    &ndash;
-    = @admission.title
+= link_to admissions_admin_admission_group_path(@admission, @group) do
+  .samf-button.plain.mb-3
+    = t("common.back")
 
-= render 'admissions_admin/jobs/jobs_show', job_application_groupings: @job_application_groupings, show_job_titles: true
+%h1
+  = t("admissions.all_applications")
 
-%p
-  = link_to(T('admissions_admin.export_to_csv'), applications_admissions_admin_admission_group_path(@admission, @group, format: :csv))
-%p
-  - link_to admissions_admin_admission_group_path(@admission, @group) do
-    = "« #{T('common.back')}"
+%h2
+  = @group.name
+  &ndash;
+  = @admission.title
+
+= link_to applications_admissions_admin_admission_group_path(@admission, @group, format: :csv) do
+  .samf-button.small.plain.mb-3
+    = t('admissions_admin.export_to_csv')
+
+%table.compact.mt-3
+  %thead
+    %th= "Navn"
+    %th= "Telefon"
+    %th= "Epost"
+    %th= "Verv"
+    %th= "Intervjutid"
+    %th= "Intervjusted"
+    %th= "Status"
+
+  %tbody
+    - @job_application_groupings.each do |grouping|
+      - grouping.each do |application|
+        - status = application.find_or_create_interview.applicant_status
+        - color = status == :accepted ? '#ccf9cd;' : '#f9cccd'
+        %tr{style: "background-color: #{color}"}
+          %td
+            = link_to admissions_admin_admission_group_job_job_application_path(@admission, @group, application.job, application) do
+              = application.applicant.full_name
+          %td= application.applicant.phone
+          %td= application.applicant.email
+          %td= application.job.title
+          %td= application.find_or_create_interview.time
+          %td= application.find_or_create_interview.location
+          %td= application.find_or_create_interview.applicant_status_string
+
+
+

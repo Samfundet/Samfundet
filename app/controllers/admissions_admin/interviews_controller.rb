@@ -38,12 +38,30 @@ class AdmissionsAdmin::InterviewsController < AdmissionsAdmin::BaseController
     if params[:interview][:comment]
       @interview.comment = params[:interview][:comment]
     end
-    if params[:interview][:acceptance_status]
-      @interview.acceptance_status = params[:interview][:acceptance_status]
+    if params[:interview][:priority]
+      @interview.priority = params[:interview][:priority]
+      # Automatically set status (if not set) for convenience
+      if @interview.applicant_status == nil and @interview.priority == :not_wanted
+        @interview.applicant_status = :rejected
+      end
     end
 
-    if @interview.past_set_status_deadline? && @interview.acceptance_status_changed?
-      raise t('interviews.cannot_set_status_past_deadline')
+    if params[:interview][:applicant_status]
+      @interview.applicant_status = params[:interview][:applicant_status]
+
+      # Automatically set priority (if not set) for convenience
+      if @interview.priority == nil
+        if @interview.applicant_status == :rejected or @interview.applicant_status == :rejected_m
+          unless @interview.past_set_priority_deadline?
+            @interview.priority = :not_wanted
+          end
+        end
+      end
+
+    end
+
+    if @interview.past_set_priority_deadline? && @interview.priority_changed?
+      raise t('interviews.cannot_set_priority_past_deadline')
     else
       @interview.save!
 
