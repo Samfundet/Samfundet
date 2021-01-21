@@ -30,6 +30,7 @@
     comment: "Kommentar"
     location: "Intervjusted"
     applicant_campus: "Campus"
+    applicant_status: "Status"
     latest_log_entry: "Siste loggføring"
     job: "Stilling"
     interested_other_positions: "Ønsker andre tilbud"
