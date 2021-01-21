@@ -9,8 +9,8 @@
             t('interviews.interview_time'),
             t('interviews.location'),
             t('interviews.interview_priority'),
-            t('interviews.comment'),
-            t('interviews.latest_log_entry')]
+            t('interviews.applicant_status'),
+            t('interviews.comment')]
 
   - @job_application_groupings.each do |job_applications|
     - job_applications.each do |job_application|
@@ -21,12 +21,12 @@
       job_application.title,
       job_application.find_or_create_interview.time,
       job_application.find_or_create_interview.location,
-      job_application.find_or_create_interview.priority]
+      job_application.find_or_create_interview.priority_string,
+      job_application.find_or_create_interview.applicant_status_string]
 
       - unless job_application.find_or_create_interview.comment.nil?
         - csv_array += [job_application.find_or_create_interview.comment.squish]  # Squish to remove tabs and newlines
-      - if job_application.last_log_entry
-        - csv_array += [job_application.last_log_entry.log]
+
       - csv << csv_array
 
 

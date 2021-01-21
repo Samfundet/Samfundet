@@ -41,7 +41,7 @@ class AdmissionsAdmin::GroupsController < AdmissionsAdmin::BaseController
     respond_to do |format|
       format.html
       format.csv do
-        response.headers['Content-Disposition'] = "attachment; filename='#{@admission.title}-#{@group.name}-#{Date.current}.csv'"
+        response.headers['Content-Disposition'] = "attachment; filename=#{@admission.title}-#{@group.name}-#{Date.current}.csv"
       end
     end
   end

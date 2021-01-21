@@ -14,10 +14,9 @@
     = link_to new_admissions_admin_admission_group_job_path(@admission, @group) do
       .samf-button.green.mr-2
         = t('jobs.create')
-  -# Not sure if this page is really necessary
-  -# = link_to applications_admissions_admin_admission_group_path(@admission, @group) do
-  -#   .samf-button.plain
-  -#     = t('admissions.show_all_applications')
+    = link_to applications_admissions_admin_admission_group_path(@admission, @group) do
+      .samf-button.plain
+        = t('admissions.show_all_applications')
 
 %table
   %thead
@@ -65,7 +64,11 @@
 %p
   = t('admissions.group_information', group_name: @group.name, n_applications: @n_applications, n_jobs: @n_jobs, n_applicants: @n_applicants)
 
+
 .flex-row.wrap.mt-3
+  = link_to applications_admissions_admin_admission_group_path(@admission, @group, format: :csv) do
+    .samf-button.small.plain.mr-2.mb-2
+      = t('admissions_admin.export_to_csv')
 
   = link_to admissions_admin_admission_show_interested_other_positions_path(@admission) do
     .samf-button.small.plain.mr-2.mb-2

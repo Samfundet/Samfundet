@@ -13,19 +13,35 @@
   &ndash;
   = @admission.title
 
--# TODO async controller method must support groupings, probably move to group controller instead of job
--# Not sure if this page is necessary
-
--# = render_async admissions_admin_admission_group_job_show_unprocessed_path(@admission, @group, groupings: @job_application_groupings) do
--#   .samf-container.flex-col.p-3.text-Align.mb-3
--#     %h2= t("interviews.loading_title")
--#     %p.mb-2= t("interviews.loading_description")
--#     .loading-indicator.large.center
-
--#= render 'admissions_admin/jobs/jobs_show', job_application_groupings: @job_application_groupings, show_job_titles: true
-
 = link_to applications_admissions_admin_admission_group_path(@admission, @group, format: :csv) do
-  .samf-button.plain
+  .samf-button.small.plain.mb-3
     = t('admissions_admin.export_to_csv')
+
+%table.compact.mt-3
+  %thead
+    %th= "Navn"
+    %th= "Telefon"
+    %th= "Epost"
+    %th= "Verv"
+    %th= "Intervjutid"
+    %th= "Intervjusted"
+    %th= "Status"
+
+  %tbody
+    - @job_application_groupings.each do |grouping|
+      - grouping.each do |application|
+        - status = application.find_or_create_interview.applicant_status
+        - color = status == :accepted ? '#ccf9cd;' : '#f9cccd'
+        %tr{style: "background-color: #{color}"}
+          %td
+            = link_to admissions_admin_admission_group_job_job_application_path(@admission, @group, application.job, application) do
+              = application.applicant.full_name
+          %td= application.applicant.phone
+          %td= application.applicant.email
+          %td= application.job.title
+          %td= application.find_or_create_interview.time
+          %td= application.find_or_create_interview.location
+          %td= application.find_or_create_interview.applicant_status_string
+
 
 
