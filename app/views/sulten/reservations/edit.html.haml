@@ -1,13 +1,19 @@
 = semantic_form_for @reservation do |f|
-  = f.inputs do
-    = f.input :table, label: t("sulten.reservation.table"), collection: Sulten::Table.all.order(:number)
-    = f.input :people, label: t("sulten.reservation.people"),as: :number
-    = f.input :reservation_from, label: t("sulten.reservation.form.from"), input_html: { class: "datetimepicker_lyche"}, as: :string, input_html: { value: @reservation.reservation_from.to_s }
-    = f.input :reservation_duration, label: t("sulten.reservation.form.duration"), collection: [30, 60, 90, 120, 180], member_label: proc{|d| "#{d} minutter"}
+  = f.inputs name: "Kontaktinformasjon" do
     = f.input :name, label: t("sulten.reservation.name")
+    .flex-row
+      = f.input :telephone, label: t("sulten.reservation.telephone")
+      = f.input :email, label: t("sulten.reservation.email")
+  = f.inputs name: "Reservasjon" do
+    .flex-row
+
+      = f.input :reservation_duration, label: t("sulten.reservation.form.duration"), collection: [30, 60, 90, 120, 180], member_label: proc{|d| "#{d} minutter"}
+    .flex-row
+      = f.input :table, label: t("sulten.reservation.table"), collection: Sulten::Table.all.order(:number)
+      = f.input :people, label: t("sulten.reservation.people"),as: :number
     = f.input :reservation_type, label: t("sulten.reservation.reservation_type")
-    = f.input :telephone, label: t("sulten.reservation.telephone")
-    = f.input :email, label: t("sulten.reservation.email")
+
+  = f.inputs name: "Kommentarer" do
     = f.input :allergies, label: t("sulten.reservation.other_messages")
     = f.input :internal_comment, label: t("sulten.reservation.internal_comment")
   = f.actions do

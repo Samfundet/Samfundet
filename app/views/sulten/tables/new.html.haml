@@ -1,15 +1,27 @@
+
+%h1
+  = t("helpers.models.sulten.new_thing", :n => t("helpers.models.sulten.table.one"))
+
+%hr
+
 = semantic_form_for @table do |f|
   = f.inputs do
-    = f.input :number, label: t("sulten.table.number")
-    = f.input :capacity, label: t("sulten.table.capacity")
-    = f.input :comment, label: t("sulten.table.comment")
     = f.input :available, label: t("sulten.table.available")
-    = f.input :reservation_types, label: t("helpers.models.sulten.reservation_type.other"), as: :check_boxes
+    .flex-row
+      = f.input :number, label: t("sulten.table.number")
+      = f.input :capacity, label: t("sulten.table.capacity")
+    = f.input :comment, label: t("sulten.table.comment")
+
+  = f.inputs name: "Anledninger" do
+    = f.input :reservation_types, as: :check_boxes
+
   = f.inputs name: "Nabobord" do
     %div{style: "display: flex; flex-direction: row; flex-wrap: wrap;"}
       - @other_tables.each do |n|
         %div{style: "margin-right: 20px;"}
           = f.label n.number.to_s
           = check_box_tag "is_neighbour[#{n.id}]", @table.is_neighbour?(n.id) ? 1 : 0, @table.is_neighbour?(n.id)
+  %hr
   = f.actions do
-    = f.submit t("formtastic.create", :model => t("helpers.models.sulten.table.one"))
+    .center{style: "max-width: 250px"}
+      = f.submit t("formtastic.create", :model => t("helpers.models.sulten.table.one"))

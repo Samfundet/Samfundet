@@ -1,27 +1,47 @@
 - set_title t('sulten.closed_periods.index_title')
 
+%h1= t('sulten.closed_periods.table_caption')
+
+.flex-row.mt-2
+  = link_to sulten_lyche_admin_path do
+    .samf-button.plain.mr-2
+      = t('common.back')
+  = link_to new_sulten_closed_period_path do
+    .samf-button.green
+      = t('sulten.closed_periods.add_new_link')
+
+%hr
+
 %table
-  %caption
-    %h2= t('sulten.closed_periods.table_caption')
-  %tr
-    %th= t('sulten.closed_periods.message')
-    %th= t('sulten.closed_periods.from')
-    %th= t('sulten.closed_periods.to')
-    %th= t('crud.edit')
-    %th= t('crud.destroy')
-  - @current_and_future_closed_times.each do |ecp|
+  %thead
     %tr
-      %td
-        %p
-          :markdown
-            #{ecp.message}
-      %td= ecp.closed_from.to_date
-      %td= ecp.closed_to.to_date
-      %td= link_to t('crud.edit'), edit_sulten_closed_period_path(ecp.id)
-      %td= link_to t('crud.destroy'), sulten_closed_period_path(ecp.id), data: { confirm: t('crud.confirm') }, method: :delete
+      %th= t('sulten.closed_periods.message')
+      %th= t('sulten.closed_periods.from')
+      %th= t('sulten.closed_periods.to')
+      %th
+  %tbody
+    - @current_and_future_closed_times.each do |ecp|
+      %tr
+        %td
+          %p
+            :markdown
+              #{ecp.message}
+        %td= ecp.closed_from.to_date
+        %td= ecp.closed_to.to_date
+        %td
+          .flex-row
+            = link_to edit_sulten_closed_period_path(ecp.id) do
+              .samf-button.small.blue.mr-2
+                = t('crud.edit')
+            = link_to sulten_closed_period_path(ecp.id), data: { confirm: t('crud.confirm') }, method: :delete do
+              .samf-button.small.red
+                = t('crud.destroy')
+    - if @current_and_future_closed_times.count == 0
+      %td= "Ingen"
   %tfoot
     %tr
-      %td{colspan: 5}= link_to t('sulten.closed_periods.add_new_link'), new_sulten_closed_period_path
+      %td{colspan: 5}
 
-%p= link_to t('sulten.closed_periods.show_all_previous_closed_periods'), sulten_closed_periods_archive_path
-%p= link_to t('common.back'), sulten_lyche_admin_path
+= link_to sulten_closed_periods_archive_path do
+  .samf-button.plain.small.mr-2
+    = t('sulten.closed_periods.show_all_previous_closed_periods')

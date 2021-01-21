@@ -1,13 +1,18 @@
 - set_title t('sulten.closed_periods.archive_title')
 
+%h1= t('sulten.closed_periods.archive_title')
+
+= link_to sulten_closed_periods_path do
+  .samf-button.plain.mt-2
+    = t('common.back')
+
+%hr
+
 %table
-  %caption
-    %h2= t('sulten.closed_periods.archive_title')
   %thead
-    %tr
-      %th= t('sulten.closed_periods.message')
-      %th= t('sulten.closed_periods.from')
-      %th= t('sulten.closed_periods.to')
+    %th= t('sulten.closed_periods.message')
+    %th= t('sulten.closed_periods.from')
+    %th= t('sulten.closed_periods.to')
   %tbody
     - @previous_closed_periods.each do |period|
       %tr
@@ -15,4 +20,3 @@
         %td= period.closed_from.to_date
         %td= period.closed_to.to_date
 
-%p= link_to t('common.back'), sulten_closed_periods_path

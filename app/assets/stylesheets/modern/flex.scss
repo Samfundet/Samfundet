@@ -9,6 +9,9 @@
 .flex-row.center, .flex-column.center {
   justify-content: center;
 }
+.flex-row.end, .flex-column.end {
+  justify-content: flex-end;
+}
 .flex-row.wrap, .flex-column.wrap {
   flex-wrap: wrap;
 }
