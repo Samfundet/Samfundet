@@ -46,7 +46,7 @@ class Applicant < ApplicationRecord
   def assigned_job_application(admission, priority: %w[wanted reserved])
     job_applications.where(withdrawn: false)
                     .joins(:interview)
-                    .where(interviews: {priority: priority })
+                    .where(interviews: { priority: priority })
                     .find { |application| application.job.admission == admission }
   end
 

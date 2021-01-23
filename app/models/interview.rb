@@ -6,26 +6,26 @@ class Interview < ApplicationRecord
 
   scope :with_time_set, -> { where('time > 0') }
 
-  PRIORITIES_NO = {wanted: 'Vil ha',
+  PRIORITIES_NO = { wanted: 'Vil ha',
                    reserved: 'Reserve',
                    not_wanted: 'Vil ikke ha',
                    nil => 'Ikke satt' }.freeze
 
-  PRIORITIES_EN = {wanted: 'Wanted',
+  PRIORITIES_EN = { wanted: 'Wanted',
                    reserved: 'Backup',
                    not_wanted: 'Not wanted',
                    nil => 'Not set' }.freeze
 
-  APPLICANT_STATUS_NO = {accepted: 'Tilbud, takket ja',
+  APPLICANT_STATUS_NO = { accepted: 'Tilbud, takket ja',
                    declined: 'Tilbud, takket nei',
                    rejected: 'Automatisk avslag',
-                         #rejected_m: 'Avslag (kontaktet)',
+                   # rejected_m: 'Avslag (kontaktet)',
                    nil => 'Ikke satt' }.freeze
 
-  APPLICANT_STATUS_EN = {accepted: 'Accepted',
+  APPLICANT_STATUS_EN = { accepted: 'Accepted',
                    declined: 'Declined offer',
                    rejected: 'Automatic rejection',
-                         #rejected_m: 'Rejected (contacted)',
+                   # rejected_m: 'Rejected (contacted)',
                    nil => 'Not set' }.freeze
 
   validates :priority,
@@ -100,7 +100,6 @@ class Interview < ApplicationRecord
   def past_set_priority_deadline?
     job_application.job.admission.admin_priority_deadline < Time.current
   end
-
 end
 
 # == Schema Information

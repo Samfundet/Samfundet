@@ -498,6 +498,11 @@ ActiveRecord::Schema.define(version: 2020_12_17_132844) do
     t.datetime "closed_to"
   end
 
+  create_table "sulten_neighbour_tables", force: :cascade do |t|
+    t.integer "table_id"
+    t.integer "neighbour_id"
+  end
+
   create_table "sulten_reservation_types", id: :serial, force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -562,4 +567,6 @@ ActiveRecord::Schema.define(version: 2020_12_17_132844) do
   add_foreign_key "rejection_emails", "applicants", name: "rejection_emails_applicant_id_fk"
   add_foreign_key "roles", "groups", name: "roles_group_id_fk"
   add_foreign_key "roles", "roles", name: "roles_role_id_fk"
+  add_foreign_key "sulten_neighbour_tables", "sulten_tables", column: "neighbour_id"
+  add_foreign_key "sulten_neighbour_tables", "sulten_tables", column: "table_id"
 end

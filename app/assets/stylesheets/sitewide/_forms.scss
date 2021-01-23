@@ -134,6 +134,14 @@ form:not(.custom-form) {
       }
     }
   }
+
+  // Fieldset legend for checkbox
+  fieldset.choices {
+    legend {
+      display: none;
+    }
+  }
+
 }
 
 form.custom-form.search-form,

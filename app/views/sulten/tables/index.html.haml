@@ -1,45 +1,71 @@
-%h2
+%h1
   = t("helpers.models.sulten.all", :n => t("helpers.models.sulten.table.other"))
-  \ - 
-  = link_to t("helpers.models.sulten.new_thing", :n => t("helpers.models.sulten.table.one")), new_sulten_table_path
+
+.flex-row
+  = link_to sulten_admin_path do
+    .samf-button.plain.mr-2
+      = t("common.back")
+
+  = link_to new_sulten_table_path do
+    .samf-button.green
+      = t("helpers.models.sulten.new_thing", :n => t("helpers.models.sulten.table.one"))
+
+%hr
+
 %table
-  %th
-    = t("sulten.reservation.table")
-  %th
-    = t("sulten.table.capacity")
-  %th
-    = t("sulten.table.comment")
-  %th
-    = t("sulten.table.available")
-  %th
-    = t("sulten.table.next")
-  - Sulten::ReservationType.all.each do |t|
+  %thead
     %th
-      = t
-  - @tables.each do |t|
-    %tr
-      %td
-        = link_to t.number, t
-      %td
-        = t.capacity
-      %td
-        = t.comment
-      %td
-        - if t.available
-          = t("formtastic.yes")
-        - else
-          = t("formtastic.no")
+      = t("sulten.reservation.table")
+    %th
+      = "Nabobord"
+    %th
+      = t("sulten.table.capacity")
+    %th
+      = t("sulten.table.comment")
+    %th
+      = t("sulten.table.available")
+    %th
+      = t("sulten.table.next")
+    - Sulten::ReservationType.all.each do |t|
+      %th
+        = t
+    %th
+  %tbodt
+    - @tables.each do |t|
+      %tr
         %td
-          - $next = t.reservations.where("reservation_to > ?", DateTime.now).order("reservation_to ASC").first
-          - if $next
-            = link_to [$next.reservation_from, DateTime.now].max.strftime("%d.%m %H:%M") + " - " + $next.reservation_to.strftime("%H:%M"), $next
-      - Sulten::ReservationType.all.each do |r|
+          = link_to t.number, t
+          %div{style: "display:none;"}= "(#{t.id})"
         %td
-          - if t.reservation_types.include? r
-            X
-      %td
-        = link_to t("crud.edit"), edit_sulten_table_path(t)
-      %td
-        = link_to t("crud.destroy"), t, data: { confirm: t("crud.confirm") }, method: :delete
-%p
-  = link_to t("common.back"), sulten_admin_path
+          = t.neighbour_string
+        %td
+          = t.capacity
+        %td
+          = t.comment
+        %td
+          - if t.available
+            = t("formtastic.yes")
+          - else
+            = t("formtastic.no")
+          %td
+            - $next = t.reservations.where("reservation_to > ?", DateTime.now).order("reservation_to ASC").first
+            - if $next
+              = link_to [$next.reservation_from, DateTime.now].max.strftime("%d.%m %H:%M") + " - " + $next.reservation_to.strftime("%H:%M"), $next
+        - Sulten::ReservationType.all.each do |r|
+          %td
+            - if t.reservation_types.include? r
+              X
+        %td
+          .flex-row
+            = link_to edit_sulten_table_path(t) do
+              .samf-button.blue.small.mr-2
+                = t("crud.edit")
+            = link_to t, data: { confirm: t("crud.confirm") }, method: :delete do
+              .samf-button.red.small
+                = t("crud.destroy")
+
+- # For potential problem resolution in production
+%div{style: "display:none;"}
+  - @neighbour_relations.each do |n|
+    = "From (" + n.table_id.to_s + ") to (" + n.neighbour_id.to_s + ")"
+    %br

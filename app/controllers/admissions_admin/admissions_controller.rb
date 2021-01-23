@@ -64,12 +64,10 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
       @missing = auto_rejected.map { |r| r.id } - rejection_emails.map { |r| r.applicant_id }
       @missing = @missing.uniq
     end
-
   end
 
   # Prepare automatic rejection email
   def prepare_rejection_email
-
   end
 
   # Review automatic rejection email
@@ -95,7 +93,6 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
     @total_unique_applicants = all_applications.flatten.map { |a| a.applicant }.uniq.count
     @sent_rejection_emails = @admission.rejection_emails
     @already_rejected_applicants = @sent_rejection_emails.map { |r| r.applicant_id }
-
   end
 
   # Sends rejection email to recipients
@@ -142,7 +139,7 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
       end
     end
 
-    render partial: "send_rejection_email_result"
+    render partial: 'send_rejection_email_result'
   end
 
   def rejection_email_list

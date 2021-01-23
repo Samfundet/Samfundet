@@ -35,8 +35,8 @@ class ApplicationController < ActionController::Base
   extend ControlPanel::ControllerHelpers
 
   def store_location
-    if request.url.end_with? "/arr"
-      redirect_to_if_not_ajax_request("/arrangement")
+    if request.url.end_with? '/arr'
+      redirect_to_if_not_ajax_request('/arrangement')
     end
     session[:return_to] = request.url if request.get?
   end

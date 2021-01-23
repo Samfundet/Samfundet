@@ -31,33 +31,45 @@ class Sulten::ReservationsController < Sulten::BaseController
   end
 
   def create
-    date = reservation_params[:reservation_from]
-    time = reservation_params[:reservation_duration]
-    hour, min = time.split(":").map(&:to_i)
-    datetime = date.to_time.change({hour: hour, min: min})
+    from = ActiveSupport::TimeZone['UTC'].parse(reservation_params[:reservation_from])
+    to = from + reservation_params[:reservation_duration].to_i.minutes
+    people = reservation_params[:people].to_i
+    type = reservation_params[:reservation_type_id].to_i
 
-    # New reservation_params because reservation_from has to be a datetime
-    params = {"people"=> reservation_params[:people], "reservation_from"=>datetime,
-              "reservation_duration"=>"120", "name"=>reservation_params[:name],
-              "reservation_type_id"=>reservation_params[:reservation_type_id],
-              "telephone"=>reservation_params[:telephone], "email"=>reservation_params[:email],
-              "allergies"=>reservation_params[:allergies], "gdpr_checkbox"=>reservation_params[:gdpr_checkbox]}
-
-    @closed_periods = Sulten::ClosedPeriod.current_and_future_closed_times.sort_by(&:closed_from)
-    @reservation = Sulten::Reservation.new(params)
-    if @reservation.reservation_is_one_day_in_future
+    # Not one day in future
+    if from < Date.tomorrow
       redirect_to sulten_reservation_failure_day_path
-    elsif @reservation.in_closed_period?
-      flash.now[:error] = t('helpers.models.sulten.reservation.errors.in_closed_period')
-      redirect_to sulten_reservation_failure_path
-    elsif @reservation.save
-      SultenNotificationMailer.send_reservation_email(@reservation).deliver
-      flash[:success] = t('helpers.models.sulten.reservation.success.create')
-      redirect_to sulten_reservation_success_path
-    else
-      flash.now[:error] = t('helpers.models.sulten.reservation.errors.creation_fail')
-      redirect_to sulten_reservation_failure_path
+      return
     end
+
+    # In closed period
+    Sulten::ClosedPeriod.current_and_future_closed_times.each do |period|
+      if (period.closed_from..(period.closed_to + 1.day)).cover? to
+        redirect_to sulten_reservation_failure_path
+        return
+      end
+    end
+
+    # Find tables
+    tables = Sulten::Reservation.find_tables(from, to, people, type)
+
+    # Create reservation(s)
+    User.transaction do
+      # Save one reservation per table (uses duplicates)
+      # Future improvement should be that reservations have multiple
+      # tables instead, so the reservations are linked
+      tables.each do |t|
+        res = Sulten::Reservation.new(reservation_params)
+        res.table = t
+        res.save
+      end
+    rescue
+      # Failed to save reservations
+      redirect_to sulten_reservation_failure_path
+      return
+    end
+
+    redirect_to sulten_reservation_success_path
   end
 
   def admin_create
@@ -71,7 +83,7 @@ class Sulten::ReservationsController < Sulten::BaseController
       # Note that we don't send an email confimation on manually created reservations.
       # That's only for reservations created by users.
       flash[:success] = t('helpers.models.sulten.reservation.success.create')
-      redirect_to sulten_reservations_archive_path
+      redirect_to sulten_admin_path
     else
       flash.now[:error] = t('helpers.models.sulten.reservation.errors.creation_fail')
       render :admin_new

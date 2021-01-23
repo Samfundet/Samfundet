@@ -5,6 +5,7 @@ class Sulten::TablesController < Sulten::BaseController
 
   def index
     @tables = Sulten::Table.order(:number).all
+    @neighbour_relations = Sulten::NeighbourTable.all
   end
 
   def show
@@ -13,11 +14,43 @@ class Sulten::TablesController < Sulten::BaseController
 
   def edit
     @table = Sulten::Table.find(params[:id])
+    @other_tables = Sulten::Table.where.not(id: @table.id).order(:number).all
   end
 
   def update
     @table = Sulten::Table.find(params[:id])
-    if @table.update_attributes(table_params)
+
+    # Add new neighbours
+    if not params[:is_neighbour].nil?
+      params[:is_neighbour].each do |k, v|
+        # If not already a neighbour
+        if not @table.is_neighbour?(k.to_i)
+          neigh = Sulten::NeighbourTable.new(table_id: @table.id, neighbour_id: k.to_i)
+          neigh.save
+        end
+      end
+    end
+
+    # Remove removed neighbours (in both directions)
+    # Left associations [my_id, other_id]
+    @table.left_neighbour_associations.each do |n|
+      # If none selected or not selected this neighbour
+      if params[:is_neighbour].nil? or not params[:is_neighbour].include?(n.neighbour_id.to_s)
+        puts("DETECTED DELETE LEFT #{n.table_id} #{n.neighbour_id}")
+        n.destroy
+      end
+    end
+    # Right associations [other_id, my_id]
+    @table.right_neighbour_associations.each do |n|
+      # If none selected or not selected this neighbour
+      if params[:is_neighbour].nil? or not params[:is_neighbour].include?(n.table_id.to_s)
+        puts("DETECTED DELETE RIGHT #{n.table_id} #{n.neighbour_id}")
+        n.destroy
+      end
+    end
+
+    # Save and update other attributes
+    if @table.save and @table.update_attributes(table_params)
       redirect_to sulten_tables_path
     else
       render :edit
@@ -31,11 +64,23 @@ class Sulten::TablesController < Sulten::BaseController
 
   def new
     @table = Sulten::Table.new
+    @other_tables = Sulten::Table.order(:number).all
   end
 
   def create
     @table = Sulten::Table.new(table_params)
+
+
     if @table.save
+
+      # Add new neighbours
+      if not params[:is_neighbour].nil?
+        params[:is_neighbour].each do |k, v|
+          neigh = Sulten::NeighbourTable.new(table_id: @table.id, neighbour_id: k.to_i)
+          neigh.save
+        end
+      end
+
       flash[:success] = t('helpers.models.sulten.table.success.create')
       redirect_to @table
     else
