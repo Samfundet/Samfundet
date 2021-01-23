@@ -5,7 +5,6 @@ class RejectionEmail < ApplicationRecord
   belongs_to :applicant
 
   validates :admission, :applicant, :sent_at, presence: true
-
 end
 
 # == Schema Information

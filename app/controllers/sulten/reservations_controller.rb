@@ -31,7 +31,6 @@ class Sulten::ReservationsController < Sulten::BaseController
   end
 
   def create
-
     from = ActiveSupport::TimeZone['UTC'].parse(reservation_params[:reservation_from])
     to = from + reservation_params[:reservation_duration].to_i.minutes
     people = reservation_params[:people].to_i
@@ -54,24 +53,20 @@ class Sulten::ReservationsController < Sulten::BaseController
 
     # Create reservation(s)
     User.transaction do
-      begin
-        # Save one reservation per table (uses duplicates)
-        # Future improvement should be that reservations have multiple
-        # tables instead, so the reservations are linked
-        tables.each do |t|
-          res = Sulten::Reservation.new(reservation_params)
-          res.table = t
-          res.save
-        end
-      rescue
-        # Failed to save reservations
-        redirect_to sulten_reservation_failure_path
+      # Save one reservation per table (uses duplicates)
+      # Future improvement should be that reservations have multiple
+      # tables instead, so the reservations are linked
+      tables.each do |t|
+        res = Sulten::Reservation.new(reservation_params)
+        res.table = t
+        res.save
       end
-
+    rescue
+      # Failed to save reservations
+      redirect_to sulten_reservation_failure_path
     end
 
     redirect_to sulten_reservation_success_path
-
   end
 
   def admin_create

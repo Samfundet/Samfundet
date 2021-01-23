@@ -27,12 +27,11 @@ class SiteController < ApplicationController
         flash[:error] = payment_error.message
       end
     end
-
   end
 
   def brochure
-    pdf_filename = File.join(Rails.root, "app/assets/files/Brosjyre.pdf")
-    send_file(pdf_filename, :filename => "samfundet-brosjyre.pdf", :disposition => 'inline', :type => "application/pdf")
+    pdf_filename = File.join(Rails.root, 'app/assets/files/Brosjyre.pdf')
+    send_file(pdf_filename, filename: 'samfundet-brosjyre.pdf', disposition: 'inline', type: 'application/pdf')
   end
 
 private
@@ -69,6 +68,5 @@ private
     if valid_date.call(closed_H20_flash_start, closed_H20_flash_end)
       flash[:notice] = view_context.sanitize(msgH20_closed)
     end
-
   end
 end

@@ -12,17 +12,17 @@ class Sulten::Table < ApplicationRecord
   # we need to consider two cases, where the join table (sulten_neighbour_tables) is
   # (my_id, other_id) and (other_id, my_id). These relations define the (id, id) associations and the
   # :through fetches the actual table models.
-  has_many :left_neighbour_associations, :foreign_key => :table_id,
-           :class_name => "NeighbourTable",
+  has_many :left_neighbour_associations, foreign_key: :table_id,
+           class_name: 'NeighbourTable',
            dependent: :destroy # Destroy relation if table is destroyed
-  has_many :left_neighbours, :through => :left_neighbour_associations,
-           :source => :neighbour
+  has_many :left_neighbours, through: :left_neighbour_associations,
+           source: :neighbour
 
-  has_many :right_neighbour_associations, :foreign_key => :neighbour_id,
-           :class_name => "NeighbourTable",
+  has_many :right_neighbour_associations, foreign_key: :neighbour_id,
+           class_name: 'NeighbourTable',
            dependent: :destroy # Destroy relation if table is destroyed
-  has_many :right_neighbours, :through => :right_neighbour_associations,
-           :source => :table
+  has_many :right_neighbours, through: :right_neighbour_associations,
+           source: :table
 
   # attr_accessible :number, :capacity, :available, :comment, :reservation_type_ids, :neighbour_tables
 
@@ -56,13 +56,13 @@ class Sulten::Table < ApplicationRecord
 
   def neighbour_string
     if neighbours.count == 0
-      "-"
+      '-'
     else
       neighbour_numbers = []
       neighbours.each do |n|
         neighbour_numbers << Sulten::Table.find(n.id).number
       end
-      neighbour_numbers.join(", ")
+      neighbour_numbers.join(', ')
     end
   end
 
@@ -87,11 +87,9 @@ class Sulten::Table < ApplicationRecord
         # Add groups with current table first
         groups += child_groups.map { |c| [self] + c }
       end
-
     end
     groups
   end
-
 end
 
 # == Schema Information

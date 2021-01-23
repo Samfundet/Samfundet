@@ -83,7 +83,6 @@ class Sulten::Reservation < ApplicationRecord
   #   - For tables of same size, the one with fewest neighbours is preferred
   # Group tables are prioritized by smallest total capacity
   def self.find_tables(from, to, people, reservation_type_id)
-
     table = nil
 
     # Find available single tables
@@ -151,7 +150,7 @@ class Sulten::Reservation < ApplicationRecord
           next
         end
         # Check that total capacity is sufficient
-        capacity = g.inject(0){ |sum, x| sum + x.capacity }
+        capacity = g.inject(0) { |sum, x| sum + x.capacity }
         if capacity < people
           next
         end
@@ -163,8 +162,7 @@ class Sulten::Reservation < ApplicationRecord
       end
     end
 
-    return group
-
+    group
   end
 
   def self.check_if_time_is_valid(from, to, people, reservation_type_id)
@@ -172,7 +170,7 @@ class Sulten::Reservation < ApplicationRecord
       Sulten::Table.where('capacity >= ? and available = ?', people, true).order('capacity ASC').tables_with_i_reservation_types(i).find do |t|
         next unless t.reservation_types.pluck(:id).include? reservation_type_id
         # We add 30 minutes before and after the reservation because Lyche wants time between reservations to clean up!
-        if t.reservations.where('reservation_from >= ? or reservation_to <= ?', to + 30.minutes , from - 30.minutes).count == t.reservations.count
+        if t.reservations.where('reservation_from >= ? or reservation_to <= ?', to + 30.minutes, from - 30.minutes).count == t.reservations.count
           return from
         end
       end
@@ -197,7 +195,7 @@ class Sulten::Reservation < ApplicationRecord
       next if times_to_check.exclude? time_step
       reservation_from = Time.zone.at(time_step)
       reservation_to = Time.zone.at(time_step + duration.minutes)
-      t = self.check_if_time_is_valid(reservation_from, reservation_to, people, type_id)
+      t = check_if_time_is_valid(reservation_from, reservation_to, people, type_id)
       if t
         possible_times.insert(-1, t)
       end

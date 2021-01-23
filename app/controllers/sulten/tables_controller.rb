@@ -55,7 +55,6 @@ class Sulten::TablesController < Sulten::BaseController
     else
       render :edit
     end
-
   end
 
   def destroy
