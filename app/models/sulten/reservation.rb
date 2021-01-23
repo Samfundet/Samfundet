@@ -96,7 +96,7 @@ class Sulten::Reservation < ApplicationRecord
         next
       end
       # Table is same size but has more neighbours (prefer edge tables)
-      if not table.nil? and t.capacity == table.capacity and t.neighbour_count > table.neigbour_count
+      if not table.nil? and t.capacity == table.capacity and t.neighbour_count > table.neighbour_count
         next
       end
       # Finally check if table is available (done last to reduce SQL fetches)

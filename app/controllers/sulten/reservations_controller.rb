@@ -54,7 +54,7 @@ class Sulten::ReservationsController < Sulten::BaseController
     tables = Sulten::Reservation.find_tables(from, to, people, type)
 
     # Create reservation(s)
-    User.transaction do
+    Sulten::Reservation.transaction do
       # Save one reservation per table (uses duplicates)
       # Future improvement should be that reservations have multiple
       # tables instead, so the reservations are linked
