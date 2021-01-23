@@ -166,16 +166,12 @@ class Sulten::Reservation < ApplicationRecord
   end
 
   def self.check_if_time_is_valid(from, to, people, reservation_type_id)
-    (1..Sulten::ReservationType.count).each do |i|
-      Sulten::Table.where('capacity >= ? and available = ?', people, true).order('capacity ASC').tables_with_i_reservation_types(i).find do |t|
-        next unless t.reservation_types.pluck(:id).include? reservation_type_id
-        # We add 30 minutes before and after the reservation because Lyche wants time between reservations to clean up!
-        if t.reservations.where('reservation_from >= ? or reservation_to <= ?', to + 30.minutes, from - 30.minutes).count == t.reservations.count
-          return from
-        end
-      end
+    tbl = find_tables(from, to, people, reservation_type_id)
+    if tbl.nil? or tbl == []
+      nil
+    else
+      from
     end
-    nil
   end
 
   def self.find_available_times(date, people, type_id)

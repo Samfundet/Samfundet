@@ -31,10 +31,24 @@ class Sulten::ReservationsController < Sulten::BaseController
   end
 
   def create
-    from = ActiveSupport::TimeZone['UTC'].parse(reservation_params[:reservation_from])
-    to = from + reservation_params[:reservation_duration].to_i.minutes
+
+    from_s = reservation_params[:reservation_from] + ' ' + reservation_params[:reservation_duration]
+    from = ActiveSupport::TimeZone['UTC'].parse(from_s)
+    to = from + 120.minutes
     people = reservation_params[:people].to_i
     type = reservation_params[:reservation_type_id].to_i
+
+    params = {
+        reservation_from: from_s,
+        reservation_duration: 120,
+        reservation_type_id: type,
+        people: people,
+        name: reservation_params[:name],
+        telephone: reservation_params[:telephone],
+        email: reservation_params[:email],
+        allergies: reservation_params[:allergies],
+        gdpr_checkbox: reservation_params[:gdpr_checkbox]
+    }
 
     # Not one day in future
     if from < Date.tomorrow
@@ -52,6 +66,10 @@ class Sulten::ReservationsController < Sulten::BaseController
 
     # Find tables
     tables = Sulten::Reservation.find_tables(from, to, people, type)
+    if tables.count == 0
+      redirect_to sulten_reservation_failure_path
+      return
+    end
 
     # Create reservation(s)
     Sulten::Reservation.transaction do
@@ -59,7 +77,7 @@ class Sulten::ReservationsController < Sulten::BaseController
       # Future improvement should be that reservations have multiple
       # tables instead, so the reservations are linked
       tables.each do |t|
-        res = Sulten::Reservation.new(reservation_params)
+        res = Sulten::Reservation.new(params)
         res.table = t
         res.save
       end
