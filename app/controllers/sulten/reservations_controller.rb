@@ -76,10 +76,15 @@ class Sulten::ReservationsController < Sulten::BaseController
       # Save one reservation per table (uses duplicates)
       # Future improvement should be that reservations have multiple
       # tables instead, so the reservations are linked
+      f_res = nil
       tables.each do |t|
         res = Sulten::Reservation.new(params)
         res.table = t
         res.save
+        f_res = res
+      end
+      if f_res != nil
+        SultenNotificationMailer.send_reservation_email(f_res).deliver
       end
     rescue
       # Failed to save reservations
