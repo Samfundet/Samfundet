@@ -39,12 +39,14 @@ class Sulten::ReservationsController < Sulten::BaseController
     # Not one day in future
     if from < Date.tomorrow
       redirect_to sulten_reservation_failure_day_path
+      return
     end
 
     # In closed period
     Sulten::ClosedPeriod.current_and_future_closed_times.each do |period|
       if (period.closed_from..(period.closed_to + 1.day)).cover? to
         redirect_to sulten_reservation_failure_path
+        return
       end
     end
 
@@ -64,6 +66,7 @@ class Sulten::ReservationsController < Sulten::BaseController
     rescue
       # Failed to save reservations
       redirect_to sulten_reservation_failure_path
+      return
     end
 
     redirect_to sulten_reservation_success_path

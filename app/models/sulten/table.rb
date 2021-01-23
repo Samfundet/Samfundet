@@ -47,7 +47,7 @@ class Sulten::Table < ApplicationRecord
 
   def is_neighbour?(tbl_id)
     # Safety check for stack overflow
-    # Self is newer considered a neighbour
+    # Self is never considered a neighbour
     if tbl_id == id
       return false
     end
