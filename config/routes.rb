@@ -134,6 +134,7 @@ Rails.application.routes.draw do
       resources :admissions, only: [:show, :new, :create, :edit, :update, :list] do
 
         get :statistics, on: :member
+        get :statistics_graph, on: :member
         get :overview, on: :member
         get :prepare_rejection_email, on: :member
         post :review_rejection_email, on: :member

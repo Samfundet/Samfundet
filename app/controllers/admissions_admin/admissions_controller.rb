@@ -186,6 +186,11 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
   end
 
   def statistics
+  end
+
+  def statistics_graph
+    puts("faen i helvete")
+    @admission = Admission.find(params[:admission_id])
     @campuses = Campus.order(:name)
     @campus_count = Campus.number_of_applicants_given_admission(@admission)
 
@@ -213,6 +218,7 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
     applicants_per_campus_chart
     applications_per_day_chart
     applications_per_hour_chart
+    render partial: "statistics_graph"
   end
 
   def admin_applet
