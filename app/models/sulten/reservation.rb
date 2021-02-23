@@ -87,7 +87,7 @@ class Sulten::Reservation < ApplicationRecord
   # Group tables are prioritized by smallest total capacity
   def self.find_tables(from, to, people, reservation_type_id)
     # Mutual exclusion
-    mutex.lock
+    @@mutex.lock
 
     table = nil
 
@@ -114,7 +114,7 @@ class Sulten::Reservation < ApplicationRecord
 
     # Found single table!
     unless table.nil?
-      mutex.unlock
+      @@mutex.unlock
       return [table]
     end
 
@@ -138,8 +138,8 @@ class Sulten::Reservation < ApplicationRecord
 
     # No groups possible
     if available_group_tables.size == 0
-      mutex.unlock
-      nil
+      @@mutex.unlock
+      return []
     end
 
     # Find the best table group
@@ -170,8 +170,9 @@ class Sulten::Reservation < ApplicationRecord
       end
     end
 
-    mutex.unlock
-    group
+    @@mutex.unlock
+    return group
+
   end
 
   def self.check_if_time_is_valid(from, to, people, reservation_type_id)
