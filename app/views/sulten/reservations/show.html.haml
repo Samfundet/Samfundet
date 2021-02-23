@@ -1,9 +1,21 @@
-%table
+
+= link_to sulten_admin_path do
+  .samf-button.plain.mb-3
+    = t("common.back")
+
+
+%h1{style: "text-transform: capitalize"}
+  = t("helpers.models.sulten.reservation.one")
+
+%table.bxs
+  %thead
+    %td
+    %td
   %th
     = t("sulten.reservation.show.from")
   %td
     = @reservation.reservation_from
-  %tr
+  %tr{style:"border-bottom: 2px solid #555;"}
     %th
       = t("sulten.reservation.show.to")
     %td
@@ -22,7 +34,7 @@
           = t("sulten.reservation.missing_table")
       - else
         = @reservation.table.number
-  %tr
+  %tr{style:"border-bottom: 2px solid #555;"}
     %th
       = t("sulten.reservation.reservation_type")
     %td
@@ -37,7 +49,7 @@
       = t("sulten.reservation.telephone")
     %td
       = @reservation.telephone
-  %tr
+  %tr{style:"border-bottom: 2px solid #555;"}
     %th
       = t("sulten.reservation.email")
     %td
@@ -47,13 +59,21 @@
       = t("sulten.reservation.other_messages")
     %td
       = @reservation.allergies
-  %tr
+  %tr{style:"border-bottom: 2px solid #555;"}
     %th
       = t("sulten.reservation.internal_comment")
     %td
       = @reservation.internal_comment
+  %tr{style: "font-style: italic;"}
+    %th
+      = t("sulten.reservation.created_at")
+    %td
+      = @reservation.created_at
 
-%p
-  = link_to t("crud.edit"), [:edit, @reservation]
-  = link_to t("crud.destroy"), @reservation, method: :delete, data: {confirm: t("crud.confirm")}
-  = link_to t("common.back"), sulten_reservations_path
+.flex-row.pt-3
+  = link_to [:edit, @reservation] do
+    .samf-button.blue.mr-2
+      = t("crud.edit")
+  = link_to @reservation, method: :delete, data: {confirm: t("crud.confirm")} do
+    .samf-button.red.mr-2
+      = t("crud.destroy")

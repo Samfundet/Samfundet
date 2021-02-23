@@ -101,9 +101,11 @@ class Sulten::Reservation < ApplicationRecord
       end
       # Finally check if table is available (done last to reduce SQL fetches)
       # We add 30 minutes before and after the reservation because Lyche wants time between reservations to clean up!
-      if t.reservations.where('reservation_from >= ? or reservation_to <= ?', to + 30.minutes, from - 30.minutes).count == t.reservations.count
-        table = t
+      if t.reservations.where('reservation_from >= ? or reservation_to <= ?', to + 30.minutes, from - 30.minutes).count != t.reservations.count
+        next
       end
+      # Table is OK!
+      table = t
     end
 
     # Found single table!
