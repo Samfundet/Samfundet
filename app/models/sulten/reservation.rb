@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Sulten::Reservation < ApplicationRecord
+
   belongs_to :table
   belongs_to :reservation_type
 
@@ -13,7 +14,7 @@ class Sulten::Reservation < ApplicationRecord
 
   validates :gdpr_checkbox, acceptance: true
 
-  validate :check_opening_hours, :check_amount_of_people,
+  validate :check_opening_hours,
            :reservation_is_one_day_in_future,
            :email, on: :create, unless: :admin_access
 
@@ -58,6 +59,7 @@ class Sulten::Reservation < ApplicationRecord
     end
   end
 
+  # Removed for new reservation system
   def check_amount_of_people
     if people > 8
       errors.add(:people, I18n.t('helpers.models.sulten.reservation.errors.people.too_many_people'))
@@ -101,11 +103,9 @@ class Sulten::Reservation < ApplicationRecord
       end
       # Finally check if table is available (done last to reduce SQL fetches)
       # We add 30 minutes before and after the reservation because Lyche wants time between reservations to clean up!
-      if t.reservations.where('reservation_from >= ? or reservation_to <= ?', to + 30.minutes, from - 30.minutes).count != t.reservations.count
-        next
+      if t.reservations.where('reservation_from < ? and reservation_to > ?', to + 30.minutes, from - 30.minutes).count == 0
+        table = t
       end
-      # Table is OK!
-      table = t
     end
 
     # Found single table!
@@ -125,15 +125,14 @@ class Sulten::Reservation < ApplicationRecord
         next
       end
       # Table has a reservation already
-      if t.reservations.where('reservation_from >= ? or reservation_to <= ?', to + 30.minutes, from - 30.minutes).count != t.reservations.count
-        next
+      if t.reservations.where('reservation_from < ? and reservation_to > ?', to + 30.minutes, from - 30.minutes).count == 0
+        available_group_tables << t
       end
-      available_group_tables << t
     end
 
     # No groups possible
     if available_group_tables.size == 0
-      nil
+      return []
     end
 
     # Find the best table group
@@ -165,6 +164,7 @@ class Sulten::Reservation < ApplicationRecord
     end
 
     group
+
   end
 
   def self.check_if_time_is_valid(from, to, people, reservation_type_id)

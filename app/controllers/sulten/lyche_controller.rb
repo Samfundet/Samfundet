@@ -33,11 +33,29 @@ class Sulten::LycheController < Sulten::BaseController
     request = params[:sulten_reservation]
 
     if not request.nil?
+
+      # Not tomorrow or later
+      @must_be_in_future = false
+      start = Date.parse(request[:reservation_from])
+      if start < Date.tomorrow
+        @must_be_in_future = true
+        return
+      end
+
+      # Closed period
+      @in_closed_period = false
+      stop = Date.parse(request[:reservation_from])
+      Sulten::ClosedPeriod.current_and_future_closed_times.each do |period|
+        if (period.closed_from..(period.closed_to + 1.day)).cover? stop
+          @in_closed_period = true
+          return
+        end
+      end
+
       # The amount of people is for now stored in the reservation_duration parameter!
       # This is because of the dropdown menu feature, for selecting the amount of people
       # Should be changed to :people later, but needs to be changed in other files as well
       amount_people = request[:reservation_duration].to_i
-
       available_times = Sulten::Reservation.find_available_times(request[:reservation_from], amount_people, request[:reservation_type_id].to_i)
       @times = available_times.map { |a| a.strftime('%H:%M') }
       @reservation_type = request[:reservation_type_id]
