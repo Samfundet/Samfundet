@@ -1,0 +1,12 @@
+%h1
+  = @info_box.title
+
+%p
+  = @info_box.body
+
+%ul
+  %li
+    .samf-button.mb-1
+      = link_to "Edit", edit_info_box_path(@info_box)
+    .samf-button
+      = link_to "Delete", info_box_path(@info_box), method: :delete, data: {confirm: "Are you sure"}
