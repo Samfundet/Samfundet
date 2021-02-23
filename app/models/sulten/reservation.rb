@@ -2,8 +2,6 @@
 
 class Sulten::Reservation < ApplicationRecord
 
-  @@mutex = Mutex.new
-
   belongs_to :table
   belongs_to :reservation_type
 
@@ -16,7 +14,7 @@ class Sulten::Reservation < ApplicationRecord
 
   validates :gdpr_checkbox, acceptance: true
 
-  validate :check_opening_hours, :check_amount_of_people,
+  validate :check_opening_hours,
            :reservation_is_one_day_in_future,
            :email, on: :create, unless: :admin_access
 
@@ -61,6 +59,7 @@ class Sulten::Reservation < ApplicationRecord
     end
   end
 
+  # Removed for new reservation system
   def check_amount_of_people
     if people > 8
       errors.add(:people, I18n.t('helpers.models.sulten.reservation.errors.people.too_many_people'))
@@ -86,9 +85,6 @@ class Sulten::Reservation < ApplicationRecord
   #   - For tables of same size, the one with fewest neighbours is preferred
   # Group tables are prioritized by smallest total capacity
   def self.find_tables(from, to, people, reservation_type_id)
-    # Mutual exclusion
-    @@mutex.lock
-
     table = nil
 
     # Find available single tables
@@ -107,14 +103,13 @@ class Sulten::Reservation < ApplicationRecord
       end
       # Finally check if table is available (done last to reduce SQL fetches)
       # We add 30 minutes before and after the reservation because Lyche wants time between reservations to clean up!
-      if t.reservations.where('reservation_from >= ? or reservation_to <= ?', to + 30.minutes, from - 30.minutes).count == t.reservations.count
+      if t.reservations.where('reservation_from < ? and reservation_to > ?', to + 30.minutes, from - 30.minutes).count == 0
         table = t
       end
     end
 
     # Found single table!
     unless table.nil?
-      @@mutex.unlock
       return [table]
     end
 
@@ -130,15 +125,13 @@ class Sulten::Reservation < ApplicationRecord
         next
       end
       # Table has a reservation already
-      if t.reservations.where('reservation_from >= ? or reservation_to <= ?', to + 30.minutes, from - 30.minutes).count != t.reservations.count
-        next
+      if t.reservations.where('reservation_from < ? and reservation_to > ?', to + 30.minutes, from - 30.minutes).count == 0
+        available_group_tables << t
       end
-      available_group_tables << t
     end
 
     # No groups possible
     if available_group_tables.size == 0
-      @@mutex.unlock
       return []
     end
 
@@ -170,8 +163,7 @@ class Sulten::Reservation < ApplicationRecord
       end
     end
 
-    @@mutex.unlock
-    return group
+    group
 
   end
 

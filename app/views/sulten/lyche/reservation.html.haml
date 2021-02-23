@@ -21,15 +21,23 @@
       %br
   -# If there is available times for chosen date, show the rest of the form
   - if @must_be_in_future
-    .reservation-info
-      .reservation_no_available
-        = "Reservasjoner må dessverre opprettes minst en dag i forveien."
-    .link-back-when-no-reservations
-      %p
-        = link_to url_for(:back) do
-          = t("common.back").capitalize
-    .lyche-
-    %br{style:"padding-bottom: 50px;"}
+    = semantic_form_for @reservation, :html => { :class => "custom-form lyche_form"} do |f|
+      .reservation-info
+        .reservation_no_available
+          = "Reservasjoner må dessverre opprettes minst en dag i forveien."
+      .link-back-when-no-reservations
+        %p
+          = link_to url_for(:back) do
+            = t("common.back").capitalize
+  - elsif @in_closed_period
+    = semantic_form_for @reservation, :html => { :class => "custom-form lyche_form"} do |f|
+      .reservation-info
+        .reservation_no_available
+          = "Lyche er dessverre stengt denne dagen 😢"
+      .link-back-when-no-reservations
+        %p
+          = link_to url_for(:back) do
+            = t("common.back").capitalize
   - elsif @times.nil?
     = semantic_form_for @reservation, :url => {:controller => "lyche", :action => "reservation" }, :html => { :class => "custom-form lyche_form"}, data: {type: 'json'} do |f|
       = f.inputs do

@@ -33,7 +33,7 @@ class Sulten::ReservationsController < Sulten::BaseController
   def create
 
     from_s = reservation_params[:reservation_from] + ' ' + reservation_params[:reservation_duration]
-    from = ActiveSupport::TimeZone['UTC'].parse(from_s)
+    from = Time.parse(from_s)
     to = from + 120.minutes
     people = reservation_params[:people].to_i
     type = reservation_params[:reservation_type_id].to_i
@@ -81,8 +81,12 @@ class Sulten::ReservationsController < Sulten::BaseController
       tables.each do |t|
         res = Sulten::Reservation.new(params)
         res.table = t
-        res.save
+        # Copies have zero people
+        if f_res != nil
+          res.people = 0
+        end
         reservation_entries << res
+        res.save!
         f_res = res
       end
       if f_res != nil
@@ -90,7 +94,7 @@ class Sulten::ReservationsController < Sulten::BaseController
       end
     rescue
       reservation_entries.each do |r|
-        r.destroy
+        r.destroy!
       end
       # Failed to save reservations
       redirect_to sulten_reservation_failure_path
