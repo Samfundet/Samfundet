@@ -6,6 +6,7 @@ class SiteController < ApplicationController
 
   def index
     @todays_events = Event.today
+    @info_boxes = InfoBox.all
     @upcoming_events = Event.front_page_events(11)
     @banner_event = @upcoming_events.shift
     @opening_hours_url = page_url(Page.find_by_name(t('site.index.opening-hours-page-title')))
