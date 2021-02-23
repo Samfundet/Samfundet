@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class Sulten::Reservation < ApplicationRecord
+
+  @@mutex = Mutex.new
+
   belongs_to :table
   belongs_to :reservation_type
 
@@ -83,6 +86,9 @@ class Sulten::Reservation < ApplicationRecord
   #   - For tables of same size, the one with fewest neighbours is preferred
   # Group tables are prioritized by smallest total capacity
   def self.find_tables(from, to, people, reservation_type_id)
+    # Mutual exclusion
+    mutex.lock
+
     table = nil
 
     # Find available single tables
@@ -108,6 +114,7 @@ class Sulten::Reservation < ApplicationRecord
 
     # Found single table!
     unless table.nil?
+      mutex.unlock
       return [table]
     end
 
@@ -131,6 +138,7 @@ class Sulten::Reservation < ApplicationRecord
 
     # No groups possible
     if available_group_tables.size == 0
+      mutex.unlock
       nil
     end
 
@@ -162,6 +170,7 @@ class Sulten::Reservation < ApplicationRecord
       end
     end
 
+    mutex.unlock
     group
   end
 
