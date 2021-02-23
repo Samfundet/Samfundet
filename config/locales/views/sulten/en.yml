@@ -21,6 +21,7 @@ en:
       other_messages: "Other messages"
       gdpr_checkbox: "I agree to Samfundet's <a href='%{en_url}'>privacy policy</a>."
       internal_comment: "Internal comment"
+      created_at: "Created Date"
       export_to_csv: "Export all reservations to CSV"
       hi: "Hi"
       summary:
