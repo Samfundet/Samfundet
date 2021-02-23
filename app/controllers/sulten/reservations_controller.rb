@@ -72,6 +72,7 @@ class Sulten::ReservationsController < Sulten::BaseController
     end
 
     # Create reservation(s)
+    reservation_entries = []
     Sulten::Reservation.transaction do
       # Save one reservation per table (uses duplicates)
       # Future improvement should be that reservations have multiple
@@ -81,12 +82,16 @@ class Sulten::ReservationsController < Sulten::BaseController
         res = Sulten::Reservation.new(params)
         res.table = t
         res.save
+        reservation_entries << res
         f_res = res
       end
       if f_res != nil
         SultenNotificationMailer.send_reservation_email(f_res).deliver
       end
     rescue
+      reservation_entries.each do |r|
+        r.destroy
+      end
       # Failed to save reservations
       redirect_to sulten_reservation_failure_path
       return

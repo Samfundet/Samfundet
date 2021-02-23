@@ -20,7 +20,17 @@
         = "Lyche holder stengt i perioden " + l(c.closed_from, format: :short_date) + " - " + l(c.closed_to, format: :short_date)
       %br
   -# If there is available times for chosen date, show the rest of the form
-  - if @times.nil?
+  - if @must_be_in_future
+    .reservation-info
+      .reservation_no_available
+        = "Reservasjoner må dessverre opprettes minst en dag i forveien."
+    .link-back-when-no-reservations
+      %p
+        = link_to url_for(:back) do
+          = t("common.back").capitalize
+    .lyche-
+    %br{style:"padding-bottom: 50px;"}
+  - elsif @times.nil?
     = semantic_form_for @reservation, :url => {:controller => "lyche", :action => "reservation" }, :html => { :class => "custom-form lyche_form"}, data: {type: 'json'} do |f|
       = f.inputs do
         = f.input :reservation_type, label: t("sulten.reservation.reservation_type")
@@ -82,4 +92,5 @@
             = "Det er dessverre ingen ledige bord for dette antallet personer denne dagen."
       .link-back-when-no-reservations
         %p
-          = link_to t("common.back").capitalize, "/lyche/make_reservation"
+          = link_to url_for(:back) do
+            = t("common.back").capitalize
