@@ -14,11 +14,11 @@
 .menu-button
   = t('layouts.application.menu.menu')
 
-.menu
+.menu{style: "height: 100%;"}
   .menu-content
     = render_page_content(Page.menu.content, Page.menu.content_type)
 
-.content
+%div{style: "height: 100%;"}
   %h1= t('documents.index_title')
   .category-list
     - @categories.each do |category|
@@ -26,7 +26,6 @@
 
   - @categories.each do |category|
     %h2{ id: category.title.parameterize }= category.title
-    
     - if category.documents.empty?
       %p= t('documents.no_documents')
     - else
@@ -42,4 +41,7 @@
                     %ul
                       - docs.reverse_each do |doc|
                         %li
-                          = link_to "#{doc.title} (#{doc.publication_date})", doc.file.url
+                          = link_to doc.file.url do
+                            .flex-row
+                              .mr-3{style:"color: #555;"}= "#{doc.publication_date}"
+                              %div{style: "font-style: italic;"}= "#{doc.title}"
