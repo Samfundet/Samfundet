@@ -59,6 +59,12 @@
       min-width: 200px;
       max-width: 200px;
     }
+    
+    input[type=checkbox] {
+      float: left;
+      max-width: 48px;
+    }
+
   }
 
   .inline-hints {
@@ -122,12 +128,14 @@
       input[type=text],
       input[type=tel],
       input[type=email],
+      input[type=submit],
       select {
         border-radius: 5px;
         padding-left: 10px;
-        width: 100%;
+        min-width: 100%;
         height: 32px;
       }
+
     }
 
   }
