@@ -1,11 +1,15 @@
+
+
 %h1
   = set_and_return_title t("members.control_panel")
 .name
-  = current_user.full_name
-#faq
-  = link_to page_by_name("intern-faq") do
-    .samf-button.small.plain.mb-2
-      = t('navigation.admin.faq')
+  = @wise_words
+
+= link_to page_by_name("intern-faq") do
+  .samf-button.small.plain.center
+    = t('navigation.admin.faq')
+
+%br
 
 #applets
   - @applets.each do |applet|
