@@ -65,14 +65,15 @@ After the script has completed, the project should be up and running!
 ##### Option 2 (Manual)
 
 1. [graphviz](https://graphviz.org/): `sudo apt-get install graphviz`
-2. [imagemagick](https://formulae.brew.sh/formula/imagemagick): `sudo apt-get install imagemagick`
-3. [ubuntu_rvm](https://github.com/rvm/ubuntu_rvm)
-4. Source RVM: `source ~/.rvm/scripts/rvm`
+2. [imagemagick](https://imagemagick.org/): `sudo apt-get install imagemagick`
+3. [nodejs](https://nodejs.org/): `sudo apt-get install nodejs`
+4. [ubuntu_rvm](https://github.com/rvm/ubuntu_rvm)
+5. Source RVM: `source ~/.rvm/scripts/rvm`
 
 We now have all dependencies installed, including RVM, so let's install Ruby 2.5.5. Run these two commands in succession:
 
 ```bash
-rvm install 2.5.5
+rvm install 2.5.5 --movable
 rvm use 2.5.5 --default
 ```
 
