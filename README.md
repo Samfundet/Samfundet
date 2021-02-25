@@ -56,8 +56,8 @@ This will make a script run, that will install a few dependencies for you. A res
 3. After restart, run the following commands:
 
 ```bash
-chmod +x setup-linux2.sh
-./setup-linux2.sh
+chmod +x setup-linux-2.sh
+./setup-linux-2.sh
 ```
 
 After the script has completed, the project should be up and running!
