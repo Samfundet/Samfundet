@@ -45,17 +45,21 @@ There are several dependencies needed to get Samfundet up and running. Note that
 
 1. Go to your terminal preferences, and select your terminal profile. Go to the "Commands" tab and check "Run command as a login shell".
 2. Run the following commands:
+
 ```bash
 chmod +x setup-linux.sh
 ./setup-linux.sh
 ```
+
 This will make a script run, that will install a few dependencies for you. A restart is however required after running this script, so restart your computer before proceeding to step 3.
 
 3. After restart, run the following commands:
+
 ```bash
 chmod +x setup-linux2.sh
 ./setup-linux2.sh
 ```
+
 After the script has completed, the project should be up and running!
 
 ##### Option 2 (Manual)
