@@ -1,7 +1,7 @@
 - @info_boxes.each do |info_box|
   .info_box.flex-align-center
     .picture
-      = image_tag info_box.image.to_s
+      = background_image_helper "picture", info_box.image_or_default, size: :medium
     .info_text
       = link_to info_box do
         .info_text_title
