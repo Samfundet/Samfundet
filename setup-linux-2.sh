@@ -13,11 +13,6 @@ if [ ! -e $CONFIG_DIR/database.yml ] &&
      make copy-config-files || exit
 fi
 
-rm config/database.yml
-cp config/database.example.yml config/database.yml
-
-sed -i "s/password:.*/password: samfundet/" > config/database.yml
-
 bundle exec rails db:setup
 
 make run

@@ -121,12 +121,6 @@ First, there are some configuration files that needs to be copied. Run
 make copy-config-files
 ```
 
-> Only for Linux users:
->
-> ```bash
-> sed -i "s/password:.*/password: samfundet/" > config/database.yml
-> ```
-
 Then, setup the database with
 
 ```bash
