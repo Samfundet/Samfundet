@@ -43,6 +43,6 @@ class InfoBoxesController < ApplicationController
 
   private
     def info_box_params
-      params.require(:info_box).permit(:title, :body, :image)
+      params.require(:info_box).permit(:title, :body, :image_id)
     end
 end

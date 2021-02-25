@@ -2,7 +2,14 @@ class InfoBox < ApplicationRecord
 
   validates :title, presence: true
   validates :body, presence: true
+  validates :image_id, presence: true
 
-  has_attached_file :image
-  validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+  belongs_to :image
+  def image_or_default
+    if image.present?
+      image.image_file
+    else
+      Image.default_image.image_file
+    end
+  end
 end

@@ -1,4 +1,4 @@
-= form_with model: @info_box do |f|
+= semantic_form_for @info_box do |f|
   %ol
     %li
       = f.label :title, "Tittel"
@@ -11,9 +11,6 @@
       - @info_box.errors.full_messages_for(:body).each do |m|
         = m
     %li
-      = f.label :image, "Image"
-      = f.file_field :image
-      - @info_box.errors.full_messages_for(:image).each do |m|
-        = m
-        
+      = render 'imagepicker', f: f
+
   = f.submit "Save"
