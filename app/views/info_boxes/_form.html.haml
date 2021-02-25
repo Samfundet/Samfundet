@@ -10,4 +10,10 @@
       = f.text_area :body, style: "border-style: solid; border-width: 1px;"
       - @info_box.errors.full_messages_for(:body).each do |m|
         = m
+    %li
+      = f.label :image, "Image"
+      = f.file_field :image
+      - @info_box.errors.full_messages_for(:image).each do |m|
+        = m
+        
   = f.submit "Save"

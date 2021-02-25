@@ -15,7 +15,7 @@ class InfoBoxesController < ApplicationController
   def create
     @info_box = InfoBox.new(info_box_params)
     if @info_box.save
-      redirect_to @info_box
+      redirect_to ""
     else
       render :new
     end
@@ -29,7 +29,7 @@ class InfoBoxesController < ApplicationController
     @info_box = InfoBox.find(params[:id])
 
     if @info_box.update(info_box_params)
-      redirect_to @info_box
+      redirect_to ""
     else
       render :edit
     end
@@ -38,11 +38,11 @@ class InfoBoxesController < ApplicationController
   def destroy
     @info_box = InfoBox.find(params[:id])
     @info_box.destroy
-    redirect_to action: "index"
+    redirect_to ""
   end
 
   private
     def info_box_params
-      params.require(:info_box).permit(:title, :body)
+      params.require(:info_box).permit(:title, :body, :image)
     end
 end
