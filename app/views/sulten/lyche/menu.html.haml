@@ -41,22 +41,18 @@
           Velbekomne!
         %br
 
-        .lyche-menu-subtitle{style: "color:#fbb042;"}
-          Åpningstider
+        - if @open_hours.count > 0
+          .lyche-menu-subtitle{style: "color:#fbb042;"}
+            Åpningstider
 
-        .lyche-menu-open-hours
-          %span{style:"color:white;"}
-            Hverdager
-          %br
-          %i="16:00 - 23:00 (restaurant)"
-          %br
-          %br
-          %span{style:"color:white;"}
-            Helger
-          %br
-          %i="16:00 - 22:00 (restaurant)"
-          %br
-          %i="22:00 - 02:00 (spritbar)"
+          .lyche-menu-open-hours
+            - @open_hours.each do |name, value|
+              %span{style:"color:white;"}
+                = name
+              %br
+              %i=value
+              %br
+              %br
 
         -# Forretter
 

@@ -1,6 +1,5 @@
 
 .status-box
-
   .open-hours
     %table
       %tr
@@ -8,15 +7,12 @@
       - if @closed.nil?
         %td.title{colspan: 2}
           %b= "Åpningstider"
-        %tr
-          %td="Hverdager"
-          %td="16:00 - 23:00 (restaurant)"
-        %tr
-          %td="Helger"
-          %td="16:00 - 22:00 (restaurant)"
-        %tr
-          %td=""
-          %td="22:00 - 02:00 (spritbar)"
+
+        - @open_hours.each do |period, value|
+          %tr
+            %td= period
+            %td= value
+
       - else
         %td.title{colspan: 2}
           %b= "Lyche er Stengt"
