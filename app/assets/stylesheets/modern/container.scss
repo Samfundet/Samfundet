@@ -1,10 +1,23 @@
 /*
 Samfundet containers
- */
+*/
 
 .samf-container {
   box-shadow: 2px 2px 15px 4px rgba(0,0,0,0.1);
   border-radius: 0.5em;
+
+  img {
+    width: 50%;
+    height: 100%;
+    background-size: cover;
+    border-radius: 4px;
+  }
+
+  .info {
+    padding: 2em;
+    height: 100%;
+  }
+
 }
 
 // container Variants
@@ -18,4 +31,22 @@ Samfundet containers
 .samf-container.blue {
   background-color: $samfundet-blue;
   color: white;
+}
+.samf-container.green {
+  background-color: $samfundet-green;
+  color: white;
+}
+.samf-container.plain {
+  background-color: transparent;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.samf-container.red,
+.samf-container.blue,
+.samf-container.green
+{
+  h1,h2,h3,h4,h5 {
+    color: white;
+  }
 }

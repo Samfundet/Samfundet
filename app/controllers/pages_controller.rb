@@ -50,6 +50,7 @@ class PagesController < ApplicationController
   end
 
   def update
+
     if not can? :edit_non_content_fields, @page
       params[:page].slice!(:title_no, :title_en, :content_no, :content_en)
     end
@@ -90,7 +91,7 @@ class PagesController < ApplicationController
 private
 
   def page_params
-    params.require(:page).permit(:name_no, :name_en, :title_no, :title_en, :content_no, :content_en, :content_type, :role_id)
+    params.require(:page).permit(:name_no, :name_en, :title_no, :title_en, :content_no, :content_en, :content_type, :role_id, :hide_menu)
   end
 
   def load_page

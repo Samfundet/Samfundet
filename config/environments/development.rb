@@ -60,6 +60,12 @@ Samfundet::Application.configure do
       RegistrationEvent.establish_connection(:paamelding)
       RegistrationEvent.table_name = paamelding_table_prefix + 'arrangementer'
     end
+  else
+    # Reduce logging verbosity
+    config.after_initialize do
+      ActiveRecord::Base.logger = Rails.logger.clone
+      ActiveRecord::Base.logger.level = Logger::INFO
+    end
   end
 
   # Use an evented file watcher to asynchronously detect changes in source code,
@@ -67,5 +73,7 @@ Samfundet::Application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.middleware.insert_after ActionDispatch::Static, Rack::LiveReload
+
+
 
 end

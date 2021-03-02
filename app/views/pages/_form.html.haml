@@ -31,7 +31,7 @@
           = t("pages.other_fields")
         = form.input :content_type, collection: PageRevision::CONTENT_TYPES, include_blank: false
         = form.input :role, collection: Role.all
-        = form.input :hide_menu, label: t("pages.hide_menu")
+        = form.input :hide_menu, as: :boolean, label: t("pages.hide_menu")
       - else
         -#
           This field exists so the live preview knows which content_type

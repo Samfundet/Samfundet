@@ -80,7 +80,7 @@ h3 {
             width: 60px;
             background-size: 60px;
 
-            margin: 0 auto; 
+            margin: 0 auto;
             background-position: center;
         }
     }
@@ -126,7 +126,7 @@ h3 {
             overflow: hidden;
             @include transition(max-height, 0.7s);
 
-            &.max-height { 
+            &.max-height {
                 margin-top: 20px;
             }
 
@@ -214,7 +214,7 @@ h3 {
 
         .left-list {
             @include span-columns(6 of 12);
-            ul { 
+            ul {
                 text-align: center;
             }
             padding-right: 5px;
@@ -225,14 +225,14 @@ h3 {
         }
 
         .right-list {
-            @include span-columns(6 of 12); 
+            @include span-columns(6 of 12);
             ul { text-align: center; }
             padding-left: 5px;
 
-            @include media($tablet-desktop) { 
+            @include media($tablet-desktop) {
                 @include span-columns(5 of 12);
             }
-            @include omega(); 
+            @include omega();
         }
     }
 
