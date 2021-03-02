@@ -1,17 +1,17 @@
 = semantic_form_for @info_box do |f|
-  = f.inputs name:"information" do
-    .flex-row
-      = f.input :title_no, label: "Tittel (Norsk)"
-      = f.input :title_en, label: "Tittel (Engelsk)"
-    .flex-row
-      = f.input :body_no, label: "Kort beskrivelse (Norsk)"
-      = f.input :body_en, label: "Kort beskrivelse (Engelsk)"
-    .flex-row
-      = f.input :link_no, label: "Link (Norsk)"
-      = f.input :link_en, label: "Link (Engelsk)"
-  .flex-row
-    %div{:style=>"flex-basis:100%;"}
-      = render 'imagepicker', f: f
-
-  = f.actions do
-    = f.action :submit
+  %div{:style=>"flex-basis:100%;"}
+    = f.inputs name:"information" do
+      .flex-row
+        = f.input :title_no, label: "Tittel (Norsk)"
+        = f.input :title_en, label: "Tittel (Engelsk)"
+      .flex-row
+        = f.input :body_no, label: "Kort beskrivelse (Norsk)"
+        = f.input :body_en, label: "Kort beskrivelse (Engelsk)"
+      .flex-row
+        = f.input :link_no, label: "Link (Norsk)"
+        = f.input :link_en, label: "Link (Engelsk)"
+      .flex-row
+        %div{:style=>"flex-basis:100%;"}
+          = render 'imagepicker', f: f
+    = f.actions do
+      = f.action :submit

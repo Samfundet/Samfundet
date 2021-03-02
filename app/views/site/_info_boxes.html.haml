@@ -8,7 +8,6 @@
           = info_box.title
         .info_text_body
           = info_box.body
-
       - if can? :manage, FrontPageLock
         = link_to edit_info_box_path(info_box) do
           .samf-button.white.mt-3
