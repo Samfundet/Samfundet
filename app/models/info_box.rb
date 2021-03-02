@@ -1,8 +1,9 @@
 class InfoBox < ApplicationRecord
 
-  validates :title, presence: true
-  validates :body, presence: true
-  validates :image_id, presence: true
+  extend LocalizedFields
+  localized_fields :title, :body, :link
+
+  validates :title_no, :title_en, :body_no, :body_en, presence: true
 
   belongs_to :image
   def image_or_default

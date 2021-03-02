@@ -1,19 +1,22 @@
 - @info_boxes.each do |info_box|
-  .info_box.flex-align-center
+  .info_box.flex-align-center.samf-container.blue
     .picture
       = background_image_helper "picture", info_box.image_or_default, size: :medium
     .info_text
-      = link_to info_box do
+      = link_to info_box.link do
         .info_text_title
           = info_box.title
         .info_text_body
           = info_box.body
 
       - if can? :manage, FrontPageLock
-        .samf-button.blue.mt-3
-          = link_to "Edit", edit_info_box_path(info_box)
-        .samf-button.red.mt-3
-          = link_to "Delete", info_box_path(info_box), method: :delete, data: {confirm: "Are you sure"}
+        = link_to edit_info_box_path(info_box) do
+          .samf-button.white.mt-3
+            edit
+        = link_to info_box_path(info_box), method: :delete, data: {confirm: "Are you sure"} do
+          .samf-button.mt-3
+            delete
+
 
 - if can? :manage, FrontPageLock
   .samf-button.green.center.mb-3

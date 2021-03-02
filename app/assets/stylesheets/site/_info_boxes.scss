@@ -5,8 +5,6 @@
   flex-direction: row;
   flex-wrap: wrap;
   background-color: white;
-  box-shadow: 2px 2px 20px 5px rgba(0, 0, 0, 0.05);
-  border-radius: 4px;
   border: 1px solid rgb(230, 230, 230);
   overflow: hidden;
 
@@ -61,8 +59,8 @@
       font-size: 1.75em;
       flex: 1;
       cursor: pointer;
-      color: black;
 
+      color: white;
       @include media($mobile) {
         font-size: 1em;
         padding: 1em;
@@ -72,9 +70,9 @@
       text-decoration: underline;
     }
     .info_text_body{
+      color: white;
       font-weight: lighter;
       font-size: 1em;
-      color: black;
       @include media($mobile-and-tablet-portrait){
         display: none;
       }
