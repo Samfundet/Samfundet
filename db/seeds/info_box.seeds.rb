@@ -1,12 +1,12 @@
 puts "Creating info box"
 
-InfoBox.create!(
-    title_no: "Nybygg er her!",
-    title_en: "The new building is here!",
-    body_no: "les mer her",
-    body_en: "read more here",
-    link_no: "https://www.samfundet.no/nybygg",
-    link_en: "https://www.samfundet.no/en/nybygg",
-    image_id: Image.all.sample.id
+3.times do
+    InfoBox.create!(
+      title_no: Faker::Lorem.sentence(1),
+      title_en: Faker::Lorem.sentence(1),
+      body_no: "les mer her",
+      body_en: "read more here",
+      image_id: Image.all.sample.id
     )
+end
 puts "Done creating info box"
