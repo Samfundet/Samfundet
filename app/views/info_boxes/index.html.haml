@@ -4,11 +4,17 @@
     .picture
       = background_image_helper "picture", info_box.image_or_default, size: :medium
     .info_text
-      = link_to info_box do
-        .info_text_title
-          = info_box.title
-        .info_text_body
-          = info_box.body
+      .info_text_title
+        = info_box.title
+      .info_text_body
+        = info_box.body
+      .flex-row
+        = link_to edit_info_box_path(info_box) do
+          .samf-button.white.m-3
+            edit
+        = link_to info_box_path(info_box), method: :delete, data: {confirm: "Are you sure"} do
+          .samf-button.m-3
+            delete
 
 .samf-button.green.mt-3.center
   = link_to "new info box", new_info_box_path
