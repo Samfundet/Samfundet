@@ -19,3 +19,58 @@ Samfundet containers
   background-color: $samfundet-blue;
   color: white;
 }
+.samf-container.green {
+  background-color: $samfundet-green;
+  color: white;
+}
+.samf-container.plain {
+  background-color: transparent;
+  border: 1px solid #ddd;
+  box-shadow: none;
+}
+
+.samf-container.red,
+.samf-container.blue,
+.samf-container.green {
+  h1,h2,h3,h4,h5 {
+    color: white;
+  }
+}
+
+/*
+Auto container
+*/
+.samf-smart-box {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  .auto {
+    flex: 1;
+    min-height: 100%;
+  }
+  .full {
+    flex-basis: 100%;
+  }
+  .half {
+    flex-basis: 50%;
+  }
+  .third {
+    flex-basis: 33.33%;
+  }
+  .fourth {
+    flex-basis: 25%;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .samf-smart-box {
+    flex-direction: column;
+    .auto,
+    .full,
+    .half,
+    .third,
+    .fourth {
+      flex-basis: 100%;
+    }
+  }
+}

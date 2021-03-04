@@ -1,3 +1,73 @@
 - set_open_graph_params({ title: t('site.index.og_title'), description: t('site.index.og_description'), image: 'https://www.samfundet.no/upload/images/image_files/000/001/669/original/logo_samf.no.png?1538501206'})
 - set_twitter_params({ card: "summary_large_image", title: t('site.index.og_title'), description: t('site.index.og_description'), 'image:src' => 'https://www.samfundet.no/upload/images/image_files/000/001/669/original/logo_samf.no.png?1538501206'})
-= render @page
+
+
+.samf-smart-box.flex-align-center.mt-3
+
+  .half.pr-3.m-3
+    = image_tag "info/samfundet.jpg", alt: "Samfundet", class: "br-2 bxs"
+
+  .auto.flex-column.flex-justify-center
+    %div.pl-3
+      %h1= t("pages.index.main.title")
+      %p
+        = t("pages.index.main.description")
+    .samf-smart-box.flex-row.wrap.flex-justify-center.pl-2.pr-2
+      = link_to page_by_name("medlemskap") do
+        .samf-button.red.m-2.w100-mobile
+          = "Medlemskap"
+      = link_to page_by_name("faq") do
+        .samf-button.green.m-2.w100-mobile
+          = "FAQ"
+      = link_to page_by_name("faq") do
+        .samf-button.plain.m-2.w100-mobile
+          = "Mer informasjon"
+
+
+.samf-smart-box.mt-3
+  .third.m-2.samf-container.plain.p-3.flex-column.flex-justify-between
+    %h1.text-Align= t("pages.index.venue_title")
+    .flex-row.wrap.flex-justify-center
+      - @areas.sort.each do |a|
+        - if not a.name == "Hele huset"
+          %div{style: "display: flex; flex-basis: 50%;"}
+            = link_to (a.page != nil ? a.page : "#"), class: "w100 p-2" do
+              .samf-button.small.plain.w100
+                = a.name
+    = link_to page_by_name("aapningstider") do
+      .samf-button.blue.w100.mt-2
+        = "Åpningstider"
+  .auto.samf-container.plain.p-3.m-2
+    .flex-row.flex-align-center
+      = image_tag "info/hammer.png", style: "width: 2.5em; height: 2.5em; background-size: contain;"
+      %h1.ml-3= "Samfundsmøtet"
+    %div
+      %p= t("pages.index.samfundsmote")
+      .flex-row.wrap.flex-justify-end
+        .samf-button.red.m-2
+          = "Samfundet som organisasjon"
+        .samf-button.plain.m-2
+          = "Samfundets historie"
+
+
+.samf-smart-box.mt-2
+
+  .auto.samf-container.green.p-3.m-2.flex-column.flex-justify-between
+    %div
+      %h1= t("pages.index.volunteering_title")
+      %p= t("pages.index.volunteering")
+    .flex-row
+      = link_to "#", class: "samf-button white m-2 flex-75" do
+        .center= "Gjengene på Samfundet"
+      = link_to admissions_path, class: "samf-button white m-2 flex-25 flex-align-center" do
+        .center= "Opptak"
+
+  .third.m-2.samf-container.plain.p-3.flex-column.flex-justify-between
+    %h2= "UKA & ISFiT"
+    %p= t("pages.index.isfit_uka")
+    .flex-row
+      = link_to "http://www.uka.no/", class: "samf-button red m-2 flex" do
+        .center= "UKA"
+      = link_to "http://www.isfit.org/", class: "samf-button blue m-2 flex" do
+        .center= "ISFiT"
+

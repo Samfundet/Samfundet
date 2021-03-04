@@ -40,6 +40,8 @@ Rails.application.routes.draw do
     ############################
 
     resources :pages, path: "information" do
+      get :index, to: "pages#index"
+
       collection do
         get "admin"
         get "admin/graph", to:"pages#graph"

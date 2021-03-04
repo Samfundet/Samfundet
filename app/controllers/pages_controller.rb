@@ -10,9 +10,10 @@ class PagesController < ApplicationController
                            if: -> { show_admin? }
 
   def index
-    @menu = Page.menu
-    @page = Page.index
-    @show_admin = show_admin?
+    # @menu = Page.menu
+    # @page = Page.index
+    # @show_admin = show_admin?
+    @areas = Area.all
   end
 
   def show
