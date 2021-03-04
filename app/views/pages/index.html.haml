@@ -24,30 +24,25 @@
           = "Mer informasjon"
 
 
-.samf-smart-box.mt-3
-  .third.m-2.samf-container.plain.p-3.flex-column.flex-justify-between
-    %h1.text-Align= t("pages.index.venue_title")
-    .flex-row.wrap.flex-justify-center
-      - @areas.sort.each do |a|
-        - if not a.name == "Hele huset"
-          %div{style: "display: flex; flex-basis: 50%;"}
-            = link_to (a.page != nil ? a.page : "#"), class: "w100 p-2" do
-              .samf-button.small.plain.w100
-                = a.name
-    = link_to page_by_name("aapningstider") do
-      .samf-button.blue.w100.mt-2
-        = "Åpningstider"
-  .auto.samf-container.plain.p-3.m-2
-    .flex-row.flex-align-center
-      = image_tag "info/hammer.png", style: "width: 2.5em; height: 2.5em; background-size: contain;"
-      %h1.ml-3= "Samfundsmøtet"
-    %div
-      %p= t("pages.index.samfundsmote")
-      .flex-row.wrap.flex-justify-end
-        .samf-button.red.m-2
-          = "Samfundet som organisasjon"
-        .samf-button.plain.m-2
-          = "Samfundets historie"
+.flex-row.wrap.flex-justify-center.mt-3
+  - @areas.sort.each do |a|
+    - if not a.name == "Hele huset"
+      = link_to (a.page != nil ? a.page : "#"), style: "max-width: 10em;" do
+        .flex-column.m-3
+          = image_tag "info/venues/#{a.name.downcase}.jpg", style: "width: 8em; height: 8em; border-radius: 10em; background-color: #eee;"
+          %h2.text-Align{style: "color: black;"}= a.name
+
+.samf-container.plain.p-3.m-2
+  .flex-row.flex-align-center
+    = image_tag "info/hammer.png", style: "width: 2.5em; height: 2.5em; background-size: contain;"
+    %h1.ml-3= "Samfundsmøtet"
+  %div
+    %p= t("pages.index.samfundsmote")
+    .flex-row.wrap.flex-justify-end
+      .samf-button.red.m-2
+        = "Samfundet som organisasjon"
+      .samf-button.plain.m-2
+        = "Samfundets historie"
 
 
 .samf-smart-box.mt-2
