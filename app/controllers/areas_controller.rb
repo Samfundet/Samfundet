@@ -6,6 +6,14 @@ class AreasController < ApplicationController
   has_control_panel_applet :edit_opening_hours_applet,
                            if: -> { can? :manage, Area }
 
+  def index
+    @areas = Area.all
+  end
+
+  def admin
+    @areas = Area.all
+  end
+
   def edit
     @areas = Area.all
     @area = Area.find(params[:id])
@@ -30,6 +38,6 @@ class AreasController < ApplicationController
 private
 
   def area_params
-    params.require(:area).permit(:page_id, standard_hours_attributes: %i[open open_time close_time day id])
+    params.require(:area).permit(:page_id, :description_no, :description_en, standard_hours_attributes: %i[open open_time close_time day id])
   end
 end

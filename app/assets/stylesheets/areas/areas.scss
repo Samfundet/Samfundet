@@ -1,3 +1,18 @@
+.areas {
+  .area-container {
+    height: 100%;
+    background-color: orange;
+    .area-image {
+      flex-basis: 30%;
+      height: 10em;
+      background-size: cover;
+      background-position: center;
+      background-color: red;
+      border: 1px solid red;
+    }
+  }
+}
+
 .areas.edit, .areas.update {
 
   form {
@@ -6,7 +21,6 @@
     input[type="submit"] {
       margin-top: 1em;
     }
-
 
     #area_page_input {
       label {
@@ -23,7 +37,7 @@
 
       .day {
 
-        flex-basis: calc(33.33% - 1em);
+        flex-basis: calc(25% - 1em);
         margin: .5em;
         overflow: hidden;
         background-color: rgba($samfundet-light-grey, 0.3);

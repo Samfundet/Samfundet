@@ -1,0 +1,20 @@
+
+= link_to members_control_panel_path do
+  .samf-button.plain.mb-3
+    = t("common.back")
+
+%h1= t("areas.title")
+
+%table
+  %thead
+    %th= "Navn"
+    %th
+  %tbody
+  - @areas.each do |a|
+    %tr
+      %td= a.name
+      %td
+        .flex-row{style: "float: right;"}
+          = link_to edit_area_path(a) do
+            .samf-button.plain.small.mr-2
+              = t("areas.edit_title.generic")

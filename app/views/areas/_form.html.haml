@@ -1,5 +1,6 @@
-= semantic_form_for @area, html: { class: 'custom-form' } do |f|
-  = f.input :page, member_label: :name
+= semantic_form_for @area do |f|
+
+  %h2= "Åpningstider"
   .day-container
     = f.semantic_fields_for :standard_hours, f.object.week do |h|
       .day
@@ -10,4 +11,13 @@
           = h.input :open_time, as: :time_picker
           = h.input :close_time, as: :time_picker
           = h.input :day, as: :hidden
+  %hr
+
+  = f.inputs name: t('events.forms.labels.information') do
+    = f.input :name, member_label: :name, label: "Navn"
+    .flex-row
+      = f.input :description_no, label: "Beskrivelse (Norsk)", input_html: { rows: 8 }
+      = f.input :description_en, label: "Beskrivelse (Engelsk)", input_html: { rows: 8 }
+    = render 'imagepicker', f: f
+
   = f.actions

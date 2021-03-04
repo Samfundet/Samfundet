@@ -62,7 +62,9 @@ Rails.application.routes.draw do
     ############################
     ##  Routes for areas      ##
     ############################
-    resources :areas, only: [:edit, :update]
+    resources :areas, only:  [:index, :edit, :update] do
+      get :admin, on: :collection
+    end
 
     ############################
     ##  Routes for blog       ##

@@ -3,12 +3,24 @@
 class Area < ApplicationRecord
   include Rails.application.routes.url_helpers
   belongs_to :page
+  belongs_to :image
 
   has_many :standard_hours
+
+  extend LocalizedFields
+  localized_fields :description
 
   accepts_nested_attributes_for :standard_hours
 
   default_scope { includes(:page) }
+
+  def image_or_default
+    if image.present?
+      image.image_file
+    else
+      Image.default_image.image_file
+    end
+  end
 
   def today
     standard_hours.today.first

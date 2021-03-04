@@ -1,8 +1,9 @@
 en:
   areas:
+    title: "Venues"
     edit_title: 
-      generic: "Change opening hours"
-      specific: "Change the opening hours of %{name}"
+      generic: "Edit venue"
+      specific: "Edit venue %{name}"
     name: "Name:"
     weekday: "Weekday"
     opening_time: "Opening time"

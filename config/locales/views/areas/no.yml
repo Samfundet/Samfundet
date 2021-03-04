@@ -1,8 +1,9 @@
 'no':
   areas:
+    title: "Lokaler"
     edit_title:
-      generic: "Endre åpningstider"
-      specific: "Endre åpningstidene til %{name}"
+      generic: "Rediger lokale"
+      specific: "Rediger %{name}"
     name: "Navn:"
     weekday: "Ukedag"
     opening_time: "Åpningstid"

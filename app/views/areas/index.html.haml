@@ -1,0 +1,17 @@
+
+
+%h1.text-Align.mb-3{style: "font-size: 3em;"}= t("areas.title")
+
+%table
+  %thead
+    %th= "Navn"
+  %tbody
+  - @areas.each do |a|
+    .samf-container.mb-3
+      .area-container.flex-row.flex-align-center
+        = background_image_helper "area-image", a.image_or_default, size: :medium
+
+        .p-3{style: "flex-basis: 80%;"}
+          %h1= a.name
+          %p= a.description
+
