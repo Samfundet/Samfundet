@@ -1,3 +1,5 @@
+sudo apt-get update
+sudo apt-get upgrade
 rvm user gemsets
 rvm install ruby
 rvm install 2.5.5 --movable
