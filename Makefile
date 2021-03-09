@@ -51,6 +51,12 @@ truncate:
 setup-mac:
 	sh setup-mac.sh
 
+setup-linux-1:
+	sh setup-linux.sh
+
+setup-linux-2:
+	sh setup-linux-2.sh
+
 .PHONY: generate-diagrams
 generate-diagrams:
 	[ -d docs/diagrams ] ||  mkdir docs/diagrams
