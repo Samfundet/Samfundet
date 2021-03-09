@@ -13,6 +13,7 @@ sudo apt-get install postgresql postgresql-contrib libpq-dev
 echo -e "CREATE USER samfundet WITH PASSWORD 'samfundet';\nALTER USER samfundet CREATEDB;" | sudo -u postgres psql
 
 #Install the bundler
+rvm use 2.5.5 --default
 gem install bundler:1.17.3
 
 #Install required ruby gems
