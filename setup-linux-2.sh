@@ -17,6 +17,7 @@ rvm use 2.5.5 --default
 gem install bundler:1.17.3
 
 #Install required ruby gems
+rvm use 2.5.5 --default
 bundle install
 
 #Copy and paste the config files, and rename them
