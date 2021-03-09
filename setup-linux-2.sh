@@ -3,10 +3,11 @@ sudo apt-get upgrade
 source ~/.rvmrc
 rvm user gemsets
 rvm install ruby
-rvm install ruby-2.5.5
+rvm install 2.5.5
 rvm use 2.5.5 --default
 sudo apt-get install postgresql postgresql-contrib libpq-dev
 echo -e "CREATE USER samfundet WITH PASSWORD 'samfundet';\nALTER USER samfundet CREATEDB;" | sudo -u postgres psql
+rvm reinstall 2.5.5
 bundle install
 
 if [ ! -e $CONFIG_DIR/database.yml ] &&

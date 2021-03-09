@@ -1,6 +1,6 @@
-user=$(whoami)
 sudo apt-get update
 sudo apt-get upgrade
+user=$(whoami)
 sudo apt-get install graphviz
 sudo apt-get install imagemagick
 sudo apt-get install nodejs
