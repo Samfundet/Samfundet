@@ -16,7 +16,23 @@ class PagesController < ApplicationController
   end
 
   def index_beta
-    @areas = Area.all
+    # Only show the venues that have an image
+    # and ignore venues like "Outside the house" etc.
+    supported_venues = %w[
+      Storsalen
+      Bodegaen
+      Klubben
+      Strossa
+      Selskapssiden
+      Knaus
+      Edgar
+      Lyche
+      Daglighallen
+      Rundhallen
+    ]
+    @areas = Area.all.select {
+      |a| supported_venues.include? a.name
+    }
   end
 
   def show

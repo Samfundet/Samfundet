@@ -14,15 +14,18 @@
         %p
           = t("pages.index.description")
       .samf-smart-box.flex-row.wrap.pl-2.pr-2
-        = link_to page_by_name("medlemskap") do
-          .samf-button.red.m-2.w100-mobile
-            = t("pages.index.membership")
-        = link_to page_by_name("faq") do
-          .samf-button.green.m-2.w100-mobile
-            = t("pages.index.faq")
-        = link_to page_by_name("various-information") do
-          .samf-button.plain.m-2.w100-mobile
-            = t("pages.index.various_information")
+        - if page_by_name_en("membership") != "#"
+          = link_to page_by_name_en("membership") do
+            .samf-button.red.m-2.w100-mobile
+              = t("pages.index.membership")
+        - if page_by_name_en("fb-faq") != "#"
+          = link_to page_by_name_en("fb-faq") do
+            .samf-button.green.m-2.w100-mobile
+              = t("pages.index.faq")
+        - if page_by_name_en("various-information") != "#"
+          = link_to page_by_name_en("various-information") do
+            .samf-button.plain.m-2.w100-mobile
+              = t("pages.index.various_information")
 
   .samf-container.white.p-3.m-2.mt-3
     .flex-row.flex-align-center
@@ -31,25 +34,27 @@
     %div
       %p= t("pages.index.samfundsmote_description")
       .flex-row.wrap
-        = link_to page_by_name("styret"), class: "samf-button red m-2" do
+        = link_to page_by_name_en("styret"), class: "samf-button red m-2" do
           = t("pages.index.samfundet_organization")
         .flex-row
-          = link_to page_by_name("documents"), class: "samf-button plain m-2" do
-            = t("pages.index.documents")
-          = link_to page_by_name("history"), class: "samf-button plain m-2" do
-            = t("pages.index.samfundet_history")
+          - if page_by_name_en("documents") != "#"
+            = link_to page_by_name_en("documents"), class: "samf-button plain m-2" do
+              = t("pages.index.documents")
+          - if page_by_name_en("history") != "#"
+            = link_to page_by_name_en("history"), class: "samf-button plain m-2" do
+              = t("pages.index.samfundet_history")
 
   .category-title.mt-3= t("pages.index.venue_title")
 
   .venue-showcase-container.mt-3
     - @areas.sort.each do |a|
-      - if not a.name == "Hele huset"
-        = link_to (a.page != nil ? a.page : "#"), class: "venue-showcase" do
-          = image_tag "info/venues/#{a.name.downcase}.jpg", class: "image"
-          .label= a.name
+      = link_to (a.page != nil ? a.page : "#"), class: "venue-showcase" do
+        = image_tag "info/venues/#{a.name.downcase}.jpg", class: "image"
+        .label= a.name
 
-  = link_to page_by_name("overview-map") do
-    .samf-button.center.plain.mt-3= t("pages.index.overview_map")
+  - if page_by_name_en("overview-map") != "#"
+    = link_to page_by_name_en("overview-map") do
+      .samf-button.center.plain.mt-3= t("pages.index.overview_map")
 
   .flex-row.flex-justify-end.pr-3
     = link_to "http://foto.samfundet.no" do
@@ -67,6 +72,9 @@
       .flex-row.pl-3.pr-3.pb-3
         -#= link_to "#", class: "samf-button white m-2" do
         -#  .center= "Gjengene på Samfundet"
+        - if page_by_name_en("groups") != "#"
+          = link_to page_by_name_en("groups"), class: "samf-button white m-2 flex-align-center" do
+            .center= t("pages.index.groups")
         = link_to admissions_path, class: "samf-button white m-2 flex-align-center" do
           .center= t("pages.index.admission")
 
