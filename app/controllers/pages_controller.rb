@@ -10,9 +10,12 @@ class PagesController < ApplicationController
                            if: -> { show_admin? }
 
   def index
-    # @menu = Page.menu
-    # @page = Page.index
-    # @show_admin = show_admin?
+    @menu = Page.menu
+    @page = Page.index
+    @show_admin = show_admin?
+  end
+
+  def index_beta
     @areas = Area.all
   end
 
@@ -91,7 +94,7 @@ class PagesController < ApplicationController
 private
 
   def page_params
-    params.require(:page).permit(:name_no, :name_en, :title_no, :title_en, :content_no, :content_en, :content_type, :role_id)
+    params.require(:page).permit(:name_no, :name_en, :title_no, :title_en, :content_no, :content_en, :content_type, :hide_menu, :role_id)
   end
 
   def load_page
