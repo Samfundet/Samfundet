@@ -8,6 +8,7 @@ class CreateInfoBoxes < ActiveRecord::Migration[5.2]
       t.string :link_no
       t.string :link_en
       t.integer :image_id
+      t.string :bg_color
       t.timestamps
     end
   end

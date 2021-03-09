@@ -5,8 +5,10 @@
   flex-direction: row;
   flex-wrap: wrap;
   background-color: white;
-  border: 1px solid rgb(230, 230, 230);
+  box-shadow: 2px 2px 20px 5px rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
   overflow: hidden;
+
 
   @include media($mobile-and-tablet-portrait) {
     flex-basis: 100%;
@@ -60,7 +62,6 @@
       flex: 1;
       cursor: pointer;
 
-      color: white;
       @include media($mobile) {
         font-size: 1em;
         padding: 1em;
@@ -70,7 +71,6 @@
       text-decoration: underline;
     }
     .info_text_body{
-      color: white;
       font-weight: lighter;
       font-size: 1em;
       @include media($mobile-and-tablet-portrait){
@@ -78,5 +78,55 @@
       }
     }
 
+  }
+}
+
+//info box color variants
+
+.info_box.red {
+  background-color: $samfundet-red;
+  .info_text{
+    .info_text_title {
+      color:$samfundet-white;
+    }
+    .info_text_body {
+      color:$samfundet-white;
+    }
+  }
+}
+
+.info_box.blue {
+  background-color: $samfundet-blue;
+  .info_text{
+    .info_text_title {
+      color:$samfundet-white;
+    }
+    .info_text_body {
+      color:$samfundet-white;
+    }
+  }
+}
+
+.info_box.white {
+  background-color: $samfundet-white;
+  .info_text{
+    .info_text_title {
+      color:$samfundet-black;
+    }
+    .info_text_body {
+      color:$samfundet-black;
+    }
+  }
+}
+
+.info_box.green {
+  background-color: $samfundet-green;
+  .info_text{
+    .info_text_title {
+      color:$samfundet-white;
+    }
+    .info_text_body {
+      color:$samfundet-white;
+    }
   }
 }
