@@ -1,13 +1,15 @@
 %h1 Info boxes
 - @info_boxes.each do |info_box|
-  .info_box.flex-align-center.samf-container.blue
+  .info_box.flex-align-center{class:info_box.bg_color}
     .picture
-      = background_image_helper "picture", info_box.image_or_default, size: :medium
+      = link_to info_box.link do
+        = background_image_helper "picture", info_box.image_or_default, size: :medium
     .info_text
-      .info_text_title
-        = info_box.title
-      .info_text_body
-        = info_box.body
+      = link_to info_box.link do
+        .info_text_title
+          = info_box.title
+        .info_text_body
+          = info_box.body
       .flex-row
         = link_to edit_info_box_path(info_box) do
           .samf-button.white.m-3

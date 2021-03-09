@@ -1,5 +1,5 @@
 - @info_boxes.each do |info_box|
-  .info_box.flex-align-center.samf-container.blue
+  .info_box.flex-align-center{class:info_box.bg_color}
     .picture
       = link_to info_box.link do
         = background_image_helper "picture", info_box.image_or_default, size: :medium
@@ -9,6 +9,7 @@
           = info_box.title
         .info_text_body
           = info_box.body
+
       - if can? :manage, FrontPageLock
         = link_to edit_info_box_path(info_box) do
           .samf-button.white.mt-3
@@ -17,7 +18,9 @@
           .samf-button.mt-3
             delete
 
-
 - if can? :manage, FrontPageLock
-  .samf-button.green.center.mb-3
-    = link_to "new info box", new_info_box_path
+  .flex-row.center.mb-3
+    .samf-button.green.mr-3
+      = link_to "new info box", new_info_box_path
+    .samf-button.mr-3
+      = link_to "see all info boxes", info_boxes_path
