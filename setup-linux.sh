@@ -16,3 +16,9 @@ sudo apt-get install rvm
 #Adding the user to the rvm group
 user=$(whoami)
 sudo usermod -a -G rvm $user
+
+#Install ruby
+rvm user gemsets
+rvm install ruby
+rvm install 2.5.5
+rvm use 2.5.5 --default
