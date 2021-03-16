@@ -9,14 +9,14 @@
           = info_box.title
         .info_text_body
           = info_box.body
-
-      - if can? :manage, FrontPageLock
-        = link_to edit_info_box_path(info_box) do
-          .samf-button.white.mt-3
-            edit
-        = link_to info_box_path(info_box), method: :delete, data: {confirm: "Are you sure"} do
-          .samf-button.mt-3
-            delete
+      .flex-row.mb-3
+        - if can? :manage, FrontPageLock
+          = link_to edit_info_box_path(info_box) do
+            .samf-button.white.m-3
+              edit
+          = link_to info_box_path(info_box), method: :delete, data: {confirm: "Are you sure"} do
+            .samf-button.m-3
+              delete
 
 - if can? :manage, FrontPageLock
   .flex-row.center.mb-3
