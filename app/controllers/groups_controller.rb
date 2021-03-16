@@ -6,6 +6,11 @@ class GroupsController < ApplicationController
   has_control_panel_applet :admin_applet,
                            if: -> { can? :edit, Group }
 
+  def index
+    @group_types = GroupType.all.sort
+    @groups = Group.all
+  end
+
   def admin_applet; end
 
   def admin

@@ -102,7 +102,7 @@ Rails.application.routes.draw do
     end
 
     resources :applicants
-    resources :groups, only: [:new, :create, :edit, :update] do
+    resources :groups, only: [:index, :new, :create, :edit, :update] do
       get :admin, on: :collection
     end
 
