@@ -1,10 +1,10 @@
 class InfoBox < ApplicationRecord
-  COLOR = %w[blue red white green].freeze
+  COLOR = %w[blue red white green black].freeze
 
   extend LocalizedFields
   localized_fields :title, :body, :link
 
-  validates :title_no, :title_en, :body_no, :body_en, :bg_color, presence: true
+  validates :title_no, :title_en, :body_no, :body_en, :color, presence: true
 
   belongs_to :image
   def image_or_default

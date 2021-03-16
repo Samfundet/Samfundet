@@ -276,7 +276,9 @@ ActiveRecord::Schema.define(version: 2021_02_18_134526) do
     t.string "link_no"
     t.string "link_en"
     t.integer "image_id"
-    t.string "bg_color"
+    t.string "color"
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

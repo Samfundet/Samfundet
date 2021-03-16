@@ -43,6 +43,6 @@ class InfoBoxesController < ApplicationController
 
   private
     def info_box_params
-      params.require(:info_box).permit(:title_no, :title_en, :body_no, :body_en, :image_id, :link_no, :link_en, :bg_color )
+      params.require(:info_box).permit(:title_no, :title_en, :body_no, :body_en, :image_id, :link_no, :link_en, :color, :start_time, :end_time )
     end
 end

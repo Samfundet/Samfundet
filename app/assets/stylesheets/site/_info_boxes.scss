@@ -130,3 +130,15 @@
     }
   }
 }
+
+.info_box.black {
+  background-color: $samfundet-black;
+  .info_text{
+    .info_text_title {
+      color:$samfundet-white;
+    }
+    .info_text_body {
+      color:$samfundet-white;
+    }
+  }
+}

@@ -7,9 +7,11 @@
       .flex-row
         = f.input :body_no, label: "Kort beskrivelse (Norsk)"
         = f.input :body_en, label: "Kort beskrivelse (Engelsk)"
+      .flex-row
+        = f.input :start_time, label: "Start time", input_html: { class: "datetimepicker", value: @info_box.start_time}, as: :string
+        = f.input :end_time, label: "End time", input_html: { class: "datetimepicker", value: @info_box.end_time}, as: :string
       .flex-row.mb-3
-        = f.input :bg_color, label: "Pick a color", as: :select, collection: InfoBox::COLOR.map { |k| [t("info_boxes.#{k}"), k]}
-
+        = f.input :color, label: "Pick a color", as: :select, collection: InfoBox::COLOR.map { |k| [t("info_boxes.#{k}"), k]}
       .flex-row
         %div{:style=>"flex-basis:100%;"}
           = render 'imagepicker', f: f
