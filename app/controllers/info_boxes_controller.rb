@@ -1,5 +1,9 @@
 class InfoBoxesController < ApplicationController
-  skip_authorization_check
+  load_and_authorize_resource
+
+  has_control_panel_applet :admin_applet,
+                           if: -> { can? :manage, InfoBox }
+
   def index
     @info_boxes = InfoBox.all
   end
