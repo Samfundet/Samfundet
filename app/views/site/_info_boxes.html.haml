@@ -13,14 +13,16 @@
         - if can? :manage, FrontPageLock
           = link_to edit_info_box_path(info_box) do
             .samf-button.white.m-3
-              edit
+              = t("info_boxes.edit")
           = link_to info_box_path(info_box), method: :delete, data: {confirm: "Are you sure"} do
             .samf-button.m-3
-              delete
+              = t("info_boxes.delete")
 
 - if can? :manage, FrontPageLock
   .flex-row.center.mb-3
-    .samf-button.green.mr-3
-      = link_to "new info box", new_info_box_path
-    .samf-button.mr-3
-      = link_to "see all info boxes", info_boxes_path
+    = link_to new_info_box_path do
+      .samf-button.green.mr-3
+        = t("info_boxes.new")
+    = link_to info_boxes_path do
+      .samf-button.mr-3
+        = t("info_boxes.all")

@@ -10,7 +10,7 @@
 .flex-row
   = link_to edit_info_box_path(@info_box) do
     .samf-button.white.m-3
-      edit
+      = t("info_boxes.edit")
   = link_to info_box_path(@info_box), method: :delete, data: {confirm: "Are you sure"} do
     .samf-button.m-3
-      delete
+      = t("info_boxes.delete")

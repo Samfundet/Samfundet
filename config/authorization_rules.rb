@@ -47,7 +47,7 @@ authorization do
       :sulten_closed_periods,
       :contact,
       :admissions_admin_campus,
-      :info_boxes
+      :info_boxes,
     ], to: :manage
 
     has_permission_on :admissions_admin_groups, to: :reject_calls
@@ -122,7 +122,7 @@ authorization do
       :pages,
       :everything_closed_periods,
       :front_page_locks,
-      :info_boxes
+      :info_boxes,
     ], to: :manage
     has_permission_on :images, to: [:read]
     has_permission_on :pages, to: [:read, :update, :edit_non_content_fields]

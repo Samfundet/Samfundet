@@ -1,0 +1,14 @@
+en:
+  info_boxes:
+    title: Info boxes
+    edit: Edit
+    delete: Delete
+    new: Create new info box
+    all: Show all info boxes
+
+    form:
+      header: Information
+      start: Start time
+      end: End time
+      color: Choose a color
+      image: Choose image
