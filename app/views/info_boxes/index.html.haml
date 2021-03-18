@@ -1,4 +1,5 @@
-%h1 Info boxes
+%h1
+  = t("info_boxes.title")
 - @info_boxes.each do |info_box|
   .info_box.flex-align-center{class:info_box.color}
     .picture
@@ -13,10 +14,11 @@
       .flex-row
         = link_to edit_info_box_path(info_box) do
           .samf-button.white.m-3
-            edit
+            = t("info_boxes.edit")
         = link_to info_box_path(info_box), method: :delete, data: {confirm: "Are you sure"} do
           .samf-button.m-3
-            delete
+            = t("info_boxes.delete")
 
-.samf-button.green.mt-3.center
-  = link_to "new info box", new_info_box_path
+= link_to new_info_box_path do
+  .samf-button.green.mt-3.center
+    = t("info_boxes.new")

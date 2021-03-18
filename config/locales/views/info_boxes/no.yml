@@ -1,0 +1,14 @@
+'no':
+  info_boxes:
+    title: Info bokser
+    edit: Rediger
+    delete: Slett
+    new: Opprett ny info boks
+    all: Hvis alle info bokser
+
+    form:
+      header: Informasjon
+      start: Start tid
+      end: Slutt tid
+      color: Velg en farge
+      image: Velg bilde

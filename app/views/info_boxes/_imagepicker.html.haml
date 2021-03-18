@@ -1,4 +1,4 @@
-= f.inputs name: "Choose image" do
+= f.inputs name: t("info_boxes.form.image") do
   = f.input :image_id, as: :hidden, input_html: { value: Image.image_for(f.object).id, class: 'image_id_input' }
   = image_tag Image.image_for(f.object).image_file.url, class: 'image-preview'
 
