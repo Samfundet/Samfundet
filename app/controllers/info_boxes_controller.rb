@@ -19,7 +19,7 @@ class InfoBoxesController < ApplicationController
   def create
     @info_box = InfoBox.new(info_box_params)
     if @info_box.save
-      redirect_to ""
+      redirect_to root_path
     else
       render :new
     end
@@ -33,7 +33,7 @@ class InfoBoxesController < ApplicationController
     @info_box = InfoBox.find(params[:id])
 
     if @info_box.update(info_box_params)
-      redirect_to ""
+      redirect_to root_path
     else
       render :edit
     end
@@ -42,7 +42,7 @@ class InfoBoxesController < ApplicationController
   def destroy
     @info_box = InfoBox.find(params[:id])
     @info_box.destroy
-    redirect_to ""
+    redirect_to root_path
   end
 
   def admin_applet

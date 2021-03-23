@@ -124,7 +124,7 @@ authorization do
       :front_page_locks,
       :info_boxes,
     ], to: :manage
-    has_permission_on :images, to: [:read]
+    has_permission_on [:images, :info_boxes,], to: [:read]
     has_permission_on :pages, to: [:read, :update, :edit_non_content_fields]
   end
 
