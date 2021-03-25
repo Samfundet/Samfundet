@@ -4,7 +4,7 @@ class InfoBox < ApplicationRecord
   extend LocalizedFields
   localized_fields :title, :body, :link
 
-  validates :title_no, :title_en, :body_no, :body_en, :color, presence: true
+  validates :title_no, :title_en, :body_no, :body_en, :color, :start_time, :end_time, presence: true
 
   belongs_to :image
 

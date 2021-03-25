@@ -1,14 +1,16 @@
 - @info_boxes.each do |info_box|
-  .info_box.flex-align-center{class:info_box.color}
-    .picture
-      = link_to info_box.link do
-        = background_image_helper "picture", info_box.image_or_default, size: :medium
-    .info_text
+  .info_box.flex-align-center{class:info_box.color, style: !info_box.image_state? && "height: 200px;"}
+    - if info_box.image_state
+      .picture
+        = link_to info_box.link do
+          = background_image_helper "picture", info_box.image_or_default, size: :medium
+    .info_text{class: [!info_box.image_state? && "center text-Align"]}
       = link_to info_box.link do
         .info_text_title
           = info_box.title
         .info_text_body
           = info_box.body
+
       .flex-row.mb-3
         - if can? :manage, FrontPageLock
           = link_to edit_info_box_path(info_box) do

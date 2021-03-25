@@ -18,6 +18,12 @@
         = link_to info_box_path(info_box), method: :delete, data: {confirm: "Are you sure"} do
           .samf-button.m-3
             = t("info_boxes.delete")
+      .flex-row
+        Start time:
+        = info_box.start_time
+      .flex-row
+        End time
+        = info_box.end_time
 
 = link_to new_info_box_path do
   .samf-button.green.center
