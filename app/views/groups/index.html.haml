@@ -1,9 +1,44 @@
 
 %h1= t("pages.index.groups")
+%p= t("pages.index.groups_info")
 
-- @group_types.each do |t|
-  %h2= t.description
-  .flex-row.wrap
-    - t.groups.each do |g|
-      .samf-button.small.plain.m-2
-        = g.name
+.groups-showcase-container
+  - @group_types.each do |t|
+    .samf-container.white.p-3.m-2.mt-3
+      .flex-row.wrap.center
+        .group-type-headline=t
+        - t.groups.each do |g|
+          = link_to (g.page != nil ? g.page : "#"), class: "group-showcase" do
+            = image_tag "groups/#{g.name.downcase}.jpg", class: "image"
+            - if g.name == "Kafé- og Serveringsgjengen"
+              .label="KSG"
+            - elsif g.name == "Akademisk Radioklubb"
+              .label="ARK"
+            - elsif g.name == "Markedsføringsgjengen"
+              .label="MG"
+            - elsif g.name == "Big Mama's Cowboys"
+              .label="BMC"
+            - elsif g.name == "Strindens Prom Orchester"
+              .label="Strindens"
+            - elsif g.name == "Strindens Promonade Orchester"
+              .label="Strindens"
+            - elsif g.name == "Studentersamfundets Interne Teater"
+              .label="SIT"
+            - elsif g.name == "Trondhjems Kvinnelige Studentersangforening"
+              .label="TKS"
+            - elsif g.name == "Trondhjems Studentersangforening"
+              .label="TSS"
+            - elsif g.name == "Studentersamfundets Symfoniorkester"
+              .label="Symforch"
+            - elsif g.name == "Studentersamfundets Orkester"
+              .label="Musikerlåfte"
+            - elsif g.name == "Samfundets byggekomité"
+              .label="SBK"
+            - elsif g.name == "Samfundets Byggekomité"
+              .label="SBK"
+            - elsif g.name == "Samfundets byggekomite"
+              .label="SBK"
+            - elsif g.name == "Trondheim InterRail Centre"
+              .label="TIC"
+            - else
+              .label= g.name
