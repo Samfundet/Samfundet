@@ -10,35 +10,7 @@
         - t.groups.each do |g|
           = link_to (g.page != nil ? g.page : "#"), class: "group-showcase" do
             = image_tag "groups/#{g.name.downcase}.jpg", class: "image"
-            - if g.name == "Kafé- og Serveringsgjengen"
-              .label="KSG"
-            - elsif g.name == "Akademisk Radioklubb"
-              .label="ARK"
-            - elsif g.name == "Markedsføringsgjengen"
-              .label="MG"
-            - elsif g.name == "Big Mama's Cowboys"
-              .label="BMC"
-            - elsif g.name == "Strindens Prom Orchester"
-              .label="Strindens"
-            - elsif g.name == "Strindens Promonade Orchester"
-              .label="Strindens"
-            - elsif g.name == "Studentersamfundets Interne Teater"
-              .label="SIT"
-            - elsif g.name == "Trondhjems Kvinnelige Studentersangforening"
-              .label="TKS"
-            - elsif g.name == "Trondhjems Studentersangforening"
-              .label="TSS"
-            - elsif g.name == "Studentersamfundets Symfoniorkester"
-              .label="Symforch"
-            - elsif g.name == "Studentersamfundets Orkester"
-              .label="Musikerlåfte"
-            - elsif g.name == "Samfundets byggekomité"
-              .label="SBK"
-            - elsif g.name == "Samfundets Byggekomité"
-              .label="SBK"
-            - elsif g.name == "Samfundets byggekomite"
-              .label="SBK"
-            - elsif g.name == "Trondheim InterRail Centre"
-              .label="TIC"
+            - if g.name.length > 14
+              .label=g.abbreviation
             - else
               .label= g.name
