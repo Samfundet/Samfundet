@@ -7,7 +7,7 @@ sudo apt-get install graphviz
 sudo apt-get install imagemagick
 sudo apt-get install nodejs
 
-#Pre-requisits for installing rvm (ruby version manager)
+#Prerequisits for installing rvm (ruby version manager)
 sudo add-apt-repository universe
 sudo apt-get install software-properties-common
 sudo apt-add-repository -y ppa:rael-gc/rvm

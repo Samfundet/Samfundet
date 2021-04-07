@@ -51,11 +51,14 @@ truncate:
 setup-mac:
 	sh setup-mac.sh
 
-setup-linux-1:
-	sh setup-linux.sh
+linux-prerequisites:
+	sh linux-prerequisites.sh
 
-setup-linux-2:
-	sh setup-linux-2.sh
+linux-setup-rvm:
+	sh linux-setup-rvm.sh
+
+linux-setup-database:
+	sh linux-setup-rvm.sh
 
 .PHONY: generate-diagrams
 generate-diagrams:
