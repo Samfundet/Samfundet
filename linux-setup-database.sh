@@ -1,5 +1,11 @@
+sudo apt update
+sudo apt upgrade
+
+rvm use 2.5.5 --default
+
 #Install required ruby gems
 bundle install
+bundle update
 
 #Copy and paste the config files, and rename them
 if [ ! -e $CONFIG_DIR/database.yml ] &&
