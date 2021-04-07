@@ -10,7 +10,6 @@ if [ ! -e $CONFIG_DIR/database.yml ] &&
 fi
 
 #For setting up the database for the first time
-rvm use 2.5.5 --default
 bundle exec rails db:setup
 
 #Run the server

@@ -50,16 +50,6 @@ truncate:
 
 setup-mac:
 	sh setup-mac.sh
-
-linux-prerequisites:
-	sh linux-prerequisites.sh
-
-linux-setup-rvm:
-	sh linux-setup-rvm.sh
-
-linux-setup-database:
-	sh linux-setup-rvm.sh
-
 .PHONY: generate-diagrams
 generate-diagrams:
 	[ -d docs/diagrams ] ||  mkdir docs/diagrams
