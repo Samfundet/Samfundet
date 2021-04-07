@@ -2,7 +2,7 @@
 sudo apt-get update
 sudo apt-get upgrade
 
-#Some requirements to install beforehand
+#Some dependencies to install beforehand
 sudo apt-get install graphviz
 sudo apt-get install imagemagick
 sudo apt-get install nodejs
