@@ -5,6 +5,8 @@ sudo apt-get upgrade
 #Install ruby
 rvm user gemsets
 rvm install ruby
+
+#For the project, we mainly use Ruby 2.5.5.
 rvm install 2.5.5
 rvm use 2.5.5 --default
 
