@@ -17,13 +17,12 @@ class Sulten::LycheController < Sulten::BaseController
       end
     end
 
-    area = Area.find_by_name("Lyche")
+    area = Area.find_by_name('Lyche')
     if area == nil
       @open_hours = []
     else
       @open_hours = area.grouped_open_hours
     end
-
   end
 
   def reservation
@@ -83,7 +82,7 @@ class Sulten::LycheController < Sulten::BaseController
   end
 
   def menu
-    area = Area.find_by_name("Lyche")
+    area = Area.find_by_name('Lyche')
     if area == nil
       @open_hours = []
     else

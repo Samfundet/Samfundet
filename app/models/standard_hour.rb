@@ -18,7 +18,6 @@ class StandardHour < ApplicationRecord
   scope :today, lambda {
     where(day: (Time.current - 4.hours).strftime('%A').downcase)
   }
-
 end
 
 # == Schema Information
