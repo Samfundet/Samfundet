@@ -50,6 +50,7 @@ truncate:
 
 setup-mac:
 	sh setup-mac.sh
+
 .PHONY: generate-diagrams
 generate-diagrams:
 	[ -d docs/diagrams ] ||  mkdir docs/diagrams
