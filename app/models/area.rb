@@ -14,6 +14,10 @@ class Area < ApplicationRecord
     standard_hours.today.first
   end
 
+  def by_day(day)
+    standard_hours.find {|o| o.day == day}
+  end
+
   def week
     StandardHour::WEEKDAYS.map do |day|
       standard_hours.find { |o| o.day == day } || standard_hours.build(day: day)
