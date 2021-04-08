@@ -6,7 +6,6 @@ sudo apt upgrade
 rvm use 2.5.5 --default
 
 #Install required ruby gems
-bundle update
 bundle install
 
 #Copy and paste the config files, and rename them
