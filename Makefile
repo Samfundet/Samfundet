@@ -1,5 +1,6 @@
 .PHONY: all
 all:
+	bundle update
 	bundle install
 	bundle exec rake db:migrate
 
