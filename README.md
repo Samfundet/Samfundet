@@ -48,32 +48,29 @@ There are several dependencies needed to get Samfundet up and running. Note that
 ![login-shell-1](images/login-shell-1.png)
 ![login-shell-2](images/login-shell-2.png)
 
-2. Make sure you have navigated to the project directory in the terminal. Then run the following commands:
+2. Make sure you have navigated to the project directory in the terminal. Then run the following script: (copy and paste into terminal)
 
 ```bash
-chmod +x linux-prerequisites.sh
 ./linux-prerequisites.sh
 ```
 
 This will make a script run, that will install a few dependencies for you. A restart is however required after running this script, so restart your computer before proceeding to step 3.
 
-3. Navigate back to the project and run the following commands:
+3. Navigate back to the project and run the following script:
 
 ```bash
-chmod +x linux-setup-rvm.sh
 ./linux-setup-rvm.sh
 ```
 
 A restart is also required after running this script. Restart before proceeding to step 4.
 
-4. Navigate back to the project and run the following commands:
+4. Navigate back to the project and run the following script:
 
 ```bash
-chmod +x linux-setup-database.sh
 ./linux-setup-database.sh
 ```
 
-After the script has completed, the project should be up and running!
+After this script has completed, the project should be up and running!
 
 ##### Option 2 (Manual)
 
