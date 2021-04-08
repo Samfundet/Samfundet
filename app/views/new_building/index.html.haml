@@ -1,6 +1,7 @@
 - set_open_graph_params({ title: t('site.index.og_title'), description: t('site.index.og_description'), image: 'https://www.samfundet.no/upload/images/image_files/000/001/669/original/logo_samf.no.png?1538501206'})
 - set_twitter_params({ card: "summary_large_image", title: t('site.index.og_title'), description: t('site.index.og_description'), 'image:src' => 'https://www.samfundet.no/upload/images/image_files/000/001/669/original/logo_samf.no.png?1538501206'})
 
+
 .pages-index
 
   .samf-smart-box.flex-align-center.mt-3
@@ -14,3 +15,10 @@
         %p
           = t("pages.index.description")
 
+  .samf-container.white.p-3.m-2.mt-3
+    .flex-row.flex-align-center
+      = image_tag "new_building/progress.png", style: "width: 2.5em; height: 2.5em; background-size: contain;"
+      %h1.ml-1.mt-1= t("new_building.index.progress.title")
+    %div
+      %p= simple_format(t("new_building.index.progress.description"))
+      %i= simple_format(t("new_building.index.progress.decision"))
