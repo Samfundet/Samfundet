@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     post 'contact', to: 'contact#create'
 
     get 'search', to: 'search#search'
+
+    get 'nybygg', to: 'new_building#index'
     #resources :search, only: [:new, :create, :search]
     ############################
     ##  Routes for events     ##
