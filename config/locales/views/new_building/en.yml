@@ -1,4 +1,6 @@
 en:
   new_building:
     index:
-      title: About the new building
+      title: About the New Building
+      short_description: "The Student Society is finally expanding! On this website you will find relevant information about the project. Please contact us at nybygg@samfundet.no if you have any questions."
+      long_description: "More information coming soon!"
