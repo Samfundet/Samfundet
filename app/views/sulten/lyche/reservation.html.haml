@@ -78,7 +78,9 @@
 
           - # This is the input field for the time the reservation will start
           = f.input :reservation_duration, label: "Tidspunkt", collection: @times, member_label: proc{|d| "#{d} "}, include_blank: false
-          .form-divider
+          %h5
+            %i{style:"color:grey; font-size: 12.5px;"}
+              = "Husk at Lyche stenger kl. " + l(@close_time, format: :time) + " på " + t("days." +@day)
           = f.input :name, label: t("sulten.reservation.name")
           = f.input :telephone, label: t("sulten.reservation.telephone")
           = f.input :email, label: t("sulten.reservation.email")
