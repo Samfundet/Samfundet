@@ -17,7 +17,7 @@
     - # In case all some infoboxes have a position greater than the
     - # number of rows we add the remaining ones at the bottom
     - if max_row < 10
-      - (max_row..10).each do |row|
+      - ((max_row+1)..10).each do |row|
         - if @info_boxes[row] != nil
           .w100.flex-column
             - @info_boxes[row].each do |info_box|
