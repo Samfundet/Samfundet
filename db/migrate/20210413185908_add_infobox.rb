@@ -1,5 +1,6 @@
 class AddInfobox < ActiveRecord::Migration[5.2]
   def change
+    drop_table :info_boxes
     create_table :info_boxes do |t|
       t.string :title_no
       t.string :title_en
