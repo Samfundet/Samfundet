@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class InfoBox < ApplicationRecord
   COLOR = %w[blue red white green black].freeze
 
