@@ -335,7 +335,7 @@ ActiveRecord::Schema.define(version: 2020_12_17_132844) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
+  
   create_table "interviews", id: :serial, force: :cascade do |t|
     t.datetime "time"
     t.string "priority", limit: 10
