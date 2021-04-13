@@ -38,3 +38,21 @@ en:
 
           Here are the contributions from the parallel assignment;
         paralell_assignment_2: These concepts were discussed at <a href=" https://www.facebook.com/events/1061062644065827/", target="_blank">Samfundsmøte; Samfundet bygger ut</a>.
+
+      documents:
+        title: Governing documents
+        description: |
+          Formally, Nybyggkomiteen is an FSUG (Finance Board subgroup) that prepares matters for the Finance Board (FS). The committee presents status reports and requirements for clarifications ongoing for FS, and where FS sends this for consideration in Storsalen to get the members' support for both the process and the results that are presented.
+
+          It should be suggested that Storsalen (the Grand Hall) has a real influence, including rejecting proposals in whole or in part, requesting the process to stop, postponed or promoted for new treatment. It must be a goal to get as effective debate as possible during each treatment.
+        button1_title: Laws and statutes
+        button2_title: Process plan
+        doc1: https://samfundet.no/upload/documents/files/000/000/575/FS_bok_2018.pdf?1540925719
+        doc2: https://drive.google.com/file/d/0BxmL8pfcmyvEZ3NJWmh5QUdpWVRPWE9hb1lvVjY1YzVzdFh3/view
+
+      images:
+        image_1: UKA
+        image_2: Mellomrommet
+        image_3: Noe tekst
+        image_4: Noe tekst
+
