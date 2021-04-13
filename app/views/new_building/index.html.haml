@@ -25,3 +25,20 @@
     %div
       %p= simple_format(t("new_building.index.progress.description"))
       %i= simple_format(t("new_building.index.progress.decision"))
+
+
+  .samf-container.white.p-3.m-2.mt-3
+    .flex-row.flex-align-center
+      %h1.mt-1= t("new_building.index.documents.title")
+    %div
+      %p= simple_format(t("new_building.index.documents.description"))
+      .flex-row
+        =link_to t("new_building.index.documents.doc1") do
+          .samf-button.small
+            = t("new_building.index.documents.button1_title")
+        .m-1
+        =link_to t("new_building.index.documents.doc2") do
+          .samf-button.small
+            = t("new_building.index.documents.button2_title")
+
+
