@@ -68,6 +68,11 @@ class Sulten::LycheController < Sulten::BaseController
       @reservation_type = request[:reservation_type_id]
       @number_of_guests = request[:reservation_duration] # Using the reservation_duration to get a dropdown.
       @reservation_date = request[:reservation_from]
+      area = Area.find_by_name("Lyche")
+      day = Time.parse(@reservation_date).strftime("%A").downcase
+      @close_time = area.by_day(day).close_time
+      @day = day
+
     end
   end
 
