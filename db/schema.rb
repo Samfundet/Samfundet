@@ -334,6 +334,7 @@ ActiveRecord::Schema.define(version: 2020_12_17_132844) do
     t.datetime "end_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "position"
   end
   
   create_table "interviews", id: :serial, force: :cascade do |t|
