@@ -23,6 +23,7 @@ en:
         applications_title: ""
         applications: ""
 
+
       documents:
         title: Governing documents
         description: |
@@ -33,3 +34,10 @@ en:
         button2_title: Process plan
         doc1: https://samfundet.no/upload/documents/files/000/000/575/FS_bok_2018.pdf?1540925719
         doc2: https://drive.google.com/file/d/0BxmL8pfcmyvEZ3NJWmh5QUdpWVRPWE9hb1lvVjY1YzVzdFh3/view
+
+      images:
+        image_1: UKA
+        image_2: Mellomrommet
+        image_3: Noe tekst
+        image_4: Noe tekst
+
