@@ -8,6 +8,16 @@ class SiteController < ApplicationController
     @todays_events = Event.today
     @upcoming_events = Event.front_page_events(11)
     @banner_event = @upcoming_events.shift
+
+    @info_boxes = {}
+    InfoBox.where('start_time <= ? and end_time >= ?', Time.current, Time.current).each do |box|
+      if @info_boxes[box.position] == nil
+        @info_boxes[box.position] = [box]
+      else
+        @info_boxes[box.position].append(box)
+      end
+    end
+
     @opening_hours_url = page_url(Page.find_by_name(t('site.index.opening-hours-page-title')))
     open_admissions = Admission.appliable.includes(
         group_types: { groups: :jobs }

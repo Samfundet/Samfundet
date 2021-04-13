@@ -1,0 +1,16 @@
+.info_box.flex-align-center.samf-container.blue
+  .picture
+    = background_image_helper "picture", @info_box.image_or_default, size: :medium
+  .info_text
+    .info_text_title
+      = @info_box.title
+    .info_text_body
+      = @info_box.body
+
+.flex-row
+  = link_to edit_info_box_path(@info_box) do
+    .samf-button.white.m-3
+      = t("info_boxes.edit")
+  = link_to info_box_path(@info_box), method: :delete, data: {confirm: "Are you sure"} do
+    .samf-button.m-3
+      = t("info_boxes.delete")
