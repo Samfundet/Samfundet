@@ -12,3 +12,5 @@ en:
       end: End time
       color: Choose a color
       image: Choose image
+      position: Position (row)
+      position_explanation: Position of the info box where 0 is above events, 1 is after first row of events etc.

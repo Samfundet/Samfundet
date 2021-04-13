@@ -13,11 +13,17 @@
       .flex-row
         = f.input :start_time, label: t("info_boxes.form.start"), input_html: { class: "datetimepicker", value: @info_box.start_time}, as: :string
         = f.input :end_time, label: t("info_boxes.form.end"), input_html: { class: "datetimepicker", value: @info_box.end_time}, as: :string
-      .flex-row.mb-3
-        = f.input :color, label: t("info_boxes.form.color"), as: :select, collection: InfoBox::COLOR.map { |k| [t("info_boxes.#{k}"), k]}
       .flex-row
+        = f.input :color, label: t("info_boxes.form.color"), as: :select, collection: InfoBox::COLOR.map { |k| [t("info_boxes.#{k}"), k]}
+      .flex-row.mb-3
+        = f.input :position, label: t("info_boxes.form.position"), as: :select, collection: 0..10
+      %i= t("info_boxes.form.position_explanation")
+      .flex-row
+
         %div{:style=>"flex-basis:100%;"}
           = render 'imagepicker', f: f
-      = f.input :image_state, label: "Bilde/No bilde"
+          = f.input :image_state, label: "Bruk Bilde"
+      %hr
+
     = f.actions do
       = f.action :submit

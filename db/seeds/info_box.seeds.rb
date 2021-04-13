@@ -14,8 +14,8 @@ COLOR = %w[blue red white green black]
       start_time:Time.current,
       end_time: (rand 2).weeks.from_now +
         (rand 4).days +
-        (rand 5.hours.to_i)
-
+        (rand 5.hours.to_i),
+      position: rand(10)
     )
 end
 
@@ -30,7 +30,8 @@ InfoBox.create!(
   start_time:Time.current,
   end_time: (rand 2).weeks.from_now +
     (rand 4).days +
-    (rand 5.hours.to_i)
+    (rand 5.hours.to_i),
+  position: 1
 
 )
 puts "Done creating info box"
