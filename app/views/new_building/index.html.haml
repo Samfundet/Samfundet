@@ -58,6 +58,23 @@
       %i= simple_format(t("new_building.index.about.applications_title"))
       %p= simple_format(t("new_building.index.about.applications"))
 
+  .samf-container.white.p-3.m-2.mt-3
+    .flex-row.flex-align-center
+      = image_tag "new_building/progress.png", style: "width: 2.5em; height: 2.5em; background-size: contain;"
+      %h1.ml-1.mt-1= t("new_building.index.history.title")
+    %div
+      %p= simple_format(t("new_building.index.history.intro"))
+      %i= simple_format(t("new_building.index.history.nidelva_title"))
+      %p= simple_format(t("new_building.index.history.nidelva"))
+      %i= simple_format(t("new_building.index.history.rooms_title"))
+      %p= simple_format(t("new_building.index.history.rooms"))
+      %i= simple_format(t("new_building.index.history.paralell_assignment_title"))
+      %p= simple_format(t("new_building.index.history.paralell_assignment_1"))
+      %li <a href="https://drive.google.com/file/d/1QLk3M8HlYL1nVji1zE-2HFiABApqUHg3/view ", target="_blank">Du store verden - Skibnes arkitekter</a>
+      %li <a href="https://drive.google.com/file/d/1umIrffZz2eCqwnhu05L8Lgvxxqg1OGlJ/view ", target="_blank">Sceneskifte - Eggen arkitekter</a>
+      %li <a href="https://drive.google.com/file/d/1jH6K5e8F7UC7_y4rWjcXawzaskZCMW4T/view?usp=drive_open ", target="_blank">Merry Glow Red - Pir II arkitekter</a>
+      %p= simple_format(t("new_building.index.history.paralell_assignment_2"))
+
   .samf-smart-box
     .half.pr-3.m-3.flex-column.flex-align-center
       = image_tag "new_building/06 UKA_000.png", alt: "Samfundet", class: "br-1 bxs"
