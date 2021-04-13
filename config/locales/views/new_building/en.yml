@@ -2,8 +2,6 @@ en:
   new_building:
     index:
       title: About the New Building
-      short_description: "The Student Society is finally expanding! On this website you will find relevant information about the project. Please contact us at nybygg@samfundet.no if you have any questions."
-      long_description: "More information coming soon!"
       progress:
         title: where are we now?
         description: Something...
@@ -14,6 +12,13 @@ en:
         meeting: meeting engelsk
         background: background engelsk
 
+      short_description: The Student Society is finally expanding! On this website you will find relevant information about the project. Please contact us at nybygg@samfundet.no if you have any questions.
+      long_description: More information coming soon!
 
-
-
+      about:
+        title: About the project
+        intro: The Student Society in Trondheim (Samfundet) is the largest student society in the Nordic region, Norway's third largest concert organizer and the heart of the student city of Trondheim. The purpose of the community is to be a student's gathering place, a cultural institution and an arena for community engagement and debate. The organization works for its members, other students, the academic environment and the population in Trondheim. Samfundet received its current building in 1929 when there were 700 students in Trondheim. Now it is 37,000 students and the building is almost the same. Since the 60's, the organization has wanted to expand. By 2018, the physical framework is so limited that the organization does not meet its purpose. Therefore,Samfundet has decided to build on Fengseltomta east of the existing building.
+        financing_title: Finance
+        financing: Samfundet is owned and operated by its members without operating grants. This is unique in Norway. The development is calculated to cost 150 million NOK. Samfundet owns Fengselstomta and has a letter of intent with NTNU to sell that part of the residential area Samfundet itself should not build on. Samfundet is also in dialogue with the government and actors in the study city to secure funding.
+        applications_title: ""
+        applications: ""
