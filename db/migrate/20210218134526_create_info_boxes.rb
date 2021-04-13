@@ -13,7 +13,6 @@ class CreateInfoBoxes < ActiveRecord::Migration[5.2]
       t.datetime :start_time
       t.datetime :end_time
       t.timestamps
-      t.integer :position
     end
   end
 end
