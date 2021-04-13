@@ -4,5 +4,16 @@ en:
       title: About the New Building
       short_description: "The Student Society is finally expanding! On this website you will find relevant information about the project. Please contact us at nybygg@samfundet.no if you have any questions."
       long_description: "More information coming soon!"
-      progress: Where are we now?
+      progress:
+        title: where are we now?
+        description: Something...
+        decision: Something...
+
+      approval:
+        title: title engelsk
+        meeting: meeting engelsk
+        background: background engelsk
+
+
+
 

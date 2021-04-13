@@ -1,4 +1,3 @@
-
 - set_open_graph_params({ title: t('site.index.og_title'), description: t('site.index.og_description'), image: 'https://www.samfundet.no/upload/images/image_files/000/001/669/original/logo_samf.no.png?1538501206'})
 - set_twitter_params({ card: "summary_large_image", title: t('site.index.og_title'), description: t('site.index.og_description'), 'image:src' => 'https://www.samfundet.no/upload/images/image_files/000/001/669/original/logo_samf.no.png?1538501206'})
 
@@ -25,3 +24,26 @@
     %div
       %p= simple_format(t("new_building.index.progress.description"))
       %i= simple_format(t("new_building.index.progress.decision"))
+
+
+  .samf-smart-box.flex-align-center.mt-3.pt-3
+
+    .auto.flex-column.flex-justify-center
+      %div.pl-3
+        %h1= t("new_building.index.approval.title")
+        %p= t("new_building.index.approval.meeting")
+        %p= simple_format(t("new_building.index.approval.background"))
+
+    .half.pr-3.m-3.flex-row.flex-align-center
+      = image_tag "new_building/01 Elgeseter.png", alt: "Samfundet", class: "br-1 bxs"
+
+  .samf-container.red.flex-column.flex-align-center
+    %h1.mt-3= t("new_building.index.social.title")
+    %p= t("new_building.index.social.body")
+    %div.flex-row
+      = link_to "https://www.facebook.com/nybygg.samfundet" do
+        .samf-button.blue.m-3
+          = "facebook"
+      = link_to "https://www.instagram.com/nybygg.samfundet/" do
+        .samf-button.white.m-3
+          = "instagram"
