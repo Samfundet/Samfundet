@@ -2,6 +2,8 @@
   new_building:
     index:
       title: Om Nybygg
+      short_description: Studentersamfundet bygger ut! På denne siden kan du finne informasjon om nybyggprosjektet.Kontakt oss på nybygg@samfundet.no hvis du har spørsmål eller innspill.
+      long_description: Nybygg skal ha plass til mer av virksomheten vi allerede har på Samfundet. Vi skal bygge nye konsertscener, en blackbox, serveringslokaler og gode arbeidslokaler. Vi vil ha plass til mer aktivitet for flere, både frivillige, publikummere og andre foreninger. Nybygg har fått pengene som trengs til å bygge, fra blant andre NTNU, Velferdstinget, Trondheim kommune og Sit – til sammen 140 millioner. Totalt trengs det 215 millioner til prosjektet, så arbeidet med finansiering pågår fortsatt. Byggestart er planlagt til november 2021, med ferdigstillelse sommeren 2023.
       progress:
         title: Hvor er vi nå?
         description: |
@@ -11,10 +13,29 @@
         decision: |
           Studentersamfundet i Trondhjem, samlet til Samfundsmøte 30. januar 2021, gir tilslutning til at arbeidet med nybygg på Fengselstomta kan fortsette med et forprosjekt. Skisseprosjektet fra Eggen arkitekter legges til grunn for prosjektering av nybygget. Forprosjektet legges fram for Samfundsmøtet for godkjenning i løpet av vårsemesteret 2021.
           Forprosjekt vil pådra kostnader mer enn 3,0 mill, i tillegg vil det etterhvert påløpe omlag 6,2 mill i detaljprosjektering, samlet 9,2 mill. Kostnadene inngår i kalkylen for samlet byggekostnad.
+      approval:
+        title: Vedtak om godkjenning av forprosjekt
+        meeting: Den 27. april skal ekstraordinært Samfundsmøte behandle forslag om godkjenning av forprosjektet.
+        background: |
+          Se forslaget til vedtak med bakgrunnsmateriale <a href="https://docs.google.com/document/d/1p0q8ZglggXeRmtOOTaM3zOMazO55qBOdo7QsICt3E8k/edit", target="_blank">her</a>
+          Se fasaden som ligger til grunn etter forprosjektet <a href="https://drive.google.com/file/d/1VEyfROzbLmxK3UVEcZFxvVZ5xLIGn0hl/view", target="_blank">her</a>.
+          Se planløsningen som ligger til grunn per 13. april <a href="https://drive.google.com/drive/folders/1_NCTGlpGPxhmQVVNjD97PkraDCXA8W2V", target="_blank">her</a>. Denne vil bli oppdatert til siste versjon i løpet av uke 15.
 
-      short_description: "Studentersamfundet bygger ut! På denne siden kan du finne informasjon om nybyggprosjektet.
-      Kontakt oss på nybygg@samfundet.no hvis du har spørsmål eller innspill."
-      long_description: "Nybygg skal ha plass til mer av virksomheten vi allerede har på Samfundet. Vi skal bygge nye konsertscener, en blackbox, serveringslokaler og gode arbeidslokaler. Vi vil ha plass til mer aktivitet for flere, både frivillige, publikummere og andre foreninger. Nybygg har fått pengene som trengs til å bygge, fra blant andre NTNU, Velferdstinget, Trondheim kommune og Sit – til sammen 140 millioner. Totalt trengs det 215 millioner til prosjektet, så arbeidet med finansiering pågår fortsatt. Byggestart er planlagt til november 2021, med ferdigstillelse sommeren 2023."
+          Ved et vedtak i Samfundsmøtet vil man gå videre til detaljprosjektering og kontrahering av en totalentreprenør. Detaljprosjekteringen er svært omfattende, det må forventes at detaljprosjekteringen vil medføre mindre justeringer av tegningene. Oppdaterte tegninger legges ut løpende.
+
+          Det endelige prosjektet med forpliktende byggekostnad vi bli framlagt for Samfundsmøtet for vedtak i løpet av september 2021. Dersom Samfundsmøtet fatter vedtak om å gjennomføre utbyggingen i september 2021 blir det byggestart i november 2021, rett etter UKA-21.
+
+      social:
+        title: Følge med!
+        body: Følg oss gjerne på sosiale medier for jevnlige oppdateringer om prosjektet og arbeidsmetoden
+
+      about:
+        title: Om prosjektet
+        intro: Studentersamfundet i Trondhjem er Nordens største studentersamfunn, Norges tredje største konsertarrangør og hjertet i studiebyen Trondheim. Samfundet har som formål å være studentenes samlingsplass, en kulturinstitusjon og en arena for samfunnsengasjement og debatt. Organisasjonen er til for sine medlemmer, andre studenter, det akademiske miljø og byens øvrige befolkning. Samfundet fikk sitt nåværende bygg i 1929 da det var 700 studenter i Trondheim. I dag er det nærmere 40 000, og bygget er tilnærmet det samme. Siden 60-tallet har organisasjonen ønsket å bygge ut, og i dag er de fysiske rammene så begrensede at det går direkte utover formålet til organisasjonen. Derfor vil Samfundet bygge ut på Fengselstomta øst for eksisterende bygg.
+        financing_title: Finansiering
+        financing: Studentersamfundet eies og drives av sine medlemmer uten driftstilskudd. Dette er unikt i Norge. Utbyggingen er kalkulert til å koste 215 millioner kroner. Samfundet eier Fengselstomta og har en intensjonsavtale med NTNU om å selge den delen av tomta Samfundet selv ikke skal bygge på. Samfundet er i dialog med regjeringen og aktører i studiebyen for å sikre finansiering.
+        applications_title: Søknader
+        applications: 1. november 2020 mottok Kunnskapsdepartementet, ved Henrik Asheim, en søknad om tilskudd til nybygg for Studentersamfundet i Trondhjem. Søknaden beskriver viktigheten av Samfundet for studenter og trøndere i Trondheim, for NTNU og for kulturtilbudet i byen. Det søkes om bevilgning av midler opp mot 50 millioner kroner. Søknaden kan i sin helhet leses <a href="https://drive.google.com/file/d/1V6uMHACHI6OR-OI-wJWYBUjVu96RhuHE/view", target="_blank">her</a>.
 
       documents:
           title: Styrende Dokumenter
