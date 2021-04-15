@@ -111,7 +111,7 @@ class Ability
   end
 
   def mg_redaksjon
-    can :manage, [Blog, Event, Page, FrontPageLock, EverythingClosedPeriod, Area, Image]
+    can :manage, [Blog, Event, Page, FrontPageLock, EverythingClosedPeriod, Area, Image, InfoBox]
   end
 
   # ORGANIZATION

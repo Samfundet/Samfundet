@@ -1,8 +1,24 @@
 - cache cache_key_for_frontpage_events(@upcoming_events + [@banner_event]) do
   .upcoming-events
+    - max_row = 0
     - @upcoming_events.each.with_index(1) do |event, index|
+      - if index % 2 == 1
+        - max_row = index / 2
+        - if @info_boxes[max_row] != nil
+          .w100.flex-column
+            - @info_boxes[max_row].each do |info_box|
+              = render 'info_box', info_box: info_box
       - cache cache_key_for_frontpage_event(event, index) do
         - if event.is_a? Event
           = render 'site/upcoming_event', event: event, index: index
         - elsif event.is_a? Blog
           = render 'site/upcoming_blog', blog: event, index: index
+
+    - # In case all some infoboxes have a position greater than the
+    - # number of rows we add the remaining ones at the bottom
+    - if max_row < 10
+      - ((max_row+1)..10).each do |row|
+        - if @info_boxes[row] != nil
+          .w100.flex-column
+            - @info_boxes[row].each do |info_box|
+              = render 'info_box', info_box: info_box

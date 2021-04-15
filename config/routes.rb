@@ -9,12 +9,14 @@ Rails.application.routes.draw do
 
     get 'search', to: 'search#search'
 
-    get 'nybygg', to: 'new_building#index'
+    get 'new-building', to: 'new_building#index'
+
+    resources :info_boxes
+
     #resources :search, only: [:new, :create, :search]
     ############################
     ##  Routes for events     ##
     ############################
-
     resources :events do
       get :buy, on: :member, action: "buy"
       post :buy, on: :member, action: "buy"

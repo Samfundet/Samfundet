@@ -68,4 +68,6 @@ Samfundet::Application.configure do
 
   config.middleware.insert_after ActionDispatch::Static, Rack::LiveReload
 
+  ActiveRecord::Base.logger = nil
+  config.log_level = :info
 end
