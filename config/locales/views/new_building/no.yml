@@ -1,9 +1,11 @@
 'no':
   new_building:
     index:
-      title: Nybygg er her!
-      short_description: Studentersamfundet bygger ut! På denne siden kan du finne informasjon om nybyggprosjektet.Kontakt oss på nybygg@samfundet.no hvis du har spørsmål eller innspill.
-      long_description: Nybygg skal ha plass til mer av virksomheten vi allerede har på Samfundet. Vi skal bygge nye konsertscener, en blackbox, serveringslokaler og gode arbeidslokaler. Vi vil ha plass til mer aktivitet for flere, både frivillige, publikummere og andre foreninger. Nybygg har fått pengene som trengs til å bygge, fra blant andre NTNU, Velferdstinget, Trondheim kommune og Sit – til sammen 140 millioner. Totalt trengs det 215 millioner til prosjektet, så arbeidet med finansiering pågår fortsatt. Byggestart er planlagt til november 2021, med ferdigstillelse sommeren 2023.
+      title: Samfundet bygger ut!
+      intro: Studentersamfundet bygger ut! På denne siden kan du finne informasjon om nybyggprosjektet. Kontakt oss på nybygg@samfundet.no hvis du har spørsmål eller innspill.
+      what:
+        title: Hva er nybygg?
+        body:  Nybygg skal ha plass til mer av virksomheten vi allerede har på Samfundet. Vi skal bygge nye konsertscener, en blackbox, serveringslokaler og gode arbeidslokaler. Vi vil ha plass til mer aktivitet for flere, både frivillige, publikummere og andre foreninger. Nybygg har fått pengene som trengs til å bygge, fra blant andre NTNU, Velferdstinget, Trondheim kommune og Sit – til sammen 140 millioner. Totalt trengs det 215 millioner til prosjektet, så arbeidet med finansiering pågår fortsatt. Byggestart er planlagt til november 2021, med ferdigstillelse sommeren 2023.
       progress:
         title: Hvor er vi nå?
         description: |
@@ -22,12 +24,11 @@
           Se planløsningen som ligger til grunn per 13. april <a href="https://drive.google.com/drive/folders/1_NCTGlpGPxhmQVVNjD97PkraDCXA8W2V", target="_blank">her</a>. Denne vil bli oppdatert til siste versjon i løpet av uke 15.
 
           Ved et vedtak i Samfundsmøtet vil man gå videre til detaljprosjektering og kontrahering av en totalentreprenør. Detaljprosjekteringen er svært omfattende, det må forventes at detaljprosjekteringen vil medføre mindre justeringer av tegningene. Oppdaterte tegninger legges ut løpende.
-
           Det endelige prosjektet med forpliktende byggekostnad vi bli framlagt for Samfundsmøtet for vedtak i løpet av september 2021. Dersom Samfundsmøtet fatter vedtak om å gjennomføre utbyggingen i september 2021 blir det byggestart i november 2021, rett etter UKA-21.
 
       social:
-        title: Følge med!
-        body: Følg oss gjerne på sosiale medier for jevnlige oppdateringer om prosjektet og arbeidsmetoden
+        title: Følg med!
+        body: Følg oss gjerne på sosiale medier for jevnlige oppdateringer om prosjektet og arbeidsmetoden!
 
       about:
         title: Om prosjektet
