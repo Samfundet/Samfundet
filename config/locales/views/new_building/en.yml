@@ -62,8 +62,8 @@ en:
         doc2: https://drive.google.com/file/d/0BxmL8pfcmyvEZ3NJWmh5QUdpWVRPWE9hb1lvVjY1YzVzdFh3/view
 
       table:
-        name: name
-        email: email
+        name: Name
+        email: Email
         process_leader: Process Leader
         leader: Leader
         scene_technical: Scene Technical
