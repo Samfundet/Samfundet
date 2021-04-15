@@ -18,6 +18,7 @@
       .samf-container.red.p-3.mb-1.mt-3
         %h1.text-Align= t("new_building.index.social.title")
         %div.flex-row.center
+          %h2.text-Align= t("new_building.index.social.title")
           = link_to "https://www.facebook.com/nybygg.samfundet" do
             .samf-button.blue.m-3
               = "facebook"
@@ -40,10 +41,7 @@
       %i= simple_format(t("new_building.index.progress.decision"))
 
 
-.p-2
-
-  .samf-smart-box
-    .half.m-3.flex-column.flex-align-center
+  .p-2
 
   .samf-smart-box.pt-3
     .half.mr-3.ml-3.flex-column.flex-align-center
@@ -76,7 +74,7 @@
 
   .samf-container.white.p-3.m-2.mt-3
     .flex-row.flex-align-center
-      = image_tag "new_building/progress.png", style: "width: 2.5em; height: 2.5em; background-size: contain;"
+      = image_tag "new_building/project.png", style: "width: 2.5em; height: 2.5em; background-size: contain;"
       %h1.ml-1.mt-1= t("new_building.index.about.title")
     %div
       %p= simple_format(t("new_building.index.about.intro"))
@@ -105,7 +103,7 @@
 
   .samf-container.white.p-3.m-2.mt-3
     .flex-row.flex-align-center
-      = image_tag "new_building/progress.png", style: "width: 2.5em; height: 2.5em; background-size: contain;"
+      = image_tag "new_building/history.png", style: "width: 2.5em; height: 2.5em; background-size: contain;"
       %h1.ml-1.mt-1= t("new_building.index.history.title")
     %div
       %p= simple_format(t("new_building.index.history.intro"))
