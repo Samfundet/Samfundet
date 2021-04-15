@@ -1,20 +1,20 @@
 en:
   new_building:
     index:
-      title: About the New Building
-      intro: Intro...
+      title: Samfundet is expanding!
+      intro: The Student Society is finally expanding! On this website you will find relevant information about the project. Please contact us at nybygg@samfundet.no if you have any questions.
       what:
-        title: What is "nybygg"?
-        body: what body...
+        title: What is the new building?
+        body: Missing translation
       progress:
         title: where are we now?
-        description: Something...
-        decision: Something...
+        description: Missing translation
+        decision: ""
 
       approval:
-        title: title engelsk
-        meeting: meeting engelsk
-        background: background engelsk
+        title: Decision on approval of preliminary project
+        meeting: Missing translation
+        background: ""
 
       social:
         title: Follow us!
@@ -46,9 +46,9 @@ en:
 
       images:
         image_1: UKA
-        image_2: Mellomrommet
-        image_3: Inngang klostergata
-        image_4: Grønnbaren
+        image_2: The middleroom
+        image_3: Entrance klostergata
+        image_4: Greenbar
 
       documents:
         title: Governing documents
