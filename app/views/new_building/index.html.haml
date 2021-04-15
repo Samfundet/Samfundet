@@ -31,7 +31,6 @@
         %p
           = t("new_building.index.long_description")
 
-
   .samf-container.white.p-3.m-2.mt-3
     .flex-row.flex-align-center
       = image_tag "new_building/progress.png", style: "width: 2.5em; height: 2.5em; background-size: contain;"
@@ -39,6 +38,8 @@
     %div
       %p= simple_format(t("new_building.index.progress.description"))
       %i= simple_format(t("new_building.index.progress.decision"))
+
+.p-2
 
   .samf-smart-box
     .half.m-3.flex-column.flex-align-center
@@ -56,9 +57,7 @@
       = image_tag "new_building/18 Grønnbaren.png", alt: "Samfundet", class: "br-1 bxs"
       %p= t("new_building.index.images.image_4")
 
-
   .samf-smart-box.flex-align-center.mt-3.pt-3
-
     .auto.flex-column.flex-justify-center
       %div.pl-3
         %h1.text-Align= t("new_building.index.approval.title")
@@ -67,6 +66,8 @@
 
     .half.pr-3.m-3.flex-row.flex-align-center
       = image_tag "new_building/01 Elgeseter.png", alt: "Samfundet", class: "br-1 bxs"
+
+.p-2
 
   .samf-container.white.p-3.m-2.mt-3
     .flex-row.flex-align-center
@@ -78,6 +79,8 @@
       %p= simple_format(t("new_building.index.about.financing"))
       %i= simple_format(t("new_building.index.about.applications_title"))
       %p= simple_format(t("new_building.index.about.applications"))
+
+.p-2
 
   .samf-container.white.p-3.m-2.mt-3
     .flex-row.flex-align-center
@@ -92,6 +95,8 @@
         =link_to t("new_building.index.documents.doc2") do
           .samf-button.small
             = t("new_building.index.documents.button2_title")
+
+.p-2
 
   .samf-container.white.p-3.m-2.mt-3
     .flex-row.flex-align-center
