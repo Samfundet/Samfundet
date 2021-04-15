@@ -6,6 +6,19 @@
   min-width: 100%;
   width: 100%;
 }
+@media only screen and (max-width: 1000px) {
+  .w100-mobile {
+    width: 100%;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .hide-mobile {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+}
+
 
 .text-Align{
   text-align: center;
@@ -29,6 +42,8 @@
 .p-1 { padding: .25em; }
 .p-2 { padding: .5em; }
 .p-3 { padding: 1em; }
+.p-4 { padding: 1.5em; }
+.p-5 { padding: 2em; }
 
 .pb-1 { padding-bottom: .25em; }
 .pb-2 { padding-bottom: .5em; }

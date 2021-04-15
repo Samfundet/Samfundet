@@ -25,6 +25,12 @@ module PagesHelper
     '#'
   end
 
+  def page_by_name_en(name)
+    page_url Page.find_by(name_en: name.downcase)
+  rescue ActionController::UrlGenerationError
+    '#'
+  end
+
   def expand_includes(text, seen = Set.new)
     text.gsub(/%include (#{Page::NAME_FORMAT})%/) do
       name = Regexp.last_match(1)

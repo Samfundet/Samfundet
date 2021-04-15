@@ -1,0 +1,174 @@
+- set_open_graph_params({ title: t('site.index.og_title'), description: t('site.index.og_description'), image: 'https://www.samfundet.no/upload/images/image_files/000/001/669/original/logo_samf.no.png?1538501206'})
+- set_twitter_params({ card: "summary_large_image", title: t('site.index.og_title'), description: t('site.index.og_description'), 'image:src' => 'https://www.samfundet.no/upload/images/image_files/000/001/669/original/logo_samf.no.png?1538501206'})
+
+
+.pages-index
+
+  .samf-smart-box.flex-align-center.mr-2.mt-3
+
+    .half.pr-3.m-3
+      = image_tag "new_building/nybygg_kveld.png", alt: "Samfundet", class: "br-2 bxs"
+
+    .auto.flex-column.flex-justify-center
+      %div.pl-3.mb-1
+        %h1= t("new_building.index.title")
+        %p
+          = t("new_building.index.intro")
+
+      %div.flex-row.pl-3.mb-1
+        = link_to "https://www.facebook.com/nybygg.samfundet" do
+          .samf-button.blue.mr-2
+            = "facebook"
+        = link_to "https://www.instagram.com/nybygg.samfundet/" do
+          .samf-button.red.ml-2
+            = "instagram"
+
+  .samf-container.green.ml-2.mr-2.p-3.mt-3
+    %h1= t("new_building.index.what.title")
+    %p= t("new_building.index.what.body")
+
+  .p-2
+
+  .samf-container.white.mt-3.p-3.ml-2.mr-2
+    .flex-row.flex-align-center
+      = image_tag "new_building/progress.png", style: "width: 2.5em; height: 2.5em; background-size: contain;"
+      %h1.ml-1.mt-1= t("new_building.index.progress.title")
+    %div
+      %p= simple_format(t("new_building.index.progress.description"))
+      %i= simple_format(t("new_building.index.progress.decision"))
+
+
+  .p-2
+
+  .samf-smart-box.pt-3
+    .half.mr-3.ml-3.flex-column.flex-align-center
+
+      = image_tag "new_building/06 UKA_000.png", alt: "Samfundet", class: "br-1 bxs"
+      %p= t("new_building.index.images.image_1")
+    .half.ml-3.mr-3.flex-column.flex-align-center
+      = image_tag "new_building/13 Mellomrommet 2_000.png", alt: "Samfundet", class: "br-1 bxs"
+      %p= t("new_building.index.images.image_2")
+
+  .samf-smart-box
+    .half.mr-3.ml-3.flex-column.flex-align-center
+      = image_tag "new_building/11 Klostergata inngang.png", alt: "Samfundet", class: "br-1 bxs"
+      %p= t("new_building.index.images.image_3")
+    .half.ml-3.mr-3.flex-column.flex-align-center
+      = image_tag "new_building/18 Grønnbaren.png", alt: "Samfundet", class: "br-1 bxs"
+      %p= t("new_building.index.images.image_4")
+
+  .samf-container.white.p-3.m-2.mt-3
+    .flex-row.flex-align-center
+      = image_tag "new_building/project.png", style: "width: 2.5em; height: 2.5em; background-size: contain;"
+      %h1.ml-1.mt-1= t("new_building.index.about.title")
+    %div
+      %p= simple_format(t("new_building.index.about.intro"))
+      %i= simple_format(t("new_building.index.about.financing_title"))
+      %p= simple_format(t("new_building.index.about.financing"))
+      %i= simple_format(t("new_building.index.about.applications_title"))
+      %p= simple_format(t("new_building.index.about.applications"))
+
+  .p-2
+
+  .samf-smart-box.flex-align-center.mt-3
+    .auto.flex-column.flex-justify-center
+      %div.pl-3
+        %h1= t("new_building.index.approval.title")
+        %p= t("new_building.index.approval.meeting")
+        %p= simple_format(t("new_building.index.approval.background"))
+
+    .third.pr-3.m-3.flex-column.flex-align-center
+      = image_tag "new_building/01 Elgeseter.png", alt: "Samfundet", class: "br-1 bxs m-2"
+      = image_tag "new_building/16 Plakatfolie inne.png", alt: "Samfundet", class: "br-1 bxs m-2 "
+
+
+  .p-2
+
+  .samf-container.white.p-3.m-2.mt-3
+    .flex-row.flex-align-center
+      %h1.mt-1= t("new_building.index.documents.title")
+    %div
+      %p= simple_format(t("new_building.index.documents.description"))
+      .flex-row
+        =link_to t("new_building.index.documents.doc1") do
+          .samf-button.small
+            = t("new_building.index.documents.button1_title")
+        .m-1
+        =link_to t("new_building.index.documents.doc2") do
+          .samf-button.small
+            = t("new_building.index.documents.button2_title")
+
+  .p-2
+
+  .samf-container.white.p-3.m-2.mt-3
+    .flex-row.flex-align-center
+      = image_tag "new_building/history.png", style: "width: 2.5em; height: 2.5em; background-size: contain;"
+      %h1.ml-1.mt-1= t("new_building.index.history.title")
+    %div
+      %p= simple_format(t("new_building.index.history.intro"))
+      %i= simple_format(t("new_building.index.history.nidelva_title"))
+      %p= simple_format(t("new_building.index.history.nidelva"))
+      %i= simple_format(t("new_building.index.history.rooms_title"))
+      %p= simple_format(t("new_building.index.history.rooms"))
+      %i= simple_format(t("new_building.index.history.paralell_assignment_title"))
+      %p= simple_format(t("new_building.index.history.paralell_assignment_1"))
+      %li <a href="https://drive.google.com/file/d/1QLk3M8HlYL1nVji1zE-2HFiABApqUHg3/view ", target="_blank">Du store verden - Skibnes arkitekter</a>
+      %li <a href="https://drive.google.com/file/d/1umIrffZz2eCqwnhu05L8Lgvxxqg1OGlJ/view ", target="_blank">Sceneskifte - Eggen arkitekter</a>
+      %li <a href="https://drive.google.com/file/d/1jH6K5e8F7UC7_y4rWjcXawzaskZCMW4T/view?usp=drive_open ", target="_blank">Merry Glow Red - Pir II arkitekter</a>
+      %p= simple_format(t("new_building.index.history.paralell_assignment_2"))
+
+  %div.pt-3.m-3
+    %table
+      %thead
+        %tr
+          %th= t("new_building.index.table.name")
+          %th
+          %th{style:"text-align: center"}= t("new_building.index.table.email")
+      %tbody
+        %tr
+          %td
+            Agnete Djupvik
+          %td{style:"text-align: center"}= t("new_building.index.table.process_leader")
+          %td{style:"text-align: center"}
+            prosessleder@samfundet.no
+        %tr
+          %td
+            Jostein Løwer
+          %td{style:"text-align: center"}= t("new_building.index.table.leader")
+          %td{style:"text-align: center"}
+            nybygg-leder@samfundet.no
+
+        %tr
+          %td
+            Patrick Moen Allport
+          %td{style:"text-align: center"}= t("new_building.index.table.scene_technical")
+          %td{style:"text-align: center"}
+            nybygg-sceneteknisk@samfundet.no
+
+        %tr
+          %td
+            Allegra Farrah Torstensen
+          %td{style:"text-align: center"}= t("new_building.index.table.serving")
+          %td{style:"text-align: center"}
+            nybygg-servering@samfundet.no
+
+        %tr
+          %td
+            Oda Sofie Sundet
+          %td{style:"text-align: center"}= t("new_building.index.table.operating")
+          %td{style:"text-align: center"}
+            nybygg-drift@samfundet.no
+
+        %tr
+          %td
+            Rikke Storvik Sjøhelle
+          %td{style:"text-align: center"}= t("new_building.index.table.artisic")
+          %td{style:"text-align: center"}
+            nybygg-kunst@samfundet.no
+
+        %tr
+          %td
+            Mikkel Hofstad
+          %td{style:"text-align: center"}= t("new_building.index.table.arranging")
+          %td{style:"text-align: center"}
+            nybygg-arrangement@samfundet.no

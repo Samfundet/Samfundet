@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
     get 'search', to: 'search#search'
 
+    get 'new-building', to: 'new_building#index'
+
     resources :info_boxes
 
     #resources :search, only: [:new, :create, :search]
@@ -41,7 +43,10 @@ Rails.application.routes.draw do
     ##  Routes for pages      ##
     ############################
 
+    get "info-beta", to: "pages#index_beta"
+
     resources :pages, path: "information" do
+
       collection do
         get "admin"
         get "admin/graph", to:"pages#graph"
@@ -101,7 +106,7 @@ Rails.application.routes.draw do
     end
 
     resources :applicants
-    resources :groups, only: [:new, :create, :edit, :update] do
+    resources :groups, only: [:index, :new, :create, :edit, :update] do
       get :admin, on: :collection
     end
 
