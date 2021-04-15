@@ -4,18 +4,18 @@
 
 .pages-index
 
-  .samf-smart-box.flex-align-center.mt-3
+  .samf-smart-box.flex-align-center.mr-2.mt-3
 
     .half.pr-3.m-3
       = image_tag "new_building/nybygg_kveld.png", alt: "Samfundet", class: "br-2 bxs"
 
     .auto.flex-column.flex-justify-center
-      %div.pl-3
+      %div.pl-3.mb-1
         %h1= t("new_building.index.title")
         %p
           = t("new_building.index.intro")
 
-      .samf-container.red.p-3
+      .samf-container.red.p-3.mb-1.mt-3
         %h1.text-Align= t("new_building.index.social.title")
         %div.flex-row.center
           = link_to "https://www.facebook.com/nybygg.samfundet" do
@@ -25,11 +25,13 @@
             .samf-button.white.m-3
               = "instagram"
 
-  .samf-container.green.m-2.mt-3.p-3
+  .samf-container.green.ml-2.mr-2.p-3.mt-3
     %h1= t("new_building.index.what.title")
     %p= t("new_building.index.what.body")
 
-  .samf-container.white.p-3.m-2.mt-3
+  .p-2
+
+  .samf-container.white.mt-3.p-3.ml-2.mr-2
     .flex-row.flex-align-center
       = image_tag "new_building/progress.png", style: "width: 2.5em; height: 2.5em; background-size: contain;"
       %h1.ml-1.mt-1= t("new_building.index.progress.title")
@@ -70,7 +72,7 @@
     .half.pr-3.m-3.flex-row.flex-align-center
       = image_tag "new_building/01 Elgeseter.png", alt: "Samfundet", class: "br-1 bxs"
 
-.p-2
+  .p-2
 
   .samf-container.white.p-3.m-2.mt-3
     .flex-row.flex-align-center
@@ -83,7 +85,7 @@
       %i= simple_format(t("new_building.index.about.applications_title"))
       %p= simple_format(t("new_building.index.about.applications"))
 
-.p-2
+  .p-2
 
   .samf-container.white.p-3.m-2.mt-3
     .flex-row.flex-align-center
@@ -99,7 +101,7 @@
           .samf-button.small
             = t("new_building.index.documents.button2_title")
 
-.p-2
+  .p-2
 
   .samf-container.white.p-3.m-2.mt-3
     .flex-row.flex-align-center
