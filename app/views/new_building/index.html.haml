@@ -9,13 +9,13 @@
     .half.pr-3.m-3
       = image_tag "new_building/nybygg_kveld.png", alt: "Samfundet", class: "br-2 bxs"
 
-    .auto.flex-column.flex-justify-center
+    .auto.flex-column.flex-justify-center.m-2
       %div.pl-3
         %h1= t("new_building.index.title")
         %p
           = t("new_building.index.intro")
 
-      .samf-container.red.p-3
+      .samf-container.red.pt-3.pb-3
         %h1.text-Align= t("new_building.index.social.title")
         %div.flex-row.center
           = link_to "https://www.facebook.com/nybygg.samfundet" do
@@ -29,6 +29,7 @@
     %h1= t("new_building.index.what.title")
     %p= t("new_building.index.what.body")
 
+  .p-2
 
   .samf-container.white.p-3.m-2.mt-3
     .flex-row.flex-align-center
@@ -108,3 +109,67 @@
       %li <a href="https://drive.google.com/file/d/1jH6K5e8F7UC7_y4rWjcXawzaskZCMW4T/view?usp=drive_open ", target="_blank">Merry Glow Red - Pir II arkitekter</a>
       %p= simple_format(t("new_building.index.history.paralell_assignment_2"))
 
+  %div.pt-3.m-3
+    %table
+      %thead
+        %tr
+          %th Navn
+          %th
+          %th{style:"text-align: center"} Epost
+      %tbody
+        %tr
+          %td
+            Agnete Djupvik
+          %td{style:"text-align: center"}
+            Prosessleder
+          %td{style:"text-align: center"}
+            prosessleder@samfundet.no
+        %tr
+          %td
+            Jostein Løwer
+          %td{style:"text-align: center"}
+            Leder
+          %td{style:"text-align: center"}
+            nybygg-leder@samfundet.no
+
+        %tr
+          %td
+            Patrick Moen Allport
+          %td{style:"text-align: center"}
+            Sceneteknisk
+          %td{style:"text-align: center"}
+            nybygg-sceneteknisk@samfundet.no
+
+        %tr
+          %td
+            Allegra Farrah Torstensen
+          %td{style:"text-align: center"}
+            Servering
+          %td{style:"text-align: center"}
+            nybygg-servering@samfundet.no
+
+        %tr
+          %td
+            Oda Sofie Sundet
+          %td{style:"text-align: center"}
+            Drift
+          %td{style:"text-align: center"}
+            nybygg-drift@samfundet.no
+
+        %tr
+          %td
+            Rikke Storvik Sjøhelle
+          %td{style:"text-align: center"}
+            Kunstnerisk
+          %td{style:"text-align: center"}
+            nybygg-kunst@samfundet.no
+
+        %tr
+          %td
+            Mikkel Hofstad
+          %td{style:"text-align: center"}
+            Arrangement
+          %td{style:"text-align: center"}
+            nybygg-arrangement@samfundet.no
+
+  %p.pt-3.text-Align Denne siden eies av Nybygg: Nybyggkomitéen. Sist oppdatert 14. april 2021, 08.59
