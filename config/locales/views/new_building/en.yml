@@ -2,6 +2,10 @@ en:
   new_building:
     index:
       title: About the New Building
+      intro: Intro...
+      what:
+        title: What is "nybygg"?
+        body: what body...
       progress:
         title: where are we now?
         description: Something...
@@ -12,8 +16,9 @@ en:
         meeting: meeting engelsk
         background: background engelsk
 
-      short_description: The Student Society is finally expanding! On this website you will find relevant information about the project. Please contact us at nybygg@samfundet.no if you have any questions.
-      long_description: More information coming soon!
+      social:
+        title: Follow us!
+        body: Your are very welcome to follow us on social media for more frequent updates on the project!
 
       about:
         title: About the project
@@ -39,6 +44,12 @@ en:
           Here are the contributions from the parallel assignment;
         paralell_assignment_2: These concepts were discussed at <a href=" https://www.facebook.com/events/1061062644065827/", target="_blank">Samfundsmøte; Samfundet bygger ut</a>.
 
+      images:
+        image_1: UKA
+        image_2: Mellomrommet
+        image_3: Inngang klostergata
+        image_4: Grønnbaren
+
       documents:
         title: Governing documents
         description: |
@@ -50,9 +61,13 @@ en:
         doc1: https://samfundet.no/upload/documents/files/000/000/575/FS_bok_2018.pdf?1540925719
         doc2: https://drive.google.com/file/d/0BxmL8pfcmyvEZ3NJWmh5QUdpWVRPWE9hb1lvVjY1YzVzdFh3/view
 
-      images:
-        image_1: UKA
-        image_2: Mellomrommet
-        image_3: Noe tekst
-        image_4: Noe tekst
-
+      table:
+        name: name
+        email: email
+        process_leader: Process Leader
+        leader: Leader
+        scene_technical: Scene Technical
+        serving: Serving
+        operating: Operating
+        artisic: Artisic
+        arranging: Arranging

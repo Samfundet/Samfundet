@@ -59,7 +59,7 @@
       = image_tag "new_building/18 Grønnbaren.png", alt: "Samfundet", class: "br-1 bxs"
       %p= t("new_building.index.images.image_4")
 
-  .samf-smart-box.flex-align-center.mt-3  
+  .samf-smart-box.flex-align-center.mt-3
     .auto.flex-column.flex-justify-center
       %div.pl-3
         %h1.text-Align= t("new_building.index.approval.title")
@@ -119,62 +119,55 @@
     %table
       %thead
         %tr
-          %th Navn
+          %th= t("new_building.index.table.name")
           %th
-          %th{style:"text-align: center"} Epost
+          %th{style:"text-align: center"}= t("new_building.index.table.email")
       %tbody
         %tr
           %td
             Agnete Djupvik
-          %td{style:"text-align: center"}
-            Prosessleder
+          %td{style:"text-align: center"}= t("new_building.index.table.process_leader")
           %td{style:"text-align: center"}
             prosessleder@samfundet.no
         %tr
           %td
             Jostein Løwer
-          %td{style:"text-align: center"}
-            Leder
+          %td{style:"text-align: center"}= t("new_building.index.table.leader")
           %td{style:"text-align: center"}
             nybygg-leder@samfundet.no
 
         %tr
           %td
             Patrick Moen Allport
-          %td{style:"text-align: center"}
-            Sceneteknisk
+          %td{style:"text-align: center"}= t("new_building.index.table.scene_technical")
           %td{style:"text-align: center"}
             nybygg-sceneteknisk@samfundet.no
 
         %tr
           %td
             Allegra Farrah Torstensen
-          %td{style:"text-align: center"}
-            Servering
+          %td{style:"text-align: center"}= t("new_building.index.table.serving")
           %td{style:"text-align: center"}
             nybygg-servering@samfundet.no
 
         %tr
           %td
             Oda Sofie Sundet
-          %td{style:"text-align: center"}
-            Drift
+          %td{style:"text-align: center"}= t("new_building.index.table.operating")
           %td{style:"text-align: center"}
             nybygg-drift@samfundet.no
 
         %tr
           %td
             Rikke Storvik Sjøhelle
-          %td{style:"text-align: center"}
-            Kunstnerisk
+          %td{style:"text-align: center"}= t("new_building.index.table.artisic")
           %td{style:"text-align: center"}
             nybygg-kunst@samfundet.no
 
         %tr
           %td
             Mikkel Hofstad
-          %td{style:"text-align: center"}
-            Arrangement
+          %td{style:"text-align: center"}= t("new_building.index.table.arranging")
           %td{style:"text-align: center"}
             nybygg-arrangement@samfundet.no
 
