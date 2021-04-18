@@ -2,7 +2,7 @@
   - if info_box.image_state
     .picture
       = link_to info_box.link do
-        = background_image_helper "picture", info_box.image_or_default, size: :medium
+        = background_image_helper "picture", info_box.image_or_default, size: :large
   .info_text{class: [!info_box.image_state? && "center text-Align"]}
     = link_to info_box.link do
       .info_text_title

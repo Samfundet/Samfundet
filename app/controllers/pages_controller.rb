@@ -15,6 +15,26 @@ class PagesController < ApplicationController
     @show_admin = show_admin?
   end
 
+  def index_beta
+    # Only show the venues that have an image
+    # and ignore venues like "Outside the house" etc.
+    supported_venues = %w[
+      Storsalen
+      Bodegaen
+      Klubben
+      Strossa
+      Selskapssiden
+      Knaus
+      Edgar
+      Lyche
+      Daglighallen
+      Rundhallen
+    ]
+    @areas = Area.all.select {
+      |a| supported_venues.include? a.name
+    }
+  end
+
   def show
     @menu = Page.menu
     @show_admin = show_admin?
@@ -90,7 +110,7 @@ class PagesController < ApplicationController
 private
 
   def page_params
-    params.require(:page).permit(:name_no, :name_en, :title_no, :title_en, :content_no, :content_en, :content_type, :role_id)
+    params.require(:page).permit(:name_no, :name_en, :title_no, :title_en, :content_no, :content_en, :content_type, :hide_menu, :role_id)
   end
 
   def load_page

@@ -1,0 +1,73 @@
+en:
+  new_building:
+    index:
+      title: Samfundet is expanding!
+      intro: The Student Society is finally expanding! On this website you will find relevant information about the project. Please contact us at nybygg@samfundet.no if you have any questions.
+      what:
+        title: What is the new building?
+        body: Missing translation
+      progress:
+        title: where are we now?
+        description: Missing translation
+        decision: ""
+
+      approval:
+        title: Decision on approval of preliminary project
+        meeting: Missing translation
+        background: ""
+
+      social:
+        title: Follow us!
+        body: Your are very welcome to follow us on social media for more frequent updates on the project!
+
+      about:
+        title: About the project
+        intro: The Student Society in Trondheim (Samfundet) is the largest student society in the Nordic region, Norway's third largest concert organizer and the heart of the student city of Trondheim. The purpose of the community is to be a student's gathering place, a cultural institution and an arena for community engagement and debate. The organization works for its members, other students, the academic environment and the population in Trondheim. Samfundet received its current building in 1929 when there were 700 students in Trondheim. Now it is 37,000 students and the building is almost the same. Since the 60's, the organization has wanted to expand. By 2018, the physical framework is so limited that the organization does not meet its purpose. Therefore,Samfundet has decided to build on Fengseltomta east of the existing building.
+        financing_title: Finance
+        financing: Samfundet is owned and operated by its members without operating grants. This is unique in Norway. The development is calculated to cost 150 million NOK. Samfundet owns Fengselstomta and has a letter of intent with NTNU to sell that part of the residential area Samfundet itself should not build on. Samfundet is also in dialogue with the government and actors in the study city to secure funding.
+        applications_title: ""
+        applications: ""
+
+      history:
+        title: Project Fases
+        intro: The sketch project is ongoing during spring of 2020. The architects have submitted several draft drawings, where the Styringsgruppa, SNK and representatives from the active members of the Student Society have contributed to changes and improvements in the use and operation of the extension. For members, updated sketches can be seen and discussed at <a href=" https://www.facebook.com/events/373702166827275/", target="_blank»>Nybyggprat</a>. Parallel to the sketch project, the filling in Nidelva will also take place in the spring of 2020.
+          The community has started its own zoning plan for the extension at the Prison Center, which will be completed at the same time as the zoning plan for Nidelva. Space program, sketch project and pre-project for the extension will be determined so that the organization can start construction in the spring of 2021.
+        nidelva_title: Landfill in Nidelva
+        nidelva: The area north of the main building at Gløshaugen is partly characterized by quick clay in the ground. The community has been leading the effort to secure the area from the prison grounds to the border. Fall 2018, the Society received financial support from the municipality and NTNU to implement the initiative with a backfill / park along the Nidelva River. The regulation for the backfill is planned to be processed in June 2019. <a href=" https://samfundet.no/arrangement/2243-samfundsmote-h8ers-fra-tull-til-terror", target="_blank">Samfundsmøte; H8ers</a> 16.11.19 approved establishment of a backfill in Nidelva with a budget of 19.5 million NOK. The background for this proposal can be found <a href="https://samfundet.no/upload/documents/files/000/000/693/Fylling_Nidelva__draft_to_vedtak.pdf?1572884454 ", target="_blank">here</a>. The excavation and filling work starts at the end of February / March 2020.
+        rooms_title: Room and functionality program
+        rooms: During the autumn of 2018, the committee worked on examining a room and functionality program that will be the starting point for the sketch-project and further design of the new building. The different solutions are described in the results of the research committee of room and functionality program. It also contains a recommendation on behalf of the New Building Committee. All approaches, as well as the committee's own analyses are the basis for assumptions about future use, and thus the need, in the new building. <a href="https://drive.google.com/file/d/1m9ckII-t039M2mCFUcJOo4tUCQFXQcOw/view", target="_blank">Utredning for rom- og funksjonsprogram</a>
+          The report was presented at  <a href="https://www.facebook.com/events/376134869816051/ ", target="_blank">Samfundsmøte; Ytringsfrihetens grenser</a> with a proposal for a resolution one week later during <a href="https://www.facebook.com/events/1272988896172501/ ", target="_blank">Samfundsmøte; Er Gud død?</a>. The voting resulted in further project being based on the committee's proposal 3. The discussion about the proposals and the voting can be seen on  <a href="https://consent.youtube.com/m?continue=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DaE7wkxbLcrU&gl=NO&m=0&pc=yt&uxe=23983172&hl=no&src=1 ", target="_blank">YouTube</a>.
+        paralell_assignment_title: Parallel Assignment
+        paralell_assignment_1: The evaluation committee's report can be read  <a href="https://drive.google.com/file/d/0BxmL8pfcmyvET3llSkIzNE1EYUxoaDdLNnpGbHNuOFBtMDFR/view ", target="_blank">here</a>. The purpose of the parallel assignment was to provide suggestions for concepts for a new building that can be further processed. The parallel assignment were no competition. The proposals have been assessed by a separate evaluation committee.
+
+
+          Here are the contributions from the parallel assignment;
+        paralell_assignment_2: These concepts were discussed at <a href=" https://www.facebook.com/events/1061062644065827/", target="_blank">Samfundsmøte; Samfundet bygger ut</a>.
+
+      images:
+        image_1: UKA
+        image_2: The middleroom
+        image_3: Entrance klostergata
+        image_4: Greenbar
+
+      documents:
+        title: Governing documents
+        description: |
+          Formally, Nybyggkomiteen is an FSUG (Finance Board subgroup) that prepares matters for the Finance Board (FS). The committee presents status reports and requirements for clarifications ongoing for FS, and where FS sends this for consideration in Storsalen to get the members' support for both the process and the results that are presented.
+
+          It should be suggested that Storsalen (the Grand Hall) has a real influence, including rejecting proposals in whole or in part, requesting the process to stop, postponed or promoted for new treatment. It must be a goal to get as effective debate as possible during each treatment.
+        button1_title: Laws and statutes
+        button2_title: Process plan
+        doc1: https://samfundet.no/upload/documents/files/000/000/575/FS_bok_2018.pdf?1540925719
+        doc2: https://drive.google.com/file/d/0BxmL8pfcmyvEZ3NJWmh5QUdpWVRPWE9hb1lvVjY1YzVzdFh3/view
+
+      table:
+        name: Name
+        email: Email
+        process_leader: Process Leader
+        leader: Leader
+        scene_technical: Scene Technical
+        serving: Serving
+        operating: Operating
+        artisic: Artisic
+        arranging: Arranging
