@@ -67,10 +67,11 @@
       cursor: pointer;
 
       @include media($mobile-and-tablet-portrait) {
+        font-size: 2em;
         margin-top: 1em;
       }
       @include media($mobile) {
-        font-size: 1em;
+        font-size: 2em;
         padding: 1em;
         text-align: center;
       }

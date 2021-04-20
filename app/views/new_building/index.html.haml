@@ -88,13 +88,12 @@
       %h1.mt-1= t("new_building.index.documents.title")
     %div
       %p= simple_format(t("new_building.index.documents.description"))
-      .flex-row
+      .flex-row.wrap
         =link_to t("new_building.index.documents.doc1") do
-          .samf-button.small
+          .samf-button.small.m-1
             = t("new_building.index.documents.button1_title")
-        .m-1
         =link_to t("new_building.index.documents.doc2"), target: "_blank" do
-          .samf-button.small
+          .samf-button.small.m-1
             = t("new_building.index.documents.button2_title")
 
   .p-2
@@ -116,58 +115,58 @@
       %li <a href="https://drive.google.com/file/d/1jH6K5e8F7UC7_y4rWjcXawzaskZCMW4T/view?usp=drive_open ", target="_blank">Merry Glow Red - Pir II arkitekter</a>
       %p= simple_format(t("new_building.index.history.paralell_assignment_2"))
 
-  %div.pt-3.m-3
+  %div.pt-3.m-1
     %table
       %thead
         %tr
           %th= t("new_building.index.table.name")
-          %th
+          %th.new-building-table
           %th{style:"text-align: center"}= t("new_building.index.table.email")
       %tbody
         %tr
           %td
             Agnete Djupvik
-          %td{style:"text-align: center"}= t("new_building.index.table.process_leader")
+          %td.new-building-table{style:"text-align: center"}= t("new_building.index.table.process_leader")
           %td{style:"text-align: center"}
             prosessleder@samfundet.no
         %tr
           %td
             Jostein Løwer
-          %td{style:"text-align: center"}= t("new_building.index.table.leader")
+          %td.new-building-table{style:"text-align: center"}= t("new_building.index.table.leader")
           %td{style:"text-align: center"}
             nybygg-leder@samfundet.no
 
         %tr
           %td
             Patrick Moen Allport
-          %td{style:"text-align: center"}= t("new_building.index.table.scene_technical")
+          %td.new-building-table{style:"text-align: center"}= t("new_building.index.table.scene_technical")
           %td{style:"text-align: center"}
             nybygg-sceneteknisk@samfundet.no
 
         %tr
           %td
             Allegra Farrah Torstensen
-          %td{style:"text-align: center"}= t("new_building.index.table.serving")
+          %td.new-building-table{style:"text-align: center"}= t("new_building.index.table.serving")
           %td{style:"text-align: center"}
             nybygg-servering@samfundet.no
 
         %tr
           %td
             Oda Sofie Sundet
-          %td{style:"text-align: center"}= t("new_building.index.table.operating")
+          %td.new-building-table{style:"text-align: center"}= t("new_building.index.table.operating")
           %td{style:"text-align: center"}
             nybygg-drift@samfundet.no
 
         %tr
           %td
             Rikke Storvik Sjøhelle
-          %td{style:"text-align: center"}= t("new_building.index.table.artisic")
+          %td.new-building-table{style:"text-align: center"}= t("new_building.index.table.artisic")
           %td{style:"text-align: center"}
             nybygg-kunst@samfundet.no
 
         %tr
           %td
             Mikkel Hofstad
-          %td{style:"text-align: center"}= t("new_building.index.table.arranging")
+          %td.new-building-table{style:"text-align: center"}= t("new_building.index.table.arranging")
           %td{style:"text-align: center"}
             nybygg-arrangement@samfundet.no
