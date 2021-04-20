@@ -41,25 +41,50 @@ There are several dependencies needed to get Samfundet up and running. Note that
 
 #### Linux
 
+##### Option 1 (Automatic)
+
+1. Go to your terminal preferences, and select your terminal profile. Go to the "Commands" tab and check "Run command as a login shell".
+
+![login-shell-1](images/login-shell-1.png)
+![login-shell-2](images/login-shell-2.png)
+
+2. Make sure you have navigated to the project directory in the terminal. Then run the following script: (copy and paste into terminal)
+
+```bash
+./linux-prerequisites.sh
+```
+
+This will make a script run, that will install a few dependencies for you. A restart is however required after running this script, so restart your computer before proceeding to step 3.
+
+3. Navigate back to the project and run the following script:
+
+```bash
+./linux-setup-rvm.sh
+```
+
+A restart is also required after running this script. Restart before proceeding to step 4.
+
+4. Navigate back to the project and run the following script:
+
+```bash
+./linux-setup-database.sh
+```
+
+After this script has completed, the project should be up and running!
+
+##### Option 2 (Manual)
+
 1. [graphviz](https://graphviz.org/): `sudo apt-get install graphviz`
-2. [ubuntu_rvm](https://github.com/rvm/ubuntu_rvm)
-3. Source RVM: `source ~/.rvm/scripts/rvm`
+2. [imagemagick](https://imagemagick.org/): `sudo apt-get install imagemagick`
+3. [nodejs](https://nodejs.org/): `sudo apt-get install nodejs`
+4. [ubuntu_rvm](https://github.com/rvm/ubuntu_rvm)
+5. Source RVM: `source ~/.rvm/scripts/rvm`
 
 We now have all dependencies installed, including RVM, so let's install Ruby 2.5.5. Run these two commands in succession:
 
 ```bash
-rvm install 2.5.5
+rvm install 2.5.5 --movable
 rvm use 2.5.5 --default
-```
-
-### Database
-
-First, we must pick an appropriate development database password that we'll use later:
-
-```bash
-# Replace '.bashrc' with '.zshrc' if you use ZSH
-echo 'export SAMFDB_DEV_PASS="<PASSWORD-GOES-HERE>"' >> ~/.bashrc
-source ~/.bashrc
 ```
 
 ### Setup database
@@ -71,7 +96,7 @@ We use PostgreSQL as our database. There are several ways it can be installed de
 ##### Option 1 (manually)
 
 - Install PostgreSQL: `sudo apt-get install postgresql postgresql-contrib libpq-dev`
-- Create the PostgreSQL user: `echo -e "CREATE USER samfundet WITH PASSWORD '$SAMFDB_DEV_PASS';\nALTER USER samfundet CREATEDB;" | sudo -u postgres psql`
+- Create the PostgreSQL user: `echo -e "CREATE USER samfundet WITH PASSWORD 'samfundet';\nALTER USER samfundet CREATEDB;" | sudo -u postgres psql`
 
 ##### Option 2 (Docker)
 
@@ -106,12 +131,6 @@ First, there are some configuration files that needs to be copied. Run
 ```bash
 make copy-config-files
 ```
-
-> Only for Linux users:
->
-> ```bash
-> sed -i "s/password:.*/password: $SAMFDB_DEV_PASS/" > config/database.yml
-> ```
 
 Then, setup the database with
 
