@@ -88,13 +88,12 @@
       %h1.mt-1= t("new_building.index.documents.title")
     %div
       %p= simple_format(t("new_building.index.documents.description"))
-      .flex-row
+      .flex-row.wrap
         =link_to t("new_building.index.documents.doc1") do
-          .samf-button.small
+          .samf-button.small.m-1
             = t("new_building.index.documents.button1_title")
-        .m-1
         =link_to t("new_building.index.documents.doc2"), target: "_blank" do
-          .samf-button.small
+          .samf-button.small.m-1
             = t("new_building.index.documents.button2_title")
 
   .p-2
@@ -116,7 +115,7 @@
       %li <a href="https://drive.google.com/file/d/1jH6K5e8F7UC7_y4rWjcXawzaskZCMW4T/view?usp=drive_open ", target="_blank">Merry Glow Red - Pir II arkitekter</a>
       %p= simple_format(t("new_building.index.history.paralell_assignment_2"))
 
-  %div.pt-3.m-3
+  %div.pt-3.m-2
     %table
       %thead
         %tr
