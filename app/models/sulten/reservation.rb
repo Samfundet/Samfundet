@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Sulten::Reservation < ApplicationRecord
-
   belongs_to :table
   belongs_to :reservation_type
 
@@ -164,7 +163,6 @@ class Sulten::Reservation < ApplicationRecord
     end
 
     group
-
   end
 
   def self.check_if_time_is_valid(from, to, people, reservation_type_id)

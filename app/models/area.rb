@@ -15,7 +15,7 @@ class Area < ApplicationRecord
   end
 
   def by_day(day)
-    standard_hours.find {|o| o.day == day}
+    standard_hours.find { |o| o.day == day }
   end
 
   def week
@@ -34,7 +34,6 @@ class Area < ApplicationRecord
 
   # Returns a list of open hours grouped by same days
   def grouped_open_hours
-
     open_hours = []
     start_day = nil
     end_day = nil
@@ -42,9 +41,9 @@ class Area < ApplicationRecord
 
     standard_hours.sort.each_with_index do |o, i|
       if not o.open?
-        period = "Stengt"
+        period = 'Stengt'
       else
-        period = I18n.l(o.open_time, format: :time) + " - " + I18n.l(o.close_time, format: :time)
+        period = I18n.l(o.open_time, format: :time) + ' - ' + I18n.l(o.close_time, format: :time)
       end
 
       # Track day
@@ -57,11 +56,11 @@ class Area < ApplicationRecord
       if period != current_period
         day = I18n.t("days.#{start_day}")
         if end_day != nil
-          day += " - " + I18n.t("days.#{end_day}")
+          day += ' - ' + I18n.t("days.#{end_day}")
         end
         # Hverdager custom string
-        if start_day == "monday" and end_day == "friday"
-          day = "Hverdager"
+        if start_day == 'monday' and end_day == 'friday'
+          day = 'Hverdager'
         end
         open_hours.append([day, current_period])
         current_period = period
@@ -78,16 +77,14 @@ class Area < ApplicationRecord
       if i >= standard_hours.count - 1
         day = I18n.t("days.#{start_day}")
         if end_day != nil
-          day += " - " + I18n.t("days.#{o.day}")
+          day += ' - ' + I18n.t("days.#{o.day}")
         end
         open_hours.append([day, current_period])
       end
-
     end
 
     open_hours
   end
-
 end
 
 # == Schema Information
