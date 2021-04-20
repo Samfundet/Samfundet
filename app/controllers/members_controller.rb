@@ -37,7 +37,10 @@ class MembersController < ApplicationController
       "Adopter en reke i dag!",
       "Hvordan bruker egentlig en reke et tegnebrett?",
       "Reker ser alltid på film på søndager.",
-      "Blub, blub!"
+      "Blub, blub!",
+      "Jeg husker enda da jeg var rogn.",
+      "Reker er flinke til å skrive!",
+      "Reker er sjøens influencere."
   ]
 
   def search
