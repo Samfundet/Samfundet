@@ -68,6 +68,7 @@
 
       @include media($mobile-and-tablet-portrait) {
         font-size: 1.5em;
+        margin-bottom: 1em;
         margin-top: 1em;
       }
       @include media($mobile) {
