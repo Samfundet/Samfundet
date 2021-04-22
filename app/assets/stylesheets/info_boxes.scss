@@ -55,6 +55,7 @@
     padding-right: 2em;
     max-height: 200px;
     flex-basis: 50%;
+    align-items: center;
 
     @include media($mobile-and-tablet-portrait) {
       flex-basis: 100%;
@@ -63,16 +64,15 @@
     .info_text_title {
       font-weight: bold;
       font-size: 1.75em;
-      flex: 1;
       cursor: pointer;
 
       @include media($mobile-and-tablet-portrait) {
-        font-size: 2em;
+        font-size: 1.5em;
+        margin-bottom: 1em;
         margin-top: 1em;
       }
       @include media($mobile) {
-        font-size: 2em;
-        padding: 1em;
+        font-size: 1.5em;
         text-align: center;
       }
     }
