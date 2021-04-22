@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class InfoBoxesController < ApplicationController
   load_and_authorize_resource
 
@@ -5,7 +7,7 @@ class InfoBoxesController < ApplicationController
                            if: -> { can? :manage, InfoBox }
 
   def index
-    @info_boxes = InfoBox.order("start_time")
+    @info_boxes = InfoBox.order('start_time')
   end
 
   def show
@@ -48,16 +50,17 @@ class InfoBoxesController < ApplicationController
   def admin_applet
   end
 
-  private
-    def info_box_params
-      params.require(:info_box).permit(
-          :title_no, :title_en,
-          :body_no, :body_en,
-          :image_id, :image_state,
-          :link_no, :link_en,
-          :color,
-          :start_time, :end_time,
-          :position
-      )
-    end
+private
+
+  def info_box_params
+    params.require(:info_box).permit(
+      :title_no, :title_en,
+      :body_no, :body_en,
+      :image_id, :image_state,
+      :link_no, :link_en,
+      :color,
+      :start_time, :end_time,
+      :position
+    )
+  end
 end

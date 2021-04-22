@@ -121,7 +121,7 @@ class EventsController < ApplicationController
 
   def destroy
     @event = Event.find(params[:id])
-    if @event.price_type.eql? 'free_registration' && @event.registration_event
+    if @event.price_type.eql?('free_registration') && @event.registration_event
       @event.registration_event.destroy
     end
     @event.destroy

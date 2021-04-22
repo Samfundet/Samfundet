@@ -31,7 +31,6 @@ class Sulten::ReservationsController < Sulten::BaseController
   end
 
   def create
-
     from_s = reservation_params[:reservation_from] + ' ' + reservation_params[:reservation_duration]
     from = Time.parse(from_s)
     to = from + 120.minutes
