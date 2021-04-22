@@ -1,10 +1,10 @@
-
-%h1= t("pages.index.groups")
-%p= t("pages.index.groups_info")
+.groups-page-description
+  %h1= t("pages.index.groups")
+  %p= t("pages.index.groups_info")
 
 .groups-showcase-container
   - @group_types.each do |t|
-    .samf-container.white.p-3.m-2.mt-3
+    .samf-container.plain.p-3.m-2.mt-3
       .flex-row.wrap.center
         .group-type-headline=t
         - t.groups.each do |g|
