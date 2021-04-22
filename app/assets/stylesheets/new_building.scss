@@ -1,0 +1,5 @@
+.new-building-table {
+  @include media($mobile) {
+    display: none;
+  }
+}

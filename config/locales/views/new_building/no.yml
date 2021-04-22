@@ -1,0 +1,85 @@
+'no':
+  new_building:
+    index:
+      title: Samfundet bygger ut!
+      intro: Studentersamfundet bygger ut! På denne siden kan du finne informasjon om nybyggprosjektet. Kontakt oss på nybygg@samfundet.no hvis du har spørsmål eller innspill.
+      what:
+        title: Hva er nybygg?
+        body:  Nybygg skal ha plass til mer av virksomheten vi allerede har på Samfundet. Vi skal bygge nye konsertscener, en blackbox, serveringslokaler og gode arbeidslokaler. Vi vil ha plass til mer aktivitet for flere, både frivillige, publikummere og andre foreninger. Nybygg har fått pengene som trengs til å bygge, fra blant andre NTNU, Velferdstinget, Trondheim kommune og Sit – til sammen 140 millioner. Totalt trengs det 215 millioner til prosjektet, så arbeidet med finansiering pågår fortsatt. Byggestart er planlagt til november 2021, med ferdigstillelse sommeren 2023.
+      progress:
+        title: Nybygg våren 2021
+        description: |
+          Storsalen vedtok 30. januar 2021 oppstart av forprosjektering av nybygget. I forprosjektfasen detaljeres bygget ut med relevante byggfaglige områder. Vedtaket for godkjenning av forprosjektet vil finne sted 27. april 2021. Etter en godkjenning fra Storsalen vil det bli kontrahert en totalentreprenør, som bygger selve bygget – med planlagt oppstart november 2021. I januar og februar 2021 har det blitt avholdt brukermedvirkningsmøter. De nyeste skissene etter disse (per 22. februar 2021) med tentativ møbleringsplan finnes <a href="https://docs.google.com/document/d/1A-cusqHgPSQQLXff0vHzEtsPOXzLCUZZnqZk1YWuk0Q/edit", target="_blank">her</a>.
+
+          Vedtaket lyder som følger:
+        decision: |
+          Studentersamfundet i Trondhjem, samlet til Samfundsmøte 30. januar 2021, gir tilslutning til at arbeidet med nybygg på Fengselstomta kan fortsette med et forprosjekt. Skisseprosjektet fra Eggen arkitekter legges til grunn for prosjektering av nybygget. Forprosjektet legges fram for Samfundsmøtet for godkjenning i løpet av vårsemesteret 2021.
+          Forprosjekt vil pådra kostnader mer enn 3,0 mill, i tillegg vil det etterhvert påløpe omlag 6,2 mill i detaljprosjektering, samlet 9,2 mill. Kostnadene inngår i kalkylen for samlet byggekostnad.
+      approval:
+        title: Vedtak om godkjenning av forprosjekt
+        meeting: Den 27. april skal ekstraordinært Samfundsmøte behandle forslag om godkjenning av forprosjektet.
+        background: |
+          Se forslaget til vedtak med bakgrunnsmateriale <a href="https://docs.google.com/document/d/1p0q8ZglggXeRmtOOTaM3zOMazO55qBOdo7QsICt3E8k/edit", target="_blank">her</a>
+          Se fasaden som ligger til grunn etter forprosjektet <a href="https://drive.google.com/file/d/1VEyfROzbLmxK3UVEcZFxvVZ5xLIGn0hl/view", target="_blank">her</a>.
+          Se planløsningen som ligger til grunn per 13. april <a href="https://drive.google.com/drive/folders/1Kx_-ZYTMmUcL-V6Wu1oEUT38I-krQ5QW?usp=sharing", target="_blank">her</a>.
+
+          Ved et vedtak i Samfundsmøtet vil man gå videre til detaljprosjektering og kontrahering av en totalentreprenør. Detaljprosjekteringen er svært omfattende, det må forventes at detaljprosjekteringen vil medføre mindre justeringer av tegningene. Oppdaterte tegninger legges ut løpende.
+          Det endelige prosjektet med forpliktende byggekostnad vi bli framlagt for Samfundsmøtet for vedtak i løpet av september 2021. Dersom Samfundsmøtet fatter vedtak om å gjennomføre utbyggingen i september 2021 blir det byggestart i november 2021, rett etter UKA-21.
+
+      social:
+        title: Følg med!
+        body: Følg oss gjerne på sosiale medier for jevnlige oppdateringer om prosjektet og arbeidsmetoden!
+
+      about:
+        title: Om prosjektet
+        intro: Studentersamfundet i Trondhjem er Nordens største studentersamfunn, Norges tredje største konsertarrangør og hjertet i studiebyen Trondheim. Samfundet har som formål å være studentenes samlingsplass, en kulturinstitusjon og en arena for samfunnsengasjement og debatt. Organisasjonen er til for sine medlemmer, andre studenter, det akademiske miljø og byens øvrige befolkning. Samfundet fikk sitt nåværende bygg i 1929 da det var 700 studenter i Trondheim. I dag er det nærmere 40 000, og bygget er tilnærmet det samme. Siden 60-tallet har organisasjonen ønsket å bygge ut, og i dag er de fysiske rammene så begrensede at det går direkte utover formålet til organisasjonen. Derfor vil Samfundet bygge ut på Fengselstomta øst for eksisterende bygg.
+        financing_title: Finansiering
+        financing: Studentersamfundet eies og drives av sine medlemmer uten driftstilskudd. Dette er unikt i Norge. Utbyggingen er kalkulert til å koste 215 millioner kroner. Samfundet eier Fengselstomta og har en intensjonsavtale med NTNU om å selge den delen av tomta Samfundet selv ikke skal bygge på. Samfundet er i dialog med regjeringen og aktører i studiebyen for å sikre finansiering.
+        applications_title: Søknader
+        applications: 1. november 2020 mottok Kunnskapsdepartementet, ved Henrik Asheim, en søknad om tilskudd til nybygg for Studentersamfundet i Trondhjem. Søknaden beskriver viktigheten av Samfundet for studenter og trøndere i Trondheim, for NTNU og for kulturtilbudet i byen. Det søkes om bevilgning av midler opp mot 50 millioner kroner. Søknaden kan i sin helhet leses <a href="https://drive.google.com/file/d/1V6uMHACHI6OR-OI-wJWYBUjVu96RhuHE/view", target="_blank">her</a>.
+
+      history:
+        title: Historikk
+        intro: Under <a href="https://www.facebook.com/events/238633237534059/?notif_t=plan_user_joined&notif_id=1599821483749874", target="_blank"> Samfundsmøte; Demokratiets lyskastere</a> lørdag 19. september 2020 gav Storsalen sin tilslutning til å gå videre i prosessen med det leverte skisseprosjektet.
+                 Skisseprosjektet innebar leveransen innebærer en konkretisering av krav og behov i utformingen av bygget, samt vurdering av tekniske forhold i og rundt byggingen. Tegningsleveransen tilhørende skisseprosjektet er tilgjengelig <a href="https://drive.google.com/file/d/1TvgQ6JO9kt8nrMc8rw9tJ0hf8iCa7uWl/view", target="_blank">her</a>.
+                 Under den  <a href="https://consent.youtube.com/m?continue=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DPOQKO0ZhZGA&gl=NO&m=0&pc=yt&uxe=23983172&hl=no&src=1", target="_blank">digitale utgaven av Nybyggprat</a>  gikk vi, sammen med prosessleder, gjennom prosessen hittil, skisseprosjektet og videre planer for høsten. Her snakker vi oss gjennom plantegningene og spørsmål vi har fått tilsendt. Derfor anbefaler vi alle medlemmer og andre interesserte å se gjennom streamen for oppdatert informasjon.
+                 Arkitektene har levert flere utkast til tegninger, hvor Styringsgruppa, SNK og representanter fra de aktive på Samfundet har kommet med innspill til endringer og forbedringer ved bruk og drift av tilbygget. For medlemmer kan oppdaterte skisser sees og diskuteres på  <a href="https://www.facebook.com/events/373702166827275/", target="_blank">Nybyggprat</a>. Parallelt med skisseprosjektet ble også fyllinga i Nidelva fullført i 2020.
+                 Samfundet har startet egen reguleringsplan for tilbygget på Fengselstomta som skal ferdigstilles samtidig som reguleringsplan for Nidelva. Romprogram, skisseprosjekt og forprosjekt for tilbygget skal fastsettes så organisasjonen kan starte bygging i november 2021.
+        nidelva_title: Fylling i Nidelva
+        nidelva: Området nord for Hovedbygget på Gløshaugen preges delvis av kvikkleire i grunnen. Samfundet har ledet arbeidet med å sikre området fra Fengselstomta til Grensen. Høsten 2018 fikk Samfundet økonomisk tilskudd fra kommunen og NTNU til å gjennomføre tiltaket med en motfylling/park langs Nidelva. 16.11.19 godkjente etablering av en motfylling i Nidelva med et budsjett på 19,5 mill. med tillegg av merverdiavgift. Bakgrunnen for dette forslaget finnes <a href="https://samfundet.no/upload/documents/files/000/000/693/Fylling_Nidelva__forslag_til_vedtak.pdf?1572884454", target="_blank">her</a>. Fyllingen ble ferdigstilt høsten 2020.
+        rooms_title: Romprogram
+        rooms: Høsten 2018 jobbet komiteen med å utrede et romprogram som vil være utgangspunktet for skisseprosjekt og videre prosjektering av tilbygget. De ulike alternativene til romprogram er beskrevet i utredning for rom- og funksjonsprogram. Her er det også gitt en anbefaling på vegne av Nybyggkomiteen med grundige analyser av arealbruk og kapasitet på Samfundet idag. Alle innspillene som har kommet inn, samt komiteens egne analyser er grunnlaget for antagelser om fremtidig bruk, og dermed behov, i tilbygget. <a href="https://drive.google.com/file/d/1m9ckII-t039M2mCFUcJOo4tUCQFXQcOw/view", target="_blank">Utredning for rom- og funksjonsprogram</a>. Rapporten ble fremlagt under <a href="https://www.facebook.com/events/376134869816051/ ", target="_blank">Samfundsmøte; Ytringsfrihetens grenser</a> med forslag om vedtak én uke senere, under<a href="https://www.facebook.com/events/1272988896172501/ ", target="_blank"> Samfundsmøte; Er Gud død?</a>. Voteringen resulterte i at videre prosjekt tar utgangspunkt i komiteens forslag 3. Diskusjonen rundt forslagene og voteringen kan ses på <a href="https://consent.youtube.com/m?continue=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DaE7wkxbLcrU&gl=NO&m=0&pc=yt&uxe=23983172&hl=no&src=1 ", target="_blank">YouTube</a>.
+        paralell_assignment_title: Parallelloppdrag
+        paralell_assignment_1: Evalueringskomiteens rapport kan leses  <a href="https://drive.google.com/file/d/0BxmL8pfcmyvET3llSkIzNE1EYUxoaDdLNnpGbHNuOFBtMDFR/view ", target="_blank">her</a>. Formålet til parallelloppdraget var å få opp forslag til konsepter for et nybygg som kan bearbeides videre. Parallelloppdraget var ingen konkurranse. Forslagene har blitt vurdert av en egen evalueringskomite bestående av Frederik Shetelig, Helge Brå, Amund Aarvelta, Silje Vestues og Arne Sund. Forslagene ble vurdert anonymt. Evalueringskomiteen trakk fram de sterke og svake sider ved de ulike forslagene. Komiteen presentere sin vurdering etter at forslagene ble presentert for Storsalen, før det ble åpnet for debatt i salen. Basert på tilbakemeldingene fra komiteen og medlemmene vil Nybygg og Finansstyret beslutte hvilke elementer man vil ta med seg videre inn i et nybygg og hvilke arkitekter som tildeles oppdrag.
+
+
+          Her er bidragene fra parallelloppdraget;
+
+        paralell_assignment_2: Forslagene ble presentert og diskutert på <a href=" https://www.facebook.com/events/1061062644065827/", target="_blank"> Samfundsmøte; Samfundet bygger ut</a> en uke etter avdukingen. Har du innspill? Ta gjerne kontakt.
+      images:
+        image_1: UKA
+        image_2: Mellomrommet
+        image_3: Inngang klostergata
+        image_4: Grønnbaren
+
+      documents:
+          title: Styrende Dokumenter
+          description: |
+            Formelt er Samfundets Nybyggkomité (SNK) en FSUG (Finansstyrets undergruppe) som forbereder saker for Finansstyret (FS). Komiteen legger frem statusrapporter og krav om avklaringer løpende for FS, og hvor FS sender dette til behandling i Storsalen for å få medlemmenes tilslutning til både prosess og de resultatene som fremkommer.
+
+            Det bør legges opp til at Storsalen har reell innflytelse, herunder kan forkaste forslag helt eller delvis, be om at prosessen stanser, utsettes eller fremmes for ny behandling. Det må være en målsetting å få en så reell debatt som mulig ved hver behandling.
+          doc1: https://samfundet.no/upload/documents/files/000/000/575/FS_bok_2018.pdf?1540925719
+          doc2: https://drive.google.com/file/d/1vt75E8beZuLnujduNP_VGEuUmmCeE9nS/view?usp=sharing
+          button1_title: Lover og statutter
+          button2_title: Prosessplan for nybygg
+
+      table:
+        name: Navn
+        email: Epost
+        process_leader: Prosessleder
+        leader: Leder
+        scene_technical: Sceneteknisk
+        serving: Servering
+        operating: Drift
+        artisic: Kunstnerisk
+        arranging: Arrangement

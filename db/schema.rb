@@ -320,6 +320,23 @@ ActiveRecord::Schema.define(version: 2020_12_17_132844) do
     t.integer "tag_id"
   end
 
+  create_table "info_boxes", id: :serial, force: :cascade do |t|
+    t.string "title_no"
+    t.string "title_en"
+    t.text "body_no"
+    t.text "body_en"
+    t.string "link_no"
+    t.string "link_en"
+    t.integer "image_id"
+    t.boolean "image_state"
+    t.string "color"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "position"
+  end
+  
   create_table "interviews", id: :serial, force: :cascade do |t|
     t.datetime "time"
     t.string "priority", limit: 10
