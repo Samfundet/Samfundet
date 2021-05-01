@@ -6,13 +6,11 @@ class JobApplicationsController < ApplicationController
   skip_authorization_check only: %i[create]
 
   def index
-    begin
-      @admissions = @current_user.job_applications.where(withdrawn: false).group_by { |job_application| job_application.job.admission }
-      raise 'Exception'
-    rescue
-      flash[:error] = t('job_applications.application_not_found')
-      redirect_to root_path
-    end
+    @admissions = @current_user.job_applications.where(withdrawn: false).group_by { |job_application| job_application.job.admission }
+    raise 'Exception'
+  rescue
+    flash[:error] = t('job_applications.application_not_found')
+    redirect_to root_path
   end
 
   def create
