@@ -13,7 +13,7 @@
               = image_tag "groups/#{g.name.downcase}.jpg", class: "image"
             - else
               = image_tag "groups/noimage.jpg", class: "image"
-            - if g.name.length > 14
+            - if g.name.length > 13
               .label=g.abbreviation
             - else
               .label= g.name
