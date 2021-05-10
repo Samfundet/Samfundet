@@ -57,7 +57,7 @@
 
         .form-divider
 
-        = f.input :reservation_from, label: "Dato", input_html: { class: "datepicker", value: @reservation.reservation_from}, as: :string
+        = f.input :reservation_from, label: "Dato", input_html: { class: "datepicker", value: @reservation.reservation_from, :readonly => "readonly"}, as: :string
 
         .form-divider
         = f.actions do
