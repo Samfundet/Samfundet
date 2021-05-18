@@ -6,7 +6,7 @@
     title_with_applicant_and_job: "%{applicant_name} sin søknad til %{job_title}"
     cannot_apply_after_deadline: "Du kan ikke legge inn en søknad etter søknadsfristen for dette opptaket."
     cannot_prioritize_after_deadline: "Du kan ikke omprioritere dine søknader etter omprioriteringsfristen for dette opptaket."
-    application_not_found: "Fant ingen søknader tilknyttet denne brukeren"
+    application_not_found: "Fant ingen søknader tilknyttet denne brukeren."
     find_on_facebook: "Finn %{name} på Facebook"
     applicant_for: "Søker på <strong>%{job}</strong> hos <strong>%{group}</strong>."
     application: "Søknad"
