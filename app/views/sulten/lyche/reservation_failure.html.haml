@@ -6,8 +6,7 @@
     = t("sulten.reservation.form.title")
 
   .reservation-info
-    Kunne ikke opprette reservasjonen! Vennligst prøv igjen eller send oss en epost for å reservere bord.
-    Merk at reservasjoner må være minst en dag i forveien og på maks 8 personer.
+    = t("sulten.lyche.reservation.failure.info")
 
-    Klikk her for å prøve å bestille via epost:
+    = t("sulten.lyche.reservation.failure.email")
     = mail_to "lyche@samfundet.no"
