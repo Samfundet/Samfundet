@@ -168,6 +168,21 @@ class EventsController < ApplicationController
     render layout: false if request.xhr?
   end
 
+  def rapid_test
+    @rapid_test = Sulten::Reservation.new
+
+    request = params[:sulten_reservation]
+
+    if not request.nil?
+      @chosen_date = request[:reservation_from]
+      @number_of_tests = request[:reservation_duration]
+
+      @possible_times = ["12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00"]
+      @times = ["12:00", "12:30", "13:30", "14:00"]
+    end
+
+  end
+
   def admin
     @events = Event.upcoming.order(:non_billig_start_time)
   end

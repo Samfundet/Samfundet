@@ -1,0 +1,2 @@
+class RapidTest < ApplicationRecord
+end

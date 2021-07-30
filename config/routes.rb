@@ -32,6 +32,8 @@ Rails.application.routes.draw do
       collection do
         get 'purchase_callback' => :purchase_callback_failure
         get 'purchase_callback/:tickets' => :purchase_callback_success
+        get 'rapid_test', to: "events#rapid_test"
+        post 'rapid_test', to: "events#rapid_test"
       end
     end
 

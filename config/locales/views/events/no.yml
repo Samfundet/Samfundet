@@ -97,6 +97,7 @@
     ticket_limit_multiple: "0/%{ticket_limit} billetter"
     ticket_unit: stk.
     purchase: Kjøp billett
+    rapid_test: Bestill hurtigtest
     sold_out: Utsolgt
     currency_unit: ",-"
 

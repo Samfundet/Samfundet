@@ -93,6 +93,7 @@ en:
     ticket_limit_multiple: "0/%{ticket_limit} tickets"
     ticket_unit: pcs.
     purchase: Purchase ticket
+    rapid_test: Order rapid test
     sold_out: Sold out
     currency_unit: " NOK"
 

@@ -1,0 +1,29 @@
+- if @times
+  %br
+    = "Valgt dato: " + @chosen_date
+  %br
+    = "Antall tester: " + @number_of_tests
+  %br
+    = "Velg ledig tidspunkt:"
+  %div{style: "display: flex;"}
+    - for time in @possible_times
+      - if @times.include? time
+        .samf-button.white.small
+          = time
+      - else
+        .samf-button.gray.small
+          = time
+
+- else
+  = semantic_form_for @rapid_test, :url => {:controller => "events", :action => "rapid_test" } do |f|
+    = f.inputs name: "Kontaktinformasjon" do
+      = f.input :name, label: "Navn"
+      .flex-row
+        = f.input :telephone, label: "Telefonnummer"
+        = f.input :email, label: "Epost"
+    = f.inputs name: "Dato og antall" do
+      .flex-row
+        = f.input :reservation_duration, label: "Antall hurtigtester",  collection: [1, 2, 3, 4, 5, 6, 7, 8]
+        = f.input :reservation_from, label: "Dato", input_html: { class: "datepicker", value: @rapid_test.reservation_from.to_s, :readonly => "readonly"}, as: :string
+    = f.actions do
+      = f.submit "Finn tilgjengelige tidspunkt"
