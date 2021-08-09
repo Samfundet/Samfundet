@@ -6,6 +6,7 @@
   flex-wrap: wrap;
   border-radius: 4px;
   overflow: hidden;
+  justify-content: center;
 
 
   @include media($mobile-and-tablet-portrait) {
@@ -58,7 +59,7 @@
     align-items: center;
 
     @include media($mobile-and-tablet-portrait) {
-      flex-basis: 100%;
+     // flex-basis: 100%;
     }
 
     .info_text_title {
@@ -68,7 +69,7 @@
 
       @include media($mobile-and-tablet-portrait) {
         font-size: 1.5em;
-        margin-bottom: 1em;
+        //margin-bottom: 1em;
         margin-top: 1em;
       }
       @include media($mobile) {
