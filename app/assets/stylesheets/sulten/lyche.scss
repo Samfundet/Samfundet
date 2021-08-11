@@ -275,6 +275,25 @@ body.lyche {
         color: #aaa;
       }
 
+      .change-language {
+        width: 28px;
+        height: 20px;
+        position: absolute;
+
+        background-image: asset-url("header/english.png");
+        background-size: cover;
+        background-position: center;
+
+        border-radius: 3px;
+        box-shadow: 1px 1px 10px 2px rgba(0, 0, 0, 0.1);
+
+        margin-top: -8px;
+      }
+
+      .change-language.en {
+        background-image: asset-url("header/norwegian.png");
+      }
+
       .lyche-logo {
         background-image: asset-url("sulten/logo.png");
         width: 200px;
@@ -298,6 +317,10 @@ body.lyche {
         .menu-button {
           display: none;
           max-width: 0px;
+        }
+
+        .change-language {
+          display: none;
         }
 
         .lyche-logo {
@@ -779,13 +802,13 @@ body.lyche {
         tr, td, th {
           border-width: 0;
           background-color: transparent;
+          color: #aaa;
           text-align: left;
           font-size: 18px;
         }
 
         td {
           text-align: right;
-          color: #aaa;
         }
 
         tr, tr:nth-child(even) {
