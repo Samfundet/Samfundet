@@ -50,8 +50,14 @@
       %td.pr-2.bw-r.thin= t('events.age_limit')
       %td.p-2= t_event_age_limit(@event)
 
-.text-Align.mb-3.pt-3.pb-3
-  = render "buy_button", event: @event, button_only: false
+.center{style:"max-width: 850px; text-align: left; font-weight: bold; font-size: 30px; margin-top: 50px;"}
+  = t("events.green_certificate")
+.flex-row{style:"max-width: 260px; margin-right: auto; margin-left: auto; align-items: baseline; line-height:20px;"}
+  .text-Align.mb-3.pt-3.pb-3
+    = render "buy_button", event: @event, button_only: false
+  .samf-button.small.green.center{style:"text-transform: none; font-size: 1em;"}
+    = link_to "https://hurtigtest.samfundet.no/" do
+      = t("events.rapid_test")
 
 .text-Align.title
   %h1= @event

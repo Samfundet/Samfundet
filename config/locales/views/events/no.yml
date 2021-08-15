@@ -97,6 +97,8 @@
     ticket_limit_multiple: "0/%{ticket_limit} billetter"
     ticket_unit: stk.
     purchase: Kjøp billett
+    rapid_test: Bestill hurtigtest
+    green_certificate: "NB: For å komme inn på et arrangement, er det krav om grønt koronasertifikat. Har du ikke dette, må du selv bestille en hurtigtest."
     sold_out: Utsolgt
     currency_unit: ",-"
 
