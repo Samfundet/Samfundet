@@ -7,7 +7,6 @@ class JobApplicationsController < ApplicationController
 
   def index
     @admissions = @current_user.job_applications.where(withdrawn: false).group_by { |job_application| job_application.job.admission }
-    raise 'Exception'
   rescue
     flash[:error] = t('job_applications.application_not_found')
     redirect_to root_path
