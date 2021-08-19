@@ -13,7 +13,7 @@ class AdmissionsAdmin::CampusController < AdmissionsAdmin::BaseController
   end
 
   def create
-    @campus = Campus.new(params[:campus])
+    @campus = Campus.new(campus_params)
     if @campus.save
       flash[:success] = t('save_success')
       redirect_to action: :admin
@@ -33,7 +33,7 @@ class AdmissionsAdmin::CampusController < AdmissionsAdmin::BaseController
 
   def update
     @campus = Campus.find params[:id]
-    if @campus.update_attributes(params[:campus])
+    if @campus.update_attributes(campus_params)
       flash[:success] = t('update_success')
       redirect_to action: :admin
     else
@@ -52,5 +52,12 @@ class AdmissionsAdmin::CampusController < AdmissionsAdmin::BaseController
     @campus = Campus.find params[:campus_id]
     @campus.update_attributes(active: false)
     redirect_to action: :admin
+  end
+
+  private
+  def campus_params
+    params.require(:campus).permit(
+      :name
+    )
   end
 end
