@@ -69,7 +69,7 @@ fi
 # If samfundet user does not exist, create it.
 samf_user_exists=$(psql postgres -tAc "SELECT 1 FROM pg_roles WHERE rolname='samfundet'" | grep -q 1)
 if [ ! samf_user_exists ]; then
-  echo -e "CREATE USER samfundet WITH PASSWORD '$SAMFDB_DEV_PASS';\nALTER USER samfundet CREATEDB;" | sudo -u postgres psql
+  echo -e "CREATE USER samfundet WITH PASSWORD 'samfundet';\nALTER USER samfundet CREATEDB;" | sudo -u postgres psql
 fi
 
 # Setup and seed database if necessary
