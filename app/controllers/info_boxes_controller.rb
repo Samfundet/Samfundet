@@ -7,7 +7,8 @@ class InfoBoxesController < ApplicationController
                            if: -> { can? :manage, InfoBox }
 
   def index
-    @info_boxes = InfoBox.order('start_time')
+    @info_boxes = InfoBox.all
+    #@info_boxes = InfoBox.order('start_time')
   end
 
   def show
