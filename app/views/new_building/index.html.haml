@@ -39,7 +39,8 @@
   .p-2
 
   .samf-container.red.mt-3.p-3.ml-2.mr-2
-    %p= simple_format(t("new_building.index.meetingFs"))
+    %p= simple_format(t("new_building.index.meetingFs"),{} ,:sanitize => false)
+
   .p-2
 
   .samf-container.white.mt-3.p-3.ml-2.mr-2
@@ -124,7 +125,7 @@
       %li <a href="https://drive.google.com/file/d/1QLk3M8HlYL1nVji1zE-2HFiABApqUHg3/view ", target="_blank">Du store verden - Skibnes arkitekter</a>
       %li <a href="https://drive.google.com/file/d/1umIrffZz2eCqwnhu05L8Lgvxxqg1OGlJ/view ", target="_blank">Sceneskifte - Eggen arkitekter</a>
       %li <a href="https://drive.google.com/file/d/1jH6K5e8F7UC7_y4rWjcXawzaskZCMW4T/view?usp=drive_open ", target="_blank">Merry Glow Red - Pir II arkitekter</a>
-      %p= simple_format(t("new_building.index.history.paralell_assignment_2"))
+      %p= simple_format(t("new_building.index.history.paralell_assignment_2"),{} ,:sanitize => false)
 
 
 
@@ -183,3 +184,10 @@
           %td.new-building-table{style:"text-align: center"}= t("new_building.index.table.arranging")
           %td{style:"text-align: center"}
             nybygg-arrangement@samfundet.no
+
+        %tr
+          %td
+            Andreas Aaberge Eide
+          %td.new-building-table{style:"text-align: center"}= t("new_building.index.table.studentmedia")
+          %td{style:"text-align: center"}
+            nybygg-media@samfundet.no
