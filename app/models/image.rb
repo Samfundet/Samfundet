@@ -9,7 +9,7 @@ class Image < ApplicationRecord
   has_attached_file :image_file,
                     styles: { medium: 'x180>', large: 'x400>' },
                     convert_options: { medium: '-quality 80', large: '-quality 80' },
-                    processors: %i[thumbnail compression],
+                    processors: Rails.env.development? ? %i[thumbnail] : %i[thumbnail compression],
                     url: '/upload/:class/:attachment/:id_partition/:style/:filename',
                     path: ':rails_root/public/upload/:class/:attachment/:id_partition/:style/:filename',
                     default_url: '/home/aleksanb/Projects/Samfundet3/app/assets/images/banner-images/kitteh.jpeg'
