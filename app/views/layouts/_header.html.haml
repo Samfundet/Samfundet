@@ -15,7 +15,7 @@
     .header-item.info
       = link_to t('layouts.application.menu.info'), pages_path
     .header-item
-      = link_to t('layouts.application.menu.lyche'), sulten_path
+      = link_to t('layouts.application.menu.lyche'), sulten_path, target: :_blank
     - if open_admission?
       .header-item.volunteer.highlight
         = link_to t('layouts.application.menu.admissions'), admissions_path
