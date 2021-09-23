@@ -2,16 +2,24 @@
   job_applications:
     your_applications: Dine søknader
     no_applications: Du har foreløpig ikke søkt noen verv.
+    application_sent: Søknaden er sendt!
+    email_confirmation: Du vil om kort tid motta bekreftelse på e-post.
+    reminder_inbox: Husk å sjekk inboksen din regelmessig etter e-post om intervjuer.
     application_saved: Søknaden er lagret.
     application_updated: Søknaden er oppdatert.
     application_deleted: Søknaden er trukket.
     login_to_complete: Registrer deg eller logg inn som søker for å fullføre søknaden.
+    error_book_interview_time: Det skjedde en feil ved booking av intervjutid. Vennligst prøv igjen.
 
 en:
   job_applications:
     your_applications: Your applications
     no_applications: You haven't applied to any jobs yet.
+    application_sent: Application was successfully sent!
+    email_confirmation: You will soon receive a confirmation by e-mail.
+    reminder_inbox: Remember to check your inbox regularly for interview e-mails.
     application_saved: Your application is saved.
     application_updated: Your application is updated.
     application_deleted: Your application is withdrawn.
     login_to_complete: Register or log in as an applicant to complete your application.
+    error_book_interview_time: An error occurred while attempting to book an interview time. Please try again.

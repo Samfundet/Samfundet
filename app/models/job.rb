@@ -6,13 +6,16 @@ class Job < ApplicationRecord
 
   has_one :group_type, -> { order(:description) }, through: :group
   has_many :job_applications
+  has_many :interview_time_slots, foreign_key: 'job_id'
   has_many :interviews, through: :job_applications
   has_many :applicants, through: :job_applications
 
   has_and_belongs_to_many :tags, class_name: 'JobTag'
 
-  validates :title_no, :teaser_no, :description_no, :admission, :group, presence: true
+  validates :title_no, :teaser_no, :description_no, :admission, :group, :contact_email, :contact_phone, :interview_interval, presence: true
   validates :teaser_no, :teaser_en, length: { maximum: 75 }
+
+  validate :linkable_and_same_intervals
 
   # scope :appliable
 
@@ -21,6 +24,94 @@ class Job < ApplicationRecord
 
   def available_jobs_in_same_group
     group.jobs.where('admission_id = (?) AND id <> ?', admission_id, id)
+  end
+
+  def linkable_and_same_intervals
+    if linkable_interviews
+
+      @other_jobs = Job.where(admission: admission, group: group)
+      @other_jobs.each do |j|
+        if j.interview_interval != interview_interval
+          errors.add(:linkable_interviews, I18n.t('helpers.models.job.errors.linkable_different_intervals'))
+          break
+        end
+      end
+
+    end
+  end
+
+  # Generates a list of suggested interview time assignments with the format
+  # [application_id, time_slot_id, time]
+  def interview_time_suggestion
+    suggestions = []
+    assigned = []
+
+    applications = job_applications_without_interviews.sort_by { |ja| ja.created_at }
+
+    # Fetch and loop through all time slots
+    interview_time_slots = InterviewTimeSlot.where(job: self).sort_by { |it| [it.start_time, -(it.number_of_interviews)] }
+    interview_time_slots.each do |slot|
+      used_times = []
+
+      # Loop through all applicants which are not assigned yet
+      applications.select { |j| not assigned.include? j }.each do |j|
+        applicant = j.applicant
+
+        # Find times in slot which are possible for the applicant
+        # Remove used_times which were already assigned
+        applicant_unavailable_times = applicant.get_impossible_interview_times
+        possible_times = slot.possible_times(applicant_unavailable_times)
+        possible_times = possible_times.select { |t| not used_times.include? t }
+
+        # If any possible slots, assign first time to application
+        if possible_times.length > 0
+          suggestion = [
+              applicant, slot, possible_times[0]
+          ]
+          used_times.append(possible_times[0])
+          assigned.append(j)
+          suggestions.append(suggestion)
+        end
+      end
+    end
+
+    # Return list of suggestions
+    suggestions
+  end
+
+  def interview_time_suggestions_for_applicant(applicant)
+    suggestions = []
+
+    # Check if the applicant has any set interviews yet
+    if applicant.has_interview_for_job(self)
+      return suggestions
+    end
+
+    # Fetch and loop through all time slots
+    interview_time_slots = InterviewTimeSlot.where(job: self).sort_by { |it| [it.start_time, -(it.number_of_interviews)] }
+    interview_time_slots.each do |slot|
+      used_times = []
+
+      # Find times in slot which are possible for the applicant
+      # Remove used_times which were already assigned
+      applicant_unavailable_times = applicant.get_impossible_interview_times
+      possible_times = slot.possible_times(applicant_unavailable_times)
+      possible_times = possible_times.select { |t| not used_times.include? t }
+
+      # If any possible slots, add all times from the slots
+      if possible_times.length > 0
+        possible_times.each do |time|
+          suggestion = [
+            slot, time
+          ]
+          used_times.append(time)
+          suggestions.append(suggestion)
+        end
+      end
+    end
+
+    # Return list of suggestions
+    suggestions
   end
 
   def similar_available_jobs
@@ -63,7 +154,8 @@ class Job < ApplicationRecord
   end
 
   def job_applications_without_interviews
-    job_applications - job_applications_with_interviews
+    unprocessed = unprocessed_applications
+    unprocessed - job_applications_with_interviews
   end
 
   def processed_applications

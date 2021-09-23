@@ -1,0 +1,18 @@
+en:
+  unavailable_interview_time_slots:
+    title: Time slots where you are unavailable for interviews
+    edit: Edit
+    delete: Delete
+    new: Create new time slot
+    time_frame: Unavailable in the time slot
+
+    form:
+      start: Start time
+      end: End time
+      update: Update time slot
+      create: Create time slot
+
+    messages:
+      created: Time slot created
+      updated: Time slot updated
+      deleted: Time slot deleted
