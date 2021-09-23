@@ -113,6 +113,7 @@ Rails.application.routes.draw do
     # applicant. That is, you should be able to register an application before
     # you register as an applicant.
     resources :job_applications, only: [:index, :create, :update, :destroy] do
+      get "book_interview_time", to: "job_applications#book_interview_time"
       member do
         post :up
         post :down
@@ -153,10 +154,12 @@ Rails.application.routes.draw do
           resources :jobs, only: [:show, :new, :create, :edit, :update, :destroy] do
             get :search, on: :collection
             get :show_unprocessed
+            resources :interview_time_slots
+            post :send_rejection_email, on: :member
             resources :job_applications, only: :show do
               post :hidden_create, on: :collection
               get :reset_status
-              resources :interviews, only: [:update, :show]
+              resources :interviews, only: [:update, :show, :destroy]
             end
           end
           # :applicants provides a scope (with applicant IDs in params and such),

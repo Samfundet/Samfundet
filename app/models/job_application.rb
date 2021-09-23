@@ -3,6 +3,7 @@
 class JobApplication < ApplicationRecord
   belongs_to :applicant
   belongs_to :job
+  belongs_to :admission
 
   acts_as_list column: :priority, scope: :applicant
 

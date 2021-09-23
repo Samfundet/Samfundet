@@ -36,6 +36,7 @@ after :generate_roles do
 
   puts "Creating #{number_of_applicants} applicants, and makes them apply for #{number_of_job_applications_pr_applicant} jobs, and accepting ~#{accept_percent_chance}%"
   distinct_emails(number_of_applicants).each do |email|
+
     applicant = Applicant.create!(
       firstname: Faker::Name.first_name,
       surname: Faker::Name.last_name,
@@ -63,7 +64,7 @@ after :generate_roles do
         job_application.created_at = Faker::Time.between(1.week.ago, 2.weeks.from_now)
         job_application.save
         Interview.create!(
-            time: Faker::Time.between(1.weeks.from_now, 2.weeks.from_now),
+        #    time: Faker::Time.between(1.weeks.from_now, 2.weeks.from_now),
             priority: Interview::PRIORITIES_NO.keys.sample,
             job_application_id: job_application.id,
             location: Faker::Address.city

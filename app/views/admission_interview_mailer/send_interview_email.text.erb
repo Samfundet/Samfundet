@@ -1,0 +1,27 @@
+<%= t("admissions_admin.interview_mailer.greetings", firstname: @applicant.firstname) %>
+
+<% if @jobs.length > 1 %>
+<%= t("admissions_admin.interview_mailer.interview_info_multiple", group_name: @job.group.name) %>
+
+<%= t("admissions_admin.interview_mailer.following") %>
+  <% @jobs.each do |job| %>
+    <%= "- #{job}" %>
+  <% end %>
+
+<%= t("admissions_admin.interview_mailer.common") %>
+<% else %>
+<%= t("admissions_admin.interview_mailer.interview_info", job_name: @job.title_no, group_name: @job.group.name) %>
+<% end %>
+
+<%= t("admissions_admin.interview_mailer.interview_time_and_location", date: @interview_time.to_date, time: @interview_time.strftime("%H:%M"), location: @interview_location) %>
+
+<%= t("admissions_admin.interview_mailer.cannot_attend_info") %>
+<%= @job.contact_email %>
+
+<%= t("admissions_admin.interview_mailer.or_call") %>
+<%= @job.contact_phone %>
+
+<%= t("admissions_admin.interview_mailer.ending_words") %>
+
+<%= t("admissions_admin.interview_mailer.regards") %>
+<%= t("admissions_admin.interview_mailer.from") %>

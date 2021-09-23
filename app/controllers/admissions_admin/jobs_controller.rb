@@ -5,6 +5,8 @@ class AdmissionsAdmin::JobsController < AdmissionsAdmin::BaseController
   layout 'admissions'
   before_action :before_new_and_create_and_search, only: %i[new create search]
 
+  require 'digest'
+
   def new; end
 
   def create
@@ -75,7 +77,11 @@ private
       :default_motivation_text_no,
       :default_motivation_text_en,
       :is_officer,
-      :tag_titles
+      :tag_titles,
+      :contact_email,
+      :contact_phone,
+      :interview_interval,
+      :linkable_interviews
     )
   end
 
@@ -83,5 +89,19 @@ private
     @admission = Admission.find(params[:admission_id])
     @group = Group.find(params[:group_id])
     @job = Job.new(admission: @admission, group: @group)
+  end
+
+  # Generates a unique hash for a time slot suggestion
+  # This is used to compare the confirmed suggestion with the state in the server
+  # If the hash does not match someone changed something meanwhile, and the suggestion is not applied
+  #
+  #
+  # TODO: CHECK IF THIS CAN BE USED ELSEWHERE
+  def suggestion_hash(suggestions)
+    hash = ''
+    suggestions.each do |a, s, t|
+      hash += a.id.to_s + s.id.to_s + t
+    end
+    Digest::SHA2.hexdigest hash
   end
 end

@@ -19,8 +19,10 @@ authorization do
     has_permission_on [
       :admissions,
       :admissions_admin_admissions,
+      :admissions_admin_campus,
       :admissions_admin_groups,
       :admissions_admin_interviews,
+      :admissions_admin_interview_time_slots,
       :admissions_admin_jobs,
       :admissions_admin_job_applications,
       :admissions_admin_log_entries,
@@ -46,7 +48,6 @@ authorization do
       :sulten_admin,
       :sulten_closed_periods,
       :contact,
-      :admissions_admin_campus,
       :info_boxes,
     ], to: :manage
 
@@ -72,6 +73,7 @@ authorization do
       :admissions_admin_admissions,
       :admissions_admin_groups,
       :admissions_admin_interviews,
+      :admissions_admin_interview_time_slots,
       :admissions_admin_jobs,
       :admissions_admin_job_applications,
       :admissions_admin_log_entries
@@ -79,7 +81,7 @@ authorization do
     has_permission_on :admissions_admin_applicants, to: [:show_interested_other_positions, :show_unflagged_applicants]
     has_permission_on :admissions_admin_job_applications, to: [:hidden_create, :withdraw_job_application]
     has_permission_on :job_applications, to: [:update, :delete]
-    has_permission_on :admissions_admin_jobs, to: :hidden_create
+    has_permission_on :admissions_admin_jobs, to: :assign_interview_times
     has_permission_on :admissions_admin_groups, to: [:applications, :reject_calls]
     has_permission_on :admissions_admin_admissions, to: :statistics
   end
@@ -165,6 +167,9 @@ authorization do
       end
       has_permission_on :admissions_admin_log_entries, to: [:create, :destroy] do
         if_attribute group_id: is { group.id }
+      end
+      has_permission_on :admissions_admin_interview_time_slots, to: [:index, :new, :create, :edit, :update, :destroy] do
+        if_attribute job: { group: { id: is { group.id } } }
       end
     end
   end

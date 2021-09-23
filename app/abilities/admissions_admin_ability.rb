@@ -22,7 +22,7 @@ class AdmissionsAdminAbility
   def mg_nestleder
     # MG::Nestleder is responsible for the entire admission process of Samfundet.no
     # Remember that this is all within the context of the AdmissionAdmin controller namespace
-    can :manage, [Admission, Applicant, Group, Interview, Job, JobApplication, LogEntry]
+    can :manage, [Admission, Applicant, Group, Interview, InterviewTimeSlot, Job, JobApplication, LogEntry]
   end
 
   def opptaksansvarlig
@@ -40,6 +40,8 @@ class AdmissionsAdminAbility
       can [:show, :reset_status], JobApplication, job: { group: { id: group.id } }
       can [:show, :update], Interview, job_application: { job: { group: { id: group.id } } }
       can [:create, :destroy], LogEntry, group_id: group.id
+      can [:edit, :update, :destroy], InterviewTimeSlot, job: { group: { id: group.id } }
+      can [:read, :new, :create], InterviewTimeSlot
     end
 
     define_method(:"#{group.group_leader_role}") do

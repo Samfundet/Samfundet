@@ -47,6 +47,30 @@ class Applicant < ApplicationRecord
     self.hashed_password = BCrypt::Password.create(@password, cost: cost)
   end
 
+  def get_assigned_interview_times
+    @job_applications = JobApplication.where(applicant_id: id)
+
+    interview_times = []
+    @job_applications.each do |j|
+      interval = j.job.interview_interval
+      time = j.interview.time
+
+      if time
+        range = interval - 1
+        start_time = time - range.minutes
+        count = 2*interval - 1
+
+        count.times do |x|
+          interview_times.push((start_time + x.minutes).to_s)
+        end
+      end
+    end
+
+    puts('busy times')
+    puts(interview_times)
+    interview_times
+  end
+
   def assigned_job_application(admission, priority: %w[wanted reserved])
     job_applications.where(withdrawn: false)
                     .joins(:interview)
@@ -120,7 +144,17 @@ class Applicant < ApplicationRecord
     group.job_applications_in_admission(admission).select { |ja| ja.applicant == self }
   end
 
-private
+  def job_application_for_job(job)
+    job_applications.find_by(job: job)
+  end
+
+  def has_interview_for_job(job)
+    ja = job_application_for_job(job)
+    if ja == nil
+      return false
+    end
+    ja.interview.time?
+  end
 
   def lowercase_email
     self.email = email.downcase unless email.nil?

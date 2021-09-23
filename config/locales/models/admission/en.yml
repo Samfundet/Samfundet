@@ -10,6 +10,11 @@ en:
           deadline_before_shown_deadline: "the actual application deadline can't be before the shown deadline"
           admin_deadline_before_user: "the priority deadline for admission admins can't be before the applicants'"
           priority_before_application: "priority deadline can't be before the application deadline"
+        interview_time_slot:
+          one_day_future: "The interview time slot must be at least one day in the future."
+          same_day: "The interview time slot must begin and end on the same day."
+          end_before_start: "The interview time slot cannot end before it starts."
+          minimum_time: "The time slot must be minimum 40 minutes."
     label:
       admission:
         title: Job title

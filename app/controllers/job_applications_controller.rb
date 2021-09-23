@@ -3,13 +3,11 @@
 class JobApplicationsController < ApplicationController
   layout 'admissions'
   load_and_authorize_resource only: %i[index update destroy up down]
-  skip_authorization_check only: %i[create]
+  skip_authorization_check only: %i[create, book_interview_time]
 
   def index
+    @current_admission = Admission.first
     @admissions = @current_user.job_applications.where(withdrawn: false).group_by { |job_application| job_application.job.admission }
-  rescue
-    flash[:error] = t('job_applications.application_not_found')
-    redirect_to root_path
   end
 
   def create
@@ -69,6 +67,59 @@ class JobApplicationsController < ApplicationController
     prioritize :lower
   end
 
+  def book_interview_time
+    @job_application = JobApplication.find(params[:job_application_id])
+    @applicant = @job_application.applicant
+    @job = @job_application.job
+
+    # The datetime and id of interview_time_slot is sent through the "format" parameter
+    f = params[:format].to_s
+
+    # The ID of the interview time slot is found on the very last characters of the "format" parameter
+    interview_time_slot = InterviewTimeSlot.find_by(id: f[10, f.size-10])
+
+    # If the ID is invalid, there will be no valid interview time slot.
+    # Mainly to protect against URL tampering.
+    if interview_time_slot == nil
+      flash[:error] = t('job_applications.error_book_interview_time')
+      redirect_to job_path(@job)
+      return
+    end
+
+    # Convert the remainder of the "format" characters into a datetime object,
+    # which can be passed into the interview object later.
+    interview_time = "#{f[2, 2]}.#{f[0, 2]}.20#{f[4, 2]} #{f[6, 2]}:#{f[8, 2]}"
+
+    # Security mechanism in order to check if the given interview_time
+    # and interview_time_slot can be found in the suggestions list.
+    suggestions = @job.interview_time_suggestions_for_applicant(@applicant)
+    time_and_slot_exists = false
+
+    # Mainly to protect against URL tampering, like above,
+    # and against double booking of the same interview time.
+    suggestions.each do |s|
+      if s[1] == interview_time and s[0] == interview_time_slot
+        time_and_slot_exists = true
+        break
+      end
+    end
+
+    if !time_and_slot_exists
+      flash[:error] = t('job_applications.error_book_interview_time')
+      redirect_to job_path(@job)
+      return
+    end
+
+    new_interview = @job_application.find_or_create_interview
+    new_interview.time = interview_time
+    new_interview.location = interview_time_slot.location
+    new_interview.interview_time_slot_id = interview_time_slot.id
+    new_interview.save!
+
+    flash[:success] = t('job_applications.interview_set')
+    redirect_to job_path(@job)
+  end
+
 private
 
   def prioritize(direction)
@@ -102,11 +153,22 @@ private
     end
   end
 
+  def send_job_application_confirmation_email
+    @job = @job_application.job
+    @applicant = current_user
+    email_subject = "Takk for din søknad hos #{@job.group.name}!"
+    JobApplicationConfirmationMailer.send_confirmation_email(@applicant, @job, email_subject).deliver
+  end
+
   def handle_create_application_when_logged_in
     @job_application.applicant = current_user
 
     if @job_application.save
-      flash[:success] = t('job_applications.application_saved')
+      flash[:success] = t('job_applications.application_sent')
+      flash[:notice] = t('job_applications.email_confirmation')
+      flash[:message] = t('job_applications.reminder_inbox')
+
+      send_job_application_confirmation_email
       redirect_to job_applications_path
     else
       render_application_form_with_errors
