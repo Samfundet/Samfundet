@@ -17,6 +17,7 @@
       = t("admissions_admin.show_unflagged_applicants")+"..."
 
   - if can? :manage, Campus
+    -#campus-system should be worked on
     = link_to admin_admissions_admin_campus_index_path do
       .samf-button.green
         = t("admissions_admin.view_campus")
