@@ -10,12 +10,6 @@ class PagesController < ApplicationController
                            if: -> { show_admin? }
 
   def index
-    @menu = Page.menu
-    @page = Page.index
-    @show_admin = show_admin?
-  end
-
-  def index_beta
     # Only show the venues that have an image
     # and ignore venues like "Outside the house" etc.
     supported_venues = %w[
@@ -31,8 +25,14 @@ class PagesController < ApplicationController
       Rundhallen
     ]
     @areas = Area.all.select {
-      |a| supported_venues.include? a.name
+        |a| supported_venues.include? a.name
     }
+  end
+
+  def index_old
+    @menu = Page.menu
+    @page = Page.index
+    @show_admin = show_admin?
   end
 
   def show
