@@ -47,3 +47,5 @@
       previous_label: "Forrige"
       next_label: "Neste"
       page_gap: "&hellip;"
+  errors:
+    invalid_path: "Ugyldig bane"

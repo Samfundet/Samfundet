@@ -1,0 +1,13 @@
+.flex-row-mobile-column.flex.p-2.pl-3.pr-3.mb-2{style: "background: #f4f4f4; border-radius: 4px; color: #555;"}
+  .flex-50.flex-align-center
+    = "#{t("interview_time_slots.interview_form.name")}: #{interview.job_application.applicant.full_name}"
+  .flex-50.flex-align-center
+    = "#{t("interview_time_slots.interview_form.interview_time")}: #{interview.time.strftime("%H:%M") if interview.time}"
+    - if !interview.time
+      = "Ingen intervjutid satt"
+  .flex-50.flex-align-center
+    = "#{t("interview_time_slots.interview_form.location")}: #{interview.location}"
+  .flex-50.flex-justify-end.flex-align-center
+    = link_to admissions_admin_admission_group_job_job_application_interview_path(@admission, @group, @job, interview.job_application, interview), method: :delete, data: {confirm: t("crud.confirm")} do
+      .samf-button.small.red.ml-1
+        = t("interview_time_slots.interview_form.delete")

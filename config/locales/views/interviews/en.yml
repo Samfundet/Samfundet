@@ -2,6 +2,7 @@ en:
   interviews:
     administer_interviews: "Administer interviews"
     interviews: "interviews"
+    deleted: "Interview deleted"
     n_unorganized: "%{n} unorganized interviews"
     no_unorganized: "no unorganized interviews"
     possible_to_set_priority: "You can set priority on applicants before the deadline at %{date}."
@@ -46,6 +47,10 @@ en:
     accepted_applicants: "Accepted applications"
     rejected_applicants: "Rejected applications"
     unprocessed_applicants: "Unprocessed applications"
+    manage_interview_times: "Manage interview time slots"
+    assign_interview_times: "Assign interview times"
+    assign_error_message: 'Could not set interview times, as there has been changes in the meantime.'
+    number_of_interviews_set: "%{amount} interviews have been set."
     unprocessed_explanation: |
       This list only contains unprocessed applications (applications where status is not set).
       The admission is complete when the list is empty.
@@ -86,3 +91,13 @@ en:
       This is extremely important to ensure automatic rejection emails are sent to the correct applicants.
       Applicants with status "Accepted", "Offered, but said no" and "Rejected, contacted directly" will NOT GET A REJECTION EMAIL.
       Rejections are only for this job, so if the applicant is given a different job you must still set the status to rejected.
+
+    interview_time_slot_description: |
+      Here you can create time slots for when you can conduct interviews.
+      These timeslots are later used to automatically assign interview times for applicants.
+
+    interview_slot_suggestion_title: "Confirm interview assignment"
+    interview_slot_suggestion_description: |
+      This page shows which applicants will be assigned specific times for interviews.
+      When you confirm the setup, the applicants will automatically receive an email with time, place and contact information.
+    confirm_email: "Confirm and send email"

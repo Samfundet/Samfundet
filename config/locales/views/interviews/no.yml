@@ -2,6 +2,7 @@
   interviews:
     administer_interviews: "Administrer søknader"
     interviews: "intervjuer"
+    deleted: "Intervju slettet"
     n_unorganized: "%{n} uorganiserte intervjuer"
     no_unorganized: "ingen uorganiserte intervjuer"
     possible_to_set_priority: "Du kan sette prioritet på søkere helt frem til %{date}."
@@ -46,6 +47,10 @@
     accepted_applicants: "Søkere som blir tatt opp"
     rejected_applicants: "Søkere som ikke blir tatt opp"
     unprocessed_applicants: "Ubehandlede søknader"
+    manage_interview_times: "Administrer intervjutidsrom"
+    assign_interview_times: "Tildel intervjutider"
+    assign_error_message: 'Kunne ikke sette intervjutider siden oppsettet har endret seg i mellomtiden.'
+    number_of_interviews_set: "%{amount} intervjuer har blitt satt."
     unprocessed_explanation: |
       Denne listen inneholder kun ubehandlede søknader (søknader der status ikke er satt).
       Alle søkere som ikke blir tatt opp må markeres med avslag, uansett om de blir tatt opp i et annet verv.
@@ -89,3 +94,13 @@
       Dette er ekstremt viktig slik at automatiske eposter om avslag sendes til riktige personer.
       Søkere markert "Tatt opp", "Takket nei" og "Avslag, kontaktet direkte" vil IKKE FÅ EPOST OM AVSLAG.
       Avslag gjelder kun for dette vervet, så selv om en søker blir tatt opp i et annet verv skal dere sette status til avslag.
+
+    interview_time_slot_description: |
+      Her kan dere sette opp tidsrom for når dere har mulighet til å avholde intervju.
+      Disse tidsrommene brukes senere for å automatisk tildele intervjutid til søkere.
+
+    interview_slot_suggestion_title: "Bekreft intervjutildeling"
+    interview_slot_suggestion_description: |
+      Denne siden viser hvilke søkere som blir satt opp til intervju på bestemte tider.
+      Når oppsettet bekreftes vil søkere automatisk få en mail med tidspunkt, oppmøtested og kontaktinformasjon.
+    confirm_email: "Bekreft og send mail"

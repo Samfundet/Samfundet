@@ -154,7 +154,7 @@ end
 puts "Creating billig payment errors and price groups"
 possible_payment_errors.each do |error_message|
   bsession = SecureRandom.uuid
-  on_card = rand > 0.5
+  on_card = [true, false].sample
 
   BilligPaymentError.create!(
     error: bsession,

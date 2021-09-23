@@ -1,0 +1,35 @@
+
+%h1= t("interviews.interview_slot_suggestion_title")
+%h2= @interview_suggestions.count.to_s + " intervjutider vil bli satt opp på følgende tidspunkter."
+
+%p= t("interviews.interview_slot_suggestion_description")
+
+.flex-column.mt-3
+  - @interview_suggestions.group_by {|_, slot, _| slot.id }.sort.each do |_, assigned|
+    - shared_slot = assigned[0][1]
+    .samf-container.p-3.mb-3
+      %h2{style: "text-transform: capitalize"}
+        = l(shared_slot.start_time.to_date, format: :medium_long) + " (" + assigned.count.to_s + ")"
+      %h2{style: "text-transform: capitalize; color: #777;"}= shared_slot.location
+      .flex-row.wrap
+        - assigned.each do |applicant, _, time|
+          .flex-25
+            .flex-row.flex.p-2.m-2{style: "background: #f4f4f4; border-radius: 4px; color: #555;"}
+              .flex-75.flex-align-center
+                = applicant.full_name
+              .flex-25.flex-align-center
+                %div.mr-2= time.to_datetime.strftime("%H:%M")
+//                .samf-button.small.red
+//                  = "X"
+
+%hr
+
+.samf-container.plain.mb-3.p-3.mt-3
+  %h2= "Epost - Forhåndsvisning"
+  %p= "Hei <navn>!"
+  %p= "Du blir nå innkalt til intervju lorem ipsum dolor sit amet. Llorem ipsum dolor sit amet. Llorem ipsum dolor sit amet"
+
+
+= link_to admissions_admin_admission_group_job_assign_interview_times_path(@job, suggestion_hash: @suggestion_hash), data: { confirm: "Er du sikker? Mail vil bli sendt til søkere." } do
+  .samf-button.green.center.mt-2
+    = t("interviews.confirm_email")

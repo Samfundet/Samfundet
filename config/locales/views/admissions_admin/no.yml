@@ -65,3 +65,16 @@
 
     sending_rejection_email: "Sender avslagseposter"
     sending_rejection_email_notice: "Sender %{count} eposter. Dette kan ta en liten stund..."
+
+    interview_mailer:
+      greetings: "Hei %{firstname}!"
+      interview_info: "Du har fått tildelt en intervjutid for vervet %{job_name} i %{group_name}."
+      interview_info_multiple: "Du har fått tildelt en intervjutid for flere verv du har søkt hos %{group_name}."
+      following: "Dette gjelder følgende verv:"
+      common: "Dette vil si at det blir ett felles intervju for alle disse vervene."
+      interview_time_and_location: "Intervjutiden er satt til den %{date} klokken %{time}, og oppmøte blir %{location}."
+      cannot_attend_info: "Dersom du ikke kan møte opp er det viktig at du så fort som mulig melder ifra til:"
+      or_call: "Eller ring:"
+      ending_words: "Vel møtt til intervju!"
+      regards: "Mvh"
+      from: "Studentersamfundet i Trondhjem"

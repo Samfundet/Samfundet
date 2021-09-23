@@ -41,6 +41,11 @@ class ApplicationController < ActionController::Base
     session[:return_to] = request.url if request.get?
   end
 
+  def invalid_path
+    redirect_to root_path
+    flash[:error] = t('errors.invalid_path')
+  end
+
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
   end

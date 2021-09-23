@@ -1,0 +1,35 @@
+'no':
+  interview_time_slots:
+    title: Tidsrom for intervjutider
+    edit: Rediger
+    delete: Slett
+    new: Opprett nytt intervjutidsrom
+    description: "Tidsrom for vervet "
+    at: " hos "
+    time_frame: Tidsrom
+    delete_failed: "Kan ikke slette et intervjutidsrom der intervjuer er satt."
+    delete_impossible: "Dette intervjutidsrommet kan ikke slettes, fordi det er tilknyttet intervjuer."
+    see_interviews: "Se intervjuer"
+    interviews: "Intervjuer"
+
+    interview_form:
+      title: Intervjuer
+      location: Oppmøte
+      interview_time: Intervjutid
+      no_interview_time: Ingen intervjutid er satt
+      name: Navn
+      time: Tid
+      delete: Slett
+
+    form:
+      start: Start tid
+      end: Slutt tid
+      location: Oppmøte
+      comment: Kommentar
+      update: Oppdater intervjutidsrom
+      create: Opprett intervjutidsrom
+
+    messages:
+      created: Intervjutidsrom opprettet
+      updated: Intervjutidsrom oppdatert
+      deleted: Intervjutidsrom slettet

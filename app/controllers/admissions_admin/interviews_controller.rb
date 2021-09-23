@@ -31,7 +31,29 @@ class AdmissionsAdmin::InterviewsController < AdmissionsAdmin::BaseController
   end
 
   def update
-    @interview.time = params[:interview][:time] if params[:interview][:time]
+    if @interview.interview_time_slot
+      return
+    end
+
+    if params[:interview][:time]
+      @interview.time = params[:interview][:time]
+      if @interview.time
+        @job = @interview.job_application.job
+        @applicant = @interview.job_application.applicant
+
+        # Only send email if interview time has been set.
+        email_subject = "Intervju hos #{@job.group.name}"
+        @jobs = []
+
+        # Check if an interview can be linked with multiple jobs
+        # if @job.linkable_interviews
+        #   @jobs = @applicant.link_interviews(interview, @job.group)
+        # end
+
+        AdmissionInterviewMailer.send_interview_email(@applicant, email_subject, @job, @jobs, @interview.time, @interview.location).deliver
+      end
+    end
+
     if params[:interview][:location]
       @interview.location = params[:interview][:location]
     end
@@ -77,6 +99,7 @@ class AdmissionsAdmin::InterviewsController < AdmissionsAdmin::BaseController
                                                               @interview.job_application.job)
       end
     end
+
   rescue StandardError => ex
     if request.xhr?
       render text: ex.to_s, status: 500
@@ -86,6 +109,13 @@ class AdmissionsAdmin::InterviewsController < AdmissionsAdmin::BaseController
                                                             @interview.job_application.job.group,
                                                             @interview.job_application.job)
     end
+  end
+
+  def destroy
+    @interview.destroy
+
+    redirect_to admissions_admin_admission_group_job_interview_time_slots_path
+    flash[:success] = t('interviews.deleted')
   end
 
 private

@@ -5,6 +5,7 @@ class Applicant < ApplicationRecord
   has_many :jobs, through: :job_applications
   has_many :password_recoveries
   has_many :log_entries
+  has_many :unavailable_interview_time_slots
   belongs_to :campus
 
   attr_accessor :password, :password_confirmation, :old_password, :gdpr_checkbox
@@ -58,6 +59,66 @@ class Applicant < ApplicationRecord
     end
 
     interviews
+  def get_impossible_interview_times
+    get_unavailable_interview_times + get_assigned_interview_times
+  end
+
+  def get_unavailable_interview_times
+    unavailable_interview_time_slots = UnavailableInterviewTimeSlot.where(applicant_id: id, admission_id: $admission_id)
+
+    unavailable_times = []
+    unavailable_interview_time_slots.each do |t|
+      unavailable_times.push(t.start_time.to_s)
+      current_time = t.start_time
+      while current_time < t.end_time
+        current_time = current_time + 1.minutes
+        unavailable_times.push(current_time.to_s)
+      end
+    end
+
+    unavailable_times
+  end
+
+  def get_assigned_interview_times
+    @job_applications = JobApplication.where(applicant_id: id)
+
+    interview_times = []
+    @job_applications.each do |j|
+      if j.job.admission_id == $admission_id
+        interval = j.job.interview_interval
+        time = j.interview.time
+
+        if time
+          range = interval - 1
+          start_time = time - range.minutes
+          count = 2*interval - 1
+
+          count.times do |x|
+            interview_times.push((start_time + x.minutes).to_s)
+          end
+        end
+      end
+    end
+
+    interview_times
+  end
+
+  def link_interviews(interview, group)
+    jobs = [interview.job_application.job.title_no]
+    @job_applications = JobApplication.where(applicant_id: id)
+    @job_applications_without_interviews = @job_applications - @job_applications.select { |j| j.interview&.time }
+    @job_applications_without_interviews.each do |j|
+      if j.interview and j.job.linkable_interviews == true and j.job.group == group
+        new_interview = j.find_or_create_interview
+        new_interview.time = interview.time
+        new_interview.location = interview.location
+        new_interview.interview_time_slot_id = interview.interview_time_slot_id
+        new_interview.save!
+        jobs.push(j.job.title_no)
+      end
+    end
+
+    jobs
   end
 
   def assigned_job_application(admission, priority: %w[wanted reserved])
@@ -147,7 +208,13 @@ class Applicant < ApplicationRecord
     group.job_applications_in_admission(admission).select { |ja| ja.applicant == self }
   end
 
-private
+  def job_application_for_job(job)
+    job_applications.find_by(job: job)
+  end
+
+  def has_interview_for_job(job)
+    job_application_for_job(job).interview.time?
+  end
 
   def lowercase_email
     self.email = email.downcase unless email.nil?
