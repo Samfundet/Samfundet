@@ -1,3 +1,140 @@
 - set_open_graph_params({ title: t('site.index.og_title'), description: t('site.index.og_description'), image: 'https://www.samfundet.no/upload/images/image_files/000/001/669/original/logo_samf.no.png?1538501206'})
 - set_twitter_params({ card: "summary_large_image", title: t('site.index.og_title'), description: t('site.index.og_description'), 'image:src' => 'https://www.samfundet.no/upload/images/image_files/000/001/669/original/logo_samf.no.png?1538501206'})
-= render @page
+
+.pages-index
+
+  .samf-smart-box.flex-align-center.mt-3
+
+    .half.pr-3.m-3
+      = image_tag "info/samfundet.jpg", alt: "Samfundet", class: "br-2 bxs"
+
+    .auto.flex-column.flex-justify-center
+      %div.pl-3
+        %h1= t("pages.index.title")
+        %p
+          = t("pages.index.description")
+      .samf-smart-box.flex-row.wrap.pl-2.pr-2
+        - if page_by_name_en("membership") != "#"
+          = link_to page_by_name_en("membership") do
+            .samf-button.red.m-2.w100-mobile
+              = t("pages.index.membership")
+        - if page_by_name_en("fb-faq") != "#"
+          = link_to page_by_name_en("fb-faq") do
+            .samf-button.green.m-2.w100-mobile
+              = t("pages.index.faq")
+        - if page_by_name_en("tickets") != "#"
+          = link_to page_by_name_en("tickets") do
+            .samf-button.plain.m-2.w100-mobile
+              = t("pages.index.tickets")
+
+  .samf-container.white.p-3.m-2.mt-3
+    .flex-row.flex-align-center
+      = image_tag "info/hammer.png", style: "width: 2.5em; height: 2.5em; background-size: contain;"
+      %h1.ml-2.mt-1= t("pages.index.samfundsmotet")
+    %div
+      %p= t("pages.index.samfundsmote_description")
+      .flex-row.wrap
+        - if page_by_name_en("organization") != "#"
+          = link_to page_by_name_en("organization"), class: "samf-button red m-2" do
+            = t("pages.index.samfundet_organization")
+        .flex-row
+          - if page_by_name_en("documents") != "#"
+            = link_to page_by_name_en("documents"), class: "samf-button plain m-2" do
+              = t("pages.index.documents")
+          - if page_by_name_en("history") != "#"
+            = link_to page_by_name_en("history"), class: "samf-button plain m-2" do
+              = t("pages.index.samfundet_history")
+
+  .category-title.mt-3= t("pages.index.venue_title")
+
+  .venue-showcase-container.mt-3
+    - @areas.sort.each do |a|
+      = link_to (a.page != nil ? a.page : "#"), class: "venue-showcase" do
+        = image_tag "info/venues/#{a.name.downcase}.jpg", class: "image"
+        .label= a.name
+
+  .flex-row.center
+    - if page_by_name_en("overview-map") != "#" or true
+      = link_to page_by_name_en("overview-map") do
+        .samf-button.center.plain.mt-3.mr-2= t("pages.index.overview_map")
+    = link_to new_building_path do
+      .samf-button.center.plain.mt-3= t("pages.index.new_building")
+
+  .flex-row.flex-justify-end.pr-3
+    = link_to "http://foto.samfundet.no" do
+      %span{style: "color: #aaa;"}= "(foto.samfundet.no)"
+
+
+  .samf-smart-box.mt-3
+
+    .auto.samf-container.green.m-2.flex-column.flex-justify-between
+      %div
+        = image_tag "info/frivilligheten.jpg"
+        .pl-3.pr-3.pt-3
+          %h1= t("pages.index.volunteering_title")
+          %p= t("pages.index.volunteering")
+      .flex-row.pl-3.pr-3.pb-3
+        -#= link_to "#", class: "samf-button white m-2" do
+        -#  .center= "Gjengene på Samfundet"
+        - if page_by_name_en("groups") != "#"
+          = link_to page_by_name_en("groups"), class: "samf-button white m-2 flex-align-center" do
+            .center= t("pages.index.groups")
+        = link_to admissions_path, class: "samf-button white m-2 flex-align-center" do
+          .center= t("pages.index.admission")
+
+    .third.m-2
+
+      .samf-container.plain.p-3.flex-column.flex-justify-between
+        %h2= "UKA & ISFiT"
+        %p= t("pages.index.isfit_uka")
+        .flex-row
+          = link_to "http://www.uka.no", class: "samf-button red m-2 flex" do
+            .center= "UKA"
+          = link_to "http://www.isfit.no", class: "samf-button blue m-2 flex" do
+            .center= "ISFiT"
+      .samf-container.plain.flex-column.p-3.flex-justify-between.mt-3
+        - if page_by_name_en("contactinfo") != "#"
+          = link_to page_by_name_en("contactinfo") do
+            .samf-button.mb-2.w100.green
+              = t("pages.index.contact_info")
+
+        - if page_by_name_en("agerestriction") != "#"
+          = link_to page_by_name_en("agerestriction") do
+            .samf-button.mb-2.w100.plain
+              = t("pages.index.age_limits")
+
+
+
+
+
+  .w100.p-3.m-2.mt-3
+    %h2.text-Align= t("pages.index.other_information")
+    .flex-row.flex-justify-center
+      - if page_by_name_en("booking") != "#"
+        = link_to page_by_name_en("booking") do
+          .samf-button.m-2.plain
+            = t("pages.index.booking")
+      - if page_by_name_en("quiz") != "#"
+        = link_to page_by_name_en("quiz") do
+          .samf-button.m-2.plain
+            = t("pages.index.quiz")
+      - if page_by_name_en("press") != "#"
+        = link_to page_by_name_en("press") do
+          .samf-button.m-2.plain
+            = t("pages.index.press")
+      - if page_by_name_en("filmclub") != "#"
+        = link_to page_by_name_en("filmclub") do
+          .samf-button.m-2.plain
+            = t("pages.index.filmclub")
+      - if page_by_name_en("renting") != "#"
+        = link_to page_by_name_en("renting") do
+          .samf-button.m-2.plain
+            = t("pages.index.rent_and_services")
+      - if page_by_name_en("privacy") != "#"
+        = link_to page_by_name_en("privacy") do
+          .samf-button.m-2.plain
+            = t("pages.index.privacy")
+      - if page_by_name_en("facilitation") != "#"
+        = link_to page_by_name_en("facilitation") do
+          .samf-button.m-2.plain
+            = t("pages.index.facilitation")
