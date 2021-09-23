@@ -1,0 +1,18 @@
+en:
+  interview_time_slots:
+    title: Time slots for interviews
+    edit: Edit
+    delete: Delete
+    new: Create new interview time slot
+    description: "Time slots for "
+    at: " at "
+    none_found: No interview time slots found
+    time_frame: Time frame
+
+    form:
+      start: Start time
+      end: End time
+      location: Location
+      comment: Comment
+      update: Update interview time slot
+      create: Create interview time slot

@@ -6,10 +6,8 @@ class JobApplicationsController < ApplicationController
   skip_authorization_check only: %i[create]
 
   def index
+    @current_admission = Admission.first
     @admissions = @current_user.job_applications.where(withdrawn: false).group_by { |job_application| job_application.job.admission }
-  rescue
-    flash[:error] = t('job_applications.application_not_found')
-    redirect_to root_path
   end
 
   def create
@@ -102,11 +100,22 @@ private
     end
   end
 
+  def send_job_application_confirmation_email
+    @job = @job_application.job
+    @applicant = current_user
+    email_subject = "Takk for din søknad hos #{@job.group.name}!"
+    JobApplicationConfirmationMailer.send_confirmation_email(@applicant, @job, email_subject).deliver
+  end
+
   def handle_create_application_when_logged_in
     @job_application.applicant = current_user
 
     if @job_application.save
-      flash[:success] = t('job_applications.application_saved')
+      flash[:success] = t('job_applications.application_sent')
+      flash[:notice] = t('job_applications.email_confirmation')
+      flash[:message] = t('job_applications.reminder_inbox')
+
+      send_job_application_confirmation_email
       redirect_to job_applications_path
     else
       render_application_form_with_errors

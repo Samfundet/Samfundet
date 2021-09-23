@@ -4,6 +4,8 @@
       job:
         one: "verv"
         other: "verv"
+        errors:
+          linkable_different_intervals: "Du kan ikke ha sammenkoblede intervjuer mellom ulike verv, når vervene har ulike intervaller mellom intervjutider."
     label:
       job:
         title_no: "Tittel (Norsk)"
@@ -16,3 +18,7 @@
         tag_titles: "Tagger"
         default_motivation_text_no: "Standard motivasjonstekst (Norsk)"
         default_motivation_text_en: "Standard motivasjonstekst (Engelsk)"
+        contact_email: "Kontaktperson e-post"
+        contact_phone: "Kontaktperson telefonnummer"
+        interview_interval: "Intervall mellom intervjuer (i minutter)"
+        linkable_interviews: "Sammenkoblede intervjuer?"

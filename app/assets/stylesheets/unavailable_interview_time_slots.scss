@@ -1,0 +1,53 @@
+.unavailable-interview-time-slots {
+  clear: top;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  width: 100%;
+  max-width: 100%;
+}
+
+.unavailable-ainterview-time-slot-div {
+
+  padding: .2em;
+  padding-left: 1em;
+  padding-right: 1em;
+
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+
+  border-bottom: 1px solid #ddd;
+
+  .text-item{
+    position: auto;
+    min-width: 100px;
+    color: black;
+  }
+
+
+  &:not(:last-child) {
+  }
+
+  @media only screen and (max-width: 600px) {
+    .column.inline-price {
+      display: none;
+    }
+  }
+
+  @media only screen and (max-width: 380px) {
+    .column {
+      flex-basis: 50%;
+    }
+    .time, .area {
+      text-align: right;
+    }
+    .column.button {
+      display: none;
+    }
+  }
+
+}

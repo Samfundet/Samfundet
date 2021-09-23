@@ -1,0 +1,9 @@
+.flex-row.m-2.interview-time-slot-div
+  .text-item.center
+    = "#{t("interview_time_slots.time_frame")}: #{unavailable_interview_time_slot.start_time.strftime("%H:%M")} -  #{unavailable_interview_time_slot.end_time.strftime("%H:%M")}"
+  = link_to edit_admission_unavailable_interview_time_slot_path(id: unavailable_interview_time_slot.id) do
+    .samf-button.small.green
+      = t("interview_time_slots.edit")
+  = link_to admission_unavailable_interview_time_slots_path(id: unavailable_interview_time_slot.id), method: :delete, data: {confirm: t("crud.confirm")} do
+    .samf-button.small.red.ml-1
+      = t("interview_time_slots.delete")

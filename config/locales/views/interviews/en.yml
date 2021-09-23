@@ -44,6 +44,8 @@ en:
     accepted_applicants: "Accepted applications"
     rejected_applicants: "Rejected applications"
     unprocessed_applicants: "Unprocessed applications"
+    manage_interview_times: "Manage interview times"
+    assign_interview_times: "Assign interview times"
     unprocessed_explanation: |
       This list only contains unprocessed applications (applications where status is not set).
       The admission is complete when the list is empty.

@@ -44,6 +44,8 @@
     accepted_applicants: "Søkere som blir tatt opp"
     rejected_applicants: "Søkere som ikke blir tatt opp"
     unprocessed_applicants: "Ubehandlede søknader"
+    manage_interview_times: "Administrer intervjutider"
+    assign_interview_times: "Tildel intervjutider"
     unprocessed_explanation: |
       Denne listen inneholder kun ubehandlede søknader (søknader der status ikke er satt).
       Alle søkere som ikke blir tatt opp må markeres med avslag, uansett om de blir tatt opp i et annet verv.

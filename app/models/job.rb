@@ -6,13 +6,16 @@ class Job < ApplicationRecord
 
   has_one :group_type, -> { order(:description) }, through: :group
   has_many :job_applications
+  has_many :interview_time_slots, foreign_key: 'job_id'
   has_many :interviews, through: :job_applications
   has_many :applicants, through: :job_applications
 
   has_and_belongs_to_many :tags, class_name: 'JobTag'
 
-  validates :title_no, :teaser_no, :description_no, :admission, :group, presence: true
+  validates :title_no, :teaser_no, :description_no, :admission, :group, :contact_email, :contact_phone, :interview_interval, presence: true
   validates :teaser_no, :teaser_en, length: { maximum: 75 }
+
+  validate :linkable_and_same_intervals
 
   # scope :appliable
 
@@ -21,6 +24,18 @@ class Job < ApplicationRecord
 
   def available_jobs_in_same_group
     group.jobs.where('admission_id = (?) AND id <> ?', admission_id, id)
+  end
+
+  def linkable_and_same_intervals
+    if linkable_interviews
+      @other_jobs = Job.where(admission: admission, group: group)
+      @other_jobs.each do |j|
+        if j.interview_interval != interview_interval
+          errors.add(:linkable_interviews, I18n.t('helpers.models.job.errors.linkable_different_intervals'))
+          break
+        end
+      end
+    end
   end
 
   def similar_available_jobs
@@ -63,7 +78,8 @@ class Job < ApplicationRecord
   end
 
   def job_applications_without_interviews
-    job_applications - job_applications_with_interviews
+    unprocessed = unprocessed_applications
+    unprocessed - job_applications_with_interviews
   end
 
   def processed_applications
@@ -83,6 +99,24 @@ class Job < ApplicationRecord
     # Must add those without an interview model too
     no_interview_model_created = job_applications - job_applications.joins(:interview)
     unprocessed + no_interview_model_created
+  end
+
+  def get_set_interview_times
+    taken_times = []
+    @applications = job_applications_with_interviews
+    @applications.each do |a|
+      interview = a.find_or_create_interview
+
+      range = interview_interval - 1
+      start_time = interview.time - range.minutes
+      count = 2*interview_interval - 1
+
+      count.times do |x|
+        taken_times.push((start_time + x.minutes).to_s)
+      end
+    end
+
+    taken_times
   end
 
   # Accepted applications (that also said yes)

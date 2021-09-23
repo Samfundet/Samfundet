@@ -4,6 +4,8 @@ en:
       job:
         one: "job"
         other: "jobs"
+        errors:
+          linkable_different_intervals: "You cannot enable linkable interviews between jobs, while there are other jobs with different interview intervals."
     label:
       job:
         title_no: "Title (Norsk)"
@@ -16,3 +18,7 @@ en:
         tag_titles: "Tags"
         default_motivation_text_no: "Default motivation text (Norsk)"
         default_motivation_text_en: "Default motivation text (Engelsk)"
+        contact_email: "Contact e-mail"
+        contact_phone: "Contact phone"
+        interview_interval: "Interview interval (minutes)"
+        linkable_interviews: "Link interviews?"

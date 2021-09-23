@@ -10,6 +10,13 @@
           deadline_before_shown_deadline: "den faktiske søknadsfristen kan ikke være før den synlige"
           admin_deadline_before_user: "opptaksansvarliges prioriteringsfrist kan ikke være før søkernes"
           priority_before_application: "omprioriteringsfristen kan ikke være før søknadsfristen"
+        interview_time_slot:
+          one_day_future: "Intervjutidsrommet må være minst en dag i fremtiden."
+          same_day: "Intervjutidsrommet må starte og slutte på samme dag."
+          end_before_start: "Intervjutidsrommet kan ikke slutte før det starter."
+        unavailable_interview_time_slot:
+          end_before_start: "Tidsrommet kan ikke slutte før det starter."
+          minimum_time: "Tidsrommet må være på minimum 40 minutter."
     label:
       admission:
         title: Stillingstittel

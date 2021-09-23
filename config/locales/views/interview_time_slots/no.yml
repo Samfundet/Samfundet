@@ -1,0 +1,18 @@
+'no':
+  interview_time_slots:
+    title: Tidsrom for intervjutider
+    edit: Rediger
+    delete: Slett
+    new: Opprett nytt intervjutidsrom
+    description: "Tidsrom for "
+    at: " hos "
+    none_found: Ingen intervjutidsrom funnet
+    time_frame: Tidsrom
+
+    form:
+      start: Start tid
+      end: Slutt tid
+      location: Oppmøte
+      comment: Kommentar
+      update: Oppdater intervjutidsrom
+      create: Opprett intervjutidsrom

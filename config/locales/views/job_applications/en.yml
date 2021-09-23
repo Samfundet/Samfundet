@@ -39,3 +39,13 @@ en:
         heading: "Your application"
         submit: "Update application"
         withdraw: "Withdraw application"
+    confirmation_mailer:
+      greetings: "Hei %{firstname}!"
+      thank_you: "Tusen takk for din søknad til vervet %{job_name} hos %{group_name}!"
+      interview_info: "Du vil snart bli kontaktet på mail angående intervju, så det er veldig viktig at du følger med på inboksen."
+      contact_info_job: "Har du flere spørsmål angående vervet er det bare å ta kontakt med:"
+      or_call: "Eller ring:"
+      contact_info_admission: "Har du spørsmål om selve opptaksprosessen, kan du ta kontakt med:"
+      admission_email: "opptaksansvarlig@samfundet.no"
+      regards: "Mvh"
+      from: "Studentersamfundet i Trondhjem"

@@ -50,3 +50,5 @@ en:
       previous_label: "Previous"
       next_label: "Next"
       page_gap: "&hellip;"
+  errors:
+    illegal_path: "Invalid path"

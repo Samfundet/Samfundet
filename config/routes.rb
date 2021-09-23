@@ -81,7 +81,9 @@ Rails.application.routes.draw do
     ##  Routes for admissions ##
     ############################
 
-    resources :admissions, only: :index
+    resources :admissions, only: :index do
+      resources :unavailable_interview_time_slots
+    end
 
     # Everything closed period routes
     resources :everything_closed_periods, except: [:show]
@@ -153,6 +155,9 @@ Rails.application.routes.draw do
           resources :jobs, only: [:show, :new, :create, :edit, :update, :destroy] do
             get :search, on: :collection
             get :show_unprocessed
+            get :assign_interview_times
+            resources :interview_time_slots
+            post :send_rejection_email, on: :member
             resources :job_applications, only: :show do
               post :hidden_create, on: :collection
               get :reset_status

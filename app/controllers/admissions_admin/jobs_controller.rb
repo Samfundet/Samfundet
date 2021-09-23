@@ -18,6 +18,71 @@ class AdmissionsAdmin::JobsController < AdmissionsAdmin::BaseController
     end
   end
 
+  def assign_interview_times
+    @job = Job.find(params[:job_id])
+
+    # Check if the set interviews have linked interview_time_slots
+    # If they don't, link them together with an existing one, that matches the interview time.
+    @applications_with_set_interviews = @job.job_applications_with_interviews
+    @applications_with_set_interviews.each do |j|
+      if j.interview.interview_time_slot_id.nil?
+        @interview_time_slots = InterviewTimeSlot.where(job: @job).order('start_time')
+        @interview_time_slots.each do |i|
+          if i.location == j.interview.location || j.interview.location == ''
+            possible_times = i.possible_times
+            if possible_times.include? j.interview.time.to_s
+              j.interview.interview_time_slot_id = i.id
+              j.interview.location = i.location
+              j.interview.save!
+              break
+            end
+          end
+        end
+      end
+    end
+
+    @job_applications = @job.job_applications_without_interviews.sort_by { |ja| ja.created_at }
+
+    @set_interview_times = @job.get_set_interview_times
+    $admission_id = @job.admission.id
+
+    @job_applications.each do |j|
+      @applicant = j.applicant
+      applicant_unavailable_times = @applicant.get_impossible_interview_times
+      interview = j.find_or_create_interview
+
+      @interview_time_slots = InterviewTimeSlot.where(job: @job).sort_by { |it| [it.start_time, -(it.number_of_interviews)] }
+      @interview_time_slots.each do |i|
+        possible_times = i.possible_times(applicant_unavailable_times)
+
+        if possible_times.length > 0
+          interview.time = possible_times[0]
+          interview.location = i.location
+          interview.interview_time_slot_id = i.id
+          interview.save!
+
+          # Only send email if interview time has been set.
+          email_subject = "Intervju hos #{@job.group.name}"
+          @jobs = []
+
+          # Check if an interview can be linked with multiple jobs
+          if @job.linkable_interviews
+            @jobs = @applicant.link_interviews(interview, @job.group)
+          end
+
+          # If linkable interviews are possible, jobs list will be > 0
+          # A different email containing all of the job mails will be sent instead.
+          AdmissionInterviewMailer.send_interview_email(@applicant, email_subject, @job, @jobs, interview.time, interview.location).deliver
+
+          @set_interview_times.push(possible_times[0])
+          break
+        end
+      end
+    end
+
+    redirect_back(fallback_location: root_path)
+  end
+
   def show
     @job = Job.find(params[:id])
     @group = Group.find(params[:group_id])
@@ -75,7 +140,11 @@ private
       :default_motivation_text_no,
       :default_motivation_text_en,
       :is_officer,
-      :tag_titles
+      :tag_titles,
+      :contact_email,
+      :contact_phone,
+      :interview_interval,
+      :linkable_interviews
     )
   end
 

@@ -1,0 +1,13 @@
+.flex-row.m-2.interview-time-slot-div
+  .text-item
+    = "#{t("interview_time_slots.form.location")}: #{interview_time_slot.location}"
+  .text-item.center
+    = "#{t("interview_time_slots.time_frame")}: #{interview_time_slot.start_time.strftime("%H:%M")} -  #{interview_time_slot.end_time.strftime("%H:%M")}"
+  .text-item.center
+    = "#{t("interview_time_slots.form.comment")}: #{interview_time_slot.comment}"
+  = link_to edit_admissions_admin_admission_group_job_interview_time_slot_path(id: interview_time_slot.id) do
+    .samf-button.small.green
+      = t("interview_time_slots.edit")
+  = link_to admissions_admin_admission_group_job_interview_time_slot_path(id: interview_time_slot.id), method: :delete, data: {confirm: t("crud.confirm")} do
+    .samf-button.small.red.ml-1
+      = t("interview_time_slots.delete")

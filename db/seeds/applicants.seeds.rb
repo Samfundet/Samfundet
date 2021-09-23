@@ -36,6 +36,7 @@ after :generate_roles do
 
   puts "Creating #{number_of_applicants} applicants, and makes them apply for #{number_of_job_applications_pr_applicant} jobs, and accepting ~#{accept_percent_chance}%"
   distinct_emails(number_of_applicants).each do |email|
+
     applicant = Applicant.create!(
       firstname: Faker::Name.first_name,
       surname: Faker::Name.last_name,
@@ -51,6 +52,21 @@ after :generate_roles do
     # puts "New applicant: #{applicant.full_name}"
 
     Admission.all.each do |admission|
+      # Create time slots where applicants are unavailable for interviews
+      number_of_unavailable_interview_times = [2, 3, 4, 5].sample
+      number_of_unavailable_interview_times.times do |i|
+        start_date = Faker::Date.between(Date.tomorrow + 1.day, Date.tomorrow + 1.day + 2.weeks)
+        start_time = start_date + rand(2..18).hours
+        end_time = start_time + rand(2..5).hours
+        a = UnavailableInterviewTimeSlot.create!(
+          admission_id: admission.id,
+          applicant_id: applicant.id,
+          start_time: start_time,
+          end_time: end_time,
+        )
+      end
+
+
       jobs = admission.jobs.all.sample(number_of_job_applications_pr_applicant)
       applications = []
       jobs.each_with_index do |job, priority|

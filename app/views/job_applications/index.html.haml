@@ -1,9 +1,11 @@
 = javascript_include_tag 'job_applications/job_applications', defer: true
 
-
 = link_to admissions_path do
   .samf-button.plain
     = t('admissions.back_to_overview')
+= link_to admission_unavailable_interview_time_slots_path(@current_admission) do
+  .samf-button.green.mt-3
+    = "Legg til tider du er utilgjengelig for intervju"
 
 %br
 %br
@@ -70,4 +72,3 @@
               = similar_job.title
             hos
             = group_link similar_job.group
-
