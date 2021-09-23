@@ -53,9 +53,12 @@
         = image_tag "info/venues/#{a.name.downcase}.jpg", class: "image"
         .label= a.name
 
-  - if page_by_name_en("overview-map") != "#"
-    = link_to page_by_name_en("overview-map") do
-      .samf-button.center.plain.mt-3= t("pages.index.overview_map")
+  .flex-row.center
+    - if page_by_name_en("overview-map") != "#" or true
+      = link_to page_by_name_en("overview-map") do
+        .samf-button.center.plain.mt-3.mr-2= t("pages.index.overview_map")
+    = link_to new_building_path do
+      .samf-button.center.plain.mt-3= t("pages.index.new_building")
 
   .flex-row.flex-justify-end.pr-3
     = link_to "http://foto.samfundet.no" do
@@ -131,3 +134,7 @@
         = link_to page_by_name_en("privacy") do
           .samf-button.m-2.plain
             = t("pages.index.privacy")
+      - if page_by_name_en("facilitation") != "#"
+        = link_to page_by_name_en("facilitation") do
+          .samf-button.m-2.plain
+            = t("pages.index.facilitation")
