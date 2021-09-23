@@ -22,10 +22,10 @@
           = link_to page_by_name_en("fb-faq") do
             .samf-button.green.m-2.w100-mobile
               = t("pages.index.faq")
-        - if page_by_name_en("various-information") != "#"
-          = link_to page_by_name_en("various-information") do
+        - if page_by_name_en("tickets") != "#"
+          = link_to page_by_name_en("tickets") do
             .samf-button.plain.m-2.w100-mobile
-              = t("pages.index.various_information")
+              = t("pages.index.tickets")
 
   .samf-container.white.p-3.m-2.mt-3
     .flex-row.flex-align-center
@@ -34,8 +34,9 @@
     %div
       %p= t("pages.index.samfundsmote_description")
       .flex-row.wrap
-        = link_to page_by_name_en("styret"), class: "samf-button red m-2" do
-          = t("pages.index.samfundet_organization")
+        - if page_by_name_en("organization") != "#"
+          = link_to page_by_name_en("organization"), class: "samf-button red m-2" do
+            = t("pages.index.samfundet_organization")
         .flex-row
           - if page_by_name_en("documents") != "#"
             = link_to page_by_name_en("documents"), class: "samf-button plain m-2" do
@@ -79,6 +80,7 @@
           .center= t("pages.index.admission")
 
     .third.m-2
+
       .samf-container.plain.p-3.flex-column.flex-justify-between
         %h2= "UKA & ISFiT"
         %p= t("pages.index.isfit_uka")
@@ -87,3 +89,45 @@
             .center= "UKA"
           = link_to "http://www.isfit.no", class: "samf-button blue m-2 flex" do
             .center= "ISFiT"
+      .samf-container.plain.flex-column.p-3.flex-justify-between.mt-3
+        - if page_by_name_en("contactinfo") != "#"
+          = link_to page_by_name_en("contactinfo") do
+            .samf-button.mb-2.w100.green
+              = t("pages.index.contact_info")
+
+        - if page_by_name_en("agerestriction") != "#"
+          = link_to page_by_name_en("agerestriction") do
+            .samf-button.mb-2.w100.plain
+              = t("pages.index.age_limits")
+
+
+
+
+
+  .w100.p-3.m-2.mt-3
+    %h2.text-Align= t("pages.index.other_information")
+    .flex-row.flex-justify-center
+      - if page_by_name_en("booking") != "#"
+        = link_to page_by_name_en("booking") do
+          .samf-button.m-2.plain
+            = t("pages.index.booking")
+      - if page_by_name_en("quiz") != "#"
+        = link_to page_by_name_en("quiz") do
+          .samf-button.m-2.plain
+            = t("pages.index.quiz")
+      - if page_by_name_en("press") != "#"
+        = link_to page_by_name_en("press") do
+          .samf-button.m-2.plain
+            = t("pages.index.press")
+      - if page_by_name_en("filmclub") != "#"
+        = link_to page_by_name_en("filmclub") do
+          .samf-button.m-2.plain
+            = t("pages.index.filmclub")
+      - if page_by_name_en("renting") != "#"
+        = link_to page_by_name_en("renting") do
+          .samf-button.m-2.plain
+            = t("pages.index.rent_and_services")
+      - if page_by_name_en("privacy") != "#"
+        = link_to page_by_name_en("privacy") do
+          .samf-button.m-2.plain
+            = t("pages.index.privacy")
