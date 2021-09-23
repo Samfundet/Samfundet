@@ -1,5 +1,5 @@
 - if @show_admin
-  .admin-choices
+  .admin-choices.text-Align
     %ul
       - if can? :new, Page
         %li
@@ -15,6 +15,3 @@
 
       %li
         = link_to t("pages.admin"), admin_pages_path
-
-      %li
-        = link_to t("pages.graph"), {controller: :pages, action: :graph}
