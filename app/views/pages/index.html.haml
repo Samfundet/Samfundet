@@ -22,6 +22,17 @@
           = link_to page_by_name_en("fb-faq") do
             .samf-button.green.m-2.w100-mobile
               = t("pages.index.faq")
+        - if page_by_name_en("contactinfo") != "#"
+          = link_to page_by_name_en("contactinfo") do
+            .samf-button.blue.m-2.w100-mobile
+              = t("pages.index.contact_info")
+
+            -# Olav prankz<3
+            -# Hopefully this doesn't fuck up production
+            - if logged_in? and (current_user.firstname + " " + current_user.lastname) == "Olav Johansen Vad"
+              .div{style: "position: relative; bottom: 280px; right: 50px; width: 0; height: 0;"}
+                = image_tag "other/olav_arrow.png", style: "width: 180px; height: 250px;"
+
         - if page_by_name_en("tickets") != "#"
           = link_to page_by_name_en("tickets") do
             .samf-button.plain.m-2.w100-mobile
@@ -49,12 +60,12 @@
 
   .venue-showcase-container.mt-3
     - @areas.sort.each do |a|
-      = link_to (a.page != nil ? a.page : "#"), class: "venue-showcase" do
+      = link_to (a.name == "Lyche" ? sulten_path : a.page != nil ? a.page : "#"), class: "venue-showcase" do
         = image_tag "info/venues/#{a.name.downcase}.jpg", class: "image"
         .label= a.name
 
   .flex-row.center
-    - if page_by_name_en("overview-map") != "#" or true
+    - if page_by_name_en("overview-map") != "#"
       = link_to page_by_name_en("overview-map") do
         .samf-button.center.plain.mt-3.mr-2= t("pages.index.overview_map")
     = link_to new_building_path do
@@ -92,49 +103,39 @@
             .center= "UKA"
           = link_to "http://www.isfit.no", class: "samf-button blue m-2 flex" do
             .center= "ISFiT"
-      .samf-container.plain.flex-column.p-3.flex-justify-between.mt-3
-        - if page_by_name_en("contactinfo") != "#"
-          = link_to page_by_name_en("contactinfo") do
-            .samf-button.mb-2.w100.green
-              = t("pages.index.contact_info")
 
-        - if page_by_name_en("agerestriction") != "#"
-          = link_to page_by_name_en("agerestriction") do
-            .samf-button.mb-2.w100.plain
-              = t("pages.index.age_limits")
-
-
-
-
-
-  .w100.p-3.m-2.mt-3
-    %h2.text-Align= t("pages.index.other_information")
-    .flex-row.flex-justify-center
-      - if page_by_name_en("booking") != "#"
-        = link_to page_by_name_en("booking") do
-          .samf-button.m-2.plain
-            = t("pages.index.booking")
-      - if page_by_name_en("quiz") != "#"
-        = link_to page_by_name_en("quiz") do
-          .samf-button.m-2.plain
-            = t("pages.index.quiz")
-      - if page_by_name_en("press") != "#"
-        = link_to page_by_name_en("press") do
-          .samf-button.m-2.plain
-            = t("pages.index.press")
-      - if page_by_name_en("filmclub") != "#"
-        = link_to page_by_name_en("filmclub") do
-          .samf-button.m-2.plain
-            = t("pages.index.filmclub")
-      - if page_by_name_en("renting") != "#"
-        = link_to page_by_name_en("renting") do
-          .samf-button.m-2.plain
-            = t("pages.index.rent_and_services")
-      - if page_by_name_en("privacy") != "#"
-        = link_to page_by_name_en("privacy") do
-          .samf-button.m-2.plain
-            = t("pages.index.privacy")
-      - if page_by_name_en("facilitation") != "#"
-        = link_to page_by_name_en("facilitation") do
-          .samf-button.m-2.plain
-            = t("pages.index.facilitation")
+      .samf-container.gray.pl-3.pr-3.pb-3.flex-column.flex-justify-between.mt-2
+        %h2= t("pages.index.other_information")
+        .samf-smart-box.flex-row.wrap.mt-1.full
+          - if page_by_name_en("agerestriction") != "#"
+            = link_to page_by_name_en("agerestriction"), class: "flex half" do
+              .samf-button.white.small.flex.flex-justify-center.mr-2.mt-2.w100-mobile
+                = t("pages.index.age_limits")
+          - if page_by_name_en("booking") != "#"
+            = link_to page_by_name_en("booking"), class: "flex half" do
+              .samf-button.white.small.flex.flex-justify-center.ml-2.mt-2.w100-mobile
+                = t("pages.index.booking")
+          - if page_by_name_en("quiz") != "#"
+            = link_to page_by_name_en("quiz"), class: "flex half" do
+              .samf-button.white.small.flex.flex-justify-center.mr-2.mt-2.w100-mobile
+                = t("pages.index.quiz")
+          - if page_by_name_en("renting") != "#"
+            = link_to page_by_name_en("renting"), class: "flex half" do
+              .samf-button.white.small.flex.flex-justify-center.ml-2.mt-2.w100-mobile
+                = t("pages.index.rent_and_services")
+          - if page_by_name_en("press") != "#"
+            = link_to page_by_name_en("press"), class: "flex half" do
+              .samf-button.white.small.flex.flex-justify-center.mr-2.mt-2.w100-mobile
+                = t("pages.index.press")
+          - if page_by_name_en("filmclub") != "#"
+            = link_to page_by_name_en("filmclub"), class: "flex half" do
+              .samf-button.white.small.flex.flex-justify-center.ml-2.mt-2.w100-mobile
+                = t("pages.index.filmclub")
+          - if page_by_name_en("privacy") != "#"
+            = link_to page_by_name_en("privacy"), class: "flex half" do
+              .samf-button.white.small.flex.flex-justify-center.mr-2.mt-2.w100-mobile
+                = t("pages.index.privacy")
+          - if page_by_name_en("facilitation") != "#"
+            = link_to page_by_name_en("facilitation"), class: "flex half" do
+              .samf-button.white.small.flex.flex-justify-center.ml-2.mt-2.w100-mobile
+                = t("pages.index.facilitation")

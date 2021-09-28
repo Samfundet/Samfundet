@@ -41,8 +41,8 @@
       tickets: Billetter
       privacy: Personvern
       age_limits: Aldersgrenser
-      contact_info: Kontaktinformasjon
-      rent_and_services: Leie og andre tjenester
+      contact_info: Kontaktinfo
+      rent_and_services: Leie og tjenester
       other_information: Annen info
       booking: Booking
       press: Presse
