@@ -29,7 +29,7 @@
 
             -# Olav prankz<3
             -# Hopefully this doesn't fuck up production
-            - if logged_in? and (current_user.firstname + " " + current_user.lastname) == "Olav Johansen Vad"
+            - if logged_in? and not current_user.is_applicant and current_user.full_name == "Olav Johansen Vad"
               .div{style: "position: relative; bottom: 280px; right: 50px; width: 0; height: 0;"}
                 = image_tag "other/olav_arrow.png", style: "width: 180px; height: 250px;"
 

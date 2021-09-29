@@ -7,6 +7,14 @@ class Member < ActiveRecord::Base
   has_one :membership_card, class_name: 'BilligTicketCard', foreign_key: :owner_member_id
   has_many :billig_purchase, foreign_key: :owner_member_id
 
+  def is_applicant
+    false
+  end
+
+  def full_name
+    "#{firstname} #{lastname}"
+  end
+
   def child_roles
     roles.map(&:sub_roles).flatten
   end

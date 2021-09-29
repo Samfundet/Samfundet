@@ -26,6 +26,10 @@ class Applicant < ApplicationRecord
 
   before_save :hash_new_password, if: :password_changed?
 
+  def is_applicant
+    true
+  end
+
   def full_name
     "#{firstname} #{surname}"
   end
