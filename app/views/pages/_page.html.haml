@@ -2,17 +2,18 @@
 
 = render "admin_choices"
 
-.menu-button.br-1
-  = t('layouts.application.menu.menu')
 
 - if !@page.hide_menu and false
+  .menu-button.br-1
+    = t('layouts.application.menu.menu')
+
   .menu
     .menu-content
       = render_page_content(@menu.content, @menu.content_type)
 
 .content.w100
   .flex-row.flex-justify-center
-    .div{style: "max-width: 800px;"}
+    .div{style: "max-width: 800px; max-width: 100%;"}
       = render_page_content(@page.content, @page.content_type)
 
       - if can? :edit, Page
