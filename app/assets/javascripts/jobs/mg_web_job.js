@@ -13,8 +13,8 @@ $(function () {
         for(var i=0;i<nShrimps;i++) {
 
             // Random position & speed
-            let pos = 10 + 90 / i;
-            let speed = Math.random() * 5 + 2;
+            let pos = 10.0 + 90.0 / i;
+            let speed = Math.random() * 5 + 8;
             let delayA = Math.random() * speed;
             let delayB = Math.random() * speed;
 
@@ -22,8 +22,8 @@ $(function () {
             let containerStyle =
                 "animation-duration: " + speed + "s;" +
                 "top: " + pos + "%;" +
-                "animation-delay: -" + delayA + ";";
-            let shrimpStyle = "animation-delay: -" + delayB + ";";
+                "animation-delay: -" + delayA + "s;";
+            let shrimpStyle = "animation-delay: -" + delayB + "s;";
 
             var shrimpHtml = "<div class='shrimp-container' style='" + containerStyle + "'>" +
                        "<div class='shrimp' style='" + shrimpStyle + "'/></div>";
@@ -34,21 +34,35 @@ $(function () {
             $("#shrimp-container").append(shrimpHtml);
         }
 
+        // Restore site to normal hopefully
+        function restoreSanity(didWin) {
+            $("#shrimp-mode").addClass("display-none");
+            $("#shrimp-container").text("")
+            $("body").css({"pointer-events":"all"});
+
+            if(didWin) {
+                $("#certified-rekefisker").toggleClass("display-none").animate().get(0).scrollIntoView(false)
+                window.scrollBy(0, 200);
+            }else {
+                $("#shrimp-mode-button").removeClass("display-none");
+            }
+        }
+
+        $("#stop-shrimp-mode").click(function (event) {
+            restoreSanity(false);
+        });
         $(".shrimp-container").click(function (event) {
-            $(this).remove();
+
             nShrimps -= 1;
+            $(this).remove();
             $("#num-shrimp").text("Reker igjen: " + nShrimps)
 
-            // Restore site to normal hopefully
             if (nShrimps <= 0) {
-                $("#shrimp-mode").addClass("display-none");
-                $("#certified-rekefisker").toggleClass("display-none").animate().get(0).scrollIntoView(false)
-                $("#shrimp-container").text("")
-                $("body").css({"pointer-events":"all"});
-                window.scrollBy(0, 200);
+                restoreSanity(true);
             }
 
         });
+
     });
 
 });

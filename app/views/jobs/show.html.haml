@@ -37,9 +37,10 @@
         #{@job.description}
 
       - if @is_mg_web_job
-        .mg-web
+        .mg-web.w100
           = javascript_include_tag 'jobs/mg_web_job', defer: true
-          %h2= "Vi kan gjøre mye sprell på siden!"
+          %p
+            = "Vi kan gjøre mye sprell på siden, bare sjekk ut den her:"
           #shrimp-mode-button.samf-button.w100-mobile
             = "Spill rekefisking"
           #certified-rekefisker.display-none
@@ -83,6 +84,7 @@
 - if @is_mg_web_job
   .mg-web
     #shrimp-mode.display-none
+      .water-overlay
       .shrimp-menu
         .inner-menu
           .flex-column

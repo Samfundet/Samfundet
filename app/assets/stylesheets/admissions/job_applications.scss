@@ -172,6 +172,15 @@
     width: 200px;
     height: 200px;
 
+    .water-overlay {
+      position:  fixed;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      background-color: rgba(51, 63, 135, 0.3);
+      left: 0;
+      top: 0;
+    }
     #certified-rekefisker {
       width: 800px;
       max-width: 100%;
@@ -179,7 +188,8 @@
       background-image: asset-url("/assets/other/certified_rekefisker.png");
       background-size: contain;
       background-repeat: no-repeat;
-      background-position: center;
+      background-position: left;
+      transform-origin: left;
       animation: certified-fisher 2s;
     }
     @keyframes certified-fisher {
@@ -187,13 +197,13 @@
         transform: scale(1);
       }
       20% {
-        transform: scale(1.5);
+        transform: scale(1.3);
       }
       30% {
-        transform: scale(1.45) rotate(-2deg);
+        transform: scale(1.25) rotate(-2deg);
       }
       40% {
-        transform: scale(1.45) rotate(2deg);
+        transform: scale(1.25) rotate(2deg);
       }
       100% {
         transform: scale(1);
@@ -235,6 +245,9 @@
             text-transform: uppercase;
             color: #444;
           }
+          #stop-shrimp-mode {
+            pointer-events: all !important;
+          }
         }
 
       }
@@ -256,14 +269,15 @@
       position: absolute;
       right: 0;
       animation: shrimp-move 10s linear 0s infinite normal forwards;
+      z-index: 2;
 
       .shrimp {
         background-image: asset-url("/assets/other/shrimp.png");
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
-        width: 96px;
-        height: 96px;
+        width: 120px;
+        height: 120px;
         position: relative;
 
         animation: shrimp-squiggle 1s ease-in-out 0s infinite normal forwards;
@@ -271,8 +285,8 @@
 
       }
       .shrimp.small {
-        width: 74px;
-        height: 74px;
+        width: 100px;
+        height: 100px;
       }
     }
     @keyframes shrimp-squiggle {
