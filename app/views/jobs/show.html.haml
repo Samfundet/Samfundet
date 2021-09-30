@@ -36,6 +36,15 @@
       :markdown
         #{@job.description}
 
+      - if @is_mg_web_job
+        .mg-web
+          = javascript_include_tag 'jobs/mg_web_job', defer: true
+          %h2= "Vi kan gjøre mye sprell på siden!"
+          #shrimp-mode-button.samf-button.w100-mobile
+            = "Spill rekefisking"
+          #certified-rekefisker.display-none
+          .div.mb-3
+
   %div.mb-3{:style=>"flex-basis: 20%;"}
     - unless @similar_available_jobs.empty?
       %h2.mb-2
@@ -70,3 +79,18 @@
           Endre på motivasjonen
   - else
     != render partial: 'job_applications/form'
+
+- if @is_mg_web_job
+  .mg-web
+    #shrimp-mode.display-none
+      .shrimp-menu
+        .inner-menu
+          .flex-column
+            .title.mr-3= "Rekefisking pågår!"
+            #num-shrimp
+              = "Reker igjen: 0"
+          #stop-shrimp-mode.samf-button.small.flex-align-center
+            = "Avslutt"
+      #shrimp-container
+
+  %h1= "WEB VERV"

@@ -167,4 +167,148 @@
       @include span-columns(12);
     }
   }
+
+  .mg-web {
+    width: 200px;
+    height: 200px;
+
+    #certified-rekefisker {
+      width: 800px;
+      max-width: 100%;
+      height: 100px;
+      background-image: asset-url("/assets/other/certified_rekefisker.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      animation: certified-fisher 2s;
+    }
+    @keyframes certified-fisher {
+      0% {
+        transform: scale(1);
+      }
+      20% {
+        transform: scale(1.5);
+      }
+      30% {
+        transform: scale(1.45) rotate(-2deg);
+      }
+      40% {
+        transform: scale(1.45) rotate(2deg);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    #shrimp-mode {
+      .shrimp-menu {
+
+        position: fixed;
+        align-items: center;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 64px;
+        z-index: 100;
+        background-color: pink;
+
+        .inner-menu {
+          margin: 0 auto;
+          margin-top: 5px;
+          max-width: 500px;
+
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-direction: row;
+          padding-left: 8px;
+          padding-right: 8px;
+
+          .title {
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+          }
+          #num-shrimp {
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #444;
+          }
+        }
+
+      }
+      @media only screen and (max-width: 600px) {
+        .shrimp-menu {
+          .inner-menu {
+            .title {
+              font-size: 20px;
+            }
+          }
+        }
+      }
+    }
+
+
+    .shrimp-container {
+
+      pointer-events: all !important;
+      position: absolute;
+      right: 0;
+      animation: shrimp-move 10s linear 0s infinite normal forwards;
+
+      .shrimp {
+        background-image: asset-url("/assets/other/shrimp.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 96px;
+        height: 96px;
+        position: relative;
+
+        animation: shrimp-squiggle 1s ease-in-out 0s infinite normal forwards;
+        transform-origin: center;
+
+      }
+      .shrimp.small {
+        width: 74px;
+        height: 74px;
+      }
+    }
+    @keyframes shrimp-squiggle {
+      0% {
+        transform: scale(1, 1) rotate(0deg);
+      }
+      25% {
+        transform: scale(1.1, 0.9) rotate(-10deg);;
+      }
+      50% {
+        transform: scale(1, 1) rotate(0deg);
+      }
+      75% {
+        transform: scale(1.15, 0.85) rotate(-5deg);
+      }
+      100% {
+        transform: scale(1, 1)  rotate(0deg);
+      }
+    }
+    @keyframes shrimp-move {
+      0% {
+        transform: translateX(100%) translateY(0);
+      }
+      25% {
+        transform:translateX(-25vw) translateY(-100px);
+      }
+      50% {
+        transform: translateX(-50vw) translateY(0);
+      }
+      75% {
+        transform: translateX(-75vw) translateY(100px);
+      }
+      100% {
+        transform: translateX(calc(-100vw - 100%)) translateY(0);
+      }
+    }
+  }
+
 }
