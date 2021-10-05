@@ -2,7 +2,12 @@
   %h1.mb-2
     = t("navigation.main.events")
 
+
   = render 'search_form', post_path: search_events_path
+  .samf-button{:id => "grid", :style => "float: right"}
+    %h8 grid
+  .samf-button{:id => "list", :style => "float: right"}
+    %h8 list
 
   .ajax-search
 
