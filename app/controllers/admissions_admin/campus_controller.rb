@@ -3,7 +3,7 @@
 class AdmissionsAdmin::CampusController < AdmissionsAdmin::BaseController
   load_and_authorize_resource
 
-  def index
+  def admin
     @campuses = Campus.order(:name)
     @campus_count = Campus.number_of_applicants_current_admission
   end
@@ -16,7 +16,7 @@ class AdmissionsAdmin::CampusController < AdmissionsAdmin::BaseController
     @campus = Campus.new(campus_params)
     if @campus.save
       flash[:success] = t('save_success')
-      redirect_to action: :index
+      redirect_to action: :admin
     else
       flash[:message] = t('save_error')
       render :new
@@ -35,7 +35,7 @@ class AdmissionsAdmin::CampusController < AdmissionsAdmin::BaseController
     @campus = Campus.find params[:id]
     if @campus.update_attributes(campus_params)
       flash[:success] = t('update_success')
-      redirect_to action: :index
+      redirect_to action: :admin
     else
       flash.now[:error] = t('update_error')
       render :edit
@@ -45,13 +45,13 @@ class AdmissionsAdmin::CampusController < AdmissionsAdmin::BaseController
   def activate
     @campus = Campus.find params[:campus_id]
     @campus.update_attributes(active: true)
-    redirect_to action: :index
+    redirect_to action: :admin
   end
 
   def deactivate
     @campus = Campus.find params[:campus_id]
     @campus.update_attributes(active: false)
-    redirect_to action: :index
+    redirect_to action: :admin
   end
 
   private

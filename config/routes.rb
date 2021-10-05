@@ -133,7 +133,6 @@ Rails.application.routes.draw do
     namespace :admissions_admin do
       resources :campus, path: 'campus' do
         get :admin, on: :collection
-        get :index, to: "campus#index"
         get :deactivate, to: "campus#deactivate"
         get :activate, to: "campus#activate"
       end
