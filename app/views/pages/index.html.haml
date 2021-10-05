@@ -48,12 +48,11 @@
         - if page_by_name_en("organization") != "#"
           = link_to page_by_name_en("organization"), class: "samf-button red m-2" do
             = t("pages.index.samfundet_organization")
-        .flex-row
-          = link_to documents_path, class: "samf-button plain m-2" do
-            = t("pages.index.documents")
-          - if page_by_name_en("history") != "#"
-            = link_to page_by_name_en("history"), class: "samf-button plain m-2" do
-              = t("pages.index.samfundet_history")
+        = link_to documents_path, class: "samf-button plain m-2" do
+          = t("pages.index.documents")
+        - if page_by_name_en("history") != "#"
+          = link_to page_by_name_en("history"), class: "samf-button plain m-2" do
+            = t("pages.index.samfundet_history")
 
 
   .category-title.mt-3= t("pages.index.venue_title")
