@@ -3,7 +3,13 @@
   .open-hours
     %table
       %tr
-
+        %td
+          = "Lyche er åpent for alle under"
+          %br
+          = "UKA-21!"
+      %tr
+        %td= "Åpent 16-02 alle dager, 20 års aldersgrense etter kl. 22"
+    -# Remove this to set back to normal
       - if @closed.nil?
         %td.title{colspan: 2}
           %b= t("sulten.lyche.status_box.opening_hours")
