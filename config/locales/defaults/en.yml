@@ -5,6 +5,7 @@ en:
     show: "show"
     create: "create"
     destroy: "delete"
+    destroy: "delete"
     edit: "edit"
     confirm: "Are you sure?"
   common:

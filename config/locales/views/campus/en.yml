@@ -1,4 +1,7 @@
 en:
+  name: "Name"
+  created_at: "Created at"
+  updated_at: "Updated at"
   save_success: "Campus saved!"
   save_error: "Something went wrong. Could not save campus"
   update_success: "Campus updated"

@@ -1,13 +1,13 @@
 %h1 Campus
 
-.samf-button.green.mb-3= link_to "Legg til nytt campus", new_admissions_admin_campus_path
+.samf-button.green.mb-3= link_to "Legg til ny campus", new_admissions_admin_campus_path
 
 %table.campus
   %thead
     %tr
-      %th= t("campus.name")
-      %th= t("crud.created_at")
-      %th= t("crud.updated_at")
+      %th= t("name")
+      %th= t("created_at")
+      %th= t("updated_at")
       %th= t("number_of_applicants")
       %th= t("number_of_current_applicants")
       - if can? :edit, Campus

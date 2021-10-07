@@ -1,4 +1,7 @@
 'no':
+  name: "Navn"
+  created_at: "Opprettet"
+  updated_at: "Siste oppdatert"
   save_success: "Campus lagret!"
   save_error: "Kunne ikke lagre campus"
   update_success: "Campus oppdatert!"
