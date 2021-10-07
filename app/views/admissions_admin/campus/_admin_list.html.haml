@@ -14,6 +14,8 @@
         %th
       - if can? :destroy, Campus
         %th
+        %th
+          %td
 
   %tbody
     - @campuses.each do |campus|
@@ -29,4 +31,9 @@
             %td= link_to t("deactivate"), admissions_admin_campus_deactivate_path(campus)
           - else
             %td= link_to t("activate"), admissions_admin_campus_activate_path(campus)
+          %td= link_to t("delete"), admissions_admin_campus_destroy_path(campus)
+          %td
+            = link_to admissions_admin_campus_destroy_path(campus), method: :destroy, data: {confirm: "Are you sure"} do
+              = t("destroy")
+
 

@@ -10,4 +10,5 @@
   number_of_current_applicants: "Antall søkere dette opptaket"
   activate: "Aktiver"
   deactivate: "Deaktiver"
+  delete: "Slett"
   edit: "Endre campus"

@@ -10,4 +10,5 @@ en:
   number_of_current_applicants: "Number of applicants this admission"
   activate: "Activate"
   deactivate: "Deactivate"
+  delete: "Slett"
   edit: "Edit campus"
