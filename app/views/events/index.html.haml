@@ -1,15 +1,20 @@
+= javascript_include_tag 'events/grid-view', defer: true
+
 - cache cache_key_for_events_index(@events) do
   %h1.mb-2
     = t("navigation.main.events")
 
 
   = render 'search_form', post_path: search_events_path
-  .samf-button{:id => "grid", :style => "float: right"}
+  #event-grid-button.samf-button.mb-1{:style => "float: right"}
     %h8 grid
-  .samf-button{:id => "list", :style => "float: right"}
+  .samf-button.mb-1{:id => "list", :style => "float: right"}
     %h8 list
 
   .ajax-search
+
+  #list-event-view
+    %h1 hello
 
   .upcoming-events.flex-column.mt-3
     - @events.group_by {|i| i.start_time.to_date }.sort.each do |date, events|
