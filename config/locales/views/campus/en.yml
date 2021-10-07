@@ -11,5 +11,6 @@ en:
   campus_edit: "Edit"
   activate: "Activate"
   deactivate: "Deactivate"
-  delete: "Slett"
+  delete: "Delete"
+  areYouSure: "Are you sure?"
   edit: "Edit campus"

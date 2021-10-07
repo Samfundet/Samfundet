@@ -12,4 +12,5 @@
   activate: "Aktiver"
   deactivate: "Deaktiver"
   delete: "Slett"
+  areYouSure: "Er du sikker?"
   edit: "Endre campus"
