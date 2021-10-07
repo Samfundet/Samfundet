@@ -8,6 +8,7 @@
   update_error: "Kunne ikke oppdatere campus"
   number_of_applicants: "Antall søkere totalt"
   number_of_current_applicants: "Antall søkere dette opptaket"
+  campus_edit: "Rediger"
   activate: "Aktiver"
   deactivate: "Deaktiver"
   delete: "Slett"

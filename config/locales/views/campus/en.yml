@@ -8,6 +8,7 @@ en:
   update_error: "Something went wrong. Could not update campus"
   number_of_applicants: "Number of applicants"
   number_of_current_applicants: "Number of applicants this admission"
+  campus_edit: "Edit"
   activate: "Activate"
   deactivate: "Deactivate"
   delete: "Slett"
