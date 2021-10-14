@@ -1,13 +1,11 @@
-.container.list li {
-    width: 100%;
-    border-bottom: 1px dotted #CCC;
-    margin-bottom: 10px;
-    padding-bottom: 10px; }
-
-.container.grid li {
+.gridcolumn {
     float: left;
     width: 33%;
-    height: 50px;
-    border-right: 1px dotted #CCC;
-    border-bottom: 1px dotted #CCC;
-    padding: 20px; }
+    padding: 10px;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}

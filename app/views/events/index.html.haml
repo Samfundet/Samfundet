@@ -1,4 +1,6 @@
 = javascript_include_tag 'events/grid-view', defer: true
+%script src="http://code.jquery.com/jquery-1.11.0.min.js"
+
 
 - cache cache_key_for_events_index(@events) do
   %h1.mb-2
@@ -8,20 +10,22 @@
   = render 'search_form', post_path: search_events_path
   #event-grid-button.samf-button.mb-1{:style => "float: right"}
     %h8 grid
-  .samf-button.mb-1{:id => "list", :style => "float: right"}
+  #event-list-button.samf-button.mb-1{:style => "float: right"}
     %h8 list
 
   .ajax-search
 
-  #list-event-view
-    %h1 hello
-
-  .upcoming-events.flex-column.mt-3
+  #list-event-view.upcoming-events.flex-column.mt-3
     - @events.group_by {|i| i.start_time.to_date }.sort.each do |date, events|
-      %div.white.mb-3{style: "padding-top: 0;"}
+      %div.green.mb-3{style: "padding-top: 0;"}
         %h4.pl-3.p-1.title.white.bg-red= l(date, format: :medium_long)
         %tbody
           = render events.sort_by{|event| event.start_time}
+
+  #grid-event-view{style: "display: none;"}.upcoming-events.flex-column.mt-3
+
+    %h1 hallo
+
 
 .flex-row.center.mb-3.wrap{:style => "align-items:center;"}
   %a.samf-button.blue.mr-2.mt-2{ href: archive_events_path, title: t('events.archive.title')}

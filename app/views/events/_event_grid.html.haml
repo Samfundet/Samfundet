@@ -1,0 +1,11 @@
+.info_box.flex-align-center{class: info_box.color.to_s + (info_box.link == "" ? " no-link" : ""), style: !info_box.image_state? && "height: 200px;"}
+  - if info_box.image_state
+    .picture
+      = link_to info_box.link do
+        = background_image_helper "picture", info_box.image_or_default, size: :large
+  .info_text.flex-row{class: [!info_box.image_state? && "flex-row center"]}
+    = link_to info_box.link do
+      .info_text_title
+        = info_box.title
+      .info_text_body
+        = info_box.body
