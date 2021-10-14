@@ -24,7 +24,9 @@
     #contact-editors
       %ul
         %li
-          = t('layouts.footer.contact', path: contact_path).html_safe
+          - if page_by_name_en("contactinfo") != "#"
+            = link_to page_by_name_en("contactinfo") do
+              = t('layouts.footer.contact')
     #social
       %ul
         %li
