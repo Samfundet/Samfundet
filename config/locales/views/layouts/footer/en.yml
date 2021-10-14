@@ -1,7 +1,7 @@
 en:
   layouts:
     footer:
-      contact: "Need help? <a href=\"%{path}\">Contact us</a>."
+      contact: "Need help? Contact us."
       mainsponsor: "Main sponsor"
       festivals: "Festivals"
       othersponsors: "Sponsors"
