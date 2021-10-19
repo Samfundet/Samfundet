@@ -68,3 +68,18 @@
 
 }
 
+.grid-box {
+  max-width: 350px;
+  min-width: 350px;
+  padding: 2px;
+  border: 2px gray;
+  margin: 0px;
+  display: inline-block;
+  float: left;
+  background-color: snow;
+}
+
+.grid-icon {
+  font-size: 48px;
+}
+

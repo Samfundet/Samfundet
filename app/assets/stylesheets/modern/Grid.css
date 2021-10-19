@@ -1,11 +1,10 @@
-.gridcolumn {
+/* Create two equal columns that floats next to each other */
+.grid-box {
+    max-width: 400px;
+    padding: 2px;
+    border: 2px darkblue;
+    margin: 0px;
+    display: inline-block;
     float: left;
-    width: 33%;
-    padding: 10px;
 }
 
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
