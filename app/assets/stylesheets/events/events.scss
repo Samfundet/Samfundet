@@ -83,3 +83,24 @@
   font-size: 48px;
 }
 
+.grid-button {
+  cursor: pointer;
+  padding: 2px 2px 2px 5px;
+  text-align: center;
+  height: 40px;
+  width: 40px;
+  color: white;
+  border-radius: .25em;
+  transition: .2s;
+  a {
+    color: white;
+  }
+}
+
+.grid-button:hover {
+  filter: brightness(120%);
+  transform: translateY(-2px);
+  transition: .2s;
+  box-shadow: 1px 2px 8px 3px rgba(0,0,0,0.3);
+}
+
