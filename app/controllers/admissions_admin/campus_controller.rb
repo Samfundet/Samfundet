@@ -54,6 +54,12 @@ class AdmissionsAdmin::CampusController < AdmissionsAdmin::BaseController
     redirect_to action: :admin
   end
 
+  def destroy
+    @article = Campus.find (params[:campus_id])
+    @article.destroy
+    redirect_to action: :admin
+  end
+
   private
   def campus_params
     params.require(:campus).permit(

@@ -135,6 +135,7 @@ Rails.application.routes.draw do
         get :admin, on: :collection
         get :deactivate, to: "campus#deactivate"
         get :activate, to: "campus#activate"
+        get :destroy, to: "campus#destroy"
       end
       resources :admissions, only: [:show, :new, :create, :edit, :update, :list] do
 
