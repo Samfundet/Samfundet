@@ -13,8 +13,6 @@ table:not(.custom-table):not(.ui-datepicker-calendar) {
   margin: 0 auto;
   position: relative;
 
-
-
   tr {
     padding: 10px 0;
   }
@@ -44,6 +42,36 @@ table:not(.custom-table):not(.ui-datepicker-calendar) {
 
   tbody > tr:nth-child(even) {
     background-color: $alternate-cell-color;
+  }
+
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+    overflow-x: scroll;
+    table-layout: auto;
+    display: block;
+
+    tbody {
+      width: 100% !important;
+    }
+    thead {
+      background-color: $samfundet-red;
+      width: 100% !important;
+      tr, tr.category {
+        width: 100% !important;
+        th, td {
+          font-size: 1em;
+          word-wrap: break-word;
+        }
+      }
+    }
+    tr {
+      width: 100% !important;
+    }
+    td, th {
+      padding: 8px 2px;
+      font-size: 0.8em;
+      word-wrap: break-word;
+    }
   }
 
 }

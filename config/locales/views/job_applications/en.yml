@@ -6,6 +6,7 @@ en:
     title_with_applicant_and_job: "%{applicant_name}'s application for %{job_title}"
     cannot_apply_after_deadline: "You cannot apply for a position after the deadline for this admission."
     cannot_prioritize_after_deadline: "You cannot prioritize your applications after the deadline for this admission."
+    application_not_found: "Found no applications associated with this user."
     deadline_has_passed_for_some: "You can no longer change the priority of some of your applications because the deadline has passed."
     deadline_has_passed_for_all: "You can no longer change the priority of your applications because the deadline has passed."
     find_on_facebook: "Find %{name} on Facebook"

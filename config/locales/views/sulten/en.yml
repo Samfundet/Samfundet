@@ -1,6 +1,7 @@
 en:
   sulten:
     reservation:
+      # TODO: There are a number of strings here that should be moved to lyche.reservation instead
       title: "Lyche Reservations"
       weekly_overview: "Weekly Overview"
       no_reservations: "No reservations"
@@ -9,15 +10,17 @@ en:
       show_all: "Show all"
       name: "Name"
       time: "Time"
+      date: "Date"
       from: "From"
       to: "To"
-      people: "No. persons"
+      people: "Number of guests"
       reservation_type: "Occasion"
       placeholder_date: "01.10.1910 12:00"
       table: "Table"
       missing_table: "Missing table"
       telephone: "Telephone number"
       email: "Email"
+      email_uncapitalized: "email"
       other_messages: "Other messages"
       gdpr_checkbox: "I agree to Samfundet's <a href='%{en_url}'>privacy policy</a>."
       internal_comment: "Internal comment"
@@ -28,20 +31,22 @@ en:
         title: "Summary"
         date: "Date"
         day: "Day"
+        total: "Total number of reservations"
+        total_people: "Totalt number of people"
         total_week: "Total entire week"
       form:
         uka_title: 'Lyche reservation system during UKA'
         uka: 'Bookings must be done before 14:00 the same day as the reservation. For any inquiries, contact us at ' # email link
-        title: "lyche reservation"
+        title: "Reservation"
         title_admin: "lyche reservation (ADMIN)"
         intro1: "Fill in and submit the form below to make a reservation at Lyche"
         intro1_admin: "This is what users see:"
         intro2: "Currently you may only make reservations for time periods between 4 pm and 10 pm, and a reservation must be made no later than the day before it begins."
         intro3: "In order to change or cancel a reservation, please send an email to "
-        too_many: "more than 8 persons? send us a "
-        from: "beginning time of reservation"
-        duration: "duration"
-        type_explanation: "what is the purpose of the visit? this helps determine the sort of table you will be given"
+        too_many: "More than 8 people? send us an "
+        from: "Start time"
+        duration: "Duration"
+        type_explanation: "What is the purpose of the visit? This us helps determine what kind of table you will be given."
         find_times: "Find available times"
         create: "make reservation"
         update: "update reservation"
@@ -83,10 +88,182 @@ en:
       add_new_link: 'Add new period'
       archive_title: 'Previous closed periods for Lyche'
       show_all_previous_closed_periods: 'Show all previous closed periods'
-
       creation_success: "Successfully created Lyche reservations closed period"
       creation_failure: "Failed at creating Lyche reservations closed period"
       update_success: "Successfully updated Lyche reservations closed period"
       update_failure: "Failed at updating Lyche reservations closed period"
       destruction: "Successfully destroyed Lyche reservations closed period"
       times_in_valid_order: "End must be after beginning"
+    lyche:
+      index:
+        reservation:
+          title: "Reservation"
+          description: "Do you want to reserve a table at Lyche? You can do this through our reservation system, or by email."
+          table: "Reserve a table"
+        menu:
+          title: "Menu"
+          description: "At Lyche, we want to emphasize high-quality drinks and food. This applies both to having a varied but also a well-thought-out selection. We make our dishes with a focus on making them from scratch with local ingredients."
+          goto_menu: "See our menu"
+        about:
+          title: "About lyche"
+          description: "Lyche is a restaurant run on a voluntary basis. All the waiters and chefs in the kitchen work voluntarily, and we are part of the Café and serving group (KSG) at the Student Society in Trondheim."
+          goto_about: "More about us"
+        contact:
+          title: "Contact"
+          description: "Do you have questions, inquiries, suggestions for improvement or for other reasons want to get in touch with us? Here you will find our contact information."
+          goto_contact: "Contact us"
+      menu:
+        title: "Menu"
+        voluntary: |
+          Lyche is a restaurant and liquor bar run exclusively by volunteer students.
+          About 100 dedicated amateurs work as chefs and bar waiters and do their best for you as a guest to have a pleasant experience.
+        vision: |
+          At Lyche, we want to emphasize high-quality food and drinks.
+          This applies both to having a varied but also a well-thought-out selection.
+          We make our dishes with a focus on making them from scratch with local ingredients.
+        member_price: |
+          The menu states two prices for both drinks and food.
+          The former includes a membership discount for members of the Student Society.
+          The discount is given upon presentation of a membership card.
+        subtitle: "You're welcome!"
+        opening_hours: "Opening hours"
+        starters:
+          title: "Starters"
+          lyche_bread:
+            name: "Lyche bread"
+            description: "Inspired by Italian ciabatta. Served with aioli."
+            allergies: "Allergies: Gluten (wheat), sulfite and eggs"
+          side_salad:
+            name: "Side salad"
+            description: "With cherry tomatoes and vinaigrette."
+            allergies: "Allergies: Sulfite"
+          soup:
+            name: "Soup"
+            description: "Varies by season. Ask one of our waiters about today's soup. Served with Lyche bread and butter."
+            allergies: "Allergies: Ask one of our waiters"
+        burgers:
+          title: "Burgers"
+          double: "Double"
+          lyche_burger:
+            name: "Lyche burger"
+            ingredients: "Aioli, cherry tomatoes, lettuce, onion compote, cheese, bacon and pistou for baked potatoes."
+            allergies: "Allergies: Gluten (wheat), sulfite and eggs"
+            recommendations: "The bar recommends: E.C. Dahls Bolt IPA"
+          blue_cheese_burger:
+            name: "Blue cheese burger"
+            ingredients: "Aioli, cherry tomatoes, lettuce, sweet and sour currant and rhubarb jam, blue cheese from Selbu and pistou for oven-baked potatoes."
+            allergies: "Allergies: Pork, eggs, gluten (wheat, rye, barley), milk, celery, mustard and sulphite"
+            recommendations: "The bar recommends: Lychelig Trippel"
+          sweet_potato_burger:
+            name: "Sweet potato burger"
+            ingredients: "Aioli, cherry tomatoes, lettuce, pickled shallots, manchego and pistou for baked potatoes. Vegetarian. Can be served as a vegan burger."
+            allergies: "Allergies: Gluten (wheat, rye, barley), sulfite, mustard, milk and eggs"
+            recommendations: "The bar recommends: Brooklyn Lager"
+        main_courses:
+          title: "Main courses"
+          nordic_falafel:
+            name: "Nordic falafel"
+            description: "Falafel made with a base of traditional ingredients from Norway. Served with oven-baked loaf, raw food salad, yoghurt dressing with herbs and pickled mushrooms with cranberries."
+            allergies: "Allergies: gluten (wheat), milk, celery and sulphite"
+            recommendations: "The bar recommends: E.C. Dahls Bolt IPA"
+          seasonal_salad:
+            name: "Seasonal salad"
+            description: "Varies throughout the year with seasonal flavors. Ask one of our waiters for more information. Served with lyche bread and spiced butter."
+            allergies: "Allergies: Ask one of our waiters."
+            recommendations: "The bar recommends: Bourgogne Chardonnay"
+        desserts:
+          title: "Dessert"
+          ice_cream:
+            name: "Ice cream"
+            description: "Ice cream and / or sorbet. Ask one of our waiters about today's flavors."
+            allergies: "Allergies: Ask one of our waiters."
+          orange_chocolate_mousse:
+            name: "Orange Chocolate Mousse"
+            description: "Chocolate mousse with orange flavor topped with candied orange."
+            allergies: "Allergies: Milk, eggs and soy."
+            recommendations: "The bar recommends: Barbera d`Asti Superiore Storica"
+        beer_on_tap:
+          title: "Beer on tap"
+          weekend: "Weekend"
+          weekday: "Weekday"
+          special_beer: "A special beer from daglighallen"
+          ask_bar: "Ask about type at the bar"
+        bottled_beer:
+          title: "Bottled beer"
+          glutenfree: "Gluten free"
+          blue: "Blue"
+          red: "Red"
+        alcopop:
+          title: "Alcopop"
+          pear: "Pear"
+        alcohol_free:
+          title: "Alcohol free"
+          mineral_water: "Mineral water"
+          choices: "Selection: Pepsi, Pepsi Max, Solo, 7up free, Apple juice"
+        wine:
+          white_wine: "White wine"
+          red_wine: "Red wine"
+          glass: "Glass"
+          bottle: "Bottle"
+        errors: "The digital menu might not be up to date."
+      reservation:
+        info: |
+          Tables must be reserved at least one day in advance. Food can be pre-ordered so you do not have to wait when you arrive.
+          Note that the majority of people must be a member of the Student Society to reserve and that all must be over 20 years after 20:00 on weekends.
+          With regard to infection control, we can not guarantee that everyone gets to sit together.
+        development: "Our reservation system is still under development, and reservation errors may therefore occur. Click here to order via email:"
+        closed_period: "Lyche is closed during the period "
+        one_day_future: "Reservations must unfortunately be made at least one day in advance."
+        closed_day: "Lyche is unfortunately closed on this day 😢"
+        number_of_guests: "Number of guests: "
+        chosen_date: "Closen date: "
+        closed_on_day: "Remember that Lyche closes at "
+        on_day: " on "
+        time: "Time"
+        no_available_tables: "Unfortunately, there are no available tables for this number of guests on this day."
+        failure:
+          info: |
+            Could not create reservation! Please try again or send us an email to book a table.
+            Please note that reservations must be at least one day in advance and with a maximum of 8 people.
+          email: "Click here to try and order via email:"
+          one_day_future: "Sorry, reservations must be made at least one day in advance. Feel free to stop by today and see if there are any available tables!"
+        success: "Thank you for your reservation! Once the reservation is made, you will receive a confirmation email. To cancel or change the reservation, please send us an email:"
+        under_construction: "Lyche is refurbishing!"
+        back_to_samfundet: "Back to Samfundet"
+      header_menu:
+        main_page: "Main page"
+        reservation: "Reservation"
+        menu: "Menu"
+        about_us: "About us"
+        contact: "Contact"
+        language: "Norsk"
+      status_box:
+        opening_hours: "Opening hours"
+        weekdays: "Weekdays"
+        closed: "Closed"
+        closed_message: "Lyche is closed"
+        closed_period: "Closed during the period"
+      about:
+        voluntary: |
+          Lyche is a restaurant and liquor bar run exclusively by volunteer students.
+          About 100 dedicated amateurs work as chefs and bar waiters and do their best for you as a guest to have a pleasant experience.
+        vision: |
+          At Lyche, we want to emphasize high-quality food and drinks.
+          That is why we have both a varied and well-thought-out selection.
+          We focus on making our dishes from scratch using local ingredients.
+        member_price: |
+          The menu states two prices for both drinks and food.
+          The former includes a membership discount for members of the Student Society.
+          The discount is given upon presentation of a membership card.
+      contact:
+        title: "Contact"
+        description: |
+          Do you have questions, inquiries, suggestions for improvement or for other reasons want to get in touch with us?
+          Here you will find our contact information.
+          Reservations are made either via email or via our reservation system.
+          We do not accept reservations through social media.
+          You can refer to our social media for information.
+        encouragement: "We hope to see you at Lyche!"
+        inquiries: "For general inquiries:"
+        address: "Address"
+        email: "Email"

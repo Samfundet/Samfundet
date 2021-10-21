@@ -26,9 +26,9 @@
     padding: 12px;
 
     .side-graphics {
-      opacity: 0.2;
+      opacity: 0.3;
       z-index: -1;
-      width: 120px;
+      width: 180px;
       min-height: calc(100vh - 200px);
       background: asset-url("header/side_art.png") repeat-y 0 0;
       background-size: contain;
@@ -41,7 +41,7 @@
     .side-graphics.right {
       right: 0;
       left: auto;
-      background-position-y: 50vh;
+      background-position-y: 39vh;
       transform: translateX(12px) translateY(12px) scaleX(-1) ;
     }
 

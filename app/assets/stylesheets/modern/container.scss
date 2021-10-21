@@ -24,6 +24,11 @@ Samfundet containers
   background-color: $samfundet-green;
   color: white;
 }
+.samf-container.gray {
+  background-color: #eee;
+  border: 1px solid #ccc;
+  color: black;
+}
 .samf-container.plain {
   background-color: transparent;
   border: 1px solid #ddd;

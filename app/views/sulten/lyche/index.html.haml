@@ -7,12 +7,13 @@
       .image.reservation
     .info-container
       .title
-        Reservasjon
+        = t("sulten.lyche.index.reservation.title")
       .description
-        Vil du reservere bord på Lyche? Dette kan du gjøre gjennom vårt reservasjonssystem, eller på e-post.
-      = link_to sulten_make_reservation_path do
+        = t("sulten.lyche.index.reservation.description")
+      -# = link_to sulten_make_reservation_path do
+      = link_to "https://book.easytablebooking.com/book/?id=d8696&lang=no" do
         .section-button
-          Reserver bord
+          = t("sulten.lyche.index.reservation.table")
           .chevron.right
 
 
@@ -21,12 +22,13 @@
       .image.menu
     .info-container
       .title
-        Meny
+        = t("sulten.lyche.index.menu.title")
       .description
-        I Lyche ønsker vi å legge vekt på mat og drikke av høy kvalitet. Dette gjelder både å ha et variert men også godt gjennomtenkt utvalg.
-      = link_to sulten_menu_path do
+        = t("sulten.lyche.index.menu.description")
+      -#= link_to sulten_menu_path do
+      = link_to asset_path("lyche_uka_menu.pdf") do
         .section-button
-          Se vår meny
+          = t("sulten.lyche.index.menu.goto_menu")
           .chevron.right
 
 
@@ -35,12 +37,12 @@
       .image.about
     .info-container
       .title
-        Om Lyche
+        = t("sulten.lyche.index.about.title")
       .description
-        Lyche er en restaurant drevet på frivillig basis. Alle servitørene og kokkene på kjøkkenet jobber frivillig, og vi er en del av Kafé og serveringsgjengen (KSG) ved Studentersamfundet i Trondhjem.
+        = t("sulten.lyche.index.about.description")
       = link_to sulten_about_path do
         .section-button
-          Mer om oss
+          = t("sulten.lyche.index.about.goto_about")
           .chevron.right
 
   .section
@@ -48,10 +50,10 @@
       .image.contact
     .info-container
       .title
-        Kontakt
+        = t("sulten.lyche.index.contact.title")
       .description
-        Har du spørsmål, henvendelser, forslag til forbedring eller av andre årsaker ønsker å komme i kontakt med oss? Her finner du kontaktinformasjonen vår.
+        = t("sulten.lyche.index.contact.description")
       = link_to sulten_contact_path do
         .section-button
-          Kontakt oss
+          = t("sulten.lyche.index.contact.goto_contact")
           .chevron.right

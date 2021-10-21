@@ -3,15 +3,15 @@
     .picture
       = link_to info_box.link do
         = background_image_helper "picture", info_box.image_or_default, size: :large
-  .info_text{class: [!info_box.image_state? && "center text-Align"]}
+  .info_text.flex-row{class: [!info_box.image_state? && "flex-row center"]}
     = link_to info_box.link do
       .info_text_title
         = info_box.title
       .info_text_body
         = info_box.body
 
-    .flex-row.mb-3.mt-3.flex-justify-center
-      - if can? :manage, FrontPageLock
+    - if can? :manage, FrontPageLock
+      .flex-row.m-3.flex-justify-center
         = link_to edit_info_box_path(info_box) do
           .samf-button.small.blue.mr-2
             = t("info_boxes.edit")

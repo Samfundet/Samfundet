@@ -2,23 +2,24 @@
 
 = render "admin_choices"
 
-.menu-button.br-1
-  = t('layouts.application.menu.menu')
 
-- if !@page.hide_menu
+- if !@page.hide_menu and false
+  .menu-button.br-1
+    = t('layouts.application.menu.menu')
+
   .menu
     .menu-content
       = render_page_content(@menu.content, @menu.content_type)
 
+.content.w100
+  .flex-row.flex-justify-center
+    .div{style: "max-width: 800px; max-width: 100%;"}
+      = render_page_content(@page.content, @page.content_type)
 
-.content{class: ("wide" if @page.hide_menu)}
-  = render_page_content(@page.content, @page.content_type)
-
-  - if can? :edit, Page
-    %p
-      = t("pages.owned_by", owner: @page.role)
-      - if @page.revisions.last.member
-        = link_to t("pages.last_updated_by", name: @page.revisions.last.member.full_name, time: l(@page.revisions.last.created_at)), history_page_path(@page)
-      - else
-        = link_to t("pages.last_updated", time: l(@page.revisions.last.created_at)), history_page_path(@page)
-
+      - if can? :edit, Page
+        %p
+          = t("pages.owned_by", owner: @page.role)
+          - if @page.revisions.last.member
+            = link_to t("pages.last_updated_by", name: @page.revisions.last.member.full_name, time: l(@page.revisions.last.created_at)), history_page_path(@page)
+          - else
+            = link_to t("pages.last_updated", time: l(@page.revisions.last.created_at)), history_page_path(@page)

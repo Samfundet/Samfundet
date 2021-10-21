@@ -141,6 +141,13 @@
       width: 38px;
       background-repeat: no-repeat;
     }
+    .reitan-icon {
+      background-image: asset-url("footer/reitan_est.png");
+      background-size: contain;
+      width: 175px;
+      height: 60px;
+      background-repeat: no-repeat;
+    }
 
     .trondheim-kommune-text {
       font-family: Calibri, sans-serif;
@@ -187,7 +194,6 @@
           background-image: asset-url("footer/kulturrom.png");
           background-size: contain;
         }
-
       }
     }
   }

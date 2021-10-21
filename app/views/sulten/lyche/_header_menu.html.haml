@@ -1,4 +1,3 @@
-
 .samfundet-logo
 = javascript_include_tag "sulten/header", defer: true
 
@@ -10,26 +9,33 @@
       .mobile-hamburger-line
       .mobile-hamburger-line
 
-    = link_to sulten_make_reservation_path do
-      .menu-button
-        Reservasjon
 
-    = link_to sulten_menu_path do
+    -# = link_to sulten_make_reservation_path do
+    = link_to "https://book.easytablebooking.com/book/?id=d8696&lang=no" do
       .menu-button
-        Meny
+        = t("sulten.lyche.header_menu.reservation")
+
+    -# = link_to sulten_menu_path do
+    = link_to asset_path("lyche_uka_menu.pdf") do
+      .menu-button
+        = t("sulten.lyche.header_menu.menu")
 
     = link_to sulten_path do
       .lyche-logo
 
     = link_to sulten_about_path do
       .menu-button
-        Om oss
+        = t("sulten.lyche.header_menu.about_us")
 
     = link_to sulten_contact_path do
       .menu-button
-        Kontakt
+        = t("sulten.lyche.header_menu.contact")
 
-    = link_to sulten_make_reservation_path do
+    = link_to change_language do
+      .change-language{class: "#{I18n.locale}", :style => "margin-left: 2em;"}
+
+    -# = link_to sulten_make_reservation_path do
+    = link_to "https://book.easytablebooking.com/book/?id=d8696&lang=no" do
       .mobile-reservation
 
 
@@ -37,20 +43,26 @@
 
     = link_to sulten_path do
       .menu-button
-        Hovedside
+        = t("sulten.lyche.header_menu.main_page")
 
-    = link_to sulten_menu_path do
+    -# = link_to sulten_menu_path do
+    = link_to asset_path("lyche_uka_menu.pdf") do
       .menu-button
-        Meny
+        = t("sulten.lyche.header_menu.menu")
 
-    = link_to sulten_make_reservation_path do
+    -# = link_to sulten_make_reservation_path do
+    = link_to "https://book.easytablebooking.com/book/?id=d8696&lang=no" do
       .menu-button
-        Reservasjon
+        = t("sulten.lyche.header_menu.reservation")
 
     = link_to sulten_about_path do
       .menu-button
-        Om oss
+        = t("sulten.lyche.header_menu.about_us")
 
     = link_to sulten_contact_path do
       .menu-button
-        Kontakt
+        = t("sulten.lyche.header_menu.contact")
+
+    = link_to change_language do
+      .menu-button
+        = t("sulten.lyche.header_menu.language")

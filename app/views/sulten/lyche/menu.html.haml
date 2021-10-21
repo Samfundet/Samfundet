@@ -18,234 +18,226 @@
         .lyche-menu-logo
 
         .lyche-menu-title
-          Meny
+          = t("sulten.lyche.menu.title")
         %br
         .menu-item
           .item-description
-            Lyche er en restaurant og spritbar som drives utelukkende av frivillige
-            studenter. Om lag 100 engasjerte amatører jobber som kokker
-            og barservitører og gjør sitt beste for at du som gjest skal få en
-            hyggelig opplevelse.
+            = t("sulten.lyche.menu.voluntary")
             %br
             %br
-            I Lyche ønsker vi å legge vekt på mat og drikke av høy kvalitet. Derfor har vi både et variert og godt gjennomtenkt utvalg.
-            Vi har fokus på å lage rettene våre fra bunnen av og med lokale råvarer.
+            = t("sulten.lyche.menu.vision")
             %br
             %br
-            I menyen oppgis det to priser på både mat og drikke.
-            Den førstnevnte er medlemspris for medlemmer av
-            Studentersamfundet. Denne gis ved fremvisning av medlemskap.
+            = t("sulten.lyche.menu.member_price")
             %br
 
         .lyche-menu-subtitle
-          Velbekomne!
+          = t("sulten.lyche.menu.subtitle")
         %br
 
         - if @open_hours.count > 0
           .lyche-menu-subtitle{style: "color:#fbb042;"}
-            Åpningstider
+            = t("sulten.lyche.menu.opening_hours")
 
           .lyche-menu-open-hours
             - @open_hours.each do |name, value|
               %span{style:"color:white;"}
                 = name
               %br
-              %i=value
+              - if value == "Stengt"
+                %i= t("sulten.lyche.status_box.closed")
+              - else
+                %i=value
               %br
               %br
 
-        -# Forretter
+        -# Starters
 
         .lyche-menu-category
           .lyche-menu-category-detail.left
           .lyche-menu-category-title
-            Småretter
+            = t("sulten.lyche.menu.starters.title")
           .lyche-menu-category-detail.right
 
         .menu-item
           .item-name
-            Lychebrød
+            = t("sulten.lyche.menu.starters.lyche_bread.name")
             .item-price
               19,- / 29,-
           .item-description
-            Inspirert av italiensk ciabatta. Serveres med aioli.
+            = t("sulten.lyche.menu.starters.lyche_bread.description")
             %br
             %br
-            %i= "Inneholder: Gluten (hvete), sulfitt og egg"
+            %i= t("sulten.lyche.menu.starters.lyche_bread.allergies")
 
         .menu-item
           .item-name
-            Sidesalat
+            = t("sulten.lyche.menu.starters.side_salad.name")
             .item-price
               19,- / 29,-
           .item-description
-            Med cherrytomater og vinaigrette.
+            = t("sulten.lyche.menu.starters.side_salad.description")
             %br
             %br
-            %i= "Inneholder: Sulfitt"
+            %i= t("sulten.lyche.menu.starters.side_salad.allergies")
 
         .menu-item
           .item-name
-            Suppe
+            = t("sulten.lyche.menu.starters.soup.name")
             .item-price
               49,- / 59,-
           .item-description
-            Varierer etter sesong. Spør en av våre servitører om dagens suppe.
-            Serveres med Lychebrød og kryddersmør.
+            = t("sulten.lyche.menu.starters.soup.description")
             %br
             %br
-            %i= "Inneholder: Spør en av våre servitører"
+            %i= t("sulten.lyche.menu.starters.soup.allergies")
 
 
-        -# BURGERE
+        -# Burgers
 
         .lyche-menu-category
           .lyche-menu-category-detail.left
           .lyche-menu-category-title
-            Burgere
+            = t("sulten.lyche.menu.burgers.title")
           .lyche-menu-category-detail.right
 
         .menu-item
           .item-name
-            Lycheburger
+            = t("sulten.lyche.menu.burgers.lyche_burger.name")
             .item-price
               114,- / 134,-
           .item-description
-            Dobbel 149,- / 169,-
+            #{t("sulten.lyche.menu.burgers.double")} 149,- / 169,-
             %br
             %br
-            Aioli, cherrytomater, salat, løkkompott, ost, bacon og pistou
-            til ovnsbakte poteter.
+            = t("sulten.lyche.menu.burgers.lyche_burger.ingredients")
             %br
             %br
-            %i= "Inneholder: Svin, egg, gluten (hvete, rug, bygg), melk, selleri, sennep og sulfitt"
+            %i= t("sulten.lyche.menu.burgers.lyche_burger.allergies")
             %br
             %br
-            %i= "Baren anbefaler: E.C. Dahls Bolt IPA"
+            %i= t("sulten.lyche.menu.burgers.lyche_burger.recommendations")
 
         .menu-item
           .item-name
-            Blåmuggburger
+            = t("sulten.lyche.menu.burgers.blue_cheese_burger.name")
             .item-price
               114,- / 134,-
           .item-description
-            Dobbel 149,- / 169,-
+            #{t("sulten.lyche.menu.burgers.double")} 149,- / 169,-
             %br
             %br
-            Aioli, cherrytomater, salat, søt og syrlig rips- og rabarbramarmelade , blåmuggost fra Selbu og pistou til ovnsbakte poteter.
+            = t("sulten.lyche.menu.burgers.blue_cheese_burger.ingredients")
             %br
             %br
-            %i= "Inneholder: Svin, egg, gluten (hvete, rug, bygg), melk, selleri, sennep og sulfitt"
+            %i= t("sulten.lyche.menu.burgers.blue_cheese_burger.allergies")
             %br
             %br
-            %i= "Baren anbefaler: Lychelig Trippel"
+            %i= t("sulten.lyche.menu.burgers.blue_cheese_burger.recommendations")
 
         .menu-item
           .item-name
-            Søtpotetburger
+            = t("sulten.lyche.menu.burgers.sweet_potato_burger.name")
             .item-price
               89,- / 105,-
           .item-description
-            Dobbel 105,- / 125,-
+            #{t("sulten.lyche.menu.burgers.double")} 105,- / 125,-
             %br
             %br
-            Aioli, cherrytomater, salat, syltet sjalottløk, manchego og pistou til ovnsbakte poteter. Vegetar. Kan serveres som veganburger.
+            = t("sulten.lyche.menu.burgers.sweet_potato_burger.ingredients")
             %br
             %br
-            %i= "Inneholder: Gluten (hvete, rug, bygg), sulfitt, sennep, melk og egg"
+            %i= t("sulten.lyche.menu.burgers.sweet_potato_burger.allergies")
             %br
             %br
-            %i= "Baren anbefaler: Brooklyn Lager"
+            %i= t("sulten.lyche.menu.burgers.sweet_potato_burger.recommendations")
 
-        -# HOVEDRETTER
+        -# Main courses
 
         .lyche-menu-category
           .lyche-menu-category-detail.left
           .lyche-menu-category-title
-            Hovedretter
+            = t("sulten.lyche.menu.main_courses.title")
           .lyche-menu-category-detail.right
 
         .menu-item
           .item-name
-            Nordisk falafel
+            = t("sulten.lyche.menu.main_courses.nordic_falafel.name")
             .item-price
               89,- / 109,-
           .item-description
-            Falafel laget med en base av tradisjonsrike ingredienser fra Norge.
-            Serveres med ovnsbakt lompe, råkostsalat, yoghurtdressing med urter og syltet sopp med tyttebær
+            = t("sulten.lyche.menu.main_courses.nordic_falafel.description")
             %br
             %br
-            %i= "Inneholder: Gluten (hvete), melk, selleri og sulfitt"
+            %i= t("sulten.lyche.menu.main_courses.nordic_falafel.description")
             %br
             %br
-            %i= "Baren anbefaler: E.C. Dahls Bolt IPA"
+            %i= t("sulten.lyche.menu.main_courses.nordic_falafel.recommendations")
 
         .menu-item
           .item-name
-            Sesongens salat
+            = t("sulten.lyche.menu.main_courses.seasonal_salad.name")
             .item-price
               99,- / 119,-
           .item-description
-            Varieres gjennom året med sesongens smaker. Spør en av våre barservitører for mer informasjon.
-            Serveres med lychebrød og kryddersmør.
+            = t("sulten.lyche.menu.main_courses.seasonal_salad.description")
             %br
             %br
-            %i= "Inneholder: Spør en av våre barservitører."
+            %i= t("sulten.lyche.menu.main_courses.seasonal_salad.description")
             %br
             %br
-            %i= "Baren anbefaler: Bourgogne Chardonnay"
+            %i= t("sulten.lyche.menu.main_courses.seasonal_sala1.recommendations")
 
-        -# DESSERT
+        -# Dessert
+
         .lyche-menu-category
           .lyche-menu-category-detail.left
           .lyche-menu-category-title
-            Dessert
+            = t("sulten.lyche.menu.desserts.title")
           .lyche-menu-category-detail.right
 
         .menu-item
           .item-name
-            Iskrem
+            = t("sulten.lyche.menu.desserts.ice_cream.name")
             .item-price
               35,- / 45,-
           .item-description
-            Fløteiskrem og/eller sorbet. Spør en av våre barservitører om dagens smaker.
+            = t("sulten.lyche.menu.desserts.ice_cream.description")
             %br
             %br
-            %i= "Inneholder: Spør en av våre barservitører."
-
+            %i= t("sulten.lyche.menu.desserts.ice_cream.allergies")
 
         .menu-item
           .item-name
-            Appelsinsjokolademousse
+            = t("sulten.lyche.menu.desserts.orange_chocolate_mousse.name")
             .item-price
               49,- / 69,-
           .item-description
-            Sjokolademousse med appelsinsmak toppet med kandisert appelsin.
+            = t("sulten.lyche.menu.desserts.orange_chocolate_mousse.description")
             %br
             %br
-            %i= "Inneholder: Melk, egg og soya."
+            %i= t("sulten.lyche.menu.desserts.orange_chocolate_mousse.allergies")
             %br
             %br
-            %i= "Baren anbefaler: Barbera d`Asti Superiore Storica"
+            %i= t("sulten.lyche.menu.desserts.orange_chocolate_mousse.recommendations")
 
-
-        -# DRIKKE
+        -# Drinks
 
         .lyche-menu-category
           .lyche-menu-category-detail.left
           .lyche-menu-category-title
-            Øl på tapp
+            = t("sulten.lyche.menu.beer_on_tap.title")
           .lyche-menu-category-detail.right
 
         .lyche-
         .menu-item
           .item-name
-            Dahls 0,5L Helg
+            Dahls 0,5L #{t("sulten.lyche.menu.beer_on_tap.weekend")}:
             .item-price
               64,- / 84,-
         .menu-item
           .item-name
-            Dahls 0,5L Ukedag
+            Dahls 0,5L #{t("sulten.lyche.menu.beer_on_tap.weekday")}:
             .item-price
               49,- / 79,-
         .menu-item
@@ -268,16 +260,16 @@
 
         .menu-item
           .item-name
-            Spesialøl fra Daglighallen
+            = t("sulten.lyche.menu.beer_on_tap.special_beer")
           .item-description
-            Spør om type i baren
+            = t("sulten.lyche.menu.beer_on_tap.ask_bar")
 
         -# Flaskeøl
 
         .lyche-menu-category
           .lyche-menu-category-detail.left
           .lyche-menu-category-title
-            Øl på flaske
+            = t("sulten.lyche.menu.bottled_beer.title")
           .lyche-menu-category-detail.right
 
         .menu-item
@@ -297,7 +289,7 @@
               99,- / 109,-
         .menu-item
           .item-name
-            Sør 0,33L. 4,7% (glutenfri):
+            Sør 0,33L. 4,7% (#{t("sulten.lyche.menu.bottled_beer.glutenfree")}):
             .item-price
               49,- / 59,-
         .menu-item
@@ -307,7 +299,7 @@
               59,- / 69,-
         .menu-item
           .item-name
-            Ringnes Lite 0,33L. 4,3%:
+            Ringnes Lite 0,33L. 4,3% (#{t("sulten.lyche.menu.bottled_beer.glutenfree")}):
             .item-price
               49,- / 59,-
         .menu-item
@@ -327,12 +319,12 @@
               94,- / 104,-
         .menu-item
           .item-name
-            Chimay blå 0,33L. 9%:
+            Chimay #{t("sulten.lyche.menu.bottled_beer.blue")} 0,33L. 9%:
             .item-price
               114,- / 124,-
         .menu-item
           .item-name
-            Chimay Rød 0,33L. 7%:
+            Chimay #{t("sulten.lyche.menu.bottled_beer.red")} 0,33L. 7%:
             .item-price
               94,- / 104,-
 
@@ -341,7 +333,7 @@
         .lyche-menu-category
           .lyche-menu-category-detail.left
           .lyche-menu-category-title
-            Rusbrus
+            = t("sulten.lyche.menu.alcopop.title")
           .lyche-menu-category-detail.right
 
         .menu-item
@@ -351,7 +343,7 @@
               64,- / 84,-
         .menu-item
           .item-name
-            somersby pære 0,33L:
+            Somersby #{t("sulten.lyche.menu.alcopop.pear")} 0,33L:
             .item-price
               59,- / 79,-
         .menu-item
@@ -365,21 +357,21 @@
             .item-price
               65,- / 79,-
 
-        -# Alkoholfritt
+        -# Alcohol free
 
         .lyche-menu-category
           .lyche-menu-category-detail.left
           .lyche-menu-category-title
-            Alkoholfritt
+            = t("sulten.lyche.menu.alcohol_free.title")
           .lyche-menu-category-detail.right
 
         .menu-item
           .item-name
-            Mineralvann 0,33L:
+            #{t("sulten.lyche.menu.alcohol_free.mineral_water")} 0,33L:
             .item-price
               30,- / 35,-
           .item-description
-            Utvalg: Pepsi, Pepsi Max, Solo, 7up free, Eplemost
+            = t("sulten.lyche.menu.alcohol_free.choices")
         .menu-item
           .item-name
             Munkholm:
@@ -402,21 +394,21 @@
               39,- / 49,-
 
 
-        -# Hvitvin
+        -# White wine
 
         .lyche-menu-category
           .lyche-menu-category-detail.left
           .lyche-menu-category-title
-            Hvitvin
+            = t("sulten.lyche.menu.wine.white_wine")
           .lyche-menu-category-detail.right
 
         .menu-item
           .item-name
             Sancerre la Croix au Grande
             .item-price
-              Glass: 79,- / 89,-
+              #{t("sulten.lyche.menu.wine.glass")}: 79,- / 89,-
               %br
-              Flaske: 399,- / 449,-
+              #{t("sulten.lyche.menu.wine.glass")}: 399,- / 449,-
         .menu-item
           .item-name
             Garganega Pinot Grigio
@@ -445,12 +437,12 @@
               299,- / 349,-
 
 
-        -# Rødvin
+        -# Red wine
 
         .lyche-menu-category
           .lyche-menu-category-detail.left
           .lyche-menu-category-title
-            Rødvin
+            = t("sulten.lyche.menu.wine.red_wine")
           .lyche-menu-category-detail.right
 
         .menu-item
@@ -487,7 +479,7 @@
         %br
 
         .menu-note
-          Vi tar forbehold om at det kan oppstå feil i den digitale menyen.
+          = t("sulten.lyche.menu.errors")
 
         %br
         %br

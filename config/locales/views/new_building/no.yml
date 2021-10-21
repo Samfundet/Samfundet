@@ -9,7 +9,7 @@
       progress:
         title: Nybygg våren 2021
         description: |
-          Storsalen vedtok 30. januar 2021 oppstart av forprosjektering av nybygget. I forprosjektfasen detaljeres bygget ut med relevante byggfaglige områder. Vedtaket for godkjenning av forprosjektet vil finne sted 27. april 2021. Etter en godkjenning fra Storsalen vil det bli kontrahert en totalentreprenør, som bygger selve bygget – med planlagt oppstart november 2021. I januar og februar 2021 har det blitt avholdt brukermedvirkningsmøter. De nyeste skissene etter disse (per 22. februar 2021) med tentativ møbleringsplan finnes <a href="https://docs.google.com/document/d/1A-cusqHgPSQQLXff0vHzEtsPOXzLCUZZnqZk1YWuk0Q/edit", target="_blank">her</a>.
+          Storsalen vedtok 30. januar 2021 oppstart av forprosjektering av nybygget. I forprosjektfasen detaljeres bygget ut med relevante byggfaglige områder. Vedtaket for godkjenning av forprosjektet fant sted 27. april 2021. Etter en godkjenning fra Storsalen vil det bli kontrahert en totalentreprenør, som bygger selve bygget – med planlagt oppstart november 2021. I januar og februar 2021 har det blitt avholdt brukermedvirkningsmøter. De nyeste skissene etter disse (per 22. februar 2021) med tentativ møbleringsplan finnes <a href="https://docs.google.com/document/d/1A-cusqHgPSQQLXff0vHzEtsPOXzLCUZZnqZk1YWuk0Q/edit", target="_blank">her</a>.
 
           Vedtaket lyder som følger:
         decision: |
@@ -17,7 +17,7 @@
           Forprosjekt vil pådra kostnader mer enn 3,0 mill, i tillegg vil det etterhvert påløpe omlag 6,2 mill i detaljprosjektering, samlet 9,2 mill. Kostnadene inngår i kalkylen for samlet byggekostnad.
       approval:
         title: Vedtak om godkjenning av forprosjekt
-        meeting: Den 27. april skal ekstraordinært Samfundsmøte behandle forslag om godkjenning av forprosjektet.
+        meeting: På ekstraordinært Samfundsmøte den 27. april godkjente Samfundet følgende forslag om forprosjektet.
         background: |
           Se forslaget til vedtak med bakgrunnsmateriale <a href="https://docs.google.com/document/d/1p0q8ZglggXeRmtOOTaM3zOMazO55qBOdo7QsICt3E8k/edit", target="_blank">her</a>
           Se fasaden som ligger til grunn etter forprosjektet <a href="https://drive.google.com/file/d/1VEyfROzbLmxK3UVEcZFxvVZ5xLIGn0hl/view", target="_blank">her</a>.
@@ -55,7 +55,7 @@
 
           Her er bidragene fra parallelloppdraget;
 
-        paralell_assignment_2: Forslagene ble presentert og diskutert på <a href=" https://www.facebook.com/events/1061062644065827/", target="_blank"> Samfundsmøte; Samfundet bygger ut</a> en uke etter avdukingen. Har du innspill? Ta gjerne kontakt.
+        paralell_assignment_2: Forslagene ble presentert og diskutert på <a target="_blank" href=" https://www.facebook.com/events/1061062644065827/"> Samfundsmøte; Samfundet bygger ut</a> en uke etter avdukingen. Har du innspill? Ta gjerne kontakt.
       images:
         image_1: UKA
         image_2: Mellomrommet
@@ -83,3 +83,20 @@
         operating: Drift
         artisic: Kunstnerisk
         arranging: Arrangement
+        studentmedia: Studentmediene
+
+      excavation:
+        title: Informasjon om arbeider bak Samfundet i august og september
+        description: |
+          I august og september utfører Samfundet arbeider i bakken som forberedelser til å sette i gang med nybygg. Prosjektet innebærer å legge om kabler i bakken slik at disse ikke blir berørt av nybyggets byggegrop.
+          Graving på Fengselstomta vil foregå i uke 32-36. I denne perioden er Fengselstomta utilgjengelig for publikum. Klostergata vil være delvis stengt.
+          I deler av uke 36 vil Kronprinsesse Märthas allé være helt stengt som følge av innkapping av rør.
+          Dersom du har spørsmål rundt tilkomst til Studentersamfundet i denne perioden kan du ta kontakt med Linn Marita Unhjem på e-postadresse koordinator@samfundet.no.
+
+      meetingFs: |
+        Den 18. september skal storsalen behandle følgende forslag fra Finansstyret:
+
+        «Samfundsmøtet godkjenner byggestart for et nybygg på Fengselstomta med en samlet kostnadsramme på 200 mill»
+
+        Et slikt vedtak vil føre til byggestart på fengselstomta november/desember 2021. Mer informasjon om vedtaket kan finnes <a style="color: white; font-weight:400" href="https://samfundet.no/upload/documents/files/000/000/851/Godkjenning_av_Nybygg_-_forslag_til_vedtak_i_Samfundsm%C3%B8te.pdf?1630848238" target="_blank"> her. </a>
+        Nybyggprat blir også arrangert den 15. september, hvor en skal presentere den nåværende status i nybyggprosessen. Mer informasjon finnes <a style="color: white; font-weight:400" href="https://www.samfundet.no/arrangement/2885-nybyggprat" target="_blank"> her. </a>

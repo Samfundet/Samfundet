@@ -107,6 +107,28 @@ after :documents do
     role_id: Role.super_user.id
   )
 
+  puts "Creating FAQ page"
+  Page.create!(
+      name_no: "fb-faq",
+      name_en: "fb-faq",
+      title_no: "FAQ",
+      title_en: "FAQ",
+      content_no: "# FAQ",
+      content_en: "# FAQ",
+      role_id: Role.super_user.id
+  )
+
+  puts "Creating membership page"
+  Page.create!(
+      name_no: "medlemskap",
+      name_en: "membership",
+      title_no: "Medlemskap",
+      title_en: "Membership",
+      content_no: "# Medlemskap",
+      content_en: "# Membership",
+      role_id: Role.super_user.id
+  )
+
   puts "Done creating pages"
 
   puts "Creating opening hours"

@@ -43,8 +43,6 @@ Rails.application.routes.draw do
     ##  Routes for pages      ##
     ############################
 
-    get "info-beta", to: "pages#index_beta"
-
     resources :pages, path: "information" do
 
       collection do

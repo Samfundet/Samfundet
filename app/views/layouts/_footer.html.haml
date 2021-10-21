@@ -9,6 +9,10 @@
         .trondheim-kommune-text= "TRONDHEIM KOMMUNE"
       .logo
         %a.kulturrom-icon{ href: 'http://www.kulturrom.no/', target: '_blank' }
+      %a.trondheim-kommune-container{ href: 'https://reitan.no/', target: '_blank' }
+        .reitan-icon
+
+
   #partners
     .sponsortext
       = t('layouts.footer.festivals')
@@ -20,7 +24,9 @@
     #contact-editors
       %ul
         %li
-          = t('layouts.footer.contact', path: contact_path).html_safe
+          - if page_by_name_en("contactinfo") != "#"
+            = link_to page_by_name_en("contactinfo") do
+              = t('layouts.footer.contact')
     #social
       %ul
         %li
