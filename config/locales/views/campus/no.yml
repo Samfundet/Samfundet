@@ -1,7 +1,7 @@
 'no':
   name: "Navn"
   created_at: "Opprettet"
-  updated_at: "Siste oppdatert"
+  updated_at: "Sist oppdatert"
   save_success: "Campus lagret!"
   save_error: "Kunne ikke lagre campus"
   update_success: "Campus oppdatert!"
@@ -12,5 +12,5 @@
   activate: "Aktiver"
   deactivate: "Deaktiver"
   delete: "Slett"
-  areYouSure: "Er du sikker?"
+  are_you_sure: "Er du sikker på at du vil slette denne campusen?"
   edit: "Endre campus"
