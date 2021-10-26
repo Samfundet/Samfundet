@@ -18,6 +18,7 @@
     edit_group: Rediger gjeng
     create_group: Opprett gjeng
     group: Gjeng
+    update_group: Oppdater gruppe
 
     admin:
       title: Administrer gjenger

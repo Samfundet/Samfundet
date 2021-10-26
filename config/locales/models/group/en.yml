@@ -4,3 +4,11 @@ en:
       group:
         one: "group"
         other: "groups"
+    label:
+      group:
+        name: "Name"
+        abbreviation: "Abbreviation"
+        page: "Page"
+        website: "Website"
+        group_type: "Group type"
+

@@ -18,6 +18,7 @@ en:
     edit_group: Edit group
     create_group: Create group
     group: Group
+    update_group: Update group
 
     admin:
       title: Groups administration
