@@ -1,14 +1,19 @@
-.grid-box.flex-align-center.m-3.p-1.event-div
-  .flex-row
-    .column
-      = link_to event.title, event
-    .column.timeArea.wrap
-      .time
-        = from_to_string event
-      .area
-        = area_link event.area
-  .flex-row
-    .column.inline-price
-      = inline_event_price event
-    .column.button
-      = render "buy_button", event: event
+.upcoming-event.small.m-1.mb-3
+
+  .ribbon-image-wrapper
+    = link_to event do
+      = background_image_helper "picture", event.image_or_default, size: :medium
+
+
+  .event-info
+
+    .what
+      .type-area
+        = "%s // %s" % [t_event_type(event), event.area_title]
+      .datetime
+        = I18n.l(event.start_time, format: :short)
+
+    .title-row
+      .title
+        = link_to event.title, event
+      = render "events/buy_button", event: event

@@ -121,6 +121,31 @@
       }
     }
   }
+  .upcoming-event.small{
+    flex-basis: 32%;
+
+    .picture {
+      height: 100px;
+    }
+
+    .event-info{
+      .title{
+        font-size: 1.0em;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 900px) {
+    .upcoming-event.small{
+      flex-basis: 47%;
+      }
+    }
+
+  @media only screen and (max-width: 600px) {
+    .upcoming-event.small{
+      flex-basis: 99%;
+    }
+  }
 
   .upcoming-blog {
     h2, h2 a {
@@ -128,6 +153,8 @@
     }
   }
 }
+
+
 
 .banner-event-mobile {
   @include media($tablet-desktop) {

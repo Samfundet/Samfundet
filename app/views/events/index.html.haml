@@ -2,16 +2,18 @@
 %script src="http://code.jquery.com/jquery-1.11.0.min.js"
 
 
+
 - cache cache_key_for_events_index(@events) do
   %h1.mb-2
     = t("navigation.main.events")
 
-
   = render 'search_form', post_path: search_events_path
+
+
   #event-grid-button.flex-row.grid-button.ml-2.mb-1{:style => "float: right;"}
     = image_tag "icons/grid_icon.png", alt: "Samfundet", class: "br-1 bxs", style:"width:40px; margin-right:3px"
-  #event-list-button.samf-button.mb-1{:style => "float: right"}
-    %h8 list
+  #event-list-button.samf-button.mb-1{:style => "float: right; display: none;"}
+    %h5 List
 
   .ajax-search
 
@@ -19,14 +21,15 @@
     - @events.group_by {|i| i.start_time.to_date }.sort.each do |date, events|
       %div.mb-3{style: "padding-top: 0;"}
         %h4.pl-3.p-1.title.white.bg-red= l(date, format: :medium_long)
-        %tbody
-          = render events.sort_by{|event| event.start_time}
+        #list-event-view
+          %tbody
+            = render events.sort_by{|event| event.start_time}
 
   #grid-event-view.upcoming-events.flex-column.mt-3{style: "display: none;"}
     - @events.group_by {|i| i.start_time.to_date }.sort.each do |date, events|
       %div.mb-3{style: "padding-top: 0;"}
         %h4.pl-3.p-1.title.white.bg-red= l(date, format: :medium_long)
-        .flex-row.mt-3.m-2.wrap{width: "33.3%;"}
+        .flex-row.mt-3.m-2.wrap
           -events.each do |e|
             = render "events/event_grid", event: e
 
