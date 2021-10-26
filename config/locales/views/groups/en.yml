@@ -5,6 +5,7 @@ en:
     email: E-mail
     name: Name
     abbreviation: Abbreviation
+    no_abbreviation: No known abbreviation in existance.
     website: Website
     type: Group type
     show_all: Show all groups
@@ -16,6 +17,7 @@ en:
     delete_job: Delete job
     edit_group: Edit group
     create_group: Create group
+    group: Group
 
     admin:
       title: Groups administration
