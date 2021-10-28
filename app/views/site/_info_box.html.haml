@@ -10,7 +10,7 @@
       .info_text_body
         = info_box.body
 
-    - if can? :manage, FrontPageLock
+    - if can? :manage, InfoBox
       .flex-row.m-3.flex-justify-center
         = link_to edit_info_box_path(info_box) do
           .samf-button.small.blue.mr-2
