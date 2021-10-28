@@ -15,6 +15,8 @@
   background-color: #111;
   border-bottom: 1px solid rgb(50, 50, 50);
   color: white;
+
+
 }
 
 #header-items, #header-items-mobile, #header-popup-menu {
@@ -39,6 +41,8 @@
     width: 250px;
     height: 20px;
     margin-right: 2em;
+
+
   }
   .samfundet-logo.beta {
     background-image: asset-url("header/Samfundetlogo_hvit_beta.png");
@@ -281,3 +285,58 @@
 #header-popup-menu.open {
   display: flex;
 }
+
+
+.header-easter-egg {
+  width: 0px;
+  height: 0px;
+  position: relative;
+
+  .santa-hat {
+    background-image: asset-url("header/santa_hat.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 32px;
+    height: 32px;
+    position: relative;
+    top: -10px;
+    left: -16px;
+    transform: rotate(-14deg);
+  }
+
+  .cobweb {
+    background-image: asset-url("header/cobweb.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 256px;
+    height: 256px;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    z-index: 10;
+    pointer-events: none !important;
+
+    @include media($mobile) {
+      width: 128px;
+      height: 128px;
+    }
+  }
+  .spider {
+    background-image: asset-url("header/spider.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    right: 0;
+    top: 50px;
+    position: fixed;
+    width: 150px;
+    height: 150px;
+    z-index: 10;
+    pointer-events: none !important;
+
+    @include media($mobile) {
+      display: none;
+    }
+  }
+
+}
+

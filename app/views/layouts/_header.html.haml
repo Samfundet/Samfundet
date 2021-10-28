@@ -1,8 +1,18 @@
 
+- # Halloween cobweb
+- if (Time.new.month == 10 and Time.new.day >= 28) or (Time.new.month == 11 and Time.new.day <= 5)
+  .header-easter-egg
+    .cobweb
+    .spider
+
 #header{ class: "#{params[:controller]} #{controller.action_name}" }
+
   #header-items-mobile
     = link_to root_path do
       .samfundet-logo{class: "#{Rails.env.production? ? "" : "beta"}"}
+        - if Time.new.month == 12
+          .header-easter-egg
+            .santa-hat
     #header-hamburger-menu
       .hamburger-line.top
       .hamburger-line.mid
@@ -10,6 +20,9 @@
   #header-items
     = link_to root_path do
       .samfundet-logo{class: "#{Rails.env.production? ? "" : "beta"}"}
+        - if Time.new.month == 12
+          .header-easter-egg
+            .santa-hat
     .header-item.events
       = link_to t('layouts.application.menu.events'), events_path
     .header-item.info
