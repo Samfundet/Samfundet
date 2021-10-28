@@ -39,6 +39,24 @@
     width: 250px;
     height: 20px;
     margin-right: 2em;
+
+    .header-easter-egg {
+      width: 0px;
+      height: 0px;
+      position: relative;
+      .santa-hat {
+        background-image: asset-url("header/santa_hat.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 32px;
+        height: 32px;
+        position: relative;
+        top: -10px;
+        left: -16px;
+        transform: rotate(-14deg);
+      }
+    }
+
   }
   .samfundet-logo.beta {
     background-image: asset-url("header/Samfundetlogo_hvit_beta.png");
