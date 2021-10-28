@@ -14,6 +14,12 @@
         - elsif event.is_a? Blog
           = render 'site/upcoming_blog', blog: event, index: index
 
+    - # There is an edge case where if no events exist info boxes with row 0 would not be rendered
+    - if @upcoming_events == []
+      .w100.flex-column
+        - @info_boxes[max_row].each do |info_box|
+          = render 'info_box', info_box: info_box
+
     - # In case all some infoboxes have a position greater than the
     - # number of rows we add the remaining ones at the bottom
     - if max_row < 10
