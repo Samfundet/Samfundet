@@ -25,3 +25,8 @@
         %tr
           %td= t("sulten.lyche.status_box.closed_period")
           %td= l(@closed.closed_from, format: :short_date) + " - " + l(@closed.closed_to, format: :short_date)
+        %td
+          - if I18n.locale == :no
+            = @closed.message_no
+          - else
+            = @closed.message_en
