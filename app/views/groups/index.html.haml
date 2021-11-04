@@ -15,8 +15,9 @@
               = image_tag "groups/noimage.jpg",  class: "image"
             - if g.name.length > 13
               -if g.abbreviation.blank?
-                .label=g.name[0..13] + "..."
+                .label=g.name[0..11] + "..."
               -else
                 .label=g.abbreviation
+
             - else
               .label= g.name
