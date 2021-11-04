@@ -21,7 +21,7 @@ span img { display: inline; }
   .group-showcase {
     display: flex;
     flex-direction: column;
-    margin: 1em;
+    margin: 0.5em;
     justify-content: center;
 
     .image {
@@ -29,8 +29,8 @@ span img { display: inline; }
       margin-left: auto;
       margin-right: auto;
       margin: 1.1em;
-      width: 6em;
-      height: 6em;
+      width: 5em;
+      height: 5em;
       border-radius: 50em;
       background-color: #eee;
       background-size: cover;
@@ -51,6 +51,10 @@ span img { display: inline; }
       filter: brightness(1.25);
       transform: scale(1.05);
       transition: .5s;
+    }
+
+    .label {
+      color: #505050
     }
   }
 }
