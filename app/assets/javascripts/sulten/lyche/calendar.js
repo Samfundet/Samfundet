@@ -12,4 +12,5 @@ $(function() {
             window.location.href = path + "?date=" + dateText;
         }
     });
+    $("#ui-datepicker-div").addClass("notranslate");
 });
