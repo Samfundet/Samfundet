@@ -2,7 +2,7 @@ span img { display: inline; }
 .groups-page-description {
   text-align: center;
   margin: auto;
-  width: 50%;
+  width: 100%;
   padding: 10px;
 }
 
@@ -51,26 +51,6 @@ span img { display: inline; }
       filter: brightness(1.25);
       transform: scale(1.05);
       transition: .5s;
-    }
-  }
-}
-
-@media only screen and (max-width: 700px) {
-  .groups-showcase-container {
-    justify-content: space-evenly;
-    .group-showcase {
-      .image {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        margin: 1.1em;
-        width: 9em;
-        height: 9em;
-      }
-
-      .label {
-        font-size: 1.25em;
-      }
     }
   }
 }
