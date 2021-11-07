@@ -12,7 +12,7 @@ span img { display: inline; }
 
   .group-type-headline {
     text-align: center;
-    font-size: 1.8em;
+    font-size: 1.4em;
     width: 100%;
     font-weight: bold;
     text-transform: uppercase;
@@ -26,9 +26,9 @@ span img { display: inline; }
 
     .image {
       display: block;
-      margin: 1.1em;
-      width: 5em;
-      height: 5em;
+      margin: 1em;
+      width: 4em;
+      height: 4em;
       border-radius: 50em;
       background-color: #eee;
       background-size: cover;
@@ -38,12 +38,38 @@ span img { display: inline; }
     }
 
     .label {
-      font-size: 1.2em;
+      font-size: 1em;
       text-align: center;
       color: black;
     }
+    .tooltip_label {
+      visibility: hidden;
+      font-size: 0.8em;
+      width: 10em;
+      background-color: #404040;
+      color: white;
+      text-align: center;
+      border-radius: 6px;
+      padding: 5px 0;
+      position: absolute;
+      margin-left: -1em;
+      margin-top: 13em;
+      z-index: 1;
+      opacity: 0;
+    }
 
+    .tooltip_label::after {
+      content: "";
+      position: absolute;
+      top: -0.7em;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: transparent transparent #404040 transparent;
+    }
   }
+
   .group-showcase:hover {
     .image {
       filter: brightness(1.25);
@@ -53,6 +79,11 @@ span img { display: inline; }
 
     .label {
       color: #505050
+    }
+
+    .tooltip_label {
+      visibility: visible;
+      opacity: 0.9;
     }
   }
 }
@@ -74,6 +105,11 @@ span img { display: inline; }
 
       .label {
         font-size: 0.7em;
+      }
+    }
+    .group-showcase:hover {
+      .tooltip_label {
+        visibility: hidden;
       }
     }
   }
