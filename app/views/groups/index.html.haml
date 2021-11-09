@@ -8,17 +8,19 @@
       .flex-row.wrap.center
         .group-type-headline=t
         - t.groups.each do |g|
-          = link_to (g.page != nil ? g.page : "#"), class: "group-showcase" do
-            - if File.exist? "app/assets/images/groups/#{g.name.downcase}.jpg"
-              = image_tag "groups/#{g.name.downcase}.jpg", class: "image"
-            - else
-              = image_tag "groups/noimage.jpg",  class: "image"
-            - if g.name.length > 13
-              -if g.abbreviation.blank?
-                .label=g.name[0..11] + "..."
-              -else
-                .label=g.abbreviation
+          -if not g.page.blank?
+            = link_to g.page, class: "group-showcase" do
+              - if File.exist? "app/assets/images/groups/#{g.name.downcase}.jpg"
+                = image_tag "groups/#{g.name.downcase}.jpg", class: "image"
+              - else
+                .image
+                  %h3=g.name[0]
+              - if g.name.length > 13
+                -if g.abbreviation.blank?
+                  .label=g.name[0..11] + "..."
+                -else
+                  .label=g.abbreviation
 
-            - else
-              .label= g.name
-            .tooltip_label= g.name
+              - else
+                .label= g.name
+              .tooltip_label= g.name
