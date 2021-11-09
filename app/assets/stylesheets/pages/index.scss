@@ -139,6 +139,18 @@
         height: 100%;
       }
     }
+
+    img {
+      max-height: 24em;
+      width: auto;
+      background-size: contain;
+
+      @include media($mobile) {
+        max-height: none;
+        max-width: 100%;
+      }
+    }
+
   }
 }
 
