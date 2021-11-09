@@ -5,7 +5,7 @@ en:
     email: E-mail
     name: Name
     abbreviation: Abbreviation
-    no_abbreviation: No known abbreviation in existance.
+    no_abbreviation: No known abbreviation exists.
     website: Website
     type: Group type
     show_all: Show all groups
