@@ -37,7 +37,7 @@ class Ability
 
   def guest
     # A guest should be able to show basic stuff
-    can [:index, :show], [Blog, Page, Document]
+    can [:index, :show], [Blog, Page, Document, Group]
 
     # Should be allowed to search
     can [:create, :search], Search
