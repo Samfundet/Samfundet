@@ -16,7 +16,21 @@
 
   .ajax-search
 
-  =render :partial => "events/event_style"
+#list-event-view.upcoming-events.flex-column.mt-3
+  - @events.group_by {|i| i.start_time.to_date }.sort.each do |date, events|
+    %div.mb-3{style: "padding-top: 0;"}
+      %h4.pl-3.p-1.title.white.bg-red= l(date, format: :medium_long)
+      %table
+        %tbody
+          = render events.sort_by{|event| event.start_time}
+
+#grid-event-view.upcoming-events.flex-column.mt-3{:style => "display: none;"}
+  - @events.group_by {|i| i.start_time.to_date }.sort.each do |date, events|
+    %div.mb-3{style: "padding-top: 0;"}
+      %h4.pl-3.p-1.title.white.bg-red= l(date, format: :medium_long)
+      .flex-row.mt-3.m-2.wrap
+        -events.sort_by{|event| event.start_time}.each do |e|
+          = render "events/event_style", event: e
 
 .flex-row.center.mb-3.wrap{:style => "align-items:center;"}
   %a.samf-button.blue.mr-2.mt-2{ href: archive_events_path, title: t('events.archive.title')}
