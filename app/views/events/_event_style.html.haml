@@ -1,16 +1,18 @@
+.upcoming-event.small.m-1.mb-3
 
-#list-event-view.upcoming-events.flex-column.mt-3
-  - @events.group_by {|i| i.start_time.to_date }.sort.each do |date, events|
-    %div.mb-3{style: "padding-top: 0;"}
-      %h4.pl-3.p-1.title.white.bg-red= l(date, format: :medium_long)
-      %table
-        %tbody
-          = render events.sort_by{|event| event.start_time}
+  .ribbon-image-wrapper
+    = link_to event do
+      = background_image_helper "picture", event.image_or_default, size: :medium
 
-#grid-event-view.upcoming-events.flex-column.mt-3{style: "display: hidden;"}
-  - @events.group_by {|i| i.start_time.to_date }.sort.each do |date, events|
-    %div.mb-3{style: "padding-top: 0;"}
-      %h4.pl-3.p-1.title.white.bg-red= l(date, format: :medium_long)
-      .flex-row.mt-3.m-2.wrap
-        -events.each do |e|
-          = render "events/event_grid", event: e
+  .event-info
+
+    .what
+      .type-area
+        = "%s // %s" % [t_event_type(event), event.area_title]
+      .datetime
+        = I18n.l(event.start_time, format: :short)
+
+    .title-row
+      .title
+        = link_to event.title, event
+      = render "events/buy_button", event: event
