@@ -1,0 +1,122 @@
+.groups-page-description {
+  text-align: center;
+  margin: auto;
+  width: 100%;
+  padding: 10px;
+}
+
+.groups-showcase-container {
+  justify-content: center;
+  width: 100%;
+
+  .group-type-headline {
+    text-align: center;
+    font-size: 1.4em;
+    width: 100%;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .group-showcase {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5em;
+    justify-content: center;
+
+    .image {
+      display: block;
+      margin: 1em;
+      width: 4em;
+      height: 4em;
+      border-radius: 50em;
+      background-color: #fcfcfc;
+      background-size: cover;
+      box-shadow: 2px 2px 10px 4px rgba(0, 0, 0, 0.18);
+      transition: 2s;
+      transform: none;
+
+      h3 {
+        text-align: center;
+        color: #c0c0c0;
+        font-family: Verdana;
+        font-size: 2.2em;
+      }
+    }
+
+    .label {
+      font-size: 1em;
+      text-align: center;
+      color: black;
+    }
+    .tooltip_label {
+      visibility: hidden;
+      font-size: 0.8em;
+      width: 10em;
+      background-color: #404040;
+      color: white;
+      text-align: center;
+      border-radius: 6px;
+      padding: 5px 0;
+      position: absolute;
+      margin-left: -1em;
+      margin-top: 13em;
+      z-index: 1;
+      opacity: 0;
+    }
+
+    .tooltip_label::after {
+      content: "";
+      position: absolute;
+      top: -0.7em;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: transparent transparent #404040 transparent;
+    }
+  }
+
+  .group-showcase:hover {
+    .image {
+      filter: brightness(1.25);
+      transform: scale(1.05);
+      transition: .5s;
+    }
+
+    .label {
+      color: #505050
+    }
+
+    .tooltip_label {
+      visibility: visible;
+      opacity: 0.9;
+    }
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .groups-showcase-container {
+    justify-content: space-evenly;
+    .group-type-headline {
+      font-size: 1.2em;
+    }
+    .group-showcase {
+      margin: 0em;
+
+      .image {
+        margin: 0.9em;
+        width: 3.5em;
+        height: 3.5em;
+      }
+
+      .label {
+        font-size: 0.9em;
+      }
+    }
+    .group-showcase:hover {
+      .tooltip_label {
+        visibility: hidden;
+      }
+    }
+  }
+}

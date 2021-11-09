@@ -4,3 +4,11 @@
       group:
         one: "gjeng"
         other: "gjenger"
+    label:
+      group:
+        name: "Navn"
+        abbreviation: "Forkortelse"
+        page: "Side"
+        website: "Nettside"
+        group_type: "Gruppetype"
+

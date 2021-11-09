@@ -8,7 +8,7 @@
 - if can?(:create, Group)
   = link_to new_group_path do
     .samf-button.green.mt-3
-      = "Opprett gjeng"
+      = t("groups.create_group")
 
 - @group_types.each do |type|
   %h2.mt-3
@@ -17,11 +17,11 @@
     %thead
       %tr
         %th{:style => "width: 30%"}
-          Gjeng
+          = t("groups.group")
         %th{:style => "width: 30%"}
-          Forkortelse
+          = t("groups.abbreviation")
         %th{:style => "width: 20%"}
-          Webside
+          = t("groups.website")
         %th{:style => "width: 20%"}
           &nbsp;
     %tbody
@@ -34,7 +34,7 @@
               = group.abbreviation
             - else
               %em
-                Ingen kjent forkortelse eksisterer.
+                = t("groups.no_abbreviation")
           %td
             = group.website
           %td{:style => "float: right"}

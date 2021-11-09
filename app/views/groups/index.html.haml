@@ -1,9 +1,26 @@
+.groups-page-description
+  %h1= t("pages.index.groups")
+  %p= t("pages.index.groups_info")
 
-%h1= t("pages.index.groups")
-
-- @group_types.each do |t|
-  %h2= t.description
-  .flex-row.wrap
-    - t.groups.each do |g|
-      .samf-button.small.plain.m-2
-        = g.name
+.groups-showcase-container
+  - @group_types.each do |t|
+    -if t.groups.select {|v| not v.page.blank?}.length()>0
+      .samf-container.plain.p-3.m-2.mt-3
+        .flex-row.wrap.center
+          .group-type-headline=t
+          - t.groups.each do |g|
+            -if not g.page.blank?
+              = link_to g.page, class: "group-showcase" do
+                - if File.exist? "app/assets/images/groups/#{g.name.downcase}.jpg"
+                  = image_tag "groups/#{g.name.downcase}.jpg", class: "image"
+                - else
+                  .image
+                    %h3=g.name[0]
+                - if g.name.length > 13
+                  -if g.abbreviation.blank?
+                    .label=g.name[0..11] + "..."
+                  -else
+                    .label=g.abbreviation
+                - else
+                  .label= g.name
+                .tooltip_label= g.name

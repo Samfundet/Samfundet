@@ -5,5 +5,9 @@
   %ul
     %li
       = link_to admin_groups_path do
-        .samf-button.plain.w100
+        .samf-button.green.w100.mb-2
           = t("groups.admin.title")
+    %li
+      = link_to groups_path do
+        .samf-button.plain.w100
+          =t("pages.index.groups")

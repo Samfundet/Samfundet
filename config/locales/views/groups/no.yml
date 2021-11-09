@@ -5,6 +5,7 @@
     email: E-post
     name: Navn
     abbreviation: Forkortelse
+    no_abbreviation: Ingen kjent forkortelse eksisterer.
     website: Webside
     type: Gruppetype
     show_all: Vis alle gjenger
@@ -16,6 +17,8 @@
     delete_job: Slett verv
     edit_group: Rediger gjeng
     create_group: Opprett gjeng
+    group: Gjeng
+    update_group: Oppdater gruppe
 
     admin:
       title: Administrer gjenger

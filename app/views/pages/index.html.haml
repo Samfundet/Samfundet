@@ -86,9 +86,8 @@
       .flex-row.pl-3.pr-3.pb-3
         -#= link_to "#", class: "samf-button white m-2" do
         -#  .center= "Gjengene på Samfundet"
-        - if page_by_name_en("groups") != "#"
-          = link_to page_by_name_en("groups"), class: "samf-button white m-2 flex-align-center" do
-            .center= t("pages.index.groups")
+        = link_to groups_path, class: "samf-button white m-2 flex-align-center" do
+          .center= t("pages.index.groups")
         = link_to admissions_path, class: "samf-button white m-2 flex-align-center" do
           .center= t("pages.index.admission")
 

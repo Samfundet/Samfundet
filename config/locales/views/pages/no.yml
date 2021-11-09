@@ -13,7 +13,7 @@
     create_success: "Siden ble opprettet"
     edit_success: "Siden ble oppdatert"
     destroy_success: "Siden ble slettet"
-    already_included: "Siden %{name} er allerede inkludert én gang." 
+    already_included: "Siden %{name} er allerede inkludert én gang."
     include_not_found: "Fant ikke inkludert side: %{name}"
     invalid_content_type: "Ugyldig innholdstype: %{content_type}"
     norwegian_fields: "Norsk"
@@ -71,5 +71,9 @@
         Arbeidet er organisert i enheter som kalles gjenger. Potensielle nye medlemmer må søke den aktuelle gjengen om opptak,
         og gjengen vurderer hver enkelt søker. Med sine omtrent 1700 frivillige utgjør det indre miljøet i Studentersamfundet en betydelig
         del av det organiserte fritidstilbudet til studenter i Trondheim.
-      groups: Gjenger på Samfundet
+      groups: Gjengene på Samfundet
+      groups_info: |
+        Samfundet består av mer enn 20 gjenger som jobber med blandt annet lyd,
+        lys, teater, snekring, IT, artistbooking, korsang, markedsføring, musikk og mye annet.
+        Gjengene er organisert i følgende grupperinger:
       admission: Opptak
