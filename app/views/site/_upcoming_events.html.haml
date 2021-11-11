@@ -15,7 +15,7 @@
           = render 'site/upcoming_blog', blog: event, index: index
 
     - # There is an edge case where if no events exist info boxes with row 0 would not be rendered
-    - if @upcoming_events == []
+    - if @upcoming_events == [] and @info_boxes[max_row]
       .w100.flex-column
         - @info_boxes[max_row].each do |info_box|
           = render 'info_box', info_box: info_box
