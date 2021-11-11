@@ -15,7 +15,6 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
     @open_admissions = Admission.appliable.includes(
       group_types: { groups: :jobs }
     )
-
     redirect_to admissions_admin_admission_group_path(@admission, @my_groups.first) if @my_groups.length == 1
   end
 
