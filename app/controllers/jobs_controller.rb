@@ -9,6 +9,8 @@ class JobsController < ApplicationController
     @available_jobs_in_same_group = @job.available_jobs_in_same_group
     @similar_available_jobs = @job.similar_available_jobs
 
+    @is_mg_web_job = (@job.title.downcase.include? "web" and @job.group.name.downcase == "markedsføringsgjengen")
+
     # FIXME: Probably some role check is better.
     @job_application = if current_user.is_a? Applicant
                          @job.job_applications.find_or_initialize_by(applicant_id: current_user.id)
