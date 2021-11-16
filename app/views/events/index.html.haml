@@ -16,7 +16,8 @@
 
   .ajax-search
 
-#list-event-view.upcoming-events.flex-column.mt-3
+
+.list-event-view.upcoming-events.flex-column.mt-3
   - @events.group_by {|i| i.start_time.to_date }.sort.each do |date, events|
     %div.mb-3{style: "padding-top: 0;"}
       %h4.pl-3.p-1.title.white.bg-red= l(date, format: :medium_long)
@@ -24,7 +25,7 @@
         %tbody
           = render events.sort_by{|event| event.start_time}
 
-#grid-event-view.upcoming-events.flex-column.mt-3{:style => "display: none;"}
+.grid-event-view.upcoming-events.flex-column.mt-3{:style => "display: none;"}
   - @events.group_by {|i| i.start_time.to_date }.sort.each do |date, events|
     %div.mb-3{style: "padding-top: 0;"}
       %h4.pl-3.p-1.title.white.bg-red= l(date, format: :medium_long)
