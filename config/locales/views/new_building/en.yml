@@ -80,3 +80,7 @@ en:
         description: Missing translation
 
       meetingFs: Missing translation
+
+      proposedResolution:
+        title: Vedtak som vil gå i Storsalen den 29. januar
+        body: Missing translation
