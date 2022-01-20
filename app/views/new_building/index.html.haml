@@ -28,12 +28,13 @@
     %p= t("new_building.index.what.body")
 
   .p-2
-  .samf-container.blue.mt-3.p-3.mt-3
+  .samf-container.blue.ml-2.mr-2.mt-3.p-3.mt-3
     %h1= t("new_building.index.proposedResolution.title")
     %p= t("new_building.index.proposedResolution.body")
-    = link_to "https://samfundet.no/upload/documents/files/000/000/898/Godkjenning_av_Nybygg_-_revidert_ramme.pdf?1642287123" do
-      .samf-button.white
-        = "Saksdokumenter"
+    .flex-row.wrap
+      = link_to "https://samfundet.no/upload/documents/files/000/000/898/Godkjenning_av_Nybygg_-_revidert_ramme.pdf?1642287123" do
+        .samf-button.small.white.mb-1
+          = "Saksdokumenter"
 
   .p-2
 
