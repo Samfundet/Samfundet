@@ -5,7 +5,9 @@ class AdmissionsAdmin::JobsController < AdmissionsAdmin::BaseController
   layout 'admissions'
   before_action :before_new_and_create_and_search, only: %i[new create search]
 
-  def new; end
+  def new;
+    @job_tags = JobTag.all
+  end
 
   def create
     @job.update(job_params)
@@ -44,7 +46,9 @@ class AdmissionsAdmin::JobsController < AdmissionsAdmin::BaseController
     render layout: false
   end
 
-  def edit; end
+  def edit;
+    @job_tags = JobTag.all
+  end
 
   def update
     if @job.update_attributes(job_params)

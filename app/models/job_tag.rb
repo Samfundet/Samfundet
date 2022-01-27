@@ -3,6 +3,9 @@
 class JobTag < ApplicationRecord
 end
 
+def title
+  title
+end
 # == Schema Information
 #
 # Table name: job_tags
