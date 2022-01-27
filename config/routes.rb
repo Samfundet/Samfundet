@@ -120,7 +120,7 @@ Rails.application.routes.draw do
     end
 
     resources :jobs, only: :show
-    resources :members, only: [:control_panel]
+    resources :members, only: [:control_panel, :show_roles]
 
     resources :roles, only: [:index, :show, :new, :create, :edit, :update] do
       post :pass, on: :member
@@ -180,8 +180,10 @@ Rails.application.routes.draw do
 
     post "logout" => "user_sessions#destroy", as: :logout
     get "members/control_panel" => "members#control_panel", as: :members_control_panel
+    get "members/show_roles" => "members#show_roles", as: :members_show_roles
     get "members/search.:format" => "members#search", as: :members_search
     post "members/steal_identity" => "members#steal_identity", as: :members_steal_identity
+    post "members/get_roles" => "members#get_roles", as: :members_get_roles
 
     scope "/medlem" do
       get "login" => "member_sessions#new", as: :members_login

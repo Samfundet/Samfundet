@@ -77,5 +77,18 @@ class MembersController < ApplicationController
     redirect_to root_path
   end
 
+  def show_roles
+    @roles = member.roles
+  end
+
+  def get_roles
+    member = Member.find(params[:member_id])
+    @roles = member.roles
+    puts(@roles)
+    puts(member.full_name)
+    puts(@roles.count>0)
+    render '_roles', layout: false if request.xhr?
+  end
+
   def access_applet; end
 end

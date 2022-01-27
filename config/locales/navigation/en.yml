@@ -27,3 +27,6 @@ en:
       my_group: My group
     admin:
       faq: Frequently Asked Questions
+    show:
+      members: Members
+      search: Search
