@@ -78,13 +78,11 @@ class MembersController < ApplicationController
   end
 
   def show_roles
-    @roles = "Hei på deg"
   end
 
   def get_roles
     member = Member.find(params[:member_id])
-    @roles = member.roles
-    render '_roles', layout: false if request.xhr?
+    $roles = member.roles
   end
 
   def access_applet; end

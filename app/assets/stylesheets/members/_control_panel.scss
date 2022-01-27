@@ -61,6 +61,7 @@
       .options {
         padding: 16px;
       }
+
       h2 {
         text-transform: uppercase;
         margin: 0;
@@ -93,3 +94,11 @@
     }
   }
 }
+
+.roles {
+  padding: 16px;
+  border: thin solid black;
+  border-radius: 5px;
+  width: 50%;
+}
+

@@ -1,5 +1,5 @@
 .top
-  %h2
+  %h1
     = t('navigation.show.members')
 .option
   = form_tag members_get_roles_path, method: "post", class: "custom-form" do
@@ -7,6 +7,12 @@
       = text_field_tag :member_id, nil, placeholder: t("members.search_placeholder"), class: "textfield member_autocomplete", required: true
     %p
       = submit_tag t('navigation.show.search')
-.options
-  - if !@roles.nil?
+.roles
+  %bold
+    %h2
+      = "Roller"
+  - if $roles.present?
     = render partial: "members/roles"
+  - else
+    %p
+      = "Ingen roller"
