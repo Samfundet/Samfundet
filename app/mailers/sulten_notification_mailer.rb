@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class SultenNotificationMailer < ActionMailer::Base
-  default from: 'no-reply@samfundet.no',
+  default from: 'lyche@samfundet.no',
           reply_to: 'lyche@samfundet.no'
 
   def send_reservation_email(reservation)
