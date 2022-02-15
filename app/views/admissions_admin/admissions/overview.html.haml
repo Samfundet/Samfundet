@@ -82,3 +82,24 @@
 - if @sent_rejection_emails > 0 and (@missing.count > 0 or not @admission_complete)
   %hr
   %p{style: "color: red; font-weight: bold;"}= t("admissions_admin.overview_missing", count: @missing.count)
+
+
+- if current_user.roles.include? Role.super_user
+  %hr
+  %h1= "Test Epostsystem (Vises kun for MG Web)"
+  = form_with(id: "send_rejection_email_form", url: {:controller=>'admissions_admin/admissions', :action=>'send_test_email'}) do |f|
+    %h2= "Avsender"
+    = f.text_field :sender, :value => "opptaksansvarlig@samfundet.no"
+    %h2= "Svar Til"
+    = f.text_field :reply_to, :value => "opptaksansvarlig@samfundet.no"
+    %h2= "Mottaker"
+    = f.text_field :recipient, :value => "mg-web@samfundet.no"
+    %hr.compact
+    %h2= "Tittel"
+    = f.text_area :subject, :value => "Test Epost"
+    %h2= "Innhold"
+    = f.text_area :content, :value => "Dette er en test-epost."
+    %br
+    %br
+    = f.submit "Send test-epost", data: { confirm: "Er du sikker på at testepost skal sendes?" }
+    %hr

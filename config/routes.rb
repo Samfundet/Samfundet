@@ -145,6 +145,7 @@ Rails.application.routes.draw do
         post :review_rejection_email, on: :member
         post :send_rejection_email, on: :member
         post :send_rejection_email_result, on: :member
+        post :send_test_email, on: :member
         get :rejection_email_list, on: :member
 
         resources :groups, only: :show do

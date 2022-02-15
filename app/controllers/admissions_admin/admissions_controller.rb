@@ -105,6 +105,32 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
     }
   end
 
+  # Test email
+  def send_test_email
+    @template = {
+        sender: params[:sender],
+        reply_to: params[:reply_to],
+        subject: params[:subject],
+        intro: params[:intro],
+        content: params[:content],
+        recipient: params[:recipient]
+    }
+
+    if not @template[:sender].end_with?("@samfundet.no")
+      flash[:error] = "Avsender må være en @samfundet.no epost."
+      redirect_back fallback_location: root_path
+      return
+    end
+
+    begin
+      AdmissionRejectionMailer.send_test_email(@template).deliver
+      flash[:success] = "Sendte epost til #{@template[:recipient]}"
+    rescue Error => e
+      flash[:error] = "Kunne ikke sende epost: #{e}"
+    end
+    redirect_back fallback_location: root_path
+  end
+
   # Async response for send rejection email
   def send_rejection_email_result
     # Get recipients
