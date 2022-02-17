@@ -78,7 +78,7 @@
           %td= job_application.applicant.campus
           - if show_job_titles
             %td= job_application.title
-          %td
+          %td{style: "width:120px;"}
             = semantic_form_for([:admissions_admin, @admission, @group, job_application.job, job_application, interview = job_application.find_or_create_interview], namespace: "interview_#{interview.id}", html: {class: "test custom-form"}) do |form|
               = form.inputs do
                 != form.input :time, as: :string, label: false, name: "time", input_html: { id: "interview_#{job_application.id}_time", class: "datetimepicker", value: interview.time ? interview.time : '', placeholder: "DD.MM.ÅÅÅÅ HH:MM" }
