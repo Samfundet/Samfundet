@@ -28,5 +28,8 @@
     admin:
       faq: Ofte stilte spørsmål
     show:
-      members: Medlemmer
+      find_member_roles: Finn rollene til alle medlemmer
+      search_member: Søk etter medlem
       search: Søk
+      no_member: Ingen medlem valgt
+      roles_of: Rollene til

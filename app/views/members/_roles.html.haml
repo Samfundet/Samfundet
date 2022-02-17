@@ -1,4 +1,19 @@
-%p
+%h2
+  = t("navigation.show.roles_of") + " " + $member
+
+%table
+  %thead
+    %tr
+      %th= t('roles.role_title')
+      %th= t('roles.role_description')
+      %th
+        &nbsp;
   - $roles.each do |role|
-    = role.title
-  - $roles = nil
+    %tr
+      %td
+        = link_to role_path role do
+          = role.title
+      %td
+        = role.description
+    - $roles = nil
+    - $member = nil

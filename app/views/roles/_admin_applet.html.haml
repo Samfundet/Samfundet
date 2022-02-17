@@ -5,8 +5,9 @@
   %ul
     %li
       = link_to roles_path do
-        .samf-button.plain.w100
+        .samf-button.green.w100.mb-2
           = t("roles.admin_applet_description")
-    = link_to members_show_roles_path do
-      .samf-button.plain.w100
-        = t("roles.admin_applet_description")
+    %li
+      = link_to members_show_roles_path do
+        .samf-button.plain.w100.mb-2
+          = t("roles.search_by_member")

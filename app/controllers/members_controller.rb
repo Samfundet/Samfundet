@@ -81,8 +81,8 @@ class MembersController < ApplicationController
   end
 
   def get_roles
-
     $roles = Member.find(params[:member_id]).roles
+    $member = Member.find(params[:member_id]).full_name
     redirect_back(fallback_location: root_path)
   end
   def access_applet; end

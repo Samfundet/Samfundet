@@ -1,20 +1,23 @@
+= link_to members_control_panel_path do
+  .samf-button.plain.mb-3
+    = t("common.back")
 .top
   %h1
-    = t('navigation.show.members')
+    = t('navigation.show.find_member_roles')
 .option
   = form_tag members_get_roles_path, method: "post", class: "custom-form" do
-    %p
-      = text_field_tag :member_id, nil, placeholder: t("members.search_placeholder"), class: "textfield member_autocomplete", required: true
+    %br
+    %b
+      = t('navigation.show.search_member')
+    %div
+      = text_field_tag :member_id, nil, placeholder: t("members.search_placeholder"), class: "textfield member_autocomplete", style: "border: 1px solid gray", required: true
     %p
       = submit_tag t('navigation.show.search')
 .rolesx
-  %bold
-    %h2
-      = "Roller"
-    %h3
-      = @member
   - if $roles.present?
     = render partial: "members/roles"
   - else
-    %p
-      = "Ingen roller"
+    %h2
+      = t("navigation.show.no_member")
+
+
