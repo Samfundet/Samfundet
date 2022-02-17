@@ -148,6 +148,7 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
 
   def new
     @admission = Admission.new
+    @admission.promo_video = Admission.first.promo_video
   end
 
   def create

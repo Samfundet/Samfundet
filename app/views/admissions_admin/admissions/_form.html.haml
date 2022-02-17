@@ -29,6 +29,6 @@
     != form.input :groups_with_separate_admission,
                   as: :text, hint: t('common.markdown_hint').html_safe
     != form.input :promo_video,
-                  as: :string
+                  as: :string, hint: ("Promo video må legges ut som en embedded link. Bruksanvising på hvordan det gjøres kan du finne <a href='https://support.google.com/youtube/answer/171780?hl=en' target=blank>her</a>").html_safe
   = form.actions do
     != form.action :submit
