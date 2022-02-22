@@ -28,7 +28,7 @@ en:
     admin:
       faq: Frequently Asked Questions
     show:
-      find_member_roles: Get roles of alle members
+      find_member_roles: Get roles of all members
       search_member: Search by member
       search: Search
       no_member: No members are chosen
