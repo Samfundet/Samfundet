@@ -91,7 +91,10 @@ $.tablesorter.addParser({
         var dateString = $(cell).find("input[type='text']").val();
         var dateParts = dateString.replace(new RegExp("[:.]", "g"), " ").split(" ");
         if (dateParts.length != 5) return 0;
-        return new Date(dateParts[2], dateParts[1], dateParts[0], dateParts[3], dateParts[4]);
+        // Javascript datetime objects are zero indexed, but humans prefer 1-indexed months.
+        // This fucker took a while to find.
+        let month = Number.parseInt(dateParts[1]) - 1;
+        return new Date(dateParts[2], month, dateParts[0], dateParts[3], dateParts[4]);
     },
     type: 'numeric'
 });
