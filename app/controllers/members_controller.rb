@@ -80,7 +80,7 @@ class MembersController < ApplicationController
   def show_roles
   end
 
-  def get_roles
+  def find_roles
     $roles = Member.find(params[:member_id]).roles
     $member = Member.find(params[:member_id]).full_name
     redirect_back(fallback_location: root_path)

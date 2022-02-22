@@ -5,7 +5,7 @@
   %h1
     = t('navigation.show.find_member_roles')
 .option
-  = form_tag members_get_roles_path, method: "post", class: "custom-form" do
+  = form_tag members_find_roles_path, method: "post", class: "custom-form" do
     %br
     %b
       = t('navigation.show.search_member')
@@ -19,5 +19,3 @@
   - else
     %h2
       = t("navigation.show.no_member")
-
-
