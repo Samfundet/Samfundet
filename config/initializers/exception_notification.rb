@@ -17,7 +17,7 @@ ExceptionNotification.configure do |config|
   # Email notifier sends notifications by email.
   unless Rails.env.development?
     config.add_notifier :email,       email_prefix: '[ERROR] ',
-                                      sender_address: %("Notifier" <no-reply@samfundet.no>),
+                                      sender_address: %("Notifier" <mg-web@samfundet.no>),
                                       exception_recipients: %w(mg-web-error@samfundet.no),
                                       sections: %w(request backtrace)
 

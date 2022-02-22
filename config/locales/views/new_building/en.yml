@@ -80,3 +80,7 @@ en:
         description: Missing translation
 
       meetingFs: Missing translation
+
+      proposedResolution:
+        title: Proposed resolution 29.january
+        body: Missing translation

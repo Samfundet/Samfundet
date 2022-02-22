@@ -12,7 +12,7 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
   def show
     @my_groups = Group.accessible_by(current_ability, :show)
     @job_application = JobApplication.new
-
+    @open_admissions = Admission.appliable
     redirect_to admissions_admin_admission_group_path(@admission, @my_groups.first) if @my_groups.length == 1
   end
 
@@ -148,6 +148,7 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
 
   def new
     @admission = Admission.new
+    @admission.promo_video = Admission.first.promo_video
   end
 
   def create

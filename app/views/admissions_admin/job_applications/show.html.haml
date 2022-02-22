@@ -1,14 +1,13 @@
 = javascript_include_tag 'job_applications/admissions_admin_job_applications', defer: true
 - set_title "#{@job_application.applicant.full_name} - #{t('jobs.view_application')}"
 
-
-= link_to admissions_admin_admission_group_job_path(@job_application.job.admission, @job_application.job.group, @job_application.job) do
-  .samf-button.plain.mb-3
-    = t("common.back")
+.flex-column
+  = link_to admissions_admin_admission_group_job_path(@job_application.job.admission, @job_application.job.group, @job_application.job) do
+    .samf-button.plain.mb-3
+      = t("common.back")
 
 %h1
   = @job_application.applicant.full_name
-= facebook_search_link(@job_application.applicant)
 
 %hr
 
