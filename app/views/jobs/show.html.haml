@@ -52,12 +52,11 @@
         Lignende verv
       %div.mb-3
         - @similar_available_jobs.each do |job|
-          - if !@available_jobs_in_same_group.include? job
-            != link_to job_path(job) do
-              .samf-button.plain.mb-2
-                != html_escape(job.title)
-                != t('jobs.at')
-                != abbreviate_long_name(job.group, limit: 22)
+          != link_to job_path(job) do
+            .samf-button.plain.mb-2
+              != html_escape(job.title)
+              != t('jobs.at')
+              != abbreviate_long_name(job.group, limit: 22)
 
     - unless @available_jobs_in_same_group.empty?
       %h2.mb-2
