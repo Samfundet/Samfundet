@@ -1,6 +1,24 @@
 
-%h1 Samfundet Auksjon
+%h1= t("auction.index.title")
 
-.samf-smart-box
-  %h3 info box
+.samf-container.green.ml-2.mr-2.p-3.mt-3
+  %h1= t("auction.index.info1.title")
+  %p= t("auction.index.info1.body")
+
+
+.samf-smart-box.flex-align-center.mt-3
+  .auto.flex-column.flex-justify-center
+    %div.pl-3
+      %h1= t("auction.index.info2.title")
+      %p= simple_format(t("auction.index.info2.body"))
+
+  .third.pr-3.m-3.flex-column.flex-align-center
+    = image_tag "auction/space-dog.png", alt: "Samfundet", class: "br-1 bxs m-2"
+
+
+.samf-container.white.mt-3.p-3.ml-2.mr-2
+  .flex-row.flex-align-center
+    %h1.ml-1.mt-1= t("auction.index.what.title")
+  %div
+    %p= t("auction.index.what.body")
 
