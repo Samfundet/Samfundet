@@ -6,7 +6,7 @@ class AdmissionsAdmin::JobsController < AdmissionsAdmin::BaseController
   before_action :before_new_and_create_and_search, only: %i[new create search]
 
   def new;
-    @job_tags = JobTag.all
+    @job_tags = JobTag.where('created_ad <= ?', Time.new.months_ago(8))
   end
 
   def create
