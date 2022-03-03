@@ -5,9 +5,7 @@ class AdmissionsAdmin::JobsController < AdmissionsAdmin::BaseController
   layout 'admissions'
   before_action :before_new_and_create_and_search, only: %i[new create search]
 
-  def new;
-    @job_tags = JobTag.where('created_at >= ?', Time.new.months_ago(8))
-  end
+  def new; end
 
   def create
     @job.update(job_params)
@@ -46,9 +44,7 @@ class AdmissionsAdmin::JobsController < AdmissionsAdmin::BaseController
     render layout: false
   end
 
-  def edit;
-    @job_tags = JobTag.where('created_at >= ?', Time.new.months_ago(8))
-  end
+  def edit; end
 
   def update
     if @job.update_attributes(job_params)
