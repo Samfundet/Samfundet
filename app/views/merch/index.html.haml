@@ -1,6 +1,17 @@
 
 .pages-index
-  %h1.rainbow-text MERCH
+
+  .samf-smart-box.mt-2
+
+    .auto.flex-column.flex-justify-center
+      %div.pl-3.mb-1
+        %h1.rainbow-text MERCH
+
+    .half.pr-3.ml-2.mb-2
+      = image_tag "merch/merch.jpg", alt: "Samfundet", class: "br-2 bxs"
+
+
+
 
   .samf-container.ml-2.mr-2.mt-3.p-3.mt-3
     .wrap
@@ -12,7 +23,7 @@
 
   .samf-smart-box.pt-3
     .half.mr-3.ml-2.flex-column.flex-align-center
-      = image_tag "new_building/06 UKA_000.png", alt: "Samfundet", class: "br-1 bxs"
+      = image_tag "merch/snacki.jpg", alt: "Samfundet", class: "br-1 bxs", style: "width:300px;"
       %p= t("new_building.index.images.image_1")
     .half.ml-3.mr-2.flex-column.flex-align-center
       = image_tag "new_building/13 Mellomrommet 2_000.png", alt: "Samfundet", class: "br-1 bxs"
