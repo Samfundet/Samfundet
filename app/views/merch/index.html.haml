@@ -5,7 +5,8 @@
 
     .auto.flex-column.flex-justify-center
       %div.pl-3.mb-1
-        %h1.rainbow-text MERCH
+        .rainbow-text
+          =t('merch.index.title')
 
     .half.pr-3.ml-2.mb-2
       = image_tag "merch/merch.jpg", alt: "Samfundet", class: "br-2 bxs"
@@ -15,10 +16,9 @@
 
   .samf-container.ml-2.mr-2.mt-3.p-3.mt-3
     .wrap
-      %p Vi selger merch!!!!
-      = link_to "https://samfundet.no/upload/documents/files/000/000/898/Godkjenning_av_Nybygg_-_revidert_ramme.pdf?1642287123" do
-        .samf-button.red.mb-1
-          = "Bestill her!"
+      %p= t("merch.index.intro")
+      .samf-button.red.mb-1
+        = t("merch.index.order")
 
 
   .samf-smart-box.pt-3
