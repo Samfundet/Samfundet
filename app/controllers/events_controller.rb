@@ -288,6 +288,7 @@ private
       :billig_event_id,
       :organizer_id,
       :codeword,
+      :registration_link,
       :capacity,
       price_groups_attributes: %i(name price id _destroy)
     )
