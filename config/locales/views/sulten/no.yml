@@ -161,27 +161,27 @@
             recommendations: "Baren anbefaler: Brooklyn Lager"
         main_courses:
           title: "Hovedretter"
-          nordic_falafel:
-            name: "Nordisk falafel"
-            description: "Falafel laget med en base av tradisjonsrike ingredienser fra Norge. Serveres med ovnsbakt lompe, råkostsalat, yoghurtdressing med urter og syltet sopp med tyttebær."
-            allergies: "Inneholder: Gluten (hvete), melk, selleri og sulfitt"
-            recommendations: "Baren anbefaler: E.C. Dahls Bolt IPA"
+          trout:
+            name: "Ørret"
+            description: "Serveres med sellerikrem, rødbetråkost, asparges og eplereduksjonssaus"
+            allergies: "Inneholder: Selleri, sulfitt, fisk og melkeprotein"
+            recommendations: ""
           seasonal_salad:
             name: "Sesongens salat"
-            description: "Varieres gjennom året med sesongens smaker. Spør en av våre barservitører for mer informasjon. Serveres med lychebrød og kryddersmør."
-            allergies: "Inneholder: Spør en av våre barservitører."
-            recommendations: "Baren anbefaler: Bourgogne Chardonnay"
+            description: "Frisk salat med serranoskinke, chevre og tomatsalsa som noen kanskje kjenner igjen fra H20. Kan serveres som vegetar uten spekeskinke, da med litt ekstra søtpotet."
+            allergies: "Inneholder: Eple, melkeprotein og sulfitt."
+            recommendations: ""
         desserts:
           title: "Dessert"
           ice_cream:
             name: "Iskrem"
             description: "Fløteiskrem og/eller sorbet. Spør en av våre barservitører om dagens smaker."
             allergies: "Inneholder: Spør en av våre barservitører."
-          orange_chocolate_mousse:
-            name: "Appelsinsjokolademousse"
-            description: "Sjokolademousse med appelsinsmak toppet med kandisert appelsin."
-            allergies: "Inneholder: Melk, egg og soya."
-            recommendations: "Baren anbefaler: Barbera d`Asti Superiore Storica"
+          passionfruit:
+            name: "Pasjonsfruktterte"
+            description: "Serveres med vaniljeis og bjørnebærcoulis"
+            allergies: "Inneholder: Melkeprotein og egg"
+            recommendations: ""
         beer_on_tap:
           title: "Øl på tapp"
           weekend: "Helg"

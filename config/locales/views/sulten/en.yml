@@ -161,27 +161,27 @@ en:
             recommendations: "The bar recommends: Brooklyn Lager"
         main_courses:
           title: "Main courses"
-          nordic_falafel:
-            name: "Nordic falafel"
-            description: "Falafel made with a base of traditional ingredients from Norway. Served with oven-baked loaf, raw food salad, yoghurt dressing with herbs and pickled mushrooms with cranberries."
-            allergies: "Allergies: gluten (wheat), milk, celery and sulphite"
-            recommendations: "The bar recommends: E.C. Dahls Bolt IPA"
+          trout:
+            name: "Trout"
+            description: ""
+            allergies: "Allergies: "
+            recommendations: ""
           seasonal_salad:
             name: "Seasonal salad"
-            description: "Varies throughout the year with seasonal flavors. Ask one of our waiters for more information. Served with lyche bread and spiced butter."
-            allergies: "Allergies: Ask one of our waiters."
-            recommendations: "The bar recommends: Bourgogne Chardonnay"
+            description: ""
+            allergies: ""
+            recommendations: ""
         desserts:
           title: "Dessert"
           ice_cream:
             name: "Ice cream"
             description: "Ice cream and / or sorbet. Ask one of our waiters about today's flavors."
             allergies: "Allergies: Ask one of our waiters."
-          orange_chocolate_mousse:
-            name: "Orange Chocolate Mousse"
-            description: "Chocolate mousse with orange flavor topped with candied orange."
-            allergies: "Allergies: Milk, eggs and soy."
-            recommendations: "The bar recommends: Barbera d`Asti Superiore Storica"
+          passionfruit:
+            name: "Passionfruit"
+            description: ""
+            allergies: "Allergies: "
+            recommendations: ""
         beer_on_tap:
           title: "Beer on tap"
           weekend: "Weekend"
