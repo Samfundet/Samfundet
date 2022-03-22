@@ -48,10 +48,9 @@ class EventsController < ApplicationController
       redirect_to archive_events_path
 
       # Only display error message if one or more search parameters are present
-       if @search.present? || @event_type.present? || @event_area.present?
-          flash[:error] = t('search.no_results')
-        end
-      flash[:error] = t('search.no_results')
+      if @search.present? || @event_type.present? || @event_area.present?
+        flash[:error] = t('search.no_results')
+      end
     else
       # Only paginate if there are results to display
 
