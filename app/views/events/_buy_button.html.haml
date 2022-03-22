@@ -19,7 +19,7 @@
 - if (!event.over?) && (event.price_type.eql? 'free_registration')
   - if event.registration_link.present?
     = link_to t('events.registration_button'), event.registration_link, target: '_blank', class: 'purchase-button tickets-available no-modal'
-  -elsif event.full?
+  - elsif event.full?
     .purchase-button.tickets-sold-out
       = t('events.full')
   - else
