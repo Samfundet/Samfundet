@@ -162,15 +162,15 @@ en:
         main_courses:
           title: "Main courses"
           trout:
-            name: "Trout"
-            description: ""
-            allergies: "Allergies: "
+            name: "Oven Baked Trout"
+            description: "Trout with celery cream, beetroot salad, asparagus and apple reduction"
+            allergies: "Allergies: Celery, Sulfite, Fish, Milk protein "
             recommendations: ""
           seasonal_salad:
             name: "Seasonal salad"
-            description: ""
-            allergies: ""
-            recommendations: ""
+            description: "Fresh salad with serrano ham, chevre and tomato salsa. Can also be served without serrano ham, then with a little extra sweet potato"
+            allergies: "Allergies: Apple, Milk protein and Sulfite"
+            recommendations: "The bar recommends: Sancerre "
         desserts:
           title: "Dessert"
           ice_cream:
@@ -178,9 +178,9 @@ en:
             description: "Ice cream and / or sorbet. Ask one of our waiters about today's flavors."
             allergies: "Allergies: Ask one of our waiters."
           passionfruit:
-            name: "Passionfruit"
-            description: ""
-            allergies: "Allergies: "
+            name: "Passionfruit pie"
+            description: "With vanilla ice cream and blackberry coulis"
+            allergies: "Allergies: Milk protein, Egg"
             recommendations: ""
         beer_on_tap:
           title: "Beer on tap"

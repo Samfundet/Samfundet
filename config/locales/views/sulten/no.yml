@@ -132,55 +132,55 @@
           lyche_bread:
             name: "Lychebrød"
             description: "Inspirert av italiensk ciabatta. Serveres med aioli."
-            allergies: "Inneholder: Gluten (hvete), sulfitt og egg"
+            allergies: "Allergener: Gluten (hvete), sulfitt og egg"
           side_salad:
             name: "Sidesalat"
             description: "Med cherrytomater og vinaigrette."
-            allergies: "Inneholder: Sulfitt"
+            allergies: "Allergener: Sulfitt"
           soup:
             name: "Suppe"
             description: "Varierer etter sesong. Spør en av våre servitører om dagens suppe. Serveres med Lychebrød og kryddersmør."
-            allergies: "Inneholder: Spør en av våre servitører"
+            allergies: "Allergener: Spør en av våre servitører"
         burgers:
           title: "Burgere"
           double: "Dobbel"
           lyche_burger:
             name: "Lycheburger"
             ingredients: "Aioli, cherrytomater, salat, løkkompott, ost, bacon og pistou til ovnsbakte poteter."
-            allergies: "Inneholder: Gluten (hvete), sulfitt og egg"
+            allergies: "Allergener: Gluten (hvete), sulfitt og egg"
             recommendations: "Baren anbefaler: E.C. Dahls Bolt IPA"
           blue_cheese_burger:
             name: "Blåmuggburger"
             ingredients: "Aioli, cherrytomater, salat, søt og syrlig rips- og rabarbramarmelade , blåmuggost fra Selbu og pistou til ovnsbakte poteter."
-            allergies: "Inneholder: Svin, egg, gluten (hvete, rug, bygg), melk, selleri, sennep og sulfitt"
+            allergies: "Allergener: Svin, egg, gluten (hvete, rug, bygg), melk, selleri, sennep og sulfitt"
             recommendations: "Baren anbefaler: Lychelig Trippel"
           sweet_potato_burger:
             name: "Søtpotetburger"
             ingredients: "Aioli, cherrytomater, salat, syltet sjalottløk, manchego og pistou til ovnsbakte poteter. Vegetar. Kan serveres som veganburger."
-            allergies: "Inneholder: Gluten (hvete, rug, bygg), sulfitt, sennep, melk og egg"
+            allergies: "Allergener: Gluten (hvete, rug, bygg), sulfitt, sennep, melk og egg"
             recommendations: "Baren anbefaler: Brooklyn Lager"
         main_courses:
           title: "Hovedretter"
           trout:
-            name: "Ørret"
-            description: "Serveres med sellerikrem, rødbetråkost, asparges og eplereduksjonssaus"
-            allergies: "Inneholder: Selleri, sulfitt, fisk og melkeprotein"
+            name: "Ovnsbakt ørret"
+            description: "Ørret med sellerirotkrem, røbetråkost, asparges og eplereduksjon"
+            allergies: "Allergener: Selleri, sulfitt, fisk og melkeprotein"
             recommendations: ""
           seasonal_salad:
             name: "Sesongens salat"
             description: "Frisk salat med serranoskinke, chevre og tomatsalsa som noen kanskje kjenner igjen fra H20. Kan serveres som vegetar uten spekeskinke, da med litt ekstra søtpotet."
-            allergies: "Inneholder: Eple, melkeprotein og sulfitt."
-            recommendations: ""
+            allergies: "Allergener: Eple, melkeprotein og sulfitt."
+            recommendations: "Baren anbefaler: Sancerre "
         desserts:
           title: "Dessert"
           ice_cream:
             name: "Iskrem"
             description: "Fløteiskrem og/eller sorbet. Spør en av våre barservitører om dagens smaker."
-            allergies: "Inneholder: Spør en av våre barservitører."
+            allergies: "Allergener: Spør en av våre barservitører."
           passionfruit:
             name: "Pasjonsfruktterte"
-            description: "Serveres med vaniljeis og bjørnebærcoulis"
-            allergies: "Inneholder: Melkeprotein og egg"
+            description: "Med vaniljeis og bjørnebærcoulis"
+            allergies: "Allergener: Melkeprotein og egg"
             recommendations: ""
         beer_on_tap:
           title: "Øl på tapp"
