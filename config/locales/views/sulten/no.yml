@@ -168,8 +168,8 @@
             recommendations: ""
           seasonal_salad:
             name: "Sesongens salat"
-            description: "Frisk salat med serranoskinke, chevre og tomatsalsa som noen kanskje kjenner igjen fra H20. Kan serveres som vegetar uten spekeskinke, da med litt ekstra søtpotet."
-            allergies: "Allergener: Eple, melkeprotein og sulfitt."
+            description: "Varieres gjennom året med sesongens smaker. Spør en av våre barservitører for mer informasjon. Serveres med lychebrød og kryddersmør."
+            allergies: "Allergener: Spør en av våre barservitører."
             recommendations: "Baren anbefaler: Sancerre "
         desserts:
           title: "Dessert"

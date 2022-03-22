@@ -168,8 +168,8 @@ en:
             recommendations: ""
           seasonal_salad:
             name: "Seasonal salad"
-            description: "Fresh salad with serrano ham, chevre and tomato salsa. Can also be served without serrano ham, then with a little extra sweet potato"
-            allergies: "Allergies: Apple, Milk protein and Sulfite"
+            description: "Varies throughout the year with seasonal flavors. Ask one of our waiters for more information. Served with lyche bread and spiced butter."
+            allergies: "Allergies: Ask one of our waiters."
             recommendations: "The bar recommends: Sancerre "
         desserts:
           title: "Dessert"
