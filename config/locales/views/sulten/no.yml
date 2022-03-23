@@ -165,12 +165,12 @@
             name: "Ovnsbakt ørret"
             description: "Ørret med sellerirotkrem, røbetråkost, asparges og eplereduksjon"
             allergies: "Allergener: Selleri, sulfitt, fisk og melkeprotein"
-            recommendations: ""
+            recommendations: "Baren anbefaler: Sancerre/Riesling (vin) eller 1664 blanc (øl)"
           seasonal_salad:
             name: "Sesongens salat"
             description: "Varieres gjennom året med sesongens smaker. Spør en av våre barservitører for mer informasjon. Serveres med lychebrød og kryddersmør."
             allergies: "Allergener: Spør en av våre barservitører."
-            recommendations: "Baren anbefaler: Sancerre "
+            recommendations: "Baren anbefaler: ECD Lamo wit"
         desserts:
           title: "Dessert"
           ice_cream:
@@ -181,7 +181,7 @@
             name: "Pasjonsfruktterte"
             description: "Med vaniljeis og bjørnebærcoulis"
             allergies: "Allergener: Melkeprotein og egg"
-            recommendations: ""
+            recommendations: "Baren anbefaler: Disko eller Rasberry sour"
         beer_on_tap:
           title: "Øl på tapp"
           weekend: "Helg"

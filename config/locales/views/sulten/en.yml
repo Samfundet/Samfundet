@@ -165,12 +165,12 @@ en:
             name: "Oven Baked Trout"
             description: "Trout with celery cream, beetroot salad, asparagus and apple reduction"
             allergies: "Allergies: Celery, Sulfite, Fish, Milk protein "
-            recommendations: ""
+            recommendations: "The bar recommends: Sancerre/Riesling (wine) or 1664 blanc (beer)"
           seasonal_salad:
             name: "Seasonal salad"
             description: "Varies throughout the year with seasonal flavors. Ask one of our waiters for more information. Served with lyche bread and spiced butter."
             allergies: "Allergies: Ask one of our waiters."
-            recommendations: "The bar recommends: Sancerre "
+            recommendations: "The bar recommends: ECD Lamo wit"
         desserts:
           title: "Dessert"
           ice_cream:
@@ -181,7 +181,7 @@ en:
             name: "Passionfruit pie"
             description: "With vanilla ice cream and blackberry coulis"
             allergies: "Allergies: Milk protein, Egg"
-            recommendations: ""
+            recommendations: "The bar recommends: Disko or Rasberry sour"
         beer_on_tap:
           title: "Beer on tap"
           weekend: "Weekend"
