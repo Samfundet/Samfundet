@@ -42,6 +42,9 @@
       opening-hours-page-title: "aapningstider"
       all-opening-hours: "Alle åpningstider"
 
+      april_prank_description: "Viktig informasjon om hva som skjer på Samfundet idag."
+      april_prank_link: "Les mer..."
+
     notifications:
       membership:
         welcome: "Velkommen nye medlemmer!"
