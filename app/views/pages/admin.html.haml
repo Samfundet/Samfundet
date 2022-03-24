@@ -1,16 +1,17 @@
 - set_title t("pages.admin")
-
-= link_to members_control_panel_path do
-  .samf-button.plain.mb-3
-    = t("common.back")
+.flex-row.mb-3
+  = link_to members_control_panel_path do
+    .samf-button.plain
+      = t("common.back")
 
 %h1.mt-3.mb-2
   = t("pages.admin")
 
 - if can? :new, Page
-  = link_to new_page_path do
-    .samf-button.green.mb-3
-      = t("pages.new_page")
+  .flex-row.mb-3
+    = link_to new_page_path do
+      .samf-button.green
+        = t("pages.new_page")
 
 - if @pages.empty?
   = t("pages.no_editable_pages")
