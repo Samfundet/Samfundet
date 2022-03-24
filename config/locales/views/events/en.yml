@@ -200,6 +200,8 @@ en:
         pricing_options: Pricing options
         free_registration: Free with registration
         capacity: Capacity
+        registration: Registration link
+        registration_hint: For external registration forms, the registration link must be added here
 
       existing_image: Select existing image
       upload_image: Upload new image
@@ -209,3 +211,7 @@ en:
       title: Search for events
       area: Select venue
       type: Select type
+
+    registration_button: Register here
+
+

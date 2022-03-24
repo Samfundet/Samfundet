@@ -16,9 +16,13 @@
 - when Event::TICKETS_SOLD_OUT
   .purchase-button.tickets-sold-out
     = t('events.sold_out')
--if (!event.over?) && (event.price_type.eql? 'free_registration')
-  -if event.full?
+- if (!event.over?) && (event.price_type.eql? 'free_registration')
+  - if event.registration_link.present?
+    - if event.registration_link.start_with?("www")
+      - event.registration_link.prepend("https://")
+    = link_to t('events.registration_button'), event.registration_link, target: '_blank', class: 'purchase-button tickets-available no-modal'
+  - elsif event.full?
     .purchase-button.tickets-sold-out
       = t('events.full')
-  -else
+  - else
     = link_to t('events.sign_up'), event.link, class: 'purchase-button tickets-available no-modal'
