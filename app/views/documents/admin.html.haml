@@ -1,16 +1,18 @@
 - set_title t('documents.admin')
 
-= link_to members_control_panel_path do
-  .samf-button.plain.mb-3
-    = t("common.back")
+.flex-row.mb-3
+  = link_to members_control_panel_path do
+    .samf-button.plain
+      = t("common.back")
 
 %h1.mb-2.mt-2
   = t("documents.admin")
 
 - if can? :new, Event
-  = link_to new_document_path do
-    .samf-button.green.mb-3
-      = t('documents.new_document')
+  .flex-row.mb-3
+    = link_to new_document_path do
+      .samf-button.green
+        = t('documents.new_document')
 
 %table
   %thead
