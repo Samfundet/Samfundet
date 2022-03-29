@@ -7,7 +7,7 @@
 %h1.mb-2.mt-2
   = t("documents.admin")
 
-- if can? :new, Event
+- if can? :new, Document
   = link_to new_document_path do
     .samf-button.green.mb-3
       = t('documents.new_document')
