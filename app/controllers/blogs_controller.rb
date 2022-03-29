@@ -3,7 +3,7 @@
 class BlogsController < ApplicationController
   authorize_resource
   has_control_panel_applet :admin_applet,
-                           if: -> { can? :edit, Blog }
+                           if: -> { current_user.roles.include? Role.super_user }
 
   def index
     @articles = Blog.published.order('publish_at desc')

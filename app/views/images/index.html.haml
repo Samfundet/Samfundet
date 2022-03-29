@@ -1,15 +1,16 @@
-
-= link_to members_control_panel_path do
-  .samf-button.plain.mb-3
-    = t("common.back")
+.flex-row.mb-3
+  = link_to members_control_panel_path do
+    .samf-button.plain
+      = t("common.back")
 
 %h1.mb-2.mt-2
   = t("images.admin_applet.title")
 
 - if can? :new, Image
-  = link_to new_image_path do
-    .samf-button.green
-      = t('images.admin_applet.new')
+  .flex-row.mb-3
+    = link_to new_image_path do
+      .samf-button.green
+        = t('images.admin_applet.new')
 
 %hr
 
