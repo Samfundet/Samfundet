@@ -1,11 +1,8 @@
-
-const searchSelected = $('#search-event')
-const searchValue = searchSelected.val();
-const dropdowntype = $("option:selected", "#search-event1").text();
-const dropdownarea = $("option:selected", "#search-event2").text();
-
-
 $(function() {
+    const search = $('#search-event').value();
+    let dropdowntype = $("option:selected", "#search-event1").text();
+    let dropdownarea = $("option:selected", "#search-event2").text();
+
     $('#event-grid-button').on('click', function (e) {
         $('.list-event-view').hide();
         $('#event-grid-button').hide();
@@ -20,12 +17,12 @@ $(function() {
         $('#event-grid-button').show();
     });
 
-    $("#search-event").on('change', function (e) {
+    $("#search-event").on('input', function (e) {
         let optionSelected = $(this)
-        let value = optionSelected.text
-        console.log(searchValue)
         console.log(optionSelected)
-        if (value!==searchValue){
+        console.log(search)
+        console.log("heisann deisann woopsan")
+        if (optionSelected!==search){
             $('#event-list-button').hide();
             $('#event-grid-button').hide();
         }
@@ -42,8 +39,10 @@ $(function() {
             $('#event-grid-button').hide();
         }
         else {
-            $('#event-list-button').hide();
-            $('#event-grid-button').show();
+            $('.grid-event-view').show();
+            $('.list-event-view').hide();
+            $('#event-list-button').show();
+            $('#event-grid-button').hide();
         }
     });
 
@@ -54,8 +53,10 @@ $(function() {
             $('#event-grid-button').hide();
         }
         else {
-            $('#event-list-button').hide();
-            $('#event-grid-button').show();
+            $('.grid-event-view').show();
+            $('.list-event-view').hide();
+            $('#event-list-button').show();
+            $('#event-grid-button').hide();
         }
     });
 });

@@ -7,15 +7,15 @@
 
   = render 'search_form', post_path: search_events_path
 
-  #event-grid-button.flex-row.grid-button.ml-2.mb-1{:style => "float: right;"}
+  #event-grid-button.flex-row.grid-button.ml-2.mb-1{:style => "float: right;display: none;"}
     = image_tag "icons/grid_icon.png", alt: "Samfundet", class: "br-1 bxs", style:"width:40px; margin-right:3px"
-  #event-list-button.flex-row.grid-button.ml-2.mb-1{:style => "float: right; display: none;"}
+  #event-list-button.flex-row.grid-button.ml-2.mb-1{:style => "float: right;"}
     = image_tag "icons/list_icon.png", alt: "Samfundet", class: "br-1 bxs", style:"width:30px; margin-right:3px"
 
   .ajax-search
 
 
-.list-event-view.upcoming-events.flex-column.mt-3
+.list-event-view.upcoming-events.flex-column.mt-3{:style => "display: none;"}
   - @events.group_by {|i| i.start_time.to_date }.sort.each do |date, events|
     %div.mb-3{style: "padding-top: 0;"}
       %h4.pl-3.p-1.title.white.bg-red= l(date, format: :medium_long)
@@ -23,7 +23,7 @@
         %tbody
           = render events.sort_by{|event| event.start_time}
 
-.grid-event-view.upcoming-events.flex-column.mt-3{:style => "display: none;"}
+.grid-event-view.upcoming-events.flex-column.mt-3
   - @events.group_by {|i| i.start_time.to_date }.sort.each do |date, events|
     %div.mb-3{style: "padding-top: 0;"}
       %h4.pl-3.p-1.title.white.bg-red= l(date, format: :medium_long)
