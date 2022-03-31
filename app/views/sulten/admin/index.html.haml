@@ -154,6 +154,10 @@
               = link_to image_tag('icons/comment.png', class: "comment-icon", alt: "Comment"), k
             - if k.internal_comment.present?
               = link_to image_tag('icons/comment.png', class: "internal-comment-icon comment-icon", alt: "Comment"), k
+            - if Time.now < k.created_at+1.day
+              .new-icon
+                = t("sulten.reservation.new")
+
           %td
             #{k.reservation_from.strftime("%H:%M")} - #{k.reservation_to.strftime("%H:%M")}
           %td
