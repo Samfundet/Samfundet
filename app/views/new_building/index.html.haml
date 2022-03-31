@@ -27,37 +27,6 @@
     %h1= t("new_building.index.what.title")
     %p= t("new_building.index.what.body")
 
-  .p-2
-  .samf-container.blue.ml-2.mr-2.mt-3.p-3.mt-3
-    %h1= t("new_building.index.proposedResolution.title")
-    %p= t("new_building.index.proposedResolution.body")
-    .flex-row.wrap
-      = link_to "https://samfundet.no/upload/documents/files/000/000/898/Godkjenning_av_Nybygg_-_revidert_ramme.pdf?1642287123" do
-        .samf-button.small.white.mb-1
-          = "Saksdokumenter"
-
-  .p-2
-
-  .samf-container.white.mt-3.p-3.ml-2.mr-2
-    .flex-row.flex-align-center
-      %h1.ml-1.mt-1= t("new_building.index.approval.title")
-    %div
-      %p= t("new_building.index.approval.meeting")
-      %i= simple_format(t("new_building.index.approval.background"))
-
-  .p-2
-
-  .samf-container.red.mt-3.p-3.ml-2.mr-2
-    %p= simple_format(t("new_building.index.meetingFs"),{} ,:sanitize => false)
-
-  .p-2
-
-  .samf-container.white.mt-3.p-3.ml-2.mr-2
-    .flex-row.flex-align-center
-      %h2.ml-1.mt-1= t("new_building.index.excavation.title")
-    %div
-      %p= simple_format(t("new_building.index.excavation.description"))
-
 
   .p-2
 
@@ -90,19 +59,6 @@
 
   .p-2
 
-  .samf-smart-box.flex-align-center.mt-3
-    .auto.flex-column.flex-justify-center
-      %div.pl-3
-        %h1= t("new_building.index.progress.title")
-        %p= simple_format(t("new_building.index.progress.description"))
-        %p= simple_format(t("new_building.index.progress.decision"))
-
-    .third.pr-3.m-3.flex-column.flex-align-center
-      = image_tag "new_building/01 Elgeseter.png", alt: "Samfundet", class: "br-1 bxs m-2"
-      = image_tag "new_building/16 Plakatfolie inne.png", alt: "Samfundet", class: "br-1 bxs m-2 "
-
-
-  .p-2
 
   .samf-container.white.p-3.m-2.mt-3
     .flex-row.flex-align-center
