@@ -27,6 +27,7 @@ en:
       created_at: "Created Date"
       export_to_csv: "Export all reservations to CSV"
       hi: "Hi"
+      new: "New"
       summary:
         title: "Summary"
         date: "Date"

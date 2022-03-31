@@ -361,3 +361,18 @@
   background-color: #fff;
   transition: .2s;
 }
+
+.new-icon {
+  height: 20px;
+  padding: 3px;
+  display: inline-block;
+  float: right;
+  background-color: $samfundet-green;
+  border-radius: 5px;
+  margin-right: 5px;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  line-height : 14px;;
+  font-size: 10px;
+}

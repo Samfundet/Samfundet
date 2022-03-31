@@ -27,6 +27,7 @@
       created_at: "Opprettet"
       export_to_csv: "Eksporter alle reservasjoner til CSV"
       hi: "Hei"
+      new: "Ny"
       summary:
         title: "Oppsummering"
         date: "Dato"
