@@ -47,7 +47,7 @@ en:
 
           Here are the contributions from the parallel assignment;
         paralell_assignment_2: These concepts were discussed at <a href=" https://www.facebook.com/events/1061062644065827/", target="_blank">Samfundsmøte; Samfundet bygger ut</a>.
-
+        archive: See previous resolutions here
       images:
         image_1: UKA
         image_2: The middleroom
@@ -68,6 +68,9 @@ en:
         name: Name
         email: Email
         process_leader: Process Leader
+        SNKmember: SNKmember
+        board_member: Board member
+        pr: PR
         leader: Leader
         scene_technical: Scene Technical
         serving: Serving

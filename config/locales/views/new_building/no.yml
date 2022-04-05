@@ -57,6 +57,7 @@
           Her er bidragene fra parallelloppdraget;
 
         paralell_assignment_2: Forslagene ble presentert og diskutert på <a target="_blank" href=" https://www.facebook.com/events/1061062644065827/"> Samfundsmøte; Samfundet bygger ut</a> en uke etter avdukingen. Har du innspill? Ta gjerne kontakt.
+        archive: Se tidligere vedtak her
       images:
         image_1: UKA
         image_2: Mellomrommet
@@ -78,6 +79,9 @@
         name: Navn
         email: Epost
         process_leader: Prosessleder
+        SNKmember: SNKmedlem
+        board_member: Styret
+        pr: PR
         leader: Leder
         scene_technical: Sceneteknisk
         serving: Servering
