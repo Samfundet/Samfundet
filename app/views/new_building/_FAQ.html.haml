@@ -1,15 +1,20 @@
-%li.dropdown
-  %a.dropdown-toggle{:href => "#", "role" => "button", "data-toggle" => "dropdown", "data-target" => "#"}
-    The dropdown item
-    %b.caret
-  %ul.dropdown-menu{"role" => "menu"}
-    %li
-      %a{:href => "#link1"}
-        Dropdown #1
-      %a{:href => "#link2"}
-        Dropdown #2
-      %a{:href => "#link3"}
-        Dropdown #3
-      %a{:href => "#link4"}
-        Dropdown #4
-  %li
+=javascript_include_tag "new_building/faq-dropdown", defer: true
+
+
+%h1.ml-1.mt-1
+  = "FAQ"
+
+.accordion
+  = "Section 1"
+.panel
+  %p Lorem ipsum...
+
+.accordion
+  = "Section 2"
+.panel
+  %p Lorem ipsum...
+
+.accordion
+  = "Section 3"
+.panel
+  %p Lorem ipsum...
