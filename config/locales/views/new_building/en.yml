@@ -64,7 +64,11 @@ en:
         doc1: https://samfundet.no/upload/documents/files/000/000/575/FS_bok_2018.pdf?1540925719
         doc2: https://drive.google.com/file/d/1vt75E8beZuLnujduNP_VGEuUmmCeE9nS/view?usp=sharing
 
+      table_of_content:
+        title: Content
+
       table:
+        title: Contact information
         name: Name
         email: Email
         process_leader: Process Leader
@@ -88,3 +92,23 @@ en:
       proposedResolution:
         title: Proposed resolution 29.january
         body: Missing translation
+
+      faq:
+        question1: question 1
+        answer1: Lorem ipsum...
+        question2: question 2
+        answer2: Lorem ipsum...
+        question3: question 3
+        answer3: Lorem ipsum...
+        question4: question 4
+        answer4: Lorem ipsum...
+        question5: question 5
+        answer5: Lorem ipsum...
+        question6: question 6
+        answer6: Lorem ipsum...
+        question7: question 7
+        answer7: Lorem ipsum...
+        question8: question 8
+        answer8: Lorem ipsum...
+        question9: question 9
+        answer9: Lorem ipsum...

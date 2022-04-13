@@ -27,6 +27,9 @@
     %h1= t("new_building.index.what.title")
     %p= t("new_building.index.what.body")
 
+  .p-2
+
+  =render "table_of_content"
 
   .p-2
 
@@ -46,6 +49,7 @@
       = image_tag "new_building/18 Grønnbaren.png", alt: "Samfundet", class: "br-1 bxs"
       %p= t("new_building.index.images.image_4")
 
+  #about.toc-list-scroll
   .samf-container.white.p-3.m-2.mt-3
     .flex-row.flex-align-center
       = image_tag "new_building/project.png", style: "width: 2.5em; height: 2.5em; background-size: contain;"
@@ -60,7 +64,7 @@
 
   .p-2
 
-
+  #documents.toc-list-scroll
   .samf-container.white.p-3.m-2.mt-3
     .flex-row.flex-align-center
       %h1.mt-1= t("new_building.index.documents.title")
@@ -76,6 +80,7 @@
 
   .p-2
 
+  #history.toc-list-scroll
   .samf-container.white.p-3.m-2.mt-3
     .flex-row.flex-align-center
       = image_tag "new_building/history.png", style: "width: 2.5em; height: 2.5em; background-size: contain;"
@@ -96,8 +101,10 @@
         = link_to page_by_name_en("new-building-archive") do
           .samf-button.text-Align.left.plain.mt-3.mr-2= t("new_building.index.history.archive")
 
+  #faq.toc-list-scroll
   = render 'FAQ'
 
+  #contact.toc-list-scroll
   = render "contact_info"
 
 

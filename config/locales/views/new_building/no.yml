@@ -75,7 +75,11 @@
           button1_title: Lover og statutter
           button2_title: Prosessplan for nybygg
 
+      table_of_content:
+        title: Innhold
+
       table:
+        title: Kontakt informasjon
         name: Navn
         email: Epost
         process_leader: Prosessleder
@@ -112,3 +116,22 @@
         body: |
           Denne lørdagen fremmer FS et forslag om å øke budsjettrammen for nybygg til 245 millioner. Bakgrunnen for dette vedtaket er at totalentreprisen har vært på anbud og det viser seg at det blir dyrere enn det som ble vedtatt tidligere i høst. Fordelen med denne totalentreprisen er at det vil skape mindre usikkerhet når vi begynner å bygge. Se saksvedlegg for flere detaljer om budsjettet.
 
+      faq:
+        question1: Når er det ferdig?
+        answer1: Målet er å være ferdig ved årskiftet 2023/2024
+        question2: Hva blir nytt i nybygg?
+        answer2: Det blir mange nye serveringslokaler, samt tre nye scener
+        question3: Hvordan blir det i byggeperioden?
+        answer3: Lorem ipsum...
+        question4: Kommer det til å bli forsinket?
+        answer4: Lorem ipsum...
+        question5: Hvor mye koster det?
+        answer5: Lorem ipsum...
+        question6: Hvordan påvirker det eksisterende bygg?
+        answer6: Lorem ipsum...
+        question7: Hva blir annerledes i eksisterende bygg?
+        answer7: Lorem ipsum...
+        question8: Hvor stor kapasitet har de ulike scenene?
+        answer8: Lorem ipsum...
+        question9: Hvor stor kapasitet får Nybygg og gamle Samfundet tilsammen?
+        answer9: Lorem ipsum...
