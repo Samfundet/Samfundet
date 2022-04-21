@@ -7,4 +7,7 @@
 
 .half-page{
   width: 50%;
+  @include media($mobile) {
+    width: 100%;
+  }
 }
