@@ -27,37 +27,6 @@
     %h1= t("new_building.index.what.title")
     %p= t("new_building.index.what.body")
 
-  .p-2
-  .samf-container.blue.ml-2.mr-2.mt-3.p-3.mt-3
-    %h1= t("new_building.index.proposedResolution.title")
-    %p= t("new_building.index.proposedResolution.body")
-    .flex-row.wrap
-      = link_to "https://samfundet.no/upload/documents/files/000/000/898/Godkjenning_av_Nybygg_-_revidert_ramme.pdf?1642287123" do
-        .samf-button.small.white.mb-1
-          = "Saksdokumenter"
-
-  .p-2
-
-  .samf-container.white.mt-3.p-3.ml-2.mr-2
-    .flex-row.flex-align-center
-      %h1.ml-1.mt-1= t("new_building.index.approval.title")
-    %div
-      %p= t("new_building.index.approval.meeting")
-      %i= simple_format(t("new_building.index.approval.background"))
-
-  .p-2
-
-  .samf-container.red.mt-3.p-3.ml-2.mr-2
-    %p= simple_format(t("new_building.index.meetingFs"),{} ,:sanitize => false)
-
-  .p-2
-
-  .samf-container.white.mt-3.p-3.ml-2.mr-2
-    .flex-row.flex-align-center
-      %h2.ml-1.mt-1= t("new_building.index.excavation.title")
-    %div
-      %p= simple_format(t("new_building.index.excavation.description"))
-
 
   .p-2
 
@@ -83,6 +52,7 @@
       %h1.ml-1.mt-1= t("new_building.index.about.title")
     %div
       %p= simple_format(t("new_building.index.about.intro"))
+      %p= simple_format(t("new_building.index.about.floor_plan"))
       %i= simple_format(t("new_building.index.about.financing_title"))
       %p= simple_format(t("new_building.index.about.financing"))
       %i= simple_format(t("new_building.index.about.applications_title"))
@@ -90,19 +60,6 @@
 
   .p-2
 
-  .samf-smart-box.flex-align-center.mt-3
-    .auto.flex-column.flex-justify-center
-      %div.pl-3
-        %h1= t("new_building.index.progress.title")
-        %p= simple_format(t("new_building.index.progress.description"))
-        %p= simple_format(t("new_building.index.progress.decision"))
-
-    .third.pr-3.m-3.flex-column.flex-align-center
-      = image_tag "new_building/01 Elgeseter.png", alt: "Samfundet", class: "br-1 bxs m-2"
-      = image_tag "new_building/16 Plakatfolie inne.png", alt: "Samfundet", class: "br-1 bxs m-2 "
-
-
-  .p-2
 
   .samf-container.white.p-3.m-2.mt-3
     .flex-row.flex-align-center
@@ -135,6 +92,9 @@
       %li <a href="https://drive.google.com/file/d/1umIrffZz2eCqwnhu05L8Lgvxxqg1OGlJ/view ", target="_blank">Sceneskifte - Eggen arkitekter</a>
       %li <a href="https://drive.google.com/file/d/1jH6K5e8F7UC7_y4rWjcXawzaskZCMW4T/view?usp=drive_open ", target="_blank">Merry Glow Red - Pir II arkitekter</a>
       %p= simple_format(t("new_building.index.history.paralell_assignment_2"),{} ,:sanitize => false)
+      - if page_by_name_en("new-building-archive") != "#"
+        = link_to page_by_name_en("new-building-archive") do
+          .samf-button.text-Align.left.plain.mt-3.mr-2= t("new_building.index.history.archive")
 
 
 
@@ -148,55 +108,70 @@
       %tbody
         %tr
           %td
+            Jostein Løwer
+          %td.new-building-table{style:"text-align: center"}= t("new_building.index.table.leader")
+          %td{style:"text-align: center"}
+            nybygg-leder@samfundet.no
+        %tr
+          %td
             Agnete Djupvik
           %td.new-building-table{style:"text-align: center"}= t("new_building.index.table.process_leader")
           %td{style:"text-align: center"}
             prosessleder@samfundet.no
         %tr
           %td
-            Jostein Løwer
-          %td.new-building-table{style:"text-align: center"}= t("new_building.index.table.leader")
+            Andreas
+          %td.new-building-table{style:"text-align: center"}= t("new_building.index.table.SNKmember")
           %td{style:"text-align: center"}
-            nybygg-leder@samfundet.no
-
-        %tr
-          %td
-            Patrick Moen Allport
-          %td.new-building-table{style:"text-align: center"}= t("new_building.index.table.scene_technical")
-          %td{style:"text-align: center"}
-            nybygg-sceneteknisk@samfundet.no
-
-        %tr
-          %td
-            Allegra Farrah Torstensen
-          %td.new-building-table{style:"text-align: center"}= t("new_building.index.table.serving")
-          %td{style:"text-align: center"}
-            nybygg-servering@samfundet.no
-
         %tr
           %td
             Oda Sofie Sundet
           %td.new-building-table{style:"text-align: center"}= t("new_building.index.table.operating")
           %td{style:"text-align: center"}
             nybygg-drift@samfundet.no
-
         %tr
           %td
-            Rikke Storvik Sjøhelle
-          %td.new-building-table{style:"text-align: center"}= t("new_building.index.table.artisic")
+            Allegra Farrah Torstensen
+          %td.new-building-table{style:"text-align: center"}= t("new_building.index.table.serving")
           %td{style:"text-align: center"}
-            nybygg-kunst@samfundet.no
-
+            nybygg-servering@samfundet.no
         %tr
           %td
             Mikkel Hofstad
           %td.new-building-table{style:"text-align: center"}= t("new_building.index.table.arranging")
           %td{style:"text-align: center"}
             nybygg-arrangement@samfundet.no
-
         %tr
           %td
-            Andreas Aaberge Eide
-          %td.new-building-table{style:"text-align: center"}= t("new_building.index.table.studentmedia")
+            Patrick Moen Allport
+          %td.new-building-table{style:"text-align: center"}= t("new_building.index.table.scene_technical")
           %td{style:"text-align: center"}
-            nybygg-media@samfundet.no
+            nybygg-sceneteknisk@samfundet.no
+        %tr
+          %td
+            Fredrik Akre
+          %td.new-building-table{style:"text-align: center"}= t("new_building.index.table.board_member")
+          %td{style:"text-align: center"}
+            leder@samfundet.no
+        %tr
+          %td
+            Gunnar Gudlaugur Gunnarsson
+          %td.new-building-table{style:"text-align: center"}= t("new_building.index.table.SNKmember")
+          %td{style:"text-align: center"}
+        %tr
+          %td
+            Kim Arvid Leon Tran
+          %td.new-building-table{style:"text-align: center"}= t("new_building.index.table.SNKmember")
+          %td{style:"text-align: center"}
+        %tr
+          %td
+            Rikke Storvik Sjøhelle
+          %td.new-building-table{style:"text-align: center"}= t("new_building.index.table.artisic")
+          %td{style:"text-align: center"}
+            nybygg-kunst@samfundet.no
+        %tr
+          %td
+            Frida Jerve
+          %td.new-building-table{style:"text-align: center"}= t("new_building.index.table.pr")
+          %td{style:"text-align: center"}
+            nybygg-pr@samfundet.no

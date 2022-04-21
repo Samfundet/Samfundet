@@ -1,14 +1,15 @@
-
-= link_to members_control_panel_path do
-  .samf-button.plain.mb-3
-    = t("common.back")
+.flex-row.mb-3
+  = link_to members_control_panel_path do
+    .samf-button.plain.mb-3
+      = t("common.back")
 
 %h1= set_and_return_title(t("groups.admin.title"))
 
 - if can?(:create, Group)
-  = link_to new_group_path do
-    .samf-button.green.mt-3
-      = t("groups.create_group")
+  .flex-row.mb-3
+    = link_to new_group_path do
+      .samf-button.green.mt-3
+        = t("groups.create_group")
 
 - @group_types.each do |type|
   %h2.mt-3

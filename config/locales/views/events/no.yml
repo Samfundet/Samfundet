@@ -204,6 +204,8 @@
         pricing_options: Prisalternativer
         free_registration: Gratis med registrering
         capacity: Plasser
+        registration: Påmeldingslink
+        registration_hint: Ved eksternt påmeldingsskjema må påmeldingslinken legges til her
 
       existing_image: Velg eksisterende bilde
       upload_image: Last opp nytt bilde
@@ -213,3 +215,6 @@
       title: Søk i arrangementer
       area: Velg lokale
       type: Velg type
+
+    registration_button: Meld på
+

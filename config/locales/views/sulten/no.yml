@@ -27,6 +27,7 @@
       created_at: "Opprettet"
       export_to_csv: "Eksporter alle reservasjoner til CSV"
       hi: "Hei"
+      new: "Ny"
       summary:
         title: "Oppsummering"
         date: "Dato"
@@ -132,56 +133,56 @@
           lyche_bread:
             name: "Lychebrød"
             description: "Inspirert av italiensk ciabatta. Serveres med aioli."
-            allergies: "Inneholder: Gluten (hvete), sulfitt og egg"
+            allergies: "Allergener: Gluten (hvete), sulfitt og egg"
           side_salad:
             name: "Sidesalat"
             description: "Med cherrytomater og vinaigrette."
-            allergies: "Inneholder: Sulfitt"
+            allergies: "Allergener: Sulfitt"
           soup:
             name: "Suppe"
             description: "Varierer etter sesong. Spør en av våre servitører om dagens suppe. Serveres med Lychebrød og kryddersmør."
-            allergies: "Inneholder: Spør en av våre servitører"
+            allergies: "Allergener: Spør en av våre servitører"
         burgers:
           title: "Burgere"
           double: "Dobbel"
           lyche_burger:
             name: "Lycheburger"
             ingredients: "Aioli, cherrytomater, salat, løkkompott, ost, bacon og pistou til ovnsbakte poteter."
-            allergies: "Inneholder: Gluten (hvete), sulfitt og egg"
+            allergies: "Allergener: Gluten (hvete), sulfitt og egg"
             recommendations: "Baren anbefaler: E.C. Dahls Bolt IPA"
           blue_cheese_burger:
             name: "Blåmuggburger"
             ingredients: "Aioli, cherrytomater, salat, søt og syrlig rips- og rabarbramarmelade , blåmuggost fra Selbu og pistou til ovnsbakte poteter."
-            allergies: "Inneholder: Svin, egg, gluten (hvete, rug, bygg), melk, selleri, sennep og sulfitt"
+            allergies: "Allergener: Svin, egg, gluten (hvete, rug, bygg), melk, selleri, sennep og sulfitt"
             recommendations: "Baren anbefaler: Lychelig Trippel"
           sweet_potato_burger:
             name: "Søtpotetburger"
             ingredients: "Aioli, cherrytomater, salat, syltet sjalottløk, manchego og pistou til ovnsbakte poteter. Vegetar. Kan serveres som veganburger."
-            allergies: "Inneholder: Gluten (hvete, rug, bygg), sulfitt, sennep, melk og egg"
+            allergies: "Allergener: Gluten (hvete, rug, bygg), sulfitt, sennep, melk og egg"
             recommendations: "Baren anbefaler: Brooklyn Lager"
         main_courses:
           title: "Hovedretter"
-          nordic_falafel:
-            name: "Nordisk falafel"
-            description: "Falafel laget med en base av tradisjonsrike ingredienser fra Norge. Serveres med ovnsbakt lompe, råkostsalat, yoghurtdressing med urter og syltet sopp med tyttebær."
-            allergies: "Inneholder: Gluten (hvete), melk, selleri og sulfitt"
-            recommendations: "Baren anbefaler: E.C. Dahls Bolt IPA"
+          trout:
+            name: "Ovnsbakt ørret"
+            description: "Ørret med sellerirotkrem, røbetråkost, asparges og eplereduksjon"
+            allergies: "Allergener: Selleri, sulfitt, fisk og melkeprotein"
+            recommendations: "Baren anbefaler: Sancerre/Riesling (vin) eller 1664 blanc (øl)"
           seasonal_salad:
             name: "Sesongens salat"
             description: "Varieres gjennom året med sesongens smaker. Spør en av våre barservitører for mer informasjon. Serveres med lychebrød og kryddersmør."
-            allergies: "Inneholder: Spør en av våre barservitører."
-            recommendations: "Baren anbefaler: Bourgogne Chardonnay"
+            allergies: "Allergener: Spør en av våre barservitører."
+            recommendations: "Baren anbefaler: ECD Lamo wit"
         desserts:
           title: "Dessert"
           ice_cream:
             name: "Iskrem"
             description: "Fløteiskrem og/eller sorbet. Spør en av våre barservitører om dagens smaker."
-            allergies: "Inneholder: Spør en av våre barservitører."
-          orange_chocolate_mousse:
-            name: "Appelsinsjokolademousse"
-            description: "Sjokolademousse med appelsinsmak toppet med kandisert appelsin."
-            allergies: "Inneholder: Melk, egg og soya."
-            recommendations: "Baren anbefaler: Barbera d`Asti Superiore Storica"
+            allergies: "Allergener: Spør en av våre barservitører."
+          passionfruit:
+            name: "Pasjonsfruktterte"
+            description: "Med vaniljeis og bjørnebærcoulis"
+            allergies: "Allergener: Melkeprotein og egg"
+            recommendations: "Baren anbefaler: Disko eller Rasberry sour"
         beer_on_tap:
           title: "Øl på tapp"
           weekend: "Helg"

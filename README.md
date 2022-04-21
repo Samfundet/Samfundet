@@ -1,6 +1,6 @@
 # [Samfundet.no](http://samfundet.no)
 
-![samfundet-screenshot](http://i.imgur.com/8n5hDoC.png)
+![samfundet-screenshot](images/readme-banner.png)
 
 [![Build Status](https://travis-ci.org/Samfundet/Samfundet.svg?branch=master)](https://travis-ci.org/Samfundet/Samfundet)
 

@@ -692,6 +692,7 @@ body.lyche {
 
           .item-name {
             display: flex;
+            flex-wrap: wrap;
             flex-direction: row;
             justify-content: space-between;
             font-size: 1.25em;
