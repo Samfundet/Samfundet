@@ -5,6 +5,7 @@
       intro: numfrnof3n
       info1:
         title: Vi har auksjon
+        payment: Betaling
         body: |
               Betalinsløsning for donasjoner, bud og kjøp under Samfundetaksjonen er Vipps.
               Ved loddkjøp, kjøper man lodd for 10kr per stk. Hvert loddkjøp er knyttet opp mot en bestemt kategori som man velger før man betaler.
@@ -20,7 +21,7 @@
       info2:
         title: AUKSJON
         body: Samfundet skal gi tilbake til samfunnet, og alle gjengene arrangerer sammen en humanitæraksjon, nemlig samfundetaksjonen den 23. April. Pengene som doneres går til METU LGBTI+ Solidarity, vinner av studentenes fredspris 2021 på vegne av alle norske studenter.
-
+      what: Hva blir auksjonert bort?
       item1:
         title: Bytter en Samfundetkopp til stor ting :))) Kom på auksjonen for å finne ut hva koppen har blitt til!
         body: "Fra krus til...?: Tidligere i vår startet Stønt og MG-Video på et fantastisk eventyr. Med kun en Samfundet-kopp og store ambisjoner bevegde vi oss ut på byttemarkedet. Målet var å bruke den fantastiske frivilligheten og givergleden i Trondheim for det den er verdt, og det har vi klart! På veien har vi møtt fantastiske mennesker som har gjort reisen utrolig morsom. Hvor veien har gått og hva vi har byttet oss til får dere se i Storsalen under Samfundetaksjonen."
