@@ -5,6 +5,10 @@
     %div.pl-3
       %h1{:style => "font-size:40px;"}= t("auction.index.title")
       %p= simple_format(t("auction.index.info2.body"))
+      %div.flex-row.mb-1
+        = link_to "https://www.samfundet.no/arrangement/3044-festmote-samfundetaksjonen" do
+          .samf-button.red.mr-2
+            = "Arrengmentet finner du her"
 
   .third.pr-3.m-3.flex-column.flex-align-center
     = image_tag "auction/Samfundetaksjonen.png", alt: "Samfundet", class: "br-1 bxs m-2"
