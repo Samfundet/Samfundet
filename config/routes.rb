@@ -163,10 +163,12 @@ Rails.application.routes.draw do
           # but no actions of its own. Hence, only: []
           resources :applicants, only: [] do
             resources :log_entries, only: [:create, :destroy]
+
           end
         end
         get :show_interested_other_positions, to: 'applicants#show_interested_other_positions'
         get :show_unflagged_applicants, to: 'applicants#show_unflagged_applicants'
+        get :edit_applicant, to: 'applicants#edit_applicant'
 
       end
       get :list, to: "admissions#list"

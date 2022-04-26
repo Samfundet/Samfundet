@@ -30,7 +30,7 @@
         personal_information: "Personalia"
         login_information: "Påloggingsinformasjon"
         password_information: "Passordinformasjon"
-        extra_information: "Tilleggsinformasjons"
+        extra_information: "Tilleggsinformasjon"
         gdpr_checkbox: "Jeg godtar Samfundets <a href='%{no_url}'>personvernerklæring</a>."
       edit:
         heading: "Endre mine detaljer"
