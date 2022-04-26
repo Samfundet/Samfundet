@@ -80,10 +80,10 @@ class MembersController < ApplicationController
   def show_roles
     if params[:member_id] != nil
       begin
-        @roles = Member.find(params[:member_id]).roles
-        @member = Member.find(params[:member_id]).full_name
+        @member = Member.find(params[:member_id])
+        @roles = @member.members_roles
       rescue
-        # No match
+        # No roles
       end
     else
       @roles = nil
