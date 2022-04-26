@@ -78,12 +78,19 @@ class MembersController < ApplicationController
   end
 
   def show_roles
+    if params[:member_id] != nil
+      begin
+        @roles = Member.find(params[:member_id]).roles
+        @member = Member.find(params[:member_id]).full_name
+      rescue
+        # No match
+      end
+    else
+      @roles = nil
+      @member = nil
+    end
   end
 
-  def find_roles
-    $roles = Member.find(params[:member_id]).roles
-    $member = Member.find(params[:member_id]).full_name
-    redirect_back(fallback_location: root_path)
-  end
   def access_applet; end
+
 end

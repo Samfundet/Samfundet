@@ -5,16 +5,12 @@
   %h1
     = t('navigation.show.find_member_roles')
 .option
-  = form_tag members_find_roles_path, method: "post", class: "custom-form" do
-    %br
-    %b
-      = t('navigation.show.search_member')
-    %div
-      = text_field_tag :member_id, nil, placeholder: t("members.search_placeholder"), class: "textfield member_autocomplete", style: "border: 1px solid gray", required: true
+  = form_tag members_show_roles_path, method: "get" do
+    = text_field_tag :member_id, nil, placeholder: t("members.search_placeholder"), class: "textfield member_autocomplete", style: "border: 1px solid gray; height: 32px; width: 250px; padding-left: 8px;", required: true
     %p
       = submit_tag t('navigation.show.search')
 .rolesx
-  - if $roles.present?
+  - if @roles.present?
     = render partial: "members/roles"
   - else
     %h2

@@ -183,7 +183,6 @@ Rails.application.routes.draw do
     get "members/show_roles" => "members#show_roles", as: :members_show_roles
     get "members/search.:format" => "members#search", as: :members_search
     post "members/steal_identity" => "members#steal_identity", as: :members_steal_identity
-    post "members/find_roles" => "members#find_roles", as: :members_find_roles
 
     scope "/medlem" do
       get "login" => "member_sessions#new", as: :members_login
