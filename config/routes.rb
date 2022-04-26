@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
     get 'new-building', to: 'new_building#index'
 
+    get 'auction', to: 'auction#index'
+
     resources :info_boxes
 
     #resources :search, only: [:new, :create, :search]
