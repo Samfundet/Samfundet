@@ -77,5 +77,20 @@ class MembersController < ApplicationController
     redirect_to root_path
   end
 
+  def show_roles
+    if params[:member_id] != nil
+      begin
+        @member = Member.find(params[:member_id])
+        @roles = @member.members_roles
+      rescue
+        # No roles
+      end
+    else
+      @roles = nil
+      @member = nil
+    end
+  end
+
   def access_applet; end
+
 end

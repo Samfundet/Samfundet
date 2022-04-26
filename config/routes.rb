@@ -122,7 +122,7 @@ Rails.application.routes.draw do
     end
 
     resources :jobs, only: :show
-    resources :members, only: [:control_panel]
+    resources :members, only: [:control_panel, :show_roles]
 
     resources :roles, only: [:index, :show, :new, :create, :edit, :update] do
       post :pass, on: :member
@@ -184,6 +184,7 @@ Rails.application.routes.draw do
 
     post "logout" => "user_sessions#destroy", as: :logout
     get "members/control_panel" => "members#control_panel", as: :members_control_panel
+    match "members/show_roles" => "members#show_roles", as: :members_show_roles, via: [:get, :post]
     get "members/search.:format" => "members#search", as: :members_search
     post "members/steal_identity" => "members#steal_identity", as: :members_steal_identity
 
