@@ -46,6 +46,7 @@
     archive_search: arkivsok
     info_boxes: info-bokser
     new-building: nybygg
+    auction: auksjon
 en:
   routes:
     contactinfo: contactinfo

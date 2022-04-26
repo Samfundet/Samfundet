@@ -86,6 +86,7 @@
       = f.label :price_type, value: "free_registration" do
         = f.radio_button :price_type, "free_registration", checked: @event.price_type == "free_registration"
         = t('events.forms.labels.free_registration')
+        = f.input :registration_link, label: t('events.forms.labels.registration'), hint: t('events.forms.labels.registration_hint')
         = f.input :capacity, label: t('events.forms.labels.capacity'), input_html: {value: f.object.capacity || '0'}
     %hr
     %li

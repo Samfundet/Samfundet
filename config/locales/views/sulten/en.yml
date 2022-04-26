@@ -27,6 +27,7 @@ en:
       created_at: "Created Date"
       export_to_csv: "Export all reservations to CSV"
       hi: "Hi"
+      new: "New"
       summary:
         title: "Summary"
         date: "Date"
@@ -161,27 +162,27 @@ en:
             recommendations: "The bar recommends: Brooklyn Lager"
         main_courses:
           title: "Main courses"
-          nordic_falafel:
-            name: "Nordic falafel"
-            description: "Falafel made with a base of traditional ingredients from Norway. Served with oven-baked loaf, raw food salad, yoghurt dressing with herbs and pickled mushrooms with cranberries."
-            allergies: "Allergies: gluten (wheat), milk, celery and sulphite"
-            recommendations: "The bar recommends: E.C. Dahls Bolt IPA"
+          trout:
+            name: "Oven Baked Trout"
+            description: "Trout with celery cream, beetroot salad, asparagus and apple reduction"
+            allergies: "Allergies: Celery, Sulfite, Fish, Milk protein "
+            recommendations: "The bar recommends: Sancerre/Riesling (wine) or 1664 blanc (beer)"
           seasonal_salad:
             name: "Seasonal salad"
             description: "Varies throughout the year with seasonal flavors. Ask one of our waiters for more information. Served with lyche bread and spiced butter."
             allergies: "Allergies: Ask one of our waiters."
-            recommendations: "The bar recommends: Bourgogne Chardonnay"
+            recommendations: "The bar recommends: ECD Lamo wit"
         desserts:
           title: "Dessert"
           ice_cream:
             name: "Ice cream"
             description: "Ice cream and / or sorbet. Ask one of our waiters about today's flavors."
             allergies: "Allergies: Ask one of our waiters."
-          orange_chocolate_mousse:
-            name: "Orange Chocolate Mousse"
-            description: "Chocolate mousse with orange flavor topped with candied orange."
-            allergies: "Allergies: Milk, eggs and soy."
-            recommendations: "The bar recommends: Barbera d`Asti Superiore Storica"
+          passionfruit:
+            name: "Passionfruit pie"
+            description: "With vanilla ice cream and blackberry coulis"
+            allergies: "Allergies: Milk protein, Egg"
+            recommendations: "The bar recommends: Disko or Rasberry sour"
         beer_on_tap:
           title: "Beer on tap"
           weekend: "Weekend"
