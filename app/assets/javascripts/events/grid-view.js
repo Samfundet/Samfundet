@@ -1,7 +1,8 @@
+/*const search = $('#search-event').value();
+let dropdowntype = $("option:selected", "#search-event1").text();
+let dropdownarea = $("option:selected", "#search-event2").text();
+
 $(function() {
-    const search = $('#search-event').value();
-    let dropdowntype = $("option:selected", "#search-event1").text();
-    let dropdownarea = $("option:selected", "#search-event2").text();
 
     $('#event-grid-button').on('click', function (e) {
         $('.list-event-view').hide();
@@ -16,6 +17,7 @@ $(function() {
         $('.list-event-view').show();
         $('#event-grid-button').show();
     });
+
 
     $("#search-event").on('input', function (e) {
         let optionSelected = $(this)
@@ -59,6 +61,19 @@ $(function() {
             $('#event-grid-button').hide();
         }
     });
+});*/
+
+$('button').on('click',function(e) {
+    if ($(this).hasClass('grid')) {
+        //$('#container ul').removeClass('list').addClass('grid');
+        $('.gridview').show()
+        $('.listview').hide()
+    }
+    else if($(this).hasClass('list')) {
+        //$('#container ul').removeClass('grid').addClass('list');
+        $('.gridview').hide()
+        $('.listview').show()
+    }
 });
 
 

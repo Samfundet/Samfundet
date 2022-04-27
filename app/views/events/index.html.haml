@@ -7,29 +7,30 @@
 
   = render 'search_form', post_path: search_events_path
 
-  #event-grid-button.flex-row.grid-button.ml-2.mb-1{:style => "float: right;display: none;"}
-    = image_tag "icons/grid_icon.png", alt: "Samfundet", class: "br-1 bxs", style:"width:40px; margin-right:3px"
-  #event-list-button.flex-row.grid-button.ml-2.mb-1{:style => "float: right;"}
-    = image_tag "icons/list_icon.png", alt: "Samfundet", class: "br-1 bxs", style:"width:30px; margin-right:3px"
+  .buttonsgrid
+    %button.grid.samf-button.flex-align-center
+      Grid View
+    %button.list.samf-button.flex-align-center
+      List View
 
   .ajax-search
 
+  #containergridview
+    - @events.group_by {|i| i.start_time.to_date }.sort.each do |date, events|
+      .listview
+        %h4.pl-3.p-1.title.white.bg-red= l(date, format: :medium_long)
+        %table
+          %tbody
+            = render events.sort_by{|event| event.start_time}
 
-.list-event-view.upcoming-events.flex-column.mt-3{:style => "display: none;"}
-  - @events.group_by {|i| i.start_time.to_date }.sort.each do |date, events|
-    %div.mb-3{style: "padding-top: 0;"}
-      %h4.pl-3.p-1.title.white.bg-red= l(date, format: :medium_long)
-      %table
-        %tbody
-          = render events.sort_by{|event| event.start_time}
+      .gridview{:style => "display:none;"}
+        %h4.pl-3.p-1.title.white.bg-red= l(date, format: :medium_long)
+        .flex-row.mt-3.m-2.wrap.upcoming-events
+          -events.sort_by{|event| event.start_time}.each do |e|
+            = render "events/event_style", event: e
 
-.grid-event-view.upcoming-events.flex-column.mt-3
-  - @events.group_by {|i| i.start_time.to_date }.sort.each do |date, events|
-    %div.mb-3{style: "padding-top: 0;"}
-      %h4.pl-3.p-1.title.white.bg-red= l(date, format: :medium_long)
-      .flex-row.mt-3.m-2.wrap
-        -events.sort_by{|event| event.start_time}.each do |e|
-          = render "events/event_style", event: e
+
+
 
 .flex-row.center.mb-3.wrap{:style => "align-items:center;"}
   %a.samf-button.blue.mr-2.mt-2{ href: archive_events_path, title: t('events.archive.title')}

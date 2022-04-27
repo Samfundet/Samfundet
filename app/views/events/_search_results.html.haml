@@ -2,12 +2,19 @@
   .flex-column.mobile-event
     %h2= t('search.results_title')
     - if @events.present?
-      - @events.group_by {|i| i.start_time.to_date }.sort.each do |date, events|
-        .samf-container.white.mb-3
-          %h2.text-Align.p-1.bg-red.title.white= l(date, format: :medium_long)
-          %table
-            %tbody
-              = render events.sort_by{|event| event.start_time}
+      #containersearchgridview
+        - @events.group_by {|i| i.start_time.to_date }.sort.each do |date, events|
+          .listview
+            %h4.pl-3.p-1.title.white.bg-red= l(date, format: :medium_long)
+            %table
+              %tbody
+                = render events.sort_by{|event| event.start_time}
+
+          .gridview{:style => "display:none;"}
+            %h4.pl-3.p-1.title.white.bg-red= l(date, format: :medium_long)
+            .flex-row.mt-3.m-2.wrap.upcoming-events
+              -events.sort_by{|event| event.start_time}.each do |e|
+                = render "events/event_style", event: e
 
     - else
       %p= t('search.no_results')
