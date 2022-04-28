@@ -1,9 +1,9 @@
 - post_path = search_events_path if local_assigns[:post_path].nil?
 = form_tag post_path, method: :get, class: 'custom-form search-form', autocomplete: 'off' do
   .flex-row
-    #search-event
+    .search-event
       = search_field_tag 'search', nil, placeholder: t('events.search.title'), type: "text"
-    #search-event1
+    .search-event-drop
       = select_tag 'event_type', options_for_select(Event::EVENT_TYPE.map { |k| [t("events.#{k}"), k] }.sort_by &:first), prompt: t('events.search.type'), class: 'search-constraints'
-    #search-event2
+    .search-event-drop
       = select_tag 'event_area', options_for_select(Area.all.map{ |a| [t("areas.#{a}"), a.name]}.sort_by &:first), prompt: t('events.search.area'), class: 'search-constraints'

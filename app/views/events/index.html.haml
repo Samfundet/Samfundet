@@ -18,12 +18,12 @@
   #containergridview.mt-3
     - @events.group_by {|i| i.start_time.to_date }.sort.each do |date, events|
       %h4.pl-3.p-1.title.white.bg-red= l(date, format: :medium_long)
-      .listview
+      .listview{:style => "display:none;"}
         %table
           %tbody
             = render events.sort_by{|event| event.start_time}
 
-      .gridview.upcoming-events.flex-row.mt-3.wrap{:style => "display:none;justify-content: flex-start;"}
+      .gridview.upcoming-events.flex-row.mt-3.wrap{:style => "justify-content: flex-start;"}
         -events.sort_by{|event| event.start_time}.each do |e|
           = render "events/event_style", event: e
 

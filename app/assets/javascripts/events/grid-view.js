@@ -63,6 +63,7 @@ $(function() {
     });
 });*/
 
+
 $('button').on('click',function(e) {
     if ($(this).hasClass('grid')) {
         //$('#container ul').removeClass('list').addClass('grid');

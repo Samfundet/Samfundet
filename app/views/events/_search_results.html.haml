@@ -4,13 +4,13 @@
     - if @events.present?
       #containersearchgridview
         - @events.group_by {|i| i.start_time.to_date }.sort.each do |date, events|
-          %h4.pl-3.p-1.title.white.bg-red= l(date, format: :medium_long)
-          .listview
-            %table
+          %h4.pl-3.p-1.mt-3.title.white.bg-red= l(date, format: :medium_long)
+          .listview.samf-container.mb-3{:style => "display:none;"}
+            %table.mb-3
               %tbody
                 = render events.sort_by{|event| event.start_time}
 
-          .gridview.flex-row.mt-3.m-2.wrap.upcoming-events{:style => "display:none;justify-content: flex-start;"}
+          .gridview.upcoming-events.flex-row.mt-3.wrap{:style => "justify-content: flex-start;"}
             -events.sort_by{|event| event.start_time}.each do |e|
               = render "events/event_style", event: e
 
