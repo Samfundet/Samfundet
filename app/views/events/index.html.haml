@@ -15,19 +15,17 @@
 
   .ajax-search
 
-  #containergridview
+  #containergridview.mt-3
     - @events.group_by {|i| i.start_time.to_date }.sort.each do |date, events|
+      %h4.pl-3.p-1.title.white.bg-red= l(date, format: :medium_long)
       .listview
-        %h4.pl-3.p-1.title.white.bg-red= l(date, format: :medium_long)
         %table
           %tbody
             = render events.sort_by{|event| event.start_time}
 
-      .gridview{:style => "display:none;"}
-        %h4.pl-3.p-1.title.white.bg-red= l(date, format: :medium_long)
-        .flex-row.mt-3.m-2.wrap.upcoming-events
-          -events.sort_by{|event| event.start_time}.each do |e|
-            = render "events/event_style", event: e
+      .gridview.upcoming-events.flex-row.mt-3.wrap{:style => "display:none;justify-content: flex-start;"}
+        -events.sort_by{|event| event.start_time}.each do |e|
+          = render "events/event_style", event: e
 
 
 
