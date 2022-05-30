@@ -24,6 +24,11 @@
     .samf-button.green.small.mb-2
       = t("admissions_admin.show_unflagged_applicants")+"..."
 
+  - if can? :manage, Admission and not @open_admissions.empty?
+    = link_to admissions_admin_admission_show_applicants_missing_interviews_path(@admission) do
+      .samf-button.blue.small.mb-2
+        = "Vis søkere med 3 eller flere søknader, med færre enn 3 intervjuer..."
+
   - if can? :manage, Campus and not @open_admissions.empty?
     -#campus-system should be worked on, its major fucksy wucksie
     = link_to admin_admissions_admin_campus_index_path do

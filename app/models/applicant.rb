@@ -52,7 +52,7 @@ class Applicant < ApplicationRecord
     interviews = []
 
     @job_applications.each do |j|
-      if j.interview.time? && j.job.admission == admission
+      if j.interview.time?
         interviews.push(j.interview)
       end
     end
