@@ -5,7 +5,7 @@
     = t("common.back")
 
 %h1
-  = "Søkere med 3 eller flere søknader, med færre enn 3 intervjuer"
+  = t("admissions_admin.three_applications")
 
 %hr
 
@@ -22,7 +22,7 @@
         %strong.mr-2= t("helpers.label.applicant.email") + ":"
         = applicant.email
     %h2
-      = "Søkeren mangler intervjuer for disse vervene:"
+      = t("admissions_admin.missing_job_interviews")
     - applicant.job_applications.each do |application|
       .application{id:"application-#{application.id}", class: "display-none #{application.interview.time ? '' : 'not_set display-not-set'}"}
         %p

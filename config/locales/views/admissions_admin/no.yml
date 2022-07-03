@@ -14,6 +14,9 @@
     applications_by_day_for_group: "Antall søknader per dag for %{group}"
     show_interested_other_positions: 'Interesserte søkere på andre verv'
     show_unflagged_applicants: 'Vis søkere som er satt til reserve eller som ikke har blitt satt enda'
+    show_less_three_interviews: 'Vis søkere med 3 eller flere søknader, med færre enn 3 intervjutider satt...'
+    missing_job_interviews: "Søkeren mangler intervjuer for disse vervene:"
+
     view_campus: "Vis alle campuser"
     reject_calls: "Søkere uten tilbud som %{group_name} må kontakte"
     remember_to_call: "INGEN LOGGFØRINGER, HUSK Å RING!"
@@ -29,6 +32,8 @@
     short_for_persons: "pers."
     applicant_dont_get_position: "Søkere som ikke får stilling, men som gjerne vil ha"
     reserved_applicants: "Søkere som er reservert må/bør klareres med gjengen som har reservert søkeren."
+    three_applications: "Søkere med 3 eller flere søknader, med færre enn 3 intervjutider satt:"
+
     reprioritisation_deadline: "Omprioriteringsfristen er ikke ute enda, kom tilbake etter"
     applicants_set_to_reserve: "Søkere som er satt til reserve, eller ikke satt enda"
     applications: "Søknader"

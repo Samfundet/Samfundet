@@ -14,6 +14,7 @@ en:
     applications_by_day_for_group: "Number of applications per day for %{group}"
     show_interested_other_positions: 'Show applicants that are interested in other positions'
     show_unflagged_applicants: 'Show applicants that are set to reserved or not yet flagged'
+    show_less_three_interviews: 'Show applicants with three or more applications, with less than three set interviews...'
     view_campus: "Show all campuses"
     reject_calls: "Applicants without any offers that %{group_name} has to call."
     remember_to_call: "NO LOG ENTRIES, REMEMBER TO CALL!"
@@ -29,6 +30,9 @@ en:
     short_for_persons: "ppl."
     applicant_dont_get_position: "Applicants who don't get a position, but would like to"
     reserved_applicants: "Applicants who is reserved have to/should be cleared with the group that has made the reservation."
+    three_applications: "Applicants with three or more applications, with less than three set interviews:"
+    missing_job_interviews: "The applicant is missing interviews for these jobs:"
+
     reprioritisation_deadline: "The reprioritisation deadline is not expired, please come back after"
     applicants_set_to_reserve: "Applicants who are reserved, or not yet flagged"
     applications: "Applications"
