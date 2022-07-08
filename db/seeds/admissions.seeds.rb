@@ -2,24 +2,24 @@ after :organizers do
   admission_title = "Høstopptak 2010"
 
   puts "Creating admissions"
-  #old_admission_1 = Admission.create!(
-  #    title: "Høstopptak 1917",
-  #    shown_from: 100.years.ago - 2.weeks,
-  #    shown_application_deadline: 100.years.ago,
-  #    actual_application_deadline: 100.years.ago + 4.hours,
-  #    user_priority_deadline: 100.years.ago + 1.week,
-  #    admin_priority_deadline: 100.years.ago + 1.week + 1.hour,
-  #    promo_video: "https://www.youtube.com/embed/T8MjwROd0dc"
-  #)
-  #old_admission_2 = Admission.create!(
-  #    title: "Våropptak 1985",
-  #    shown_from: 34.years.ago - 2.weeks,
-  #    shown_application_deadline: 34.years.ago,
-  #    actual_application_deadline: 34.years.ago + 4.hours,
-  #    user_priority_deadline: 34.years.ago + 1.week,
-  #    admin_priority_deadline: 34.years.ago + 1.week + 1.hour,
-  #    promo_video: "https://www.youtube.com/embed/T8MjwROd0dc"
-  #)
+  old_admission_1 = Admission.create!(
+      title: "Høstopptak 1917",
+      shown_from: 100.years.ago - 2.weeks,
+      shown_application_deadline: 100.years.ago,
+      actual_application_deadline: 100.years.ago + 4.hours,
+      user_priority_deadline: 100.years.ago + 1.week,
+      admin_priority_deadline: 100.years.ago + 1.week + 1.hour,
+      promo_video: "https://www.youtube.com/embed/T8MjwROd0dc"
+  )
+  old_admission_2 = Admission.create!(
+      title: "Våropptak 1985",
+      shown_from: 34.years.ago - 2.weeks,
+      shown_application_deadline: 34.years.ago,
+      actual_application_deadline: 34.years.ago + 4.hours,
+      user_priority_deadline: 34.years.ago + 1.week,
+      admin_priority_deadline: 34.years.ago + 1.week + 1.hour,
+      promo_video: "https://www.youtube.com/embed/T8MjwROd0dc"
+  )
   admission = Admission.create!(
     title: admission_title,
     shown_from: 1.week.ago,
