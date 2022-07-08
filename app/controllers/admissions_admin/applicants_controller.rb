@@ -10,7 +10,7 @@ class AdmissionsAdmin::ApplicantsController < AdmissionsAdmin::BaseController
 
   def show_applicants_missing_interviews
     @admission = Admission.find(params[:admission_id])
-    @applicants = Applicant.less_than_three_set_interviews
+    @applicants = Applicant.less_than_three_set_interviews(@admission)
   end
 
   def show_unflagged_applicants

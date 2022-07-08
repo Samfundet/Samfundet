@@ -47,12 +47,12 @@ class Applicant < ApplicationRecord
     self.hashed_password = BCrypt::Password.create(@password, cost: cost)
   end
 
-  def get_set_interviews
+  def get_set_interviews(admission)
     @job_applications = JobApplication.where(applicant_id: id)
     interviews = []
 
     @job_applications.each do |j|
-      if j.interview.time?
+      if j.interview.time? && j.job.admission == admission
         interviews.push(j.interview)
       end
     end
@@ -87,9 +87,9 @@ class Applicant < ApplicationRecord
     false
   end
 
-  def self.less_than_three_set_interviews
+  def self.less_than_three_set_interviews(admission)
     where(disabled: false).select do |applicant|
-      applicant.get_set_interviews.length < 3
+      applicant.get_set_interviews(admission).length < 3
     end
   end
 
