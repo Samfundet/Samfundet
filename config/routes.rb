@@ -169,6 +169,7 @@ Rails.application.routes.draw do
           end
         end
         get :show_interested_other_positions, to: 'applicants#show_interested_other_positions'
+        get :show_applicants_missing_interviews, to: 'applicants#show_applicants_missing_interviews'
         get :show_unflagged_applicants, to: 'applicants#show_unflagged_applicants'
         get :edit_applicant, to: 'applicants#edit_applicant'
 

@@ -9,17 +9,25 @@
   = link_to overview_admissions_admin_admission_path(@admission) do
     .samf-button.plain.mb-2
       = t("admissions_admin.overview_title")
+
+
   = link_to admissions_admin_admission_show_interested_other_positions_path(@admission) do
     .samf-button.blue.small.mb-2
       = t("admissions_admin.show_interested_other_positions")+"..."
+
+  - if can? :manage, Admission and not @open_admissions.empty?
+    = link_to admissions_admin_admission_show_applicants_missing_interviews_path(@admission) do
+      .samf-button.red.mb-2
+        = t("admissions_admin.show_less_three_interviews")
+
   = link_to admissions_admin_admission_show_unflagged_applicants_path(@admission) do
-    .samf-button.blue.small.mb-2
+    .samf-button.green.small.mb-2
       = t("admissions_admin.show_unflagged_applicants")+"..."
 
   - if can? :manage, Campus and not @open_admissions.empty?
     -#campus-system should be worked on, its major fucksy wucksie
     = link_to admin_admissions_admin_campus_index_path do
-      .samf-button.green
+      .samf-button.orange.small
         = t("admissions_admin.view_campus")
 
 %h1.mt-3.mb-2

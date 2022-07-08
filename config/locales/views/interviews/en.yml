@@ -27,6 +27,8 @@ en:
     applicant_email_address: "Email address"
     interview_time: "Interview time"
     interview_priority: "Priority"
+    applicant_ranking: "Applicant ranking"
+    interviews_set: "Interviews set"
     comment: "Comment"
     location: "Interview location"
     applicant_campus: "Campus"
