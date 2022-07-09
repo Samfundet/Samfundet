@@ -32,6 +32,7 @@
     short_for_persons: "pers."
     applicant_dont_get_position: "Søkere som ikke får stilling, men som gjerne vil ha"
     reserved_applicants: "Søkere som er reservert må/bør klareres med gjengen som har reservert søkeren."
+    no_applicants: "Alle søkere har tilstrekkelig antall intervjutider satt!"
     three_applications: "Søkere med 3 eller flere søknader, med færre enn 3 intervjutider satt:"
 
     reprioritisation_deadline: "Omprioriteringsfristen er ikke ute enda, kom tilbake etter"

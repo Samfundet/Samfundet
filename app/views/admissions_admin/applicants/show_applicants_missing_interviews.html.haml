@@ -6,9 +6,9 @@
 
 
 - if @applicants.blank?
-  %p
-    #{t('admissions_admin.reprioritisation_deadline')}
-    = l(@admission.admin_priority_deadline)
+  %h1
+    = t("admissions_admin.no_applicants")
+
 - else
   %h1
     = t("admissions_admin.three_applications")
