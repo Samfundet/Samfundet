@@ -63,7 +63,7 @@ class ApplicantsController < ApplicationController
         flash[:success] = t('applicants.update_success')
         redirect_to job_applications_path
       elsif current_user.roles.include? Role.super_user
-        flash[:success] = "Søkerinformasjon endret"
+        flash[:success] = t('applicants.forms.admin.update_success')
         redirect_to members_control_panel_path
       end
     else

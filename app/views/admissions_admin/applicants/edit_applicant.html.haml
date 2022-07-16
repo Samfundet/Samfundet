@@ -1,5 +1,5 @@
 
-%h1= "Rediger Søker '" + @applicant.firstname + " " + @applicant.surname + "'"
+%h1= t('applicants.forms.admin.edit_applicant') + @applicant.firstname + " " + @applicant.surname + "'"
 
 = semantic_form_for @applicant do |form|
   = form.semantic_errors :applicant
