@@ -1,6 +1,6 @@
 development:
   adapter: postgresql
-  host: localhost
+  host: db # Host defined in 'docker-compose.yml'.
   database: samfdb_dev
   pool: 5
   timeout: 5000
@@ -12,7 +12,7 @@ development:
 # Do not set this db to the same as development or production.
 test: &TEST
   adapter: postgresql
-  host: localhost
+  host: db # Host defined in 'docker-compose.yml'.
   database: samfdb_test
   pool: 5
   timeout: 5000
