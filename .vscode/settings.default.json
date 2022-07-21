@@ -1,0 +1,4 @@
+{
+    "files.autoSave": "onFocusChange",
+    "window.title": "🟥 ${activeEditorShort}${separator}${rootName}"
+}

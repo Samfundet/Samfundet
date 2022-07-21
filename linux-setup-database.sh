@@ -1,14 +1,14 @@
-#Check for updates
+# Check for updates.
 sudo apt update
 sudo apt upgrade
 
-#Make sure the default ruby version to use is Ruby 2.5.5
-rvm use 2.5.5 --default
+# Make sure the default ruby version to use is Ruby 2.5.5.
+rvm use 2.5.5 --default # From .ruby-version.
 
 #Install required ruby gems
 bundle install
 
-#Copy and paste the config files, and rename them
+# Copy and paste the config files, and rename them.
 if [ ! -e $CONFIG_DIR/database.yml ] &&
    [ ! -e $CONFIG_DIR/local_env.yml ] &&
    [ ! -e $CONFIG_DIR/billig.yml ] &&
@@ -16,8 +16,8 @@ if [ ! -e $CONFIG_DIR/database.yml ] &&
      make copy-config-files || exit
 fi
 
-#For setting up the database for the first time
+# For setting up the database for the first time.
 bundle exec rails db:setup
 
-#Run the server
+# Run the server.
 make run

@@ -4,14 +4,21 @@ Samfundet::Application.configure do
   # Settings specified here will take precedence over those in config/environment.rb
 
   # In the development environment your application's code is reloaded on
-  # every request.  This slows down response time but is perfect for development
+  # every request. This slows down response time but is perfect for development
   # since you don't have to restart the webserver when you make code changes.
   config.cache_classes = false
+
+  # Whitelist docker compose ips (might not be needed).
+  config.web_console.whitelisted_ips = '172.22.0.1/16'
 
   # Do not eager load code on boot.
   config.eager_load = false
 
-  # Show full error reports and disable caching
+  # Huge startup boost.
+  # https://github.com/rails/rails/issues/29319
+  config.assets.check_precompiled_asset = false
+
+  # Show full error reports and disable caching.
   config.consider_all_requests_local = true
 
   # Disable automatic asset invalidation to enable LiveGuard.
