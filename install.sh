@@ -95,7 +95,7 @@ do_action "I understand" "echo 'Here we go!'" "y"
 # https://github.com/pyenv/pyenv/wiki#suggested-build-environment
 echo ; echo ; echo ; echo "==============================================================="
 if [ $IS_UBUNTU == 0 ]; then
-    do_action "Attempt to install requirements (build-essential, procps, curl, file, git, ssh, sudo)" "sudo apt update -y ; sudo apt upgrade -y ; sudo apt install -y build-essential procps curl file git ssh sudo" $X_INTERACTIVE
+    do_action "Attempt to install requirements (build-essential, procps, curl, file, git, ssh)" "sudo apt update -y ; sudo apt upgrade -y ; sudo apt install -y build-essential procps curl file git ssh" $X_INTERACTIVE
 elif [ $IS_MAC == 0 ]; then
     do_action "Attempt to install requirements (curl, git)" "brew install git curl" $X_INTERACTIVE
     do_action "Install xcode-select" "xcode-select --install" $X_INTERACTIVE
@@ -103,7 +103,6 @@ fi
 
 # Fail if missing requirements.
 require "git"
-require "sudo"
 require "curl"
 require "ssh"
 require "file"
