@@ -8,8 +8,8 @@ Samfundet::Application.configure do
   # since you don't have to restart the webserver when you make code changes.
   config.cache_classes = false
 
-  # Might not be needed after all.
-  # config.web_console.whitelisted_ips = '172.22.0.1/24' # Whitelist docker compose ips.
+  # Whitelist docker compose ips (might not be needed).
+  config.web_console.whitelisted_ips = '172.22.0.1/16'
 
   # Do not eager load code on boot.
   config.eager_load = false
