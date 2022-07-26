@@ -379,8 +379,17 @@ if [ `ls Samfundet/README.md` ] ; then # Simple check if an arbitrary file exist
 
     # Build project.
     echo ; echo ; echo ; echo "==============================================================="
-    do_action "Build project (docker-compose build)?" "sudo docker compose build && sudo docker compose run app bundle exec rake db:drop db:create db:migrate db:seed" $X_INTERACTIVE
-
+    do_action "Build project?" "" $X_INTERACTIVE
+    if [ $? == 0 ]; then
+        if [ $IS_UBUNTU == 0 ]; then
+            sudo docker compose build
+            sudo docker compose run app bundle exec bash -c "rails db:environment:set RAILS_ENV=development; bundle exec rake db:drop db:create db:migrate db:seed"
+        elif [ $IS_MAC == 0 ]; then
+            # Mac doesn't need to use sudo.
+            docker compose build
+            docker compose run app bundle exec bash -c "rails db:environment:set RAILS_ENV=development; bundle exec rake db:drop db:create db:migrate db:seed"
+        fi
+    fi
 fi
 
 
@@ -406,8 +415,16 @@ echo
 echo "Remember to configure environment settings in file '.env'"
 echo
 echo "You can now run this command to start the project in a docker container:"
-echo "    $ sudo docker compose up"
+echo "    $ docker compose up"
 echo
 echo "NOTE: See Dockerfile for more useful commands."
 echo
-do_action "I can also start the project for you if you'd like" "sudo docker compose up" "y"
+do_action "I can also start the project for you if you'd like" "" "y"
+if [ $? == 0 ]; then
+    if [ $IS_UBUNTU == 0 ]; then
+        sudo docker compose up
+    elif [ $IS_MAC == 0 ]; then
+        # Mac doesn't need to use sudo.
+        docker compose up
+    fi
+fi
