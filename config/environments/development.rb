@@ -7,12 +7,17 @@ Samfundet::Application.configure do
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the webserver when you make code changes.
   config.cache_classes = false
-  config.web_console.whitelisted_ips = '172.22.0.1/24' # Whitelist docker compose ips.
+
+  # Might not be needed after all.
+  # config.web_console.whitelisted_ips = '172.22.0.1/24' # Whitelist docker compose ips.
 
   # Do not eager load code on boot.
   config.eager_load = false
 
-  # Show full error reports and disable caching
+  # Huge startup boost.
+  config.assets.check_precompiled_asset = false
+
+  # Show full error reports and disable caching.
   config.consider_all_requests_local = true
 
   # Disable automatic asset invalidation to enable LiveGuard.

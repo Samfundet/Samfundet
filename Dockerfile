@@ -29,7 +29,11 @@ RUN bundle install
 # Copy the project into image.
 COPY . /Samfundet
 
+# Set environment.
 ENV RAILS_ENV=development
+
+# Compile assets (might not be needed).
+RUN bundle exec rake assets:precompile
 
 # Expose port.
 EXPOSE 3000
