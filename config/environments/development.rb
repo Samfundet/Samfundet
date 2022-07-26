@@ -15,6 +15,7 @@ Samfundet::Application.configure do
   config.eager_load = false
 
   # Huge startup boost.
+  # https://github.com/rails/rails/issues/29319
   config.assets.check_precompiled_asset = false
 
   # Show full error reports and disable caching.
