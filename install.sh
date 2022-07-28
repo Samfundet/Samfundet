@@ -81,7 +81,7 @@ if [ $X_INTERACTIVE == "y" ]; then
     echo "  Questions annotated with (required) must run to succeed successfully."
 fi
 echo
-do_action "\"I understand\"" "echo '[🤖]: Here we go!'; sleep 1;" "y" || echo "[🤖]: That's okay, I can't read either 😔. See ya later!" || sleep 1 || exit
+do_action "\"I understand\"" "echo '[🤖]: Here we go!'; sleep 1;" "y" || eval "echo \"[🤖]: That's okay, I can't read either 😔. See ya later!\"; sleep 1; exit"
 ### End: Welcome ###
 
 
