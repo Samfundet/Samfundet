@@ -38,6 +38,9 @@ jobs:
 
       - name: Check running containers
         run: docker compose exec app echo # Will fail if container has exited due to error.
+      
+      - name: Run linting (rubocop)
+        run: docker compose exec app bundle exec rubocop --parallel # Will fail if container has exited due to error.
 
       - name: Stop containers
         run: docker compose down
