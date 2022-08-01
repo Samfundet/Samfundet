@@ -89,7 +89,7 @@ class Applicant < ApplicationRecord
 
   def self.less_than_three_set_interviews(admission)
     where(disabled: false).select do |applicant|
-      applicant.get_set_interviews(admission).length < 3 && !applicant.jobs_applied_to(admission).empty?
+      applicant.get_set_interviews(admission).length < 3 && applicant.jobs_applied_to(admission).length >= 3
     end
   end
 
