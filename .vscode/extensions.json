@@ -1,8 +1,8 @@
 {
   "recommendations": [
+    "rebornix.ruby",
     "eamodio.gitlens",
     "mikestead.dotenv",
-    "misogi.ruby-rubocop",
     "mrorz.language-gettext",
     "editorconfig.editorconfig",
     "yzhang.markdown-all-in-one",
