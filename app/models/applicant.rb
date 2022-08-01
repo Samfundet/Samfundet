@@ -48,11 +48,11 @@ class Applicant < ApplicationRecord
   end
 
   def get_set_interviews(admission)
-    @job_applications = JobApplication.where(applicant_id: id)
+    @job_applications = job_applications_for_admission(admission)
     interviews = []
 
     @job_applications.each do |j|
-      if j.interview.time? && j.job.admission == admission
+      if j.interview.time?
         interviews.push(j.interview)
       end
     end
@@ -89,7 +89,7 @@ class Applicant < ApplicationRecord
 
   def self.less_than_three_set_interviews(admission)
     where(disabled: false).select do |applicant|
-      applicant.get_set_interviews(admission).length < 3
+      applicant.get_set_interviews(admission).length < 3 && applicant.jobs_applied_to(admission).length >= 3
     end
   end
 
@@ -137,6 +137,10 @@ class Applicant < ApplicationRecord
 
   def jobs_applied_to(admission)
     job_applications.select { |application| application.job.admission == admission }.map(&:job)
+  end
+
+  def job_applications_for_admission(admission)
+    job_applications.select { |application| application.job.admission == admission }
   end
 
   def job_applications_at_group(admission, group)
