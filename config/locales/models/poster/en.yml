@@ -1,8 +1,0 @@
-en:
-  helpers:
-    models:
-      poster:
-        zero: "no posters"
-        one: "poster"
-        other: "posters"
-    #label:

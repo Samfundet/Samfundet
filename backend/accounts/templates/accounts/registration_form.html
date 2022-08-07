@@ -1,0 +1,69 @@
+{% extends 'rekenett/base.html' %}
+{% load static %}
+
+{% block title %}Opprett bruker{% endblock %}
+
+{% block head %}
+    <style>
+        #table-column {
+            min-width: 250px;
+            max-width: 600px;
+        }
+    </style>
+{% endblock %}
+
+{% block breadcrumbs %}
+    <li class="breadcrumb-item"><a href="{% url 'accounts:signup' %}">Registrering</a></li>
+{% endblock %}
+
+{% block body %}
+    <div class="">
+
+        <div class="row">
+            <div class="col-sm">
+
+            </div>
+            <div id="table-column" class="col-auto">
+                <h2>Lag bruker</h2>
+
+                <form class="" method="post">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <p>
+                            {{ field.label_tag }}
+                            {{ field }}
+                            {% if field.help_text %}
+                                <small class="text-secondary">{{ field.help_text }}</small>
+                            {% endif %}
+                            {% for error in field.errors %}
+                                <div class="text-danger">{{ error }}</div>
+                            {% endfor %}
+                        </p>
+                    {% endfor %}
+                    {% for error in form.non_field_errors %}
+                        <div class="text-danger">{{ error }}</div>
+                    {% endfor %}
+                    <button type="submit" class="btn btn-lg btn-primary btn-block">Opprett bruker</button>
+                </form>
+                <br>
+
+                <span>Har du allerede en bruker?</span>
+                <a href="{% url 'accounts:login' %}">Logg inn her</a>
+            </div>
+            <div class="col-sm">
+
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(function () {
+                $('[data-toggle="popover"]').popover()
+            })
+        })
+    </script>
+{% endblock %}

@@ -1,0 +1,80 @@
+name: Verify
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+# Prevent multiple workflows with same branch/pull_request.
+concurrency: 
+  group: ${{ github.ref_name }}
+  cancel-in-progress: true
+
+env:
+  PIPENV_VENV_IN_PROJECT: 1
+  ENV: development
+  SECRET_KEY: NOT SET
+  DJANGO_SETTINGS_MODULE: root.settings
+  DJANGO_SUPERUSER_USERNAME: admin
+  DJANGO_SUPERUSER_PASSWORD: Django123
+  DJANGO_SUPERUSER_EMAIL: admin@example.com
+
+jobs:
+
+  job_verify_tests:
+    name: Verify tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+    
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.10.5'
+          
+      - name: Install dependencies
+        run: |
+          python -V
+          PY=$(which python)
+          echo $PY
+          python -m pip install --upgrade pip
+          python -m pip install pipenv
+          python -m pipenv install --python $PY
+      
+      - name: Run pylint
+        run: python -m pipenv run ./run-pylint.sh 
+
+      - name: Check yapf
+        run: python -m pipenv run yapf --parallel --recursive --diff .
+
+      - name: Verify migrations
+        run: |
+          python -m pipenv run python manage.py makemigrations --check --dry-run
+          python -m pipenv run python manage.py migrate
+
+      - name: Run tests
+        run: python -m pipenv run pytest
+
+  job_verify_docker:
+    name: Verify docker
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup initial files
+        run: cp .env.example .env
+    
+      - name: Build images
+        run: docker compose build
+          
+      - name: Start containers
+        run: docker compose up -d; sleep 5 # Give additional 5 seconds to boot. 
+
+      - name: Check running containers
+        run: docker compose exec app echo # Will fail if container isn't running.
+      
+      - name: Stop containers
+        run: docker compose down

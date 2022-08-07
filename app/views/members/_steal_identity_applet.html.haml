@@ -1,8 +1,0 @@
-.top
-  %h2= t("members.steal_identity")
-.options
-  = form_tag members_steal_identity_path, method: "post", class: "custom-form" do
-    %p
-      = text_field_tag :member_id, nil, placeholder: t("members.search_placeholder"), class: "textfield member_autocomplete", required: true
-    %p
-      = submit_tag t("members.steal_identity_button")

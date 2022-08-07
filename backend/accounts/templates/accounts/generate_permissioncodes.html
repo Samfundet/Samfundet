@@ -1,0 +1,47 @@
+{% extends 'rekenett/base.html' %}
+{% load static %}
+
+{% block title %}Opprett Koder{% endblock title %}
+
+{% block head %}
+    <style media="screen">
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class ="container text-center mb-4">
+      <div class="display-3">Generer koder</div>
+      <div class="p">Her finner du, og kan generere koder for de ulike rettighetsklassene</div>
+      <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="group_id" value="-1"></input>
+        <button class="btn btn-pink my-2" type="submit">Oppdater alle koder</button>
+      </form>
+    </div>
+    <div class ="container">
+      {% for g in groups %} 
+      <div class="row mb-1"> 
+        <div class= "col-5 bg-darkest">
+          <div class="lead">
+            {{g}}
+          </div>
+        </div>
+        <div class= "col-6 bg-darker">
+          <div class="lead">
+            {{g.permissioncode.secret|default:"Ingen kode"}}
+          </div>
+        </div>
+        <div class= "col-1 p-0 bg-darker">
+        <form method="post">
+          {% csrf_token %}
+          <input type="hidden" name="group_id" value="{{g.id}}"></input>
+          <button class="btn btn-block btn-pink" type="submit">Ny</button>
+        </form>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}
+
+{% block scriptblock %}
+{% endblock %}

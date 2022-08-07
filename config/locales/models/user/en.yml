@@ -1,7 +1,0 @@
-en:
-  helpers:
-    models:
-      user:
-        one: "user"
-        other: "users"
-  

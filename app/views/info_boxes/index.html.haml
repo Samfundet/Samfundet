@@ -1,8 +1,0 @@
-%h1
-  = t("info_boxes.title")
-- @info_boxes.each do |info_box|
-  = render "site/info_box", info_box: info_box
-
-= link_to new_info_box_path do
-  .samf-button.green.center
-    = t("info_boxes.new")

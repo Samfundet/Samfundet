@@ -1,9 +1,0 @@
-en:
-  formtastic:
-    titles:
-      general: General
-      image: Image
-
-    hints:
-      image:
-        tagstring: "Tags need to be separated by ', ', e.g. 'tag1, tag2, tag3'"

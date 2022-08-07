@@ -1,0 +1,45 @@
+[MASTER]
+load-plugins=pylint_django,pylint_quotes,backend.root.named_arguments_checker
+ignore=migrations
+max-line-length=160
+include-naming-hint=y
+variable-rgx=(([a-z_]+[a-z0-9_]*)|(_[a-z0-9_]*)|(__[a-z][a-z0-9_]+__))$
+argument-rgx=(([a-z_]+[a-z0-9_]*)|(_[a-z0-9_]*)|(__[a-z][a-z0-9_]+__))$
+method-rgx=(([a-z_]+[a-z0-9_]*)|(_[a-z0-9_]*)|(__[a-z][a-z0-9_]+__))$
+attr-rgx=(([a-z_]+[a-z0-9_]*)|(_[a-z0-9_]*)|(__[a-z][a-z0-9_]+__))$
+
+[pylint-django]
+django-settings-module=backend.root.settings
+
+[pylint-quotes]
+string-quote=single-avoid-escape
+triple-quote=double
+docstring-quote=double
+
+# single-avoid-escape is a less strict that allows fo example:
+# my_var = "String containing 'single' quotes"
+
+[LOGGING]
+logging-format-style=new
+
+[MESSAGES CONTROL]
+
+disable=
+    missing-module-docstring, missing-class-docstring, missing-function-docstring, # We don't require docstrings
+    fixme,
+    no-member, # BUG: added indefinitely because it suddenly caused many errors
+    duplicate-code,
+    too-many-ancestors,
+    too-many-instance-attributes,
+    too-few-public-methods,
+    too-many-public-methods,
+    too-many-arguments,
+    too-many-locals,
+    too-many-statements,
+    unsubscriptable-object, # https://github.com/PyCQA/pylint/issues/1498
+    used-before-assignment, # False positive for imported things when TYPE_CHECKING
+    logging-fstring-interpolation,
+    ; django-not-configured, # django-settings-module=backend.root.settings doesn't work
+
+# ignore these argument names on the rule 'unused-arguments'
+ignored-argument-names=args|kwargs|request

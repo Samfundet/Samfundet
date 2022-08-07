@@ -1,6 +1,0 @@
-en:
-  helpers:
-    models:
-      job_application:
-        one: "application"
-        other: "applications"

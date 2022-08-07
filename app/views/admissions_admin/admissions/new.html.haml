@@ -1,8 +1,0 @@
-- set_title t('admissions.new_admission_title')
-
-.section
-  %h2= t('admissions.new_admission_heading')
-  != render partial: "form", locals: { admission: @admission }
-  %p
-    = link_to admissions_path do
-      = "« #{T('common.back')}"

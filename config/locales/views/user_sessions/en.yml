@@ -1,5 +1,0 @@
-en:
-  user_sessions:
-    new:
-      title: "Login"
-      available_admission: "Samfundet currently has active %{link_to_admissions}. You must therefore choose what to log in as."

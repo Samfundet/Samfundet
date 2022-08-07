@@ -1,24 +1,3 @@
-*.bak
-*.tmp
-*.swp
-*.kpf
-*.komodoproject
-*~
-.rvmrc
-.ruby-version
-.keep
-
-*.sql
-*.sqlite3
-*.sqlite3-journal
-
-*.log
-
-config/database.yml
-config/billig.yml
-config/initializers/secret_token.rb
-config/secrets.yml
-config/local_env.yml
 log
 tmp/**
 *cache*
@@ -35,25 +14,43 @@ public/javascripts/all.js
 public/stylesheets/all.css
 public/upload/
 
+docs/diagrams/
+
+
+### Logs ###
+logs
+*.log
+.log
+
+### Virtual environment ###
+.venv
+venv
+.env
+
+### Django ###
+*.sqlite3
+local_settings.py
+staticroot/
+secret_settings.py
+mediaroot
+__pycache__
+.pytest_cache
+*.pyc
+*.pyo
+
+# Note that heroku is stateless and needs all files
+
+.history
+
+### MacOS ###
 .DS_Store
 
-rerun.txt
-
-/mockups/
-
-Rakefile-MF
-app/models/opptak.rb
-vendor/plugins/visualize_models/
-vendor/plugins/yUMLmeRails/
-vendor/ruby/
-vendor/bundle/
-coverage
-
-.bundle/
-
-
-.loadpath
-
-webrat-*.html
-
-docs/diagrams/
+### VisualStudioCode ###
+# ignore everything unless explicitly added ('!' prefixed)
+.vscode/**/*
+!.vscode/settings.emil.json
+!.vscode/extensions.json
+!.vscode/extensions.recommended.json
+!.vscode/launch.json
+!.vscode/settings.default.json
+!.vscode/settings.suggestions.json

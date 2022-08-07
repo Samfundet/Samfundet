@@ -1,0 +1,320 @@
+@import "colors.scss";
+
+$xs: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+$xxl: 1400px;
+// cursors
+.cursor-pointer {
+    cursor: pointer;
+}
+.cursor-default {
+    cursor: default;
+}
+.cursor-n-resize {
+    cursor: n-resize;
+}
+// End: cursors ----------------------------------------------------------------
+
+// borders
+.border-bottom-double {
+    border-bottom: 6px double !important;
+}
+.border-sm {
+    border-width: 2px !important;
+}
+.border-lg {
+    border-width: 10px !important;
+}
+.border-groove {
+    border-style: groove !important;
+}
+.border-pink {
+    border-color: $pink !important;
+}
+.border-darkest {
+    border-color: $darkest !important;
+}
+.border-black-light {
+    border-color: $black-light !important;
+}
+// End: borders ----------------------------------------------------------------
+
+// rounded
+.rounded-xl {
+    border-radius: 1rem !important;
+}
+.rounded-bottom-xl {
+    border-bottom-right-radius: 1rem !important;
+    border-bottom-left-radius: 1rem !important;
+}
+// End: rounded ----------------------------------------------------------------
+
+// bg
+.bg-none {
+    background-color: rgba(0,0,0,0) !important;
+}
+.bg-pink {
+    background-color: $pink !important;
+}
+.bg-blur {
+    background-color: rgba(0,0,0,0) !important;
+    backdrop-filter: blur(9px) !important;
+    -webkit-backdrop-filter: blur(9px) !important;
+}
+.bg-dark-blur {
+    background-color: rgba(0,0,0, 0.9) !important;
+    backdrop-filter: blur(9px) !important;
+    -webkit-backdrop-filter: blur(9px) !important;
+}
+.bg-danger-blur {
+    background-color: rgba(255,0,0, 0.1) !important;
+    backdrop-filter: blur(9px) !important;
+    -webkit-backdrop-filter: blur(9px) !important;
+}
+.bg-primary-blur {
+    background-color: rgba(0,0,255, 0.1)!important;
+    backdrop-filter: blur(9px)!important;
+    -webkit-backdrop-filter: blur(9px)!important;
+}
+.bg-success-blur {
+    background-color: rgba(0,255,0, 0.1)!important;
+    backdrop-filter: blur(9px)!important;
+    -webkit-backdrop-filter: blur(9px)!important;
+}
+.bg-info-blur {
+    background-color: rgba(0,255,255, 0.1)!important;
+    backdrop-filter: blur(9px)!important;
+    -webkit-backdrop-filter: blur(9px)!important;
+}
+.bg-warning-blur {
+    background-color: rgba(255,255,0, 0.1)!important;
+    backdrop-filter: blur(9px)!important;
+    -webkit-backdrop-filter: blur(9px)!important;
+}
+.bg-secondary-blur {
+    background-color: rgba(150,150,150, 0.1)!important;
+    backdrop-filter: blur(9px)!important;
+    -webkit-backdrop-filter: blur(9px)!important;
+}
+.bg-pink-blur {
+    background-color: $pink !important;
+    backdrop-filter: blur(9px) !important;
+    -webkit-backdrop-filter: blur(9px) !important;
+}
+.bg-light-blur {
+    background-color: rgba(255,255,255, 0.7)!important;
+    backdrop-filter: blur(9px)!important;
+    -webkit-backdrop-filter: blur(9px)!important;
+}
+.bg-darker {
+    background-color: $darker !important;
+}
+
+.bg-darkest  {
+    background-color: $darkest !important;
+}
+.bg-black {
+    background-color: $black !important;
+}
+.bg-black-light {
+    background-color: $black-light !important;
+}
+// End: bg ---------------------------------------------------------------------
+
+// text / font
+.text-pink {
+    color: $pink !important;
+}
+.text-underline {
+    text-decoration: underline;
+}
+.text-grey {
+    color: $grey-light !important;
+}
+.font-bold {
+    font-weight: bold;
+}
+// End: text / font ------------------------------------------------------------
+
+// btn
+.btn-pink {
+    background-color: $pink !important;
+    color:white !important;
+    &:hover {
+        background-color: $pink-light !important;
+        color: black !important;
+    }
+    &:active {
+        background-color: $pink-dark !important;
+    }
+    &:focus {
+        background-color: $pink-dark !important;
+    }
+    &.active {
+         background-color: $pink-dark !important;
+    }
+}
+.sticky-top {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 50px !important;
+    z-index: 1020;
+}
+.sticky-top--2 {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 64px !important;
+    z-index: 1020;
+}
+.position-lg-fixed  { 
+  @media (min-width: $lg) {
+    position: fixed !important;
+  } 
+  @media (max-width: $lg) {
+    position: static !important;
+  } 
+}
+
+.btn-darker {
+    background-color: $darker !important;
+    color:white !important;
+    &:hover {
+        background-color: $darkest !important;
+        color: $grey-light !important;
+    }
+    &:active {
+        background-color: $darkest !important;
+    }
+    &:focus {
+        background-color: $darkest !important;
+    }
+    &.active {
+         background-color: $darkest !important;
+    }
+}
+// End: btn --------------------------------------------------------------------
+
+// lists
+.list-style-none {
+    list-style-type: none !important;
+}
+// End: lists ------------------------------------------------------------------
+
+// others
+.zoom-light {
+    transition: transform .09s;
+    .zoom-hidden {
+        display: none;
+        z-index: auto;
+    }
+}
+.zoom-light:hover {
+    transform: scale(1.01); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    /* background-color: rgba(255, 255, 255, 0.9); */
+    // filter: brightness(10%);
+    .zoom-hidden {
+        display: block;
+        z-index: inherit;
+    }
+}
+
+// End: others -----------------------------------------------------------------
+
+.display-5 {
+    font-size: 2.25rem;
+    font-weight: 300;
+    line-height: 1.2;
+}
+.display-6 {
+    font-size: 1.6rem;
+    font-weight: 200;
+    line-height: 1;
+}
+
+.top-right {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+.rounded-top-left {
+    border-top-left-radius: 6px;
+}
+.bottom-right {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+.top {
+    position: absolute;
+    top: 0px;
+}
+.bottom {
+    position: absolute;
+    bottom: 0px;
+}
+.bottom-half-under {
+    position: absolute;
+    bottom: -16px;
+}
+
+.reverse-image-fluid {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.grid-item-4 { 
+    @media (min-width: $md) {
+        width: 50%;
+    } 
+    @media (min-width: $lg) {
+        width: 33%;
+    } 
+    @media (min-width: $xl) {
+        width: 25%;
+    }
+    @media (max-width: $md) {
+        width: 100%;
+    } 
+}
+
+.grid-item-2 { 
+    @media (min-width: $lg) {
+        width: 50%;
+    } 
+    @media (max-width: $lg) {
+        width: 100%;
+    } 
+}
+.grid-item-3 { 
+  @media (min-width: $md) {
+      width: 100%;
+  } 
+  @media (min-width: $lg) {
+      width: 50%;
+  } 
+  @media (min-width: $xl) {
+      width: 33%;
+  }
+}
+  
+
+.scroll-y {
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+        width:none;
+    }
+}
+/*
+::-webkit-scrollbar {
+    width: 0.4em;
+    height: 0.4em;
+}
+::-webkit-scrollbar-thumb {
+    background-color: $pink;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-track-piece {
+    background-color: black;
+}*/

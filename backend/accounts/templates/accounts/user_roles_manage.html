@@ -1,0 +1,110 @@
+{% extends 'rekenett/base.html' %}
+{% load static %}
+{% load rekenett_tags %}
+{% load gallery_tags %}
+{% block title %}Behandle medlemsroller{% endblock title %}
+
+{% block head %}
+{% endblock head %}
+
+{% block body %}
+  <div class="container">
+    <div class="mb-3">
+      <div class="text-center display-4">Roller</div>
+      <div class="text-center text-muted">Sett roller</div>
+      <div class="text-center p-2">
+          <a class="px-2" href="{% url 'accounts:member_roles_users' %}">Endre brukere</a>
+        {% if perms.departments.can_add_members %}
+          <a class="px-2" href="{% url 'rekenett:departments:manage_member_list' %}">Endre seksjoner</a>
+        {% endif %}
+      </div>
+    </div>
+    {% for member_role in member_roles %}
+      <div class="bg-darker mb-1" id="role-{{member_role.member_role.id}}">
+        <div class="bg-darkest m-0 p-2">
+          <div class="lead ml-2">
+          {% if member_role.member_role.department %} 
+            <b class="text-pink">{{member_role.member_role.department}}</b> -
+          {% endif %}
+           {{member_role.member_role.title}}
+          </div>
+        </div>
+
+        <div class="p-2">
+          {% for membership_form in member_role.member_ships %}
+            <div class="row m-0 p-0">
+              <form method="post" class="col row m-0 my-2 px-0">
+                {% csrf_token %}
+                <input type="hidden" name="update_membership"/>
+                <input type="hidden" name="id" value="{{membership_form.instance.id}}"/>
+                <input type="hidden" name="member_role" value="{{membership_form.instance.member_role.id}}"/>
+                <input type="hidden" name="user" value="{{membership_form.instance.user.id}}"/>
+                <div class="col input-group px-0 mb-2">
+                  <div class="row m-0 px-0 align-content-center">
+                    <img style="height:32px;width: 32px;"src="{% profile_picture membership_form.instance.user %}"/>
+                    <div class="p ml-2">{{membership_form.instance.user.get_full_name}}</div>
+                  </div>
+                </div>
+                <div class="col input-group mb-2">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text bg-dark text-light border-0">{{ membership_form.start.label }}</div>
+                  </div>
+                  {{membership_form.start}}
+                </div>
+                <div class="col input-group mb-2">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text bg-dark text-light border-0">{{ membership_form.end.label }}</div>
+                  </div>
+                  {{membership_form.end}}
+                  
+                </div>
+                <div class="col-2 m-0">
+                  <button type="submit" class="btn btn-pink btn-block">Oppdater</button>
+                </div>
+              </form>
+              <div class="col-auto px-2 m-0">
+                  <form method="POST" action="{% url 'accounts:delete_membership' membership_form.instance.id %}">
+                      {% csrf_token%}
+                      <button class="btn btn-danger mt-2 btn-small" type="submit" onclick="return confirm('Sikker på du vil fjerne denne rollen?')">
+                        Fjern
+                      </button>
+                  </form>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        <form method="post" class="row bg-darkest p-0 m-0 my-2 py-2" href="#role-{{member_role.member_role.id}}">
+          {% csrf_token %}
+          <input type="hidden" name="new_membership"/>
+          <input type="hidden" name="member_role" value="{{member_role.member_role.id}}"/>
+          <div class="col input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text bg-dark text-light border-0">{{ member_role.plain_form.user.label }}</div>
+            </div>
+            {{member_role.plain_form.user}}
+          </div>
+          <div class="col input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text bg-dark text-light border-0">{{ member_role.plain_form.start.label }}</div>
+            </div>
+            {{member_role.plain_form.start}}
+          </div>
+          <div class="col input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text bg-dark text-light border-0">{{ member_role.plain_form.end.label }}</div>
+            </div>
+            {{member_role.plain_form.end}}
+          </div>
+          <div class="col">
+            <button type="submit" href="#role-{{member_role.member_role.id}}" class="btn btn-success btn-block">Gi rolle</button>
+          </div>
+        </form>
+      </div>
+
+
+    {% endfor %}
+  </div>
+{% endblock %}
+
+{% block scripts %}
+{% endblock scripts %}

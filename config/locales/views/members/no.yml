@@ -1,8 +1,0 @@
-'no':
-  members:
-    control_panel: "Kontrollpanel"
-    steal_identity: "Stjel identiteten til medlem"
-    steal_identity_button: "Stjel identitet"
-    search_placeholder: "Navn/ID/E-post"
-    access: "Tilgang"
-    access_description: "Har du ikke tilgang til en tjeneste du burde hatt tilgang til? Spør gjenglederen din for å få tilgang."

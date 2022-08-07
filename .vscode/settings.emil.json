@@ -1,0 +1,32 @@
+{
+  "files.autoSave": "onFocusChange",
+  "editor.formatOnSave": true,
+  "python.linting.pylintPath": "${workspaceFolder}/.venv/bin/pylint",
+  "python.envFile": "${workspaceFolder}/.env",
+  // "python.linting.pylintArgs": [
+  //   "--django-settings-module",
+  //   "${workspaceFolder}/root.settings",
+  //   "--rcfile",
+  //   "${workspaceFolder}/.pylintrc",
+  //   "--init-hook",
+  //   "from pylint.config import find_pylintrc; import os, sys; sys.path.append(os.path.dirname(find_pylintrc()))"
+  // ],
+  // Hide import regions automatically, e.g. (.js)
+  // Automatically set filetype when opening a new file.
+  // This setting determines new filetype based on the current focused file. 
+  "files.defaultLanguage": "${activeEditorLanguage}",
+  // Change layout of the upper title
+  "window.title": "🟥 ${activeEditorShort}${separator}${rootName}",
+  "html.format.enable": false,
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": true,
+  "python.testing.pytestEnabled": true,
+  "python.formatting.provider": "yapf",
+  // "python.linting.pylintPath": "pylint"
+  "workbench.colorCustomizations": {
+    "titleBar.activeForeground": "#000",
+    "titleBar.activeBackground": "#ff2222",
+    "titleBar.inactiveBackground": "#ff2222",
+    "editorCursor.foreground": "#ff2222"
+  }
+}

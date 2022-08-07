@@ -1,5 +1,0 @@
-"no":
-  user_sessions:
-    new:
-      title: "Logg inn"
-      available_admission: "Samfundet har for tiden %{link_to_admissions}. Du må derfor velge hva du logger inn som."

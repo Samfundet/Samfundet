@@ -1,0 +1,8 @@
+**/.git
+**/__pycache__
+**/.pytest_cache
+**/*.log
+venv
+.venv
+.history
+*.sqlite3

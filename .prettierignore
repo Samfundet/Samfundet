@@ -1,0 +1,7 @@
+**/templates/
+**/static/
+**/staticroot/
+**/venv/
+**/.venv/
+.pytest_cache
+.yapfignore

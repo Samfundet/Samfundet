@@ -1,6 +1,0 @@
-en:
-  helpers:
-    models:
-      group_type:
-        one: "group type"
-        other: "group types"

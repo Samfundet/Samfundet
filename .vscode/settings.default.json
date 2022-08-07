@@ -1,0 +1,12 @@
+{
+    "html.format.enable": false,
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.testing.pytestEnabled": true,
+    "python.formatting.provider": "yapf",
+    "python.linting.pylintPath": "${workspaceFolder}/.venv/bin/pylint",
+    "python.linting.pylintArgs": [
+        "--init-hook",
+        "from pylint.config import find_pylintrc; import os, sys; sys.path.append(os.path.dirname(find_pylintrc()))"
+    ]
+}

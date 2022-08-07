@@ -1,8 +1,0 @@
-en:
-  search:
-    results: 
-      one: "1 result"
-      other: "%{count} results"
-    no_results: "No results"
-    submit: "Search"
-

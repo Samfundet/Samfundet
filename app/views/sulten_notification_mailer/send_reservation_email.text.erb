@@ -1,8 +1,0 @@
-<%= t("sulten.reservation.hi") + " " + @reservation.first_name + "! " + t("sulten.reservation.success.line1") %>
-<%= t("sulten.reservation.summary.date") + ": " %><%= I18n.l(@reservation.reservation_from, format: :long) %>-<%= I18n.l(@reservation.reservation_to, format: :time) %>
-<%= t("sulten.reservation.people") + ": " + @reservation.people.to_s %>
-<%= t("sulten.reservation.reservation_type") + ": " + @reservation.reservation_type.to_s %>
-<%= t("sulten.reservation.other_messages") + ": " + @reservation.allergies %>
-<%= t("sulten.reservation.telephone") + ": " + @reservation.telephone %>
-
-<%= t("sulten.reservation.form.intro3") + "lyche@samfundet.no" %>

@@ -1,11 +1,20 @@
-version: '3.1'
+version: "3.9"
 
-services:
-  db:
-    image: postgres
-    restart: always
-    environment:
-      POSTGRES_USER: samfundet
-      POSTGRES_PASSWORD: ${SAMFDB_DEV_PASS}
+services: # docker syntax
+
+  # Custom name for our service (container to build)
+  app:
+    build: . # Build in the context of this directory (meaning: use Dockerfile, .dockerignore etc.)
+    # image: samfundet/rekenett # Specify which image to build from.
+    volumes:
+      - .:/app # Share project code between host machine and container to enable reload on changes.
+      - ignore_venv:/app/.venv # Prevent previous mount from copying .venv. 
+      - ignore_database:/app/database # Prevent previous mount from copying database. 
+    env_file:
+    - ./.env
     ports:
-      - "5432:5432"
+      - "8000:8000" # Quotes are required.
+
+volumes:
+  ignore_venv: # Declare shared volume.
+  ignore_database: # Declare shared volume.

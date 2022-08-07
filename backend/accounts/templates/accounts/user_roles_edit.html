@@ -1,0 +1,147 @@
+{% extends 'rekenett/base.html' %}
+{% load static %}
+{% load rekenett_tags %}
+{% load gallery_tags %}
+{% block title %}Sett medlemsroller{% endblock title %}
+
+{% block head %}
+{% endblock head %}
+
+{% block body %}
+    <div class="container p-0 bg-darker">
+      <div class="row bg-darkest m-0 p-0 align-content-center">
+        <img style="height:128px;width: 128px;"src="{% profile_picture user %}"/>  
+          <div>                  
+          <div class="display-3 ml-2">{{user.get_full_name}}</div>
+          <div class="ml-3 text-muted">Sett roller og seksjoner</div>
+          </div>
+      </div>
+      <div class="">
+        <div class="display-4 text-center">Roller</div>
+      </div>
+      {% for form in forms %}
+      <div class="row m-0 p-0">
+        <form method="post" class="col row m-0 my-2 pr-0">
+          {% csrf_token %}
+          <input type="hidden" name="id" value="{{form.instance.id}}"/>
+          <input type="hidden" name="member_role" value="{{form.instance.member_role.id}}"/>
+          <input type="hidden" name="user" value="{{form.instance.user.id}}"/>
+          <input type="hidden" name="update_role"/>
+          <div class="col input-group mb-2 lead ">
+                {{form.instance.member_role.title}}
+          </div>
+          <div class="col input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text bg-dark text-light border-0">{{ form.start.label }}</div>
+            </div>
+            {{form.start}}
+          </div>
+          <div class="col input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text bg-dark text-light border-0">{{ form.end.label }}</div>
+            </div>
+            {{form.end}}
+            
+          </div>
+          <div class="col m-0">
+            <button type="submit" class="btn btn-pink btn-block">Oppdater</button>
+          </div>
+        </form>
+        <div class="col-auto px-2 m-0">
+            <form method="POST" action="{% url 'accounts:delete_membership' form.instance.id %}">
+                {% csrf_token%}
+                <button class="btn btn-danger mt-2 btn-small" type="submit" onclick="return confirm('Sikker på du vil fjerne denne rollen?')">
+                  Fjern
+                </button>
+            </form>
+        </div>
+      </div>
+      {% endfor %}
+      <form method="post" class="row bg-darkest p-0 m-0 my-2 py-2">
+        {% csrf_token %}
+        <input type="hidden" name="user" value="{{user.id}}"/>
+        <input type="hidden" name="new_role"/>
+        <div class="col input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text bg-dark text-light border-0">{{ new_form.member_role.label }}</div>
+          </div>
+          {{new_form.member_role}}
+        </div>
+        <div class="col input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text bg-dark text-light border-0">{{ new_form.start.label }}</div>
+          </div>
+          {{new_form.start}}
+        </div>
+        <div class="col input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text bg-dark text-light border-0">{{ new_form.end.label }}</div>
+          </div>
+          {{new_form.end}}
+        </div>
+        <div class="col">
+          <button type="submit" class="btn btn-success btn-block">Gi ny rolle</button>
+        </div>
+      </form>
+      <div class="">
+        <div class="display-4 text-center">Seksjoner</div>
+              <div class="p-2">
+        {% for form in department_edit_forms %}
+        <div class="row m-0 p-0">
+          <form method="post" class="col row m-0 my-2 pr-0">
+            {% csrf_token %}
+            <input type="hidden" name="id" value="{{form.instance.id}}"/>
+            <input type="hidden" name="user" value="{{form.instance.user.id}}"/>
+            <input type="hidden" name="department" value="{{form.instance.department.id}}"/>
+            <input type="hidden" name="update_member"/>
+            <div class="col input-group mb-2 lead ">
+                {{form.instance.department.title}}
+            </div>
+            <div class="col input-group mb-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text bg-dark text-light border-0">{{ form.term_joined.label }}</div>
+              </div>
+              {{form.term_joined}}
+            </div>
+            <div class="col m-0">
+              <button type="submit" class="btn btn-pink btn-block">Oppdater</button>
+            </div>
+          </form>
+          <div class="col-auto px-2 m-0">
+              <form method="POST" action="{% url 'rekenett:departments:delete_member' member_id=form.instance.id %}">
+                  {% csrf_token%}
+                  <button class="btn btn-danger mt-2 btn-small" type="submit" onclick="return confirm('Sikker på du vil fjerne dette medlemskapet?')">
+                    Fjern
+                  </button>
+              </form>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <form method="post" class="row bg-darkest p-0 m-0 my-2 py-2">
+        {% csrf_token %}
+        <input type="hidden" name="user" value="{{user.id}}"/>
+        <input type="hidden" name="new_member"/>
+        <div class="col input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text bg-dark text-light border-0">{{ new_department_form.department.label }}</div>
+          </div>
+          {{new_department_form.department}}
+        </div>
+        <div class="col input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text bg-dark text-light border-0">{{ new_department_form.term_joined.label }}</div>
+          </div>
+          {{new_department_form.term_joined}}
+        </div>
+        <div class="col">
+          <button type="submit" class="btn btn-success btn-block">Legg til</button>
+        </div>
+      </form>
+        
+      </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+{% endblock scripts %}

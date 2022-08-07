@@ -1,0 +1,92 @@
+{% extends 'rekenett/base.html' %}
+{% load static %}
+{% load compress %}
+
+{% block title %}Index{% endblock %}
+
+{% block head %}
+    <style media="screen">
+        .app {
+            height: 45vh;
+            filter: brightness(0.8);
+        }
+        .zoom {
+          transition: transform .09s;
+        }
+        .zoom:hover {
+          transform: scale(1.01);
+        }
+        .zoom-shine:hover {
+          filter: brightness(1.3);
+        }
+        #app-barsystem {
+            background-image: url("https://wallpaperaccess.com/full/1105642.jpg");
+            background-size: cover;
+            background-position: right;
+          }
+          #app-rekenett {
+            background-image: url("{% static "rekenett/img/mg-title-nopadding.png" %}");
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        .space {
+            height: 55%;
+        }
+        
+        .app-title {
+            transition: background-color .4s, opacity .4s;
+            color: black;
+            justify-content: flex-end;
+            opacity: 0;
+        }
+        .app-title-wrapper:hover .app-title {
+            background-color: rgba(255,255,255, 0.2);
+            opacity: 1;
+            backdrop-filter: blur(5px);
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+
+<div class="body-inner">
+
+    <div class="row">
+        <!--
+
+          <div class="col col-md m-2">
+            <a href="{% url 'nbb:index' %}">
+              <div id="app-barsystem" class="app app-title-wrapper border border-secondary rounded-xl zoom zoom-shine p-0">
+                <div class="space"></div>
+                <div class="app-title py-3">
+                  <h1 class="h1 text-center">Barsystem</h1>
+                </div>
+              </div>
+            </a>
+          </div>
+          
+          <div class="col col-md m-2">
+            <a class="" href="{% url 'rekenett:index' %}">
+              <div id="app-rekenett" class="app app-title-wrapper border border-secondary rounded-xl zoom zoom-shine p-0">
+                <div class="space"></div>
+                <div class="app-title py-3">
+                  <h1 class="h1 text-center">Rekenett</h1>
+                </div>
+              </div>
+            </a>
+          </div>
+        -->
+        
+    </div>
+    
+    
+</div>
+{% endblock body %}
+
+{% block scripts %}
+    <script type="text/javascript">
+        
+    </script>
+{% endblock %}
