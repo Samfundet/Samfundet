@@ -92,5 +92,4 @@ class MembersController < ApplicationController
   end
 
   def access_applet; end
-
 end

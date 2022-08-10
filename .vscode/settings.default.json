@@ -1,0 +1,6 @@
+{
+    // Autosave.
+    "files.autoSave": "onFocusChange",
+    // Change layout of the upper title.
+    "window.title": "🟥 ${activeEditorShort}${separator}${rootName}"
+}

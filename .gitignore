@@ -5,7 +5,6 @@
 *.komodoproject
 *~
 .rvmrc
-.ruby-version
 .keep
 
 *.sql
@@ -57,3 +56,15 @@ coverage
 webrat-*.html
 
 docs/diagrams/
+
+.history
+.env
+
+### VisualStudioCode ###
+# ignore everything unless explicitly added ('!' prefixed)
+.vscode/**/*
+!.vscode/extensions.json
+!.vscode/extensions.recommended.json
+!.vscode/settings.default.json
+!.vscode/settings.emil.json
+!.vscode/settings.suggestions.json

@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "rebornix.ruby",
+    "eamodio.gitlens",
+    "mikestead.dotenv",
+    "mrorz.language-gettext",
+    "editorconfig.editorconfig",
+    "yzhang.markdown-all-in-one",
+    "visualstudioexptteam.vscodeintellicode"
+  ]
+}
