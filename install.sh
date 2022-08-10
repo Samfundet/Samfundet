@@ -324,10 +324,7 @@ fi
 
 # Clone project.
 echo ; echo ; echo ; echo "==============================================================="
-# do_action "Clone repo git@github.com:Samfundet/Samfundet.git?" "git clone git@github.com:Samfundet/Samfundet.git" $X_INTERACTIVE
-do_action "$BOT: Clone repo git@github.com:Samfundet/Samfundet.git?" "git clone -b 935-dockerize git@github.com:Samfundet/Samfundet.git" $X_INTERACTIVE
-# do_action "Clone repo git@github.com:Samfundet/SamfundetAuth.git?" "git clone git@github.com:Samfundet/SamfundetAuth.git" $X_INTERACTIVE
-# do_action "Clone repo git@github.com:Samfundet/SamfundetDomain.git?" "git clone git@github.com:Samfundet/SamfundetDomain.git" $X_INTERACTIVE
+do_action "$BOT: Clone repo git@github.com:Samfundet/Samfundet.git?" "git clone git@github.com:Samfundet/Samfundet.git" $X_INTERACTIVE
 
 ### Setup project if cloned. ###
 if [ `ls Samfundet/README.md` ] ; then # Simple check if an arbitrary file exists.
@@ -337,9 +334,7 @@ if [ `ls Samfundet/README.md` ] ; then # Simple check if an arbitrary file exist
     cp config/local_env.example.yml config/local_env.yml
     cp config/billig.example.yml config/billig.yml
     cp config/secrets.example.yml config/secrets.yml
-    # cp .env.example .env
-    # cp .vscode/settings.default.json .vscode/settings.json
-    # make copy-config-files
+    cp .vscode/settings.default.json .vscode/settings.json
 
 
     ### ruby ###

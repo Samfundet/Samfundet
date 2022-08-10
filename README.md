@@ -34,11 +34,6 @@ read -s -p "Github PAT token: " TOKEN ; X_INTERACTIVE=n /bin/bash -c "$(curl -fs
 read -s -p "Github PAT token: " TOKEN ; X_INTERACTIVE=y /bin/bash -c "$(curl -fsSL https://$TOKEN@raw.githubusercontent.com/Samfundet/Samfundet/master/{bash_utils.sh,install.sh})" && . ~/.bash_profile && cd Samfundet ; unset TOKEN ; unset X_INTERACTIVE;
 ```
 
-<!--
-```sh
-read -s -p "Github PAT token: " TOKEN ; X_INTERACTIVE=y /bin/bash -c "$(curl -fsSL https://$TOKEN@raw.githubusercontent.com/Samfundet/Samfundet/935-dockerize/{bash_utils.sh,install.sh})" && . ~/.bash_profile && cd Samfundet ; unset TOKEN ; unset X_INTERACTIVE;
-``` -->
-
 <details>
     <ul>
       <li>
