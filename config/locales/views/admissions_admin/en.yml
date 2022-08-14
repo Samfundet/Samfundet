@@ -31,7 +31,7 @@ en:
     applicant_dont_get_position: "Applicants who don't get a position, but would like to"
     reserved_applicants: "Applicants who is reserved have to/should be cleared with the group that has made the reservation."
     three_applications: "Applicants with three or more applications, with less than three set interviews:"
-    no_applicants: "All applicants have a sufficient amount of interview times set!"
+    no_applicants: "There are no applicants with a missing number of set interviews!"
     missing_job_interviews: "The applicant is missing interviews for these jobs:"
 
     reprioritisation_deadline: "The reprioritisation deadline is not expired, please come back after"
