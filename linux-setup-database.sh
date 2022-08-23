@@ -2,7 +2,7 @@
 sudo apt update
 sudo apt upgrade
 
-# Make sure the default ruby version to use is Ruby 2.5.5.
+# Make sure the default ruby version to use is Ruby 2.7.0.
 rvm use 2.7.0 --default # From .ruby-version.
 
 #Install required ruby gems
