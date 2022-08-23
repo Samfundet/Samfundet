@@ -1,13 +1,15 @@
 GIT
   remote: https://github.com/Samfundet/SamfundetAuth.git
-  revision: 619fe175bfc9e01e50a02280189df95dd034761f
+  revision: 1976389c7b473ff765725dfac5fe50e878ebf4fb
+  branch: update-ruby-version
   specs:
     samfundet_auth (0.2.0)
       rails (~> 5.2.0)
 
 GIT
   remote: https://github.com/Samfundet/SamfundetDomain.git
-  revision: f85f5e6feedc73cd4f847f35cbd4f4934064ff71
+  revision: 1628c3fe66e485b9b43545a793c5ee1887477ad4
+  branch: update-ruby-version
   specs:
     samfundet_domain (0.1.0)
       rails (~> 5.2.0)
@@ -492,7 +494,7 @@ DEPENDENCIES
   will_paginate (~> 3.1.0)
 
 RUBY VERSION
-   ruby 2.5.5p157
+   ruby 2.7.0p0
 
 BUNDLED WITH
-   1.17.3
+   2.1.2
