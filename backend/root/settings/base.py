@@ -14,8 +14,6 @@ import sys
 from pathlib import Path
 
 from backend.root.constants import Environment
-from backend.root.json_formatter import JsonFormatter
-from backend.root.request_context_filter import RequestContextFilter
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -38,13 +36,6 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = BASE_DIR / 'mediaroot'
 MEDIA_URL = '/media/'
 
-# Custom User model
-AUTH_USER_MODEL = 'accounts.User'
-
-LOGIN_REDIRECT_URL = 'home'
-LOGIN_URL = 'accounts:login'
-LOGOUT_REDIRECT_URL = 'accounts:login'
-
 # Production settings:
 X_FRAME_OPTIONS = 'DENY'
 CSRF_COOKIE_SECURE = True
@@ -62,19 +53,12 @@ DATE_INPUT_FORMATS = [
     '%d/%m/%Y',
 ]
 
-# The header which ITK ACL sets with a username when user is authenticated &
-# authorized to access the given page
-ACL_REMOTE_USER_HEADER = 'HTTP_REMOTE_USER'
-ACL_EMAIL_SUFFIX = 'AD.SAMFUNDET.NO'
-SAMFUNDET_EMAIL_SUFFIX = 'samfundet.no'
-
 SESSION_COOKIE_NAME = 'sessionid'
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 SESSION_COOKIE_AGE = 24 * 60 * 60 * 7
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 
 PROJECT_APPS = [
-    'backend.accounts',
     'backend.root',  # register to enable management.commands
 
     # Imported apps
@@ -96,7 +80,6 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'backend.root.middlewares.RequestLogMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # 'django.contrib.auth.middleware.RemoteUserMiddleware',
@@ -129,57 +112,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'backend.root.wsgi.application'
 
-# AUTHENTICATION_BACKENDS = ['accounts.authentication.EmailOrUsernameModelBackend']
-
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',  # default
 ]
-
-### django-user-agents ###
-# MIDDLEWARE += [
-# 'django_user_agents.middleware.UserAgentMiddleware',  # django-user-agents
-# ]
-# End: django-user-agents ------------------------------------------------
-
-### compressor / django-libsass ###
-INSTALLED_APPS += [
-    'compressor',
-]
-
-COMPRESS_PRECOMPILERS = (('text/x-scss', 'django_libsass.SassCompiler'), )
-
-STATICFILES_FINDERS += [
-    'compressor.finders.CompressorFinder',
-]
-# End: compressor / django-libsass --------------------------------------------------------------
-
-### django-debug-toolbar ###
-INSTALLED_APPS += [
-    'debug_toolbar',
-]
-
-MIDDLEWARE += [
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
-]
-INTERNAL_IPS = [
-    '127.0.0.1',
-    'localhost',
-]
-
-DEBUG_TOOLBAR_CONFIG = {
-    'SHOW_COLLAPSED': True,
-}
-# End: django-debug-toolbar --------------------------------------------------------------
-
-### django-guardian ###
-INSTALLED_APPS += [
-    'guardian',  # https://github.com/django-guardian/django-guardian, per object perms
-]
-
-AUTHENTICATION_BACKENDS += (
-    'guardian.backends.ObjectPermissionBackend',  # per object
-)
-# End: django-guardian -------------------------------------------------------------
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -220,28 +155,19 @@ LOGFILENAME = BASE_DIR / '.log'
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
-    'formatters':
-        {
-            'json': {
-                # Need to be a callable in order to use init parameters.
-                '()': lambda: JsonFormatter(indent=4 if ENV == Environment.DEV else None),
-            },
-            'file': {
-                'format': '%(asctime)s %(name)-12s %(levelname)-8s %(message)s',
-            },
+    'formatters': {
+        'file': {
+            'format': '%(asctime)s %(name)-12s %(levelname)-8s %(message)s',
         },
-    'filters':
-        {
-            'request_context_filter': {
-                '()': RequestContextFilter,
-            },
-            'require_debug_false': {
-                '()': 'django.utils.log.RequireDebugFalse',
-            },
-            'require_debug_true': {
-                '()': 'django.utils.log.RequireDebugTrue',
-            },
+    },
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse',
         },
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        },
+    },
     'handlers':
         {
             'null': {
@@ -255,23 +181,20 @@ LOGGING = {
             'file': {
                 'level': 'INFO',
                 'class': 'logging.FileHandler',
-                'formatter': 'json',
+                'formatter': 'file',
                 'filename': LOGFILENAME,
-                'filters': ['request_context_filter'],
             },
             'mail_admins': {
                 'level': 'ERROR',
                 'class': 'django.utils.log.AdminEmailHandler',
                 'filters': ['require_debug_false'],
             },
-            'humio':
-                {
-                    'level': 'DEBUG' if ENV == Environment.DEV else 'INFO',
-                    'formatter': 'json',
-                    'class': 'logging.StreamHandler',
-                    'stream': sys.stdout,
-                    'filters': ['request_context_filter'],
-                },
+            'humio': {
+                'level': 'DEBUG' if ENV == Environment.DEV else 'INFO',
+                'formatter': 'file',
+                'class': 'logging.StreamHandler',
+                'stream': sys.stdout,
+            },
         },
     'loggers':
         {

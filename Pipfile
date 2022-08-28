@@ -5,18 +5,12 @@ name = "pypi"
 
 [packages]
 django = "*"
-django-libsass = "*"
-django-guardian = "*"
-django-compressor = "*"
-django-debug-toolbar = "*"
 yapf = "*"
 pylint = "*"
 pylint-django = "*"
 pylint-quotes = "*"
 pytest = "*"
 pytest-django = "*"
-pillow = "*"
-pdf2image = "*"
 django-extensions = "*"
 
 [dev-packages]

@@ -9,8 +9,8 @@
     "batisteo.vscode-django",
     "dbaeumer.vscode-eslint",
     "ms-python.vscode-pylance",
-    "yzhang.markdown-all-in-one",
     "editorconfig.editorconfig",
+    "yzhang.markdown-all-in-one",
     "visualstudioexptteam.vscodeintellicode"
   ]
 }
