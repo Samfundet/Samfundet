@@ -162,26 +162,36 @@ en:
             recommendations: "The bar recommends: Brooklyn Lager"
         main_courses:
           title: "Main courses"
-          trout:
-            name: "Oven Baked Trout"
-            description: "Trout with celery cream, beetroot salad, asparagus and apple reduction"
-            allergies: "Allergies: Celery, Sulfite, Fish, Milk protein "
+          cod:
+            name: "???"
+            description: "???"
+            allergies: "Allergies: ??? "
             recommendations: "The bar recommends: Sancerre/Riesling (wine) or 1664 blanc (beer)"
           seasonal_salad:
             name: "Seasonal salad"
             description: "Varies throughout the year with seasonal flavors. Ask one of our waiters for more information. Served with lyche bread and spiced butter."
             allergies: "Allergies: Ask one of our waiters."
             recommendations: "The bar recommends: ECD Lamo wit"
+          indian_pumpkin_pie:
+            name: "???"
+            description: "???"
+            allergies: "???"
+            recommendations: "???"
+          mussels:
+            name: "Mussels"
+            description: "???"
+            allergies: "???"
+            recommendations: "???"
         desserts:
           title: "Dessert"
           ice_cream:
             name: "Ice cream"
             description: "Ice cream and / or sorbet. Ask one of our waiters about today's flavors."
             allergies: "Allergies: Ask one of our waiters."
-          passionfruit:
-            name: "Passionfruit pie"
-            description: "With vanilla ice cream and blackberry coulis"
-            allergies: "Allergies: Milk protein, Egg"
+          tiramisu:
+            name: "Tiramisù"
+            description: "???"
+            allergies: "Allergies: ???"
             recommendations: "The bar recommends: Disko or Rasberry sour"
         beer_on_tap:
           title: "Beer on tap"

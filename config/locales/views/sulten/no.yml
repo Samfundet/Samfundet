@@ -162,26 +162,36 @@
             recommendations: "Baren anbefaler: Brooklyn Lager"
         main_courses:
           title: "Hovedretter"
-          trout:
-            name: "Ovnsbakt ørret"
-            description: "Ørret med sellerirotkrem, røbetråkost, asparges og eplereduksjon"
-            allergies: "Allergener: Selleri, sulfitt, fisk og melkeprotein"
+          cod:
+            name: "Saltsprengt Torsk"
+            description: "???"
+            allergies: "Allergener: ???"
             recommendations: "Baren anbefaler: Sancerre/Riesling (vin) eller 1664 blanc (øl)"
           seasonal_salad:
             name: "Sesongens salat"
             description: "Varieres gjennom året med sesongens smaker. Spør en av våre barservitører for mer informasjon. Serveres med lychebrød og kryddersmør."
             allergies: "Allergener: Spør en av våre barservitører."
             recommendations: "Baren anbefaler: ECD Lamo wit"
+          indian_pumpkin_pie:
+            name: "Indisk inspirert Gresskarpai"
+            description: "???"
+            allergies: "???"
+            recommendations: "???"
+          mussels:
+            name: "Blåskjell"
+            description: "???"
+            allergies: "???"
+            recommendations: "???"
         desserts:
           title: "Dessert"
           ice_cream:
             name: "Iskrem"
             description: "Fløteiskrem og/eller sorbet. Spør en av våre barservitører om dagens smaker."
             allergies: "Allergener: Spør en av våre barservitører."
-          passionfruit:
-            name: "Pasjonsfruktterte"
-            description: "Med vaniljeis og bjørnebærcoulis"
-            allergies: "Allergener: Melkeprotein og egg"
+          tiramisu:
+            name: "Tiramisù"
+            description: "???"
+            allergies: "Allergener: ???"
             recommendations: "Baren anbefaler: Disko eller Rasberry sour"
         beer_on_tap:
           title: "Øl på tapp"
