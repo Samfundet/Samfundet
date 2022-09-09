@@ -149,7 +149,7 @@
             name: "Lycheburger"
             ingredients: "Aioli, cherrytomater, salat, løkkompott, ost, bacon og pistou til ovnsbakte poteter."
             allergies: "Allergener: Gluten (hvete), sulfitt og egg"
-            recommendations: "Baren anbefaler: E.C. Dahls Bolt IPA"
+            recommendations: "Baren anbefaler: Barbera d`Asti Superiore Storica"
           blue_cheese_burger:
             name: "Blåmuggburger"
             ingredients: "Aioli, cherrytomater, salat, søt og syrlig rips- og rabarbramarmelade , blåmuggost fra Selbu og pistou til ovnsbakte poteter."
@@ -162,27 +162,37 @@
             recommendations: "Baren anbefaler: Brooklyn Lager"
         main_courses:
           title: "Hovedretter"
-          trout:
-            name: "Ovnsbakt ørret"
-            description: "Ørret med sellerirotkrem, røbetråkost, asparges og eplereduksjon"
-            allergies: "Allergener: Selleri, sulfitt, fisk og melkeprotein"
-            recommendations: "Baren anbefaler: Sancerre/Riesling (vin) eller 1664 blanc (øl)"
+          cod:
+            name: "Saltsprengt Torsk"
+            description: "Saftig torsk, servert med jordskokk- og potetpuré, samt syltede polkabeter og soyasmør."
+            allergies: "Allergener: Fisk, Melk (puré), Soya (soyasmør)"
+            recommendations: "Baren anbefaler: Sancerre"
           seasonal_salad:
             name: "Sesongens salat"
             description: "Varieres gjennom året med sesongens smaker. Spør en av våre barservitører for mer informasjon. Serveres med lychebrød og kryddersmør."
             allergies: "Allergener: Spør en av våre barservitører."
             recommendations: "Baren anbefaler: ECD Lamo wit"
+          indian_pumpkin_pie:
+            name: "Indisk inspirert Gresskarpai"
+            description: "En smakfull og kremete gresskarpai inspirert av det indiske kjøkkenet, serveres med frisk salat. Retten er vegansk og kan serveres glutenfritt"
+            allergies: "Allergener: Nøtter (cashew), Gluten (paibunn)"
+            recommendations: "Baren anbefaler: Nebbiolo"
+          mussels:
+            name: "Blåskjell"
+            description: "Hvitvinsdampede blåskjell, servert med Lychebrød og kryddersmør."
+            allergies: "Allergener: Gluten (hvete), melk, selleri, sulfitt"
+            recommendations: "Baren anbefaler: Nebbiolo"
         desserts:
           title: "Dessert"
           ice_cream:
             name: "Iskrem"
             description: "Fløteiskrem og/eller sorbet. Spør en av våre barservitører om dagens smaker."
             allergies: "Allergener: Spør en av våre barservitører."
-          passionfruit:
-            name: "Pasjonsfruktterte"
-            description: "Med vaniljeis og bjørnebærcoulis"
-            allergies: "Allergener: Melkeprotein og egg"
-            recommendations: "Baren anbefaler: Disko eller Rasberry sour"
+          tiramisu:
+            name: "Tiramisù"
+            description: "Den klassiske italienske desserten."
+            allergies: "Allergener: Egg, Melk"
+            recommendations: "Baren anbefaler: Chimay Blå"
         beer_on_tap:
           title: "Øl på tapp"
           weekend: "Helg"
