@@ -164,9 +164,9 @@
           title: "Hovedretter"
           cod:
             name: "Saltsprengt Torsk"
-            description: "???"
-            allergies: "Allergener: ???"
-            recommendations: "Baren anbefaler: Sancerre/Riesling (vin) eller 1664 blanc (øl)"
+            description: "Saftig torsk, servert med jordskokk- og potetpuré, samt syltede polkabeter og soyasmør."
+            allergies: "Allergener: Fisk, Melk (puré), Soya (soyasmør)"
+            recommendations: "Baren anbefaler: Sancerre"
           seasonal_salad:
             name: "Sesongens salat"
             description: "Varieres gjennom året med sesongens smaker. Spør en av våre barservitører for mer informasjon. Serveres med lychebrød og kryddersmør."
@@ -174,14 +174,14 @@
             recommendations: "Baren anbefaler: ECD Lamo wit"
           indian_pumpkin_pie:
             name: "Indisk inspirert Gresskarpai"
-            description: "???"
-            allergies: "???"
-            recommendations: "???"
+            description: "En smakfull og kremete gresskarpai inspirert av det indiske kjøkkenet, serveres med frisk salat. Retten er vegansk og kan serveres glutenfritt"
+            allergies: "Allergener: Nøtter (cashew), Gluten (paibunn)"
+            recommendations: "Baren anbefaler: Nebbiolo"
           mussels:
             name: "Blåskjell"
-            description: "???"
-            allergies: "???"
-            recommendations: "???"
+            description: "Hvitvinsdampede blåskjell, servert med Lychebrød og kryddersmør."
+            allergies: "Allergener: Gluten (hvete), melk, selleri, sulfitt"
+            recommendations: "Baren anbefaler: Nebbiolo"
         desserts:
           title: "Dessert"
           ice_cream:
@@ -190,9 +190,9 @@
             allergies: "Allergener: Spør en av våre barservitører."
           tiramisu:
             name: "Tiramisù"
-            description: "???"
-            allergies: "Allergener: ???"
-            recommendations: "Baren anbefaler: Disko eller Rasberry sour"
+            description: "Den klassiske italienske desserten."
+            allergies: "Allergener: Egg, Melk"
+            recommendations: "Baren anbefaler: Chimay Blå"
         beer_on_tap:
           title: "Øl på tapp"
           weekend: "Helg"

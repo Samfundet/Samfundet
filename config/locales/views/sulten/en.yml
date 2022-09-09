@@ -163,25 +163,25 @@ en:
         main_courses:
           title: "Main courses"
           cod:
-            name: "???"
-            description: "???"
-            allergies: "Allergies: ??? "
-            recommendations: "The bar recommends: Sancerre/Riesling (wine) or 1664 blanc (beer)"
+            name: "Brined Cod"
+            description: "Juicy Cod, served with jerusalem artichoke and potato purée, pickled beets and browned soy butter."
+            allergies: "Allergies: Fish, Milk (purée), soy (soy butter)"
+            recommendations: "The bar recommends: Sancerre"
           seasonal_salad:
             name: "Seasonal salad"
             description: "Varies throughout the year with seasonal flavors. Ask one of our waiters for more information. Served with lyche bread and spiced butter."
             allergies: "Allergies: Ask one of our waiters."
             recommendations: "The bar recommends: ECD Lamo wit"
           indian_pumpkin_pie:
-            name: "???"
-            description: "???"
-            allergies: "???"
-            recommendations: "???"
+            name: "Indian inspired pumpkin pie"
+            description: "Atasty creamy pumpkin pie, inspired by the Indian kitchen, served with a side of salad. The dish is vegan and can be made gluten free."
+            allergies: "Allergies: Nuts (cashew), Gluten (pie crumble)"
+            recommendations: "The bar recommends: Nebbiolo"
           mussels:
             name: "Mussels"
-            description: "???"
-            allergies: "???"
-            recommendations: "???"
+            description: "Steamed mussels in a white wine broth, served with lychebread and herb butter."
+            allergies: "Allergies: Milk, sulfites, molluscs, gluten."
+            recommendations: "The bar recommends: Nebbiolo"
         desserts:
           title: "Dessert"
           ice_cream:
@@ -190,9 +190,9 @@ en:
             allergies: "Allergies: Ask one of our waiters."
           tiramisu:
             name: "Tiramisù"
-            description: "???"
-            allergies: "Allergies: ???"
-            recommendations: "The bar recommends: Disko or Rasberry sour"
+            description: "The classic italian dish"
+            allergies: "Allergies: Milk, eggs"
+            recommendations: "The bar reccomends: Chimay Blå"
         beer_on_tap:
           title: "Beer on tap"
           weekend: "Weekend"
