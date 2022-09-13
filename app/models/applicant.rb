@@ -48,7 +48,7 @@ class Applicant < ApplicationRecord
   end
 
   def get_set_interviews(admission)
-    @job_applications = job_applications_for_admission(admission)
+    @job_applications = open_job_applications(admission)
     interviews = []
 
     @job_applications.each do |j|
@@ -89,7 +89,7 @@ class Applicant < ApplicationRecord
 
   def self.less_than_three_set_interviews(admission)
     where(disabled: false).select do |applicant|
-      applicant.get_set_interviews(admission).length < 3 && applicant.jobs_applied_to(admission).length >= 3
+      applicant.get_set_interviews(admission).length < 3 && applicant.open_job_applications(admission).length >= 3
     end
   end
 
@@ -139,8 +139,8 @@ class Applicant < ApplicationRecord
     job_applications.select { |application| application.job.admission == admission }.map(&:job)
   end
 
-  def job_applications_for_admission(admission)
-    job_applications.select { |application| application.job.admission == admission }
+  def open_job_applications(admission)
+    job_applications.select { |application| application.job.admission == admission && application.withdrawn == false }
   end
 
   def job_applications_at_group(admission, group)
