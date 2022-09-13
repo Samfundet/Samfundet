@@ -182,7 +182,7 @@ group :development do
   gem 'mina', '~> 0.3.0'
 
   # A DSL for quickly creating web applications in Ruby with minimal effort.
-  gem 'sinatra', '~> 2.0.8'
+  gem 'sinatra', '~> 2.2.0'
 
   # Turns objects into nicely formatted columns for easy reading.
   gem 'table_print', '~> 1.5.0'
