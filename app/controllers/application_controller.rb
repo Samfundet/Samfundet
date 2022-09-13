@@ -22,6 +22,8 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :logged_in?
   helper_method :open_admission?
 
+  around_action :set_locale_from_url
+
   def handle_unverified_request
     raise ActionController::InvalidAuthenticityToken
   end
