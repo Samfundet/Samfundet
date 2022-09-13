@@ -1,5 +1,5 @@
 # Set manually (from '.ruby-version') because Dockerfile is unable to cat from file.
-FROM ruby:2.5.5
+FROM ruby:2.7.6
 
 # Docker example.
 # https://docs.docker.com/samples/rails/

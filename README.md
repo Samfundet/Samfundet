@@ -152,11 +152,11 @@ There are several dependencies needed to get Samfundet up and running. Note that
 4. [ubuntu_rvm](https://github.com/rvm/ubuntu_rvm)
 5. Source RVM: `source ~/.rvm/scripts/rvm`
 
-We now have all dependencies installed, including RVM, so let's install Ruby 2.5.5. Run these two commands in succession:
+We now have all dependencies installed, including RVM, so let's install Ruby 2.7.6. Run these two commands in succession:
 
 ```bash
-rvm install 2.5.5 --movable
-rvm use 2.5.5 --default
+rvm install 2.7.6 --movable
+rvm use 2.7.6 --default
 ```
 
 <hr>

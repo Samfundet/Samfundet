@@ -8,7 +8,7 @@ RUBY_VERSION=`cat .ruby-version`
 rvm user gemsets
 rvm install ruby
 
-# For the project, we mainly use Ruby 2.5.5. 
+# For the project, we mainly use Ruby 2.7.6.
 rvm install RUBY_VERSION # From .ruby-version.
 rvm use RUBY_VERSION --default
 
