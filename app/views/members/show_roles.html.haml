@@ -1,0 +1,18 @@
+= link_to members_control_panel_path do
+  .samf-button.plain.mb-3
+    = t("common.back")
+.top
+  %h1
+    = t('navigation.show.find_member_roles')
+.option
+  = form_for members_show_roles_path, method: "post" do
+    = text_field_tag :member_id, nil, placeholder: t("members.search_placeholder"), class: "textfield member_autocomplete", style: "border: 1px solid gray; height: 32px; width: 250px; padding-left: 8px;", required: true
+    %p
+      = submit_tag t('navigation.show.search')
+
+- if @member.present?
+  - if @roles.present?
+    = render partial: "members/roles", locals: {:editable => true}
+  - else
+    %h2= @member.full_name + " har ingen roller."
+

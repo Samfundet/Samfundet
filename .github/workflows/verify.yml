@@ -1,0 +1,46 @@
+name: Build
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+# Prevent multiple workflows with same branch/pull_request.
+concurrency: 
+  group: ${{ github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+
+  verify_docker:
+    name: Verify docker
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup initial files
+        run: |
+          cp config/database.example.yml config/database.yml
+          cp config/local_env.example.yml config/local_env.yml
+          cp config/billig.example.yml config/billig.yml
+          cp config/secrets.example.yml config/secrets.yml
+
+      - name: Build images
+        run: docker compose build
+
+      - name: Setup db
+        run: docker compose run --rm app bundle exec bash -c "rails db:environment:set RAILS_ENV=development; bundle exec rake db:drop db:create db:migrate db:seed"
+
+      - name: Start containers
+        run: docker compose up -d; sleep 5; # Detatched to prevent infinite process. Give it a few seconds to boot.
+
+      - name: Check running containers
+        run: docker compose exec app echo # Will fail if container has exited due to error.
+      
+      - name: Run linting (rubocop)
+        run: docker compose exec app bundle exec rubocop --parallel # Will fail if container has exited due to error.
+
+      - name: Stop containers
+        run: docker compose down

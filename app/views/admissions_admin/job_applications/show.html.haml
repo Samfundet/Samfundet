@@ -28,6 +28,12 @@
     - else
       %td= t(@job_application.applicant.interested_other_positions.to_s)
 
+- if current_user.roles.include? Role.super_user
+  .flex-row.mt-3
+    = link_to admissions_admin_admission_edit_applicant_path(:applicant_id => @job_application.applicant) do
+      .samf-button
+        = "Rediger Søker"
+
 %hr
 
 %h1= t('job_applications.application') + " - " + @job_application.job.title

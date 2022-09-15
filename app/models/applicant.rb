@@ -47,6 +47,19 @@ class Applicant < ApplicationRecord
     self.hashed_password = BCrypt::Password.create(@password, cost: cost)
   end
 
+  def get_set_interviews(admission)
+    @job_applications = open_job_applications(admission)
+    interviews = []
+
+    @job_applications.each do |j|
+      if j.interview.time?
+        interviews.push(j.interview)
+      end
+    end
+
+    interviews
+  end
+
   def assigned_job_application(admission, priority: %w[wanted reserved])
     job_applications.where(withdrawn: false)
                     .joins(:interview)
@@ -72,6 +85,12 @@ class Applicant < ApplicationRecord
       return true if hash == recovery_hash.recovery_hash && recovery_hash.created_at + 1.hour > Time.current
     end
     false
+  end
+
+  def self.less_than_three_set_interviews(admission)
+    where(disabled: false).select do |applicant|
+      applicant.get_set_interviews(admission).length < 3 && applicant.open_job_applications(admission).length >= 3
+    end
   end
 
   def self.interested_other_positions(admission)
@@ -112,8 +131,16 @@ class Applicant < ApplicationRecord
     !assigned_job_application(admission, priority: 'reserved').nil?
   end
 
+  def priority_of_job_application(admission, job_application)
+    job_applications.select { |application| application.job.admission == admission }.index(job_application) + 1
+  end
+
   def jobs_applied_to(admission)
     job_applications.select { |application| application.job.admission == admission }.map(&:job)
+  end
+
+  def open_job_applications(admission)
+    job_applications.select { |application| application.job.admission == admission && application.withdrawn == false }
   end
 
   def job_applications_at_group(admission, group)

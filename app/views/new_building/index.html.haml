@@ -1,8 +1,13 @@
 - set_open_graph_params({ title: t('site.index.og_title'), description: t('site.index.og_description'), image: 'https://www.samfundet.no/upload/images/image_files/000/001/669/original/logo_samf.no.png?1538501206'})
 - set_twitter_params({ card: "summary_large_image", title: t('site.index.og_title'), description: t('site.index.og_description'), 'image:src' => 'https://www.samfundet.no/upload/images/image_files/000/001/669/original/logo_samf.no.png?1538501206'})
 
-
 .pages-index
+  %div
+    %h2= link_to t("new_building.index.about.title"), anchor: "about".parameterize
+    %h2= link_to t("new_building.index.documents.title"), anchor: "documents".parameterize
+    %h2= link_to t("new_building.index.history.title"), anchor: "history".parameterize
+    %h2= link_to "FAQ", anchor: "FAQ".parameterize
+    %h2= link_to t("new_building.index.about.title"), anchor: "contact".parameterize
 
   .samf-smart-box.flex-align-center.mt-2
 
@@ -27,9 +32,6 @@
     %h1= t("new_building.index.what.title")
     %p= t("new_building.index.what.body")
 
-  .p-2
-
-  =render "table_of_content"
 
   .p-2
 
@@ -53,7 +55,7 @@
   .samf-container.white.p-3.m-2.mt-3
     .flex-row.flex-align-center
       = image_tag "new_building/project.png", style: "width: 2.5em; height: 2.5em; background-size: contain;"
-      %h1.ml-1.mt-1= t("new_building.index.about.title")
+      %h1.ml-1.mt-1{id: "about"}= t("new_building.index.about.title")
     %div
       %p= simple_format(t("new_building.index.about.intro"))
       %p= simple_format(t("new_building.index.about.floor_plan"))
@@ -67,7 +69,7 @@
   #documents.toc-list-scroll
   .samf-container.white.p-3.m-2.mt-3
     .flex-row.flex-align-center
-      %h1.mt-1= t("new_building.index.documents.title")
+      %h1.mt-1{id: "documents"}= t("new_building.index.documents.title")
     %div
       %p= simple_format(t("new_building.index.documents.description"))
       .flex-row.wrap
@@ -84,7 +86,7 @@
   .samf-container.white.p-3.m-2.mt-3
     .flex-row.flex-align-center
       = image_tag "new_building/history.png", style: "width: 2.5em; height: 2.5em; background-size: contain;"
-      %h1.ml-1.mt-1= t("new_building.index.history.title")
+      %h1.ml-1.mt-1{id: "history"}= t("new_building.index.history.title")
     %div
       %p= simple_format(t("new_building.index.history.intro"))
       %i= simple_format(t("new_building.index.history.nidelva_title"))
@@ -102,11 +104,7 @@
           .samf-button.text-Align.left.plain.mt-3.mr-2= t("new_building.index.history.archive")
 
   #faq.toc-list-scroll
-  = render 'FAQ'
+  = render "FAQ"
 
   #contact.toc-list-scroll
   = render "contact_info"
-
-
-
-

@@ -27,6 +27,7 @@ en:
       created_at: "Created Date"
       export_to_csv: "Export all reservations to CSV"
       hi: "Hi"
+      new: "New"
       summary:
         title: "Summary"
         date: "Date"
@@ -148,7 +149,7 @@ en:
             name: "Lyche burger"
             ingredients: "Aioli, cherry tomatoes, lettuce, onion compote, cheese, bacon and pistou for baked potatoes."
             allergies: "Allergies: Gluten (wheat), sulfite and eggs"
-            recommendations: "The bar recommends: E.C. Dahls Bolt IPA"
+            recommendations: "The bar recommends: Barbera d`Asti Superiore Storica"
           blue_cheese_burger:
             name: "Blue cheese burger"
             ingredients: "Aioli, cherry tomatoes, lettuce, sweet and sour currant and rhubarb jam, blue cheese from Selbu and pistou for oven-baked potatoes."
@@ -161,27 +162,37 @@ en:
             recommendations: "The bar recommends: Brooklyn Lager"
         main_courses:
           title: "Main courses"
-          trout:
-            name: "Oven Baked Trout"
-            description: "Trout with celery cream, beetroot salad, asparagus and apple reduction"
-            allergies: "Allergies: Celery, Sulfite, Fish, Milk protein "
-            recommendations: "The bar recommends: Sancerre/Riesling (wine) or 1664 blanc (beer)"
+          cod:
+            name: "Brined Cod"
+            description: "Juicy Cod, served with jerusalem artichoke and potato purée, pickled beets and browned soy butter."
+            allergies: "Allergies: Fish, Milk (purée), soy (soy butter)"
+            recommendations: "The bar recommends: Sancerre"
           seasonal_salad:
             name: "Seasonal salad"
             description: "Varies throughout the year with seasonal flavors. Ask one of our waiters for more information. Served with lyche bread and spiced butter."
             allergies: "Allergies: Ask one of our waiters."
             recommendations: "The bar recommends: ECD Lamo wit"
+          indian_pumpkin_pie:
+            name: "Indian inspired pumpkin pie"
+            description: "Atasty creamy pumpkin pie, inspired by the Indian kitchen, served with a side of salad. The dish is vegan and can be made gluten free."
+            allergies: "Allergies: Nuts (cashew), Gluten (pie crumble)"
+            recommendations: "The bar recommends: Nebbiolo"
+          mussels:
+            name: "Mussels"
+            description: "Steamed mussels in a white wine broth, served with lychebread and herb butter."
+            allergies: "Allergies: Milk, sulfites, molluscs, gluten."
+            recommendations: "The bar recommends: Nebbiolo"
         desserts:
           title: "Dessert"
           ice_cream:
             name: "Ice cream"
             description: "Ice cream and / or sorbet. Ask one of our waiters about today's flavors."
             allergies: "Allergies: Ask one of our waiters."
-          passionfruit:
-            name: "Passionfruit pie"
-            description: "With vanilla ice cream and blackberry coulis"
-            allergies: "Allergies: Milk protein, Egg"
-            recommendations: "The bar recommends: Disko or Rasberry sour"
+          tiramisu:
+            name: "Tiramisù"
+            description: "The classic italian dish"
+            allergies: "Allergies: Milk, eggs"
+            recommendations: "The bar reccomends: Chimay Blå"
         beer_on_tap:
           title: "Beer on tap"
           weekend: "Weekend"

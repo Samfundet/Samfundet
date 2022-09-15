@@ -44,7 +44,7 @@ class ApplicantsController < ApplicationController
     if password_should_change
       applicant_pwd_check = Applicant.authenticate(@applicant.email,
                                                    params[:applicant][:old_password])
-      if applicant_pwd_check.nil?
+      if applicant_pwd_check.nil? and not current_user.roles.include? Role.super_user
         flash[:error] = t('applicants.update_error')
         @applicant.errors.add :old_password, t('applicants.password_missmatch')
         render :edit
@@ -62,6 +62,9 @@ class ApplicantsController < ApplicationController
       if @current_user.class == Applicant
         flash[:success] = t('applicants.update_success')
         redirect_to job_applications_path
+      elsif current_user.roles.include? Role.super_user
+        flash[:success] = 'Søkerinformasjon endret'
+        redirect_to members_control_panel_path
       end
     else
       flash[:error] = t('applicants.update_error')

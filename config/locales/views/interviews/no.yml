@@ -27,6 +27,8 @@
     applicant_email_address: "E-postadresse"
     interview_time: "Intervjutid"
     interview_priority: "Prioritet"
+    applicant_ranking: "Søkers rangering"
+    interviews_set: "Intervjuer satt"
     comment: "Kommentar"
     location: "Intervjusted"
     applicant_campus: "Campus"

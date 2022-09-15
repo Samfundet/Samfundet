@@ -54,8 +54,10 @@
       = t('interviews.interview_priority')
     %th.status
       = "Status"
-    -#%th.open-for-other-positions
-    -#  = t('interviews.interested_other_positions')
+    %th.applicant_ranking
+      = t('interviews.applicant_ranking')
+    %th.interviews_set
+      = t('interviews.interviews_set')
     %th.comment
       = t('interviews.comment')
 
@@ -106,6 +108,10 @@
               = form.actions do
                 != form.action :submit, button_html: { class: "interview_save", value: t('interviews.save_interview_status') }
               %span{ class: "status" }
+          %td
+            = job_application.applicant.priority_of_job_application(@admission, job_application).to_s + " / " + job_application.applicant.jobs_applied_to(@admission).length.to_s
+          %td
+            = job_application.applicant.get_set_interviews(@admission).length.to_s + " / " + job_application.applicant.jobs_applied_to(@admission).length.to_s
           -#%td
           -#  - if job_application.last_log_entry
           -#    = link_to admissions_admin_admission_group_job_job_application_path(@admission, @group, job_application.job, job_application, anchor: 'new_log_entry') do

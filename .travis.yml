@@ -3,7 +3,7 @@ language: ruby
 cache: bundler
 
 rvm:
-    - 2.5.5
+      2.7.6 # From .ruby-version.
 
 services:
     postgresql

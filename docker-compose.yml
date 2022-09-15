@@ -1,11 +1,37 @@
 version: '3.1'
 
+# Manually create network to set static ip range to whitelist in rails.
+networks:
+  app_network:
+    ipam:
+      config:
+        - subnet: 172.22.0.0/24
+
 services:
+
   db:
     image: postgres
     restart: always
     environment:
       POSTGRES_USER: samfundet
-      POSTGRES_PASSWORD: ${SAMFDB_DEV_PASS}
+      POSTGRES_PASSWORD: samfundet
     ports:
-      - "5432:5432"
+      - "127.0.0.1:5432:5432"
+    networks:
+      app_network:
+        ipv4_address: 172.22.0.2
+  
+  app:
+    build: .
+    volumes:
+      - .:/Samfundet # Share project code between host machine and container to enable reload on changes.
+    environment:
+      POSTGRES_USER: samfundet
+      POSTGRES_PASSWORD: samfundet
+    depends_on:
+      - db
+    ports:
+      - "127.0.0.1:3000:3000"
+    networks:
+      app_network:
+        ipv4_address: 172.22.0.3

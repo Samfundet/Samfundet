@@ -5,7 +5,7 @@
 ###########################################
 
 # Specify ruby version that we use. Bundler gives an error when a different ruby is used.
-ruby '2.5.5'
+ruby '~> 2.7.0' # From .ruby-version.
 
 # The repository from which we're fetching our rubygems.
 source 'https://rubygems.org'
@@ -91,12 +91,12 @@ gem 'route_downcaser', '~> 1.2.0'
 
 # SamfundetDomain is a gem which provides the application with samfundets domain models.
 gem 'samfundet_domain', git: 'https://github.com/Samfundet/SamfundetDomain.git'
-# gem 'samfundet_domain', git: 'https://github.com/Samfundet/SamfundetDomain.git', branch: 'rails-5-2'
+# gem 'samfundet_domain', git: 'https://github.com/Samfundet/SamfundetDomain.git', branch: 'update-ruby-version'
 # gem 'samfundet_domain', path: '../SamfundetDomain'
 
 # SamfundetAuth is a gem which provides the application with methods for authenticating against mdb2.
 gem 'samfundet_auth', git: 'https://github.com/Samfundet/SamfundetAuth.git'
-# gem 'samfundet_auth', git: 'https://github.com/Samfundet/SamfundetAuth.git', branch: 'rails-5-2'
+# gem 'samfundet_auth', git: 'https://github.com/Samfundet/SamfundetAuth.git', branch: 'update-ruby-version'
 # gem 'samfundet_auth', path: '../SamfundetAuth'
 
 # will_paginate is an adaptive pagination plugin.

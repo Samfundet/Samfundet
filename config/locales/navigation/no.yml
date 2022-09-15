@@ -27,3 +27,9 @@
       my_group: Min gjeng
     admin:
       faq: Ofte stilte spørsmål
+    show:
+      find_member_roles: Finn rollene til alle medlemmer
+      search_member: Søk etter medlem
+      search: Søk
+      no_member: Ingen medlem er valgt
+      roles_of: Rollene til

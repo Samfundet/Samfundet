@@ -31,7 +31,7 @@
       -# cache [I18n.locale, 'titlebar', request.fullpath, current_user, Time.current.to_date] do
         -#= render 'layouts/titlebar'
       #container
-        .side-graphics.left
+        // uncomment to add side-art .side-graphics.left
         #content{ class: "#{params[:controller]} #{controller.action_name}" }
           != display_flash
           - if Rails.application.config.billig_offline
@@ -42,7 +42,7 @@
                 = Rails.application.config.billig_message_en
           = content_for :render_async
           = yield
-        .side-graphics.right
+        // uncomment to add side-art  .side-graphics.right
 
     - cache [I18n.locale, 'footer'] do
       = render 'layouts/footer'

@@ -1,0 +1,16 @@
+{
+    "makefile.extensionOutputFolder": "./.vscode",
+    "files.autoSave": "onFocusChange",
+    "editor.formatOnSave": true,
+    // Automatically set filetype when opening a new file.
+    // This setting determines new filetype based on the current focused file. 
+    "files.defaultLanguage": "${activeEditorLanguage}",
+    // Change layout of the upper title
+    "window.title": "🟥 ${activeEditorShort}${separator}${rootName}",
+    "html.format.enable": false,
+    "workbench.colorCustomizations": {
+        "titleBar.activeForeground": "#000",
+        "titleBar.activeBackground": "#ff2222",
+        "titleBar.inactiveBackground": "#ff2222"
+    }
+}
