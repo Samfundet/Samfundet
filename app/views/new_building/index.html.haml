@@ -58,11 +58,9 @@
       %h1.ml-1.mt-1{id: "about"}= t("new_building.index.about.title")
     %div
       %p= simple_format(t("new_building.index.about.intro"))
-      %p= simple_format(t("new_building.index.about.floor_plan"))
+      %i= simple_format(t("new_building.index.about.floor_plan"))
       %i= simple_format(t("new_building.index.about.financing_title"))
       %p= simple_format(t("new_building.index.about.financing"))
-      %i= simple_format(t("new_building.index.about.applications_title"))
-      %p= simple_format(t("new_building.index.about.applications"))
 
   .p-2
 
@@ -73,12 +71,13 @@
     %div
       %p= simple_format(t("new_building.index.documents.description"))
       .flex-row.wrap
-        =link_to t("new_building.index.documents.doc1") do
+        = link_to t("new_building.index.documents.process_plan_document"), target: "_blank" do
           .samf-button.small.m-1
-            = t("new_building.index.documents.button1_title")
-        =link_to t("new_building.index.documents.doc2"), target: "_blank" do
-          .samf-button.small.m-1
-            = t("new_building.index.documents.button2_title")
+            = t("new_building.index.documents.process_plan_title")
+        - if page_by_name_en("new-building-archive") != "#"
+          = link_to page_by_name_en("new-building-archive") do
+            .samf-button.small.m-1
+              = t("new_building.index.documents.resolutions_title")
 
   .p-2
 
@@ -88,20 +87,20 @@
       = image_tag "new_building/history.png", style: "width: 2.5em; height: 2.5em; background-size: contain;"
       %h1.ml-1.mt-1{id: "history"}= t("new_building.index.history.title")
     %div
-      %p= simple_format(t("new_building.index.history.intro"))
-      %i= simple_format(t("new_building.index.history.nidelva_title"))
-      %p= simple_format(t("new_building.index.history.nidelva"))
-      %i= simple_format(t("new_building.index.history.rooms_title"))
-      %p= simple_format(t("new_building.index.history.rooms"))
-      %i= simple_format(t("new_building.index.history.paralell_assignment_title"))
-      %p= simple_format(t("new_building.index.history.paralell_assignment_1"))
-      %li <a href="https://drive.google.com/file/d/1QLk3M8HlYL1nVji1zE-2HFiABApqUHg3/view ", target="_blank">Du store verden - Skibnes arkitekter</a>
-      %li <a href="https://drive.google.com/file/d/1umIrffZz2eCqwnhu05L8Lgvxxqg1OGlJ/view ", target="_blank">Sceneskifte - Eggen arkitekter</a>
-      %li <a href="https://drive.google.com/file/d/1jH6K5e8F7UC7_y4rWjcXawzaskZCMW4T/view?usp=drive_open ", target="_blank">Merry Glow Red - Pir II arkitekter</a>
-      %p= simple_format(t("new_building.index.history.paralell_assignment_2"),{} ,:sanitize => false)
-      - if page_by_name_en("new-building-archive") != "#"
-        = link_to page_by_name_en("new-building-archive") do
-          .samf-button.text-Align.left.plain.mt-3.mr-2= t("new_building.index.history.archive")
+      - if I18n.locale == :no
+        %p= simple_format(t("new_building.index.history.description"))
+      - else
+        %p= simple_format(t("new_building.index.history.intro"))
+        %i= simple_format(t("new_building.index.history.nidelva_title"))
+        %p= simple_format(t("new_building.index.history.nidelva"))
+        %i= simple_format(t("new_building.index.history.rooms_title"))
+        %p= simple_format(t("new_building.index.history.rooms"))
+        %i= simple_format(t("new_building.index.history.paralell_assignment_title"))
+        %p= simple_format(t("new_building.index.history.paralell_assignment_1"))
+        %li <a href="https://drive.google.com/file/d/1QLk3M8HlYL1nVji1zE-2HFiABApqUHg3/view ", target="_blank">Du store verden - Skibnes arkitekter</a>
+        %li <a href="https://drive.google.com/file/d/1umIrffZz2eCqwnhu05L8Lgvxxqg1OGlJ/view ", target="_blank">Sceneskifte - Eggen arkitekter</a>
+        %li <a href="https://drive.google.com/file/d/1jH6K5e8F7UC7_y4rWjcXawzaskZCMW4T/view?usp=drive_open ", target="_blank">Merry Glow Red - Pir II arkitekter</a>
+        %p= simple_format(t("new_building.index.history.paralell_assignment_2"),{} ,:sanitize => false)
 
   #faq.toc-list-scroll
   = render "FAQ"
