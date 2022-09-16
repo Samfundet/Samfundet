@@ -80,7 +80,7 @@ gem 'icalendar', '~> 2.4.0'
 # For example, we can replace the path '/groups' with the paths
 # '/gjenger' and '/en/groups' which both point to the same page.
 # See: config/locales/routes/i18n-routes.yml
-gem 'route_translator', '~> 5.6.0'
+gem 'route_translator', '~> 7.1.0'
 
 # RedCarpet renders Markdown, a light-weight markup language, to HTML.
 # See: config/initializers/haml_markdown.rb
@@ -104,7 +104,7 @@ gem 'samfundet_auth', git: 'https://github.com/Samfundet/SamfundetAuth.git'
 gem 'will_paginate', '~> 3.1.0'
 
 # for file uploads, see https://github.com/thoughtbot/paperclip
-gem 'paperclip', '~> 5.2.0'
+gem 'paperclip', '~> 6.1.0'
 
 # automatic compression of images uploaded via paperclip
 gem 'paperclip-compression', '~> 1.1.0'
