@@ -162,9 +162,6 @@ group :development do
   gem 'better_errors', '~> 2.5.1'
   gem 'binding_of_caller', '~> 0.8.0'
 
-  # magic_encoding adds an 'encoding: utf-8' comment to all .rb files
-  gem 'magic_encoding', '~> 0.0.0'
-
   # rails-footnotes adds information useful for debugging to the bottom
   # of our web pages for easy reference.
   # gem 'rails-footnotes'
