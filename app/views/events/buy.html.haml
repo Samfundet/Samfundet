@@ -97,31 +97,6 @@
       -#%li
         -#= t('events.about_paperticket_html')
 
-    .payment-wrapper
-      %h3
-        = t('events.payment_information')
-      .payment-info
-        %p
-          = label_tag "ccno", t('events.visa_or_master')
-          = text_field_tag "ccno", nil, maxlength: 16, tabindex: 4, autocomplete: 'off', required: true
-          %span#card_feedback
-            &nbsp;
-        .payment-exp
-          = label_tag "exp_month", t('events.expiration_month')
-          = select_tag "exp_month", options_for_select(1..12), tabindex: 5, required: true
-          = select_tag "exp_year", options_for_select((Time.current.year..10.years.from_now.year).map { |y| [y, y % 100] }), tabindex: 6, required: true
-        .payment-cvc2
-          = label_tag "cvc2","CVC2:"
-          = text_field_tag "cvc2", nil, maxlength: 3, tabindex: 7, autocomplete: 'off', required: true
-      .payment-verified
-        = image_tag('billig/swedbank.png', alt: "Swedbank logo")
-        = image_tag('billig/vbv-securecode.png', alt:"Verfied by VISA logo and MasterCard SecureCode logo")
-        .swedbank
-          = link_to t('events.swedbank'), 'http://swedbank.no', target: '_blank'
-        .fees
-          = t('events.payment_prices')
-        .terms
-          = link_to t('events.terms'), Page.tickets, target: '_blank'
-
-      .payment-submit
-        = submit_tag t('events.commit_buy'), name: "commit", tabindex: 8
+    
+    .payment-submit
+      = submit_tag t('events.commit_buy'), name: "commit", tabindex: 8
