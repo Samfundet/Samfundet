@@ -209,10 +209,11 @@ GEM
     listen (3.2.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    loofah (2.19.0)
+    loofah (2.18.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     lumberjack (1.2.8)
+    magic_encoding (0.0.2)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
     marcel (1.0.2)
@@ -459,6 +460,7 @@ DEPENDENCIES
   lazy_high_charts (~> 1.5.0)
   letter_opener (~> 1.7.0)
   listen (~> 3.2.1)
+  magic_encoding (~> 0.0.0)
   mina (~> 0.3.0)
   neat (~> 1.8.0)
   paperclip (~> 6.1.0)
@@ -495,7 +497,7 @@ DEPENDENCIES
   will_paginate (~> 3.1.0)
 
 RUBY VERSION
-   ruby 2.7.6p219
+   ruby 2.7.0p0
 
 BUNDLED WITH
-   2.1.4
+   2.1.2
