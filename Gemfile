@@ -25,7 +25,7 @@ gem 'lazy_high_charts', '~> 1.5.0'
 gem 'acts_as_list', '~> 1.0.0'
 
 # Use activerecord as session store
-gem 'activerecord-session_store', '~> 1.1.0'
+gem 'activerecord-session_store', '~> 2.0.0'
 
 # bcrypt() is a sophisticated and secure hash algorithm
 # designed by The OpenBSD project for hashing passwords.
