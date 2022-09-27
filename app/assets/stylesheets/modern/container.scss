@@ -35,6 +35,11 @@ Samfundet containers
   box-shadow: none;
 }
 
+.samf-container.orange {
+  background-color: $samfundet-orange;
+  color: white;
+}
+
 .samf-container.red,
 .samf-container.blue,
 .samf-container.green {
