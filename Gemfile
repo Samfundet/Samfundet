@@ -159,7 +159,7 @@ group :development do
   # binding_of_caller is an optional dependency of better_errors which
   # allows for features such as local / instance variable expection,
   # REPL debugging etc.
-  gem 'better_errors', '~> 2.5.1'
+  gem 'better_errors', '~> 2.8.0'
   gem 'binding_of_caller', '~> 0.8.0'
 
   # rails-footnotes adds information useful for debugging to the bottom
