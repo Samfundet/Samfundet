@@ -25,7 +25,7 @@ gem 'lazy_high_charts', '~> 1.5.0'
 gem 'acts_as_list', '~> 1.0.0'
 
 # Use activerecord as session store
-gem 'activerecord-session_store', '~> 1.1.0'
+gem 'activerecord-session_store', '~> 2.0.0'
 
 # bcrypt() is a sophisticated and secure hash algorithm
 # designed by The OpenBSD project for hashing passwords.
@@ -161,9 +161,6 @@ group :development do
   # REPL debugging etc.
   gem 'better_errors', '~> 2.5.1'
   gem 'binding_of_caller', '~> 0.8.0'
-
-  # magic_encoding adds an 'encoding: utf-8' comment to all .rb files
-  gem 'magic_encoding', '~> 0.0.0'
 
   # rails-footnotes adds information useful for debugging to the bottom
   # of our web pages for easy reference.
