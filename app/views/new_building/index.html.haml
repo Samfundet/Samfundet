@@ -32,9 +32,12 @@
     %h1= t("new_building.index.what.title")
     %p= t("new_building.index.what.body")
 
-  .samf-container.orange.ml-2.mr-2.p-3.mt-3
+  %div.samf-container.orange.ml-2.mr-2.p-3.mt-3
     %h1= t("new_building.index.crowdfunding.title")
     %p= t("new_building.index.crowdfunding.body")
+    = link_to "https://samfundet.no/informasjon/kronerulling" do
+      .samf-button.red.mr-2
+        = "Sjekk ut mer her!"
 
   .p-2
 
