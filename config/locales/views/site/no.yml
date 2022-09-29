@@ -40,7 +40,8 @@
 
       april_prank_description: "Viktig informasjon om hva som skjer på Samfundet idag."
       april_prank_link: "Les mer..."
-
+      new_building_crowdfunding_description: "Stundersamfundet har kronerulling til nybygg!"
+      new_building_crowdfunding_link: "Les mer"
     notifications:
       membership:
         welcome: "Velkommen nye medlemmer!"
