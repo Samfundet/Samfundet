@@ -26,6 +26,14 @@
         = t("site.index.new_building_crowdfunding_description")
         %b= t("site.index.new_building_crowdfunding_link")
 
+-# First of april prankz
+- if DateTime.now.day == 1 and DateTime.now.month == 4
+  = link_to "https://www.youtube.com/watch?v=dQw4w9WgXcQ" do
+    .samf-container.small.red.text-Align
+      .mt-3.mb-3
+        = t("site.index.april_prank_description")
+        %b= t("site.index.april_prank_link")
+
 = render 'hero_unit'
 = render 'upcoming_events'
 = render 'info_boxes'
