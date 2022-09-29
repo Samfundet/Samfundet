@@ -32,6 +32,10 @@
     %h1= t("new_building.index.what.title")
     %p= t("new_building.index.what.body")
 
+  - if (I18n.locale == :no)
+    .samf-container.blue.ml-2.p-3.mt-3
+      %h1= t("new_building.index.admission.title")
+      %p= simple_format((t"new_building.index.admission.description"))
 
   .p-2
 
