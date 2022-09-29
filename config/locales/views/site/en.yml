@@ -37,8 +37,8 @@ en:
       opening-hours-page-title: "opening-hours"
       all-opening-hours: "All opening hours"
 
-      april_prank_description: "Important information about what is happening at Samfundet today."
-      april_prank_link: "Read more..."
+      new_building_crowdfunding_description: "Studentersamfundet has a crowdfunding campaign for new building!"
+      new_building_crowdfunding_link: "Read more!"
 
     notifications:
       membership:

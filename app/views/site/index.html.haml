@@ -18,13 +18,14 @@
           .samf-button.black.center.small
             = t('site.index.add_banner_lock')
 
--# First of april prankz
-- if DateTime.now.day == 1 and DateTime.now.month == 4
-  = link_to "https://www.youtube.com/watch?v=dQw4w9WgXcQ" do
-    .samf-container.small.green.text-Align
+-# Crowdfunding link on front page
+- if DateTime.now.year == 2022
+  = link_to "https://www.samfundet.no/informasjon/kronerulling" do
+    .samf-container.small.red.text-Align
       .mt-3.mb-3
-        = t("site.index.april_prank_description")
-        %b= t("site.index.april_prank_link")
+        = t("site.index.new_building_crowdfunding_description")
+        %b= t("site.index.new_building_crowdfunding_link")
+
 
 = render 'hero_unit'
 = render 'upcoming_events'
