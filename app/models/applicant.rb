@@ -60,6 +60,13 @@ class Applicant < ApplicationRecord
     interviews
   end
 
+  def set_interviews_string(admission)
+    set_interviews = get_set_interviews(admission).length.to_s
+    number_of_applications = jobs_applied_to(admission).length.to_s
+
+    "#{set_interviews} av #{number_of_applications}"
+  end
+
   def assigned_job_application(admission, priority: %w[wanted reserved])
     job_applications.where(withdrawn: false)
                     .joins(:interview)
@@ -133,6 +140,13 @@ class Applicant < ApplicationRecord
 
   def priority_of_job_application(admission, job_application)
     job_applications.select { |application| application.job.admission == admission }.index(job_application) + 1
+  end
+
+  def priority_of_job_application_string(admission, job_application)
+    priority = priority_of_job_application(admission, job_application).to_s
+    number_of_applications = jobs_applied_to(admission).length.to_s
+
+    "#{priority} av #{number_of_applications}"
   end
 
   def jobs_applied_to(admission)

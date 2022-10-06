@@ -10,6 +10,8 @@
             t('interviews.location'),
             t('interviews.interview_priority'),
             t('interviews.applicant_status'),
+            t('interviews.applicant_ranking'),
+            t('interviews.interviews_set'),
             t('interviews.comment')]
 
   - @job_application_groupings.each do |job_applications|
@@ -22,7 +24,9 @@
       job_application.find_or_create_interview.time,
       job_application.find_or_create_interview.location,
       job_application.find_or_create_interview.priority_string,
-      job_application.find_or_create_interview.applicant_status_string]
+      job_application.find_or_create_interview.applicant_status_string,
+      job_application.applicant.priority_of_job_application_string(@admission, job_application),
+      job_application.applicant.set_interviews_string(@admission)]
 
       - unless job_application.find_or_create_interview.comment.nil?
         - csv_array += [job_application.find_or_create_interview.comment.squish]  # Squish to remove tabs and newlines
