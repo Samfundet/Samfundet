@@ -2,6 +2,6 @@
     width: 90% !important;
 
     @include media($tablet-desktop) {
-        width: 800px !important;
+        max-width: 800px !important;
     }
 }

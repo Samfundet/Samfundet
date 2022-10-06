@@ -1,7 +1,11 @@
 - set_open_graph_params({ title: @event.title, description: @event.short_description, image: asset_url(@event.image_or_default.url(:large)) })
 - set_twitter_params({ card: "summary_large_image", title: @event.title, description: @event.short_description, "image:src" => asset_url(@event.image_or_default.url(:large)) })
+
 .billig-buy
-  %h2
+
+  .samfundet-logo 
+
+  %h1
     = t('events.buy_title', event_title: @event.title)
 
   = form_tag Rails.application.config.billig_path, method: "post", class: 'custom-form' do
@@ -36,15 +40,18 @@
 
         -# Set ticket group row ( ticket group | ticket limit)
         %tr.ticket-group-row{id: ticket_group_id, ticket_group_data[0] => "#{ticket_group.ticket_limit?}", ticket_group_data[1] => "#{ticket_group_ticket_limit}"}
+          
           %th
             = ticket_group_name
 
           -# Only iterate populate price group rows if ticket group has tickets left
           - if ticket_group.tickets_left?
-            %th.ticket-limit-hd{colspan: 3}
-              - pluralize = ticket_group_ticket_limit > 1 ? 'multiple' : 'single'
-              = t("events.ticket_limit_#{pluralize}", ticket_limit: ticket_group_ticket_limit)
-
+            %th
+              = t("events.price")
+            %th.ticket-limit-hd
+              = t("events.amount")
+            %th
+              = t("events.sum")
             -# Iterate thorugh all the price groups
             - price_groups.each_with_index do |price_group, j|
               - price_group_options = ticket_group.price_group_ticket_limit
@@ -75,53 +82,40 @@
         %td.totalSum.ticket-data{class: currency_unit_class}
           = "0"
 
-    %i= t("events.member_notice")
+    .member-notice= t("events.member_notice")
 
-    - isMember = current_user.is_a?(Member)
-    %p.payment-choice
-      = radio_button_tag "ticket_type", "card", @payment_error.try(:owner_cardno).present?, checked: isMember
-      = label_tag "ticket_type_card", t('events.ticketless'), class: 'radio-label'
-      = text_field_tag "membercard", @payment_error.try(:owner_cardno) || (current_user.try(:membership_card).try(:card) if isMember), tabindex: 2, disabled: !isMember
+    %hr
 
-    - if @non_member_ticket_available
-      %p.payment-choice
-        = radio_button_tag "ticket_type", "paper", @payment_error.try(:owner_email).present?, checked: !isMember
-        = label_tag "ticket_type_paper", t('events.paperticket'), class: 'radio-label'
-        = email_field_tag :email, @payment_error.try(:owner_email), tabindex: 2, disabled: isMember
+    .ticket-type-container
+      %h2
+        = "Billettype"
+      
+      .row
+        - isMember = current_user.is_a?(Member)
+        %p.payment-choice
+          = radio_button_tag "ticket_type", "card", @payment_error.try(:owner_cardno).present?, checked: isMember
+          = label_tag "ticket_type_card", t('events.ticketless'), class: 'radio-label'
+          = text_field_tag "membercard", @payment_error.try(:owner_cardno) || (current_user.try(:membership_card).try(:card) if isMember), tabindex: 2, disabled: !isMember, placeholder: t("events.member_hint")
 
-    %h4
-      = t('events.about_ticket')
-    %ul
-      %li
+        - if @non_member_ticket_available
+          %p.payment-choice
+            = radio_button_tag "ticket_type", "paper", @payment_error.try(:owner_email).present?, checked: !isMember
+            = label_tag "ticket_type_paper", t('events.paperticket'), class: 'radio-label'
+            = email_field_tag :email, @payment_error.try(:owner_email), tabindex: 2, disabled: isMember, placeholder: t("events.email_hint")
+
+      #ticketless-info.payment-info{style: 'display: none'}
         = t('events.about_ticketless_html')
-      -#%li
-        -#= t('events.about_paperticket_html')
+      #paperticket-info.payment-info
+        = t('events.about_paperticket_html')
 
     .payment-wrapper
-      %h3
-        = t('events.payment_information')
-      .payment-info
-        %p
-          = label_tag "ccno", t('events.visa_or_master')
-          = text_field_tag "ccno", nil, maxlength: 16, tabindex: 4, autocomplete: 'off', required: true
-          %span#card_feedback
-            &nbsp;
-        .payment-exp
-          = label_tag "exp_month", t('events.expiration_month')
-          = select_tag "exp_month", options_for_select(1..12), tabindex: 5, required: true
-          = select_tag "exp_year", options_for_select((Time.current.year..10.years.from_now.year).map { |y| [y, y % 100] }), tabindex: 6, required: true
-        .payment-cvc2
-          = label_tag "cvc2","CVC2:"
-          = text_field_tag "cvc2", nil, maxlength: 3, tabindex: 7, autocomplete: 'off', required: true
-      .payment-verified
-        = image_tag('billig/swedbank.png', alt: "Swedbank logo")
-        = image_tag('billig/vbv-securecode.png', alt:"Verfied by VISA logo and MasterCard SecureCode logo")
-        .swedbank
-          = link_to t('events.swedbank'), 'http://swedbank.no', target: '_blank'
-        .fees
-          = t('events.payment_prices')
-        .terms
-          = link_to t('events.terms'), Page.tickets, target: '_blank'
 
-      .payment-submit
-        = submit_tag t('events.commit_buy'), name: "commit", tabindex: 8
+      %div{style: "flex: 1;"}
+
+      #validation-hint.hint
+        #missing-ticket-count
+          = t("events.ticket_count_zero")
+        #missing-user-info
+          = t("events.missing_user_info")
+      .payment-submit.disabled
+        = submit_tag t('events.commit_buy'), name: "commit", disabled: true, tabindex: 8

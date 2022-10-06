@@ -1,7 +1,7 @@
 .modal {
   display: none;
-  min-width: 400px;
-  width: 40%;
+  max-width: 800px;
+  width: 95vw;
   background: #fff;
   padding: 15px 30px;
   -webkit-box-shadow: 0 0 10px #000;

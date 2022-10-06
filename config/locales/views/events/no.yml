@@ -106,11 +106,13 @@
     paperticket: "Digital billett til e-post:"
     confirm_email: "Bekreft e-post:"
     about_ticket: "Om billettyper:"
-    about_ticketless_html: "Velger du <em>billettløst</em>, blir selve medlemskortet billetten din. Du trenger bare da å trekke kortet i døren når du kommer til Samfundet. <strong>Merk:</strong> Du kan kun ha én billett på kortet per arrangement. Alle billettene vil bli tilsendt på epost."
-    about_paperticket_html: "Velger du <em>digital billett</em>, vil billetten(e) bli tilsendt på epost. Billettenes strekkode skannes i døren når du kommer til Samfundet. Disse kan enten vises på mobil eller tas med som utskrift."
+    about_ticketless_html: "Medlemskortet blir billetten din, og det er bare å trekke kortet i døren når du kommer til Samfundet. <br><strong>Merk:</strong> Du kan kun ha én billett på kortet per arrangement. Alle billettene vil bli tilsendt på epost."
+    about_paperticket_html: "Billetten(e) blir sendt på epost, og må vises fram i døren når du kommer til Samfundet. Billettene kan vises på mobil eller tas med som utskrift."
+    ticket_count_zero: "* Ingen billett(er) valgt"
+    missing_user_info: "* Fyll ut billettype"
     visa_or_master: "VISA- eller MasterCard-nummer:"
     expiration_month: "Utløpsdato:"
-    commit_buy: Fullfør betaling
+    commit_buy: Til betaling
 
     payment_information: Betalingsinformasjon
     price: Pris (NOK)
@@ -118,6 +120,8 @@
     sum: "Sum"
     total: "Total"
     amount: Antall
+    email_hint: "Fyll inn epost"
+    member_hint: "Medlemskortnummer"
     swedbank: "Betalingen håndteres av Swedbank."
     payment_prices: "Alle priser er i norske kroner og er inkludert alle avgifter."
     terms: Kjøp forutsetter at kunden godtar salgsbetingelsene.
