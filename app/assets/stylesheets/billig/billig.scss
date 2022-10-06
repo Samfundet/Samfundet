@@ -163,10 +163,17 @@
       flex-direction: row;
       justify-content: stretch;
 
+      @media only screen and (max-width: 600px) {
+        flex-direction: column;
+      }
+
       .payment-choice {
         flex: 1;
         &:first-child {
           margin-right: 1em;
+          @media only screen and (max-width: 600px) {
+            margin-right: 0;
+          }
         }
       }
     }

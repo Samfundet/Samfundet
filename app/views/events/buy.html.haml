@@ -47,11 +47,11 @@
           -# Only iterate populate price group rows if ticket group has tickets left
           - if ticket_group.tickets_left?
             %th
-              = t("events.ticket_price")
+              = t("events.price")
             %th.ticket-limit-hd
-              = t("events.ticket_count")
+              = t("events.amount")
             %th
-              = t("events.ticket_sum")
+              = t("events.sum")
             -# Iterate thorugh all the price groups
             - price_groups.each_with_index do |price_group, j|
               - price_group_options = ticket_group.price_group_ticket_limit
@@ -95,13 +95,13 @@
         %p.payment-choice
           = radio_button_tag "ticket_type", "card", @payment_error.try(:owner_cardno).present?, checked: isMember
           = label_tag "ticket_type_card", t('events.ticketless'), class: 'radio-label'
-          = text_field_tag "membercard", @payment_error.try(:owner_cardno) || (current_user.try(:membership_card).try(:card) if isMember), tabindex: 2, disabled: !isMember
+          = text_field_tag "membercard", @payment_error.try(:owner_cardno) || (current_user.try(:membership_card).try(:card) if isMember), tabindex: 2, disabled: !isMember, placeholder: t("events.member_hint")
 
         - if @non_member_ticket_available
           %p.payment-choice
             = radio_button_tag "ticket_type", "paper", @payment_error.try(:owner_email).present?, checked: !isMember
             = label_tag "ticket_type_paper", t('events.paperticket'), class: 'radio-label'
-            = email_field_tag :email, @payment_error.try(:owner_email), tabindex: 2, disabled: isMember
+            = email_field_tag :email, @payment_error.try(:owner_email), tabindex: 2, disabled: isMember, placeholder: t("events.email_hint")
 
       #ticketless-info.payment-info{style: 'display: none'}
         = t('events.about_ticketless_html')
