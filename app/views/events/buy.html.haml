@@ -108,6 +108,13 @@
       #paperticket-info.payment-info
         = t('events.about_paperticket_html')
 
+    %div{style: "margin-top: 2em;"}
+      = link_to t('events.swedbank'), 'http://swedbank.no', target: '_blank'
+    %div
+      = t('events.payment_prices')
+    %div
+      = link_to t('events.terms'), Page.tickets, target: '_blank'
+
     .payment-wrapper
 
       %div{style: "flex: 1;"}
