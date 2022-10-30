@@ -87,6 +87,8 @@ Rails.application.routes.draw do
 
     # Everything closed period routes
     resources :everything_closed_periods, except: [:show]
+    post "toggle_house_full_gesims", to: "everything_closed_periods#toggle_house_full_gesims"
+    get "/gesims", to: "everything_closed_periods#gesims_overlay"
 
     # Has to be above "resources :applicants" to get higher priority
     # because "/applicants/login" should match applicant_sessions#new

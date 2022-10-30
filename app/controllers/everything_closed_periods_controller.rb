@@ -3,6 +3,10 @@
 class EverythingClosedPeriodsController < ApplicationController
   load_and_authorize_resource
 
+  has_control_panel_applet :house_full_gesims_applet,
+                           if: -> { can? :edit, EverythingClosedPeriod }
+
+
   def index
     @current_and_future_closed_times = EverythingClosedPeriod.current_and_future_closed_times
   end
@@ -45,6 +49,23 @@ class EverythingClosedPeriodsController < ApplicationController
     @everything_closed_period.destroy
     flash[:success] = I18n.t('everything_closed_periods.destruction')
     redirect_to everything_closed_periods_path
+  end
+
+  def house_full_gesims_applet
+    if $house_full_gesims == nil then
+      $house_full_gesims = false
+    end
+    @enabled = $house_full_gesims
+  end
+
+  def toggle_house_full_gesims
+    $house_full_gesims = !$house_full_gesims
+    redirect_to request.referrer
+  end
+  
+  def gesims_overlay
+    @enabled = $house_full_gesims == true
+    render :layout => false
   end
 
   def everything_closed_period_params
