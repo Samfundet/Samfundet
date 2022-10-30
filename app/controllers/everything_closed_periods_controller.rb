@@ -65,7 +65,7 @@ class EverythingClosedPeriodsController < ApplicationController
   
   def gesims_overlay
     @enabled = $house_full_gesims == true
-    render :layout => false
+    render layout: false
   end
 
   def everything_closed_period_params
