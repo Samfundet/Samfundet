@@ -1,0 +1,16 @@
+<%= t("job_applications.confirmation_mailer.greetings", firstname: @applicant.firstname) %>
+
+<%= t("job_applications.confirmation_mailer.thank_you", job_name: @job.title_no, group_name: @job.group.name) %>
+<%= t("job_applications.confirmation_mailer.interview_info") %>
+
+<%= t("job_applications.confirmation_mailer.contact_info_job") %>
+<%= @job.contact_email %>
+
+<%= t("job_applications.confirmation_mailer.or_call") %>
+<%= @job.contact_phone %>
+
+<%= t("job_applications.confirmation_mailer.contact_info_admission") %>
+<%= t("job_applications.confirmation_mailer.admission_email") %>
+
+<%= t("job_applications.confirmation_mailer.regards") %>
+<%= t("job_applications.confirmation_mailer.from") %>

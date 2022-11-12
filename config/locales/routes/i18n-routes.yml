@@ -46,6 +46,8 @@
     archive_search: arkivsok
     info_boxes: info-bokser
     new-building: nybygg
+    interview_time_slots: intervju-tidsrom
+    unavailable_interview_time_slots: utilgjengelige-tidsrom
 en:
   routes:
     contactinfo: contactinfo

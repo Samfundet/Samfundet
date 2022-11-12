@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Interview < ApplicationRecord
+  belongs_to :interview_time_slot
   belongs_to :job_application
   #  has_one :group, through: :job_application
 

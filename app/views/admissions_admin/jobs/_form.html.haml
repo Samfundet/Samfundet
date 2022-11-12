@@ -14,7 +14,14 @@
     .flex-row
       != form.input :default_motivation_text_no, as: :text
       != form.input :default_motivation_text_en, as: :text
+    .flex-row
+      != form.input :tag_titles, as: :string, :placeholder => t('jobs.create_tags_example')
+    .flex-row
+      != form.input :contact_email, label: t("helpers.label.job.contact_email")
+      != form.input :contact_phone, label: t("helpers.label.job.contact_phone")
+      != form.input :interview_interval, as: :select, label: t("helpers.label.job.interview_interval"), collection: [20, 30, 40], member_label: proc{|d| "#{d} "}
+    .flex-row
+      != form.input :linkable_interviews, as: :boolean, label: t("helpers.label.job.linkable_interviews")
     != form.input :is_officer, as: :boolean
-    != form.input :tag_titles, as: :string, :placeholder => t('jobs.create_tags_example')
   = form.actions do
     != form.action :submit

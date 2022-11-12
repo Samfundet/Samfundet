@@ -25,10 +25,11 @@
     other_jobs_in: "Andre verv i"
     job_as: "Verv som"
     at: "hos"
+    missing_interview_time: "Du har ingen intervjutid enda."
+    select_interview_time: "Velg en intervjutid her:"
     type_explanation_html: "Dette er en indikasjon på hvor mye arbeid vervet innebærer. Et <strong>gjengmedlem</strong> forventes å jobbe omtrent 10 timer i uken, <strong>funksjonærer</strong> omtrent 20 timer. Til gjengjeld har funksjonærer har noen flere goder enn gjengmedlemmer."
     download_ical: "iCalendar-fil"
     belongs_to_closed_admission: "Dette vervet tilhører et lukket opptak, det vil si et opptak som enten er gammelt eller som ikke er åpnet ennå."
     similar_jobs_not_applied_to: "Lignende stillinger du ikke har søkt på"
     gdpr: "All personinformasjon til søkere blir anonymisert 3 uker etter opptaksfristen."
     create_tags_example: "Eksempel: foto, react, kaffe, skribent"
-    

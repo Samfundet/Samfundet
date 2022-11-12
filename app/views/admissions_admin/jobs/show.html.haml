@@ -13,8 +13,15 @@
   = link_to "", { :onclick => "history.go(0)" } do
     .samf-button.blue.ml-2
       = t("interviews.refresh_page")
+- if @admission.is_active?
+  .flex-row.flex-align-center
+    = link_to admissions_admin_admission_group_job_preview_interview_suggestion_path(job_id: @job.id) do
+      .samf-button.green{style:"margin: 20px 5px 20px 0;"}
+        = t("interviews.assign_interview_times")
+    = link_to admissions_admin_admission_group_job_interview_time_slots_path(@job.admission, @group, @job) do
+      .samf-button.plain{style:"margin: 20px 0 20px 0;"}
+        = t("interviews.manage_interview_times")
   %i.ml-2{style: "color: #666"}= t("interviews.refresh_notice")
-
 
 %h1.mt-3
   = t('interviews.job_title', job: @job.title) + " - " + @group.name

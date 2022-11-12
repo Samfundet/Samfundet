@@ -64,6 +64,10 @@ class Ability
     # Our lovely sokere should be able to manage their job applications
     can [:index, :create, :update, :destroy, :down, :up], JobApplication, applicant: { id: @user.id }
 
+    # And add or remove time slots they are unavailable for interviews
+    can [:read, :edit, :update, :destroy], UnavailableInterviewTimeSlot, applicant: { id: @user.id }
+    can [:new, :create], UnavailableInterviewTimeSlot
+
     # And to update their user
     can :update, Applicant, id: @user.id
   end

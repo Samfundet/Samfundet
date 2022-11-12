@@ -1,0 +1,18 @@
+'no':
+  unavailable_interview_time_slots:
+    title: Tidsrom for tider du er utilgjengelig for intervju
+    edit: Rediger
+    delete: Slett
+    new: Opprett nytt tidsrom
+    time_frame: Utilgjengelig i tidsrommet
+
+    form:
+      start: Start tid
+      end: Slutt tid
+      update: Oppdater tidsrom
+      create: Opprett tidsrom
+
+    messages:
+      created: Tidsrom opprettet
+      updated: Tidsrom oppdatert
+      deleted: Tidsrom slettet

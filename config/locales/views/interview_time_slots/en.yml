@@ -1,0 +1,34 @@
+en:
+  interview_time_slots:
+    title: Time slots for interviews
+    edit: Edit
+    delete: Delete
+    new: Create new interview time slot
+    description: "Time slots for the job "
+    at: " at "
+    time_frame: Time frame
+    delete_failed: "Cannot delete an interview time slot where interviews have been set."
+    delete_impossible: "This interview time slot cannot be deleted, because it has set interviews."
+    see_interviews: "See interviews"
+
+    interview_form:
+      title: Interviews
+      location: Location
+      interview_time: Interview time
+      no_interview_time: No interviews have been set
+      name: Name
+      time: Time
+      delete: Delete
+
+    form:
+      start: Start time
+      end: End time
+      location: Location
+      comment: Comment
+      update: Update interview time slot
+      create: Create interview time slot
+
+    messages:
+      created: Interview time slot created
+      updated: Interview time slot updated
+      deleted: Interview time slot deleted

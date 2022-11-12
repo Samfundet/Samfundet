@@ -1,4 +1,3 @@
-
 .flex-row.wrap
   - if current_user.kind_of? Applicant
     = link_to job_applications_path do
@@ -30,6 +29,26 @@
         != t('jobs.type_explanation_html')
       = t('jobs.at')
       = group_link @job.group
+    - if @already_applied && @interview_suggestions.length > 0
+      %h2.mt-3
+        %b
+          .col
+            = t("jobs.missing_interview_time")
+          .col.mb-3
+            = t("jobs.select_interview_time")
+          - @interview_suggestions.group_by {|slot, _| slot.start_time }.sort.each do |_, suggested|
+            - shared_slot = suggested[0][0]
+            .samf-container.p-3
+              %h2{style: "text-transform: capitalize"}
+                = l(shared_slot.start_time.to_date, format: :medium_long)
+              %h2{style: "text-transform: capitalize; color: #777; margin-bottom: 20px;"}= shared_slot.location
+              .flex-row.wrap
+                - suggested.each do |_, interview_time|
+                  - interview_time_to_pass = interview_time.to_datetime.strftime("%D%H%M").gsub! "/", ""
+                  = link_to job_application_book_interview_time_path(@job_application, interview_time_to_pass + shared_slot.id.to_s), data: { confirm: t("crud.confirm") } do
+                    .samf-button.small.white.m-1
+                      %div= interview_time.to_datetime.strftime("%H:%M")
+
     .pr-2
       %p
         = @job.teaser

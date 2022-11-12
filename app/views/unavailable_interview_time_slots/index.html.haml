@@ -1,0 +1,18 @@
+%h1
+  = t("unavailable_interview_time_slots.title")
+
+.flex-row.flex-align-center.wrap
+  = link_to job_applications_path do
+    .samf-button.plain.mt-2.mr-3
+      = t("common.back")
+  = link_to new_admission_unavailable_interview_time_slot_path do
+    .samf-button.green.mt-2
+      = t("unavailable_interview_time_slots.new")
+
+.flex-row.wrap.mt-3
+  - @unavailable_interview_time_slots.group_by {|i| i.start_time.to_date }.sort.each do |time, unavailable_interview_time_slots|
+    .flex
+      .samf-container.white.p-3.flex-column.flex.mr-3.mb-3
+        %h2{style: "text-transform: capitalize; margin: 0; margin-bottom: 10px;"}= l(time.to_date, format: :medium_long)
+        - unavailable_interview_time_slots.sort_by{|unavailable_interview_time_slot| unavailable_interview_time_slot.start_time}.each do |unavailable_interview_time_slot|
+          = render 'unavailable_interview_time_slot', unavailable_interview_time_slot: unavailable_interview_time_slot

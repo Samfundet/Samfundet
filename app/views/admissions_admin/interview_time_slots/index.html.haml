@@ -1,0 +1,25 @@
+%h1
+  = t("interview_time_slots.title")
+%h2
+  #{t("interview_time_slots.description")} #{@job.title_no} #{t("interview_time_slots.at")} #{@group.name}
+
+.flex-row.flex-align-center.wrap
+  = link_to admissions_admin_admission_group_job_path(@admission, @group, @job) do
+    .samf-button.plain.mt-2.mr-3
+      = t("common.back")
+  = link_to new_admissions_admin_admission_group_job_interview_time_slot_path do
+    .samf-button.green.mr-3.mt-2
+      = t("interview_time_slots.new")
+  = link_to "", { :onclick => "history.go(0)" } do
+    .samf-button.blue.mt-2
+      = t("interviews.refresh_page")
+
+%p=t("interviews.interview_time_slot_description")
+
+.flex-row.wrap.mt-3
+  - @interview_time_slots.group_by {|i| i.start_time.to_date }.sort.each do |time, interview_time_slots|
+    .flex
+      .samf-container.white.p-3.flex-column.flex.mr-3.mb-3
+        %h2{style: "text-transform: capitalize; margin: 0; margin-bottom: 10px;"}= l(time.to_date, format: :medium_long)
+        - interview_time_slots.sort_by{|interview_time_slot| interview_time_slot.start_time}.each do |interview_time_slot|
+          = render 'interview_time_slot', interview_time_slot: interview_time_slot

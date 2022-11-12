@@ -1,0 +1,22 @@
+.flex-row-mobile-column.flex.p-2.pl-3.pr-3.mb-2{style: "background: #f4f4f4; border-radius: 4px; color: #555;"}
+  .flex-25.flex-align-center
+    = "#{t("interview_time_slots.form.location")}: #{interview_time_slot.location}"
+  .flex-25.flex-align-center
+    = "#{t("interview_time_slots.time_frame")}: #{interview_time_slot.start_time.strftime("%H:%M")} -  #{interview_time_slot.end_time.strftime("%H:%M")}"
+  .flex-25.flex-align-center
+    = "#{t("interview_time_slots.form.comment")}: #{interview_time_slot.comment}"
+  .flex-25.flex-justify-end.flex-align-center
+    = link_to edit_admissions_admin_admission_group_job_interview_time_slot_path(@admission, @group, @job, interview_time_slot) do
+      .samf-button.small.green
+        = t("interview_time_slots.edit")
+    - if interview_time_slot.number_of_interviews < 1
+      = link_to admissions_admin_admission_group_job_interview_time_slot_path(@admission, @group, @job, interview_time_slot), method: :delete, data: {confirm: t("crud.confirm")} do
+        .samf-button.small.red.ml-1
+          = t("interview_time_slots.delete")
+    - else
+      = link_to admissions_admin_admission_group_job_interview_time_slot_path(@admission, @group, @job, interview_time_slot) do
+        .samf-button.small.blue.ml-1
+          = t("interview_time_slots.see_interviews")
+- if interview_time_slot.number_of_interviews > 0
+  .flex-25.flex-justify-end.flex-align-center
+    = t("interview_time_slots.delete_impossible")
