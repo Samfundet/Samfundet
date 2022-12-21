@@ -1,0 +1,17 @@
+.crowd-funding-grid {
+  display: grid;
+  grid-template-columns: 70% 30%;
+
+  ul {
+    list-style: circle;
+  }
+}
+
+.crowd-funding-vipps {
+  justify-self: end;
+  p {
+    font-weight: bold;
+  }
+}
+
+

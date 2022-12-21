@@ -1,0 +1,33 @@
+%br
+%h2
+  = t("crowd_funding.competition.title")
+
+= simple_format(t("crowd_funding.competition.body"))
+= simple_format(t("crowd_funding.competition.read_more"))
+
+%table
+  %caption
+    %h2
+      = t("crowd_funding.index.supporter")
+  %thead
+    %tr
+      %th
+        = t("name")
+      %th
+        Type
+      %th
+        = t("crowd_funding.amount")
+  %tbody
+    - @supporters.each do |supporter|
+      %tr
+        %td
+          =supporter.name
+        %td
+          = t("crowd_funding.type." + supporter.supporter_type)
+        %td
+          =supporter.amount
+
+- if can? :manage, CrowdFundingSupporter
+  .samf-button.small.mt-3
+    = link_to admin_crowd_funding_supporters_path do
+      = t("crowd_funding.admin.admin")

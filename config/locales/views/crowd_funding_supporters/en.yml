@@ -2,9 +2,21 @@ en:
   crowd_funding:
     index:
       title: Crowd funding
+      intro: No translation
+      thanks:
+        title: No translation
+        first: No translation
+        second: No translation
+        third: No translation
+      other: No translation
+      letter: No translation
+      businesses: No translation
       supporter: Supporters
-      table:
-        amount: Amount
+    competition:
+      title: No translation
+      body: No translation
+      read_more: No translation
+    amount: Amount
     type:
       group: Group
       student_union: Student union
