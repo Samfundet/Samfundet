@@ -1,0 +1,15 @@
+en:
+  crowd_funding:
+    index:
+      title: Crowd funding
+      supporter: Supporters
+      table:
+        amount: Amount
+    type:
+      group: Group
+      student_union: Student union
+    admin:
+      admin: Administrate supporters
+      all: All supporters
+      new: Create new supporter
+      edit: Edit supporter

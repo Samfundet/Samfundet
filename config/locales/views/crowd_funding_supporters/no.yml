@@ -1,0 +1,15 @@
+'no':
+  crowd_funding:
+    index:
+      title: Kronerulling
+      supporter: Bidragsytere
+      table:
+        amount: Beløp
+    type:
+      group: Gjeng
+      student_union: Linjeforening
+    admin:
+      admin: Administrer bidragsytere
+      all: Alle bidragsytere
+      new: Opprett ny bidragsyter
+      edit: Rediger bidragsyter

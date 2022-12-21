@@ -15,7 +15,11 @@ Rails.application.routes.draw do
 
     resources :info_boxes
 
-    #resources :search, only: [:new, :create, :search]
+    resources :crowd_funding_supporters, path: 'crowd-funding' do
+      get :admin, on: :collection
+    end
+
+    #crowd_funding_supporters :search, only: [:new, :create, :search]
     ############################
     ##  Routes for events     ##
     ############################
@@ -88,7 +92,7 @@ Rails.application.routes.draw do
     # Everything closed period routes
     resources :everything_closed_periods, except: [:show]
 
-    # Has to be above "resources :applicants" to get higher priority
+    # Has to be above "crowd_funding_supporters :applicants" to get higher priority
     # because "/applicants/login" should match applicant_sessions#new
     # instead of applicants#show(login).
     scope "/applicants" do
