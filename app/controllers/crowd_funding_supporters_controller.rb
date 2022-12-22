@@ -9,6 +9,7 @@ class CrowdFundingSupportersController < ApplicationController
     @supporters_union = CrowdFundingSupporter.order('amount').where( supporter_type: :student_union)
     @supporters_group = CrowdFundingSupporter.order('amount').where( supporter_type: :group)
     @largest = CrowdFundingSupporter.order('amount').last()
+    @points = [0, @largest.amount/4, @largest.amount/2, (@largest.amount*3)/4 ,@largest.amount]
   end
 
   def admin

@@ -10,10 +10,16 @@
 .crowd-funding-comp
   - @supporters_union.each do |supporter|
     .supporter
-      = supporter.name
+      .name
+        = supporter.name
       .line{style: "width: #{(supporter.amount.to_f/@largest.amount)*100}%"}
         %p.amount= supporter.amount.to_s + " kr"
-  
+  .supporter
+    %div
+    .points
+      - @points.each do |point|
+        .point
+          = point
 
 %h2
   = t("crowd_funding.competition.group")
@@ -23,6 +29,13 @@
       = supporter.name
       .line{style: "width: #{(supporter.amount.to_f/@largest.amount)*100}%"}
         %p.amount= supporter.amount.to_s + " kr"
+  .supporter
+    %div
+    .points
+      - @points.each do |point|
+        .point
+          = point
+
 
 
 - if can? :manage, CrowdFundingSupporter

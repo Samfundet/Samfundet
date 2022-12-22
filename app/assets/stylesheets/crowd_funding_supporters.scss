@@ -22,6 +22,7 @@
     display: grid;
     grid-template-columns: 10% 80%;
     align-items: center;
+    
   }
   .line{
     background-color: $samfundet-red;
@@ -40,5 +41,11 @@
     .amount {
       display: block;
     }
+  }
+
+  .points {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
   }
 }
