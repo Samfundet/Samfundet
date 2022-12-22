@@ -6,10 +6,10 @@ class CrowdFundingSupportersController < ApplicationController
   has_control_panel_applet :admin_applet,
                            if: -> { can? :manage, CrowdFundingSupporter }
   def index
-    @supporters_union = CrowdFundingSupporter.order('amount').where( supporter_type: :student_union)
-    @supporters_group = CrowdFundingSupporter.order('amount').where( supporter_type: :group)
+    @supporters_union = CrowdFundingSupporter.order('amount').where(supporter_type: :student_union)
+    @supporters_group = CrowdFundingSupporter.order('amount').where(supporter_type: :group)
     @largest = CrowdFundingSupporter.order('amount').last()
-    @points = [0, @largest.amount/4, @largest.amount/2, (@largest.amount*3)/4 ,@largest.amount]
+    @points = [0, @largest.amount/4, @largest.amount/2, (@largest.amount*3)/4, @largest.amount]
   end
 
   def admin
@@ -48,10 +48,10 @@ class CrowdFundingSupportersController < ApplicationController
     redirect_to admin_crowd_funding_supporters_path
     end
 
-    def admin_applet
-  end
+  def admin_applet
+    end
 
-  private
+private
 
   def crowd_funding_supporter_params
     params.require(:crowd_funding_supporter).permit(
