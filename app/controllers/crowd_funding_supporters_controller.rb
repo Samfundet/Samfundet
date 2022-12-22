@@ -6,7 +6,9 @@ class CrowdFundingSupportersController < ApplicationController
   has_control_panel_applet :admin_applet,
                            if: -> { can? :manage, CrowdFundingSupporter }
   def index
-    @supporters = CrowdFundingSupporter.all()
+    @supporters_union = CrowdFundingSupporter.order('amount').where( supporter_type: :student_union)
+    @supporters_group = CrowdFundingSupporter.order('amount').where( supporter_type: :group)
+    @largest = CrowdFundingSupporter.order('amount').last()
   end
 
   def admin

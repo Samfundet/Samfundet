@@ -16,6 +16,8 @@
       title: Foreningskonkurransen
       body: Det vil være en foreningskonkurranse hvor donasjonene fra linjeforeninger og gjenger på samfundet vil bli telt opp. For å registrere bidraget må du fylle ut dette skjemaet. Vinneren av konkurransen vil få spandert en gallamiddag på Studentersamfundet!
       read_more: Les mer om nybygg <a href="https://samfundet.no/nybygg">her</a>.
+      student_union: Linjeforeningskonkuranse
+      group: Gjengkonkuranse
     amount: Beløp
     type:
       group: Gjeng
