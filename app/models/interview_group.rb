@@ -1,0 +1,2 @@
+class InterviewGroup < ApplicationRecord
+end
