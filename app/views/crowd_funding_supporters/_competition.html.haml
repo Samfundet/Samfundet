@@ -8,7 +8,7 @@
 %h2
   = t("crowd_funding.competition.student_union")
 .crowd-funding-comp
-  - @supporters_union.each do |supporter|
+  - @supporters_union.reverse.each do |supporter|
     .supporter
       .name
         = supporter.name
