@@ -5,12 +5,19 @@
   ul {
     list-style: circle;
   }
+  @include media($mobile) {
+    grid-template-columns: 100%;
+  }
 }
 
 .crowd-funding-vipps {
   justify-self: end;
   p {
     font-weight: bold;
+  }
+
+  @include media($mobile) {
+  justify-self: center;
   }
 }
 
