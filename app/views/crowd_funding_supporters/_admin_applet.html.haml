@@ -1,13 +1,13 @@
 .top
   %h2
-    Crowd funding
+    = t("crowd_funding.admin.applet.top")
 .options
   %ul
     %li
       = link_to admin_crowd_funding_supporters_path do
         .samf-button.w100.mb-2.green
-          Admin
+          = t("crowd_funding.admin.admin")
     %li
       = link_to crowd_funding_supporters_path do
         .samf-button.w100.mb-2.plain
-          Show crowdfunding
+          = t("crowd_funding.admin.applet.show")

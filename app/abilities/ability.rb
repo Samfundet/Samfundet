@@ -118,6 +118,7 @@ class Ability
   def styret
     can :manage, Blog
     can :manage, Document
+    can :manage, CrowdFundingSupporter
   end
 
   def raadet

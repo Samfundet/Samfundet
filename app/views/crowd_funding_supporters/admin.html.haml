@@ -1,5 +1,13 @@
 %h1
   = t("crowd_funding.admin.admin")
+.flex
+  .samf-button.green
+    = link_to new_crowd_funding_supporter_path do
+      = t("crud.create")
+
+  .samf-button.ml-1
+    = link_to crowd_funding_supporters_path do
+      = t("crowd_funding.admin.applet.show")
 
 %table
   %caption
@@ -33,6 +41,3 @@
             .samf-button.small.red.mr-2
               = t("info_boxes.delete")
 
-.samf-button.green.mt-3
-  = link_to new_crowd_funding_supporter_path do
-    = t("crud.create")

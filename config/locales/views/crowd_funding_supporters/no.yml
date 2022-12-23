@@ -27,3 +27,6 @@
       all: Alle bidragsytere
       new: Opprett ny bidragsyter
       edit: Rediger bidragsyter
+      applet:
+        top: Kronerulling
+        show: Gå til kronerulling
