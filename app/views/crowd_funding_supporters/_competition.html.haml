@@ -19,7 +19,7 @@
     .points
       - @points.each do |point|
         .point
-          = point
+          = point.to_s + " kr"
 
 %h2
   = t("crowd_funding.competition.group")
@@ -53,7 +53,7 @@
     .points
       - @points.each do |point|
         .point
-          = point
+          = point.to_s + " kr"
 
 - if can? :manage, CrowdFundingSupporter
   .samf-button.small.mt-3
