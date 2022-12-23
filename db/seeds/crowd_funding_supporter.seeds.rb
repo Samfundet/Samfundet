@@ -5,7 +5,7 @@ puts "Creating crowd funding supporter"
     name: Faker::Lorem.word(),
     supporter_type: 1,
     amount: i,
-    donors: rand(10)
+    donors: rand(1..10)
   )
 end
 
@@ -14,7 +14,7 @@ end
     name: Faker::Lorem.word(),
     supporter_type: 0,
     amount: i,
-    donors: rand(10)
+    donors: rand(1..10)
   )
 end
 puts "Done creating crowd funding supporter"
