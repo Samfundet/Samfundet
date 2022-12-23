@@ -14,10 +14,12 @@
     = link_to new_admissions_admin_admission_group_job_path(@admission, @group) do
       .samf-button.green.mr-2
         = t('jobs.create')
+    = link_to admissions_admin_admission_group_interview_groups_path(@admission, @group) do
+      .samf-button.orange.mr-2
+        = "Intervjugrupper"
     = link_to applications_admissions_admin_admission_group_path(@admission, @group) do
       .samf-button.plain
         = t('admissions.show_all_applications')
-
 %table
   %thead
     %tr

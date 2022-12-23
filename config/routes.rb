@@ -152,7 +152,7 @@ Rails.application.routes.draw do
         resources :groups, only: :show do
           get :applications, on: :member
           get :reject_calls, on: :member
-          get :interview_groups, on: :member
+          resources :interview_groups, on: :member
           resources :jobs, only: [:show, :new, :create, :edit, :update, :destroy] do
             get :search, on: :collection
             get :show_unprocessed
