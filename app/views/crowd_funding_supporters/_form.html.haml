@@ -8,7 +8,7 @@
       .flex-row.mb-3
         = f.input :amount, label: t("crowd_funding.amount")
       .flex-row.mb-3
-        = f.input :donors, label: t("crowd_funding.donors")
+        = f.input :donors, label: t("crowd_funding.donors"), min: 1
 
     = f.actions do
       = f.action :submit, label: button_type

@@ -8,10 +8,10 @@
 %h2
   = t("crowd_funding.competition.student_union")
 .crowd-funding-comp
-  - @supporters_union.reverse.each do |supporter|
+  - @supporters_union.each_with_index do |supporter, index|
     .supporter
       .name
-        = supporter.name
+        = "#{index + 1}. #{supporter.name}"
       .line{style: "width: #{(supporter.amount.to_f/@largest.amount)*100}%"}
         %p.amount= supporter.amount.to_s + " kr"
   .supporter
@@ -27,9 +27,9 @@
 %h3
   =t("crowd_funding.competition.per_member")
 .crowd-funding-comp
-  - @supporters_group.each do |supporter|
+  - @supporter_group_per.each_with_index do |supporter, index|
     .supporter
-      = supporter.name
+      = "#{index + 1}. #{supporter.name}"
       .line{style: "width: #{((supporter.amount.to_f / supporter.donors )/@largest.amount)*100}%"}
         %p.amount= (supporter.amount / supporter.donors).to_s + " kr"
   .supporter
@@ -37,14 +37,15 @@
     .points
       - @points.each do |point|
         .point
-          = point
+          = point.to_s + " kr"
 
 %h3
   =t("crowd_funding.competition.total")
 .crowd-funding-comp
-  - @supporters_group.each do |supporter|
+  - @supporters_group.each_with_index do |supporter, index|
     .supporter
-      = supporter.name
+      .name
+        = "#{index + 1}. #{supporter.name}"
       .line{style: "width: #{(supporter.amount.to_f/@largest.amount)*100}%"}
         %p.amount= supporter.amount.to_s + " kr"
   .supporter
