@@ -18,7 +18,10 @@ en:
       read_more: No translation
       student_union: No translation
       group: No translation
+      total: No translation
+      per_member: No translation
     amount: Amount
+    donors: Donors
     type:
       group: Group
       student_union: Student union

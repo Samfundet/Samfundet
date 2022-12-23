@@ -22,7 +22,9 @@
       %th
         = t("crowd_funding.amount")
       %th
-        %th
+        = t("crowd_funding.donors")
+      %th
+      %th
   %tbody
     - @supporters.each do |supporter|
       %tr
@@ -33,10 +35,12 @@
         %td
           =supporter.amount
         %td
+          =supporter.donors
+        %td{style: "width: 5%"}
           = link_to edit_crowd_funding_supporter_path(supporter) do
             .samf-button.small.plain
               = t("crud.edit")
-        %td
+        %td{style: "width: 5%"}
           = link_to crowd_funding_supporter_path(supporter), method: :delete, data: {confirm: "Are you sure"} do
             .samf-button.small.red.mr-2
               = t("info_boxes.delete")

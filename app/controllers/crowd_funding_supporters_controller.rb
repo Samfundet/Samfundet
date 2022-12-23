@@ -57,7 +57,8 @@ private
     params.require(:crowd_funding_supporter).permit(
       :name,
       :supporter_type,
-      :amount
+      :amount,
+      :donors
     )
   end
 end

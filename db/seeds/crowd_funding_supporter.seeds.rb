@@ -4,17 +4,17 @@ puts "Creating crowd funding supporter"
   CrowdFundingSupporter.create!(
     name: Faker::Lorem.word(),
     supporter_type: 1,
-    amount: i
+    amount: i,
+    donors: rand(10)
   )
 end
 
-percentages = [0, 25, 50, 75, 100]
-
-percentages.each do |percentage|
+(0..100).step(25) do |i|
   CrowdFundingSupporter.create!(
     name: Faker::Lorem.word(),
     supporter_type: 0,
-    amount: percentage
+    amount: i,
+    donors: rand(10)
   )
 end
 puts "Done creating crowd funding supporter"

@@ -7,6 +7,8 @@
         = f.input :supporter_type, label: "Type", as: :select, collection: CrowdFundingSupporter.supporter_types.keys.map { |k| [t("crowd_funding.type.#{k}"), k]}
       .flex-row.mb-3
         = f.input :amount, label: t("crowd_funding.amount")
+      .flex-row.mb-3
+        = f.input :donors, label: t("crowd_funding.donors")
 
     = f.actions do
       = f.action :submit, label: button_type

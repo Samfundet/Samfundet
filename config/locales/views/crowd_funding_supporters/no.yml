@@ -18,7 +18,10 @@
       read_more: Les mer om nybygg <a href="https://samfundet.no/nybygg">her</a>.
       student_union: Linjeforeningskonkurranse
       group: Gjengkonkurranse
+      total: Totalt per gjeng
+      per_member: Per giver
     amount: Beløp
+    donors: Givere
     type:
       group: Gjeng
       student_union: Linjeforening

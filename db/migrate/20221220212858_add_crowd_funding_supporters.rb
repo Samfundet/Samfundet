@@ -4,6 +4,7 @@ class AddCrowdFundingSupporters < ActiveRecord::Migration[5.2]
       t.string :name
       t.integer :amount, default: 0
       t.integer :supporter_type
+      t.integer :donors, default: 1
     end
   end
 end

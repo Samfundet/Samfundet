@@ -156,6 +156,7 @@ ActiveRecord::Schema.define(version: 2022_12_20_212858) do
     t.string "name"
     t.integer "amount", default: 0
     t.integer "supporter_type"
+    t.integer "donors", default: 1
   end
 
   create_table "document_categories", force: :cascade do |t|
