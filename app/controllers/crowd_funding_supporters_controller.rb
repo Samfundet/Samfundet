@@ -54,14 +54,14 @@ class CrowdFundingSupportersController < ApplicationController
   def admin_applet
   end
 
-  private
+private
 
-    def crowd_funding_supporter_params
-      params.require(:crowd_funding_supporter).permit(
-        :name,
-        :supporter_type,
-        :amount,
-        :donors
-      )
-    end
+  def crowd_funding_supporter_params
+    params.require(:crowd_funding_supporter).permit(
+      :name,
+      :supporter_type,
+      :amount,
+      :donors
+    )
+  end
 end
