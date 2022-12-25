@@ -12,7 +12,7 @@
     .supporter
       .name
         = "#{index + 1}. #{supporter.name}"
-      .line{style: "width: #{(supporter.amount.to_f/@largest.amount)*100}%"}
+      .line{style: "width: #{(supporter.amount.to_f/@largest)*100}%"}
         %p.amount= supporter.amount.to_s + " kr"
   .supporter
     %div
@@ -30,7 +30,7 @@
   - @supporter_group_per.each_with_index do |supporter, index|
     .supporter
       = "#{index + 1}. #{supporter.name}"
-      .line{style: "width: #{((supporter.amount.to_f / supporter.donors )/@largest.amount)*100}%"}
+      .line{style: "width: #{((supporter.amount.to_f / supporter.donors )/@largest)*100}%"}
         %p.amount= (supporter.amount / supporter.donors).to_s + " kr"
   .supporter
     %div
@@ -46,7 +46,7 @@
     .supporter
       .name
         = "#{index + 1}. #{supporter.name}"
-      .line{style: "width: #{(supporter.amount.to_f/@largest.amount)*100}%"}
+      .line{style: "width: #{(supporter.amount.to_f/@largest)*100}%"}
         %p.amount= supporter.amount.to_s + " kr"
   .supporter
     %div

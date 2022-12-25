@@ -25,11 +25,12 @@
   max-width: 800px;
   border: solid black;
   .supporter {
-    margin: 1%;
+    margin: 1% 1% 1% 1%;
     display: grid;
-    grid-template-columns: 10% 80%;
+    grid-template-columns: minmax(5%, 15%) 78%;
     align-items: center;
-
+    white-space: nowrap;
+    overflow: hidden;
   }
   .line{
     background-color: $samfundet-red;
@@ -51,8 +52,12 @@
   }
 
   .points {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25% 2px;
     width: 100%;
+  }
+
+  .point{
+    border-left: 2px solid black;
   }
 }
