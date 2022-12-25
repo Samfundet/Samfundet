@@ -18,6 +18,7 @@
 
   @include media($mobile) {
   justify-self: center;
+    order: -1;
   }
 }
 
@@ -60,7 +61,7 @@
   }
 
   .point{
-    padding-left: 1px;
+    padding-left: 2px;
     border-left: 2px solid black;
   }
 }
