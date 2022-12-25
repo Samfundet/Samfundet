@@ -4,7 +4,7 @@ puts "Creating crowd funding supporter"
   CrowdFundingSupporter.create!(
     name: Faker::Lorem.word(),
     supporter_type: 1,
-    amount: i,
+    amount: rand(1000..10000),
     donors: rand(1..10)
   )
 end
@@ -13,7 +13,7 @@ end
   CrowdFundingSupporter.create!(
     name: Faker::Lorem.word(),
     supporter_type: 0,
-    amount: i,
+    amount: rand(1000..10000),
     donors: rand(1..10)
   )
 end

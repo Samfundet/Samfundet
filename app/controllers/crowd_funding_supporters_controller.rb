@@ -11,12 +11,12 @@ class CrowdFundingSupportersController < ApplicationController
 
     @supporter_group_per = CrowdFundingSupporter.where(supporter_type: :group).sort { |a, b| (a.amount / a.donors) <=> (b.amount / b.donors) }.reverse
 
-    @largest = (CrowdFundingSupporter.order('amount').last).amount
+    @largest = CrowdFundingSupporter.order('amount').last ? round_up((CrowdFundingSupporter.order('amount').last).amount) : 0
     @points = [0, @largest/4, @largest/2, (@largest*3)/4, @largest]
-  end
+    end
 
   def admin
-    @supporters = CrowdFundingSupporter.all.sort
+    @supporters = CrowdFundingSupporter.all.order('supporter_type, amount desc')
   end
 
   def new
@@ -55,6 +55,17 @@ class CrowdFundingSupportersController < ApplicationController
   end
 
 private
+
+  def round_up(number)
+    divisor = 10**Math.log10(number).floor
+    i = number / divisor
+    remainder = number % divisor
+    if remainder == 0
+      i * divisor
+    else
+      (i + 1) * divisor
+    end
+  end
 
   def crowd_funding_supporter_params
     params.require(:crowd_funding_supporter).permit(
