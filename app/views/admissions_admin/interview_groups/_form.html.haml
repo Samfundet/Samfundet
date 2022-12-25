@@ -1,0 +1,15 @@
+= semantic_form_for [:admissions_admin, @admission, @group, @interview_group] do |form|
+  = form.inputs do
+    .flex-row
+      != form.input :name
+    .flex-row
+      != form.input :description
+    .flex-row
+      = form.inputs name: "Verv" do
+        %div{style: "display: flex; flex-direction: row; flex-wrap: wrap;"}
+          - @available_jobs.each do |job|
+            %div{style: "margin-right: 20px;"}
+              = form.label job.title_no
+              = check_box_tag true
+  = form.actions do
+    != form.action :submit

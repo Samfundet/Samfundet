@@ -161,6 +161,10 @@ class Applicant < ApplicationRecord
     group.job_applications_in_admission(admission).select { |ja| ja.applicant == self }
   end
 
+  def top_priority_job_application(admission, group)
+    group.job_applications_in_admission(admission).select { |ja| ja.applicant == self }.first
+  end
+
 private
 
   def lowercase_email

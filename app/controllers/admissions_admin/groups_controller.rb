@@ -31,6 +31,9 @@ class AdmissionsAdmin::GroupsController < AdmissionsAdmin::BaseController
   end
 
   def applications
+    puts()
+    puts('GILS NUSTAV')
+    puts()
     @admission = Admission.find(params[:admission_id])
 
     job_applications = @admission.job_applications.includes(:job).where("jobs.group_id": @group.id)

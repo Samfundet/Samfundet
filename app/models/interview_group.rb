@@ -8,9 +8,27 @@ class InterviewGroup < ApplicationRecord
 
   validates :name, :description, presence: true
 
-  def applicants_for_group
+  def applicants_for_interview_group
+    group_applicants = group.applicants(admission)
+    interview_group_applicants = []
+
+    group_applicants.each do |applicant|
+      applicant.jobs_applied_to(admission).each do |job|
+        if jobs.include? job
+          interview_group_applicants.push(applicant)
+          break
+        end
+      end
+    end
+
+    interview_group_applicants
   end
 
-  def set_interview_time(applicant)
+  def set_interview(applicant, interview)
+    applicant.job_applications_at_group(admission, group).each do |job_application|
+      if jobs.include? job_application.job
+        job_application.interview = interview
+      end
+    end
   end
 end

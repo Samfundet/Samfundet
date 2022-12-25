@@ -2,27 +2,8 @@
   = "Intervjugrupper"
 - @interview_groups.each do |interview_group|
   = interview_group.name
-
-.flex-column.mt-3
-  // jobs that are not attached to interview group yet
-  - @interview_suggestions.group_by {|_, slot, _| slot.id }.sort.each do |_, assigned|
-    - shared_slot = assigned[0][1]
-    .samf-container.p-3.mb-3
-      %h2{style: "text-transform: capitalize"}
-        = l(shared_slot.start_time.to_date, format: :medium_long) + " (" + assigned.count.to_s + ")"
-      %h2{style: "text-transform: capitalize; color: #777;"}= shared_slot.location
-      .flex-row.wrap
-        - assigned.each do |applicant, _, time|
-          .flex-25
-            .flex-row.flex.p-2.m-2{style: "background: #f4f4f4; border-radius: 4px; color: #555;"}
-              .flex-75.flex-align-center
-                = applicant.full_name
-              .flex-25.flex-align-center
-                %div.mr-2= time.to_datetime.strftime("%H:%M")
-
-= f.inputs name: "Nabobord" do
-  %div{style: "display: flex; flex-direction: row; flex-wrap: wrap;"}
-    - @other_tables.each do |n|
-      %div{style: "margin-right: 20px;"}
-        = f.label n.number.to_s
-        = check_box_tag "is_neighbour[#{n.id}]", @table.is_neighbour?(n.id) ? 1 : 0, @table.is_neighbour?(n.id)
+.flex-row.mb-3
+  - if can?(:create, Job)
+    = link_to new_admissions_admin_admission_group_interview_group_path(@admission, @group) do
+      .samf-button.green.mr-2
+        = "Opprett intervjugruppe"
