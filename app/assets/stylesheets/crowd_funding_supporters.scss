@@ -53,11 +53,14 @@
 
   .points {
     display: grid;
-    grid-template-columns: 25% 25% 25% 25% 2px;
+    grid-template-columns: 25% 25% 25% 25% 1px;
     width: 100%;
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
   }
 
   .point{
+    padding-left: 1px;
     border-left: 2px solid black;
   }
 }
