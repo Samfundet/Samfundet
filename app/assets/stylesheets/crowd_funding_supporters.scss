@@ -42,6 +42,13 @@
       margin: 0 0 0 1em;
       white-space: nowrap;
       text-overflow: ellipsis;
+      font-weight: 100;
+      color: white;
+      text-shadow:
+              0.07em 0 $samfundet-red,
+              0 0.07em $samfundet-red,
+              -0.07em 0 $samfundet-red,
+              0 -0.07em $samfundet-red;
       display: none;
     }
   }
@@ -54,7 +61,7 @@
 
   .points {
     display: grid;
-    grid-template-columns: 25% 25% 25% 25% 1px;
+    grid-template-columns: 25% 25% 25% 25% 0;
     width: 100%;
     border-bottom: 2px solid black;
     border-right: 2px solid black;

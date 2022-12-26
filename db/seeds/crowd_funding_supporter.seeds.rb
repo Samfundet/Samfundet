@@ -1,6 +1,6 @@
 puts "Creating crowd funding supporter"
 
-(0..100).step(10) do |i|
+7.times do
   CrowdFundingSupporter.create!(
     name: Faker::Lorem.word(),
     supporter_type: 1,
@@ -9,7 +9,7 @@ puts "Creating crowd funding supporter"
   )
 end
 
-(0..100).step(25) do |i|
+5.times do
   CrowdFundingSupporter.create!(
     name: Faker::Lorem.word(),
     supporter_type: 0,
