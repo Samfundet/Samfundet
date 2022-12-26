@@ -25,32 +25,47 @@ class AdmissionsAdmin::InterviewGroupsController < AdmissionsAdmin::BaseControll
 
   def new
     @interview_group = InterviewGroup.new
-    @available_jobs = @group.jobs - @interview_group.jobs
-
-    puts()
-    puts('GILS NUSTAV')
-    puts()
+    @available_jobs = @group.available_interview_group_jobs
   end
 
   def create
+    @interview_group.update(interview_group_params)
+    if @interview_group.save
+      flash[:success] = t('jobs.job_created')
+      redirect_to admissions_admin_admission_group_path(@admission, @group)
+    else
+      flash[:error] = t('common.fields_missing_error')
+      render :new
+    end
   end
 
   def edit
     @interview_group = InterviewGroup.find(params[:id])
-    @available_jobs = @group.jobs - @interview_group.jobs
-
-    puts()
-    puts('GILS NUSTAV')
-    puts()
+    @available_jobs = @interview_group.jobs + @group.available_interview_group_jobs
   end
 
   def update
+    @interview_group.update(interview_group_params)
+    if @interview_group.save
+      flash[:success] = t('jobs.job_created')
+      redirect_to admissions_admin_admission_group_path(@admission, @group)
+    else
+      flash[:error] = t('common.fields_missing_error')
+      render :new
+    end
   end
 
   def set_interview
   end
 
 private
+
+  def interview_group_params
+    params.require(:interview_group).permit(
+      :name,
+      :description
+    )
+  end
 
   def load_info
     @admission = Admission.find(params[:admission_id])

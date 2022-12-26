@@ -4,6 +4,7 @@ class Group < ApplicationRecord
   belongs_to :group_type
   belongs_to :page
   has_many :jobs
+  has_many :interview_groups
   has_many :roles
   has_many :job_applications, through: :jobs
   has_many :interviews, through: :job_applications
@@ -85,6 +86,17 @@ class Group < ApplicationRecord
   def applicants_to_call(admission)
     job_applications = admission.job_applications.select { |job_application| job_application.job.group_id == id && job_application.withdrawn == false }
     job_applications.select { |job_application| job_application.applicant.lowest_priority_group(admission) == id && job_application.withdrawn == false }.map(&:applicant).uniq.select { |applicant| applicant.unwanted?(admission) }
+  end
+
+  def available_interview_group_jobs
+    taken_jobs = []
+    interview_groups.each do |ig|
+      ig.jobs.each do |job|
+        taken_jobs.push(job)
+      end
+    end
+
+    jobs - taken_jobs
   end
 end
 

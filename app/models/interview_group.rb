@@ -8,6 +8,10 @@ class InterviewGroup < ApplicationRecord
 
   validates :name, :description, presence: true
 
+  def has_job(job)
+    jobs.include? job
+  end
+
   def applicants_for_interview_group
     group_applicants = group.applicants(admission)
     interview_group_applicants = []
