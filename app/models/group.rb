@@ -91,7 +91,10 @@ class Group < ApplicationRecord
   def available_interview_group_jobs
     taken_jobs = []
     interview_groups.each do |ig|
+      puts(ig.name)
       ig.jobs.each do |job|
+        puts(job.interview_group_id)
+        puts(job.title_no)
         taken_jobs.push(job)
       end
     end

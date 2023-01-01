@@ -12,6 +12,19 @@ class InterviewGroup < ApplicationRecord
     jobs.include? job
   end
 
+  def available_jobs
+    jobs_without_interview_group = []
+
+    puts(admission.title_no)
+    group.jobs.each do |job|
+      if not job.interview_group_id
+        jobs_without_interview_group.push(job)
+      end
+    end
+
+    jobs_without_interview_group
+  end
+
   def applicants_for_interview_group
     group_applicants = group.applicants(admission)
     interview_group_applicants = []

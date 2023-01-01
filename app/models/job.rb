@@ -3,6 +3,7 @@
 class Job < ApplicationRecord
   belongs_to :admission, touch: true
   belongs_to :group
+  belongs_to :interview_group
 
   has_one :group_type, -> { order(:description) }, through: :group
   has_many :job_applications

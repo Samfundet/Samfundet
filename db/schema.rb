@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_23_184009) do
+ActiveRecord::Schema.define(version: 2023_01_01_171212) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -343,6 +343,7 @@ ActiveRecord::Schema.define(version: 2022_12_23_184009) do
     t.datetime "updated_at", null: false
     t.text "default_motivation_text_no"
     t.text "default_motivation_text_en"
+    t.integer "interview_group_id"
     t.index ["admission_id"], name: "index_jobs_on_admission_id"
   end
 
@@ -526,8 +527,8 @@ ActiveRecord::Schema.define(version: 2022_12_23_184009) do
   add_foreign_key "groups", "group_types", name: "groups_group_type_id_fk"
   add_foreign_key "images_tags", "images", name: "images_tags_image_id_fk"
   add_foreign_key "images_tags", "tags", name: "images_tags_tag_id_fk"
-  add_foreign_key "interview_groups", "admissions"
-  add_foreign_key "interview_groups", "groups"
+  add_foreign_key "interview_groups", "admissions", name: "interview_groups_admission_id_fk"
+  add_foreign_key "interview_groups", "groups", name: "interview_groups_group_id_fk"
   add_foreign_key "interviews", "job_applications", name: "interviews_job_application_id_fk"
   add_foreign_key "job_applications", "applicants", name: "job_applications_applicant_id_fk"
   add_foreign_key "job_applications", "jobs", name: "job_applications_job_id_fk"
@@ -535,6 +536,7 @@ ActiveRecord::Schema.define(version: 2022_12_23_184009) do
   add_foreign_key "job_tags_jobs", "jobs", name: "job_tags_jobs_job_id_fk"
   add_foreign_key "jobs", "admissions", name: "jobs_admission_id_fk"
   add_foreign_key "jobs", "groups", name: "jobs_group_id_fk"
+  add_foreign_key "jobs", "interview_groups", name: "jobs_interview_group_id_fk"
   add_foreign_key "members_roles", "roles", name: "members_roles_role_id_fk"
   add_foreign_key "page_revisions", "pages", name: "page_revisions_page_id_fk"
   add_foreign_key "password_recoveries", "applicants", name: "password_recoveries_applicant_id_fk"
