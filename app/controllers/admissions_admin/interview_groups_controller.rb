@@ -25,7 +25,7 @@ class AdmissionsAdmin::InterviewGroupsController < AdmissionsAdmin::BaseControll
 
   def new
     @interview_group = InterviewGroup.new
-    @available_jobs = @interview_group.available_jobs
+    @available_jobs = @group.jobs_without_interview_groups
   end
 
   def create
@@ -50,7 +50,7 @@ class AdmissionsAdmin::InterviewGroupsController < AdmissionsAdmin::BaseControll
 
   def edit
     @interview_group = InterviewGroup.find(params[:id])
-    @available_jobs = @interview_group.jobs + @interview_group.available_jobs
+    @available_jobs = @interview_group.jobs + @group.jobs_without_interview_group
   end
 
   def update

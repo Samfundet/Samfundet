@@ -1,10 +1,11 @@
 %h1
-  = "Intervjugrupper"
-.flex-row.mb-3
   - if can?(:create, Job)
     = link_to new_admissions_admin_admission_group_interview_group_path(@admission, @group) do
       .samf-button.green.mr-2
         = "Opprett intervjugruppe"
-- @interview_groups.each do |interview_group|
-  .flex-col.mb-3
-    = interview_group.name
+
+.flex-column.mt-3
+  .samf-container.p-3.mb-3
+    - @interview_groups.each do |interview_group|
+      .flex-row.flex.p-2.m-2{style: "background: #f4f4f4; border-radius: 4px; color: #555;"}
+        = interview_group.name
