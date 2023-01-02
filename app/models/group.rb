@@ -92,7 +92,7 @@ class Group < ApplicationRecord
     available_jobs = []
 
     jobs.each do |job|
-      if not job.interview_group_id
+      if not job.interview_group_id or job.interview_group_id == nil
         available_jobs.push(job)
       end
     end

@@ -50,18 +50,35 @@ class AdmissionsAdmin::InterviewGroupsController < AdmissionsAdmin::BaseControll
 
   def edit
     @interview_group = InterviewGroup.find(params[:id])
-    @available_jobs = @interview_group.jobs + @group.jobs_without_interview_group
+    @available_jobs = @interview_group.jobs + @group.jobs_without_interview_groups
   end
 
   def update
     @interview_group.update(interview_group_params)
     if @interview_group.save
-      flash[:success] = t('jobs.job_created')
-      redirect_to admissions_admin_admission_group_path(@admission, @group)
+      if not params[:has_job].nil?
+        params[:has_job].each do |k, v|
+          job = Job.find_by(id: k.to_i)
+          @interview_group.jobs.push(job)
+        end
+      end
+      flash[:success] = 'Intervjugruppen ble lagret!'
+      redirect_to admissions_admin_admission_group_interview_groups_path(@admission, @group)
     else
       flash[:error] = t('common.fields_missing_error')
-      render :new
+      render :edit
     end
+  end
+
+  def destroy
+    @interview_group = InterviewGroup.find(params[:id])
+    @interview_group.jobs.each do |job|
+      job.interview_group_id = nil
+      job.save!
+    end
+    @interview_group.destroy
+    flash[:success] = 'Intervjugruppen ble slettet!'
+    redirect_to admissions_admin_admission_group_interview_groups_path(@admission, @group)
   end
 
   def set_interview

@@ -10,6 +10,6 @@
           - @available_jobs.each do |job|
             %div{style: "margin-right: 20px;"}
               = form.label job.title_no
-              = check_box_tag "has_job[#{job.id}]", @interview_group.has_job(job) ? 1 : 0
+              = check_box_tag "has_job[#{job.id}]", @interview_group.has_job(job) ? 1 : 0, @interview_group.has_job(job)
   = form.actions do
     != form.action :submit

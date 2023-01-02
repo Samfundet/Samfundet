@@ -1,11 +1,19 @@
-%h1
-  - if can?(:create, Job)
-    = link_to new_admissions_admin_admission_group_interview_group_path(@admission, @group) do
-      .samf-button.green.mr-2
-        = "Opprett intervjugruppe"
+- if can?(:create, Job)
+  = link_to new_admissions_admin_admission_group_interview_group_path(@admission, @group) do
+    .samf-button.green.mr-2
+      = "Opprett intervjugruppe"
 
 .flex-column.mt-3
   .samf-container.p-3.mb-3
-    - @interview_groups.each do |interview_group|
-      .flex-row.flex.p-2.m-2{style: "background: #f4f4f4; border-radius: 4px; color: #555;"}
-        = interview_group.name
+    .flex-row.wrap
+      - @interview_groups.each do |interview_group|
+        .flex-25
+          .flex-row.flex.p-2.m-2{style: "background: #f4f4f4; border-radius: 4px; color: #555;"}
+            %h2{style: "text-transform: capitalize"}
+              = interview_group.name
+            = link_to edit_admissions_admin_admission_group_interview_group_path(@admission, @group, interview_group) do
+              .samf-button.small.green
+                = "Rediger"
+            = link_to admissions_admin_admission_group_interview_group_path(@admission, @group, interview_group), method: :delete, data: {confirm: t("crud.confirm")} do
+              .samf-button.small.red.ml-1
+                = "Slett"
