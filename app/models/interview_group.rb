@@ -12,7 +12,7 @@ class InterviewGroup < ApplicationRecord
     jobs.include? job
   end
 
-  def applicants_for_interview_group
+  def applicants_for_interview_group(applicant)
     group_applicants = group.applicants(admission)
     interview_group_applicants = []
 

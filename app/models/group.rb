@@ -88,10 +88,10 @@ class Group < ApplicationRecord
     job_applications.select { |job_application| job_application.applicant.lowest_priority_group(admission) == id && job_application.withdrawn == false }.map(&:applicant).uniq.select { |applicant| applicant.unwanted?(admission) }
   end
 
-  def jobs_without_interview_groups
+  def jobs_without_interview_groups(admission)
     available_jobs = []
 
-    jobs.each do |job|
+    jobs.where(admission: admission).each do |job|
       if not job.interview_group_id or job.interview_group_id == nil
         available_jobs.push(job)
       end

@@ -10,6 +10,7 @@ class AdmissionsAdmin::InterviewGroupsController < AdmissionsAdmin::BaseControll
 
   def show
     @interview_group = InterviewGroup.find(params[:id])
+    @applicants = @interview_group.applicants_for_interview_group(@admission)
   end
 
   def show_unprocessed
@@ -17,7 +18,7 @@ class AdmissionsAdmin::InterviewGroupsController < AdmissionsAdmin::BaseControll
     @job_applications = []
 
     @applicants.each do |applicant|
-      @job_applications.push(applicant.top_priority_job_application)
+      @job_applications.push(applicant.top_priority_job_application_at_group(@admission, @group))
     end
 
     render partial: '_applicants'
@@ -25,7 +26,7 @@ class AdmissionsAdmin::InterviewGroupsController < AdmissionsAdmin::BaseControll
 
   def new
     @interview_group = InterviewGroup.new
-    @available_jobs = @group.jobs_without_interview_groups
+    @available_jobs = @group.jobs_without_interview_groups(@admission)
   end
 
   def create
@@ -50,7 +51,8 @@ class AdmissionsAdmin::InterviewGroupsController < AdmissionsAdmin::BaseControll
 
   def edit
     @interview_group = InterviewGroup.find(params[:id])
-    @available_jobs = @interview_group.jobs + @group.jobs_without_interview_groups
+    puts(@admission)
+    @available_jobs = @interview_group.jobs + @group.jobs_without_interview_groups(@admission)
   end
 
   def update
