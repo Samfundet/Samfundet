@@ -13,15 +13,11 @@ class AdmissionsAdmin::InterviewGroupsController < AdmissionsAdmin::BaseControll
     @applicants = @interview_group.applicants_for_interview_group(@admission)
   end
 
-  def show_unprocessed
-    @applicants = @interview_group.applicants_for_interview_group
-    @job_applications = []
-
-    @applicants.each do |applicant|
-      @job_applications.push(applicant.top_priority_job_application_at_group(@admission, @group))
-    end
-
-    render partial: '_applicants'
+  def show_applicants
+    puts('THIS IS RUNNING')
+    @interview_group = InterviewGroup.find(params[:id])
+    @applicants = @interview_group.applicants_for_interview_group(@admission)
+    render partial: 'show_applicants_form'
   end
 
   def new

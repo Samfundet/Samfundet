@@ -4,32 +4,6 @@
   - job_application_groupings = @groupings
   - show_job_titles = false
 
-.flex-row.flex-align-center
-  #show_color_explanations.samf-button.plain.small
-    = t("interviews.show_color_explanation")
-  .p-2
-    %input#colorblind_mode{type:"checkbox", checked: false}
-      =t('interviews.colorblind_mode')
-
-#color_explanations.display-none
-  .samf-container.mt-3{class:"color_description", style:"overflow:hidden; color: black;"}
-    %div.p-1{ style: "background-color: #81fc62"}= t('interviews.green_explanation')
-    %div.p-1{ style: "background-color: #D6FFCC"}= t('interviews.bright_green_explanation')
-    %div.p-1{ style: "background-color: #FFF5BC"}= t('interviews.yellow_explanation')
-    %div.p-1{ style: "background-color: #FFE1E0"}= t('interviews.pink_explanation')
-    %div.p-1{ style: "background-color: #FFABA8"}= t('interviews.red_explanation')
-    -#%div.p-1{ style: "background-color: grey"}= t('interviews.grey_explanation')
-
-  .samf-container.mt-3{class:"color_description display-none", style:"overflow:hidden; color: white;"}
-    %div.p-1{ style: "background-color: #16536A"}= t('interviews.blue_explanation')
-    %div.p-1{ style: "background-color: #38758B"}= t('interviews.bright_blue_explanation')
-    %div.p-1{ style: "background-color: #CEC000"}= t('interviews.yellow_explanation')
-    %div.p-1{ style: "background-color: #e66a6a"}= t('interviews.pink_explanation')
-    %div.p-1{ style: "background-color: #d65252"}= t('interviews.red_explanation')
-    -#%div.p-1{ style: "color: grey"}= t('interviews.grey_explanation')
-
-
-
 
 %table.applications.custom-table.sorted
   %thead

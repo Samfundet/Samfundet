@@ -1,0 +1,61 @@
+%table
+  %thead
+    %th.number
+      = t('interviews.applicant_number')
+    %th.name
+      = t('interviews.applicant_name')
+    %th.phone
+      = t('interviews.applicant_phone_number')
+    %th.email
+      = t('interviews.applicant_email_address')
+    %th.interview-time
+      = t('interviews.interview_time')
+    %th.location
+      = t('interviews.location')
+    %th.applicant_ranking
+      = t('interviews.applicant_ranking')
+    %th.interviews_set
+      = t('interviews.interviews_set')
+    %th.comment
+      = t('interviews.comment')
+
+  %tbody{class: "job_application_table"}
+    - @applicants.each_with_index do |applicant, index|
+      - job_application = applicant.top_priority_job_application_at_group(@admission, @group)
+      - tr_class = "#{job_application.assignment_status}"
+      - if job_application.rejected_and_not_contacted?
+        - tr_class += " rejected"
+
+      %tr{id: "application-#{job_application.id}", class: tr_class}
+        %td
+          = index+1
+        %td
+          = link_to admissions_admin_admission_group_job_job_application_path(@admission, @group, job_application.job, job_application) do
+            = applicant.full_name
+        %td= link_to applicant.phone, "tel:#{applicant.phone}"
+        %td= mail_to applicant.email
+        %td{style: "width:120px;"}
+          = semantic_form_for([:admissions_admin, @admission, @group, job_application.job, job_application, interview = job_application.find_or_create_interview], namespace: "interview_#{interview.id}", html: {class: "test custom-form"}) do |form|
+            = form.inputs do
+              != form.input :time, as: :string, label: false, name: "time", input_html: { id: "interview_#{job_application.id}_time", class: "datetimepicker", value: interview.time ? interview.time : '', placeholder: "DD.MM.ÅÅÅÅ HH:MM" }
+            %span{ class: "status" }
+            = form.actions do
+              != form.action :submit, button_html: { class: "interview_save", value: t('interviews.save_interview_time') }
+        %td
+          = semantic_form_for([:admissions_admin, @admission, @group, job_application.job, job_application, interview = job_application.find_or_create_interview], namespace: "interview_#{interview.id}", html: {class: "test custom-form"}) do |form|
+            = form.inputs do
+              != form.input :location, label: false, name: "location", input_html: { id: "interview_#{job_application.id}_location", placeholder: t('interviews.location') }
+            %span{ class: "status" }
+            = form.actions do
+              != form.action :submit, button_html: { class: "interview_save", value: t('interviews.save_interview_location') }
+        %td
+          = job_application.applicant.priority_of_job_application(@admission, job_application).to_s + " / " + job_application.applicant.jobs_applied_to(@admission).length.to_s
+        %td
+          = job_application.applicant.get_set_interviews(@admission).length.to_s + " / " + job_application.applicant.jobs_applied_to(@admission).length.to_s
+        %td
+          = semantic_form_for([:admissions_admin, @admission, @group, job_application.job, job_application, interview = job_application.find_or_create_interview], namespace: "interview_#{interview.id}", html: {class: "test custom-form"}) do |form|
+            = form.inputs do
+              != form.input :comment, label: false, input_html: { rows: 2, cols: 7}
+            %span{ class: "status" }
+            = form.actions do
+              != form.action :submit, button_html: { class: "interview_save", value: 'save' }
