@@ -31,6 +31,9 @@ class AdmissionsAdmin::InterviewsController < AdmissionsAdmin::BaseController
   end
 
   def update
+    puts()
+    puts(params)
+    puts()
     @interview.time = params[:interview][:time] if params[:interview][:time]
     if params[:interview][:location]
       @interview.location = params[:interview][:location]

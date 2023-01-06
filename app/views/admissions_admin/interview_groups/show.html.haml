@@ -1,10 +1,14 @@
-= javascript_include_tag 'job_applications/admissions_admin_job_applications', defer: true
-= javascript_include_tag 'applicants/interviews', defer: true
+= javascript_include_tag 'interview_groups/show_applicants', defer: true
 
 - @applicants.each do |applicant|
   .flex-row
     = applicant.full_name.to_s + ", "
     = applicant.top_priority_job_application_at_group(@admission, @group).job.title_no
 
-- if @applicants.count > 0
-  = render partial: "show_applicants"
+= render "show_applicants"
+
+//= render_async admissions_admin_admission_group_interview_group_show_applicants_path(interview_group_id: @interview_group) do
+//  .samf-container.flex-col.p-3.text-Align.mb-3
+//    %h2= t("interviews.loading_title")
+//    %p.mb-2{style: "color: #666;"}= t("interviews.loading_description")
+//    .loading-indicator.large.center

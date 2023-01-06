@@ -2,6 +2,7 @@
 
 class AdmissionsAdmin::InterviewGroupsController < AdmissionsAdmin::BaseController
   load_and_authorize_resource
+  layout 'admissions'
   before_action :load_info
 
   def index
@@ -14,10 +15,9 @@ class AdmissionsAdmin::InterviewGroupsController < AdmissionsAdmin::BaseControll
   end
 
   def show_applicants
-    puts('THIS IS RUNNING')
     @interview_group = InterviewGroup.find(params[:id])
     @applicants = @interview_group.applicants_for_interview_group(@admission)
-    render partial: 'show_applicants_form'
+    render partial: 'show_applicants'
   end
 
   def new
