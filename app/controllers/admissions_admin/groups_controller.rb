@@ -30,6 +30,37 @@ class AdmissionsAdmin::GroupsController < AdmissionsAdmin::BaseController
     end
   end
 
+  def show_applicants_with_required_interviews
+    @admission = Admission.find(params[:admission_id])
+    @group = Group.find(params[:group_id])
+
+    applicants = @group.applicants(@admission)
+
+    @top_job_applications = []
+    applicants.each do |applicant|
+      if applicant.get_set_interviews(@admission).length == 0
+        row_to_add = []
+
+        job_application = applicant.top_priority_job_application_at_group(@admission, @group)
+        priority = applicant.priority_of_job_application(@admission, job_application)
+        number_of_applications = applicant.jobs_applied_to(@admission).length
+
+        row_to_add.push(priority)
+        row_to_add.push(job_application)
+        row_to_add.push(job_application.job.title)
+        row_to_add.push(applicant.full_name)
+        row_to_add.push(applicant.phone)
+        row_to_add.push(applicant.email)
+        row_to_add.push(number_of_applications)
+
+
+        @top_job_applications.push(row_to_add)
+      end
+    end
+
+    @top_job_applications = @top_job_applications.sort_by { |a, b, c, d, e, f| a }
+  end
+
   def applications
     @admission = Admission.find(params[:admission_id])
 

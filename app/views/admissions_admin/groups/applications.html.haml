@@ -38,10 +38,9 @@
               = application.applicant.full_name
           %td= application.applicant.phone
           %td= application.applicant.email
-          %td= application.job.title
+          %td
+            = link_to admissions_admin_admission_group_job_path(@admission, @group, application.job) do
+              = application.job.title
           %td= application.find_or_create_interview.time
           %td= application.find_or_create_interview.location
           %td= application.find_or_create_interview.applicant_status_string
-
-
-

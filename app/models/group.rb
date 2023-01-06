@@ -78,6 +78,10 @@ class Group < ApplicationRecord
     role.to_sym
   end
 
+  def applicants(admission)
+    admission.job_applications.select { |job_application| job_application.job.group_id == id }.map(&:applicant).uniq
+  end
+
   def applicants_to_call(admission)
     job_applications = admission.job_applications.select { |job_application| job_application.job.group_id == id && job_application.withdrawn == false }
     job_applications.select { |job_application| job_application.applicant.lowest_priority_group(admission) == id && job_application.withdrawn == false }.map(&:applicant).uniq.select { |applicant| applicant.unwanted?(admission) }
