@@ -48,11 +48,18 @@
         %td
           = job.accepted_applications.count
         %td.flex-row{:style => "float:right;"}
-          - if @should_show_delete_button
-            - if can?(:destroy, Job, job) && !job.job_applications.exists?
-              = link_to admissions_admin_admission_group_job_path(@admission, @group, job), method: "delete", data: { confirm: t('crud.confirm') } do
+          - if can?(:manage, Admission)
+            = link_to admissions_admin_admission_group_job_path(@admission, @group, job), method: "delete",  data: { confirm: t('crud.confirm') } do
+              - if job.processed_applications.count == job.active_applications.count
                 .samf-button.small.red.mr-2
-                  = t('groups.delete_job')
+                  = "Admin delete"
+              - else
+                %button.samf-button.small.gray.mr-2{disabled: true}
+                  = "Something else"
+          - if can?(:destroy, Job, job) && !job.job_applications.exists?
+            = link_to admissions_admin_admission_group_job_path(@admission, @group, job), method: "delete", data: { confirm: t('crud.confirm') } do
+              .samf-button.small.red.mr-2
+                = t('groups.delete_job')
           != link_to job do
             .samf-button.small.plain.mr-2
               = t('groups.job_listing')

@@ -5,7 +5,7 @@ class Job < ApplicationRecord
   belongs_to :group
 
   has_one :group_type, -> { order(:description) }, through: :group
-  has_many :job_applications
+  has_many :job_applications, dependent: :destroy
   has_many :interviews, through: :job_applications
   has_many :applicants, through: :job_applications
 
