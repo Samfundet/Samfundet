@@ -9,9 +9,8 @@
   = t("crowd_funding.competition.student_union")
 .crowd-funding-comp
   - @supporters_union.each_with_index do |supporter, index|
-    .supporter
-      .name
-        = "#{index + 1}. #{supporter.name}"
+    .supporter{title: supporter.name}
+      = "#{index + 1}. #{supporter.name_short}"
       .line{style: "width: #{(supporter.amount.to_f/@largest)*100}%"}
         %p.amount= number_to_currency(supporter.amount, strip_insignificant_zeros: true)
   .supporter
@@ -28,8 +27,8 @@
   =t("crowd_funding.competition.per_member")
 .crowd-funding-comp
   - @supporter_group_per.each_with_index do |supporter, index|
-    .supporter
-      = "#{index + 1}. #{supporter.name}"
+    .supporter{title: supporter.name}
+      = "#{index + 1}. #{supporter.name_short}"
       .line{style: "width: #{((supporter.amount.to_f / supporter.donors )/@largest)*100}%"}
         %p.amount= number_to_currency(supporter.amount / supporter.donors, strip_insignificant_zeros: true)
   .supporter
@@ -43,9 +42,8 @@
   =t("crowd_funding.competition.total")
 .crowd-funding-comp
   - @supporters_group.each_with_index do |supporter, index|
-    .supporter
-      .name
-        = "#{index + 1}. #{supporter.name}"
+    .supporter{title: supporter.name}
+      = "#{index + 1}. #{supporter.name_short}"
       .line{style: "width: #{(supporter.amount.to_f/@largest)*100}%"}
         %p.amount= number_to_currency(supporter.amount.to_s, strip_insignificant_zeros: true)
   .supporter

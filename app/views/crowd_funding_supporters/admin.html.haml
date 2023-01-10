@@ -18,6 +18,8 @@
       %th
         = t("name")
       %th
+        = t("groups.abbreviation")
+      %th
         Type
       %th
         = t("crowd_funding.amount")
@@ -30,6 +32,8 @@
       %tr
         %td
           =supporter.name
+        %td
+          =supporter.name_short
         %td
           = t("crowd_funding.type." + supporter.supporter_type)
         %td

@@ -3,6 +3,7 @@
     = f.inputs name:t("info_boxes.form.header") do
       .flex-row
         = f.input :name, label: t("name")
+        = f.input :name_short, label: t("groups.abbreviation")
       .flex-row
         = f.input :supporter_type, label: "Type", as: :select, collection: CrowdFundingSupporter.supporter_types.keys.map { |k| [t("crowd_funding.type.#{k}"), k]}
       .flex-row.mb-3

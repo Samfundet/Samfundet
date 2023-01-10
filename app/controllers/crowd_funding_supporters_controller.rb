@@ -70,6 +70,7 @@ private
   def crowd_funding_supporter_params
     params.require(:crowd_funding_supporter).permit(
       :name,
+      :name_short,
       :supporter_type,
       :amount,
       :donors

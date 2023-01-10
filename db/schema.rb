@@ -154,6 +154,7 @@ ActiveRecord::Schema.define(version: 2022_12_20_212858) do
 
   create_table "crowd_funding_supporters", force: :cascade do |t|
     t.string "name"
+    t.string "name_short"
     t.integer "amount", default: 0
     t.integer "supporter_type"
     t.integer "donors", default: 1
