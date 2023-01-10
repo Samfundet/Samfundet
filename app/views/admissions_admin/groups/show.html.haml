@@ -27,6 +27,7 @@
       %th= t('admissions_admin.processed_applications')
       %th= t('admissions_admin.accepted_applicants')
       %th
+      %th
   %tbody
     - @jobs.each do |job|
       %tr
@@ -47,15 +48,16 @@
             %span{style: "color:red"}= job.processed_applications.count.to_s + "/" + job.active_applications.count.to_s
         %td
           = job.accepted_applications.count
-        %td.flex-row{:style => "float:right;"}
+        %td
           - if can?(:manage, Admission)
             = link_to admissions_admin_admission_group_job_path(@admission, @group, job), method: "delete",  data: { confirm: t('crud.confirm') } do
               - if job.processed_applications.count == job.active_applications.count
                 .samf-button.small.red.mr-2
-                  = "Admin delete"
+                  = t('groups.admin_delete')
               - else
                 %button.samf-button.small.gray.mr-2{disabled: true}
-                  = "Something else"
+                  = t('groups.admin_delete_process')
+        %td.flex-row{:style => "float:right;"}
           - if @should_show_delete_button
             - if can?(:destroy, Job, job) && !job.job_applications.exists?
               = link_to admissions_admin_admission_group_job_path(@admission, @group, job), method: "delete", data: { confirm: t('crud.confirm') } do
