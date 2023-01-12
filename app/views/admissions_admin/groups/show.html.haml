@@ -51,12 +51,8 @@
         %td
           - if can?(:manage, Admission)
             = link_to admissions_admin_admission_group_job_path(@admission, @group, job), method: "delete",  data: { confirm: t('crud.confirm') } do
-              - if job.processed_applications.count == job.active_applications.count
-                .samf-button.small.red.mr-2
-                  = t('groups.admin_delete')
-              - else
-                %button.samf-button.small.gray.mr-2{disabled: true}
-                  = t('groups.admin_delete_process')
+              %button.samf-button.small.mr-2{job.processed_applications.count != job.active_applications.count ? {title: "Alle søknader må løses", class: "gray", disabled: true,} : {title: t("groups.delete_job")}}
+                = t("groups.admin_delete")
         %td.flex-row{:style => "float:right;"}
           - if @should_show_delete_button
             - if can?(:destroy, Job, job) && !job.job_applications.exists?
