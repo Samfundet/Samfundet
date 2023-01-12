@@ -48,6 +48,7 @@ authorization do
       :contact,
       :admissions_admin_campus,
       :info_boxes,
+      :crowd_funding_supporters
     ], to: :manage
 
     has_permission_on :admissions_admin_groups, to: :reject_calls
@@ -132,6 +133,10 @@ authorization do
     role group_role do
       has_permission_on :documents, to: :manage
     end
+  end
+
+  role :styret do
+    has_permission_on :crowd_funding_supporters, to: :manage
   end
 
   Group.all.each do |group|
