@@ -17,8 +17,12 @@
   a {
     color: white;
   }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
 }
-.samf-button:hover {
+.samf-button:hover:not([disabled]) {
   filter: brightness(120%);
   transform: translateY(-1px);
   transition: .2s;
