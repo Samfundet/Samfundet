@@ -7,16 +7,16 @@ class CrowdFundingSupportersController < ApplicationController
                            if: -> { can? :manage, CrowdFundingSupporter }
   def index
     @supporters_union = CrowdFundingSupporter.order('amount desc').where(supporter_type: :student_union).limit(5)
-    @supporters_union_largest = round_up(@supporters_union[0].amount == 0 ? 1 : @supporters_union[0].amount)
+    @supporters_union_largest = round_up((!@supporters_union[0] || @supporters_union[0].amount == 0) ? 1 : @supporters_union[0].amount)
     @supporters_union_points = [0, @supporters_union_largest/4, @supporters_union_largest/2, (@supporters_union_largest*3)/4, @supporters_union_largest]
 
     @supporters_group = CrowdFundingSupporter.order('amount desc').where(supporter_type: :group).limit(5)
-    @supporters_group_largest = round_up(@supporters_group[0].amount == 0 ? 1 : @supporters_group[0].amount)
+    @supporters_group_largest = round_up((!@supporters_group[0] || @supporters_group[0].amount == 0) ? 1 : @supporters_group[0].amount)
     @supporters_group_points = [0, @supporters_group_largest/4, @supporters_group_largest/2, (@supporters_group_largest*3)/4, @supporters_group_largest]
 
-    @supporter_group_per = CrowdFundingSupporter.limit(5).where(supporter_type: :group).sort { |a, b| (a.amount / a.donors) <=> (b.amount / b.donors) }.reverse
-    @supporter_group_per_largest = round_up(@supporter_group_per[0].amount / @supporter_group_per[0].donors == 0 ? 1 : @supporter_group_per[0].amount/@supporter_group_per[0].donors)
-    @supporter_group_per_points = [0, @supporter_group_per_largest/4, @supporter_group_per_largest/2, (@supporter_group_per_largest*3)/4, @supporter_group_per_largest]
+    @supporters_group_per = CrowdFundingSupporter.where(supporter_type: :group).sort { |a, b| (b.amount / b.donors) <=> (a.amount / a.donors) }.take(5)
+    @supporters_group_per_largest = round_up((!@supporters_group_per[0] || @supporters_group_per[0].amount / @supporters_group_per[0].donors == 0) ? 1 : @supporters_group_per[0].amount/@supporters_group_per[0].donors)
+    @supporters_group_per_points = [0, @supporters_group_per_largest/4, @supporters_group_per_largest/2, (@supporters_group_per_largest*3)/4, @supporters_group_per_largest]
   end
 
   def admin

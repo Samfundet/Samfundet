@@ -10,7 +10,7 @@ puts "Creating crowd funding supporter"
   )
 end
 
-5.times do
+7.times do
   CrowdFundingSupporter.create!(
     name: Faker::Lorem.word(),
     name_short: Faker::Lorem.characters(3),
