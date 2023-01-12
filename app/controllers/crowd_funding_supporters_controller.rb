@@ -6,14 +6,18 @@ class CrowdFundingSupportersController < ApplicationController
   has_control_panel_applet :admin_applet,
                            if: -> { can? :manage, CrowdFundingSupporter }
   def index
-    @supporters_union = CrowdFundingSupporter.limit(5).order('amount desc').where(supporter_type: :student_union)
-    @supporters_group = CrowdFundingSupporter.limit(5).order('amount desc').where(supporter_type: :group)
+    @supporters_union = CrowdFundingSupporter.order('amount desc').where(supporter_type: :student_union).limit(5)
+    @supporters_union_largest = round_up(@supporters_union[0].amount == 0 ? 1 : @supporters_union[0].amount)
+    @supporters_union_points = [0, @supporters_union_largest/4, @supporters_union_largest/2, (@supporters_union_largest*3)/4, @supporters_union_largest]
+
+    @supporters_group = CrowdFundingSupporter.order('amount desc').where(supporter_type: :group).limit(5)
+    @supporters_group_largest = round_up(@supporters_group[0].amount == 0 ? 1 : @supporters_group[0].amount)
+    @supporters_group_points = [0, @supporters_group_largest/4, @supporters_group_largest/2, (@supporters_group_largest*3)/4, @supporters_group_largest]
 
     @supporter_group_per = CrowdFundingSupporter.limit(5).where(supporter_type: :group).sort { |a, b| (a.amount / a.donors) <=> (b.amount / b.donors) }.reverse
-
-    @largest = CrowdFundingSupporter.order('amount').last ? round_up((CrowdFundingSupporter.order('amount').last).amount) : 1
-    @points = [0, @largest/4, @largest/2, (@largest*3)/4, @largest]
-    end
+    @supporter_group_per_largest = round_up(@supporter_group_per[0].amount / @supporter_group_per[0].donors == 0 ? 1 : @supporter_group_per[0].amount/@supporter_group_per[0].donors)
+    @supporter_group_per_points = [0, @supporter_group_per_largest/4, @supporter_group_per_largest/2, (@supporter_group_per_largest*3)/4, @supporter_group_per_largest]
+  end
 
   def admin
     @supporters = CrowdFundingSupporter.all.order('supporter_type, amount desc')
