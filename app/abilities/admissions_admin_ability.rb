@@ -35,7 +35,7 @@ class AdmissionsAdminAbility
     define_method(:"#{group.admission_responsible_role}") do
       opptaksansvarlig
 
-      can [:show, :applications, :reject_calls], Group, id: group.id
+      can [:show, :applications, :reject_calls, :show_applicants_with_missing_interviews], Group, id: group.id
       can [:new, :create, :search, :edit, :update, :show, :show_unprocessed, :destroy], Job, group_id: group.id
       can [:show, :reset_status], JobApplication, job: { group: { id: group.id } }
       can [:show, :update], Interview, job_application: { job: { group: { id: group.id } } }
