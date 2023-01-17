@@ -156,7 +156,7 @@ Rails.application.routes.draw do
         resources :groups, only: :show do
           get :applications, on: :member
           get :reject_calls, on: :member
-          get :show_applicants_with_required_interviews, to: 'groups#show_applicants_with_required_interviews'
+          get :show_applicants_with_missing_interviews, to: 'groups#show_applicants_with_missing_interviews'
           resources :jobs, only: [:show, :new, :create, :edit, :update, :destroy] do
             get :search, on: :collection
             get :show_unprocessed
