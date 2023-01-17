@@ -30,7 +30,7 @@ class AdmissionsAdmin::GroupsController < AdmissionsAdmin::BaseController
     end
   end
 
-  def show_applicants_with_required_interviews
+  def show_applicants_with_missing_interviews
     @admission = Admission.find(params[:admission_id])
     @group = Group.find(params[:group_id])
 
@@ -52,7 +52,6 @@ class AdmissionsAdmin::GroupsController < AdmissionsAdmin::BaseController
         row_to_add.push(applicant.phone)
         row_to_add.push(applicant.email)
         row_to_add.push(number_of_applications)
-
 
         @top_job_applications.push(row_to_add)
       end

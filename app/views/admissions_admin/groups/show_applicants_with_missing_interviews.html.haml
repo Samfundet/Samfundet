@@ -1,4 +1,4 @@
-- set_title "Søkere med krav på intervju i " + @group.name
+- set_title "Søkere som mangler intervjutider i " + @group.name
 = javascript_include_tag 'applicants/interviews', defer: true
 
 = link_to admissions_admin_admission_group_path(@admission, @group) do
@@ -6,7 +6,7 @@
     = t("common.back")
 
 %h1
-  = "Søkere med krav på intervju"
+  = "Søkere som mangler intervjutider"
 
 %h2
   = @group.name

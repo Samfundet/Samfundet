@@ -14,9 +14,9 @@
     = link_to new_admissions_admin_admission_group_job_path(@admission, @group) do
       .samf-button.green.mr-2
         = t('jobs.create')
-    = link_to admissions_admin_admission_group_show_applicants_with_required_interviews_path(@admission, @group) do
+    = link_to admissions_admin_admission_group_show_applicants_with_missing_interviews_path(@admission, @group) do
       .samf-button.orange.mr-2
-        = "Søkere med krav på intervju"
+        = "Søkere som mangler intervjutider"
     = link_to applications_admissions_admin_admission_group_path(@admission, @group) do
       .samf-button.plain
         = t('admissions.show_all_applications')

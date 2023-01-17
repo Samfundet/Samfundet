@@ -161,7 +161,7 @@ class Applicant < ApplicationRecord
     group.job_applications_in_admission(admission).select { |ja| ja.applicant == self }
   end
 
-  def top_priority_job_application_at_group(admission, group)
+  def top_priority_job_application_at_group_without_intervie_without_interview(admission, group)
     job_applications.select { |application| application.job.admission == admission }.select { |ja| ja.job.group == group }.first
   end
 
