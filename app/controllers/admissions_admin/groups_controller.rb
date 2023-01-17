@@ -38,10 +38,10 @@ class AdmissionsAdmin::GroupsController < AdmissionsAdmin::BaseController
 
     @top_job_applications = []
     applicants.each do |applicant|
-      if applicant.get_set_interviews(@admission).length == 0
+      if applicant.top_priority_job_application_at_group_without_interview(@admission, @group)
         row_to_add = []
 
-        job_application = applicant.top_priority_job_application_at_group(@admission, @group)
+        job_application = applicant.top_priority_job_application_at_group_without_interview(@admission, @group)
         priority = applicant.priority_of_job_application(@admission, job_application)
         number_of_applications = applicant.jobs_applied_to(@admission).length
 

@@ -23,8 +23,8 @@
   %table.compact.mt-3
     %thead
       %th= "Navn"
-      %th= "Prioritet"
-      %th= "Verv"
+      %th= "Høyest rangert verv"
+      %th= "Søkers rangering"
       %th= "Telefon"
       %th= "Epost"
       %th= "Antall verv søkt"
@@ -38,11 +38,12 @@
             %td
               = link_to admissions_admin_admission_group_job_job_application_path(@admission, @group, job_application.job, job_application) do
                 = full_name
-            %td{style: "font-weight: bold;"}
-              = priority
+
             %td
               = link_to admissions_admin_admission_group_job_path(@admission, @group, job_application.job) do
                 = job_name
+            %td{style: "font-weight: bold;"}
+              = priority
             %td= phone_number
             %td= email
             %td{style: "font-weight: bold;"}

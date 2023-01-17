@@ -90,8 +90,8 @@
 %h1= "Søknader i " + @job_application.job.group.name
 %table.applications.custom-table.sorted
   %thead
-    %th.number
-      = t('interviews.applicant_number')
+    %th.applicant_ranking
+      = t('interviews.applicant_ranking')
     %th.job_name
       = "Verv"
     %th.interview-time
@@ -102,8 +102,6 @@
       = t('interviews.interview_priority')
     %th.status
       = "Status"
-    %th.applicant_ranking
-      = t('interviews.applicant_ranking')
     %th.interviews_set
       = t('interviews.interviews_set')
     %th.comment
@@ -112,12 +110,12 @@
     - group = @job_application.job.group
     - admission = @job_application.job.admission
     %tbody{class: "job_application_table"}
-      - @job_applications_in_group.each_with_index do |job_application, index|
+      - @job_applications_in_group.sort_by{|ja| ja.applicant.priority_of_job_application(admission, ja)}.each do |job_application|
         - job = job_application.job
         - tr_class = "#{job_application.assignment_status}"
         %tr{id: "application-#{job_application.id}", class: tr_class}
           %td
-            = index+1
+            = job_application.applicant.priority_of_job_application(admission, job_application).to_s + " / " + job_application.applicant.jobs_applied_to(admission).length.to_s
           %td
             = link_to admissions_admin_admission_group_job_path(admission, group, job) do
               = job.title
@@ -149,8 +147,6 @@
               = form.actions do
                 != form.action :submit, button_html: { class: "interview_save", value: t('interviews.save_interview_status') }
               %span{ class: "status" }
-          %td
-            = job_application.applicant.priority_of_job_application(admission, job_application).to_s + " / " + job_application.applicant.jobs_applied_to(admission).length.to_s
           %td
             = job_application.applicant.get_set_interviews(admission).length.to_s + " / " + job_application.applicant.jobs_applied_to(admission).length.to_s
           %td
