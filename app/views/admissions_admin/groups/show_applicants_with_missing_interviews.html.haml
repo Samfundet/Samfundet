@@ -17,8 +17,8 @@
   %p= "Ingen søkere mangler intervju!"
 - else
   %p
-    = "Denne oversikten viser alle søkere i denne gjengen som ikke har noen intervjuer satt."
-    = "Oversikten viser vervet som søkeren har prioritert høyest i gjengen, og hvilken prioritet den er satt til."
+    = "Denne oversikten viser alle søkere som mangler en eller intervjutider på verv de har søkt i denne gjengen."
+    = "Oversikten fremhever vervet som søkeren har rangert høyest i gjengen, og hvilken rangering den er satt til."
     = "Oversikten er sortert etter søkers prioritet av vervet."
   %table.compact.mt-3
     %thead
@@ -27,11 +27,11 @@
       %th= "Søkers rangering"
       %th= "Telefon"
       %th= "Epost"
-      %th= "Antall verv søkt"
+      %th{title: "Antall verv søkt i gjengen ift. totalt i opptaket"}= "Antall verv søkt i gjengen*"
 
     %tbody
       - @top_job_applications.each do |application|
-        - priority, job_application, job_name, full_name, phone_number, email, number_of_jobs_applied_to = application
+        - priority, job_application, job_name, full_name, phone_number, email, group_jobs_applied_to, total_jobs_applied_to = application
 
         .flex-row
           %tr{style: "background-color: #ccf9cd;"}
@@ -47,4 +47,4 @@
             %td= phone_number
             %td= email
             %td{style: "font-weight: bold;"}
-              = number_of_jobs_applied_to
+              = group_jobs_applied_to.to_s + " / " + total_jobs_applied_to.to_s
