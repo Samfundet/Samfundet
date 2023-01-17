@@ -11,6 +11,7 @@ class AdmissionsAdmin::JobApplicationsController < AdmissionsAdmin::BaseControll
       group_id: @job_application.job.group.id
     )
     @possible_log_entries = LogEntry.possible_log_entries
+    @job_applications_in_group = @job_application.applicant.job_applications_at_group(@job_application.job.admission, @job_application.job.group)
   end
 
   def reset_status

@@ -53,6 +53,7 @@ module Samfundet
     config.assets.precompile += %w(chartkick.js)
     config.assets.precompile += %w(linkgraph.js)
     config.assets.precompile += %w(applicants/interviews.js)
+    config.assets.precompile += %w(applicants/job_application_interviews.js)
     config.assets.precompile += %w(job_applications/job_applications.js)
     config.assets.precompile += %w(old_samfundet/jobs_search.js)
     config.assets.precompile += %w(applicants/admissions_admin_applicants.js)

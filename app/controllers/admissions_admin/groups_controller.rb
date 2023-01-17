@@ -30,6 +30,29 @@ class AdmissionsAdmin::GroupsController < AdmissionsAdmin::BaseController
     end
   end
 
+  def show_applicants_with_missing_interviews
+    @admission = Admission.find(params[:admission_id])
+    @group = Group.find(params[:group_id])
+
+    applicants = @group.applicants(@admission)
+
+    @top_job_applications = []
+    applicants.each do |applicant|
+      if applicant.top_priority_job_application_at_group_without_interview(@admission, @group)
+
+        job_application = applicant.top_priority_job_application_at_group_without_interview(@admission, @group)
+        priority = applicant.priority_of_job_application(@admission, job_application)
+        number_of_group_applications = applicant.job_applications_at_group(@admission, @group).length
+        number_of_total_applications = applicant.jobs_applied_to(@admission).length
+        job_title = job_application.title
+
+        @top_job_applications.push([priority, job_application, job_title, applicant.full_name, applicant.phone, applicant.email, number_of_group_applications, number_of_total_applications])
+      end
+    end
+
+    @top_job_applications = @top_job_applications.sort_by { |a, b, c, d, e, f, g| a }
+  end
+
   def applications
     @admission = Admission.find(params[:admission_id])
 

@@ -1,0 +1,50 @@
+- set_title "Søkere som mangler intervjutider i " + @group.name
+= javascript_include_tag 'applicants/interviews', defer: true
+
+= link_to admissions_admin_admission_group_path(@admission, @group) do
+  .samf-button.plain.mb-3
+    = t("common.back")
+
+%h1
+  = "Søkere som mangler intervjutider"
+
+%h2
+  = @group.name
+  &ndash;
+  = @admission.title
+
+- if @top_job_applications.empty?
+  %p= "Ingen søkere mangler intervju!"
+- else
+  %p
+    = "Denne oversikten viser alle søkere som mangler en eller intervjutider på verv de har søkt i denne gjengen."
+    = "Oversikten fremhever vervet som søkeren har rangert høyest i gjengen, og hvilken rangering den er satt til."
+    = "Oversikten er sortert etter søkers prioritet av vervet."
+  %table.compact.mt-3
+    %thead
+      %th= "Navn"
+      %th= "Høyest rangert verv"
+      %th= "Søkers rangering"
+      %th= "Telefon"
+      %th= "Epost"
+      %th{title: "Antall verv søkt i gjengen ift. totalt i opptaket"}= "Antall verv søkt i gjengen*"
+
+    %tbody
+      - @top_job_applications.each do |application|
+        - priority, job_application, job_name, full_name, phone_number, email, group_jobs_applied_to, total_jobs_applied_to = application
+
+        .flex-row
+          %tr{style: "background-color: #ccf9cd;"}
+            %td
+              = link_to admissions_admin_admission_group_job_job_application_path(@admission, @group, job_application.job, job_application) do
+                = full_name
+
+            %td
+              = link_to admissions_admin_admission_group_job_path(@admission, @group, job_application.job) do
+                = job_name
+            %td{style: "font-weight: bold;"}
+              = priority
+            %td= phone_number
+            %td= email
+            %td{style: "font-weight: bold;"}
+              = group_jobs_applied_to.to_s + " / " + total_jobs_applied_to.to_s
