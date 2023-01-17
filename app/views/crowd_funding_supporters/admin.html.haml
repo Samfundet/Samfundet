@@ -1,0 +1,51 @@
+%h1
+  = t("crowd_funding.admin.admin")
+.flex
+  .samf-button.green
+    = link_to new_crowd_funding_supporter_path do
+      = t("crud.create")
+
+  .samf-button.ml-1
+    = link_to crowd_funding_supporters_path do
+      = t("crowd_funding.admin.applet.show")
+
+%table
+  %caption
+    %h2
+      = t("crowd_funding.admin.all")
+  %thead
+    %tr
+      %th
+        = t("name")
+      %th
+        = t("groups.abbreviation")
+      %th
+        Type
+      %th
+        = t("crowd_funding.amount")
+      %th
+        = t("crowd_funding.donors")
+      %th
+      %th
+  %tbody
+    - @supporters.each do |supporter|
+      %tr
+        %td
+          =supporter.name
+        %td
+          =supporter.name_short
+        %td
+          = t("crowd_funding.type." + supporter.supporter_type)
+        %td
+          =supporter.amount
+        %td
+          =supporter.donors
+        %td{style: "width: 5%"}
+          = link_to edit_crowd_funding_supporter_path(supporter) do
+            .samf-button.small.plain
+              = t("crud.edit")
+        %td{style: "width: 5%"}
+          = link_to crowd_funding_supporter_path(supporter), method: :delete, data: {confirm: "Are you sure"} do
+            .samf-button.small.red.mr-2
+              = t("info_boxes.delete")
+

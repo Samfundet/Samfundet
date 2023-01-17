@@ -1,0 +1,62 @@
+%br
+%h2
+  = t("crowd_funding.competition.title")
+
+= simple_format(t("crowd_funding.competition.body"))
+= simple_format(t("crowd_funding.competition.read_more"))
+
+%h2
+  = t("crowd_funding.competition.student_union")
+.crowd-funding-comp
+  - @supporters_union.each_with_index do |supporter, index|
+    .supporter{title: supporter.name}
+      %div{title: supporter.name}
+        = "#{index + 1}. #{supporter.name_short}"
+      .line{style: "width: #{(supporter.amount.to_f/@supporters_union_largest)*100}%"}
+        %p.amount= number_to_currency(supporter.amount, strip_insignificant_zeros: true)
+  .supporter
+    %div
+    .points
+      - @supporters_union_points.each do |point|
+        .point
+          = number_to_currency(point, strip_insignificant_zeros: true)
+
+%h2
+  = t("crowd_funding.competition.group")
+
+%h3
+  =t("crowd_funding.competition.per_member")
+.crowd-funding-comp
+  - @supporters_group_per.each_with_index do |supporter, index|
+    .supporter
+      %div{title: supporter.name}
+        = "#{index + 1}. #{supporter.name_short}"
+      .line{style: "width: #{((supporter.amount.to_f / supporter.donors )/@supporters_group_per_largest)*100}%"}
+        %p.amount= number_to_currency(supporter.amount / supporter.donors, strip_insignificant_zeros: true)
+  .supporter
+    %div
+    .points
+      - @supporters_group_per_points.each do |point|
+        .point
+          = number_to_currency(point, strip_insignificant_zeros: true)
+
+%h3
+  =t("crowd_funding.competition.total")
+.crowd-funding-comp
+  - @supporters_group.each_with_index do |supporter, index|
+    .supporter{title: supporter.name}
+      %div{title: supporter.name}
+        = "#{index + 1}. #{supporter.name_short}"
+      .line{style: "width: #{(supporter.amount.to_f/@supporters_group_largest)*100}%"}
+        %p.amount= number_to_currency(supporter.amount.to_s, strip_insignificant_zeros: true)
+  .supporter
+    %div
+    .points
+      - @supporters_group_points.each do |point|
+        .point
+          = number_to_currency(point, strip_insignificant_zeros: true)
+
+- if can? :manage, CrowdFundingSupporter
+  .samf-button.small.mt-3
+    = link_to admin_crowd_funding_supporters_path do
+      = t("crowd_funding.admin.admin")
