@@ -157,8 +157,8 @@ class Applicant < ApplicationRecord
     job_applications.select { |application| application.job.admission == admission && application.withdrawn == false }
   end
 
-  def job_applications_at_group(admission, group)
-    group.job_applications_in_admission(admission).select { |ja| ja.applicant == self }
+  def open_job_applications_in_group(admission, group)
+    job_applications.select { |ja| ja.job.admission == admission && ja.withdrawn == false && ja.job.group == group && ja.applicant == self }
   end
 
   def top_priority_job_application_at_group_without_interview(admission, group)
