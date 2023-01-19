@@ -2,6 +2,10 @@
 $(function () {
   var headers = {};
 
+  $("#hide_withdrawn").click(function (event) {
+    $(".withdrawn").toggleClass('display-none');
+  });
+
   // We must also add datepickers since this is only enabled for static sites
   $('.datetimepicker').datetimepicker();
 
