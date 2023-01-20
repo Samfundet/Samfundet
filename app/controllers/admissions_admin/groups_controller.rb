@@ -43,7 +43,7 @@ class AdmissionsAdmin::GroupsController < AdmissionsAdmin::BaseController
         job_application = applicant.top_priority_job_application_at_group_without_interview(@admission, @group)
         priority = applicant.priority_of_job_application(@admission, job_application)
         number_of_group_applications = applicant.open_job_applications_in_group(@admission, @group).length
-        number_of_total_applications = applicant.jobs_applied_to(@admission).length
+        number_of_total_applications = applicant.open_job_applications(@admission).length
         job_title = job_application.title
 
         @top_job_applications.push([priority, job_application, job_title, applicant.full_name, applicant.phone, applicant.email, number_of_group_applications, number_of_total_applications])

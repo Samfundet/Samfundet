@@ -162,7 +162,7 @@ class Applicant < ApplicationRecord
   end
 
   def top_priority_job_application_at_group_without_interview(admission, group)
-    job_applications.select { |application| application.job.admission == admission }.select { |ja| ja.job.group == group && !ja.interview.time? }.first
+    job_applications.select { |application| application.job.admission == admission }.select { |ja| ja.job.group == group && !ja.interview.time?  && ja.withdrawn == false }.first
   end
 
 private
