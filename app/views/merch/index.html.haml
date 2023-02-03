@@ -1,4 +1,10 @@
 %h1 Merch
 
-- @products.each do |p|
-  = p
+%ul
+  - @products.each do |p|
+    %li
+      = p
+      %ul
+        - p.product_variations.each do |v|
+          %li
+            = v

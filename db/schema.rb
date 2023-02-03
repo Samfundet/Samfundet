@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_02_205227) do
+ActiveRecord::Schema.define(version: 2023_02_02_195032) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -425,6 +425,7 @@ ActiveRecord::Schema.define(version: 2023_02_02_205227) do
   create_table "product_variations", force: :cascade do |t|
     t.string "specification"
     t.integer "quantity"
+    t.integer "product_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -476,17 +477,6 @@ ActiveRecord::Schema.define(version: 2023_02_02_205227) do
     t.datetime "updated_at", null: false
     t.index ["area_id"], name: "index_standard_hours_on_area_id"
     t.index ["day"], name: "index_standard_hours_on_day"
-  end
-
-  create_table "store_items", force: :cascade do |t|
-    t.string "name_no"
-    t.string "name_en"
-    t.string "description_no"
-    t.string "description_en"
-    t.integer "image_id"
-    t.integer "price"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "sulten_closed_periods", id: :serial, force: :cascade do |t|

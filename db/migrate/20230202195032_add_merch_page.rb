@@ -10,6 +10,7 @@ class AddMerchPage < ActiveRecord::Migration[5.2]
     create_table :product_variations do |t|
       t.string :specification
       t.integer :quantity
+      t.integer :product_id
     end
   end
 end

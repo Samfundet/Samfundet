@@ -4,6 +4,6 @@ class MerchController < ApplicationController
   skip_authorization_check
 
   def index
-    @products = Product.includes(:product_variants)
+    @products = Product.includes(:product_variations)
   end
 end

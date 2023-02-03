@@ -1,16 +1,17 @@
-puts "Create merch"
+puts "Create Merch"
 
+puts "Create Product"
 5.times do
   Product.create!(
-    name_no: Faker::GameOfThrones.name,
-    name_en: Faker::GameOfThrones.name,
+    name_no: Faker::GameOfThrones.house,
+    name_en: Faker::GameOfThrones.house,
     price: rand(100),
     image_id: 1
   )
 end
 
 SIZES = %w[XS S M L XL]
-
+puts "create Product variations"
 Product.all.each do |product|
   2.times do
     product.product_variations.create!(
