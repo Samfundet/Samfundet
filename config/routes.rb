@@ -19,6 +19,8 @@ Rails.application.routes.draw do
       get :admin, on: :collection
     end
 
+    get 'merch', to: 'merch#index'
+
     #resources :search, only: [:new, :create, :search]
     ############################
     ##  Routes for events     ##
