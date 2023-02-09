@@ -3,8 +3,8 @@ puts "Create Merch"
 puts "Create Product"
 5.times do
   Product.create!(
-    name_no: Faker::GameOfThrones.house,
-    name_en: Faker::GameOfThrones.house,
+    name_no: Faker::GameOfThrones.character,
+    name_en: Faker::GameOfThrones.character,
     price: rand(100),
     image_id: 1
   )

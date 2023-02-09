@@ -1,0 +1,27 @@
+%h1 Admin
+
+%table
+  %caption
+    %h2
+      All products
+  %thead
+    %tr
+      %th
+        = t("name")
+      %th
+        = t("events.price")
+      %th
+        Variation
+  %tbody
+    - @products.each do |p|
+      %tr
+        %td
+          =p.name
+        %td
+          =p.price
+        %td
+          - p.product_variations.each do |v|
+            = v
+.samf-button.small.mt-3
+  = link_to new_product_path do
+    = t("crud.create")

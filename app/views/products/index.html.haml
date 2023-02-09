@@ -1,0 +1,14 @@
+%h1 Merch
+%ul
+  - @products.each do |p|
+    %li
+      = p
+      %ul
+        - p.product_variations.each do |v|
+          %li
+            = v
+
+- if can? :manage, Product
+  .samf-button.small.mt-3
+    = link_to admin_products_path do
+      = t("crowd_funding.admin.admin")

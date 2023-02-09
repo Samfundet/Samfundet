@@ -1,0 +1,16 @@
+.samf-button.red.small.mb-3
+  = link_to admin_products_path do
+    = t("formtastic.cancel")
+
+%h2 Create
+
+= semantic_form_for @product do |f|
+  %div{:style=>"flex-basis:100%;"}
+    = f.inputs name:t("formtastic.titles.general") do
+      .flex-row
+        = f.input :name_no, label: t("helpers.label.page.name_no")
+        = f.input :name_en, label: t("helpers.label.page.name_en")
+      .flex-row
+        = f.input :price, label: t("events.price")
+    = f.actions do
+      = f.action :submit, label: t("crud.create")
