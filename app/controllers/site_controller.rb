@@ -45,7 +45,7 @@ class SiteController < ApplicationController
   end
 
   def generic_redirect
-    redirect_to "https://no.surveymonkey.com/r/samfundet-valgundersokelse"
+    redirect_to 'https://no.surveymonkey.com/r/samfundet-valgundersokelse'
   end
 
 end
