@@ -155,44 +155,44 @@ en:
             ingredients: "Aioli, cherry tomatoes, lettuce, sweet and sour currant and rhubarb jam, blue cheese from Selbu and pistou for oven-baked potatoes."
             allergies: "Allergies: Pork, eggs, gluten (wheat, rye, barley), milk, celery, mustard and sulphite"
             recommendations: "The bar recommends: Lychelig Trippel"
-          sweet_potato_burger:
-            name: "Sweet potato burger"
-            ingredients: "Aioli, cherry tomatoes, lettuce, pickled shallots, manchego and pistou for baked potatoes. Vegetarian. Can be served as a vegan burger."
-            allergies: "Allergies: Gluten (wheat, rye, barley), sulfite, mustard, milk and eggs"
+          mushroom_burger:
+            name: "Mushroom Burger"
+            ingredients: "Aioli, cherry tomatoes, lettuce, pickled onion, pomegranate syrup and pistou for baked potatoes. Vegetarian. Can be served as a vegan burger."
+            allergies: "Allergies: Soy (burger), cashew nuts (burger), egg (aioli and pistou), mustard (aioli), sulfite (vinaigrette, pickled onion and aioli), gluten (burger bread) and milk (pistou)"
             recommendations: "The bar recommends: Brooklyn Lager"
         main_courses:
           title: "Main courses"
-          cod:
-            name: "Brined Cod"
-            description: "Juicy Cod, served with jerusalem artichoke and potato purée, pickled beets and browned soy butter."
-            allergies: "Allergies: Fish, Milk (purée), soy (soy butter)"
+          duck:
+            name: "Duck Confit"
+            description: "Celery root puree, aigre doux and asparagus."
+            allergies: "Allergies: milk (puree), sulfite (aigre doux) and celery"
+            recommendations: "The bar recommends: Pinot Noir"
+          halibut:
+            name: "BAKED HALIBUT"
+            description: "Halibut served with celery root puree, shellfish sauce and escabeche."
+            allergies: "Allergies: Milk (puree and sauce), celery (sauce), sulfite (sauce), shellfish (sauce), molluscs (sauce), fish (fish and sauce) and mustard (escabeche)"
+            recommendations: "The bar recommends: Hacienda Lopez"
+          beef_salad:
+            name: "VIETNAMESE BEEF SALAD"
+            description: "A salad consisting of salad mix, red cabbage, rutabaga and bean sprouts topped with vietnamese dipping sauce, beef strips and radish."
+            allergies: "Allergies: Fish: fish sauce (beef and sauce)"
+            recommendations: "The bar recommends: Villa Wolf Riesling"
+          cauliflower:
+            name: "BAKED CAULIFLOWER"
+            description: "Baked cauliflower with hummus and a salad consisting of salad mix, beans, lentils and radish topped with pomegranate syrup."
+            allergies: "Allergies: sesame (hummus), may contain traces of peanuts: hummus (Tahini)."
             recommendations: "The bar recommends: Sancerre"
-          seasonal_salad:
-            name: "Seasonal salad"
-            description: "Varies throughout the year with seasonal flavors. Ask one of our waiters for more information. Served with lyche bread and spiced butter."
-            allergies: "Allergies: Ask one of our waiters."
-            recommendations: "The bar recommends: ECD Lamo wit"
-          indian_pumpkin_pie:
-            name: "Indian inspired pumpkin pie"
-            description: "Atasty creamy pumpkin pie, inspired by the Indian kitchen, served with a side of salad. The dish is vegan and can be made gluten free."
-            allergies: "Allergies: Nuts (cashew), Gluten (pie crumble)"
-            recommendations: "The bar recommends: Nebbiolo"
-          mussels:
-            name: "Mussels"
-            description: "Steamed mussels in a white wine broth, served with lychebread and herb butter."
-            allergies: "Allergies: Milk, sulfites, molluscs, gluten."
-            recommendations: "The bar recommends: Nebbiolo"
         desserts:
           title: "Dessert"
           ice_cream:
             name: "Ice cream"
             description: "Ice cream and / or sorbet. Ask one of our waiters about today's flavors."
             allergies: "Allergies: Ask one of our waiters."
-          tiramisu:
-            name: "Tiramisù"
-            description: "The classic italian dish"
-            allergies: "Allergies: Milk, eggs"
-            recommendations: "The bar reccomends: Chimay Blå"
+          cake:
+            name: "CHOCOLATE CAKE"
+            description: "Thich milks ice cream, crumble and orange powder"
+            allergies: "Allergies: egg (ice cream and cake), milk (ice cream and cake), sulfite (cake) and gluten (crumble)"
+            recommendations: "The bar reccomends: Lynchburg Latté"
         beer_on_tap:
           title: "Beer on tap"
           weekend: "Weekend"
