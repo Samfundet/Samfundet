@@ -7,7 +7,7 @@
   width: 100%;
   height: 64px;
   max-height: 64px;
-  overflow: hidden;
+  //overflow: hidden;
   font-size: 16px;
   top: 0;
   z-index: 1;
@@ -117,10 +117,26 @@
 
     a {
       color: #eee;
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+
+      .chevron {
+        background-image: asset-url("icons/white-arrow.png");
+        width: 1em;
+        height: 1em;
+        background-size: contain;
+        margin-top: 3px;
+      }
     }
   }
   .header-item > a:hover {
     color: #bbb;
+    cursor: pointer;
+    .chevron {
+      filter: brightness(90%);
+    }
+    
   }
 
   // Highlight during admission
@@ -137,6 +153,55 @@
   }
   .header-item.login {
     text-align: right;
+  }
+
+  // Dropdown
+  .header-item.dropdown {
+    &:hover {
+      .drawer-anchor {
+        display: block;
+      }
+    }
+    .drawer-anchor {
+      height: 0;
+      width: 100%;
+      max-width: 8em;
+      position: relative;
+      top: -20px;
+      display: none;
+      overflow: visible;
+      z-index: 1;
+      &.hidden {
+        display: none;
+        pointer-events: none !important;
+        opacity: 0;
+      }
+      .drawer {
+        display: flex;
+        flex-direction: column;
+        background-color: transparent;
+        padding-top: 40px;
+        box-shadow: 1px 1px 10px 5px rgba(0, 0, 0, 0.2);
+        width: 10em;
+        .drawer-item {
+          justify-content: flex-start;
+          background-color: black;
+          text-align: left;
+          padding: 5px;
+          padding-left: 20px;
+          white-space: nowrap;
+          width: 10em;
+          &:last-child {
+            padding-bottom: 8px;
+          }
+          &:hover {
+            cursor: pointer;
+            background-color: $samfundet-red;
+          }
+        }
+      }
+      
+    }
   }
 
 }
@@ -262,6 +327,16 @@
   justify-content: center;
   align-items: center;
 
+  #info-button.enabled { 
+    a {
+      border-bottom: 2px solid $samfundet-red;
+      padding-bottom: 4px;
+      .chevron { 
+        transform: rotate(180deg); 
+      }
+    } 
+  }
+
   .header-item {
     flex: 0;
     font-size: 1.5em;
@@ -278,6 +353,31 @@
     margin-bottom: .5em;
     width: 48px;
     height: 32px;
+  }
+
+  #info-drawer {
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+    .drawer-item {
+      font-size: 1.25em;
+      text-transform: uppercase;
+      text-align: center;
+      color: #ddd;
+    }
+    &.hidden {
+      max-height: 0px;
+      opacity: 0;
+      pointer-events: none !important;
+    }
+    &:not(.hidden) {
+      margin-bottom: 2em;
+    }
+  }
+  .info-drawer-hide-other {
+    &.hidden {
+      display: none;
+    }
   }
 
 }
