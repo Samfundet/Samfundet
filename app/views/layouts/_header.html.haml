@@ -25,8 +25,21 @@
             .santa-hat
     .header-item.events
       = link_to t('layouts.application.menu.events'), events_path
-    .header-item.info
-      = link_to t('layouts.application.menu.info'), pages_path
+    #info-dropdown.header-item.dropdown
+      %a
+        = t('layouts.application.menu.info')
+        .chevron
+      .drawer-anchor
+        .drawer
+          // Om, Åpningstider, Foto, 
+          = link_to "Om Samfundet", pages_path, class: "drawer-item"
+          - if page_by_name_en("membership") != "#"
+            = link_to t("pages.index.membership"), page_by_name_en("membership"), class: "drawer-item"
+          - if page_by_name_en("opening-hours") != "#"
+            = link_to t("layouts.application.menu.opening_hours"), page_by_name_en("opening-hours"), class: "drawer-item"
+          - if page_by_name_en("opening-hours") != "#"
+            = link_to t("layouts.application.menu.photo"), "https://foto.samfundet.no", class: "drawer-item"
+
     .header-item
       = link_to t('layouts.application.menu.lyche'), sulten_path, target: :_blank
     - if open_admission?
@@ -75,20 +88,32 @@
 
 #header-popup-menu
 
-  .header-item.info
-    = link_to t('layouts.application.menu.info'), pages_path
+  #info-button.header-item.info
+    %a
+      = t('layouts.application.menu.info')
+      .chevron{style: "margin-top: 0;"}
 
-  .header-item
+  #info-drawer.hidden
+    // Om, Åpningstider, Foto, 
+    = link_to "Om Samfundet", pages_path, class: "drawer-item"
+    - if page_by_name_en("membership") != "#"
+      = link_to t("pages.index.membership"), page_by_name_en("membership"), class: "drawer-item"
+    - if page_by_name_en("opening-hours") != "#"
+      = link_to t("layouts.application.menu.opening_hours"), page_by_name_en("opening-hours"), class: "drawer-item"
+    - if page_by_name_en("opening-hours") != "#"
+      = link_to t("layouts.application.menu.photo"), "https://foto.samfundet.no", class: "drawer-item"
+
+  .header-item.info-drawer-hide-other
     = link_to t('layouts.application.menu.lyche'), sulten_path
 
-  .header-item.events
+  .header-item.events.info-drawer-hide-other
     = link_to t('layouts.application.menu.events'), events_path
 
   - if @open_admission
-    .header-item.highlight
+    .header-item.highlight.info-drawer-hide-other
       = link_to t('layouts.application.menu.admissions'), admissions_path
   - else
-    .header-item.volunteer
+    .header-item.volunteer.info-drawer-hide-other
       = link_to t('layouts.application.menu.admissions'), admissions_path
 
 
