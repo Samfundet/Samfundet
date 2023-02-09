@@ -155,44 +155,44 @@
             ingredients: "Aioli, cherrytomater, salat, søt og syrlig rips- og rabarbramarmelade , blåmuggost fra Selbu og pistou til ovnsbakte poteter."
             allergies: "Allergener: Svin, egg, gluten (hvete, rug, bygg), melk, selleri, sennep og sulfitt"
             recommendations: "Baren anbefaler: Lychelig Trippel"
-          sweet_potato_burger:
-            name: "Søtpotetburger"
-            ingredients: "Aioli, cherrytomater, salat, syltet sjalottløk, manchego og pistou til ovnsbakte poteter. Vegetar. Kan serveres som veganburger."
-            allergies: "Allergener: Gluten (hvete, rug, bygg), sulfitt, sennep, melk og egg"
+          mushroom_burger:
+            name: "Soppburger"
+            ingredients: "Aioli, cherrytomater, salat, syltet rødløk, granateplesirup og pistou til ovnsbakte poteter. Kan bli gjort om til vegansk burger."
+            allergies: "Allergener: soya (burger), cashewnøtter (burger), egg (aioli og pistou), sennep (aioli), sulfitt (salat vinaigrette, syltet rødløk og aioli), gluten (burgerbrød) og melk (pistou)"
             recommendations: "Baren anbefaler: Brooklyn Lager"
         main_courses:
           title: "Hovedretter"
-          cod:
-            name: "Saltsprengt Torsk"
-            description: "Saftig torsk, servert med jordskokk- og potetpuré, samt syltede polkabeter og soyasmør."
-            allergies: "Allergener: Fisk, Melk (puré), Soya (soyasmør)"
+          duck:
+            name: "Konfitert and"
+            description: "Sellerirotpuré, aigre doux og asparges."
+            allergies: "Allergener: Melk (puré), sulfitt (aigre doux) og selleri"
+            recommendations: "Baren anbefaler: Pinot Noir"
+          halibut:
+            name: "OVNSBAKT KVEITE"
+            description: "Kveite servert med sellerirotpuré, skalldyrsaus og escabeche"
+            allergies: "Allergener: Melk (sellerirotpuré og saus), Selleri (saus), Sulfitt (Saus), Skalldyr (Saus), Bløtdyr (saus), Fisk (fisk og saus) og Sennep (escabeche)."
+            recommendations: "Baren anbefaler: Hacienda Lopez"
+          beef_salad:
+            name: "VIETNAMESISK BIFFSALAT"
+            description: "en salat bestående av salatblanding, kålrot, rødkål og bønnespirer toppes med vietnamesisk dipping sauce, biffstrimler og reddik"
+            allergies: "Allergener: Fisk: fish sauce (kjøtt og saus)"
+            recommendations: "Baren anbefaler: Villa Wolf Riesling"
+          cauliflower:
+            name: "OVNSBAKT BLOMKÅL"
+            description: "Bakt blomkål med hummus og en salat bestående av salatblanding, bønner, linser, reddik som toppes med granateplesirup."
+            allergies: "Allergener: sesam (hummus), kan inneholde spor av peanøtter: hummus (Tahini)"
             recommendations: "Baren anbefaler: Sancerre"
-          seasonal_salad:
-            name: "Sesongens salat"
-            description: "Varieres gjennom året med sesongens smaker. Spør en av våre barservitører for mer informasjon. Serveres med lychebrød og kryddersmør."
-            allergies: "Allergener: Spør en av våre barservitører."
-            recommendations: "Baren anbefaler: ECD Lamo wit"
-          indian_pumpkin_pie:
-            name: "Indisk inspirert Gresskarpai"
-            description: "En smakfull og kremete gresskarpai inspirert av det indiske kjøkkenet, serveres med frisk salat. Retten er vegansk og kan serveres glutenfritt"
-            allergies: "Allergener: Nøtter (cashew), Gluten (paibunn)"
-            recommendations: "Baren anbefaler: Nebbiolo"
-          mussels:
-            name: "Blåskjell"
-            description: "Hvitvinsdampede blåskjell, servert med Lychebrød og kryddersmør."
-            allergies: "Allergener: Gluten (hvete), melk, selleri, sulfitt"
-            recommendations: "Baren anbefaler: Nebbiolo"
         desserts:
           title: "Dessert"
           ice_cream:
             name: "Iskrem"
             description: "Fløteiskrem og/eller sorbet. Spør en av våre barservitører om dagens smaker."
             allergies: "Allergener: Spør en av våre barservitører."
-          tiramisu:
-            name: "Tiramisù"
-            description: "Den klassiske italienske desserten."
-            allergies: "Allergener: Egg, Melk"
-            recommendations: "Baren anbefaler: Chimay Blå"
+          cake:
+            name: "KONFEKTKAKE"
+            description: "Tjukkmjølksis, crumble og appelsin pulver."
+            allergies: "Allergener: egg (kake og is), melk (kake og is), sulfitt (kake) og gluten (crumble)"
+            recommendations: "Baren anbefaler: Lynchburg Latté"
         beer_on_tap:
           title: "Øl på tapp"
           weekend: "Helg"
