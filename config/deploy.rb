@@ -13,7 +13,7 @@ require 'mina/git'
 
 print "Username @ Samfundet.no (defaults to current user's username): "
 username = STDIN.gets.chomp
-set :user, username unless username == ''
+set :user, username unless username == 'samfundet-httpd'
 
 set :ssh_options, '-o StrictHostKeyChecking=no'
 
