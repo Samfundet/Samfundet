@@ -3,7 +3,7 @@
 class Product < ApplicationRecord
   extend LocalizedFields
   localized_fields :name
-  validates :name_no, :name_en, :price, presence: true
+  validates :name_no, :name_en, :price, :image_id, presence: true
 
   belongs_to :image
   has_many :product_variations

@@ -433,6 +433,8 @@ ActiveRecord::Schema.define(version: 2023_02_02_195032) do
     t.string "name_en"
     t.integer "price"
     t.integer "image_id"
+    t.boolean "has_variations", default: true
+    t.integer "amount", default: 0
   end
 
   create_table "registration_events", force: :cascade do |t|

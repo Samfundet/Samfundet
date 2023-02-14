@@ -16,14 +16,43 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    if @product.save
+      redirect_to admin_products_path
+    else
+      render :new
+    end
   end
+
+
+  def edit
+    @product = Product.find(params[:id])
+  end
+
+  def update
+    @product = Product.find(params[:id])
+    if @product.update(product_params)
+      redirect_to admin_products_path
+    else
+      redirect_to :edit
+    end
+  end
+
+  def destroy
+    @supporter = Product.find(params[:id])
+    @supporter.destroy
+    redirect_to admin_products_path
+  end
+
 
 private
 
   def product_params
     params.require(:product).permit(
-      :name,
-      :price
+      :name_no, :name_en,
+      :price,
+      :has_variations,
+      :amount,
+      :image_id
     )
   end
 end

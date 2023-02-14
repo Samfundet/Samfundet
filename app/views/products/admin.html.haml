@@ -12,6 +12,11 @@
         = t("events.price")
       %th
         Variation
+      %th
+        Amount
+      %th
+        Image Id
+      %th{style: "width: 15%"}
   %tbody
     - @products.each do |p|
       %tr
@@ -22,6 +27,21 @@
         %td
           - p.product_variations.each do |v|
             = v
-.samf-button.small.mt-3
+        %td
+          - if not p.has_variations
+            = p.amount
+          - else
+            - p.product_variations.each do |v|
+              = v.quantity
+        %td
+          = p.image_id
+        %td.flex-row{style: "width: 15%; gap: 5px;"}
+          = link_to edit_product_path(p) do
+            .samf-button.small.plain
+              = t("crud.edit")
+          = link_to product_path(p), method: :delete, data: {confirm: "Are you sure"} do
+            .samf-button.small.red.mr-2
+              = t("info_boxes.delete")
+.samf-button.small.mt-3.green
   = link_to new_product_path do
     = t("crud.create")
