@@ -139,7 +139,7 @@ Area.all.each do |area|
         secondary_color: chosen_colors.last,
         billig_event_id: billig_event.try(:event),
         price_groups: custom_price_groups,
-        image_id: Image.all.sample.id,
+        image_id: Image.last(5).sample.id,
         facebook_link: "https://www.facebook.com/events/479745162154320",
         youtube_link: "http://www.youtube.com/watch?v=dQw4w9WgXcQ",
         vimeo_link: "http://vimeo.com/23583043",

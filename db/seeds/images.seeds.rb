@@ -9,6 +9,15 @@ image_list.each do |image|
   print "#{image}..."
 end
 
+merch_image_list = ["seed/tshirt.png"]
+merch_image_list.each do |image|
+  Image.create!(
+    title: image,
+    image_file: File.open(Rails.root.join('app', 'assets', 'images', image)),
+    uploader: Member.find_by(mail: 'snorre@senior')
+  )
+end
+
 # Create default image
 Image.create!(
   title: Image::DEFAULT_TITLE,

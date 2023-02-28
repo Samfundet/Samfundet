@@ -6,7 +6,7 @@ puts "Create Product"
     name_no: Faker::GameOfThrones.character,
     name_en: Faker::GameOfThrones.character,
     price: rand(100),
-    image_id: 1
+    image_id: Image.offset(1).limit(1).sample.id
   )
 end
 

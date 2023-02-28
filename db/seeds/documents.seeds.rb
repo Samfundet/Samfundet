@@ -31,7 +31,7 @@ after :images do
   puts "Creating blog articles"
   Member.all.sample(10).each do |member|
     title = Faker::Lorem.sentence
-    image = Image.all.sample
+    image = Image.last(5).sample
 
     puts "Creating blog article:  #{title}"
     member.blogs.create!(
@@ -43,7 +43,7 @@ after :images do
       lead_paragraph_no: Faker::Lorem.sentence(rand(5..10)),
       lead_paragraph_en: Faker::Lorem.sentence(rand(5..10)),
       publish_at: rand(-2..1).weeks.from_now,
-      image_id: Image.all.sample.id)
+      image_id: image.id)
   end
 
   puts "Done creating documents and articles"
