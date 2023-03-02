@@ -32,13 +32,14 @@
       .drawer-anchor
         .drawer
           // Om, Åpningstider, Foto, 
-          = link_to "Om Samfundet", pages_path, class: "drawer-item"
+          = link_to t("layouts.application.menu.about"), pages_path, class: "drawer-item"
           - if page_by_name_en("membership") != "#"
             = link_to t("pages.index.membership"), page_by_name_en("membership"), class: "drawer-item"
           - if page_by_name_en("opening-hours") != "#"
             = link_to t("layouts.application.menu.opening_hours"), page_by_name_en("opening-hours"), class: "drawer-item"
           - if page_by_name_en("opening-hours") != "#"
             = link_to t("layouts.application.menu.photo"), "https://foto.samfundet.no", class: "drawer-item"
+          = link_to t("layouts.application.menu.new_building"), new_building_path, class: "drawer-item"
 
     .header-item
       = link_to t('layouts.application.menu.lyche'), sulten_path, target: :_blank
@@ -102,6 +103,7 @@
       = link_to t("layouts.application.menu.opening_hours"), page_by_name_en("opening-hours"), class: "drawer-item"
     - if page_by_name_en("opening-hours") != "#"
       = link_to t("layouts.application.menu.photo"), "https://foto.samfundet.no", class: "drawer-item"
+    = link_to t("layouts.application.menu.new_building"), new_building_path, class: "drawer-item"
 
   .header-item.info-drawer-hide-other
     = link_to t('layouts.application.menu.lyche'), sulten_path
