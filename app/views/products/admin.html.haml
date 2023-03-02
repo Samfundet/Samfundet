@@ -4,7 +4,7 @@
   - @products.each do |product|
     .product
       =product.name
-      = background_image_helper "picture", product.image_or_default, size: :large
+      = image_tag path_to_image(product.image_or_default)
       = number_to_currency(product.price, strip_insignificant_zeros: true)
       .buttons
         = link_to edit_product_path(product) do
@@ -13,6 +13,7 @@
         = link_to product_path(product), method: :delete, data: {confirm: "Are you sure"} do
           .samf-button.small.red.mr-2
             = t("info_boxes.delete")
+
 .samf-button.small.mt-3.green
   = link_to new_product_path do
     = t("crud.create")

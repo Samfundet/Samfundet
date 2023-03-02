@@ -116,7 +116,7 @@ en:
     amount: Amount
     email_hint: "Enter your email"
     member_hint: "Membercard number"
-    swedbank: "The payment is processed by Swedbank."
+    stripe: "The payment is processed by Stripe."
     payment_prices: "All prices are in norwegian krone and includes all fees."
     terms: Purchase requires acceptance of sales terms.
 

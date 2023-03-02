@@ -122,7 +122,7 @@
     amount: Antall
     email_hint: "Fyll inn epost"
     member_hint: "Medlemskortnummer"
-    swedbank: "Betalingen håndteres av Swedbank."
+    stripe: "Betalingen håndteres av Stripe."
     payment_prices: "Alle priser er i norske kroner og er inkludert alle avgifter."
     terms: Kjøp forutsetter at kunden godtar salgsbetingelsene.
 

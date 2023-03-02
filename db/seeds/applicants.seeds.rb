@@ -72,13 +72,13 @@ after :generate_roles do
 
         if rand(100) < accept_percent_chance
           job_number = rand(jobs.count)
-          @log_entry = LogEntry.create!(
-            log: accepted_log,
-            admission: admission,
-            applicant: applicant,
-            group: job.group,
-            member: seed_member
-          )
+          # @log_entry = LogEntry.create!(
+          #   log: accepted_log,
+          #   admission: admission,
+          #   applicant: applicant,
+          #   group: job.group,
+          #   member: seed_member
+          # )
         end
       end
     end
