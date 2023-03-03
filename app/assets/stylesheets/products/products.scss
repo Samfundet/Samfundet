@@ -1,10 +1,13 @@
-.product-admin {
+@import "admin";
+
+.products-list {
   display: grid;
-  grid-template-columns: 450px 450px;
+  grid-template-columns: repeat(auto-fit, max(300px));
+  gap: 1rem;
   justify-content: center;
-  row-gap: 5%;
-  column-gap: 5%;
+
   .product {
+    max-width: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;

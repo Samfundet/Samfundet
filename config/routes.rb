@@ -21,6 +21,10 @@ Rails.application.routes.draw do
 
     resources :products, path: "merch" do
       get :admin, on: :collection
+      member do
+        get 'new_product_variation'
+      end
+      resources :product_variations, only: [:create, :update,:destroy, :edit]
     end
 
     #resources :search, only: [:new, :create, :search]

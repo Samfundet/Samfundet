@@ -1,0 +1,30 @@
+.product-admin {
+  .product {
+    display: grid;
+    grid-template-columns: 300px auto auto;
+    grid-column-gap: 1rem;
+    box-shadow: 2px 2px 20px 5px rgba(0,0,0,0.05);
+    margin-bottom: 1rem;
+    align-items: center;
+    min-height: 250px;
+  }
+  .info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+    p {
+      margin: 0;
+    }
+  }
+  .picture {
+    width: 300px;
+  }
+  .variations {
+    margin-right: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+}

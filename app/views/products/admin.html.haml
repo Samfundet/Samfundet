@@ -3,17 +3,54 @@
 .product-admin
   - @products.each do |product|
     .product
-      =product.name
-      = image_tag path_to_image(product.image_or_default)
-      = number_to_currency(product.price, strip_insignificant_zeros: true)
-      .buttons
-        = link_to edit_product_path(product) do
-          .samf-button.small.plain
+      = image_tag path_to_image(product.image_or_default), class: "picture"
+      .info
+        %p
+          = "Name: #{product.name}"
+        %p
+          Price:
+          = number_to_currency(product.price, strip_insignificant_zeros: true)
+        %p
+          Amount:
+          - if product.has_variations
+            = product.product_variations.sum(:quantity)
+          - else
+            = product.amount
+
+        .samf-button.small.plain
+          = link_to edit_product_path(product) do
             = t("crud.edit")
-        = link_to product_path(product), method: :delete, data: {confirm: "Are you sure"} do
-          .samf-button.small.red.mr-2
+        .samf-button.small.red.mr-2
+          = link_to product_path(product), method: :delete, data: {confirm: "Are you sure"} do
             = t("info_boxes.delete")
+      - if product.has_variations
+        .variations
+          %table
+            %thead
+              %tr
+                %th
+                  Specification
+                %th
+                  Amount
+                %th
+            %tbody
+              - product.product_variations.each do |variation|
+                %tr
+                  %td
+                    =variation.specification
+                  %td
+                    = variation.quantity
+                  %td.flex.flex-row
+                    .samf-button.small.plain.mr-1
+                      = link_to edit_product_product_variation_path(product, variation) do
+                        = t("crud.edit")
+                    .samf-button.small.red
+                      = link_to "Delete",  product_product_variation_path(product, variation), method: :delete, data: { confirm: "Are you sure?" }
+          .samf-button.small.green.mr-1
+            = link_to  new_product_variation_product_path(product) do
+              = t("crud.create")
 
 .samf-button.small.mt-3.green
   = link_to new_product_path do
     = t("crud.create")
+      

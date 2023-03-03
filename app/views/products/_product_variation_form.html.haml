@@ -1,0 +1,6 @@
+= semantic_form_for [@product, @product_variation] do |f|
+  = f.inputs do
+    = f.input :specification
+    = f.input :quantity
+  = f.actions do
+    = f.action :submit, label: button_type

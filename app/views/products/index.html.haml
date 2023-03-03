@@ -1,12 +1,10 @@
 %h1 Merch
-%ul
-  - @products.each do |p|
-    %li
-      = p
-      %ul
-        - p.product_variations.each do |v|
-          %li
-            = v
+.products-list
+  - @products.each do |product|
+    .product
+      =product.name
+      = image_tag path_to_image(product.image_or_default)
+      = number_to_currency(product.price, strip_insignificant_zeros: true)
 
 - if can? :manage, Product
   .samf-button.small.mt-3

@@ -6,7 +6,7 @@ class Product < ApplicationRecord
   validates :name_no, :name_en, :price, :image_id, presence: true
 
   belongs_to :image
-  has_many :product_variations
+  has_many :product_variations, dependent: :destroy
 
   def image_or_default
     if image.present?

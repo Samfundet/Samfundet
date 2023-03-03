@@ -8,6 +8,7 @@ class ProductsController < ApplicationController
 
   def admin
     @products = Product.includes(:product_variations)
+    @product_variations = ProductVariation.all
   end
 
   def new
@@ -41,6 +42,11 @@ class ProductsController < ApplicationController
     @supporter = Product.find(params[:id])
     @supporter.destroy
     redirect_to admin_products_path
+  end
+
+  def new_product_variation
+    @product = Product.find(params[:id])
+    @product_variation = @product.product_variations.build
   end
 
 
