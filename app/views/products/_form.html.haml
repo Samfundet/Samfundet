@@ -1,15 +1,15 @@
 = semantic_form_for @product do |f|
   %div{:style=>"flex-basis:100%;"}
-    = f.inputs name:t("formtastic.titles.general") do
+    = f.inputs name:t("product.admin.form.header") do
       .flex-row
         = f.input :name_no, label: t("helpers.label.page.name_no")
         = f.input :name_en, label: t("helpers.label.page.name_en")
       .flex-row
         = f.input :price, label: t("events.price")
       .flex-row
-        = f.input :has_variations, label: "Has variation?"
+        = f.input :has_variations, label: "#{t("product.info.has_variations")}?"
       .flex-row
-        = f.input :amount,label: "Amount", :input_html => { :disabled => :has_variations }
+        = f.input :amount,label: t("product.info.amount"), :input_html => { :disabled => :has_variations }
       .flex-row
         = render 'images/imagepicker', f: f
     = f.actions do

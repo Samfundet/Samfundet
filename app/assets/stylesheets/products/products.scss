@@ -7,6 +7,7 @@
   justify-content: center;
 
   .product {
+    padding: 1rem;
     max-width: 300px;
     display: flex;
     flex-direction: column;
@@ -18,5 +19,18 @@
       gap: 5%;
       margin-bottom: 5%;
     }
+  }
+
+  .few-left {
+    padding: 5px;
+    background-color: #fffbe6;
+    border-radius: 0.5rem;
+    border: solid 1px #ffe99e;
+  }
+  .sold-out {
+    padding: 5px;
+    background-color: #fff2f0;
+    border-radius: 0.5rem;
+    border: solid 1px #ffcfca;
   }
 }

@@ -16,6 +16,14 @@ class Product < ApplicationRecord
     end
   end
 
+  def get_amount
+    if has_variations
+      product_variations.sum(:quantity)
+    else
+      amount
+    end
+  end
+
   def to_s
     name
   end

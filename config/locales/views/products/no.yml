@@ -1,0 +1,23 @@
+'no':
+  product:
+    info:
+      price: Pris
+      amount: Antall
+      has_variations: Har variasjoner
+      variation:
+        specification: Spesifikasjon
+        quantity: Kvantitet
+    index:
+      few: Få igjen
+      sold_out: Utsolgt
+    admin:
+      main_page: Merch side
+      admin_page: Administrer merch
+      form:
+        new: Opprett nytt produkt
+        edit: Rediger produkt
+        header: Produkt informasjon
+      form_variation:
+        header: Produkt variasjon informasjon
+        edit: Rediger produkt variasjon
+        new: Opprett product variasjon

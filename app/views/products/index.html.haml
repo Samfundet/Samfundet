@@ -2,12 +2,18 @@
 .products-list
   - @products.each do |product|
     .product
-      =product.name
+      = product.name
       = image_tag path_to_image(product.image_or_default)
       = number_to_currency(product.price, strip_insignificant_zeros: true)
+      - if (product.get_amount < 1)
+        .sold-out
+          = t("product.index.sold_out")
+      - elsif (product.get_amount <= 5)
+        .few-left
+          = t("product.index.few")
 
-- if can? :manage, Product
+- if can? :manage, Product and can? :manage, ProductVariation
   .samf-button.small.mt-3
     = link_to admin_products_path do
-      = t("crowd_funding.admin.admin")
+      = t("product.admin.admin_page")
       

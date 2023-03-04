@@ -1,0 +1,23 @@
+en:
+  product:
+    info:
+      price: Price
+      amount: Amount
+      has_variations: Has variations
+      variation:
+        specification: Specification
+        quantity: Quantity
+    index:
+      few: Few left
+      sold_out: Sold out
+    admin:
+      main_page: Merch page
+      admin_page: Administrate merch
+      form:
+        new: Create new product
+        edit: Edit Product
+        header: Product Information
+      form_variation:
+        header: Product Variation Information
+        edit: Edit product variation
+        new: Create prodct veriation

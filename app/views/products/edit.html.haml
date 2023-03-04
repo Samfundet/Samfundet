@@ -4,5 +4,5 @@
   = link_to admin_products_path do
     = t("formtastic.cancel")
 
-%h2 Create
+%h2= t("product.admin.form.edit")
 = render "form", product: @product, button_type: t("crud.edit")

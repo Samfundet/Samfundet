@@ -1,4 +1,7 @@
 %h1 Admin
+.samf-button.small.mt-3.mb-3.plain
+  = link_to products_path do
+    = t("product.admin.main_page")
 
 .product-admin
   - @products.each do |product|
@@ -6,12 +9,12 @@
       = image_tag path_to_image(product.image_or_default), class: "picture"
       .info
         %p
-          = "Name: #{product.name}"
+          = "#{t("name")}: #{product.name}"
         %p
-          Price:
+          = "#{t("product.info.price")}: "
           = number_to_currency(product.price, strip_insignificant_zeros: true)
         %p
-          Amount:
+          = "#{t("product.info.amount")}: "
           - if product.has_variations
             = product.product_variations.sum(:quantity)
           - else
@@ -29,9 +32,9 @@
             %thead
               %tr
                 %th
-                  Specification
+                  =t("product.info.variation.specification")
                 %th
-                  Amount
+                  =t("product.info.variation.quantity")
                 %th
             %tbody
               - product.product_variations.each do |variation|
@@ -49,8 +52,8 @@
           .samf-button.small.green.mr-1
             = link_to  new_product_variation_product_path(product) do
               = t("crud.create")
-
-.samf-button.small.mt-3.green
-  = link_to new_product_path do
-    = t("crud.create")
+.flex.flex-justify-center
+  .samf-button.small.mt-3.green
+    = link_to new_product_path do
+      = t("crud.create")
 

@@ -1,2 +1,6 @@
-%h2 Create
+.samf-button.red.small.mb-3
+  = link_to admin_products_path do
+    = t("formtastic.cancel")
+
+%h2= t("product.admin.form_variation.new")
 = render "product_variation_form",  locals: { product: @product, product_variation: @product_variation}, button_type: t("crud.create")
