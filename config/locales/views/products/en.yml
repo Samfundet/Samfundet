@@ -10,6 +10,7 @@ en:
     index:
       few: Few left
       sold_out: Sold out
+      add_to_cart: Legg til i handlekurv
     admin:
       main_page: Merch page
       admin_page: Administrate merch
