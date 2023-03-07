@@ -38,7 +38,7 @@
     images: bilder
     history: historikk
     documents: saksdokumenter
-    blogs: blogg
+    blogs: nyheter
     contact: kontakt
     contactinfo: kontaktinfo
     reject_calls: sokere-dere-skal-ringe
@@ -49,4 +49,5 @@
     crowd-funding: kronerulling
 en:
   routes:
+    blogs: news
     contactinfo: contactinfo
