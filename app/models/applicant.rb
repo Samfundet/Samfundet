@@ -139,7 +139,7 @@ class Applicant < ApplicationRecord
   end
 
   def priority_of_job_application(admission, job_application)
-    job_applications.select { |application| application.job.admission == admission }.index(job_application) + 1
+    job_applications.select { |application| application.job.admission == admission && application.withdrawn == false }.index(job_application) + 1
   end
 
   def priority_of_job_application_string(admission, job_application)

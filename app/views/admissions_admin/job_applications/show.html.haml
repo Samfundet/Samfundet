@@ -115,7 +115,7 @@
           - tr_class = "#{job_application.assignment_status}"
           %tr{id: "application-#{job_application.id}", class: tr_class}
             %td
-              = job_application.applicant.priority_of_job_application(admission, job_application).to_s + " / " + job_application.applicant.jobs_applied_to(admission).length.to_s
+              = job_application.applicant.priority_of_job_application(admission, job_application).to_s + " / " + job_application.applicant.open_job_applications(admission).length.to_s
             %td
               = link_to admissions_admin_admission_group_job_path(admission, group, job) do
                 = job.title
@@ -148,7 +148,7 @@
                   != form.action :submit, button_html: { class: "interview_save", value: t('interviews.save_interview_status') }
                 %span{ class: "status" }
             %td
-              = job_application.applicant.get_set_interviews(admission).length.to_s + " / " + job_application.applicant.jobs_applied_to(admission).length.to_s
+              = job_application.applicant.get_set_interviews(admission).length.to_s + " / " + job_application.applicant.open_job_applications(admission).length.to_s
             %td
               = semantic_form_for([:admissions_admin, admission, group, job, job_application, interview = job_application.find_or_create_interview], namespace: "interview_#{interview.id}", html: {class: "test custom-form"}) do |form|
                 = form.inputs do
