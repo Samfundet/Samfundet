@@ -1,9 +1,9 @@
 'no':
   blogs:
     admin_applet:
-      title: Blogginnlegg
-      new_blog: Nytt innlegg
-      administrate: Administrer blogginnlegg
+      title: Nyhetsinnlegg
+      new_blog: Nytt nyhetsinnlegg
+      administrate: Administrer nyhetsinnlegg
 
       future_categories: Framtidige kategorier
       written_by: Skrevet av
@@ -14,8 +14,8 @@
       no_time_certified: Intet tidspunkt sertifisert
 
     new:
-      blog_post: Blogginnlegg
+      blog_post: Nyhetsinnlegg
 
-    new_blog: Nytt blogginnlegg
-    edit_blog: Rediger blogginnlegg
+    new_blog: Nytt nyhetsinnlegg
+    edit_blog: Rediger nyhetsinnlegg
 

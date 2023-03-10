@@ -2,8 +2,8 @@
   helpers:
     models:
       blog:
-        one: Blogginnlegg
-        other: Blogginnlegg
+        one: Nyhetsinnlegg
+        other: Nyhetsinnlegg
     label:
       blog:
         title_no: Tittel (norsk)
