@@ -2,6 +2,9 @@
 
 class ProductsController < ApplicationController
   load_and_authorize_resource
+
+  has_control_panel_applet :admin_applet,
+                           if: -> { can? :manage, Product, Order }
   def index
     @products = Product.includes(:product_variations)
   end
@@ -49,6 +52,8 @@ class ProductsController < ApplicationController
     @product_variation = @product.product_variations.build
   end
 
+  def admin_applet
+  end
 
 private
 

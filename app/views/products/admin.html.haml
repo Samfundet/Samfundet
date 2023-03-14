@@ -1,7 +1,7 @@
-%h1 Admin
+%h1 Admin Merch
 .samf-button.small.mt-3.mb-3.plain
-  = link_to products_path do
-    = t("product.admin.main_page")
+  = link_to members_control_panel_path do
+    = t("common.back")
 
 .product-admin
   - @products.each do |product|
@@ -50,7 +50,7 @@
                     .samf-button.small.red
                       = link_to "Delete",  product_product_variation_path(product, variation), method: :delete, data: { confirm: "Are you sure?" }
           .samf-button.small.green.mr-1
-            = link_to  new_product_variation_product_path(product) do
+            = link_to new_product_variation_product_path(product) do
               = t("crud.create")
 .flex.flex-justify-center
   .samf-button.small.mt-3.green

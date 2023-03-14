@@ -372,6 +372,18 @@ ActiveRecord::Schema.define(version: 2023_02_02_195032) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "order_products", force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "product_variation_id"
+    t.integer "order_id"
+    t.integer "amount"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "name"
+    t.string "epost"
+  end
+
   create_table "page_revisions", force: :cascade do |t|
     t.string "title_no"
     t.string "title_en"

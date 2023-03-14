@@ -68,7 +68,7 @@ module Samfundet
     config.assets.precompile += %w(new_building/faq-dropdown.js)
     config.assets.precompile += %w(product/disable-form.js)
     config.assets.precompile += %w(product/add-to-cart.js)
-
+    config.assets.precompile += %w(product/generate-shopping-cart.js)
 
     # Load local env variables into rails config
     config.before_configuration do

@@ -19,12 +19,20 @@ Rails.application.routes.draw do
       get :admin, on: :collection
     end
 
+    ############################
+    ##    Routes for Merch    ##
+    ############################
+
     resources :products, path: "merch" do
       get :admin, on: :collection
       member do
         get 'new_product_variation'
       end
       resources :product_variations, only: [:create, :update,:destroy, :edit]
+    end
+
+    resources :orders, only: [:new, :create, :edit, :update, :destroy] do
+      get :admin, on: :collection
     end
 
     #resources :search, only: [:new, :create, :search]

@@ -7,6 +7,7 @@ class Product < ApplicationRecord
 
   belongs_to :image
   has_many :product_variations, dependent: :destroy
+  has_many :order_products, dependent: :destroy
 
   def image_or_default
     if image.present?

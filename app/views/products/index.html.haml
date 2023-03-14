@@ -1,13 +1,19 @@
 =javascript_include_tag "product/add-to-cart", defer: true
 
 %h1 Merch
+.samf-button.small.mt-3
+  = link_to new_order_path do
+    = "new order"
 .products-list
   - @products.each do |product|
     .product{id: "product_#{product.id}"}
       = product.name
       = image_tag path_to_image(product.image_or_default)
       .variations
-        = product.product_variations.join(" / ")
+        - product.product_variations.each do |variation|
+          - if variation.quantity > 0
+            %button{id: "var_#{variation.id}"}
+              = variation
       = number_to_currency(product.price, strip_insignificant_zeros: true)
       - if (product.get_amount < 1)
         .sold-out
@@ -18,9 +24,4 @@
       - if (product.get_amount > 0)
         %button.samf-button.green.small.m-1.add-to-cart
           = t("product.index.add_to_cart")
-
-- if can? :manage, Product and can? :manage, ProductVariation
-  .samf-button.small.mt-3
-    = link_to admin_products_path do
-      = t("product.admin.admin_page")
       

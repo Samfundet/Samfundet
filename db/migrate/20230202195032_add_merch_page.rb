@@ -14,5 +14,17 @@ class AddMerchPage < ActiveRecord::Migration[5.2]
       t.integer :quantity
       t.integer :product_id
     end
+
+    create_table :orders do |t|
+      t.string :name
+      t.string :epost
+    end
+
+    create_table :order_products do |t|
+      t.integer :product_id
+      t.integer :product_variation_id
+      t.integer :order_id
+      t.integer :amount
+    end
   end
 end

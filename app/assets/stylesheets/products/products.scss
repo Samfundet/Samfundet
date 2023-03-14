@@ -21,7 +21,21 @@
     }
 
     .variations {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
 
+      button {
+        background-color: transparent;
+        cursor: pointer;
+      }
+
+      .selected {
+        padding: 5px;
+        background-color: #fff2f0;
+        border-radius: 0.5rem;
+        border: solid 1px #ffcfca;
+      }
     }
 
     .few-left {
