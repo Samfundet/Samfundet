@@ -6,9 +6,10 @@ if (localStorage.getItem(SHOPPING_CART_KEY) === null) {
 }
 
 function handleAddClick(id, product) {
-
     const selected = product.querySelector('.selected');
     const image = product.querySelector('img');
+    const name = product.querySelector('.name').id;
+    const price = product.querySelector('.price').id;
     let shoppingCart = JSON.parse(localStorage.getItem(SHOPPING_CART_KEY));
     let added = false;
 
@@ -16,17 +17,17 @@ function handleAddClick(id, product) {
         if (shoppingCart[i].id === id) {
             if (selected) {
                 if (selected.id === shoppingCart[i].variation) {
-                    shoppingCart[i] = {id: id, amount: shoppingCart[i].amount + 1, variation: selected.id, img: image.src}
+                    shoppingCart[i] = {id: id, amount: shoppingCart[i].amount + 1, variation: selected.id, img: image.src, name: name, price: price}
                     added = true;
                 }
             } else {
-                shoppingCart[i] = {id: id, amount: shoppingCart[i].amount + 1, variation: null, img: image.src }
+                shoppingCart[i] = {id: id, amount: shoppingCart[i].amount + 1, variation: null, img: image.src,name: name, price: price }
                 added = true;
             }
         }
     }
     if (shoppingCart.length === 0 || !added) {
-        shoppingCart.push({id: id, amount: 1, variation: selected ? selected.id : null, img: image.src})
+        shoppingCart.push({id: id, amount: 1, variation: selected ? selected.id : null, img: image.src, name: name, price: price})
     }
     localStorage.setItem(SHOPPING_CART_KEY, JSON.stringify(shoppingCart));
     console.table(JSON.parse(localStorage.getItem(SHOPPING_CART_KEY)))

@@ -7,14 +7,16 @@
 .products-list
   - @products.each do |product|
     .product{id: "product_#{product.id}"}
-      = product.name
+      %h2.name{id: product.name}
+        = product.name
       = image_tag path_to_image(product.image_or_default)
       .variations
         - product.product_variations.each do |variation|
           - if variation.quantity > 0
             %button{id: "var_#{variation.id}"}
               = variation
-      = number_to_currency(product.price, strip_insignificant_zeros: true)
+      %span.price{id: product.price}
+        = number_to_currency(product.price, strip_insignificant_zeros: true)
       - if (product.get_amount < 1)
         .sold-out
           = t("product.index.sold_out")
