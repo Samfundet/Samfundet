@@ -61,18 +61,24 @@ function renderOrder(order) {
         info.appendChild(variation)
     }
 
-    //Add amount
-    const amount = document.createElement("p");
-    amount.innerText = `Antall: ${order.amount}`;
-    info.appendChild(amount)
-
     //Add price
     const price = document.createElement("p");
-    price.innerText = `Pris: ${order.price}`;
+    price.innerText = `Pris: ${parseInt(order.price) * order.amount}`;
     info.appendChild(price)
 
-
     orderDiv.appendChild(info)
+
+
+    //Add amount
+    const amount = document.createElement("select");
+    amount.className = "amount-select"
+    for (let i = 1; i < 11; i++) {
+        const option = document.createElement("option");
+        option.value = i.toString();
+        option.innerText = i.toString();
+        amount.appendChild(option);
+    }
+    orderDiv.appendChild(amount)
 
     return orderDiv;
 }

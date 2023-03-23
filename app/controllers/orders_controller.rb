@@ -3,7 +3,7 @@
 class OrdersController < ApplicationController
   load_and_authorize_resource
   def admin
-    @orders = Order.includes(:order_product)
+    @orders = Order.includes(order_products: %i[product product_variation]).all
   end
 
   def new

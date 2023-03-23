@@ -3,3 +3,36 @@
 .samf-button.small.mt-3.mb-3.plain
   = link_to members_control_panel_path do
     = t("common.back")
+
+.product-admin
+  - @orders.each do |order|
+    .product.p-3
+      .info
+        %p
+          = "#{t("name")}: #{order.name}"
+        %p
+          = "Epost: #{order.epost}"
+      .variations
+        %table
+          %thead
+            %tr
+              %td
+                Product
+              %td
+                Variasjon
+              %td
+                Antall
+          %tbody
+            - order.order_products.each do |order_product|
+              %tr
+                - if order_product.product.present?
+                  %td
+                    = order_product.product
+                  %td
+                - elsif order_product.product_variation.present?
+                  %td
+                    = order_product.product_variation.product
+                  %td
+                    = order_product.product_variation
+                %td
+                  = order_product.amount

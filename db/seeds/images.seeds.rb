@@ -9,7 +9,7 @@ image_list.each do |image|
   print "#{image}..."
 end
 
-merch_image_list = ["seed/tshirt.png"]
+merch_image_list = ["seed/tshirt.png", "seed/mug.jpg"]
 merch_image_list.each do |image|
   Image.create!(
     title: image,

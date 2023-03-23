@@ -10,27 +10,16 @@ function handleAddClick(id, product) {
     const image = product.querySelector('img');
     const name = product.querySelector('.name').id;
     const price = product.querySelector('.price').id;
-    let shoppingCart = JSON.parse(localStorage.getItem(SHOPPING_CART_KEY));
-    let added = false;
+    let shoppingCart = JSON.parse(localStorage.getItem(SHOPPING_CART_KEY)) ? JSON.parse(localStorage.getItem(SHOPPING_CART_KEY)) : [];
 
-    for (let i = 0; i < shoppingCart.length; i++){
-        if (shoppingCart[i].id === id) {
-            if (selected) {
-                if (selected.id === shoppingCart[i].variation) {
-                    shoppingCart[i] = {id: id, amount: shoppingCart[i].amount + 1, variation: selected.id, img: image.src, name: name, price: price}
-                    added = true;
-                }
-            } else {
-                shoppingCart[i] = {id: id, amount: shoppingCart[i].amount + 1, variation: null, img: image.src,name: name, price: price }
-                added = true;
-            }
-        }
+    const idAlreadyInCart = shoppingCart.some(item => item.id === id);
+
+    if(!idAlreadyInCart) {
+        shoppingCart.push({id: id, amount: 1, variation: selected ? selected.id : null, img: image.src, name: name, price: price});
     }
-    if (shoppingCart.length === 0 || !added) {
-        shoppingCart.push({id: id, amount: 1, variation: selected ? selected.id : null, img: image.src, name: name, price: price})
-    }
+
     localStorage.setItem(SHOPPING_CART_KEY, JSON.stringify(shoppingCart));
-    console.table(JSON.parse(localStorage.getItem(SHOPPING_CART_KEY)))
+    console.table(JSON.parse(localStorage.getItem(SHOPPING_CART_KEY)));
 }
 
 
