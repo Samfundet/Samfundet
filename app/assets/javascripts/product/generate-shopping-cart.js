@@ -22,13 +22,15 @@ function renderShoppingCart() {
     const ordersDiv = document.getElementById("orders");
     if (shoppingCart === null || shoppingCart === []) {
         let title = document.createElement('h1');
+        const form = document.getElementsByClassName("order-form")
+        form[0].style.display = "none";
         title.textContent = "No orders"
 
         ordersDiv.appendChild(title);
         return;
     }
 
-    for (order of shoppingCart) {
+    for (const order of shoppingCart) {
         ordersDiv.appendChild(renderOrder(order))
     }
 
@@ -51,22 +53,13 @@ function renderOrder(order) {
 
     //Add name
     const name = document.createElement("p");
-    name.innerText = `${order.name}`;
+    name.innerText = `${order.name} ${order.variation ? (" - " + order.variation.name) : ""}`;
+
     info.appendChild(name)
-
-    //Add variation
-    if (order.variation) {
-        const variation = document.createElement("p");
-        variation.innerText = `${order.variation}`;
-        info.appendChild(variation)
-    }
-
     //Add price
     const price = document.createElement("p");
     price.innerText = `Pris: ${parseInt(order.price) * order.amount}`;
     info.appendChild(price)
-
-    orderDiv.appendChild(info)
 
 
     //Add amount
@@ -78,7 +71,8 @@ function renderOrder(order) {
         option.innerText = i.toString();
         amount.appendChild(option);
     }
-    orderDiv.appendChild(amount)
+    info.appendChild(amount)
+    orderDiv.appendChild(info)
 
     return orderDiv;
 }

@@ -12,10 +12,16 @@ function handleAddClick(id, product) {
     const price = product.querySelector('.price').id;
     let shoppingCart = JSON.parse(localStorage.getItem(SHOPPING_CART_KEY)) ? JSON.parse(localStorage.getItem(SHOPPING_CART_KEY)) : [];
 
-    const idAlreadyInCart = shoppingCart.some(item => item.id === id);
+    const idAlreadyInCart = shoppingCart.some(item => {
+        if (selected && item.variation) {
+            return item.variation.id === selected.id;
+        }
+
+        return item.id === id
+    });
 
     if(!idAlreadyInCart) {
-        shoppingCart.push({id: id, amount: 1, variation: selected ? selected.id : null, img: image.src, name: name, price: price});
+        shoppingCart.push({id: id, amount: 1, variation: selected ? {id:selected.id, name: selected.innerText} : null,  img: image.src, name: name, price: price});
     }
 
     localStorage.setItem(SHOPPING_CART_KEY, JSON.stringify(shoppingCart));

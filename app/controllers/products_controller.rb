@@ -41,6 +41,10 @@ class ProductsController < ApplicationController
     end
   end
 
+  def show
+    @product = Product.find(params[:id])
+  end
+
   def destroy
     @supporter = Product.find(params[:id])
     @supporter.destroy

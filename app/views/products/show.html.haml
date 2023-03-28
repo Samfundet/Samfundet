@@ -1,0 +1,5 @@
+
+.product{id: "product_#{@product.id}"}
+  %h2.name{id: @product.name}
+    = @product.name
+  = image_tag path_to_image(@product.image_or_default)

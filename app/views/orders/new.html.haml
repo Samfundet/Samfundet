@@ -1,8 +1,18 @@
 =javascript_include_tag "product/generate-shopping-cart", defer: true
 
 %h1 New order
-#orders
-%button#create-order.samf-button.green
-  Bestill
+.new-order
+  #orders
 
+  .order-form
+    .order-sticky
+      = semantic_form_for @order do |f|
+        %div.flex.w100
+          = f.inputs do
+            .flex-row
+              = f.input :name, label: "Name"
+            .flex-row
+              = f.input :epost
 
+      %button#create-order.samf-button.green
+        Bestill
