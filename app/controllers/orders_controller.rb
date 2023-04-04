@@ -11,6 +11,6 @@ class OrdersController < ApplicationController
   end
 
   def create
-    render json: params
+    render json: params, status: :created
   end
 end

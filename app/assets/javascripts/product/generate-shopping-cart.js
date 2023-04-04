@@ -10,13 +10,36 @@ createButton.addEventListener("click", () => {
             'Content-Type': 'application/json',
             'X-CSRF-Token': csrfToken
         },
-        body: JSON.stringify(shoppingCart)
+        body: JSON.stringify(processShoppingCart())
     }).then(async response => {
-        console.log(await response.text())
+        console.log(await response.json())
     }).catch(error => {
         console.error(error.value())
     });
-})
+});
+function processShoppingCart() {
+    let newShoppingCart = {
+        name: document.getElementById("order_name").value,
+        epost: document.getElementById("order_epost").value,
+        products: []
+    };
+    for (const item of shoppingCart ) {
+        //Remove product_id prefix and convert to Int
+        const productId = parseInt(item["id"].substring(8));
+        //Retrieve amount from select
+        const amount = document.getElementById(item["id"] +"-amount-select").value;
+        //Remove var_id prefix and convert to Int
+        const productVariationId =  item["variation"] ? parseInt(item["variation"].id.substring(4)) : null;
+        const newItem = {
+            product_id: productId,
+            amount: amount,
+            product_variation_id: productVariationId
+        }
+        newShoppingCart.products.push(newItem)
+    }
+    console.log(newShoppingCart)
+    return JSON.stringify(newShoppingCart);
+}
 
 function renderShoppingCart() {
     const ordersDiv = document.getElementById("orders");
@@ -65,6 +88,7 @@ function renderOrder(order) {
     //Add amount
     const amount = document.createElement("select");
     amount.className = "amount-select"
+    amount.id = order.id + "-amount-select";
     for (let i = 1; i < 11; i++) {
         const option = document.createElement("option");
         option.value = i.toString();
