@@ -7,10 +7,10 @@
 .products-list
   - @products.each do |product|
     .product{id: "product_#{product.id}"}
-      %h2.name{id: product.name}
-        = link_to product_path(product) do
+      = link_to product_path(product) do
+        %h2.name{id: product.name}
           = product.name
-      = image_tag path_to_image(product.image_or_default)
+        = image_tag path_to_image(product.image_or_default)
       .variations
         - product.product_variations.each do |variation|
           - if variation.quantity > 0

@@ -1,7 +1,7 @@
 %h1
   ADMIN FOR ORDERS
 .samf-button.small.mt-3.mb-3.plain
-  = link_to members_control_panel_path do
+  = link_to members_control_panel_path anchor: "merch-applet" do
     = t("common.back")
 
 .product-admin
@@ -28,11 +28,13 @@
                 - if order_product.product.present?
                   %td
                     = order_product.product
-                  %td
-                - elsif order_product.product_variation.present?
-                  %td
-                    = order_product.product_variation.product
+                - if order_product.product_variation.present?
                   %td
                     = order_product.product_variation
+                - else
+                  %td
                 %td
                   = order_product.amount
+      .samf-button
+        = link_to order_path(order), method: :delete, data: {confirm: "Are you sure"} do
+          = t("info_boxes.delete")

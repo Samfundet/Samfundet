@@ -1,11 +1,16 @@
 @import "admin";
 @import "new_order";
+@import "show";
 
 .products-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, max(300px));
   gap: 1rem;
   justify-content: center;
+
+  .name{
+    text-align: center;
+  }
 
   .product {
     padding: 1rem 0;
@@ -52,4 +57,9 @@
       border: solid 1px #ffcfca;
     }
   }
+}
+
+.anchor-applet {
+  position: absolute;
+  transform: translateY(-25vh);
 }

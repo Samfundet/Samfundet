@@ -1,5 +1,22 @@
+=javascript_include_tag "product/add-to-cart", defer: true
 
 .product{id: "product_#{@product.id}"}
   %h2.name{id: @product.name}
     = @product.name
   = image_tag path_to_image(@product.image_or_default)
+  .variations
+    - @product.product_variations.each do |variation|
+      - if variation.quantity > 0
+        %button{id: "var_#{variation.id}"}
+          = variation
+  %span.price{id: @product.price}
+    = number_to_currency(@product.price, strip_insignificant_zeros: true)
+  - if (@product.get_amount < 1)
+    .sold-out
+      = t("product.index.sold_out")
+  - elsif (@product.get_amount <= 5)
+    .few-left
+      = t("product.index.few")
+  - if (@product.get_amount > 0)
+    %button.samf-button.green.small.m-1.add-to-cart
+      = t("product.index.add_to_cart")

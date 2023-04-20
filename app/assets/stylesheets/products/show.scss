@@ -1,0 +1,19 @@
+.products-show {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  flex-wrap: wrap;
+
+  img {
+    width: 50%;
+  }
+
+  h2{
+    text-align: center;
+  }
+  .variations {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
+}

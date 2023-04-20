@@ -1,5 +1,9 @@
 =javascript_include_tag "product/generate-shopping-cart", defer: true
 
+.samf-button.small.mb-3
+  = link_to products_path do
+    = "Tilbake"
+
 %h1 New order
 .new-order
   #orders
@@ -14,5 +18,5 @@
             .flex-row
               = f.input :epost, label: "epost"
 
-      %button#create-order.samf-button.green
+      %button#create-order.samf-button.gray{disabled: true}
         Bestill
