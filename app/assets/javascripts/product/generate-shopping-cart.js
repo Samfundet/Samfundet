@@ -22,7 +22,8 @@ function postOrder() {
         },
         body: JSON.stringify(processShoppingCart())
     }).then(async response => {
-        console.log(await response.json())
+        const order = await response.json()
+        window.location.replace(`/orders/${order.id}`)
     }).catch(error => {
         console.error(error.value())
     });

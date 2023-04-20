@@ -30,6 +30,10 @@ class OrdersController < ApplicationController
     end
   end
 
+  def show
+    @order = Order.find(params[:id])
+  end
+
   def destroy
     @supporter = Order.find(params[:id])
     @supporter.destroy

@@ -31,7 +31,7 @@ Rails.application.routes.draw do
       resources :product_variations, only: [:create, :update,:destroy, :edit]
     end
 
-    resources :orders, only: [:new, :create, :edit, :update, :destroy] do
+    resources :orders, only: [:new, :create, :edit, :update, :destroy, :show] do
       get :admin, on: :collection
     end
 
