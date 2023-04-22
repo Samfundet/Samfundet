@@ -57,7 +57,9 @@
       %h1.ml-1.mt-1{id: "about"}= t("new_building.index.about.title")
     %div
       %p= simple_format(t("new_building.index.about.intro"))
-      %i= simple_format(t("new_building.index.about.floor_plan"))
+      = link_to "https://drive.google.com/drive/folders/1PnoZIAVOXuJfkmM_8773q-Q0M3KqbXrV?usp=share_link" do
+        .samf-button.m-1
+          = t("new_building.index.about.floor_plan")
       %i= simple_format(t("new_building.index.about.financing_title"))
       %p= simple_format(t("new_building.index.about.financing"))
 
