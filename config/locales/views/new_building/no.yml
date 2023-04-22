@@ -5,7 +5,7 @@
       intro: Studentersamfundet bygger ut! På denne siden kan du finne informasjon om nybyggprosjektet. Kontakt oss på nybygg@samfundet.no hvis du har spørsmål eller innspill.
       what:
         title: Hva er nybygg?
-        body:  Nybygg skal ha plass til mer av virksomheten vi allerede har på Samfundet. Vi skal bygge nye konsertscener, en blackbox, serveringslokaler og gode arbeidslokaler. Vi vil ha plass til mer aktivitet for flere, både frivillige, publikummere og andre foreninger. Nybygg har fått pengene som trengs til å bygge, fra blant andre NTNU, Velferdstinget, Trondheim kommune, Sit og Reitangruppen. Totalt trengs det 245 millioner til prosjektet, så arbeidet med finansiering pågår fortsatt. Byggestart er planlagt til april 2022, med ferdigstillelse årskiftet 2023/2024.
+        body:  Nybygg skal ha plass til mer av virksomheten vi allerede har på Samfundet. Vi skal bygge nye konsertscener, en blackbox, serveringslokaler og gode arbeidslokaler. Vi vil ha plass til mer aktivitet for flere, både frivillige, publikummere og andre foreninger. Nybygg har fått nesten alle pengene som trengs til å bygge, fra blant andre NTNU, Velferdstinget, Trondheim kommune, Sit og Reitangruppen. Totalt trengs det 250 millioner til prosjektet, så arbeidet med finansiering pågår fortsatt. Byggestart er godt i gang og planlagt ferdigstillelse i mars 2024.
       progress:
         title: Nybygg våren 2021
         description: |
@@ -45,10 +45,14 @@
 
       about:
         title: Om prosjektet
-        intro: Studentersamfundet i Trondhjem er Nordens største studentersamfunn, Norges tredje største konsertarrangør og hjertet i studiebyen Trondheim. Samfundet har som formål å være studentenes samlingsplass, en kulturinstitusjon og en arena for samfunnsengasjement og debatt. Organisasjonen er til for sine medlemmer, andre studenter, det akademiske miljø og byens øvrige befolkning. Samfundet fikk sitt nåværende bygg i 1929 da det var 700 studenter i Trondheim. I dag er det nærmere 40 000, og bygget er tilnærmet det samme. Siden 60-tallet har organisasjonen ønsket å bygge ut, og i dag er de fysiske rammene så begrensede at det går direkte utover formålet til organisasjonen. Derfor vil Samfundet bygge ut på Fengselstomta øst for eksisterende bygg.
+        intro: Studentersamfundet i Trondhjem er Nordens største studentersamfunn, Norges tredje største konsertarrangør og hjertet i studiebyen Trondheim. Samfundet har som formål å være studentenes samlingsplass, en kulturinstitusjon og en arena for samfunnsengasjement og debatt. Organisasjonen er til for sine medlemmer, andre studenter, det akademiske miljø og byens øvrige befolkning. Samfundet fikk sitt nåværende bygg i 1929 da det var 700 studenter i Trondheim. I dag er det nærmere 40 000, og bygget er tilnærmet det samme. Siden 60-tallet har organisasjonen ønsket å bygge ut, og i dag er de fysiske rammene så begrensede at det går direkte utover formålet til organisasjonen. Derfor er Samfundet veldig glade for å endelig bli større.
         floor_plan: Du kan se de nyeste plantegningene <a target="_blank" href="https://drive.google.com/drive/folders/1PnoZIAVOXuJfkmM_8773q-Q0M3KqbXrV?usp=share_link">her</a>.
         financing_title: Finansiering
-        financing: Studentersamfundet eies og drives av sine medlemmer uten driftstilskudd. Dette er unikt i Norge. Utbyggingen er kalkulert til å koste 245 millioner kroner. Det er mange som har lyst til å være med å bidra til dette prosjektet. Per i dag har vi fått støtte fra NTNU, Trondheim kommune, Trøndelag fylke, Sit (Studentsamskipnaden i Gjøvik, Ålesund og Trondheim), Velferdstinget, Kunnskapsdepartementet og Reitangruppen. Alle disse bidragene er essensielle for at vi skal kunne realisere bygget.
+        financing: |
+          Studentersamfundet eies og drives av sine medlemmer uten driftstilskudd. Dette er unikt i Norge. Utbyggingen er kalkulert til å koste 250 millioner kroner. Det er mange som har lyst til å være med å bidra til dette prosjektet. Per i dag har vi fått støtte fra NTNU, Trondheim kommune, Trøndelag fylke, Sit (Studentsamskipnaden i Gjøvik, Ålesund og Trondheim), Velferdstinget, Kunnskapsdepartementet og Reitangruppen. Alle disse bidragene er essensielle for at vi skal kunne realisere bygget.
+
+          Hvis du ønsker å bidra til prosjektet kan du gå inn på <a href="https://samfundet.no/kronerulling", target="_blank"> samfundet.no/kronerulling</a>
+
 
       history:
         title: Historikk
@@ -138,21 +142,21 @@
           Hvis du lurer på noe om selve byggeprosessen eller bygget: prosessleder@samfundet.no.
           Hvis du er frivillig kan du se under kontaktinfo for å finne representanten som representerer ditt virksomhetsområde.
           Hvis du har andre spørsmål enn dette: nybygg@samfundet.no.
-        question2: Når er det ferdig?
+        question2: Når blir det ferdig?
         answer2: |
-          Selve bygget kommer til å være ferdig starten av 2024, deretter kommer det til å ta litt tid å innrede de nye lokalene. Vi regner med åpning første kvartal 2024.
+          Selve bygget kommer til å være ferdig februar 2024, deretter kommer det til å ta litt tid å innrede de nye lokalene. Vi regner med åpning av huset for publikum i mars 2024.
         question3: Hva blir nytt i nybygg?
         answer3: |
           Det blir tre nye serveringslokaler og tre nye scener. Det kommer også til å bli gjort endringer i noen av lokalene som er i det eksisterende bygget.
-        question4: Hvordan blir det i byggeperioden?
+        question4: Hvordan vil det bli i byggeperioden?
         answer4: |
-          Vi er ferdige med den delen av byggingen som lager mest lyd: sputningen. Videre ligger vi an til å koble de to byggene sammen rundt sommeren 2023. Vi skal jobbe for at gjester og frivillige skal kunne bruke det eksisterende bygget så vanlig som mulig under hele byggeperioden. Mer informasjon om dette kommer når det blir relevant.
+          Vi er ferdige med den delen av byggingen som lager mest lyd: sputningen. Videre ligger vi an til å koble de to byggene sammen rundt høsten 2023. Vi skal jobbe for at gjester og frivillige skal kunne bruke det eksisterende bygget så vanlig som mulig under hele byggeperioden. Mer informasjon om dette kommer når det blir relevant.
         question5: Kommer det til å bli forsinket?
         answer5: |
-          Per nå ligger vi på tidsplanen til å være ferdige til første kvartal 2024.
+          Det har vært litt forsinkelser på grunn av grunnforholdene på tomta, derfor regner vi nå med åpning i mars 2024.
         question6: Hvor mye koster det?
         answer6: |
-          Totalt vil bygget koste 245 millioner kroner. Se mer om finansiering under “Om prosjektet”.
+          Totalt vil bygget koste 250 millioner kroner. Se mer om finansiering under “Om prosjektet”.
         question7: Hvordan ser det ut?
         answer7: |
           Se de nyeste plantegningene under “Om prosjektet”.
@@ -164,4 +168,4 @@
           Dette er ennå ikke helt avklart, men vi vet at de ikke kommer til å være større enn Storsalen og at en av de kommer til å ta over funksjonen Knaus har i dag som intimscene.
         question10: Hvor stor kapasitet får Nybygg og gamle Samfundet tilsammen?  Hvor stor kapasitet har de ulike scenene?
         answer10: |
-          Dette er heller ikke helt avklart ennå, men vi vet at bygningmassen til nybygg er 50% av det eksisterende bygget, så det kan gi en liten pekepinn.   
+          Dette er heller ikke helt avklart ennå, men vi vet at bygningmassen til nybygg er 50% av det eksisterende bygget, så det kan gi en liten pekepinn.
