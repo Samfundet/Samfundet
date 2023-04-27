@@ -24,14 +24,11 @@ class OrdersController < ApplicationController
         )
         order_product.save
       end
+      OrderConfirmationMailer.send_confirmation_mail(order).deliver
       render json: order, status: :created
     else
       render json: order.errors, status: :unprocessable_entity
     end
-  end
-
-  def show
-    @order = Order.find(params[:id])
   end
 
   def destroy

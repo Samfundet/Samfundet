@@ -23,9 +23,10 @@ function postOrder() {
         body: JSON.stringify(processShoppingCart())
     }).then(async response => {
         const order = await response.json()
-        window.location.replace(`/orders/${order.id}`)
+        localStorage.clear();
+        window.location.href = `/orders/confirm`
     }).catch(error => {
-        console.error(error.value())
+        console.error(error)
     });
 }
 
@@ -34,22 +35,22 @@ function postOrder() {
  * TODO: add check for email and blankspace
  */
 function checkInputField(e){
-
-
     if (/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(epostInputField.value) && nameInputField.value !== "") {
         createButton.classList.remove("gray")
         createButton.classList.add("green")
         createButton.disabled = false;
         return;
     }
-
     createButton.classList.remove("green")
     createButton.classList.add("gray")
     createButton.disabled = true;
 }
 
-epostInputField.addEventListener("input", checkInputField);
-nameInputField.addEventListener("input", checkInputField);
+//epostInputField.addEventListener("input", checkInputField);
+//nameInputField.addEventListener("input", checkInputField);
+
+epostInputField.value = "snorrekr@samfundet.no"
+nameInputField.value = "Snurre Sprett"
 createButton.classList.remove("gray")
 createButton.classList.add("green")
 createButton.disabled = false;
@@ -89,12 +90,12 @@ function processShoppingCart() {
  */
 function renderShoppingCart() {
     const ordersDiv = document.getElementById("orders");
-    if (shoppingCart === null || shoppingCart === []) {
-        let title = document.createElement('h1');
+    if (shoppingCart === null || shoppingCart.length === 0) {
         const form = document.getElementsByClassName("order-form")
         form[0].style.display = "none";
-        title.textContent = "No orders"
 
+        const title = document.getElementById("title");
+        title.innerText = "No orders"
         ordersDiv.appendChild(title);
         return;
     }

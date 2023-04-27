@@ -31,9 +31,11 @@ Rails.application.routes.draw do
       resources :product_variations, only: [:create, :update,:destroy, :edit]
     end
 
-    resources :orders, only: [:new, :create, :edit, :update, :destroy, :show] do
+    resources :orders, only: [:new, :create, :edit, :update, :destroy] do
       get :admin, on: :collection
+      get 'confirm', on: :collection, to:"orders#confirm"
     end
+
 
     #resources :search, only: [:new, :create, :search]
     ############################

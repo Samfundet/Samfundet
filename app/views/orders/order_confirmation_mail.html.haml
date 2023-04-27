@@ -1,0 +1,13 @@
+%html
+  %head
+    %meta{ content: "text/html; charset=utf-8", "http-equiv" => "Content-Type" }
+    %title Order Confirmation
+    %style{ type: "text/css" }
+      h1 { color: red; }
+
+  %body
+    %h1 Takk for din bestilling!
+    %p Vi i Studentersamfundet i Trondheim er glade for å bekrefte at bestillingen din er mottatt og behandlet.
+    %p Følgende produkter er bestilt:
+    - @order.order_products.each do |order_product|
+      %p= order_product.product.name
