@@ -185,7 +185,7 @@ class ApplicantsController < ApplicationController
 private
 
   def applicant_params
-    params.require(:applicant).permit(:firstname, :surname, :phone, :campus_id, :email, :password, :password_confirmation, :interested_other_positions, :gdpr_checkbox)
+    params.require(:applicant).permit(:firstname, :surname, :phone, :campus_id, :email, :email_confirmation, :password, :password_confirmation, :interested_other_positions, :gdpr_checkbox)
   end
 
   def send_verification_email(applicant)

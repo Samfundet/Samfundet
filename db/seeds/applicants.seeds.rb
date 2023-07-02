@@ -41,6 +41,7 @@ after :generate_roles do
       surname: Faker::Name.last_name,
       phone: phone_number,
       email: email,
+      email_confirmation: email,
       campus: Campus.order(Arel.sql('random()')).first,
       password: 'passord',
       password_confirmation: 'passord',
