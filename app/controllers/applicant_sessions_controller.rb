@@ -11,7 +11,7 @@ class ApplicantSessionsController < UserSessionsController
 
   def create
     applicant = Applicant.authenticate(
-      params[:applicant_login_email],
+      params[:applicant_login_field],
       params[:applicant_login_password]
     )
 
@@ -19,7 +19,7 @@ class ApplicantSessionsController < UserSessionsController
       flash[:error] = t('applicants.login_error')
 
       @applicant = Applicant.new
-      @applicant_login_email = params[:applicant_login_email]
+      @applicant_login_field = params[:applicant_login_field]
       render :new
       return
     end

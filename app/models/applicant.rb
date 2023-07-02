@@ -115,8 +115,14 @@ class Applicant < ApplicationRecord
   end
 
   class << self
-    def authenticate(email, password)
-      applicant = where(disabled: false).find_by(email: email.downcase)
+    def authenticate(field, password)
+      # Check if email or phone number
+      if /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.match?(field)
+        applicant = where(disabled: false).find_by(email: field.downcase)
+      elsif /\A[\d\s+]+\z/.match?(field)
+        applicant = where(disabled: false).find_by(phone: field)
+      end
+
       return applicant if applicant &&
                           BCrypt::Password.new(applicant.hashed_password) == password
     end
