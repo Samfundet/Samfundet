@@ -9,6 +9,7 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
   has_control_panel_applet :admin_applet,
                            if: -> { can? :show, Admission }
 
+  #noinspection RubyInterpreter
   def show
     @my_groups = Group.accessible_by(current_ability, :show)
     @job_application = JobApplication.new

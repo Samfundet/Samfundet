@@ -21,4 +21,9 @@ class AdmissionsAdmin::ApplicantsController < AdmissionsAdmin::BaseController
   def edit_applicant
     @applicant = Applicant.find_by_id(params[:applicant_id])
   end
+
+  def show_newest_applicants
+    @admission = Admission.find(params[:admission_id])
+    @applicants = Applicant.unflagged_applicants(@admission)
+  end
 end
