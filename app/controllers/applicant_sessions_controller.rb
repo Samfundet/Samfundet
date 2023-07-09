@@ -19,7 +19,13 @@ class ApplicantSessionsController < UserSessionsController
       flash[:error] = t('applicants.login_error')
 
       @applicant = Applicant.new
-      @applicant_login_field = params[:applicant_login_field]
+
+      if /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.match?(params[:applicant_login_field])
+        @applicant_login_email = params[:applicant_login_field]
+      elsif /\A[\d\s+]+\z/.match?(params[:applicant_login_field])
+        @applicant_login_phone = params[:applicant_login_field]
+      end
+
       render :new
       return
     end
