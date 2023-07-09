@@ -75,9 +75,15 @@ class ApplicantsController < ApplicationController
   def forgot_password; end
 
   def generate_forgot_password_email
-    @applicant = Applicant.find_by(email: params[:email])
+    # Check if email or phone number
+    if Applicant.valid_email?(params[:applicant_login_field])
+      @applicant = Applicant.find_by(email: params[:applicant_login_field].downcase)
+    elsif Applicant.valid_phone?(params[:applicant_login_field])
+      @applicant = Applicant.find_by(phone: params[:applicant_login_field])
+    end
+
     if !@applicant
-      flash[:error] = t('applicants.password_recovery.email_unknown')
+      flash[:error] = t('applicants.password_recovery.field_unknown')
     elsif !@applicant.can_recover_password?
       flash[:error] = t('applicants.password_recovery.limit_reached')
     elsif PasswordRecovery.create!(applicant_id: @applicant.id,
@@ -93,7 +99,7 @@ class ApplicantsController < ApplicationController
     else
       flash[:error] = t('applicants.password_recovery.error')
     end
-    redirect_to forgot_password_path
+    redirect_to applicant_login_path
   end
 
   def prepare_form

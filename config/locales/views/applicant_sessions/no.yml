@@ -8,3 +8,4 @@
         submit: "Logg inn som søker"
         applicant_login_field: "E-post eller telefonnummer"
         forgot_password: "Glemt passordet ditt?"
+        recover_password: "Gjennopprett passord"
