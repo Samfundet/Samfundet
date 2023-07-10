@@ -6,5 +6,5 @@
       login:
         heading: "Søkere"
         submit: "Logg inn som søker"
-        applicant_login_field: "E-post eller telfonnummer"
+        applicant_login_field: "E-post eller telefonnummer"
         forgot_password: "Glemt passordet ditt?"
