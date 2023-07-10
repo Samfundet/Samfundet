@@ -16,15 +16,19 @@ class ApplicantSessionsController < UserSessionsController
     )
 
     if applicant.nil?
-      flash[:error] = t('applicants.login_error')
 
-      @applicant = Applicant.new
-
-      if /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.match?(params[:applicant_login_field])
+      if match_email?(params[:applicant_login_field])
         @applicant_login_email = params[:applicant_login_field]
-      elsif /\A[\d\s+]+\z/.match?(params[:applicant_login_field])
+      elsif match_phone?(params[:applicant_login_field])
         @applicant_login_phone = params[:applicant_login_field]
+      else
+        flash[:error] = t('applicants.login_input_error')
+        redirect_to applicant_login_path
+        return
       end
+
+      flash[:error] = t('applicants.login_error')
+      @applicant = Applicant.new
 
       render :new
       return
@@ -43,6 +47,14 @@ class ApplicantSessionsController < UserSessionsController
   end
 
 private
+
+  def match_email?(field)
+    /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.match?(field)
+  end
+
+  def match_phone?(field)
+    /\A[\d\s+]+\z/.match?(field)
+  end
 
   def login_applicant(applicant)
     session[:applicant_id] = applicant.id

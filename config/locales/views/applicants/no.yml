@@ -14,6 +14,7 @@
     update_error: "Dine detaljer ble ikke oppdatert. Se detaljer nedenfor."
     login_success: "Du er nå logget inn som %{name}."
     login_success_application_saved: "Du er nå logget inn som %{name}, og søknaden din er lagret."
+    login_input_error: "Du skrev en ugyldig e-post adresse eller telefonnummer."
     login_error: "Ugyldig kombinasjon av brukernavn og passord."
     logout_success: "Du er nå logget ut."
     will_be_logged_out_as_member: "Ved å fylle ut skjemaet under vil du bli logget ut som medlem."

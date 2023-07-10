@@ -14,6 +14,7 @@ en:
     update_error: "Your details were not updated. Se details below."
     login_success: "You are now logged in as %{name}."
     login_success_application_saved: "You are now logged in as %{name}, and your application was saved."
+    login_input_error: "You provided an invalid e-mail address or phone number."
     login_error: "Wrong combination of username and password."
     logout_success: "You are now logged out."
     will_be_logged_out_as_member: "By filling out the following form you will be logged out as a member."

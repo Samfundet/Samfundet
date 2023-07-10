@@ -115,11 +115,19 @@ class Applicant < ApplicationRecord
   end
 
   class << self
+    def match_email?(field)
+      /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.match?(field)
+    end
+
+    def match_phone?(field)
+      /\A[\d\s+]+\z/.match?(field)
+    end
+
     def authenticate(field, password)
       # Check if email or phone number
-      if /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.match?(field)
+      if match_email?(field)
         applicant = where(disabled: false).find_by(email: field.downcase)
-      elsif /\A[\d\s+]+\z/.match?(field)
+      elsif match_phone?(field)
         applicant = where(disabled: false).find_by(phone: field)
       end
 
@@ -127,6 +135,7 @@ class Applicant < ApplicationRecord
                           BCrypt::Password.new(applicant.hashed_password) == password
     end
   end
+
 
   def lowest_priority_group(admission)
     job_applications.select { |application| application.job.admission == admission && application.withdrawn == false }.max_by(&:priority).job.group.id
