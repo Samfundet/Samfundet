@@ -13,6 +13,7 @@ class Applicant < ApplicationRecord
   validates :email, :phone, uniqueness: true
 
   validates :email, email: true
+  validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
 
   validates :gdpr_checkbox, acceptance: true
 
@@ -115,19 +116,19 @@ class Applicant < ApplicationRecord
   end
 
   class << self
-    def match_email?(field)
+    def valid_email?(field)
       /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.match?(field)
     end
 
-    def match_phone?(field)
+    def valid_phone?(field)
       /\A[\d\s+]+\z/.match?(field)
     end
 
     def authenticate(field, password)
       # Check if email or phone number
-      if match_email?(field)
+      if valid_email?(field)
         applicant = where(disabled: false).find_by(email: field.downcase)
-      elsif match_phone?(field)
+      elsif valid_phone?(field)
         applicant = where(disabled: false).find_by(phone: field)
       end
 
