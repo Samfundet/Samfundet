@@ -6,11 +6,11 @@
         != form.input :firstname
         != form.input :surname
       .flex-row.wrap
-        != form.input :phone
+        != form.input :phone, input_html: { value: @applicant_login_phone }
         != form.input :campus_id, as: :select, collection: Campus.order(:name)
 
     = form.inputs name: t("applicants.forms.register.login_information") do
-      != form.input :email
+      != form.input :email, input_html: { value: @applicant_login_email }
       != form.input :password, input_html: {value: ""}
       != form.input :password_confirmation, input_html: {value: ""}
 

@@ -11,15 +11,25 @@ class ApplicantSessionsController < UserSessionsController
 
   def create
     applicant = Applicant.authenticate(
-      params[:applicant_login_email],
+      params[:applicant_login_field],
       params[:applicant_login_password]
     )
 
+
     if applicant.nil?
-      flash[:error] = t('applicants.login_error')
+      if Applicant.valid_email?(params[:applicant_login_field])
+        @applicant_login_email = params[:applicant_login_field]
+      elsif Applicant.valid_phone?(params[:applicant_login_field])
+        @applicant_login_phone = params[:applicant_login_field]
+      else
+        flash[:error] = t('applicants.login_input_error')
+        redirect_to applicant_login_path
+        return
+      end
 
       @applicant = Applicant.new
-      @applicant_login_email = params[:applicant_login_email]
+      flash[:error] = t('applicants.login_error')
+
       render :new
       return
     end

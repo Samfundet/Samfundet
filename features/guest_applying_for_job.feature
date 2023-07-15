@@ -14,7 +14,7 @@ Feature: Guest applying for jobs
         And I press "Apply for this job"
         Then I should see "Register or log in as an applicant to complete your application"
         When I fill in the following:
-            | applicant_login_email    | user@example.org |
+            | applicant_login_field    | user@example.org |
             | applicant_login_password | secret              |
         And I press "Login as applicant"
         Then I should be on user@example.org's applications page
