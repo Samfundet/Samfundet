@@ -35,6 +35,7 @@ class AdmissionsAdmin::JobsController < AdmissionsAdmin::BaseController
     @groupings = [@job.unprocessed_applications]
     @group = Group.find(params[:group_id])
     @admission = Admission.find(params[:admission_id])
+
     render partial: 'jobs_show'
   end
 
