@@ -17,6 +17,8 @@ en:
     down: "Down"
     please_select: "Please select"
     log_in_to_view_page: "You have to log in to view this page."
+    no_access: "You do not have access to view this page."
+    group_leader_access: "If you think this is wrong please contact your group leader."
   time:
     last_updated: "Last updated"
     created: "Created"
