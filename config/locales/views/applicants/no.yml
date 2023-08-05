@@ -40,7 +40,7 @@
         heading: "Sett et nytt passord"
         submit: "Lagre nytt passord"
     password_recovery:
-      email_unknown: "Ukjent epost, prøv igjen."
+      field_unknown: "Ukjent e-post eller telefonnummer, prøv igjen."
       limit_reached: "Du har oversteget grensen for mulige passordtilbakestillinger. Hvis problemet ikke er løst kan du sende en epost til mg-web@samfundet.no"
       success: "En epost har blitt sendt til %{email} med videre instrukser."
       error: "En feil har skjedd, passordbytte har ikke blitt fullført."
@@ -49,7 +49,7 @@
       change_error: "Passord ikke endret, se detaljer under:"
       forgot_password: "Glemt passord"
       new_password: "Nytt passord"
-      help_text: "Skriv inn eposten din i feltet under, så vil vi sende deg en epost med en lenke du kan bruke til å sette et nytt passord."
+      help_text: "Skriv inn e-post eller telefonnummer i feltet under, så vil vi sende deg en e-post med en lenke du kan bruke til å sette et nytt passord."
       email_subject: Registrer nytt passord (samfundet.no)
       email_message: |
         Hei, %{name}
@@ -60,7 +60,7 @@
 
         Hvis det ikke fungerer å trykke på lenken, kan du kopiere adressen og lime den inn i adressefeltet til nettleseren din.
 
-        Har du ikke glemt passordet ditt, kan du bare se bort fra denne eposten.
+        Har du ikke glemt passordet ditt, kan du bare se bort fra denne e-posten.
 
         --
         samfundet.no/opptak

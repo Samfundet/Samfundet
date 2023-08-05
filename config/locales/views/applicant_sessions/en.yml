@@ -8,3 +8,4 @@ en:
         submit: "Login as applicant"
         applicant_login_field: "E-mail or phone number"
         forgot_password: "Forgotten your password?"
+        recover_password: "Recover password"
