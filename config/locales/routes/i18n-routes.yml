@@ -22,6 +22,7 @@
     admissions_admin: opptak-administrasjon
     forgot_password: glemt-passord
     reset_password: tilbakestill-passord
+    email_verification: bekreft-epost
     entry: innlegg
     entries: innlegg
     category: kategori

@@ -5,6 +5,9 @@ class Applicant < ApplicationRecord
   has_many :jobs, through: :job_applications
   has_many :password_recoveries
   has_many :log_entries
+  has_one :email_verification,
+    class_name: 'EmailVerification',
+    foreign_key: 'applicant_id'
   belongs_to :campus
 
   attr_accessor :password, :password_confirmation, :old_password, :gdpr_checkbox
@@ -91,6 +94,18 @@ class Applicant < ApplicationRecord
   def check_hash(hash)
     password_recoveries.each do |recovery_hash|
       return true if hash == recovery_hash.recovery_hash && recovery_hash.created_at + 1.hour > Time.current
+    end
+    false
+  end
+
+  def create_email_verification_hash
+    Digest::SHA256.hexdigest(email + Time.current.to_s + rand(1..100000).to_s)
+  end
+
+  def check_email_verification_hash(hash)
+    if email_verification && email_verification.verification_hash == hash && email_verification.updated_at + 1.hour > Time.current
+      email_verification.destroy!
+      return true
     end
     false
   end

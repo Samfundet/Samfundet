@@ -63,4 +63,32 @@
         Har du ikke glemt passordet ditt, kan du bare se bort fra denne e-posten.
 
         --
-        samfundet.no/opptak
+        For mer informasjon om semesterets opptak, gå til:
+        https://samfundet.no/opptak
+    email_verification:
+      login_email_unverified: "E-post knyttet til %{name} er ikke bekreftet. Vennligst bekreft e-post adressen først."
+      verification_sent: "E-post bekreftelse er sendt til %{email}"
+      verification_link_invalid: "Bekreftelseslenken er ugyldig."
+      verification_success: "E-post knyttet til %{name} ble bekreftet. Du kan nå logge inn som søker."
+      too_many: "For mange bekreftelsemail sendt den siste timen. Prøv igjen senere."
+      email_error: "En feil har oppstått. E-post bekreftelse ble ikke sendt."
+      email_subject: "Så kult at du vil søke Samfundet!"
+      email_message: |
+        Hei %{firstname},
+
+        Så kult at du vil søke Samfundet!
+
+        Du er blitt registrert med følgende personalia:
+
+        Navn: %{name}
+        Telefon: %{phone}
+        E-post: %{email}
+
+        Om dette er feil, vennligst send en mail til mg-web@samfundet.no
+
+        For å fortsette registreringen, vennligst følg lenken nedenfor. Den er gyldig i 60 minutter:
+        %{verification_link}
+
+        --
+        For mer informasjon om Samfundets opptak, gå til:
+        https://samfundet.no/opptak

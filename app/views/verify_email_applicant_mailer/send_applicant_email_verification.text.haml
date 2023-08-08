@@ -1,0 +1,8 @@
+= t('applicants.email_verification.email_message',
+    firstname: @applicant.firstname,
+    name: @applicant.full_name,
+    phone: @applicant.phone,
+    email: @applicant.email,
+    verification_link: email_verification_link(email: @applicant.email,
+                                              applicant_id: @applicant.id,
+                                              verification_hash: @new_verification_hash_value)).html_safe
