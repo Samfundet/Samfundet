@@ -6,6 +6,7 @@
 class Sulten::LycheController < Sulten::BaseController
   skip_authorization_check
   layout 'lyche'
+  before_action :check_food_open, only: %i[index reservation]
 
   def index
     # Check if in closed period
@@ -25,13 +26,15 @@ class Sulten::LycheController < Sulten::BaseController
     end
   end
 
-  def reservation
+  def check_food_open
     food_open_date = Date.parse('17.08.2023')
     @food_closed = false
     if food_open_date > Time.now
       @food_closed = true
     end
+  end
 
+  def reservation
     @closed_periods = Sulten::ClosedPeriod.current_and_future_closed_times.sort_by(&:closed_from)
     unless @closed_periods.empty?
       # Show only if less than 60 days in future
