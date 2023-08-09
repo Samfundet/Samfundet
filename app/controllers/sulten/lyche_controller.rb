@@ -27,9 +27,9 @@ class Sulten::LycheController < Sulten::BaseController
   end
 
   def check_food_open
-    food_open_date = Date.parse('17.08.2023')
+    @food_open_date = Date.parse('17.08.2023')
     @food_closed = false
-    if food_open_date > Time.now
+    if @food_open_date > Time.now
       @food_closed = true
     end
   end
@@ -73,7 +73,7 @@ class Sulten::LycheController < Sulten::BaseController
       @reservation_type = request[:reservation_type_id]
       reservation_type_name = Sulten::ReservationType.find_by(id: @reservation_type).name
       if reservation_type_name.include?('Mat') && @food_closed
-        if stop < food_open_date
+        if stop < @food_open_date
           @in_food_closed_period = true
           return
         end
