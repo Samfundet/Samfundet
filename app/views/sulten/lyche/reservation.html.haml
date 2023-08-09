@@ -105,7 +105,7 @@
           = f.input :allergies, label: t("sulten.reservation.other_messages")
           %br
           .gdpr_checkbox
-            != f.input :gdpr_checkbox, as: :boolean, label: raw(t("sulten.reservation.gdpr_checkbox", en_url:'/en/privacy', no_url: '/personvern'))
+            != f.input :gdpr_checkbox, as: :boolean, required: true, label: raw(t("sulten.reservation.gdpr_checkbox", en_url:'/en/privacy', no_url: '/personvern'))
 
         = f.actions do
           = f.submit t("sulten.reservation.form.create")
