@@ -36,8 +36,27 @@
         %p
           = link_to url_for(:back) do
             = t("common.back").capitalize
+  - elsif @in_food_closed_period
+    = semantic_form_for @reservation, :html => { :class => "custom-form lyche_form"} do |f|
+      .reservation-info
+        .reservation_no_available
+          %b
+            = t("sulten.reservation.form.food_closed")
+            = t("sulten.reservation.form.food_not_possible")
+      .reservation_no_available
+        %b
+          = t("sulten.reservation.form.date_food_closed")
+      .link-back-when-no-reservations
+        %p
+          = link_to url_for(:back) do
+            = t("common.back").capitalize
   - elsif @times.nil?
     = semantic_form_for @reservation, :url => {:controller => "lyche", :action => "reservation" }, :html => { :class => "custom-form lyche_form"}, data: {type: 'json'} do |f|
+      - if @food_closed
+        %b
+          ="NB:"
+        %i
+          = t("sulten.reservation.form.food_closed")
       = f.inputs do
         = f.input :reservation_type, label: t("sulten.reservation.reservation_type")
         %li
@@ -86,7 +105,7 @@
           = f.input :allergies, label: t("sulten.reservation.other_messages")
           %br
           .gdpr_checkbox
-            != f.input :gdpr_checkbox, as: :boolean, label: raw(t("sulten.reservation.gdpr_checkbox", en_url:'/en/privacy', no_url: '/personvern'))
+            != f.input :gdpr_checkbox, as: :boolean, required: true, label: raw(t("sulten.reservation.gdpr_checkbox", en_url:'/en/privacy', no_url: '/personvern'))
 
         = f.actions do
           = f.submit t("sulten.reservation.form.create")
