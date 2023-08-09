@@ -25,7 +25,7 @@
           %td= t("sulten.lyche.status_box.closed_period")
           %td= l(@closed.closed_from, format: :short_date) + " - " + l(@closed.closed_to, format: :short_date)
 
-  - if @closed.nil?
+  - if @food_closed
     %p{style: "color: white; text-align: center; font-size: 1em;"}
       %i{style: "font-weight: bold;"}
         ="NB:"
