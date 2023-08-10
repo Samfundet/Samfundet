@@ -16,7 +16,7 @@
 
     = form.inputs name: t("applicants.forms.register.extra_information") do
       != form.input :interested_other_positions, as: :select, hint: t("applicants.interested_other_positions_hint")
-      != form.input :gdpr_checkbox, as: :boolean, label: raw(t("applicants.forms.register.gdpr_checkbox", en_url:'/en/information/privacy', no_url: '/informasjon/personvern'))
+      != form.input :gdpr_checkbox, as: :boolean, required: true, label: raw(t("applicants.forms.register.gdpr_checkbox", en_url:'/en/information/privacy', no_url: '/informasjon/personvern'))
 
     = form.actions do
       != submit_tag t("applicants.forms.register.submit")

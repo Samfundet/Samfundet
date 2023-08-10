@@ -106,6 +106,7 @@ Rails.application.routes.draw do
       get "forgot_password", to: "applicants#forgot_password"
       post "generate_forgot_password_email", to: "applicants#generate_forgot_password_email"
       get "reset_password", to: "applicants#reset_password"
+      get "verify_email", to: "applicants#verify_email"
       get "search", to: "applicants#search", as: :applicant_search
     end
 

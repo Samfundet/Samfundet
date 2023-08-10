@@ -3,7 +3,7 @@
 class ApplicantsController < ApplicationController
   layout 'admissions'
   load_and_authorize_resource only: %i[steal_identity show edit update search]
-  skip_authorization_check only: %i[new create forgot_password generate_forgot_password_email reset_password change_password]
+  skip_authorization_check only: %i[new create forgot_password generate_forgot_password_email reset_password change_password verify_email]
 
   has_control_panel_applet :steal_identity_applet,
                            if: -> { can? :steal_identity, Applicant }
@@ -17,14 +17,10 @@ class ApplicantsController < ApplicationController
     @applicant = Applicant.new(applicant_params)
 
     if @applicant.save
-      login_applicant @applicant
+      flash[:success] = t('applicants.registration_success')
 
-      if pending_application?
-        save_pending_application(@applicant)
-        redirect_to job_applications_path
-      else
-        redirect_to admissions_path
-      end
+      send_verification_email(@applicant)
+      redirect_to applicant_login_path
     else
       flash[:error] = t('applicants.registration_error')
       render :new
@@ -139,6 +135,19 @@ class ApplicantsController < ApplicationController
     end
   end
 
+  def verify_email
+    @applicant = Applicant.find(params[:applicant])
+    if @applicant.check_email_verification_hash(params[:hash])
+      @applicant.verified = true
+      @applicant.save!
+      flash[:success] = t('applicants.email_verification.verification_success',
+                        name: CGI.escapeHTML(@applicant.full_name))
+    else
+      flash[:error] = t('applicants.email_verification.verification_link_invalid')
+    end
+    redirect_to applicant_login_path
+  end
+
   def steal_identity_applet; end
 
   def steal_identity
@@ -175,18 +184,16 @@ class ApplicantsController < ApplicationController
 
 private
 
-  def login_applicant(applicant)
-    session[:applicant_id] = applicant.id
-    session[:member_id] = nil
-    cookies[:signed_in] = 1
-
-    flash[:success] = t('applicants.registration_success')
-
-    invalidate_cached_current_user
-  end
-
   def applicant_params
     params.require(:applicant).permit(:firstname, :surname, :phone, :campus_id, :email, :password, :password_confirmation, :interested_other_positions, :gdpr_checkbox)
+  end
+
+  def send_verification_email(applicant)
+    VerifyEmailApplicantMailer.send_applicant_email_verification(applicant).deliver
+    flash[:message] = t('applicants.email_verification.verification_sent',
+                        email: CGI.escapeHTML(applicant.email))
+  rescue Net::SMTPError
+    flash[:error] = t('applicants.email_verification.email_error')
   end
 
   include PendingApplications
