@@ -18,7 +18,7 @@ class Applicant < ApplicationRecord
   validates :email, :email_confirmation,
             presence: { if: ->(applicant) { applicant.new_record? } }
   validates :email, confirmation: { if: ->(applicant) { applicant.new_record? } }
-  validates :email, format: { with: /\A\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+\z/ }
+  validates :email, format: { with: /\A.+@[a-z\d\-.]+\.[a-z]{2,}\z/i }
 
   validates :gdpr_checkbox, acceptance: true
 
@@ -134,7 +134,7 @@ class Applicant < ApplicationRecord
 
   class << self
     def valid_email?(field)
-      /\A\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+\z/.match?(field)
+      /\A.+@[a-z\d\-.]+\.[a-z]{2,}\z/i.match?(field)
     end
 
     def valid_phone?(field)
