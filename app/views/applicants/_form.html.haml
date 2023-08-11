@@ -10,8 +10,8 @@
         != form.input :campus_id, as: :select, collection: Campus.order(:name)
 
     = form.inputs name: t("applicants.forms.register.login_information") do
-      != form.input :email, input_html: { value: @applicant_login_email }
-      != form.input :email_confirmation, input_html: { value: "" }
+      != form.input :email, input_html: { type: "email", value: @applicant_login_email }
+      != form.input :email_confirmation, input_html: { type: "email", value: "" }
       != form.input :password, input_html: { value: "" }
       != form.input :password_confirmation, input_html: { value: "" }
 
