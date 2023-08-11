@@ -3,7 +3,7 @@
 class VerifyEmailApplicantMailer < ActionMailer::Base
   helper :applicant_verification
 
-  default from: %("MG::Web" <mg-web@samfundet.no>),
+  default from: %("Samfundet" <mg-web@samfundet.no>),
           reply_to: 'mg-web@samfundet.no'
 
   def send_applicant_email_verification(applicant)
