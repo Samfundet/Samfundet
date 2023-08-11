@@ -10,13 +10,15 @@ class Applicant < ApplicationRecord
     foreign_key: 'applicant_id'
   belongs_to :campus
 
-  attr_accessor :password, :password_confirmation, :old_password, :gdpr_checkbox
+  attr_accessor :email_confirmation, :password, :password_confirmation, :old_password, :gdpr_checkbox
 
   validates :firstname, :surname, :email, :phone, :campus, presence: true
   validates :email, :phone, uniqueness: true
 
-  validates :email, email: true
-  validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
+  validates :email, :email_confirmation,
+            presence: { if: ->(applicant) { applicant.new_record? } }
+  validates :email, confirmation: { if: ->(applicant) { applicant.new_record? } }
+  validates :email, format: { with: /\A.+@[a-z\d\-.]+\.[a-z]{2,}\z/i }
 
   validates :gdpr_checkbox, acceptance: true
 
@@ -132,7 +134,7 @@ class Applicant < ApplicationRecord
 
   class << self
     def valid_email?(field)
-      /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.match?(field)
+      /\A.+@[a-z\d\-.]+\.[a-z]{2,}\z/i.match?(field)
     end
 
     def valid_phone?(field)

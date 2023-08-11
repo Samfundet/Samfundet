@@ -8,7 +8,8 @@ en:
       applicant:
         firstname: "First name"
         surname: "Surname"
-        email: "Email"
+        email: "E-mail"
+        email_confirmation: "E-mail confirmation"
         hashed_password:
         phone: "Phone number"
         age: "Age"

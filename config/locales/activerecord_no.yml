@@ -1,51 +1,55 @@
-'no':
+"no":
   activerecord:
-      errors:
-        models:
-          applicant:
-            attributes:
-              password:
-                too_short: "Passordet er for kort, må være minst %{count} tegn"
-              password_confirmation:
-                confirmation: "Bekreftelsen er ikke den samme"
-          event:
-            attributes:
-              start_time:
-                after: "Dette tidspunktet har passert."
-        template:
-          header: "kunne ikke lagre %{model} på grunn av %{count} feil."
-          body: "det oppstod problemer i følgende felt:"
-        messages:
-          inclusion: "er ikke inkludert i listen"
-          exclusion: "er reservert"
-          invalid: "er ugyldig"
-          confirmation: "passer ikke bekreftelsen"
-          accepted: "må være akseptert"
-          empty: "kan ikke være tom"
-          blank: "kan ikke være blank"
-          too_long: "er for lang (maksimum %{count} tegn)"
-          too_short: "er for kort (minimum %{count} tegn)"
-          wrong_length: "er av feil lengde (maksimum %{count} tegn)"
-          taken: "er allerede i bruk"
-          not_a_number: "er ikke et tall"
-          greater_than: "må være større enn %{count}"
-          greater_than_or_equal_to: "må være større enn eller lik %{count}"
-          equal_to: "må være lik %{count}"
-          less_than: "må være mindre enn %{count}"
-          less_than_or_equal_to: "må være mindre enn eller lik %{count}"
-          odd: "må være oddetall"
-          even: "må være partall"
-          record_invalid: "Validering feilet: %{errors}"
-        full_messages:
-          format: "%{attribute} %{message}"
-        # models:
-        # attributes:
+    errors:
+      models:
+        applicant:
+          attributes:
+            email:
+              invalid: "Ugyldig e-post"
+            email-confirmation:
+              confirmation: "E-post adressene samsvarer ikke"
+            password:
+              too_short: "Passordet er for kort, må være minst %{count} tegn"
+            password_confirmation:
+              confirmation: "Passordene samsvarer ikke"
+        event:
+          attributes:
+            start_time:
+              after: "Dette tidspunktet har passert."
+      template:
+        header: "kunne ikke lagre %{model} på grunn av %{count} feil."
+        body: "det oppstod problemer i følgende felt:"
+      messages:
+        inclusion: "er ikke inkludert i listen"
+        exclusion: "er reservert"
+        invalid: "er ugyldig"
+        confirmation: "passer ikke bekreftelsen"
+        accepted: "må være akseptert"
+        empty: "kan ikke være tom"
+        blank: "kan ikke være blank"
+        too_long: "er for lang (maksimum %{count} tegn)"
+        too_short: "er for kort (minimum %{count} tegn)"
+        wrong_length: "er av feil lengde (maksimum %{count} tegn)"
+        taken: "er allerede i bruk"
+        not_a_number: "er ikke et tall"
+        greater_than: "må være større enn %{count}"
+        greater_than_or_equal_to: "må være større enn eller lik %{count}"
+        equal_to: "må være lik %{count}"
+        less_than: "må være mindre enn %{count}"
+        less_than_or_equal_to: "må være mindre enn eller lik %{count}"
+        odd: "må være oddetall"
+        even: "må være partall"
+        record_invalid: "Validering feilet: %{errors}"
+      full_messages:
+        format: "%{attribute} %{message}"
+      # models:
+      # attributes:
   activemodel:
     errors:
       models:
         contact_form:
           attributes:
             email:
-              invalid: 'Ugyldig e-post'
+              invalid: "Ugyldig e-post"
             description:
-              too_short: 'Beskrivelsen er fort kort, minimum 50 bokstaver'
+              too_short: "Beskrivelsen er fort kort, minimum 50 bokstaver"
