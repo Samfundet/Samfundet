@@ -100,6 +100,10 @@ class Interview < ApplicationRecord
   def past_set_priority_deadline?
     job_application.job.admission.admin_priority_deadline < Time.current
   end
+
+  def can_set_status?
+    past_set_priority_deadline? && priority?
+  end
 end
 
 # == Schema Information
