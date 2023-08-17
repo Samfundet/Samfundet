@@ -14,6 +14,7 @@ class ApplicantsController < ApplicationController
 
   def create
     params[:applicant][:email].downcase!
+    params[:applicant][:email_confirmation].downcase!
     @applicant = Applicant.new(applicant_params)
 
     if @applicant.save
