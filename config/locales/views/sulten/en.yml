@@ -152,14 +152,14 @@ en:
             name: "Lyche burger"
             ingredients: "Aioli, cherry tomatoes, lettuce, onion compote, cheese, bacon and pistou for baked potatoes."
             allergies: "Allergies: Gluten (wheat), sulfite and eggs"
-            recommendations: "The bar recommends: Barbera d`Asti Superiore Storica"
+            recommendations: "The bar recommends: Cantos"
           blue_cheese_burger:
             name: "Blue cheese burger"
             ingredients: "Aioli, cherry tomatoes, lettuce, sweet and sour currant and rhubarb jam, blue cheese from Selbu and pistou for oven-baked potatoes."
             allergies: "Allergies: Pork, eggs, gluten (wheat, rye, barley), milk, celery, mustard and sulphite"
             recommendations: "The bar recommends: Lychelig Trippel"
           mushroom_burger:
-            name: "Mushroom Burger"
+            name: "Sweet Potato Burger"
             ingredients: "Aioli, cherry tomatoes, lettuce, pickled onion, pomegranate syrup and pistou for baked potatoes. Vegetarian. Can be served as a vegan burger."
             allergies: "Allergies: Soy (burger), cashew nuts (burger), egg (aioli and pistou), mustard (aioli), sulfite (vinaigrette, pickled onion and aioli), gluten (burger bread) and milk (pistou)"
             recommendations: "The bar recommends: Brooklyn Lager"
