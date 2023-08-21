@@ -74,6 +74,7 @@ class MembersController < ApplicationController
   def steal_identity
     session[:member_id] = Member.find(params[:member_id]).id
     session[:applicant_id] = nil
+    flash[:error] = 'Member controller steal identity'
     redirect_to root_path
   end
 

@@ -224,6 +224,7 @@ class EventsController < ApplicationController
         event = payment_error_price_group.samfundet_event
         redirect_to buy_event_path(event, bsession: params[:bsession])
       else
+        flash[:error] = 'Purchase callback falinure'
         redirect_to root_path(bsession: params[:bsession])
       end
     else
@@ -232,6 +233,7 @@ class EventsController < ApplicationController
         event = payment_error_price_group.samfundet_event
         redirect_to buy_event_path(event, bsession: params[:bsession])
       else # Error case no. 2. Show payment error without purchase form.
+        flash[:error] = 'Purchase callback falinure'
         redirect_to root_path(bsession: params[:bsession])
       end
     end

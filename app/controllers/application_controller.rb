@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
 
   rescue_from ActionController::InvalidAuthenticityToken do
     reset_session
-    flash[:error] = 'There was an error processing your request. Please try again.'
+    flash[:error] = 'Application controller invalid authenticity token'
     redirect_to root_path
   end
 
@@ -76,6 +76,7 @@ class ApplicationController < ActionController::Base
       if request.get? # Regular GET
         redirect_to login_path(redirect_to: request.path)
       elsif request.referer.nil?
+        flash[:error] = 'Application controller permission denied'
         redirect_to root_path
       else
         redirect_to login_path(redirect_to: request_referer_if_on_current_domain)

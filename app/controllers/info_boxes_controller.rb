@@ -21,6 +21,7 @@ class InfoBoxesController < ApplicationController
   def create
     @info_box = InfoBox.new(info_box_params)
     if @info_box.save
+      flash[:error] = 'InfoBox controller creat'
       redirect_to root_path
     else
       render :new
@@ -35,6 +36,7 @@ class InfoBoxesController < ApplicationController
     @info_box = InfoBox.find(params[:id])
 
     if @info_box.update(info_box_params)
+      flash[:error] = 'InfoBox controller updat3'
       redirect_to root_path
     else
       render :edit
@@ -44,6 +46,7 @@ class InfoBoxesController < ApplicationController
   def destroy
     @info_box = InfoBox.find(params[:id])
     @info_box.destroy
+    flash[:error] = 'InfoBox controller destroy'
     redirect_to root_path
   end
 

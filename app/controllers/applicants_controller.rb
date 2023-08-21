@@ -158,6 +158,7 @@ class ApplicantsController < ApplicationController
     else
       session[:member_id] = nil
       session[:applicant_id] = applicant.id
+      flash[:error] = 'Applicants steal identity'
       redirect_to root_path
     end
   end

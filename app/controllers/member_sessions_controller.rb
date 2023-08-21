@@ -18,6 +18,7 @@ class MemberSessionsController < UserSessionsController
       @redirect_to = params[:redirect_to]
       render :new
     else
+      flash.now[:error] = 'Member controller login error'
       login_member member
       redirect_after_login root_path
     end
