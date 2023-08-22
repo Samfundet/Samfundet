@@ -123,7 +123,7 @@ class ApplicantsController < ApplicationController
         PasswordRecovery.find_by(applicant_id: @applicant.id).destroy
         flash[:success] = t('applicants.password_recovery.change_success')
 
-        redirect_to login_path
+        redirect_to applicant_login_path
       else
         prepare_reset_password_form
         flash[:error] = t('applicants.password_recovery.change_error')
