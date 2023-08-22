@@ -99,18 +99,18 @@ class ApplicantsController < ApplicationController
     redirect_to applicant_login_path
   end
 
-  def prepare_form
+  def prepare_reset_password_form
     @hash = params[:hash]
     @email = params[:email]
   end
 
   def reset_password
     @applicant = Applicant.find_by(email: params[:email])
-    if !@applicant || !@applicant.check_hash(params[:hash])
+    if !@applicant || !@applicant.check_hash(params[:hash]) || params[:hash] == nil
       flash[:error] = t('applicants.password_recovery.hash_error')
       @applicant = nil
     else
-      prepare_form
+      prepare_reset_password_form
     end
   end
 
@@ -125,13 +125,13 @@ class ApplicantsController < ApplicationController
 
         redirect_to login_path
       else
-        prepare_form
+        prepare_reset_password_form
         flash[:error] = t('applicants.password_recovery.change_error')
         render :reset_password
       end
     else
-      prepare_form
-      flash[:error] = t('applicants.password_recovery.change_error')
+      flash[:error] = t('applicants.password_recovery.hash_error')
+      @applicant = nil
       render :reset_password
     end
   end
