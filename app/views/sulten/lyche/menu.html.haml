@@ -153,68 +153,68 @@
             %i= t("sulten.lyche.menu.burgers.mushroom_burger.recommendations")
 
         -# Main courses
+        -# Lyche kjører barmeny under immen, dermed ingen vanlige hovedretter.
+          .lyche-menu-category
+           .lyche-menu-category-detail.left
+            .lyche-menu-category-title
+              = t("sulten.lyche.menu.main_courses.title")
+            .lyche-menu-category-detail.right
 
-        .lyche-menu-category
-          .lyche-menu-category-detail.left
-          .lyche-menu-category-title
-            = t("sulten.lyche.menu.main_courses.title")
-          .lyche-menu-category-detail.right
+          .menu-item
+            .item-name
+              = t("sulten.lyche.menu.main_courses.duck.name")
+              .item-price
+                149,- / 179,-
+            .item-description
+              = t("sulten.lyche.menu.main_courses.duck.description")
+              %br
+              %br
+              %i= t("sulten.lyche.menu.main_courses.duck.allergies")
+              %br
+              %br
+              %i= t("sulten.lyche.menu.main_courses.duck.recommendations")
 
-        .menu-item
-          .item-name
-            = t("sulten.lyche.menu.main_courses.duck.name")
-            .item-price
-              149,- / 179,-
-          .item-description
-            = t("sulten.lyche.menu.main_courses.duck.description")
-            %br
-            %br
-            %i= t("sulten.lyche.menu.main_courses.duck.allergies")
-            %br
-            %br
-            %i= t("sulten.lyche.menu.main_courses.duck.recommendations")
+          .menu-item
+            .item-name
+              = t("sulten.lyche.menu.main_courses.halibut.name")
+              .item-price
+                119,- / 139,-
+            .item-description
+              = t("sulten.lyche.menu.main_courses.halibut.description")
+              %br
+              %br
+              %i= t("sulten.lyche.menu.main_courses.halibut.allergies")
+              %br
+              %br
+              %i= t("sulten.lyche.menu.main_courses.halibut.recommendations")
 
-        .menu-item
-          .item-name
-            = t("sulten.lyche.menu.main_courses.halibut.name")
-            .item-price
-              119,- / 139,-
-          .item-description
-            = t("sulten.lyche.menu.main_courses.halibut.description")
-            %br
-            %br
-            %i= t("sulten.lyche.menu.main_courses.halibut.allergies")
-            %br
-            %br
-            %i= t("sulten.lyche.menu.main_courses.halibut.recommendations")
+          .menu-item
+            .item-name
+              = t("sulten.lyche.menu.main_courses.beef_salad.name")
+              .item-price
+                119,- / 139,-
+            .item-description
+              = t("sulten.lyche.menu.main_courses.beef_salad.description")
+              %br
+              %br
+              %i= t("sulten.lyche.menu.main_courses.beef_salad.allergies")
+              %br
+              %br
+              %i= t("sulten.lyche.menu.main_courses.beef_salad.recommendations")
 
-        .menu-item
-          .item-name
-            = t("sulten.lyche.menu.main_courses.beef_salad.name")
-            .item-price
-              119,- / 139,-
-          .item-description
-            = t("sulten.lyche.menu.main_courses.beef_salad.description")
-            %br
-            %br
-            %i= t("sulten.lyche.menu.main_courses.beef_salad.allergies")
-            %br
-            %br
-            %i= t("sulten.lyche.menu.main_courses.beef_salad.recommendations")
-
-        .menu-item
-          .item-name
-            = t("sulten.lyche.menu.main_courses.cauliflower.name")
-            .item-price
-              119,- / 139,-
-          .item-description
-            = t("sulten.lyche.menu.main_courses.cauliflower.description")
-            %br
-            %br
-            %i= t("sulten.lyche.menu.main_courses.cauliflower.allergies")
-            %br
-            %br
-            %i= t("sulten.lyche.menu.main_courses.cauliflower.recommendations")
+          .menu-item
+            .item-name
+              = t("sulten.lyche.menu.main_courses.cauliflower.name")
+              .item-price
+                119,- / 139,-
+            .item-description
+              = t("sulten.lyche.menu.main_courses.cauliflower.description")
+              %br
+              %br
+              %i= t("sulten.lyche.menu.main_courses.cauliflower.allergies")
+              %br
+              %br
+              %i= t("sulten.lyche.menu.main_courses.cauliflower.recommendations")
 
 
         -# Dessert
@@ -236,19 +236,20 @@
             %br
             %i= t("sulten.lyche.menu.desserts.ice_cream.allergies")
 
-        .menu-item
-          .item-name
-            = t("sulten.lyche.menu.desserts.cake.name")
-            .item-price
-              55,- / 67,-
-          .item-description
-            = t("sulten.lyche.menu.desserts.cake.description")
-            %br
-            %br
-            %i= t("sulten.lyche.menu.desserts.cake.allergies")
-            %br
-            %br
-            %i= t("sulten.lyche.menu.desserts.cake.recommendations")
+        -# Ingen kake under immen
+          .menu-item
+            .item-name
+              = t("sulten.lyche.menu.desserts.cake.name")
+              .item-price
+                55,- / 67,-
+            .item-description
+              = t("sulten.lyche.menu.desserts.cake.description")
+              %br
+              %br
+              %i= t("sulten.lyche.menu.desserts.cake.allergies")
+              %br
+              %br
+              %i= t("sulten.lyche.menu.desserts.cake.recommendations")
 
         -# Drinks
         -# Lyche ønsket å fjerne drikke, hvis det blir nødvendig å legge til fjern denne kommentaren og tab ut under

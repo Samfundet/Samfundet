@@ -152,14 +152,14 @@
             name: "Lycheburger"
             ingredients: "Aioli, cherrytomater, salat, løkkompott, ost, bacon og pistou til ovnsbakte poteter."
             allergies: "Allergener: Gluten (hvete), sulfitt og egg"
-            recommendations: "Baren anbefaler: Barbera d`Asti Superiore Storica"
+            recommendations: "Baren anbefaler: Cantos"
           blue_cheese_burger:
             name: "Blåmuggburger"
             ingredients: "Aioli, cherrytomater, salat, søt og syrlig rips- og rabarbramarmelade , blåmuggost fra Selbu og pistou til ovnsbakte poteter."
             allergies: "Allergener: Svin, egg, gluten (hvete, rug, bygg), melk, selleri, sennep og sulfitt"
             recommendations: "Baren anbefaler: Lychelig Trippel"
           mushroom_burger:
-            name: "Soppburger"
+            name: "Søtpotetburger"
             ingredients: "Aioli, cherrytomater, salat, syltet rødløk, granateplesirup og pistou til ovnsbakte poteter. Kan bli gjort om til vegansk burger."
             allergies: "Allergener: soya (burger), cashewnøtter (burger), egg (aioli og pistou), sennep (aioli), sulfitt (salat vinaigrette, syltet rødløk og aioli), gluten (burgerbrød) og melk (pistou)"
             recommendations: "Baren anbefaler: Brooklyn Lager"
