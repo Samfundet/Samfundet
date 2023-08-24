@@ -28,6 +28,7 @@
       register:
         heading: "Registrer meg som søker"
         submit: "Registrer meg"
+        ntnu_warning: "E-posten din inneholder @ntnu.no, er du sikker på at du ikke mente @stud.ntnu.no?"
         personal_information: "Personalia"
         login_information: "Påloggingsinformasjon"
         password_information: "Passordinformasjon"
