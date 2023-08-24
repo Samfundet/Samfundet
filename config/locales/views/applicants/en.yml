@@ -28,6 +28,7 @@ en:
       register:
         heading: "Register me as applicant"
         submit: "Register me"
+        ntnu_warning: "Your email contains @ntnu.no, are you sure you didn't mean @stud.ntnu.no?"
         personal_information: "Personal information"
         login_information: "Log in information"
         password_information: "Password information"
