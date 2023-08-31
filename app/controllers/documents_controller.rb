@@ -9,11 +9,15 @@ class DocumentsController < ApplicationController
                            if: -> { can? :manage, Document }
 
   def admin
-    @categories = DocumentCategory.includes(:documents)
+    @categories = DocumentCategory.includes(:documents).sort_by do |category|
+      [category.title_no == 'Styret' ? 0 : 1, category.title_no]
+    end
   end
 
   def index
-    @categories = DocumentCategory.includes(:documents)
+    @categories = DocumentCategory.includes(:documents).sort_by do |category|
+      [category.title_no == 'Styret' ? 0 : 1, category.title_no]
+    end
   end
 
   def new
