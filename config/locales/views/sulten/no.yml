@@ -135,12 +135,16 @@
           title: "Småretter"
           lyche_bread:
             name: "Lychebrød"
-            description: "Inspirert av italiensk ciabatta. Serveres med aioli."
-            allergies: "Allergener: Gluten (hvete), sulfitt og egg"
+            description: "Serveres med en skål aioli på siden. Kan serveres med vegansk aioli eller kryddersmør istedet. Vegetar, kan gjøres vegansk"
+            allergies: "Allergener: Gluten (hvete), sulfitt og egg (aioli)"
+          lyche_snitter:
+            name: "Lychesnitter"
+            description: "Lychebrød med rødbethummus, ruccula, mango og pistou."
+            allergies: "Allergener: Gluten (hvete), melk (pistou), sesam (hummus). Kan inneholde spor av peanøtter: hummus"
           side_salad:
             name: "Sidesalat"
-            description: "Med cherrytomater og vinaigrette."
-            allergies: "Allergener: Sulfitt"
+            description: "Med tomat og syltet rødløk. Vegansk"
+            allergies: "Allergener: Sulfitt (salatvinaigrette)"
           soup:
             name: "Suppe"
             description: "Varierer etter sesong. Spør en av våre servitører om dagens suppe. Serveres med Lychebrød og kryddersmør."
@@ -150,52 +154,51 @@
           double: "Dobbel"
           lyche_burger:
             name: "Lycheburger"
-            ingredients: "Aioli, cherrytomater, salat, løkkompott, ost, bacon og pistou til ovnsbakte poteter."
-            allergies: "Allergener: Gluten (hvete), sulfitt og egg"
-            recommendations: "Baren anbefaler: Cantos"
+            ingredients: "Okse og n’duja kjøtt, servert med løkkompott, bacon, tomater, aioli, cheddar, salat og potet på siden. Burgeren kan serveres med glutenfritt brød, og kan serveres uten ost og pistou (melkeallergi)"
+            allergies: "Allergener: Egg (burger, aioli, pistou - spor av egg i manchego), sennep (burger, aioli), sulfitt (burger, salatvinaigrette, løkkompott, aioli), gluten (hvete, rug, bygg): burgerbrød, selleri (burger peppermix), melk (burgerost, pistou). Det er svinekjøtt i selve burgerkaken."
+            recommendations: "Baren anbefaler: Hacienda lopez De Haro (rød)"
           blue_cheese_burger:
             name: "Blåmuggburger"
-            ingredients: "Aioli, cherrytomater, salat, søt og syrlig rips- og rabarbramarmelade , blåmuggost fra Selbu og pistou til ovnsbakte poteter."
-            allergies: "Allergener: Svin, egg, gluten (hvete, rug, bygg), melk, selleri, sennep og sulfitt"
-            recommendations: "Baren anbefaler: Lychelig Trippel"
+            ingredients: "Okse og n’duja kjøtt, servert med rips og rabarbra marmelade, tomater, aioli, blåmugg, salat og potet på siden. Burgeren kan serveres med glutenfritt brød, og kan serveres uten ost og pistou (melkeallergi)"
+            allergies: "Allergener: Gluten (hvete, rug, bygg): burgerbrød, egg (burger, aioli, pistou - spor fra manchego), selleri (burger, peppermix), sennep (burger, aioli), sulfitt (burger, salatvinaigrette, aioli), melk (ost, pistou). Det er svinekjøtt i selve burgerkaken."
+            recommendations: "Baren anbefaler: Trippel"
           mushroom_burger:
             name: "Søtpotetburger"
-            ingredients: "Aioli, cherrytomater, salat, syltet rødløk, granateplesirup og pistou til ovnsbakte poteter. Kan bli gjort om til vegansk burger."
-            allergies: "Allergener: soya (burger), cashewnøtter (burger), egg (aioli og pistou), sennep (aioli), sulfitt (salat vinaigrette, syltet rødløk og aioli), gluten (burgerbrød) og melk (pistou)"
+            ingredients: "Søtpotet og bønneburger servert med syltet rødløk, aioli, tomat, manchego, salat og potet på siden. Burgeren kan serveres med glutenfritt brød, og kan serveres uten ost og pistou (melkeallergi). Vegetar, kan gjøres vegansk."
+            allergies: "Allergener: Gluten (hvete, rug, bygg): burgerbrød, sulfitt (salatvinaigrette, syltet rødløk, aioli), melk (pistou, manchego), sennep (aioli, burger), egg (aioli, manchego, pistou - spor i manchego)"
             recommendations: "Baren anbefaler: Brooklyn Lager"
         main_courses:
           title: "Hovedretter"
           duck:
             name: "Konfitert and"
-            description: "Sellerirotpuré, aigre doux og asparges."
-            allergies: "Allergener: Melk (puré), sulfitt (aigre doux) og selleri"
-            recommendations: "Baren anbefaler: Pinot Noir"
-          halibut:
-            name: "OVNSBAKT KVEITE"
-            description: "Kveite servert med sellerirotpuré, skalldyrsaus og escabeche"
-            allergies: "Allergener: Melk (sellerirotpuré og saus), Selleri (saus), Sulfitt (Saus), Skalldyr (Saus), Bløtdyr (saus), Fisk (fisk og saus) og Sennep (escabeche)."
-            recommendations: "Baren anbefaler: Hacienda Lopez"
-          beef_salad:
-            name: "VIETNAMESISK BIFFSALAT"
-            description: "en salat bestående av salatblanding, kålrot, rødkål og bønnespirer toppes med vietnamesisk dipping sauce, biffstrimler og reddik"
-            allergies: "Allergener: Fisk: fish sauce (kjøtt og saus)"
-            recommendations: "Baren anbefaler: Villa Wolf Riesling"
+            description: "Med sellerirotpuré, aigre doux og asparges."
+            allergies: "Allergener: Melk (smør, fløte - sellerirotpuré), sulfitt (saus - Aigre Doux), selleri (saus - Aigre Doux)"
+            recommendations: "Baren anbefaler: Cantos"
+          pie:
+            name: "Soppai"
+            description: "Kremet soppai med feta, toppes med ruccula. Vegetar. Kan serveres med glutenfri paibunn"
+            allergies: "Allergener: Melk (smør, fløte, feta - i paien), gluten (paibunn)"
+            recommendations: "Baren anbefaler: jue de vie"
+          cod:
+            name: "Torsk med byggotto"
+            description: "Ovnsbakt torsk med byggotto med spinat og purre. Kan serveres uten byggotto"
+            allergies: "Allergener: Melk (byggotto), sulfitt (byggotto), fisk"
+            recommendations: "Baren anbefaler: Chardonnay / Einstock white ale"
           cauliflower:
-            name: "OVNSBAKT BLOMKÅL"
-            description: "Bakt blomkål med hummus og en salat bestående av salatblanding, bønner, linser, reddik som toppes med granateplesirup."
-            allergies: "Allergener: sesam (hummus), kan inneholde spor av peanøtter: hummus (Tahini)"
-            recommendations: "Baren anbefaler: Sancerre"
+            name: "Vegansk blomkål"
+            description: "Vegansk blomkål med couscoussalat, rødbethummus og sitronette dressing. Kan serveres uten hummus"
+            allergies: "Allergener: Sesam (hummus), kan inneholde spor av peanøtter (hummus - Tahini)"
+            recommendations: "Baren anbefaler: Aroa Laia"
         desserts:
           title: "Dessert"
           ice_cream:
-            name: "Iskrem"
-            description: "Fløteiskrem og/eller sorbet. Spør en av våre barservitører om dagens smaker."
+            name: "Sorbet"
+            description: "Iskrem og/eller sorbet. Spør en av våre barservitører om dagens smaker."
             allergies: "Allergener: Spør en av våre barservitører."
-          cake:
-            name: "KONFEKTKAKE"
-            description: "Tjukkmjølksis, crumble og appelsin pulver."
-            allergies: "Allergener: egg (kake og is), melk (kake og is), sulfitt (kake) og gluten (crumble)"
-            recommendations: "Baren anbefaler: Lynchburg Latté"
+          creme_catalana:
+            name: "Crème catalana"
+            description: "Crème brûlée med smak av appelsin og kanel."
+            allergies: "Allergener: Melk og egg (crème catalana)"
         beer_on_tap:
           title: "Øl på tapp"
           weekend: "Helg"
