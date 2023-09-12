@@ -1,9 +1,10 @@
 =javascript_include_tag "product/generate-shopping-cart", defer: true
 
-%h1#title New order
+%h1#title
+  = t("product.index.shopping_cart")
 .samf-button.small.mb-3
   = link_to products_path do
-    = "Tilbake"
+    = t("common.back")
 
 .new-order
   #orders
@@ -16,7 +17,7 @@
             .flex-row
               = f.input :name, label: "Name"
             .flex-row
-              = f.input :epost, label: "epost"
+              = f.input :epost, label: "Epost"
 
       %button#create-order.samf-button.gray{disabled: true}
-        Bestill
+        = t("order.new.order")

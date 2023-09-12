@@ -1,9 +1,9 @@
 =javascript_include_tag "product/add-to-cart", defer: true
 
 %h1 Merch
-.samf-button.small.mt-3
-  = link_to new_order_path do
-    = "new order"
+= link_to new_order_path do
+  %button.samf-button#shopping-cart-button
+    = t("product.index.shopping_cart")
 .products-list
   - @products.each do |product|
     .product{id: "product_#{product.id}"}

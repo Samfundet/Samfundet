@@ -95,7 +95,7 @@ function renderShoppingCart() {
         form[0].style.display = "none";
 
         const title = document.getElementById("title");
-        title.innerText = "No orders"
+        title.innerText = "Handlekurv"
         ordersDiv.appendChild(title);
         return;
     }
@@ -148,7 +148,7 @@ function renderOrder(order) {
 
     /** Add delete button */
     const deleteButton = document.createElement("button");
-    deleteButton.innerText = "Delete";
+    deleteButton.innerText = "Fjern";
     deleteButton.className = "samf-button";
     deleteButton.addEventListener("click", () => {
         const newShoppingCart = shoppingCart.filter(e => e.id !== order.id);

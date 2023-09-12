@@ -1,7 +1,7 @@
 const SHOPPING_CART_KEY = "samfShoppingCart";
 const products = document.querySelectorAll('.product');
 
-/** If the shopping-cart doesn't add as empty list */
+/** If the shopping-cart doesn't exist add as empty list */
 if (localStorage.getItem(SHOPPING_CART_KEY) === null) {
     localStorage.setItem(SHOPPING_CART_KEY, JSON.stringify([]));
 }
@@ -30,6 +30,7 @@ function handleAddClick(id, product) {
 
     localStorage.setItem(SHOPPING_CART_KEY, JSON.stringify(shoppingCart));
     console.table(JSON.parse(localStorage.getItem(SHOPPING_CART_KEY)));
+    emptyShoppingCart()
 }
 
 /**Add handleClick to each product and logic for selected variation */
@@ -62,3 +63,21 @@ function handleSelectVariation(product) {
         }
     }
 }
+
+function emptyShoppingCart() {
+    const shoppingCart = JSON.parse(localStorage.getItem(SHOPPING_CART_KEY));
+    const shoppingCartButton = document.getElementById("shopping-cart-button");
+
+    if (shoppingCart.length === 0) {
+        shoppingCartButton.classList.add("gray")
+        shoppingCartButton.classList.remove("red")
+        shoppingCartButton.disabled = true;
+        shoppingCartButton.href = null;
+        return;
+    }
+    shoppingCartButton.classList.remove("gray")
+    shoppingCartButton.classList.add("red")
+    shoppingCartButton.disabled = false;
+}
+
+emptyShoppingCart()

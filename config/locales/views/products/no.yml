@@ -10,7 +10,8 @@
     index:
       few: Få igjen
       sold_out: Utsolgt
-      add_to_cart: Add to cart
+      add_to_cart: Velg
+      shopping_cart: Handlekurv
     admin:
       main_page: Merch side
       admin_page: Administrer merch

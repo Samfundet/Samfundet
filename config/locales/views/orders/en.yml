@@ -1,0 +1,7 @@
+en:
+  order:
+    new:
+      order: Order
+    confirm:
+      title: Thank you for your order
+      body: More info
