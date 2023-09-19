@@ -10,7 +10,7 @@
     %br
     %br
     = t("sulten.lyche.reservation.development")
-    = mail_to "lyche@samfundet.no"
+    = mail_to "booking-lyche@uka.no"
     %br
     %br
     - unless @closed_periods.empty?
@@ -68,7 +68,7 @@
         %li
           %p.inline-hints
             = t("sulten.reservation.form.too_many")
-            = mail_to "lyche@samfundet.no", t("sulten.reservation.email_uncapitalized") + "."
+            = mail_to "booking-lyche@uka.no", t("sulten.reservation.email_uncapitalized") + "."
 
         = f.input :reservation_duration, label: t("sulten.reservation.people"),  collection: [1, 2, 3, 4, 5, 6, 7, 8], member_label: proc{|d| "#{d} "}
 
