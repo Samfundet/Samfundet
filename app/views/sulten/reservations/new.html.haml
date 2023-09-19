@@ -20,7 +20,7 @@
   = t("sulten.reservation.form.intro2")
 %p
   = t("sulten.reservation.form.intro3")
-  <a href="mailto:lyche@samfundet.no">Lyche.</a>
+  = mail_to "booking-lyche@uka.no", "Lyche."
 
 = semantic_form_for @reservation do |f|
   = f.inputs do
@@ -28,7 +28,7 @@
     %li
       %p.inline-hints
         = t("sulten.reservation.form.too_many")
-        = mail_to "lyche@samfundet.no", "mail."
+        = mail_to "booking-lyche@uka.no", "mail."
     = f.input :reservation_from, placeholder: t("sulten.reservation.placeholder_date"), label: t("sulten.reservation.form.from"), input_html: { class: "datetimepicker_lyche"}, as: :string
     %li
       %p.inline-hints
