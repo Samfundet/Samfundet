@@ -227,7 +227,6 @@
         info: |
           Bord må reserveres minst en dag i forveien. Mat kan forhåndsbestilles slik at dere ikke trenger å vente når dere kommer.
           Merk at flertallet av personer må være medlem for å reservere og at alle må være over 20 år etter kl 20:00 i helger.
-          Med hensyn til smittevern kan vi ikke garantere at alle får sittet sammen.
         development: "Reservasjonssystemet vårt er fortsatt under utvikling, og vi ber om forbehold om at feil kan forekomme. Klikk her for å bestille via epost:"
         closed_period: "Lyche holder stengt i perioden "
         one_day_future: "Reservasjoner må dessverre opprettes minst en dag i forveien."
