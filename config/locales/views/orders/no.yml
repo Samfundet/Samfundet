@@ -2,6 +2,7 @@
   order:
     new:
       order: Bestill
+    process: prosesser bestilling
     confirm:
       title: Takk for din bestilling
       body: Mer info kommer senere

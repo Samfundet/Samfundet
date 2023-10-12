@@ -382,6 +382,7 @@ ActiveRecord::Schema.define(version: 2023_02_02_195032) do
   create_table "orders", force: :cascade do |t|
     t.string "name"
     t.string "epost"
+    t.boolean "processed", default: false
   end
 
   create_table "page_revisions", force: :cascade do |t|

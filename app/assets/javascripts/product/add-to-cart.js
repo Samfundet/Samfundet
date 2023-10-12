@@ -30,7 +30,8 @@ function handleAddClick(id, product) {
 
     localStorage.setItem(SHOPPING_CART_KEY, JSON.stringify(shoppingCart));
     console.table(JSON.parse(localStorage.getItem(SHOPPING_CART_KEY)));
-    emptyShoppingCart()
+    window.alert("Added to shoppingcart");
+    setGoToShoppingCartButton();
 }
 
 /**Add handleClick to each product and logic for selected variation */
@@ -64,7 +65,7 @@ function handleSelectVariation(product) {
     }
 }
 
-function emptyShoppingCart() {
+function setGoToShoppingCartButton() {
     const shoppingCart = JSON.parse(localStorage.getItem(SHOPPING_CART_KEY));
     const shoppingCartButton = document.getElementById("shopping-cart-button");
 
@@ -80,4 +81,4 @@ function emptyShoppingCart() {
     shoppingCartButton.disabled = false;
 }
 
-emptyShoppingCart()
+setGoToShoppingCartButton()

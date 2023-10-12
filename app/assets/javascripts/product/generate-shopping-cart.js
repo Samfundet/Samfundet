@@ -21,13 +21,23 @@ function postOrder() {
             'X-CSRF-Token': csrfToken
         },
         body: JSON.stringify(processShoppingCart())
-    }).then(async response => {
-        const order = await response.json()
+    }).then(()=> {
         localStorage.clear();
-        window.location.href = `/orders/confirm`
+        //window.location.href = `/orders/confirm`
     }).catch(error => {
-        console.error(error)
+        location.reload()
     });
+}
+
+async function getProducts(id, variation_id) {
+   const data =  await fetch('/merch/products_by_id', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-Token': csrfToken
+        },
+        body: JSON.stringify({id: id, variation_id: variation_id})})
+    return data.json()
 }
 
 /**
@@ -48,12 +58,6 @@ function checkInputField(e){
 
 //epostInputField.addEventListener("input", checkInputField);
 //nameInputField.addEventListener("input", checkInputField);
-
-epostInputField.value = "snorrekr@samfundet.no"
-nameInputField.value = "Snurre Sprett"
-createButton.classList.remove("gray")
-createButton.classList.add("green")
-createButton.disabled = false;
 
 /**
  * Function for creating JSON for POST-request.
@@ -76,7 +80,7 @@ function processShoppingCart() {
         const productVariationId =  item["variation"] ? parseInt(item["variation"].id.substring(4)) : null;
         const newItem = {
             product_id: productId,
-            amount: amount,
+            amount: parseInt(amount),
             product_variation_id: productVariationId
         }
         newShoppingCart.products.push(newItem)
@@ -88,7 +92,7 @@ function processShoppingCart() {
 /**
  * Function for rendering shopping-cart
  */
-function renderShoppingCart() {
+async function renderShoppingCart() {
     const ordersDiv = document.getElementById("orders");
     if (shoppingCart === null || shoppingCart.length === 0) {
         const form = document.getElementsByClassName("order-form")
@@ -100,17 +104,16 @@ function renderShoppingCart() {
         return;
     }
     for (const order of shoppingCart) {
-        ordersDiv.appendChild(renderOrder(order))
+        ordersDiv.appendChild(await renderOrder(order))
     }
 }
 
 /**
  * Function for creating individual order div
  */
-function renderOrder(order) {
+async function renderOrder(order) {
     const orderDiv = document.createElement('div');
     orderDiv.className = "order";
-
 
     /** Add image */
     const image = document.createElement("img");
@@ -134,10 +137,17 @@ function renderOrder(order) {
 
 
     /** Add amount */
+    let amountNumber = await getProducts(order.id.substring(8), order.variation ? order.variation.id.substring(4) : null);
+
+    if (amountNumber > 10) {
+        amountNumber = 10;
+    }
+
     const amount = document.createElement("select");
     amount.className = "amount-select"
     amount.id = order.id + "-amount-select";
-    for (let i = 1; i < 11; i++) {
+
+    for (let i = 1; i < amountNumber + 1; i++) {
         const option = document.createElement("option");
         option.value = i.toString();
         option.innerText = i.toString();
@@ -151,7 +161,12 @@ function renderOrder(order) {
     deleteButton.innerText = "Fjern";
     deleteButton.className = "samf-button";
     deleteButton.addEventListener("click", () => {
-        const newShoppingCart = shoppingCart.filter(e => e.id !== order.id);
+        const newShoppingCart = shoppingCart.filter(e => {
+            if (order.variation) {
+                return e.variation.id !== order.variation.id
+            }
+            return e.id !== order.id
+        });
         localStorage.setItem(SHOPPING_CART_KEY, JSON.stringify(newShoppingCart));
         orderDiv.remove();
     })
@@ -159,3 +174,9 @@ function renderOrder(order) {
     return orderDiv;
 }
 renderShoppingCart();
+
+epostInputField.value = "snorrekr@samfundet.no"
+nameInputField.value = "Snurre Sprett"
+createButton.classList.remove("gray")
+createButton.classList.add("green")
+createButton.disabled = false;

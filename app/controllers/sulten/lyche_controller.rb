@@ -30,7 +30,7 @@ class Sulten::LycheController < Sulten::BaseController
     unless @closed_periods.empty?
       # Show only if less than 60 days in future
       if (@closed_periods.first.closed_from - Time.now) < 60.days
-        @closed_periods = [@closed_periods.first]
+        @closed_periods =  @closed_periods
       else
         @closed_periods = []
       end

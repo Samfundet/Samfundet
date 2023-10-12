@@ -1,19 +1,14 @@
-.products-show {
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  flex-wrap: wrap;
+.product {
+  display: grid;
+  grid-template-columns: auto 50% 1fr;
+  align-items: center;
+  width: 100%;
 
-  img {
-    width: 50%;
-  }
+    .info {
+      height: fit-content;
+    }
 
-  h2{
-    text-align: center;
-  }
-  .variations {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
+  :first-child {
+    align-self: start;
   }
 }

@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 
     resources :products, path: "merch" do
       get :admin, on: :collection
+      post :products_by_id, on: :collection
       member do
         get 'new_product_variation'
       end
@@ -33,6 +34,9 @@ Rails.application.routes.draw do
 
     resources :orders, only: [:new, :create, :edit, :update, :destroy] do
       get :admin, on: :collection
+      member do
+        post :admin_confirm
+      end
       get 'confirm', on: :collection, to:"orders#confirm"
     end
 

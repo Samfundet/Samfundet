@@ -58,7 +58,9 @@ class Ability
          :archive, :archive_search,
          :purchase_callback_success,
          :purchase_callback_failure, :rss], Event
-    can [:new], Order
+
+    can [:new, :confirm, :create], Order
+    can [:products_by_id], Product
   end
 
   def soker

@@ -7,6 +7,22 @@ class ProductsController < ApplicationController
                            if: -> { can? :manage, Product, Order }
   def index
     @products = Product.includes(:product_variations)
+                       .where(has_variations: false)
+                       .or(
+                         Product.includes(:product_variations)
+                                .where(has_variations: true)
+                                .where.not(product_variations: { id: nil }))
+  end
+
+  def products_by_id
+    id = params[:id]
+    variation = params[:variation_id]
+
+    if variation
+      render json: ProductVariation.find(variation).quantity
+    else
+      render json: Product.find(id).amount
+    end
   end
 
   def admin

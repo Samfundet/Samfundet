@@ -5,7 +5,7 @@
     = t("common.back")
 
 .product-admin
-  - @orders.each do |order|
+  - @active_orders.each do |order|
     .product.p-3
       .info
         %p
@@ -28,13 +28,56 @@
                 - if order_product.product.present?
                   %td
                     = order_product.product
-                - if order_product.product_variation.present?
                   %td
-                    = order_product.product_variation
                 - else
                   %td
+                    = order_product.product_variation.product
+                  %td
+                    = order_product.product_variation
+                %td
+                  = order_product.amount
+      %div.flex-row.flex-justify-around
+        .samf-button
+          = link_to order_path(order), method: :delete, data: {confirm: "Are you sure"} do
+            = t("delete")
+
+        .samf-button.blue
+          = link_to admin_confirm_order_path(order), method: :post, data: {confirm: "Are you sure"} do
+            = t("order.process")
+
+  %h2 Order history
+  %p Se tidligere gjennomførte bestillinger
+  - @order_history.each do |order|
+    .product.p-3
+      .info
+        %p
+          = "#{t("name")}: #{order.name}"
+        %p
+          = "Epost: #{order.epost}"
+      .variations
+        %table
+          %thead
+            %tr
+              %td
+                Product
+              %td
+                Variasjon
+              %td
+                Antall
+          %tbody
+            - order.order_products.each do |order_product|
+              %tr
+                - if order_product.product.present?
+                  %td
+                    = order_product.product
+                  %td
+                - else
+                  %td
+                    = order_product.product_variation.product
+                  %td
+                    = order_product.product_variation
                 %td
                   = order_product.amount
       .samf-button
         = link_to order_path(order), method: :delete, data: {confirm: "Are you sure"} do
-          = t("info_boxes.delete")
+          = t("delete")
