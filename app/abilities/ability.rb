@@ -127,6 +127,10 @@ class Ability
     can :manage, Document
   end
 
+  def fs_fu
+    can :manage, CrowdFundingSupporter
+  end
+
   def mg_nestleder
     # Needs manage permissions here to see statistics
     can :manage, [Admission, JobApplication]
