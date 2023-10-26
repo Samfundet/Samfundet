@@ -116,7 +116,7 @@ class Ability
 
   # ORGANIZATION
   def styret
-    can :manage, [Blog, Document, CrowdFundingSupporter, Image]
+    can :manage, [Blog, Document, CrowdFundingSupporter, Image, InfoBox]
   end
 
   def raadet
