@@ -23,3 +23,5 @@ en:
         header: Product Variation Information
         edit: Edit product variation
         new: Create prodct veriation
+    show:
+      

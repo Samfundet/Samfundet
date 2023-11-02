@@ -6,9 +6,18 @@
 
     .info {
       height: fit-content;
+
     }
 
   :first-child {
     align-self: start;
+  }
+
+  @include media($not-desktop) {
+    grid-template-columns: auto;
+
+    .info {
+      text-align: center;
+    }
   }
 }

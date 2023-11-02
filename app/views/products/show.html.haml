@@ -9,10 +9,11 @@
     %h2
       = @product.name
     .variations
-      Available variations:
-      - @product.product_variations.each do |variation|
-        - if variation.quantity > 0
-          = variation
+      - if @product.product_variations.present?
+        Available variations:
+        - @product.product_variations.each do |variation|
+          - if variation.quantity > 0
+            = variation
 
     %span
       = t("product.info.price")

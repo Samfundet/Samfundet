@@ -1,23 +1,22 @@
 =javascript_include_tag "product/generate-shopping-cart", defer: true
-
-%h1#title
-  = t("product.index.shopping_cart")
-.samf-button.small.mb-3
-  = link_to products_path do
-    = t("common.back")
-
 .new-order
+  .title
+    %h1
+      = t("product.index.shopping_cart")
+
+    .samf-button.small.mb-3
+      = link_to products_path do
+        = t("common.back")
+
   #orders
-
   .order-form
-    .order-sticky
-      = semantic_form_for @order do |f|
-        %div.flex.w100
-          = f.inputs do
-            .flex-row
-              = f.input :name, label: "Name"
-            .flex-row
-              = f.input :epost, label: "Epost"
+    = semantic_form_for @order do |f|
+      %div.flex.w100
+        = f.inputs do
+          .flex-row
+            = f.input :name, label: "Name"
+          .flex-row
+            = f.input :epost, label: "Epost"
 
-      %button#create-order.samf-button.gray{disabled: true}
-        = t("order.new.order")
+    %button#create-order.samf-button.gray{disabled: true}
+      = t("order.new.order")

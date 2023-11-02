@@ -97,10 +97,6 @@ async function renderShoppingCart() {
     if (shoppingCart === null || shoppingCart.length === 0) {
         const form = document.getElementsByClassName("order-form")
         form[0].style.display = "none";
-
-        const title = document.getElementById("title");
-        title.innerText = "Handlekurv"
-        ordersDiv.appendChild(title);
         return;
     }
     for (const order of shoppingCart) {
