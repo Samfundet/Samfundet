@@ -22,7 +22,7 @@ en:
               check_opening_hours: "Lyche is closed during the given period of time"
             reservation_type_present: "the occasion field cannot be left empty"
             people:
-              too_many_people: "send reservations with more than 8 persons to booking-lyche@uka.no"
+              too_many_people: "send reservations with more than 8 persons to lyche@samfundet.no"
               too_few_people: "the reservation must be made for at least one person"
             check_reservation_duration: "the reservation duration must be selected from the collection specified"
             invalid_reservation_format: "Invalid format. Try this format: 20.10.2016 16:00"
