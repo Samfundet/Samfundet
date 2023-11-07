@@ -19,6 +19,8 @@
             = product.product_variations.sum(:quantity)
           - else
             = product.amount
+        %p
+          = product.release_time
 
         .samf-button.small.plain
           = link_to edit_product_path(product) do

@@ -3,11 +3,14 @@
 class Product < ApplicationRecord
   extend LocalizedFields
   localized_fields :name
-  validates :name_no, :name_en, :price, :image_id, presence: true
+  validates :name_no, :name_en, :price, :image_id, :release_time, presence: true
 
   belongs_to :image
   has_many :product_variations, dependent: :destroy
   has_many :order_products, dependent: :destroy
+
+  scope :published, -> { where('release_time < ?', Time.current) }
+  scope :with_variations, -> { includes(:product_variations).where.not(product_variations: { id: nil }) }
 
   def image_or_default
     if image.present?

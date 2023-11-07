@@ -42,7 +42,6 @@ async function getProducts(id, variation_id) {
 
 /**
  * Function for disabling createButton due to missing fields
- * TODO: add check for email and blankspace
  */
 function checkInputField(e){
     if (/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(epostInputField.value) && nameInputField.value !== "") {
@@ -56,8 +55,8 @@ function checkInputField(e){
     createButton.disabled = true;
 }
 
-//epostInputField.addEventListener("input", checkInputField);
-//nameInputField.addEventListener("input", checkInputField);
+epostInputField.addEventListener("input", checkInputField);
+nameInputField.addEventListener("input", checkInputField);
 
 /**
  * Function for creating JSON for POST-request.
@@ -170,9 +169,3 @@ async function renderOrder(order) {
     return orderDiv;
 }
 renderShoppingCart();
-
-epostInputField.value = "snorrekr@samfundet.no"
-nameInputField.value = "Snurre Sprett"
-createButton.classList.remove("gray")
-createButton.classList.add("green")
-createButton.disabled = false;

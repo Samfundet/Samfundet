@@ -9,7 +9,9 @@
       .flex-row
         = f.input :has_variations, label: "#{t("product.info.has_variations")}?"
       .flex-row
-        = f.input :amount,label: t("product.info.amount"), :input_html => { :disabled => :has_variations }
+        = f.input :amount, label: t("product.info.amount"), :input_html => { :disabled => :has_variations }
+      .flex-row
+        = f.input :release_time, input_html: { class: "datetimepicker", value: @product.release_time}, as: :string
       .flex-row
         = render 'images/imagepicker', f: f
     = f.actions do

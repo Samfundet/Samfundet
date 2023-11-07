@@ -7,11 +7,11 @@ class ProductsController < ApplicationController
                            if: -> { can? :manage, Product, Order }
   def index
     @products = Product.includes(:product_variations)
+                       .published
                        .where(has_variations: false)
                        .or(
-                         Product.includes(:product_variations)
-                                .where(has_variations: true)
-                                .where.not(product_variations: { id: nil }))
+                         Product.with_variations.published.where(has_variations: true)
+                       )
   end
 
   def products_by_id
@@ -83,7 +83,8 @@ private
       :price,
       :has_variations,
       :amount,
-      :image_id
+      :image_id,
+      :release_time
     )
   end
 end

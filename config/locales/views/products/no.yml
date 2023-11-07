@@ -1,6 +1,8 @@
 'no':
   product:
     info:
+      title: Samfundet har klikk og hent. Du kan forhåndsbestille her ogås hente på samfundet!
+      body: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in mattis libero. Vivamus placerat feugiat nisi, quis feugiat mauris commodo sit amet. Nunc cursus vehicula augue eu convallis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Quisque et justo non eros fringilla ultrices. Integer et ipsum erat. Ut dignissim dolor eu diam tincidunt, eu faucibus ex commodo. Quisque aliquam sollicitudin pretium. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean justo enim, volutpat ut massa ac, lobortis consequat nunc. Etiam id libero porttitor risus volutpat aliquet nec lacinia enim.
       price: Pris
       amount: Antall
       has_variations: Har variasjoner

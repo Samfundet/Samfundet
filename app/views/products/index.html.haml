@@ -1,6 +1,10 @@
 =javascript_include_tag "product/add-to-cart", defer: true
 
-%h1 Merch
+%div.mb-3
+  %h2.mb-2
+    = t("product.info.title")
+  = t("product.info.body")
+
 = link_to new_order_path do
   %button.samf-button#shopping-cart-button
     = t("product.index.shopping_cart")

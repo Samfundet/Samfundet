@@ -5,7 +5,8 @@ puts "Create Product with Variation"
     name_no: "Tshirt",
     name_en: "Tshirt",
     price: 100,
-    image_id: Image.where(title: "seed/tshirt.png").sample.id
+    image_id: Image.where(title: "seed/tshirt.png").sample.id,
+    release_time: Time.now
   )
 
 SIZES = %w[XS S M L XL]
@@ -26,7 +27,8 @@ Product.create!(
   price: 50,
   image_id: Image.where(title: "seed/mug.jpg").sample.id,
   has_variations: false,
-  amount: rand(100)
+  amount: rand(100),
+  release_time: Time.now
 )
 
 puts "Create Orders"

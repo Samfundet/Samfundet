@@ -1,6 +1,8 @@
 en:
   product:
     info:
+      title: Title
+      body: info
       price: Price
       amount: Amount
       has_variations: Has variations
@@ -10,7 +12,7 @@ en:
     index:
       few: Few left
       sold_out: Sold out
-      add_to_cart: Legg til i handlekurv
+      add_to_cart: Select
       shopping_cart: Shopping cart
     admin:
       main_page: Merch page
