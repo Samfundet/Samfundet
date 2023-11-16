@@ -2,6 +2,13 @@
 @import "new_order";
 @import "show";
 
+.no-merch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
 .products-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, max(300px));

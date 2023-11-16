@@ -12,6 +12,9 @@ class ProductsController < ApplicationController
                        .or(
                          Product.with_variations.published.where(has_variations: true)
                        )
+    if @products.empty?
+      render 'no_merch'
+    end
   end
 
   def products_by_id

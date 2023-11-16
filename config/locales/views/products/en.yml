@@ -24,6 +24,5 @@ en:
       form_variation:
         header: Product Variation Information
         edit: Edit product variation
-        new: Create prodct veriation
-    show:
-      
+        new: Create product variation
+    no_merch: No merch at the moment
