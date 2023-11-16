@@ -22,10 +22,14 @@ class Product < ApplicationRecord
 
   def get_amount
     if has_variations
-      product_variations.sum(:quantity)
+      product_variations.sum(:amount)
     else
       amount
     end
+  end
+
+  def filtered_product_variations(variation_id)
+    product_variations.where(id: variation_id)
   end
 
   def to_s

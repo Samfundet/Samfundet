@@ -37,6 +37,6 @@ class ProductVariationsController < ApplicationController
 private
 
   def product_variation_params
-    params.require(:product_variation).permit(:specification, :quantity)
+    params.require(:product_variation).permit(:name, :amount)
   end
 end

@@ -9,11 +9,8 @@ if (localStorage.getItem(SHOPPING_CART_KEY) === null) {
  * Function for handling click add to shopping-cart button
  */
 function handleAddClick(id, product) {
-    /**Find the selected product variation*/
+    /** Find the selected product variation*/
     const selected = product.querySelector('.selected');
-    const image = product.querySelector('img');
-    const name = product.querySelector('.name').id;
-    const price = product.querySelector('.price').id;
     let shoppingCart = JSON.parse(localStorage.getItem(SHOPPING_CART_KEY)) ? JSON.parse(localStorage.getItem(SHOPPING_CART_KEY)) : [];
 
     /**Check if ID already exist in shopping-cart*/
@@ -25,7 +22,7 @@ function handleAddClick(id, product) {
     });
 
     if(!idAlreadyInCart) {
-        shoppingCart.push({id: id, amount: 1, variation: selected ? {id:selected.id, name: selected.innerText} : null,  img: image.src, name: name, price: price});
+        shoppingCart.push({id: id, variation: (selected ? selected.id : null)});
     }
 
     localStorage.setItem(SHOPPING_CART_KEY, JSON.stringify(shoppingCart));

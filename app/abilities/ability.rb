@@ -59,7 +59,7 @@ class Ability
          :purchase_callback_success,
          :purchase_callback_failure, :rss], Event
 
-    can [:new, :confirm, :create], Order
+    can [:new, :create], Order
     can [:products_by_id], Product
   end
 

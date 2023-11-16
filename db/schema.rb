@@ -381,7 +381,7 @@ ActiveRecord::Schema.define(version: 2023_02_02_195032) do
 
   create_table "orders", force: :cascade do |t|
     t.string "name"
-    t.string "epost"
+    t.string "email"
     t.boolean "processed", default: false
   end
 
@@ -436,8 +436,8 @@ ActiveRecord::Schema.define(version: 2023_02_02_195032) do
   end
 
   create_table "product_variations", force: :cascade do |t|
-    t.string "specification"
-    t.integer "quantity"
+    t.string "name"
+    t.integer "amount", default: 0
     t.integer "product_id"
   end
 

@@ -8,7 +8,6 @@ class OrdersController < ApplicationController
   end
 
   def admin_confirm
-    puts 'hoi'
     Order.find(params[:id]).update(processed: true)
     redirect_to admin_orders_path
   end
@@ -19,7 +18,7 @@ class OrdersController < ApplicationController
 
   def create
     order_params = JSON.parse(params['_json'])
-    order = Order.new(name: order_params['name'], epost: order_params['epost'])
+    order = Order.new(name: order_params['name'], email: order_params['email'])
 
     order_params['products'].each do |product_params|
       product_id = product_params['product_id']
@@ -35,12 +34,12 @@ class OrdersController < ApplicationController
 
       if product_variation_id
         product_variation = ProductVariation.find(product_variation_id)
-        new_amount = product_variation.quantity - amount
+        new_amount = product_variation.amount - amount
         if new_amount < 0
           flash[:error] = 'Not enough available products'
           render :new and return
         end
-        product_variation.update(quantity: product_variation.quantity - amount)
+        product_variation.update(amount: product_variation.amount - amount)
       else
         product = Product.find(product_id)
         new_amount = product.amount - amount

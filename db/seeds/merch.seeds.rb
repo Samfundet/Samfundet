@@ -14,8 +14,8 @@ puts "create Product variations"
 Product.limit(2).each do |product|
   2.times do
     product.product_variations.create!(
-      specification: SIZES[rand(SIZES.length)],
-      quantity: rand(100)
+      name: SIZES[rand(SIZES.length)],
+      amount: rand(100)
     )
   end
 end
@@ -35,8 +35,8 @@ puts "Create Orders"
 
 2.times do
   Order.create!(
-  epost: Faker::Internet.email,
-  name: Faker::Name.name
+    email: Faker::Internet.email,
+    name: Faker::Name.name
   )
 end
 

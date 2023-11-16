@@ -11,14 +11,14 @@ class AddMerchPage < ActiveRecord::Migration[5.2]
     end
 
     create_table :product_variations do |t|
-      t.string :specification
-      t.integer :quantity
+      t.string :name
+      t.integer :amount, default: 0
       t.integer :product_id
     end
 
     create_table :orders do |t|
       t.string :name
-      t.string :epost
+      t.string :email
       t.boolean :processed, default: false
     end
 

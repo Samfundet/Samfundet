@@ -12,7 +12,7 @@
       - if @product.product_variations.present?
         Available variations:
         - @product.product_variations.each do |variation|
-          - if variation.quantity > 0
+          - if variation.amount > 0
             = variation
 
     %span

@@ -16,12 +16,15 @@ class ProductsController < ApplicationController
 
   def products_by_id
     id = params[:id]
-    variation = params[:variation_id]
+    variation_id = params[:variation_id]
 
-    if variation
-      render json: ProductVariation.find(variation).quantity
+    product = Product.find(id)
+
+    if variation_id
+      variation = ProductVariation.find(variation_id)
+      render json: { product: product, variation: variation, img: product.image_or_default }
     else
-      render json: Product.find(id).amount
+      render json: { product: product, img: product.image_or_default }
     end
   end
 

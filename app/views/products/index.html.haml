@@ -12,15 +12,15 @@
   - @products.each do |product|
     .product{id: "product_#{product.id}"}
       = link_to product_path(product) do
-        %h2.name{id: product.name}
+        %h2.name
           = product.name
         = image_tag path_to_image(product.image_or_default)
       .variations
         - product.product_variations.each do |variation|
-          - if variation.quantity > 0
+          - if variation.amount > 0
             %button{id: "var_#{variation.id}"}
               = variation
-      %span.price{id: product.price}
+      %span
         = number_to_currency(product.price, strip_insignificant_zeros: true)
       - if (product.get_amount < 1)
         .sold-out

@@ -6,7 +6,7 @@ class OrderConfirmationMailer < ActionMailer::Base
 
   def send_confirmation_mail(order)
     @order = order
-    mail(to: @order.epost, subject: 'Verify your order') do |format|
+    mail(to: @order.email, subject: 'Verify your order') do |format|
       format.html { render 'orders/order_confirmation_mail', order: @order }
     end
   end

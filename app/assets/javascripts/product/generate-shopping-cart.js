@@ -4,14 +4,9 @@ const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute
 
 const createButton = document.getElementById("create-order");
 const nameInputField = document.getElementById("order_name")
-const epostInputField = document.getElementById("order_epost")
+const emailInputField = document.getElementById("order_email")
 
 createButton.addEventListener("click", postOrder);
-/**
- * Function for posting order
- * TODO:
- *  - handle error by displaying to end user
- */
 function postOrder() {
     console.log("clicked")
     fetch('/orders', {
@@ -44,7 +39,7 @@ async function getProducts(id, variation_id) {
  * Function for disabling createButton due to missing fields
  */
 function checkInputField(e){
-    if (/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(epostInputField.value) && nameInputField.value !== "") {
+    if (/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(emailInputField.value) && nameInputField.value !== "") {
         createButton.classList.remove("gray")
         createButton.classList.add("green")
         createButton.disabled = false;
@@ -55,7 +50,7 @@ function checkInputField(e){
     createButton.disabled = true;
 }
 
-epostInputField.addEventListener("input", checkInputField);
+emailInputField.addEventListener("input", checkInputField);
 nameInputField.addEventListener("input", checkInputField);
 
 /**
@@ -67,16 +62,18 @@ nameInputField.addEventListener("input", checkInputField);
 function processShoppingCart() {
     let newShoppingCart = {
         name: document.getElementById("order_name").value,
-        epost: document.getElementById("order_epost").value,
+        email: document.getElementById("order_email").value,
         products: []
     };
     for (const item of shoppingCart ) {
         /** Remove product_id prefix and convert to Int */
         const productId = parseInt(item["id"].substring(8));
+        const id = item.variation ? item.variation: item.id;
+
         /** Retrieve amount from select */
-        const amount = document.getElementById(item["id"] +"-amount-select").value;
+        const amount = document.getElementById(id +"-amount-select").value;
         /** Remove var_id prefix and convert to Int */
-        const productVariationId =  item["variation"] ? parseInt(item["variation"].id.substring(4)) : null;
+        const productVariationId =  item["variation"] ? parseInt(item["variation"].substring(4)) : null;
         const newItem = {
             product_id: productId,
             amount: parseInt(amount),
@@ -107,40 +104,45 @@ async function renderShoppingCart() {
  * Function for creating individual order div
  */
 async function renderOrder(order) {
-    const orderDiv = document.createElement('div');
-    orderDiv.className = "order";
+    /** Add amount */
+    let response = await getProducts(order.id.substring(8), order.variation ? order.variation.substring(4) : null);
 
+    const product = response.product
+    const variation = response.variation
+    const img = response.img
+
+    const orderDiv = document.createElement('div');
+
+    orderDiv.className = "order";
     /** Add image */
     const image = document.createElement("img");
-    image.src = order.img;
+    image.src = img;
     image.className = "order-image"
-    orderDiv.appendChild(image);
 
+    orderDiv.appendChild(image);
     /** Add info */
     const info = document.createElement("div");
-    info.className = "order-info";
 
+    info.className = "order-info";
     /** Add name */
     const name = document.createElement("p");
-    name.innerText = `${order.name} ${order.variation ? (" - " + order.variation.name) : ""}`;
-    info.appendChild(name)
+    name.innerText = `${product.name_no} ${variation ? (" - " + variation.name) : ""}`;
 
+    info.appendChild(name)
     /** Add price */
     const price = document.createElement("p");
-    price.innerText = `Pris: ${parseInt(order.price) * order.amount}`;
+    price.innerText = `Pris: ${parseInt(product.price)} kr`;
+
+
     info.appendChild(price)
 
-
-    /** Add amount */
-    let amountNumber = await getProducts(order.id.substring(8), order.variation ? order.variation.id.substring(4) : null);
-
-    if (amountNumber > 10) {
-        amountNumber = 10;
-    }
-
     const amount = document.createElement("select");
+
     amount.className = "amount-select"
-    amount.id = order.id + "-amount-select";
+    amount.id = (order.variation ? order.variation : order.id) + "-amount-select";
+
+    let amountNumber = variation ? variation.amount : product.amount
+    amountNumber = amountNumber > 10 ? 10 : amountNumber
 
     for (let i = 1; i < amountNumber + 1; i++) {
         const option = document.createElement("option");
@@ -155,12 +157,16 @@ async function renderOrder(order) {
     const deleteButton = document.createElement("button");
     deleteButton.innerText = "Fjern";
     deleteButton.className = "samf-button";
+
     deleteButton.addEventListener("click", () => {
+        let shoppingCart = JSON.parse(localStorage.getItem(SHOPPING_CART_KEY));
         const newShoppingCart = shoppingCart.filter(e => {
-            if (order.variation) {
-                return e.variation.id !== order.variation.id
+            if (e.variation && variation) {
+                // substrinng 4 on var_x
+                return e.variation.substring(4) !== variation.id + ""
             }
-            return e.id !== order.id
+            // substring 8 on product_x
+            return e.id.substring(8) !== product.id + ""
         });
         localStorage.setItem(SHOPPING_CART_KEY, JSON.stringify(newShoppingCart));
         orderDiv.remove();

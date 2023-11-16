@@ -16,7 +16,7 @@
         %p
           = "#{t("product.info.amount")}: "
           - if product.has_variations
-            = product.product_variations.sum(:quantity)
+            = product.product_variations.sum(:amount)
           - else
             = product.amount
         %p
@@ -42,9 +42,9 @@
               - product.product_variations.each do |variation|
                 %tr
                   %td
-                    =variation.specification
+                    =variation.name
                   %td
-                    = variation.quantity
+                    = variation.amount
                   %td.flex.flex-row
                     .samf-button.small.plain.mr-1
                       = link_to edit_product_product_variation_path(product, variation) do

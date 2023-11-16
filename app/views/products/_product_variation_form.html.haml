@@ -1,6 +1,6 @@
 = semantic_form_for [@product, @product_variation] do |f|
   = f.inputs name: t("product.admin.form_variation.header") do
-    = f.input :specification, label: t("product.info.variation.specification")
-    = f.input :quantity, label: t("product.info.variation.quantity")
+    = f.input :name, label: t("product.info.variation.specification")
+    = f.input :amount, label: t("product.info.variation.quantity")
   = f.actions do
     = f.action :submit, label: button_type
