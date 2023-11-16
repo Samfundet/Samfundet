@@ -3,7 +3,7 @@
 class ApplicantsController < ApplicationController
   layout 'admissions'
   load_and_authorize_resource only: %i[steal_identity show edit update search]
-  skip_authorization_check only: %i[new create forgot_password generate_forgot_password_email reset_password change_password]
+  skip_authorization_check only: %i[new create forgot_password generate_forgot_password_email reset_password change_password verify_email]
 
   has_control_panel_applet :steal_identity_applet,
                            if: -> { can? :steal_identity, Applicant }
@@ -14,17 +14,14 @@ class ApplicantsController < ApplicationController
 
   def create
     params[:applicant][:email].downcase!
+    params[:applicant][:email_confirmation].downcase!
     @applicant = Applicant.new(applicant_params)
 
     if @applicant.save
-      login_applicant @applicant
+      flash[:success] = t('applicants.registration_success')
 
-      if pending_application?
-        save_pending_application(@applicant)
-        redirect_to job_applications_path
-      else
-        redirect_to admissions_path
-      end
+      send_verification_email(@applicant)
+      redirect_to applicant_login_path
     else
       flash[:error] = t('applicants.registration_error')
       render :new
@@ -75,9 +72,15 @@ class ApplicantsController < ApplicationController
   def forgot_password; end
 
   def generate_forgot_password_email
-    @applicant = Applicant.find_by(email: params[:email])
+    # Check if email or phone number
+    if Applicant.valid_email?(params[:applicant_login_field])
+      @applicant = Applicant.find_by(email: params[:applicant_login_field].downcase)
+    elsif Applicant.valid_phone?(params[:applicant_login_field])
+      @applicant = Applicant.find_by(phone: params[:applicant_login_field])
+    end
+
     if !@applicant
-      flash[:error] = t('applicants.password_recovery.email_unknown')
+      flash[:error] = t('applicants.password_recovery.field_unknown')
     elsif !@applicant.can_recover_password?
       flash[:error] = t('applicants.password_recovery.limit_reached')
     elsif PasswordRecovery.create!(applicant_id: @applicant.id,
@@ -93,21 +96,21 @@ class ApplicantsController < ApplicationController
     else
       flash[:error] = t('applicants.password_recovery.error')
     end
-    redirect_to forgot_password_path
+    redirect_to applicant_login_path
   end
 
-  def prepare_form
+  def prepare_reset_password_form
     @hash = params[:hash]
     @email = params[:email]
   end
 
   def reset_password
     @applicant = Applicant.find_by(email: params[:email])
-    if !@applicant || !@applicant.check_hash(params[:hash])
+    if !@applicant || !@applicant.check_hash(params[:hash]) || params[:hash] == nil
       flash[:error] = t('applicants.password_recovery.hash_error')
       @applicant = nil
     else
-      prepare_form
+      prepare_reset_password_form
     end
   end
 
@@ -120,17 +123,30 @@ class ApplicantsController < ApplicationController
         PasswordRecovery.find_by(applicant_id: @applicant.id).destroy
         flash[:success] = t('applicants.password_recovery.change_success')
 
-        redirect_to login_path
+        redirect_to applicant_login_path
       else
-        prepare_form
+        prepare_reset_password_form
         flash[:error] = t('applicants.password_recovery.change_error')
         render :reset_password
       end
     else
-      prepare_form
-      flash[:error] = t('applicants.password_recovery.change_error')
+      flash[:error] = t('applicants.password_recovery.hash_error')
+      @applicant = nil
       render :reset_password
     end
+  end
+
+  def verify_email
+    @applicant = Applicant.find(params[:applicant])
+    if @applicant.check_email_verification_hash(params[:hash])
+      @applicant.verified = true
+      @applicant.save!
+      flash[:success] = t('applicants.email_verification.verification_success',
+                        name: CGI.escapeHTML(@applicant.full_name))
+    else
+      flash[:error] = t('applicants.email_verification.verification_link_invalid')
+    end
+    redirect_to applicant_login_path
   end
 
   def steal_identity_applet; end
@@ -169,18 +185,16 @@ class ApplicantsController < ApplicationController
 
 private
 
-  def login_applicant(applicant)
-    session[:applicant_id] = applicant.id
-    session[:member_id] = nil
-    cookies[:signed_in] = 1
-
-    flash[:success] = t('applicants.registration_success')
-
-    invalidate_cached_current_user
+  def applicant_params
+    params.require(:applicant).permit(:firstname, :surname, :phone, :campus_id, :email, :email_confirmation, :password, :password_confirmation, :interested_other_positions, :gdpr_checkbox)
   end
 
-  def applicant_params
-    params.require(:applicant).permit(:firstname, :surname, :phone, :campus_id, :email, :password, :password_confirmation, :interested_other_positions, :gdpr_checkbox)
+  def send_verification_email(applicant)
+    VerifyEmailApplicantMailer.send_applicant_email_verification(applicant).deliver
+    flash[:message] = t('applicants.email_verification.verification_sent',
+                        email: CGI.escapeHTML(applicant.email))
+  rescue Net::SMTPError
+    flash[:error] = t('applicants.email_verification.email_error')
   end
 
   include PendingApplications

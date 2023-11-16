@@ -1,38 +1,40 @@
 en:
   activerecord:
-      errors:
-        models:
-          applicant:
-            attributes:
-              password:
-                too_short: "The password is too short, must be at least %{count} characters."
-              password_confirmation:
-                confirmation: "Password confirmation does not match."
-        template:
-          header: "Could not save %{model} beause %{count} is wrong."
-          body: "problems arose because of the following fields:"
-        messages:
-          inclusion: "is not included in the list"
-          exclusion: "is reserved"
-          invalid: "is invalid"
-          confirmation: "does not fit the confirmation"
-          accepted: "must be accepted"
-          empty: "can not be empty"
-          blank: "can not be blank"
-          too_long: "is too long (maximum %{count} characters)"
-          too_short: "is too short (minimum %{count} characters)"
-          wrong_length: "is the wrong length (maximum %{count} characters)"
-          taken: "is already in use"
-          not_a_number: "is not a number"
-          greater_than: "must be greater than %{count}"
-          greater_than_or_equal_to: "must be greather than or equal to %{count}"
-          equal_to: "must be equal to %{count}"
-          less_than: "must be less than %{count}"
-          less_than_or_equal_to: "must be less than or equal to %{count}"
-          odd: "must be odd"
-          even: "must be even"
-          record_invalid: "Validation failed: %{errors}"
-        full_messages:
-          format: "%{attribute} %{message}"
-        # models:
-        # attributes:
+    errors:
+      models:
+        applicant:
+          attributes:
+            email:
+              invalid: "Invalid e-mail address"
+            password:
+              too_short: "The password is too short, must be at least %{count} characters."
+            password_confirmation:
+              confirmation: "Passwords do not match."
+      template:
+        header: "Could not save %{model} beause %{count} is wrong."
+        body: "problems arose because of the following fields:"
+      messages:
+        inclusion: "is not included in the list"
+        exclusion: "is reserved"
+        invalid: "is invalid"
+        confirmation: "does not fit the confirmation"
+        accepted: "must be accepted"
+        empty: "can not be empty"
+        blank: "can not be blank"
+        too_long: "is too long (maximum %{count} characters)"
+        too_short: "is too short (minimum %{count} characters)"
+        wrong_length: "is the wrong length (maximum %{count} characters)"
+        taken: "is already in use"
+        not_a_number: "is not a number"
+        greater_than: "must be greater than %{count}"
+        greater_than_or_equal_to: "must be greather than or equal to %{count}"
+        equal_to: "must be equal to %{count}"
+        less_than: "must be less than %{count}"
+        less_than_or_equal_to: "must be less than or equal to %{count}"
+        odd: "must be odd"
+        even: "must be even"
+        record_invalid: "Validation failed: %{errors}"
+      full_messages:
+        format: "%{attribute} %{message}"
+      # models:
+      # attributes:

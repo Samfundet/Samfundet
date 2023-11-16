@@ -57,6 +57,7 @@ module Samfundet
     config.assets.precompile += %w(job_applications/job_applications.js)
     config.assets.precompile += %w(old_samfundet/jobs_search.js)
     config.assets.precompile += %w(applicants/admissions_admin_applicants.js)
+    config.assets.precompile += %w(applicants/admissions_ntnu_warning.js)
     config.assets.precompile += %w(job_applications/admissions_admin_job_applications.js)
     config.assets.precompile += %w(sulten/duration.js)
     config.assets.precompile += %w(sulten/calendar.js)

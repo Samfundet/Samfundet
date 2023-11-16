@@ -47,6 +47,10 @@ class AdmissionsAdmin::InterviewsController < AdmissionsAdmin::BaseController
     end
 
     if params[:interview][:applicant_status]
+      if !@interview.can_set_status? && !(can? :manage, Admission)
+        ## Backend validations
+        return
+      end
       @interview.applicant_status = params[:interview][:applicant_status]
 
       # Automatically set priority (if not set) for convenience
@@ -60,9 +64,8 @@ class AdmissionsAdmin::InterviewsController < AdmissionsAdmin::BaseController
 
     end
 
-    if @interview.past_set_priority_deadline? && @interview.priority_changed?
-      raise t('interviews.cannot_set_priority_past_deadline')
-    else
+    if !(@interview.past_set_priority_deadline? && @interview.priority_changed?) || (can? :manage, Admission)
+      # Backend validations
       @interview.save!
 
       @interview_warning = nil

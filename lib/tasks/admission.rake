@@ -4,7 +4,7 @@ namespace :admission do
   desc 'This task removes all data from the database that can be associated with an applicant.'
   task anonymize: :environment do
     puts 'Anonymize applicants'
-    Applicant.where(disabled: false).each do |applicant|
+    Applicant.all.each do |applicant|
       password = Faker::Internet.password
 
       applicant.assign_attributes(
@@ -23,7 +23,14 @@ namespace :admission do
 
     puts "\nAnonymize interviews"
     Interview.all.each do |interview|
-      interview.assign_attributes(comment: '')
+      interview.assign_attributes(comment: '', time: '01/Jan/2000 00:00:00 +0100', location: '')
+      if interview.priority == :reserved
+        if interview.applicant_status == :accepted
+          interview.priority = :wanted
+        else
+          interview.priority = :not_wanted
+        end
+      end
       interview.save(validate: false)
       print '.'
     end

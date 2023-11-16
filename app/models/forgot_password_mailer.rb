@@ -3,7 +3,7 @@
 class ForgotPasswordMailer < ActionMailer::Base
   helper :applicants
 
-  default from: 'mg-web@samfundet.no',
+  default from: %("Samfundet" <mg-web@samfundet.no>),
           reply_to: 'mg-web@samfundet.no'
 
   def forgot_password_email(applicant)

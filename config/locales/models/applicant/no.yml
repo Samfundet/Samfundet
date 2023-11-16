@@ -9,6 +9,7 @@
         firstname: "Fornavn"
         surname: "Etternavn"
         email: "E-post"
+        email_confirmation: "Bekreft E-post"
         hashed_password:
         password: Passord
         password_confirmation: Bekreft passord

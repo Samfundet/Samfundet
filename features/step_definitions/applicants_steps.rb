@@ -27,14 +27,14 @@ Given /^I am logged in as an applicant with email "([^\"]*)"$/ do |email|
   step "I am registered with email \"#{email}\" and password \"secret\""
 
   visit applicants_login_path
-  fill_in "applicant_login_email", with: email
+  fill_in "applicant_login_field", with: email
   fill_in "applicant_login_password", with: "secret"
   click_button("Login as applicant")
 end
 
 When /^I log in as an applicant with email "([^\"]*)" and password "([^\"]*)"$/ do |email, password|
   # assumes you are on the login page
-  fill_in "applicant_login_email", with: email
+  fill_in "applicant_login_field", with: email
   fill_in "applicant_login_password", with: password
   click_button("Login as applicant")
 end

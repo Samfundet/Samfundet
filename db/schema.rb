@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_02_195032) do
+ActiveRecord::Schema.define(version: 2023_11_16_183230) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 2023_02_02_195032) do
     t.boolean "interested_other_positions"
     t.boolean "disabled", default: false
     t.integer "campus_id"
+    t.boolean "verified", default: false, null: false
   end
 
   create_table "areas", force: :cascade do |t|
@@ -174,6 +175,14 @@ ActiveRecord::Schema.define(version: 2023_02_02_195032) do
     t.string "file_content_type"
     t.integer "file_file_size"
     t.datetime "file_updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "email_verifications", force: :cascade do |t|
+    t.string "verification_hash", null: false
+    t.integer "count", default: 1, null: false
+    t.integer "applicant_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -552,6 +561,7 @@ ActiveRecord::Schema.define(version: 2023_02_02_195032) do
   end
 
   add_foreign_key "blogs", "images", name: "blog_articles_image_id_fk"
+  add_foreign_key "email_verifications", "applicants"
   add_foreign_key "events", "images", name: "events_image_id_fk"
   add_foreign_key "groups", "group_types", name: "groups_group_type_id_fk"
   add_foreign_key "images_tags", "images", name: "images_tags_image_id_fk"

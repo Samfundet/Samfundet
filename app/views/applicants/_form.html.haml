@@ -1,3 +1,5 @@
+= javascript_include_tag 'applicants/admissions_ntnu_warning', defer: true
+
 = semantic_form_for applicant, html: { class: 'soon-to-be-default-styling' } do |form|
   != hidden_field_tag "redirect_to", html_escape(@redirect_to) if @redirect_to
   .center{style:"max-width:750px"}
@@ -6,17 +8,19 @@
         != form.input :firstname
         != form.input :surname
       .flex-row.wrap
-        != form.input :phone
+        != form.input :phone, input_html: { value: @applicant_login_phone }
         != form.input :campus_id, as: :select, collection: Campus.order(:name)
 
     = form.inputs name: t("applicants.forms.register.login_information") do
-      != form.input :email
-      != form.input :password, input_html: {value: ""}
-      != form.input :password_confirmation, input_html: {value: ""}
+      != form.input :email, input_html: { type: "email", value: @applicant_login_email }
+      != form.input :email_confirmation, input_html: { type: "email", value: "" }
+      %p.ntnu_warning= t("applicants.forms.register.ntnu_warning")
+      != form.input :password, input_html: { value: "" }
+      != form.input :password_confirmation, input_html: { value: "" }
 
     = form.inputs name: t("applicants.forms.register.extra_information") do
       != form.input :interested_other_positions, as: :select, hint: t("applicants.interested_other_positions_hint")
-      != form.input :gdpr_checkbox, as: :boolean, label: raw(t("applicants.forms.register.gdpr_checkbox", en_url:'/en/information/privacy', no_url: '/informasjon/personvern'))
+      != form.input :gdpr_checkbox, as: :boolean, required: true, label: raw(t("applicants.forms.register.gdpr_checkbox", en_url:'/en/information/privacy', no_url: '/informasjon/personvern'))
 
     = form.actions do
       != submit_tag t("applicants.forms.register.submit")

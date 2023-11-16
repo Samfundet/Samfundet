@@ -5,14 +5,20 @@ class Applicant < ApplicationRecord
   has_many :jobs, through: :job_applications
   has_many :password_recoveries
   has_many :log_entries
+  has_one :email_verification,
+    class_name: 'EmailVerification',
+    foreign_key: 'applicant_id'
   belongs_to :campus
 
-  attr_accessor :password, :password_confirmation, :old_password, :gdpr_checkbox
+  attr_accessor :email_confirmation, :password, :password_confirmation, :old_password, :gdpr_checkbox
 
   validates :firstname, :surname, :email, :phone, :campus, presence: true
   validates :email, :phone, uniqueness: true
 
-  validates :email, email: true
+  validates :email, :email_confirmation,
+            presence: { if: ->(applicant) { applicant.new_record? } }
+  validates :email, confirmation: { if: ->(applicant) { applicant.new_record? } }
+  validates :email, format: { with: /\A.+@[a-z\d\-.]+\.[a-z]{2,}\z/i }
 
   validates :gdpr_checkbox, acceptance: true
 
@@ -94,6 +100,18 @@ class Applicant < ApplicationRecord
     false
   end
 
+  def create_email_verification_hash
+    Digest::SHA256.hexdigest(email + Time.current.to_s + rand(1..100000).to_s)
+  end
+
+  def check_email_verification_hash(hash)
+    if email_verification && email_verification.verification_hash == hash && email_verification.updated_at + 1.hour > Time.current
+      email_verification.destroy!
+      return true
+    end
+    false
+  end
+
   def self.less_than_three_set_interviews(admission)
     where(disabled: false).select do |applicant|
       applicant.get_set_interviews(admission).length < 3 && applicant.open_job_applications(admission).length >= 3
@@ -115,12 +133,27 @@ class Applicant < ApplicationRecord
   end
 
   class << self
-    def authenticate(email, password)
-      applicant = where(disabled: false).find_by(email: email.downcase)
+    def valid_email?(field)
+      /\A.+@[a-z\d\-.]+\.[a-z]{2,}\z/i.match?(field)
+    end
+
+    def valid_phone?(field)
+      /\A[\d\s+]+\z/.match?(field)
+    end
+
+    def authenticate(field, password)
+      # Check if email or phone number
+      if valid_email?(field)
+        applicant = where(disabled: false).find_by(email: field.downcase)
+      elsif valid_phone?(field)
+        applicant = where(disabled: false).find_by(phone: field)
+      end
+
       return applicant if applicant &&
                           BCrypt::Password.new(applicant.hashed_password) == password
     end
   end
+
 
   def lowest_priority_group(admission)
     job_applications.select { |application| application.job.admission == admission && application.withdrawn == false }.max_by(&:priority).job.group.id
@@ -139,7 +172,7 @@ class Applicant < ApplicationRecord
   end
 
   def priority_of_job_application(admission, job_application)
-    job_applications.select { |application| application.job.admission == admission }.index(job_application) + 1
+    job_applications.select { |application| application.job.admission == admission && application.withdrawn == false }.index(job_application) + 1
   end
 
   def priority_of_job_application_string(admission, job_application)

@@ -72,6 +72,17 @@
 
         .menu-item
           .item-name
+            = t("sulten.lyche.menu.starters.lyche_snitter.name")
+            .item-price
+              40,- / 49,-
+          .item-description
+            = t("sulten.lyche.menu.starters.lyche_snitter.description")
+            %br
+            %br
+            %i= t("sulten.lyche.menu.starters.lyche_snitter.allergies")
+
+        .menu-item
+          .item-name
             = t("sulten.lyche.menu.starters.side_salad.name")
             .item-price
               24,- / 32,-
@@ -153,7 +164,7 @@
             %i= t("sulten.lyche.menu.burgers.mushroom_burger.recommendations")
 
         -# Main courses
-
+        -# Lyche kjører barmeny under immen, dermed ingen vanlige hovedretter.
         .lyche-menu-category
           .lyche-menu-category-detail.left
           .lyche-menu-category-title
@@ -176,37 +187,37 @@
 
         .menu-item
           .item-name
-            = t("sulten.lyche.menu.main_courses.halibut.name")
+            = t("sulten.lyche.menu.main_courses.pie.name")
             .item-price
-              119,- / 139,-
+              99,- / 119,-
           .item-description
-            = t("sulten.lyche.menu.main_courses.halibut.description")
+            = t("sulten.lyche.menu.main_courses.pie.description")
             %br
             %br
-            %i= t("sulten.lyche.menu.main_courses.halibut.allergies")
+            %i= t("sulten.lyche.menu.main_courses.pie.allergies")
             %br
             %br
-            %i= t("sulten.lyche.menu.main_courses.halibut.recommendations")
+            %i= t("sulten.lyche.menu.main_courses.pie.recommendations")
 
         .menu-item
           .item-name
-            = t("sulten.lyche.menu.main_courses.beef_salad.name")
+            = t("sulten.lyche.menu.main_courses.cod.name")
             .item-price
-              119,- / 139,-
+              109,- / 125,-
           .item-description
-            = t("sulten.lyche.menu.main_courses.beef_salad.description")
+            = t("sulten.lyche.menu.main_courses.cod.description")
             %br
             %br
-            %i= t("sulten.lyche.menu.main_courses.beef_salad.allergies")
+            %i= t("sulten.lyche.menu.main_courses.cod.allergies")
             %br
             %br
-            %i= t("sulten.lyche.menu.main_courses.beef_salad.recommendations")
+            %i= t("sulten.lyche.menu.main_courses.cod.recommendations")
 
         .menu-item
           .item-name
             = t("sulten.lyche.menu.main_courses.cauliflower.name")
             .item-price
-              119,- / 139,-
+              59,- / 69,-
           .item-description
             = t("sulten.lyche.menu.main_courses.cauliflower.description")
             %br
@@ -238,17 +249,14 @@
 
         .menu-item
           .item-name
-            = t("sulten.lyche.menu.desserts.cake.name")
+            = t("sulten.lyche.menu.desserts.creme_catalana.name")
             .item-price
-              55,- / 67,-
+              35,- / 42,-
           .item-description
-            = t("sulten.lyche.menu.desserts.cake.description")
+            = t("sulten.lyche.menu.desserts.creme_catalana.description")
             %br
             %br
-            %i= t("sulten.lyche.menu.desserts.cake.allergies")
-            %br
-            %br
-            %i= t("sulten.lyche.menu.desserts.cake.recommendations")
+            %i= t("sulten.lyche.menu.desserts.creme_catalana.allergies")
 
         -# Drinks
         -# Lyche ønsket å fjerne drikke, hvis det blir nødvendig å legge til fjern denne kommentaren og tab ut under

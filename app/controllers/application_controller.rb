@@ -72,13 +72,22 @@ class ApplicationController < ActionController::Base
     if request.xhr?
       render nothing: true, status: 401
     else
-      flash[:error] = t('common.log_in_to_view_page')
-      if request.get? # Regular GET
-        redirect_to login_path(redirect_to: request.path)
-      elsif request.referer.nil?
+      if logged_in?
+        flash[:error] = t('common.no_access')
+
+        if current_user.roles.count > 0
+          flash[:message] = t('common.group_leader_access')
+        end
         redirect_to root_path
       else
-        redirect_to login_path(redirect_to: request_referer_if_on_current_domain)
+        flash[:error] = t('common.log_in_to_view_page')
+        if request.get? # Regular GET
+          redirect_to login_path(redirect_to: request.path)
+        elsif request.referer.nil?
+          redirect_to root_path
+        else
+          redirect_to login_path(redirect_to: request_referer_if_on_current_domain)
+        end
       end
     end
   end

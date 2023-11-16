@@ -22,6 +22,7 @@
     admissions_admin: opptak-administrasjon
     forgot_password: glemt-passord
     reset_password: tilbakestill-passord
+    email_verification: bekreft-epost
     entry: innlegg
     entries: innlegg
     category: kategori
@@ -38,7 +39,7 @@
     images: bilder
     history: historikk
     documents: saksdokumenter
-    blogs: blogg
+    blogs: nyheter
     contact: kontakt
     contactinfo: kontaktinfo
     reject_calls: sokere-dere-skal-ringe
@@ -49,4 +50,5 @@
     crowd-funding: kronerulling
 en:
   routes:
+    blogs: news
     contactinfo: contactinfo

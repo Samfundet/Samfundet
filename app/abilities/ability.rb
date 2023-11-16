@@ -119,9 +119,7 @@ class Ability
 
   # ORGANIZATION
   def styret
-    can :manage, Blog
-    can :manage, Document
-    can :manage, CrowdFundingSupporter
+    can :manage, [Blog, Document, CrowdFundingSupporter, Image, InfoBox]
   end
 
   def raadet
@@ -130,6 +128,10 @@ class Ability
 
   def fs
     can :manage, Document
+  end
+
+  def fs_fu
+    can :manage, CrowdFundingSupporter
   end
 
   def mg_nestleder

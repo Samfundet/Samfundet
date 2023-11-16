@@ -32,9 +32,15 @@ class AdmissionsAdmin::JobsController < AdmissionsAdmin::BaseController
 
   def show_unprocessed
     @job = Job.find(params[:job_id])
+    if !can?(:show_unprocessed, @job)
+      permission_denied
+      return
+    end
+
     @groupings = [@job.unprocessed_applications]
     @group = Group.find(params[:group_id])
     @admission = Admission.find(params[:admission_id])
+
     render partial: 'jobs_show'
   end
 

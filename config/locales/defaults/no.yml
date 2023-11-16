@@ -17,6 +17,8 @@
     down: "Ned"
     please_select: "Vennligst velg"
     log_in_to_view_page: "Du må logge inn for å få tilgang til denne siden."
+    no_access: "Du har ikke tilgang til å vise denne siden."
+    group_leader_access: "Om du mener dette er feil vennligst kontakt din gjengsjef."
   time:
     last_updated: "Sist oppdatert"
     created: "Opprettet"

@@ -139,6 +139,7 @@ authorization do
 
   role :styret do
     has_permission_on :crowd_funding_supporters, to: :manage
+    has_permission_on :images, to: :manage
   end
 
   Group.all.each do |group|

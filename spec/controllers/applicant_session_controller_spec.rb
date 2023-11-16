@@ -23,7 +23,7 @@ describe ApplicantSessionsController do
         post(
           :create,
           params: {
-            applicant_login_email: user.email,
+            applicant_login_field: user.email,
             applicant_login_password: 'password'
           }
         )
@@ -39,7 +39,7 @@ describe ApplicantSessionsController do
         post(
           :create,
           params: {
-            applicant_login_email: user.email,
+            applicant_login_field: user.email,
             applicant_login_password: 'password'
           },
           session: {
@@ -58,7 +58,7 @@ describe ApplicantSessionsController do
         post(
           :create,
           params: {
-            applicant_login_email: user.email,
+            applicant_login_field: user.email,
             applicant_login_password: 'invalid'
           }
         )

@@ -6,5 +6,6 @@ en:
       login:
         heading: "Applicants"
         submit: "Login as applicant"
-        applicant_login_email: "E-mail"
+        applicant_login_field: "E-mail or phone number"
         forgot_password: "Forgotten your password?"
+        recover_password: "Recover password"
