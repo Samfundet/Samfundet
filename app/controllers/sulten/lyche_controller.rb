@@ -36,12 +36,9 @@ class Sulten::LycheController < Sulten::BaseController
 
   def reservation
     @closed_periods = Sulten::ClosedPeriod.current_and_future_closed_times.sort_by(&:closed_from)
-    unless @closed_periods.empty?
-      # Show only if less than 60 days in future
-      if (@closed_periods.first.closed_from - Time.now) < 60.days
-        @closed_periods =  @closed_periods
-      else
-        @closed_periods = []
+    @closed_periods.delete_if do |c|
+      if (c.closed_from - Time.now) > 60.days
+        true
       end
     end
     @reservation = Sulten::Reservation.new

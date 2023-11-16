@@ -25,21 +25,26 @@ function postOrder() {
 }
 
 async function getProducts(id, variation_id) {
-   const data =  await fetch('/merch/products_by_id', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-Token': csrfToken
-        },
-        body: JSON.stringify({id: id, variation_id: variation_id})})
-    return data.json()
+    try {
+        const response = await fetch('/merch/products_by_id', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-Token': csrfToken
+            },
+            body: JSON.stringify({ id: id, variation_id: variation_id })
+        });
+        return await response.json();
+    } catch (error) {
+        return "";
+    }
 }
 
 /**
  * Function for disabling createButton due to missing fields
  */
 function checkInputField(e){
-    if (/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(emailInputField.value) && nameInputField.value !== "") {
+    if (/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(emailInputField.value) && nameInputField.value !== "") {
         createButton.classList.remove("gray")
         createButton.classList.add("green")
         createButton.disabled = false;
@@ -112,8 +117,14 @@ async function renderOrder(order) {
     const img = response.img
 
     const orderDiv = document.createElement('div');
-
     orderDiv.className = "order";
+
+    if (response === "") {
+        const errorElement = document.createElement("p");
+        errorElement.innerText = "Error when fetching";
+        orderDiv.appendChild(errorElement)
+    } else {
+
     /** Add image */
     const image = document.createElement("img");
     image.src = img;
@@ -153,6 +164,7 @@ async function renderOrder(order) {
     info.appendChild(amount)
     orderDiv.appendChild(info)
 
+    }
     /** Add delete button */
     const deleteButton = document.createElement("button");
     deleteButton.innerText = "Fjern";
@@ -166,7 +178,7 @@ async function renderOrder(order) {
                 return e.variation.substring(4) !== variation.id + ""
             }
             // substring 8 on product_x
-            return e.id.substring(8) !== product.id + ""
+            return e.id.substring(8) !== order.id.substring(8) + ""
         });
         localStorage.setItem(SHOPPING_CART_KEY, JSON.stringify(newShoppingCart));
         orderDiv.remove();
