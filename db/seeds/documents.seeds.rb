@@ -19,7 +19,7 @@ after :images do
         file = File.open(Rails.root.join('app', 'assets', 'files', 'dummy.pdf'))
         publication_date = 2.weeks.ago + (rand 2000).days
         Document.create!(
-            title: Faker::Lorem.sentence(2),
+            title: Faker::Lorem.sentences(number: 2),
             category_id: category.id,
             uploader_id: member.id,
             publication_date: publication_date,
@@ -37,11 +37,11 @@ after :images do
     member.blogs.create!(
       title_no: title,
       title_en: title,
-      content_no: Faker::Lorem.sentence(rand(50)) + "![#{image.title}](#{image.image_file(:medium)})" + Faker::Lorem.sentence(rand(20)),
-      content_en: Faker::Lorem.sentence(rand(50)) + "![#{image.title}](#{image.image_file(:medium)})" + Faker::Lorem.sentence(rand(20)),
+      content_no: Faker::Lorem.sentences(number: rand(50)),
+      content_en: Faker::Lorem.sentences(number: rand(50)),
       published: rand > 0.2,
-      lead_paragraph_no: Faker::Lorem.sentence(rand(5..10)),
-      lead_paragraph_en: Faker::Lorem.sentence(rand(5..10)),
+      lead_paragraph_no: Faker::Lorem.sentences(number: rand(5..10)),
+      lead_paragraph_en: Faker::Lorem.sentences(number: rand(5..10)),
       publish_at: rand(-2..1).weeks.from_now,
       image_id: Image.all.sample.id)
   end

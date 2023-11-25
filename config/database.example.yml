@@ -1,29 +1,20 @@
 # old development
-# development:
-#   adapter: postgresql
-#   host: localhost
-#   database: samfdb_dev
-#   pool: 5
-#   timeout: 5000
-#   username: samfundet
-#   password: samfundet
-
-
-development: # rename to docker later
+development:
   adapter: postgresql
-  host: db # Host defined in 'docker-compose.yml'.
+  host: localhost
   database: samfdb_dev
   pool: 5
   timeout: 5000
   username: samfundet
   password: samfundet
 
+
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
-test: &TEST
+test:
   adapter: postgresql
-  host: db # Host defined in 'docker-compose.yml'.
+  host: localhost # Host defined in 'docker-compose.yml'.
   database: samfdb_test
   pool: 5
   timeout: 5000
@@ -31,7 +22,7 @@ test: &TEST
   password: samfundet
 
 cucumber:
-  <<: *TEST
+  <<: 'test'
 
 # mdb2 and billig are required for all 'production' environments.
 # Select the appropriate block from production / staging also.

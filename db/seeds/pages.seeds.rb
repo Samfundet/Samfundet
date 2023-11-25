@@ -3,7 +3,7 @@ after :documents do
   puts "Creating pages"
   Group.all.each do |group|
     name = group.name.parameterize
-    content = "# #{group.name}\n #{Faker::Lorem.paragraphs(3).join("\n\n")}"
+    content = "# #{group.name}\n #{Faker::Lorem.paragraphs(number: 3).join("\n\n")}"
 
     page = Page.create!(
       name_no: name,
@@ -23,7 +23,7 @@ after :documents do
 
   Area.all.each do |area|
     name = area.name.parameterize
-    content = "# #{area.name}\n #{Faker::Lorem.paragraphs(3).join("\n\n")}"
+    content = "# #{area.name}\n #{Faker::Lorem.paragraphs(number: 3).join("\n\n")}"
 
     page = Page.create!(
       name_no: name,
@@ -47,8 +47,8 @@ after :documents do
     name_en: Page::TICKETS_NAME,
     title_no: "Billetter",
     title_en: "Tickets",
-    content_no: "# Utsalgssteder for billetter\n #{Faker::Lorem.paragraphs(3).join("\n\n")} \n# Salgsbetingelser\n #{Faker::Lorem.paragraphs(3).join("\n\n")}",
-    content_en: "# Purchase areas for tickets\n #{Faker::Lorem.paragraphs(3).join("\n\n")} \n# Purchase conditions\n #{Faker::Lorem.paragraphs(3).join("\n\n")}",
+    content_no: "# Utsalgssteder for billetter\n #{Faker::Lorem.p ragraphs(number: 3).join("\n\n")} \n# Salgsbetingelser\n #{Faker::Lorem.paragraphs(number: 3).join("\n\n")}",
+    content_en: "# Purchase areas for tickets\n #{Faker::Lorem.paragraphs(number: 3).join("\n\n")} \n# Purchase conditions\n #{Faker::Lorem.paragraphs(number: 3).join("\n\n")}",
     role_id: Role.super_user.id
   )
 
@@ -82,8 +82,8 @@ after :documents do
   Page.create!(
     name_no: Page::INDEX_NAME,
     name_en: Page::INDEX_NAME,
-    content_no: "# Om samfundet\n #{Faker::Lorem.paragraphs(3).join("\n\n")} \n# Historien\n #{Faker::Lorem.paragraphs(3).join("\n\n")}",
-    content_en: "# About samfundet\n #{Faker::Lorem.paragraphs(3).join("\n\n")} \n# The history\n #{Faker::Lorem.paragraphs(3).join("\n\n")}",
+    content_no: "# Om samfundet\n #{Faker::Lorem.paragraphs(number: 3).join("\n\n")} \n# Historien\n #{Faker::Lorem.paragraphs(number: 3).join("\n\n")}",
+    content_en: "# About samfundet\n #{Faker::Lorem.paragraphs(number: 3).join("\n\n")} \n# The history\n #{Faker::Lorem.paragraphs(number: 3).join("\n\n")}",
     role_id: Role.super_user.id
   )
 
@@ -91,8 +91,8 @@ after :documents do
   Page.create!(
     name_no: Page::HANDICAP_INFO_NAME,
     name_en: Page::HANDICAP_INFO_NAME,
-    content_no: "# Handikap informasjon\n #{Faker::Lorem.paragraphs(3).join("\n\n")}",
-    content_en: "# Handicap information\n #{Faker::Lorem.paragraphs(3).join("\n\n")}",
+    content_no: "# Handikap informasjon\n #{Faker::Lorem.paragraphs(number: 3).join("\n\n")}",
+    content_en: "# Handicap information\n #{Faker::Lorem.paragraphs(number: 3).join("\n\n")}",
     role_id: Role.super_user.id
   )
 

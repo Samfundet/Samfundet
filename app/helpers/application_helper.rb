@@ -90,8 +90,7 @@ module ApplicationHelper
 
   def background_image_helper(css_class, image, options = {})
     capture_haml do
-      haml_tag :div, class: css_class,
-                     style: "background-image: url(#{asset_path(image.url(options[:size]))})" do
+      haml_tag :div, class: css_class do
         yield if block_given?
       end
     end

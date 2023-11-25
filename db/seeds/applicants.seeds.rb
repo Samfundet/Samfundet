@@ -56,15 +56,15 @@ after :generate_roles do
       applications = []
       jobs.each_with_index do |job, priority|
         job_application = JobApplication.new(
-          motivation: Faker::Lorem.paragraphs(5).join("\n\n"),
+          motivation: Faker::Lorem.paragraphs(number:5).join("\n\n"),
           applicant: applicant,
           priority: priority + 1,
           job: job
         )
-        job_application.created_at = Faker::Time.between(1.week.ago, 2.weeks.from_now)
+        job_application.created_at = Faker::Time.between(from: 1.week.ago, to: 2.weeks.from_now)
         job_application.save
         Interview.create!(
-            time: Faker::Time.between(1.weeks.from_now, 2.weeks.from_now),
+            time: Faker::Time.between(from: 1.weeks.from_now, to: 2.weeks.from_now),
             priority: Interview::PRIORITIES_NO.keys.sample,
             job_application_id: job_application.id,
             location: Faker::Address.city
