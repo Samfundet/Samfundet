@@ -25,6 +25,9 @@ en:
     search_placeholder: "Name/ID/Email"
     interested_other_positions_hint: "Are you interested in offers for other positions beyond the ones you will apply to?"
     forms:
+      admin:
+        edit_applicant: "Edit applicant '"
+        update_success: "Applicant information updated."
       register:
         heading: "Register me as applicant"
         submit: "Register me"

@@ -25,6 +25,9 @@
     search_placeholder: "Navn/ID/Epost"
     interested_other_positions_hint: "Er du interessert i å få tilbud om andre stillinger enn de du søker på?"
     forms:
+      admin:
+        edit_applicant: "Rediger søker '"
+        update_success: "Søkerinformasjon endret."
       register:
         heading: "Registrer meg som søker"
         submit: "Registrer meg"

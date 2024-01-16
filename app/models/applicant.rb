@@ -40,6 +40,10 @@ class Applicant < ApplicationRecord
     "#{firstname} #{surname}"
   end
 
+  def roles
+    []
+  end
+
   def password_changed?
     !@password.nil?
   end
