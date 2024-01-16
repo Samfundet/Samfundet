@@ -19,6 +19,8 @@ en:
     create_group: Create group
     group: Group
     update_group: Update group
+    admin_delete: Admin delete
+    admin_delete_process: Resolve all applications
 
     admin:
       title: Groups administration

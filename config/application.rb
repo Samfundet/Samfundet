@@ -53,9 +53,11 @@ module Samfundet
     config.assets.precompile += %w(chartkick.js)
     config.assets.precompile += %w(linkgraph.js)
     config.assets.precompile += %w(applicants/interviews.js)
+    config.assets.precompile += %w(applicants/job_application_interviews.js)
     config.assets.precompile += %w(job_applications/job_applications.js)
     config.assets.precompile += %w(old_samfundet/jobs_search.js)
     config.assets.precompile += %w(applicants/admissions_admin_applicants.js)
+    config.assets.precompile += %w(applicants/admissions_ntnu_warning.js)
     config.assets.precompile += %w(job_applications/admissions_admin_job_applications.js)
     config.assets.precompile += %w(sulten/duration.js)
     config.assets.precompile += %w(sulten/calendar.js)
@@ -64,6 +66,7 @@ module Samfundet
     config.assets.precompile += %w(site/opening-hours-mobile-header.js)
     config.assets.precompile += %w(applicants/admissions_admin_email.js)
     config.assets.precompile += %w(jobs/mg_web_job.js)
+    config.assets.precompile += %w(new_building/faq-dropdown.js)
 
     # Load local env variables into rails config
     config.before_configuration do
@@ -101,13 +104,52 @@ module Samfundet
   Haml::Template.options[:escape_html] = true
 
   puts ""
-  puts "   /$$$$$$                           /$$$$$$                           /$$             /$$     "
-  puts "  /$$__  $$                         /$$__  $$                         | $$            | $$     "
-  puts " | $$  \\__/  /$$$$$$  /$$$$$$/$$$$ | $$  \\__//$$   /$$ /$$$$$$$   /$$$$$$$  /$$$$$$  /$$$$$$   "
-  puts " |  $$$$$$  |____  $$| $$_  $$_  $$| $$$$   | $$  | $$| $$__  $$ /$$__  $$ /$$__  $$|_  $$_/   "
-  puts "  \\____  $$  /$$$$$$$| $$ \\ $$ \\ $$| $$_/   | $$  | $$| $$  \\ $$| $$  | $$| $$$$$$$$  | $$     "
-  puts "  /$$  \\ $$ /$$__  $$| $$ | $$ | $$| $$     | $$  | $$| $$  | $$| $$  | $$| $$_____/  | $$ /$$ "
-  puts " |  $$$$$$/|  $$$$$$$| $$ | $$ | $$| $$     |  $$$$$$/| $$  | $$|  $$$$$$$|  $$$$$$$  |  $$$$/ "
+  puts ""
+  puts ""
+  puts ""
+  puts "         @@@@@@@@@@@@@@@@@@@@@       @@@@@@@@@@@@@@@@@@@@@       @@@@@@@@@@@@@@@@@@@@@ "
+  puts "         @@@@@@@@@@@@@@@@@@@@@       @@@@@@@@@@@@@@@@@@@@@       @@@@@@@@@@@@@@@@@@@@@ "
+  puts "         @@@@@@@@@@@@@@@@@@@@@       @@@@@@@@@@@@@@@@@@@@@       @@@@@@@@@@@@@@@@@@@@@ "
+  puts "         @@@@@@@                                                               @@@@@@@ "
+  puts "         @@@@@@@                                                               @@@@@@@ "
+  puts "         @@@@@@@                                                               @@@@@@@ "
+  puts "         @@@@@@@       @@@@@@@@@@@@@@@@@@@@@       @@@@@@@@@@@@@@@@@@@@@       @@@@@@@ "
+  puts "         @@@@@@@       @@@@@@@@@@@@@@@@@@@@@       @@@@@@@@@@@@@@@@@@@@@       @@@@@@@ "
+  puts "         @@@@@@@       @@@@@@@@@@@@@@@@@@@@@       @@@@@@@@@@@@@@@@@@@@@       @@@@@@@ "
+  puts "                       @@@@@@@                                   @@@@@@@               "
+  puts "                       @@@@@@@                                   @@@@@@@               "
+  puts "                       @@@@@@@                                   @@@@@@@               "
+  puts "         @@@@@@@       @@@@@@@       @@@@@@@@@@@@@@@@@@@@@       @@@@@@@       @@@@@@@ "
+  puts "         @@@@@@@       @@@@@@@       @@@@@@@@@@@@@@@@@@@@@       @@@@@@@       @@@@@@@ "
+  puts "         @@@@@@@       @@@@@@@       @@@@@@@@@@@@@@@@@@@@@       @@@@@@@       @@@@@@@ "
+  puts "         @@@@@@@                     @@@@@@@@@@@@@@@@@@@@@                     @@@@@@@ "
+  puts "         @@@@@@@                     @@@@@@@@@@@@@@@@@@@@@                     @@@@@@@ "
+  puts "         @@@@@@@                     @@@@@@@@@@@@@@@@@@@@@                     @@@@@@@ "
+  puts "         @@@@@@@       @@@@@@@       @@@@@@@@@@@@@@@@@@@@@       @@@@@@@       @@@@@@@ "
+  puts "         @@@@@@@       @@@@@@@       @@@@@@@@@@@@@@@@@@@@@       @@@@@@@       @@@@@@@ "
+  puts "         @@@@@@@       @@@@@@@       @@@@@@@@@@@@@@@@@@@@@       @@@@@@@       @@@@@@@ "
+  puts "                       @@@@@@@                                   @@@@@@@               "
+  puts "                       @@@@@@@                                   @@@@@@@               "
+  puts "                       @@@@@@@                                   @@@@@@@               "
+  puts "         @@@@@@@       @@@@@@@@@@@@@@@@@@@@@       @@@@@@@@@@@@@@@@@@@@@       @@@@@@@ "
+  puts "         @@@@@@@       @@@@@@@@@@@@@@@@@@@@@       @@@@@@@@@@@@@@@@@@@@@       @@@@@@@ "
+  puts "         @@@@@@@       @@@@@@@@@@@@@@@@@@@@@       @@@@@@@@@@@@@@@@@@@@@       @@@@@@@ "
+  puts "         @@@@@@@                                                               @@@@@@@ "
+  puts "         @@@@@@@                                                               @@@@@@@ "
+  puts "         @@@@@@@                                                               @@@@@@@ "
+  puts "         @@@@@@@@@@@@@@@@@@@@@       @@@@@@@@@@@@@@@@@@@@@       @@@@@@@@@@@@@@@@@@@@@ "
+  puts "         @@@@@@@@@@@@@@@@@@@@@       @@@@@@@@@@@@@@@@@@@@@       @@@@@@@@@@@@@@@@@@@@@ "
+  puts "         @@@@@@@@@@@@@@@@@@@@@       @@@@@@@@@@@@@@@@@@@@@       @@@@@@@@@@@@@@@@@@@@@ "
+  puts ""
+  puts ""
+  puts ""
+  puts "   /@@@@@@                           /@@@@@@                           /@@             /@@     "
+  puts "  /@@__  @@                         /@@__  @@                         | @@            | @@     "
+  puts " | @@  \\__/  /@@@@@@  /@@@@@@/@@@@ | @@  \\__//@@   /@@ /@@@@@@@   /@@@@@@@  /@@@@@@  /@@@@@@   "
+  puts " |  @@@@@@  |____  @@| @@_  @@_  @@| @@@@   | @@  | @@| @@__  @@ /@@__  @@ /@@__  @@|_  @@_/   "
+  puts "  \\____  @@  /@@@@@@@| @@ \\ @@ \\ @@| @@_/   | @@  | @@| @@  \\ @@| @@  | @@| @@@@@@@@  | @@     "
+  puts "  /@@  \\ @@ /@@__  @@| @@ | @@ | @@| @@     | @@  | @@| @@  | @@| @@  | @@| @@_____/  | @@ /@@ "
+  puts " |  @@@@@@/|  @@@@@@@| @@ | @@ | @@| @@     |  @@@@@@/| @@  | @@|  @@@@@@@|  @@@@@@@  |  @@@@/ "
   puts "  \\______/  \\_______/|__/ |__/ |__/|__/      \\______/ |__/  |__/ \\_______/ \\_______/   \\___/   "
   puts "                                                                                               "
   puts ""

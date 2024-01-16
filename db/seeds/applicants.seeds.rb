@@ -41,6 +41,7 @@ after :generate_roles do
       surname: Faker::Name.last_name,
       phone: phone_number,
       email: email,
+      email_confirmation: email,
       campus: Campus.order(Arel.sql('random()')).first,
       password: 'passord',
       password_confirmation: 'passord',
@@ -72,13 +73,13 @@ after :generate_roles do
 
         if rand(100) < accept_percent_chance
           job_number = rand(jobs.count)
-          @log_entry = LogEntry.create!(
-            log: accepted_log,
-            admission: admission,
-            applicant: applicant,
-            group: job.group,
-            member: seed_member
-          )
+          # @log_entry = LogEntry.create!(
+          #   log: accepted_log,
+          #   admission: admission,
+          #   applicant: applicant,
+          #   group: job.group,
+          #   member: seed_member
+          # )
         end
       end
     end

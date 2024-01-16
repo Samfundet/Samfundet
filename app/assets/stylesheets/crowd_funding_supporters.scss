@@ -1,0 +1,74 @@
+.crowd-funding-grid {
+  display: grid;
+  grid-template-columns: 70% 30%;
+
+  ul {
+    list-style: circle;
+  }
+  @include media($mobile) {
+    grid-template-columns: 100%;
+  }
+}
+
+.crowd-funding-vipps {
+  justify-self: end;
+  p {
+    font-weight: bold;
+  }
+
+  @include media($mobile) {
+  justify-self: center;
+    order: -1;
+  }
+}
+
+.crowd-funding-comp {
+  max-width: 1000px;
+  border: solid black;
+  .supporter {
+    margin: 1% 1% 1% 1%;
+    display: grid;
+    grid-template-columns: minmax(5%, 15%) 78%;
+    align-items: center;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .line{
+    background-color: $samfundet-red;
+    height: 2em;
+    display: flex;
+    align-items: center;
+    .amount {
+      margin: 0 0 0 1em;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      font-weight: 100;
+      color: white;
+      text-shadow:
+              0.07em 0 $samfundet-red,
+              0 0.07em $samfundet-red,
+              -0.07em 0 $samfundet-red,
+              0 -0.07em $samfundet-red;
+      display: none;
+    }
+  }
+
+  .line:hover {
+    .amount {
+      display: block;
+    }
+  }
+
+  .points {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25% 0;
+    width: 100%;
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
+  }
+
+  .point{
+    padding-left: 2px;
+    border-left: 2px solid black;
+  }
+}

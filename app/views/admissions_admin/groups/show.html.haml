@@ -1,8 +1,13 @@
 - set_title T('job_applications.applications_for_group', group_name: @group.name)
 
-= link_to members_control_panel_path do
-  .samf-button.plain.mb-3
-    = T('common.back')
+- if can? :manage, Admission
+  = link_to admissions_admin_admission_path(@admission) do
+    .samf-button.plain.mb-3
+      = T('common.back')
+- else
+  = link_to members_control_panel_path do
+    .samf-button.plain.mb-3
+      = t("common.back")
 
 %h1.mt-3.mb-2
   = @group.name
@@ -14,6 +19,9 @@
     = link_to new_admissions_admin_admission_group_job_path(@admission, @group) do
       .samf-button.green.mr-2
         = t('jobs.create')
+    = link_to admissions_admin_admission_group_show_applicants_with_missing_interviews_path(@admission, @group) do
+      .samf-button.orange.mr-2
+        = "Søkere som mangler intervjutider"
     = link_to applications_admissions_admin_admission_group_path(@admission, @group) do
       .samf-button.plain
         = t('admissions.show_all_applications')
@@ -26,6 +34,7 @@
       %th= t('groups.applicants')
       %th= t('admissions_admin.processed_applications')
       %th= t('admissions_admin.accepted_applicants')
+      %th
       %th
   %tbody
     - @jobs.each do |job|
@@ -47,6 +56,11 @@
             %span{style: "color:red"}= job.processed_applications.count.to_s + "/" + job.active_applications.count.to_s
         %td
           = job.accepted_applications.count
+        %td
+          - if can?(:manage, Admission)
+            = link_to admissions_admin_admission_group_job_path(@admission, @group, job), method: "delete",  data: { confirm: t('crud.confirm') } do
+              %button.samf-button.small.mr-2{job.processed_applications.count != job.active_applications.count ? {title: "Alle søknader må løses", class: "gray", disabled: true,} : {title: t("groups.delete_job")}}
+                = t("groups.admin_delete")
         %td.flex-row{:style => "float:right;"}
           - if @should_show_delete_button
             - if can?(:destroy, Job, job) && !job.job_applications.exists?

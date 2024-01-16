@@ -15,6 +15,10 @@ Rails.application.routes.draw do
 
     resources :info_boxes
 
+    resources :crowd_funding_supporters, path: 'crowd-funding' do
+      get :admin, on: :collection
+    end
+
     #resources :search, only: [:new, :create, :search]
     ############################
     ##  Routes for events     ##
@@ -102,6 +106,7 @@ Rails.application.routes.draw do
       get "forgot_password", to: "applicants#forgot_password"
       post "generate_forgot_password_email", to: "applicants#generate_forgot_password_email"
       get "reset_password", to: "applicants#reset_password"
+      get "verify_email", to: "applicants#verify_email"
       get "search", to: "applicants#search", as: :applicant_search
     end
 
@@ -152,6 +157,7 @@ Rails.application.routes.draw do
         resources :groups, only: :show do
           get :applications, on: :member
           get :reject_calls, on: :member
+          get :show_applicants_with_missing_interviews, to: 'groups#show_applicants_with_missing_interviews'
           resources :jobs, only: [:show, :new, :create, :edit, :update, :destroy] do
             get :search, on: :collection
             get :show_unprocessed
@@ -182,6 +188,7 @@ Rails.application.routes.draw do
     get "login", to: "user_sessions#new", as: :login
 
     get "brosjyre", to: "site#brochure"
+    get "/valgundersokelse", to: "site#generic_redirect"
 
     post "logout" => "user_sessions#destroy", as: :logout
     get "members/control_panel" => "members#control_panel", as: :members_control_panel

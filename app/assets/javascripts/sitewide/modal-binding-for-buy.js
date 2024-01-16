@@ -148,30 +148,13 @@ $(function() {
       var ticketGroupIndex = parseInt(ticketGroupId.match(/\d+/g)[0]);
       var ticketGroupTickets = 0;
       var ticketGroupLimit = ticketLimits[ticketGroupIndex];
-      var ticketGroupHeader = $('#' + ticketGroupId).find('.ticket-limit-hd');
       var numberOfPriceGroups = 0;
-
-      // Class used to stylize table header when ticket limit is reached
-      var limitReachedClass = 'ticket-limit-reached';
 
       // Get the number of tickets chosen in current ticket group
       $('select.' + ticketGroupId).each(function() {
         ticketGroupTickets += parseInt($(this).val());
         numberOfPriceGroups += 1;
       });
-
-      // Change the color of the ticket limit
-      // if the ticket limit is reached
-      if (ticketGroupTickets === ticketGroupLimit) {
-        ticketGroupHeader.addClass(limitReachedClass);
-      } else {
-        ticketGroupHeader.removeClass(limitReachedClass);
-      }
-
-      // Match translation in ticket limit header
-      // 'billett(er)' or 'ticket(s)'
-      var ticketTranslation = ticketGroupHeader.text().match(/[aA-zZ]+.[aA-zZ]+./g);
-      ticketGroupHeader.text(ticketGroupTickets + '/' + ticketGroupLimit + ' ' + ticketTranslation);
 
       // Empty dropdowns and populate them with legal options
       $('select.' + ticketGroupId).each(function(){
@@ -212,104 +195,52 @@ $(function() {
       // Set the total cost and total tickets in the summary's html
       var totalTicketsHtml = 0
       if (totalTickets !== 0) {
-        totalTicketsHtml = totalTickets + "/" + ticketLimits.reduce(function(a, b){return a + b}, 0);
+        totalTicketsHtml = totalTickets //+ "/" + ticketLimits.reduce(function(a, b){return a + b}, 0);
       }
       $('.ticket-table .totalAmount').html(totalTicketsHtml);
       $('.ticket-table .totalSum').html(totalCost);
     });
   }
 
-
-  function validateCardChecksum(value, pattern) {
-    var sum = 0;
-
-    if (!value.match(pattern)) {
-      return false;
-    }
-
-
-    for (var i = 1; i <= value.length; i++) {
-      var cur = Number(value.charAt(value.length - i));
-
-      if (i % 2 == 0) {
-        var tmp = (cur * 2).toString();
-
-        if (tmp.length == 2) {
-            sum += Number(tmp.charAt(1));
-        }
-
-        sum += Number(tmp.charAt(0));
-      } else {
-        sum += cur;
-      }
-    }
-
-    return (sum % 10 == 0);
-  }
-
-  function getCardInformation(value) {
-    if (value.match(/^4/)) {
-      return {pattern: /^(\d{13}|\d{16})$/, name: 'VISA', type: 'visa'};
-    } else if (value.match(/^5[12345]/)) {
-      return {pattern: /^\d{16}$/, name: 'MasterCard', type: 'mastercard'};
-    }
-  }
-
-  function cardEditingFeedback() {
-    var input = $(this);
-    var value = input.val();
-    var info = getCardInformation(input.val());
-    var feedback = $('#card_feedback');
-
-    if (info) {
-      feedback.text(info['name']);
-      feedback.attr('class', 'card_' + info.type);
-    }
-    else {
-      feedback.html('&nbsp;');
-      feedback.attr('class', '');
-    }
-  }
-
-  function finalCardFeedback() {
-    var input = $(this);
-    var value = input.val();
-    var info = getCardInformation(input.val());
-    var feedback = $('#card_feedback');
-
-    if (value.match(/^\s*$/)) {
-      feedback.html('&nbsp;');
-      feedback.attr('class', '');
-    } else if (info && validateCardChecksum(value, info.pattern)) {
-      feedback.text(info.name);
-      feedback.attr('class', 'card_valid card_' + info.type);
-    } else {
-      var error_message = {
-        'no': 'Dette ser ikke ut som et gyldig kortnummer.',
-        'en': 'This does not appear to be a valid card number.'
-      };
-
-      feedback.text(error_message[$('html').attr('lang')]);
-      feedback.attr('class', 'card_error');
-    }
-  }
-
   function checkValidForm() {
-    var input = $('#ccno');
-    var info = getCardInformation(input.val());
+    
     var email = $('#email').val();
     var membercard = $('#membercard').val();
-    var cvc2 = $('#cvc2').val();
 
-    if (info && info['type'] !== 'error' && (($('#ticket_type_paper').prop('checked') && email != '') || ($('#ticket_type_card').prop('checked') && membercard != '')) && cvc2 != '') {
+    let isPaperticketOk = $('#ticket_type_paper').prop('checked') && email != '';
+    let isCardTicketOk = $('#ticket_type_card').prop('checked') && membercard != '';
+
+    let totalTickets = 0;
+    $('.price-group-row select').each(function() {
+      totalTickets += (+$(this).val());
+    });
+    
+
+    if ((isPaperticketOk || isCardTicketOk) && totalTickets > 0) {
       $('.billig-buy .custom-form [name="commit"]').prop('disabled', false);
     }
     else {
       $('.billig-buy .custom-form [name="commit"]').prop('disabled', true);
     }
+
+    // Update description
+    var ticket_option_card = $('#ticket_type_card').prop('checked')
+    if(ticket_option_card) {
+      $('#ticketless-info').show()
+      $('#paperticket-info').hide()
+    } else {
+      $('#ticketless-info').hide()
+      $('#paperticket-info').show()
+    }
+
+    $('#validation-hint').show()
+    $('#missing-user-info').css({display: (isPaperticketOk || isCardTicketOk) ? "none" : "block"})
+    $('#missing-ticket-count').css({display: (totalTickets > 0) ? "none" : "block"})
+
   }
 
-  $(document).on('focus keyup', '#ccno', cardEditingFeedback);
-  $(document).on('blur', '#ccno', finalCardFeedback);
-  $(document).on('blur focus keyup change', '.billig-buy .custom-form input', checkValidForm);
+  $(document).on('blur keyup change', '.billig-buy .custom-form input', checkValidForm);
+  $(document).on('blur keyup change', '.billig-buy .custom-form select', checkValidForm);
+
+
 });

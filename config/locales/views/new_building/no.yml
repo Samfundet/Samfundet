@@ -5,7 +5,7 @@
       intro: Studentersamfundet bygger ut! På denne siden kan du finne informasjon om nybyggprosjektet. Kontakt oss på nybygg@samfundet.no hvis du har spørsmål eller innspill.
       what:
         title: Hva er nybygg?
-        body:  Nybygg skal ha plass til mer av virksomheten vi allerede har på Samfundet. Vi skal bygge nye konsertscener, en blackbox, serveringslokaler og gode arbeidslokaler. Vi vil ha plass til mer aktivitet for flere, både frivillige, publikummere og andre foreninger. Nybygg har fått pengene som trengs til å bygge, fra blant andre NTNU, Velferdstinget, Trondheim kommune, Sit og Reitangruppen. Totalt trengs det 245 millioner til prosjektet, så arbeidet med finansiering pågår fortsatt. Byggestart er planlagt til april 2022, med ferdigstillelse årskiftet 2023/2024.
+        body:  Nybygg skal ha plass til mer av virksomheten vi allerede har på Samfundet. Vi skal bygge nye konsertscener, en blackbox, serveringslokaler og gode arbeidslokaler. Vi vil ha plass til mer aktivitet for flere, både frivillige, publikummere og andre foreninger. Nybygg har fått nesten alle pengene som trengs til å bygge, fra blant andre NTNU, Velferdstinget, Trondheim kommune, Sit og Reitangruppen. Totalt trengs det 250 millioner til prosjektet, så arbeidet med finansiering pågår fortsatt. Byggestart er godt i gang og planlagt ferdigstillelse i mars 2024.
       progress:
         title: Nybygg våren 2021
         description: |
@@ -30,17 +30,38 @@
         title: Følg med!
         body: Følg oss gjerne på sosiale medier for jevnlige oppdateringer om prosjektet og arbeidsmetoden!
 
+      admission:
+        title: Opptak til Samfundets konsept- og prosjekteringsgruppe
+        description: |
+          Vi skal ha opptak til Samfundets Konsept- og Prosjekteringsgruppe, hvor vi lyser ut stillinger til det nye styret. Disse stillingene skal ha ansvaret for hvert sitt område, som er essensielle i utformingen av Nybygg. Vi trenger dyktige mennesker som kan ha ansvaret for følgende områder: Marked, Prosjektering, Design, Drift, og en nestleder.
+
+          <b>Prosjekteringsleder:</b> Har du et øye for det byggtekniske, erfaring på området, liker å jobbe med prosjektering og se planer komme til livet? Da bør du søke som Prosjekteringsleder!
+          <b>Designansvarlig:</b> Er du interessert i å utforme konsepter, jobbe med interiør og sørge for at lokalene ser bra ut? Søk Designansvarlig!
+          <b>Markedsansvarlig:</b> Vil du sørge for at Samfundets lokaler møter studentene og de besøkende sine ønsker og behov? Søk Markedsansvarlig! Vi trenger deg som vil sørge for at Nybygg sine lokaler er utformet for å ta imot de som vil bruke dem.
+          <b>Driftskoordinator:</b> Vi ser etter deg som kan sørge for at Nybygg sine lokaler møter behovene og ønskene til de driftende, arrangerende, tekniske og kunstneriske som skal bruke lokalene. Vil du lede et forum, samle inn viktig informasjon og sørge for anvendelige lokaler? Søk Driftskoordinator!
+          <b>Nestleder:</b> Vil du være med å skape et helhetlig Nybygg, rådgi og fasilitere for gode prosesser, være i dialog med interne og eksterne samarbeidspartnere, og ha administrative ansvarsoppgaver? Da bør du søke stillingen som Nestleder.
+
+          Nybygg er et unikt prosjekt som vil ha stor påvirkning på Trondheims studenttilværelse i årene som kommer. Dette eventyret vil du være med på! Send en søknad til <a href ="mailto:skp-leder@samfundet.no">skp-leder@samfundet.no</a> innen søndag 16. oktober kl 23:59.
+
       about:
         title: Om prosjektet
-        intro: Studentersamfundet i Trondhjem er Nordens største studentersamfunn, Norges tredje største konsertarrangør og hjertet i studiebyen Trondheim. Samfundet har som formål å være studentenes samlingsplass, en kulturinstitusjon og en arena for samfunnsengasjement og debatt. Organisasjonen er til for sine medlemmer, andre studenter, det akademiske miljø og byens øvrige befolkning. Samfundet fikk sitt nåværende bygg i 1929 da det var 700 studenter i Trondheim. I dag er det nærmere 40 000, og bygget er tilnærmet det samme. Siden 60-tallet har organisasjonen ønsket å bygge ut, og i dag er de fysiske rammene så begrensede at det går direkte utover formålet til organisasjonen. Derfor vil Samfundet bygge ut på Fengselstomta øst for eksisterende bygg.
-        floor_plan: Du kan se de nyeste plantegningene <a href="https://drive.google.com/drive/folders/1y4If6QDYyAhPQ3SHER4p-48d-Rx9PQwM", target="_blank">her</a>.
+        intro: Studentersamfundet i Trondhjem er Nordens største studentersamfunn, Norges tredje største konsertarrangør og hjertet i studiebyen Trondheim. Samfundet har som formål å være studentenes samlingsplass, en kulturinstitusjon og en arena for samfunnsengasjement og debatt. Organisasjonen er til for sine medlemmer, andre studenter, det akademiske miljø og byens øvrige befolkning. Samfundet fikk sitt nåværende bygg i 1929 da det var 700 studenter i Trondheim. I dag er det nærmere 40 000, og bygget er tilnærmet det samme. Siden 60-tallet har organisasjonen ønsket å bygge ut, og i dag er de fysiske rammene så begrensede at det går direkte utover formålet til organisasjonen. Derfor er Samfundet veldig glade for å endelig bli større.
+        floor_plan: Se de nyeste plantegningene her
         financing_title: Finansiering
-        financing: Studentersamfundet eies og drives av sine medlemmer uten driftstilskudd. Dette er unikt i Norge. Utbyggingen er kalkulert til å koste 245 millioner kroner. Samfundet eier Fengselstomta og har en intensjonsavtale med NTNU om å selge den delen av tomta Samfundet selv ikke skal bygge på. Samfundet er i dialog med regjeringen og aktører i studiebyen for å sikre finansiering.
-        applications_title: Søknader
-        applications: 1. november 2020 mottok Kunnskapsdepartementet, ved Henrik Asheim, en søknad om tilskudd til nybygg for Studentersamfundet i Trondhjem. Søknaden beskriver viktigheten av Samfundet for studenter og trøndere i Trondheim, for NTNU og for kulturtilbudet i byen. Det søkes om bevilgning av midler opp mot 50 millioner kroner. Søknaden kan i sin helhet leses <a href="https://drive.google.com/file/d/1V6uMHACHI6OR-OI-wJWYBUjVu96RhuHE/view", target="_blank">her</a>.
+        financing: |
+          Studentersamfundet eies og drives av sine medlemmer uten driftstilskudd. Dette er unikt i Norge. Utbyggingen er kalkulert til å koste 250 millioner kroner. Det er mange som har lyst til å være med å bidra til dette prosjektet. Per i dag har vi fått støtte fra NTNU, Trondheim kommune, Trøndelag fylke, Sit (Studentsamskipnaden i Gjøvik, Ålesund og Trondheim), Velferdstinget, Kunnskapsdepartementet og Reitangruppen. Alle disse bidragene er essensielle for at vi skal kunne realisere bygget.
+
+          Hvis du ønsker å bidra til prosjektet kan du gå inn på <a href="https://samfundet.no/kronerulling", target="_blank"> samfundet.no/kronerulling</a>
+
 
       history:
         title: Historikk
+        description: |
+          Da det runde røde huset vi kjenner så godt ble bygget i 1929, var det omtrent 400 studenter på NTNU. Nå er det omtrent 40 000 studenter i denne byen.  Allerede i 1963 ble de første forslagene om utvidelse presentert for Storsalen. Siden den gangen har det vært mange nybyggkomitéer og mange forsøk på å sette igang bygget.
+
+          Rundt 2016 fikk prosjektet et nytt giv. Det ble fort oppdaget at området nord for Hovedbygget på Gløshaugen preges delvis av kvikkleire i grunnen. Samfundet edet arbeidet med å sikre området fra Fengselstomta til Grensen. Høsten 2018 fikk Samfundet økonomisk tilskudd fra kommunen og NTNU til å gjennomføre tiltaket med en motfylling/park langs Nidelva. 16.11.19 godkjente etablering av en motfylling i Nidelva med et budsjett på 19,5 mill. med tillegg av merverdiavgift. Fyllingen ble ferdigstilt høsten 2020.
+
+          Videre ble det sendt ut et parallelloppdrag for å finne ut hvilke arkitekter som skulle tildeles oppdraget med å tegne nybygget. Det var tre sterke forslag, og man valgte å gå videre med Eggen Arkitekter sitt forslag. Dette er det man se på bildene som er vist på denne siden.
         intro: Under <a href="https://www.facebook.com/events/238633237534059/?notif_t=plan_user_joined&notif_id=1599821483749874", target="_blank"> Samfundsmøte; Demokratiets lyskastere</a> lørdag 19. september 2020 gav Storsalen sin tilslutning til å gå videre i prosessen med det leverte skisseprosjektet.
                  Skisseprosjektet innebar leveransen innebærer en konkretisering av krav og behov i utformingen av bygget, samt vurdering av tekniske forhold i og rundt byggingen. Tegningsleveransen tilhørende skisseprosjektet er tilgjengelig <a href="https://drive.google.com/file/d/1TvgQ6JO9kt8nrMc8rw9tJ0hf8iCa7uWl/view", target="_blank">her</a>.
                  Under den  <a href="https://consent.youtube.com/m?continue=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DPOQKO0ZhZGA&gl=NO&m=0&pc=yt&uxe=23983172&hl=no&src=1", target="_blank">digitale utgaven av Nybyggprat</a>  gikk vi, sammen med prosessleder, gjennom prosessen hittil, skisseprosjektet og videre planer for høsten. Her snakker vi oss gjennom plantegningene og spørsmål vi har fått tilsendt. Derfor anbefaler vi alle medlemmer og andre interesserte å se gjennom streamen for oppdatert informasjon.
@@ -57,7 +78,6 @@
           Her er bidragene fra parallelloppdraget;
 
         paralell_assignment_2: Forslagene ble presentert og diskutert på <a target="_blank" href=" https://www.facebook.com/events/1061062644065827/"> Samfundsmøte; Samfundet bygger ut</a> en uke etter avdukingen. Har du innspill? Ta gjerne kontakt.
-        archive: Se tidligere vedtak her
       images:
         image_1: UKA
         image_2: Mellomrommet
@@ -65,17 +85,20 @@
         image_4: Grønnbaren
 
       documents:
-          title: Styrende Dokumenter
-          description: |
-            Formelt er Samfundets Nybyggkomité (SNK) en FSUG (Finansstyrets undergruppe) som forbereder saker for Finansstyret (FS). Komiteen legger frem statusrapporter og krav om avklaringer løpende for FS, og hvor FS sender dette til behandling i Storsalen for å få medlemmenes tilslutning til både prosess og de resultatene som fremkommer.
+        title: Styrende dokumenter
+        description: |
+          Formelt er Samfundets Nybyggkomité (SNK) en FSUG (Finansstyrets undergruppe) som forbereder saker for Finansstyret (FS). Komiteen legger frem statusrapporter og krav om avklaringer løpende for FS, og hvor FS sender dette til behandling i Storsalen for å få medlemmenes tilslutning til både prosess og de resultatene som fremkommer.
 
-            Det bør legges opp til at Storsalen har reell innflytelse, herunder kan forkaste forslag helt eller delvis, be om at prosessen stanser, utsettes eller fremmes for ny behandling. Det må være en målsetting å få en så reell debatt som mulig ved hver behandling.
-          doc1: https://samfundet.no/upload/documents/files/000/000/575/FS_bok_2018.pdf?1540925719
-          doc2: https://drive.google.com/file/d/1vt75E8beZuLnujduNP_VGEuUmmCeE9nS/view?usp=sharing
-          button1_title: Lover og statutter
-          button2_title: Prosessplan for nybygg
+          Det bør legges opp til at Storsalen har reell innflytelse, herunder kan forkaste forslag helt eller delvis, be om at prosessen stanser, utsettes eller fremmes for ny behandling. Det må være en målsetting å få en så reell debatt som mulig ved hver behandling.
+        process_plan_title: Prosessplan for nybygg
+        process_plan_document: https://drive.google.com/file/d/1vt75E8beZuLnujduNP_VGEuUmmCeE9nS/view?usp=sharing
+        resolutions_title: Vedtak for nybygg
+
+      table_of_content:
+        title: Innhold
 
       table:
+        title: Kontaktinformasjon
         name: Navn
         email: Epost
         process_leader: Prosessleder
@@ -89,6 +112,7 @@
         artisic: Kunstnerisk
         arranging: Arrangement
         studentmedia: Studentmediene
+        skp: SKP
 
       excavation:
         title: Informasjon om arbeider bak Samfundet i august og september
@@ -112,3 +136,36 @@
         body: |
           Denne lørdagen fremmer FS et forslag om å øke budsjettrammen for nybygg til 245 millioner. Bakgrunnen for dette vedtaket er at totalentreprisen har vært på anbud og det viser seg at det blir dyrere enn det som ble vedtatt tidligere i høst. Fordelen med denne totalentreprisen er at det vil skape mindre usikkerhet når vi begynner å bygge. Se saksvedlegg for flere detaljer om budsjettet.
 
+      faq:
+        question1: Hvem kan jeg kontakte hvis jeg lurer på noe?
+        answer1: |
+          Hvis du lurer på noe om selve byggeprosessen eller bygget: prosessleder@samfundet.no.
+          Hvis du er frivillig kan du se under kontaktinfo for å finne representanten som representerer ditt virksomhetsområde.
+          Hvis du har andre spørsmål enn dette: nybygg@samfundet.no.
+        question2: Når blir det ferdig?
+        answer2: |
+          Selve bygget kommer til å være ferdig februar 2024, deretter kommer det til å ta litt tid å innrede de nye lokalene. Vi regner med åpning av huset for publikum i mars 2024.
+        question3: Hva blir nytt i nybygg?
+        answer3: |
+          Det blir tre nye serveringslokaler og tre nye scener. Det kommer også til å bli gjort endringer i noen av lokalene som er i det eksisterende bygget.
+        question4: Hvordan vil det bli i byggeperioden?
+        answer4: |
+          Vi er ferdige med den delen av byggingen som lager mest lyd: sputningen. Videre ligger vi an til å koble de to byggene sammen rundt høsten 2023. Vi skal jobbe for at gjester og frivillige skal kunne bruke det eksisterende bygget så vanlig som mulig under hele byggeperioden. Mer informasjon om dette kommer når det blir relevant.
+        question5: Kommer det til å bli forsinket?
+        answer5: |
+          Det har vært litt forsinkelser på grunn av grunnforholdene på tomta, derfor regner vi nå med åpning i mars 2024.
+        question6: Hvor mye koster det?
+        answer6: |
+          Totalt vil bygget koste 250 millioner kroner. Se mer om finansiering under “Om prosjektet”.
+        question7: Hvordan ser det ut?
+        answer7: |
+          Se de nyeste plantegningene under “Om prosjektet”.
+        question8: Hva blir annerledes i eksisterende bygg?
+        answer8: |
+          De lokalene som blir koblet direkte på det eksisterende bygget vil nok se noen endringer, enten fysiske endringer eller i bruksområde. Dette gjelder spesielt Daglighallen og Knaus. Disse funksjonene er fortsatt enormt viktige for huset, men det kan hende de blir å finne andre steder på huset.
+        question9: Hvor stor kapasitet har de ulike scenene?
+        answer9: |
+          Dette er ennå ikke helt avklart, men vi vet at de ikke kommer til å være større enn Storsalen og at en av de kommer til å ta over funksjonen Knaus har i dag som intimscene.
+        question10: Hvor stor kapasitet får Nybygg og gamle Samfundet tilsammen?  Hvor stor kapasitet har de ulike scenene?
+        answer10: |
+          Dette er heller ikke helt avklart ennå, men vi vet at bygningmassen til nybygg er 50% av det eksisterende bygget, så det kan gi en liten pekepinn.

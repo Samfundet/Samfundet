@@ -1,0 +1,33 @@
+en:
+  crowd_funding:
+    index:
+      title: Crowd funding
+      intro: No translation
+      thanks:
+        title: No translation
+        first: No translation
+        second: No translation
+        third: No translation
+      other: No translation
+      letter: No translation
+      businesses: No translation
+      supporter: Supporters
+    competition:
+      title: No translation
+      body: No translation
+      read_more: No translation
+      student_union: No translation
+      group: No translation
+    amount: Amount
+    donors: Donors
+    type:
+      group: Group
+      student_union: Student union
+    admin:
+      admin: Administrate supporters
+      all: All supporters
+      new: Create new supporter
+      edit: Edit supporter
+      applet:
+        top: Crowd Funding
+        show: View crowd funding

@@ -5,7 +5,7 @@
 ###########################################
 
 # Specify ruby version that we use. Bundler gives an error when a different ruby is used.
-ruby '2.5.5'
+ruby '~> 2.7.0' # From .ruby-version.
 
 # The repository from which we're fetching our rubygems.
 source 'https://rubygems.org'
@@ -25,7 +25,7 @@ gem 'lazy_high_charts', '~> 1.5.0'
 gem 'acts_as_list', '~> 1.0.0'
 
 # Use activerecord as session store
-gem 'activerecord-session_store', '~> 1.1.0'
+gem 'activerecord-session_store', '~> 2.0.0'
 
 # bcrypt() is a sophisticated and secure hash algorithm
 # designed by The OpenBSD project for hashing passwords.
@@ -80,7 +80,7 @@ gem 'icalendar', '~> 2.4.0'
 # For example, we can replace the path '/groups' with the paths
 # '/gjenger' and '/en/groups' which both point to the same page.
 # See: config/locales/routes/i18n-routes.yml
-gem 'route_translator', '~> 5.6.0'
+gem 'route_translator', '~> 7.1.0'
 
 # RedCarpet renders Markdown, a light-weight markup language, to HTML.
 # See: config/initializers/haml_markdown.rb
@@ -91,12 +91,12 @@ gem 'route_downcaser', '~> 1.2.0'
 
 # SamfundetDomain is a gem which provides the application with samfundets domain models.
 gem 'samfundet_domain', git: 'https://github.com/Samfundet/SamfundetDomain.git'
-# gem 'samfundet_domain', git: 'https://github.com/Samfundet/SamfundetDomain.git', branch: 'rails-5-2'
+# gem 'samfundet_domain', git: 'https://github.com/Samfundet/SamfundetDomain.git', branch: 'update-ruby-version'
 # gem 'samfundet_domain', path: '../SamfundetDomain'
 
 # SamfundetAuth is a gem which provides the application with methods for authenticating against mdb2.
 gem 'samfundet_auth', git: 'https://github.com/Samfundet/SamfundetAuth.git'
-# gem 'samfundet_auth', git: 'https://github.com/Samfundet/SamfundetAuth.git', branch: 'rails-5-2'
+# gem 'samfundet_auth', git: 'https://github.com/Samfundet/SamfundetAuth.git', branch: 'update-ruby-version'
 # gem 'samfundet_auth', path: '../SamfundetAuth'
 
 # will_paginate is an adaptive pagination plugin.
@@ -104,7 +104,7 @@ gem 'samfundet_auth', git: 'https://github.com/Samfundet/SamfundetAuth.git'
 gem 'will_paginate', '~> 3.1.0'
 
 # for file uploads, see https://github.com/thoughtbot/paperclip
-gem 'paperclip', '~> 5.2.0'
+gem 'paperclip', '~> 6.1.0'
 
 # automatic compression of images uploaded via paperclip
 gem 'paperclip-compression', '~> 1.1.0'
@@ -159,11 +159,8 @@ group :development do
   # binding_of_caller is an optional dependency of better_errors which
   # allows for features such as local / instance variable expection,
   # REPL debugging etc.
-  gem 'better_errors', '~> 2.5.1'
+  gem 'better_errors', '~> 2.8.0'
   gem 'binding_of_caller', '~> 0.8.0'
-
-  # magic_encoding adds an 'encoding: utf-8' comment to all .rb files
-  gem 'magic_encoding', '~> 0.0.0'
 
   # rails-footnotes adds information useful for debugging to the bottom
   # of our web pages for easy reference.

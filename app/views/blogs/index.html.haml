@@ -4,14 +4,14 @@
 = content_for :banner_image do
   .banner
     #banner-image-link
-      .banner-image{ style: "background-image: url(#{asset_path('blog/studenterbloggen.jpg')})" }
+      .banner-image{ style: "background-image: url(#{asset_path('new_building/nybygg_kveld.png')})" }
         .container
           .image-text.left
             .wrapper
-              .front-elem.where{ style: "color: #5F6C9F" }
+              .front-elem.where{ style: "color: #FFFFFF" }
                 = t('layouts.application.samfundets')
             .wrapper
-              .front-elem.date{ style: "color: #5F6C9F" }
+              .front-elem.date{ style: "color: #FFFFFF" }
                 = t('layouts.application.menu.blog')
 
 - if can? :manage, Blog

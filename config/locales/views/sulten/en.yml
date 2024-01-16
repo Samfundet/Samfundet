@@ -48,6 +48,9 @@ en:
         from: "Start time"
         duration: "Duration"
         type_explanation: "What is the purpose of the visit? This us helps determine what kind of table you will be given."
+        food_closed: "Food service at Lyche will open on August 17."
+        food_not_possible: "Until then, it will not be possible to order food at Lyche."
+        date_food_closed: "Please select a later date."
         find_times: "Find available times"
         create: "make reservation"
         update: "update reservation"
@@ -132,12 +135,16 @@ en:
           title: "Starters"
           lyche_bread:
             name: "Lyche bread"
-            description: "Inspired by Italian ciabatta. Served with aioli."
-            allergies: "Allergies: Gluten (wheat), sulfite and eggs"
+            description: "Served with some aioli on the side. Can be served with vegan aioli or spiced butter instead. Vegetarian, can be made vegan."
+            allergies: "Allergies: Gluten (wheat), sulfite and eggs (aioli)"
+          lyche_snitter:
+            name: "Lyche snitter"
+            description: "Lyche bread with beetroot hummus, ruccula, mango and pistou. Vegetarian, can be made vegan."
+            allergies: "Allergener: Gluten (wheat), milk (pistou), sesame (hummus). May contain traces of peanuts: hummus"
           side_salad:
             name: "Side salad"
-            description: "With cherry tomatoes and vinaigrette."
-            allergies: "Allergies: Sulfite"
+            description: "With tomato and pickled red onion. Vegan."
+            allergies: "Allergies: Sulfite (saladvinaigrette)"
           soup:
             name: "Soup"
             description: "Varies by season. Ask one of our waiters about today's soup. Served with Lyche bread and butter."
@@ -147,42 +154,51 @@ en:
           double: "Double"
           lyche_burger:
             name: "Lyche burger"
-            ingredients: "Aioli, cherry tomatoes, lettuce, onion compote, cheese, bacon and pistou for baked potatoes."
-            allergies: "Allergies: Gluten (wheat), sulfite and eggs"
-            recommendations: "The bar recommends: E.C. Dahls Bolt IPA"
+            ingredients: "Bull and n’duja meat, served with onion compote, bacon, tomatoes, aioli, cheddar, salad and potatoes on the side. The burger can be served with gluten-free bread, and can be served without cheese and pistol (milk allergy)."
+            allergies: "Allergies: Egg (burger, aioli, pistou - traces of egg in Manchego), mustard (burger, aioli), sulfite (burger, saladvinaigrette, onion compote, aioli), gluten (wheat, rye, barley): bun, celery (burger pepper mix), milk (burger cheese, pistou). The meat patty contains pork."
+            recommendations: "The bar recommends: Hacienda Lopez De Haro (red)"
           blue_cheese_burger:
             name: "Blue cheese burger"
-            ingredients: "Aioli, cherry tomatoes, lettuce, sweet and sour currant and rhubarb jam, blue cheese from Selbu and pistou for oven-baked potatoes."
-            allergies: "Allergies: Pork, eggs, gluten (wheat, rye, barley), milk, celery, mustard and sulphite"
-            recommendations: "The bar recommends: Lychelig Trippel"
-          sweet_potato_burger:
-            name: "Sweet potato burger"
-            ingredients: "Aioli, cherry tomatoes, lettuce, pickled shallots, manchego and pistou for baked potatoes. Vegetarian. Can be served as a vegan burger."
-            allergies: "Allergies: Gluten (wheat, rye, barley), sulfite, mustard, milk and eggs"
+            ingredients: "Bull and n’duja meat, served with currant and rhubarb marmalade, tomatoes, aioli, bluecheese, salad and potato on the side. The burger can be served with gluten-free bread, and can be served without cheese and pistol (milk allergy)."
+            allergies: "Allergies: Gluten (wheat, rye, barley): bun, egg (burger, aioli, pistou - traces from Manchego), celery (burger, pepper mix), mustard (burger, aioli), sulfite (burger, saladvinaigrette, aioli), milk (cheese, pistou). The meat patty contains pork."
+            recommendations: "The bar recommends: Trippel (DH beer)"
+          mushroom_burger:
+            name: "Sweet Potato Burger"
+            ingredients: "Sweet potato and bean burger, served with pickled red onion, aioli, tomato, manchego, salad and potato on the side. The burger can be served with gluten-free bread, and can be served without cheese and pistol (milk allergy). Vegetarian, can be made vegan."
+            allergies: "Allergies: Gluten (wheat, rye, barley): bun, sulfite (saladvinaigrette, pickled red onion, aioli), milk (pistou, Manchego), mustard (aioli, burger), egg (sioli, pistou - traces in Manchego), Manchego."
             recommendations: "The bar recommends: Brooklyn Lager"
         main_courses:
           title: "Main courses"
-          trout:
-            name: "Oven Baked Trout"
-            description: "Trout with celery cream, beetroot salad, asparagus and apple reduction"
-            allergies: "Allergies: Celery, Sulfite, Fish, Milk protein "
-            recommendations: "The bar recommends: Sancerre/Riesling (wine) or 1664 blanc (beer)"
-          seasonal_salad:
-            name: "Seasonal salad"
-            description: "Varies throughout the year with seasonal flavors. Ask one of our waiters for more information. Served with lyche bread and spiced butter."
-            allergies: "Allergies: Ask one of our waiters."
-            recommendations: "The bar recommends: ECD Lamo wit"
+          duck:
+            name: "Duck Confit"
+            description: "With celery root puree, aigre doux and asparagus."
+            allergies: "Allergies: Milk (butter, cream - celery root puree), sulfite (sauce - Aigre Doux), celery (sauce - Aigre Doux)."
+            recommendations: "The bar recommends: Cantos"
+          pie:
+            name: "Mushroom pie"
+            description: "Served with feta cheese. Vegetarian. Can be served with a gluten-free pie crust"
+            allergies: "Allergies: Milk (butter, cream, feta - in the pie), gluten (pie crust)"
+            recommendations: "The bar recommends: ju de vie"
+          cod:
+            name: "Cod with byggotto"
+            description: "Oven baked cod with byggotto with spinach and leek. Can be served without byggotto."
+            allergies: "Allergies: Milk (byggotto), gluten (byggotto), fish"
+            recommendations: "The bar recommends: Chardonnay/Einstok white ale"
+          cauliflower:
+            name: "Vegan Cauliflower"
+            description: "Vegan Cauliflower with couscous salad, red beet hummus og citronette dressing. Vegan. Can be served without hummus."
+            allergies: "Allergies: Sesame (hummus), may contain traces of peanuts (hummus - Tahini)"
+            recommendations: "The bar recommends: Aroa Laia"
         desserts:
           title: "Dessert"
           ice_cream:
-            name: "Ice cream"
-            description: "Ice cream and / or sorbet. Ask one of our waiters about today's flavors."
+            name: "Sorbet"
+            description: "Ice cream and/or sorbet. Ask one of our waiters about today's flavors."
             allergies: "Allergies: Ask one of our waiters."
-          passionfruit:
-            name: "Passionfruit pie"
-            description: "With vanilla ice cream and blackberry coulis"
-            allergies: "Allergies: Milk protein, Egg"
-            recommendations: "The bar recommends: Disko or Rasberry sour"
+          creme_catalana:
+            name: "Crème catalana"
+            description: "Crème brûlée with flavors of orange and cinnamon."
+            allergies: "Allergies: Milk and eggs (crème catalana)"
         beer_on_tap:
           title: "Beer on tap"
           weekend: "Weekend"
@@ -211,7 +227,6 @@ en:
         info: |
           Tables must be reserved at least one day in advance. Food can be pre-ordered so you do not have to wait when you arrive.
           Note that the majority of people must be a member of the Student Society to reserve and that all must be over 20 years after 20:00 on weekends.
-          With regard to infection control, we can not guarantee that everyone gets to sit together.
         development: "Our reservation system is still under development, and reservation errors may therefore occur. Click here to order via email:"
         closed_period: "Lyche is closed during the period "
         one_day_future: "Reservations must unfortunately be made at least one day in advance."

@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_17_132844) do
+ActiveRecord::Schema.define(version: 2023_08_06_185604) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "admissions", id: :serial, force: :cascade do |t|
+  create_table "admissions", force: :cascade do |t|
     t.string "title"
     t.datetime "shown_application_deadline"
     t.datetime "user_priority_deadline"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2020_12_17_132844) do
     t.text "groups_with_separate_admission"
   end
 
-  create_table "applicants", id: :serial, force: :cascade do |t|
+  create_table "applicants", force: :cascade do |t|
     t.string "firstname"
     t.string "surname"
     t.string "email"
@@ -39,9 +39,10 @@ ActiveRecord::Schema.define(version: 2020_12_17_132844) do
     t.boolean "interested_other_positions"
     t.boolean "disabled", default: false
     t.integer "campus_id"
+    t.boolean "verified", default: false, null: false
   end
 
-  create_table "areas", id: :serial, force: :cascade do |t|
+  create_table "areas", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.datetime "created_at", null: false
@@ -49,7 +50,7 @@ ActiveRecord::Schema.define(version: 2020_12_17_132844) do
     t.integer "page_id"
   end
 
-  create_table "billig_events", primary_key: "event", id: :serial, force: :cascade do |t|
+  create_table "billig_events", primary_key: "event", force: :cascade do |t|
     t.integer "a4_ticket_layout"
     t.integer "dave_id"
     t.integer "dave_time_id"
@@ -87,7 +88,7 @@ ActiveRecord::Schema.define(version: 2020_12_17_132844) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "billig_price_groups", primary_key: "price_group", id: :serial, force: :cascade do |t|
+  create_table "billig_price_groups", primary_key: "price_group", force: :cascade do |t|
     t.boolean "can_be_put_on_card"
     t.boolean "membership_needed"
     t.boolean "netsale"
@@ -98,7 +99,7 @@ ActiveRecord::Schema.define(version: 2020_12_17_132844) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "billig_purchases", primary_key: "purchase", id: :serial, force: :cascade do |t|
+  create_table "billig_purchases", primary_key: "purchase", force: :cascade do |t|
     t.integer "owner_member_id"
     t.string "owner_email"
   end
@@ -109,7 +110,7 @@ ActiveRecord::Schema.define(version: 2020_12_17_132844) do
     t.date "membership_ends"
   end
 
-  create_table "billig_ticket_groups", primary_key: "ticket_group", id: :serial, force: :cascade do |t|
+  create_table "billig_ticket_groups", primary_key: "ticket_group", force: :cascade do |t|
     t.integer "event"
     t.boolean "is_theater_ticket_group"
     t.integer "num"
@@ -120,7 +121,7 @@ ActiveRecord::Schema.define(version: 2020_12_17_132844) do
     t.integer "ticket_limit"
   end
 
-  create_table "billig_tickets", primary_key: "ticket", id: :serial, force: :cascade do |t|
+  create_table "billig_tickets", primary_key: "ticket", force: :cascade do |t|
     t.integer "price_group", null: false
     t.integer "purchase", null: false
     t.datetime "used"
@@ -130,7 +131,7 @@ ActiveRecord::Schema.define(version: 2020_12_17_132844) do
     t.integer "point_of_refund"
   end
 
-  create_table "blogs", id: :serial, force: :cascade do |t|
+  create_table "blogs", force: :cascade do |t|
     t.string "title_no"
     t.text "content_no"
     t.integer "author_id"
@@ -145,19 +146,27 @@ ActiveRecord::Schema.define(version: 2020_12_17_132844) do
     t.text "content_en"
   end
 
-  create_table "campus", id: :serial, force: :cascade do |t|
+  create_table "campus", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "active", default: true
   end
 
-  create_table "document_categories", id: :serial, force: :cascade do |t|
+  create_table "crowd_funding_supporters", force: :cascade do |t|
+    t.string "name"
+    t.string "name_short"
+    t.integer "amount", default: 0
+    t.integer "supporter_type"
+    t.integer "donors", default: 1
+  end
+
+  create_table "document_categories", force: :cascade do |t|
     t.string "title_en"
     t.string "title_no"
   end
 
-  create_table "documents", id: :serial, force: :cascade do |t|
+  create_table "documents", force: :cascade do |t|
     t.string "title"
     t.date "publication_date"
     t.integer "category_id"
@@ -170,7 +179,15 @@ ActiveRecord::Schema.define(version: 2020_12_17_132844) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "events", id: :serial, force: :cascade do |t|
+  create_table "email_verifications", force: :cascade do |t|
+    t.string "verification_hash", null: false
+    t.integer "count", default: 1, null: false
+    t.integer "applicant_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "events", force: :cascade do |t|
     t.string "non_billig_title_no"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -207,12 +224,11 @@ ActiveRecord::Schema.define(version: 2020_12_17_132844) do
     t.integer "duration", default: 120
     t.string "youtube_embed"
     t.string "codeword", default: ""
-    t.integer "feedback_survey_id"
-    t.boolean "has_survey"
+    t.string "registration_link"
     t.index ["billig_event_id"], name: "index_events_on_billig_event_id", unique: true
   end
 
-  create_table "everything_closed_periods", id: :serial, force: :cascade do |t|
+  create_table "everything_closed_periods", force: :cascade do |t|
     t.text "message_no"
     t.datetime "closed_from"
     t.datetime "closed_to"
@@ -221,49 +237,11 @@ ActiveRecord::Schema.define(version: 2020_12_17_132844) do
     t.text "event_message_en"
   end
 
-  create_table "external_organizers", id: :serial, force: :cascade do |t|
+  create_table "external_organizers", force: :cascade do |t|
     t.string "name"
   end
 
-  create_table "feedback_alternatives", id: :serial, force: :cascade do |t|
-    t.integer "question_id"
-    t.integer "index"
-    t.string "text", limit: 255
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "feedback_answers", id: :serial, force: :cascade do |t|
-    t.integer "survey_id"
-    t.integer "question_id"
-    t.integer "event_id"
-    t.string "answer", limit: 255
-    t.string "token", limit: 255
-    t.datetime "date"
-  end
-
-  create_table "feedback_questions", id: :serial, force: :cascade do |t|
-    t.integer "index"
-    t.string "text", limit: 255
-    t.boolean "has_text_input"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "feedback_surveys", id: :serial, force: :cascade do |t|
-    t.string "title", limit: 255
-    t.boolean "open"
-    t.text "end_message"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "feedback_surveys_questions", id: :serial, force: :cascade do |t|
-    t.integer "question_id"
-    t.integer "survey_id"
-  end
-
-  create_table "front_page_locks", id: :serial, force: :cascade do |t|
+  create_table "front_page_locks", force: :cascade do |t|
     t.integer "lockable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -273,26 +251,14 @@ ActiveRecord::Schema.define(version: 2020_12_17_132844) do
     t.index ["position"], name: "index_front_page_events_on_position"
   end
 
-  create_table "front_page_messages", id: :serial, force: :cascade do |t|
-    t.string "title_no"
-    t.string "title_en"
-    t.string "description_np"
-    t.string "description_en"
-    t.integer "member_id"
-    t.datetime "visible_from"
-    t.datetime "visible_to"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "group_types", id: :serial, force: :cascade do |t|
+  create_table "group_types", force: :cascade do |t|
     t.string "description", null: false
     t.integer "priority", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "groups", id: :serial, force: :cascade do |t|
+  create_table "groups", force: :cascade do |t|
     t.string "name"
     t.string "abbreviation"
     t.string "website"
@@ -304,7 +270,7 @@ ActiveRecord::Schema.define(version: 2020_12_17_132844) do
     t.integer "page_id"
   end
 
-  create_table "images", id: :serial, force: :cascade do |t|
+  create_table "images", force: :cascade do |t|
     t.string "title"
     t.integer "uploader_id"
     t.string "image_file_file_name"
@@ -320,7 +286,7 @@ ActiveRecord::Schema.define(version: 2020_12_17_132844) do
     t.integer "tag_id"
   end
 
-  create_table "info_boxes", id: :serial, force: :cascade do |t|
+  create_table "info_boxes", force: :cascade do |t|
     t.string "title_no"
     t.string "title_en"
     t.text "body_no"
@@ -336,8 +302,8 @@ ActiveRecord::Schema.define(version: 2020_12_17_132844) do
     t.datetime "updated_at", null: false
     t.integer "position"
   end
-  
-  create_table "interviews", id: :serial, force: :cascade do |t|
+
+  create_table "interviews", force: :cascade do |t|
     t.datetime "time"
     t.string "priority", limit: 10
     t.integer "job_application_id"
@@ -345,12 +311,12 @@ ActiveRecord::Schema.define(version: 2020_12_17_132844) do
     t.datetime "updated_at", null: false
     t.string "location"
     t.text "comment"
-    t.string "applicant_status", limit: 10
+    t.string "applicant_status"
     t.index ["job_application_id"], name: "index_interviews_on_job_application_id"
     t.index ["priority"], name: "index_interviews_on_priority"
   end
 
-  create_table "job_applications", id: :serial, force: :cascade do |t|
+  create_table "job_applications", force: :cascade do |t|
     t.text "motivation"
     t.integer "priority"
     t.integer "applicant_id"
@@ -362,7 +328,7 @@ ActiveRecord::Schema.define(version: 2020_12_17_132844) do
     t.index ["withdrawn"], name: "index_job_applications_on_withdrawn"
   end
 
-  create_table "job_tags", id: :serial, force: :cascade do |t|
+  create_table "job_tags", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -373,7 +339,7 @@ ActiveRecord::Schema.define(version: 2020_12_17_132844) do
     t.integer "job_tag_id"
   end
 
-  create_table "jobs", id: :serial, force: :cascade do |t|
+  create_table "jobs", force: :cascade do |t|
     t.integer "group_id"
     t.integer "admission_id"
     t.string "title_no"
@@ -390,7 +356,7 @@ ActiveRecord::Schema.define(version: 2020_12_17_132844) do
     t.index ["admission_id"], name: "index_jobs_on_admission_id"
   end
 
-  create_table "log_entries", id: :serial, force: :cascade do |t|
+  create_table "log_entries", force: :cascade do |t|
     t.string "log"
     t.integer "admission_id"
     t.integer "group_id"
@@ -400,7 +366,7 @@ ActiveRecord::Schema.define(version: 2020_12_17_132844) do
     t.integer "member_id"
   end
 
-  create_table "members", primary_key: "medlem_id", id: :serial, force: :cascade do |t|
+  create_table "members", primary_key: "medlem_id", force: :cascade do |t|
     t.string "fornavn"
     t.string "etternavn"
     t.string "mail"
@@ -408,14 +374,14 @@ ActiveRecord::Schema.define(version: 2020_12_17_132844) do
     t.string "passord"
   end
 
-  create_table "members_roles", id: :serial, force: :cascade do |t|
+  create_table "members_roles", force: :cascade do |t|
     t.integer "member_id"
     t.integer "role_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "page_revisions", id: :serial, force: :cascade do |t|
+  create_table "page_revisions", force: :cascade do |t|
     t.string "title_no"
     t.string "title_en"
     t.text "content_no"
@@ -429,7 +395,7 @@ ActiveRecord::Schema.define(version: 2020_12_17_132844) do
     t.index ["page_id", "version"], name: "index_page_revisions_on_page_id_and_version", unique: true
   end
 
-  create_table "pages", id: :serial, force: :cascade do |t|
+  create_table "pages", force: :cascade do |t|
     t.string "name_no", limit: 60, null: false
     t.integer "role_id", null: false
     t.datetime "created_at", null: false
@@ -440,23 +406,24 @@ ActiveRecord::Schema.define(version: 2020_12_17_132844) do
     t.index ["name_no"], name: "index_documents_on_name", unique: true
   end
 
-  create_table "password_recoveries", id: :serial, force: :cascade do |t|
+  create_table "password_recoveries", force: :cascade do |t|
     t.string "recovery_hash"
     t.integer "applicant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "pg_search_documents", id: :serial, force: :cascade do |t|
+  create_table "pg_search_documents", force: :cascade do |t|
     t.text "content"
-    t.integer "searchable_id"
     t.string "searchable_type"
+    t.bigint "searchable_id"
     t.datetime "publish_at", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id"
   end
 
-  create_table "price_groups", id: :serial, force: :cascade do |t|
+  create_table "price_groups", force: :cascade do |t|
     t.string "name"
     t.integer "price"
     t.integer "event_id"
@@ -475,7 +442,7 @@ ActiveRecord::Schema.define(version: 2020_12_17_132844) do
     t.datetime "sent_at", null: false
   end
 
-  create_table "roles", id: :serial, force: :cascade do |t|
+  create_table "roles", force: :cascade do |t|
     t.string "name"
     t.string "title"
     t.text "description"
@@ -487,7 +454,7 @@ ActiveRecord::Schema.define(version: 2020_12_17_132844) do
     t.boolean "passable", default: false
   end
 
-  create_table "sessions", id: :serial, force: :cascade do |t|
+  create_table "sessions", force: :cascade do |t|
     t.string "session_id", null: false
     t.text "data"
     t.datetime "created_at", null: false
@@ -496,7 +463,7 @@ ActiveRecord::Schema.define(version: 2020_12_17_132844) do
     t.index ["updated_at"], name: "index_sessions_on_updated_at"
   end
 
-  create_table "standard_hours", id: :serial, force: :cascade do |t|
+  create_table "standard_hours", force: :cascade do |t|
     t.boolean "open"
     t.time "open_time"
     t.time "close_time"
@@ -520,14 +487,14 @@ ActiveRecord::Schema.define(version: 2020_12_17_132844) do
     t.integer "neighbour_id"
   end
 
-  create_table "sulten_reservation_types", id: :serial, force: :cascade do |t|
+  create_table "sulten_reservation_types", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "description"
   end
 
-  create_table "sulten_reservations", id: :serial, force: :cascade do |t|
+  create_table "sulten_reservations", force: :cascade do |t|
     t.datetime "reservation_from"
     t.integer "people"
     t.integer "table_id"
@@ -542,14 +509,14 @@ ActiveRecord::Schema.define(version: 2020_12_17_132844) do
     t.datetime "reservation_to"
   end
 
-  create_table "sulten_table_reservation_types", id: :serial, force: :cascade do |t|
+  create_table "sulten_table_reservation_types", force: :cascade do |t|
     t.integer "table_id"
     t.integer "reservation_type_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "sulten_tables", id: :serial, force: :cascade do |t|
+  create_table "sulten_tables", force: :cascade do |t|
     t.integer "number"
     t.integer "capacity"
     t.text "comment"
@@ -558,13 +525,14 @@ ActiveRecord::Schema.define(version: 2020_12_17_132844) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "tags", id: :serial, force: :cascade do |t|
+  create_table "tags", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   add_foreign_key "blogs", "images", name: "blog_articles_image_id_fk"
+  add_foreign_key "email_verifications", "applicants"
   add_foreign_key "events", "images", name: "events_image_id_fk"
   add_foreign_key "groups", "group_types", name: "groups_group_type_id_fk"
   add_foreign_key "images_tags", "images", name: "images_tags_image_id_fk"

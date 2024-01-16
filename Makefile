@@ -42,8 +42,25 @@ deploy-staging:
 git-hooks:
 	ln -fs hooks/* .git/hooks
 
+create-postgres-user:
+	echo "CREATE USER samfundet WITH PASSWORD 'samfundet';\nALTER USER samfundet CREATEDB;" | sudo -u postgres psql
+
 localseed:
 	RAILS_ENV=development rake db:seed
+
+db-drop:
+	RAILS_ENV=development rails db:drop
+
+db-create:
+	RAILS_ENV=development rails db:create
+
+db-migrate:
+	RAILS_ENV=development rails db:migrate
+
+db-recreate:
+	RAILS_ENV=development rails db:drop
+	RAILS_ENV=development rails db:create
+	RAILS_ENV=development rails db:setup
 
 truncate:
 	RAILS_ENV=development rake db:seed:development:truncate

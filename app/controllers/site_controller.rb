@@ -44,4 +44,7 @@ class SiteController < ApplicationController
     send_file(pdf_filename, filename: 'samfundet-brosjyre.pdf', disposition: 'inline', type: 'application/pdf')
   end
 
+  def generic_redirect
+    redirect_to 'https://no.surveymonkey.com/r/samfundet-valgundersokelse'
+  end
 end

@@ -102,11 +102,11 @@ en:
     paperticket: "Digital ticket by email:"
     confirm_email: "Confirm email:"
     about_ticket: "About ticket types:"
-    about_ticketless_html: "If you choose <em>ticketless</em>, your membership card itself will be your ticket. You will then simply swipe your card when you enter Samfundet. <strong>Please note:</strong> You may only have one ticket on your card per event. All the tickets will be sent to your email. "
+    about_ticketless_html: "If you choose <em>ticketless</em>, your membership card itself will be your ticket. You will then simply swipe your card when you enter Samfundet. <br><strong>Please note:</strong> You may only have one ticket on your card per event. All the tickets will be sent to your email. "
     about_paperticket_html: "If you choose <em>digital ticket</em>, your ticket(s) will be sent to your email. The tickets barcode will be scanned when you enter Samfundet, either from your phone or a printed out copy."
     visa_or_master: "VISA- or Mastercard number:"
     expiration_month: "Expiration date:"
-    commit_buy: Complete payment
+    commit_buy: Go to payment
 
     payment_information: Payment information
     price: Price (NOK)
@@ -114,7 +114,9 @@ en:
     sum: "Sum"
     total: "Total"
     amount: Amount
-    swedbank: "The payment is processed by Swedbank."
+    email_hint: "Enter your email"
+    member_hint: "Membercard number"
+    stripe: "The payment is processed by Stripe."
     payment_prices: "All prices are in norwegian krone and includes all fees."
     terms: Purchase requires acceptance of sales terms.
 

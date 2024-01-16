@@ -19,6 +19,8 @@
     create_group: Opprett gjeng
     group: Gjeng
     update_group: Oppdater gruppe
+    admin_delete: Admin slett
+    admin_delete_process: Løs alle søknader
 
     admin:
       title: Administrer gjenger

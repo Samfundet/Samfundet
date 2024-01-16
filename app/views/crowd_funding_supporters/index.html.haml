@@ -1,0 +1,34 @@
+-if I18n.locale == :en
+  %h2 This site only exists in Norwegian.
+- else
+  %h1
+    = t("crowd_funding.index.title")
+  %br
+  %p
+    = t("crowd_funding.index.intro")
+  %br
+  .crowd-funding-grid
+    %div
+      %p
+        = t("crowd_funding.index.thanks.title")
+
+      %ul
+        %li
+          = t("crowd_funding.index.thanks.first")
+        %br
+        %li
+          = t("crowd_funding.index.thanks.second")
+        %br
+        %li
+          = t("crowd_funding.index.thanks.third")
+
+      = simple_format(t("crowd_funding.index.other"))
+      = simple_format(t("crowd_funding.index.letter"))
+      = simple_format(t("crowd_funding.index.businesses"))
+    %div.crowd-funding-vipps
+      %p
+        VIPPS: #601957 <br>  Kontonummer: <br> 4214 04 45910
+      = image_tag "https://www.samfundet.no/upload/images/image_files/000/003/296/original/QR-kode_kronerulling.png?1664297336", alt: "Nybygg"
+
+
+  = render 'competition'

@@ -97,21 +97,21 @@
           %td
             = semantic_form_for([:admissions_admin, @admission, @group, job_application.job, job_application, interview = job_application.find_or_create_interview], namespace: "interview_#{interview.id}", html: {class: "test custom-form"}) do |form|
               = form.inputs do
-                != form.input :priority, name: "priority", as: :select, label: false, required: true, value: interview.priority, collection: interview.priorities.invert.sort, input_html: { id: "interview_#{job_application.id}_priority", disabled: interview.past_set_priority_deadline? }
+                != form.input :priority, name: "priority", as: :select, label: false, required: true, value: interview.priority, collection: interview.priorities.invert.sort, input_html: { id: "interview_#{job_application.id}_priority", disabled: interview.past_set_priority_deadline? && !(can? :manage, Admission) }
               %span{ class: "status" }
               = form.actions do
                 != form.action :submit, button_html: { class: "interview_save", value: t('interviews.save_interview_status') }
           %td
             = semantic_form_for([:admissions_admin, @admission, @group, job_application.job, job_application, interview = job_application.find_or_create_interview], namespace: "interview_#{interview.id}", html: {class: "test custom-form"}) do |form|
               = form.inputs do
-                != form.input :applicant_status, name: "applicant_status", as: :select, label: false, required: true, value: interview.applicant_status, collection: interview.applicant_statuses.invert, input_html: { id: "interview_#{job_application.id}_applicant_status"}
+                != form.input :applicant_status, name: "applicant_status", as: :select, label: false, required: true, value: interview.applicant_status, collection: interview.applicant_statuses.invert, input_html: { id: "interview_#{job_application.id}_applicant_status", disabled: !interview.can_set_status? && !can?(:manage, Admission) }
               = form.actions do
                 != form.action :submit, button_html: { class: "interview_save", value: t('interviews.save_interview_status') }
               %span{ class: "status" }
           %td
-            = job_application.applicant.priority_of_job_application(@admission, job_application).to_s + " / " + job_application.applicant.jobs_applied_to(@admission).length.to_s
+            = job_application.applicant.priority_of_job_application(@admission, job_application).to_s + " / " + job_application.applicant.open_job_applications(@admission).length.to_s
           %td
-            = job_application.applicant.get_set_interviews(@admission).length.to_s + " / " + job_application.applicant.jobs_applied_to(@admission).length.to_s
+            = job_application.applicant.get_set_interviews(@admission).length.to_s + " / " + job_application.applicant.open_job_applications(@admission).length.to_s
           -#%td
           -#  - if job_application.last_log_entry
           -#    = link_to admissions_admin_admission_group_job_job_application_path(@admission, @group, job_application.job, job_application, anchor: 'new_log_entry') do

@@ -13,6 +13,12 @@
     }
 }
 
+.ntnu_warning {
+  color: red;
+  font-weight: 600;
+  display:none;
+}
+
 @media only screen and (max-width: 768px) {
     .gdpr_checkbox {
         margin-left: 0 !important;

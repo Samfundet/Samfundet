@@ -22,7 +22,7 @@
   - @applicants_to_call.each do |applicant|
     %tr
       %td
-        - job_application = applicant.job_applications_at_group(@admission, @group).first
+        - job_application = applicant.open_job_applications_in_group(@admission, @group).first
         = link_to admissions_admin_admission_group_job_job_application_path(@admission, @group, job_application.job, job_application) do
           = applicant.full_name
       %td

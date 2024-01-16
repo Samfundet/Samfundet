@@ -1,9 +1,9 @@
 
 - if can? :manage, InfoBox
-  .flex-row.center.mb-3
+  .flex-row.center.mb-3.wrap
     = link_to new_info_box_path do
-      .samf-button.green.mr-3
+      .samf-button.green.mr-3.mt-1
         = t("info_boxes.new")
     = link_to info_boxes_path do
-      .samf-button.mr-3
+      .samf-button.mr-3.mt-1
         = t("info_boxes.all")

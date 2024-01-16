@@ -15,6 +15,7 @@ en:
     login_success: "You are now logged in as %{name}."
     login_success_application_saved: "You are now logged in as %{name}, and your application was saved."
     login_error: "Wrong combination of username and password."
+    login_no_user_exist: "This user does not exist. Register as applicant here."
     logout_success: "You are now logged out."
     will_be_logged_out_as_member: "By filling out the following form you will be logged out as a member."
     password_missmatch: "The old password did not seem to match your current password."
@@ -30,6 +31,7 @@ en:
       register:
         heading: "Register me as applicant"
         submit: "Register me"
+        ntnu_warning: "Your email contains @ntnu.no, are you sure you didn't mean @stud.ntnu.no?"
         personal_information: "Personal information"
         login_information: "Log in information"
         password_information: "Password information"
@@ -42,7 +44,7 @@ en:
         heading: "Set a new password"
         submit: "Save new password"
     password_recovery:
-      email_unknown: "Unknown email, please try again."
+      field_unknown: "Unknown e-mail or phone number, please try again."
       limit_reached: "You have reached the limit for possible password recovery requests. If the problem persists, please send an email to mg-web@samfundet.no"
       success: "An email have been sendt to %{email} with instructions on how to proceed."
       error: "An error happened, the password recovery process has not been completed."
@@ -51,7 +53,7 @@ en:
       change_error: "Password has not been changed, see details below:"
       forgot_password: "Forgot password"
       new_password: "New password"
-      help_text: "Put your email in the field below to recieve an email with a link that can be used to give yourself a new password."
+      help_text: "Provide your e-mail or phone number below, and we will e-mail you a link which can be used to set a new password."
       email_subject: Reset password (samfundet.no)
       email_message: |
         Hi, %{name}
@@ -62,7 +64,37 @@ en:
 
         If clicking the link above does nothing, try to copy the URL and paste it into the address field of your web browser.
 
-        If you did not forget your password, please disregard this email.
+        If you did not forget your password, please disregard this e-mail.
 
         --
-        samfundet.no/opptak
+        For more information about this semester's admission, go to:
+        https://samfundet.no/en/admissions
+    email_verification:
+      login_email_unverified: "The E-mail address of %{name} is not verified. Please verify this e-mail address first."
+      verification_sent: "Verification e-mail sent to %{email}."
+      verification_link_invalid: "The verification link provided is invalid."
+      verification_success: "The E-mail address of %{name} was successfully verified. You can now log in as applicant."
+      too_many: "Too many verification e-mails sent the last hour. Try again later."
+      email_error: "An error has occurred. Verification email was not sent."
+      email_subject: "We are delighted to see you apply for Samfundet!"
+      email_message: |
+        Hey %{firstname},
+
+        We are delighted to see you wanting to apply for Samfundet!
+
+        The following personal details have been registered on your account:
+
+        Name: %{name}
+        Phone number: %{phone}
+        E-mail: %{email}
+
+        If this info is incorrect, please send an e-mail to mg-web@samfundet.no
+
+        To continue registration, please follow the link below. The link is valid for 60 minutes:
+        %{verification_link}
+
+        If the link is invalid, try logging in again and you will receive a new verification link.
+
+        --
+        For more information about this semester's admission, go to:
+        https://samfundet.no/en/admissions

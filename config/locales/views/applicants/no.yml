@@ -14,6 +14,7 @@
     update_error: "Dine detaljer ble ikke oppdatert. Se detaljer nedenfor."
     login_success: "Du er nå logget inn som %{name}."
     login_success_application_saved: "Du er nå logget inn som %{name}, og søknaden din er lagret."
+    login_input_error: "Du oppgav en ugyldig e-post adresse eller telefonnummer."
     login_error: "Ugyldig kombinasjon av brukernavn og passord."
     logout_success: "Du er nå logget ut."
     will_be_logged_out_as_member: "Ved å fylle ut skjemaet under vil du bli logget ut som medlem."
@@ -30,6 +31,7 @@
       register:
         heading: "Registrer meg som søker"
         submit: "Registrer meg"
+        ntnu_warning: "E-posten din inneholder @ntnu.no, er du sikker på at du ikke mente @stud.ntnu.no?"
         personal_information: "Personalia"
         login_information: "Påloggingsinformasjon"
         password_information: "Passordinformasjon"
@@ -42,7 +44,7 @@
         heading: "Sett et nytt passord"
         submit: "Lagre nytt passord"
     password_recovery:
-      email_unknown: "Ukjent epost, prøv igjen."
+      field_unknown: "Ukjent e-post eller telefonnummer, prøv igjen."
       limit_reached: "Du har oversteget grensen for mulige passordtilbakestillinger. Hvis problemet ikke er løst kan du sende en epost til mg-web@samfundet.no"
       success: "En epost har blitt sendt til %{email} med videre instrukser."
       error: "En feil har skjedd, passordbytte har ikke blitt fullført."
@@ -51,7 +53,7 @@
       change_error: "Passord ikke endret, se detaljer under:"
       forgot_password: "Glemt passord"
       new_password: "Nytt passord"
-      help_text: "Skriv inn eposten din i feltet under, så vil vi sende deg en epost med en lenke du kan bruke til å sette et nytt passord."
+      help_text: "Skriv inn e-post eller telefonnummer i feltet under, så vil vi sende deg en e-post med en lenke du kan bruke til å sette et nytt passord."
       email_subject: Registrer nytt passord (samfundet.no)
       email_message: |
         Hei, %{name}
@@ -62,7 +64,37 @@
 
         Hvis det ikke fungerer å trykke på lenken, kan du kopiere adressen og lime den inn i adressefeltet til nettleseren din.
 
-        Har du ikke glemt passordet ditt, kan du bare se bort fra denne eposten.
+        Har du ikke glemt passordet ditt, kan du bare se bort fra denne e-posten.
 
         --
-        samfundet.no/opptak
+        For mer informasjon om semesterets opptak, gå til:
+        https://samfundet.no/opptak
+    email_verification:
+      login_email_unverified: "E-post knyttet til %{name} er ikke bekreftet. Vennligst bekreft e-post adressen først."
+      verification_sent: "E-post bekreftelse er sendt til %{email}"
+      verification_link_invalid: "Bekreftelseslenken er ugyldig."
+      verification_success: "E-post knyttet til %{name} ble bekreftet. Du kan nå logge inn som søker."
+      too_many: "For mange bekreftelsemail sendt den siste timen. Prøv igjen senere."
+      email_error: "En feil har oppstått. E-post bekreftelse ble ikke sendt."
+      email_subject: "Så kult at du vil søke Samfundet!"
+      email_message: |
+        Hei %{firstname},
+
+        Så kult at du vil søke Samfundet!
+
+        Du er blitt registrert med følgende personalia:
+
+        Navn: %{name}
+        Telefon: %{phone}
+        E-post: %{email}
+
+        Om dette er feil, vennligst send en mail til mg-web@samfundet.no
+
+        For å fortsette registreringen, vennligst følg lenken nedenfor. Den er gyldig i 60 minutter:
+        %{verification_link}
+
+        Dersom lenken er ugyldig, prøv å logg inn på nytt og du får tilsendt en ny bekreftelseslenke.
+
+        --
+        For mer informasjon om Samfundets opptak, gå til:
+        https://samfundet.no/opptak

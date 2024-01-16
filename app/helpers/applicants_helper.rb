@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module ApplicantsHelper
-
   def password_reset_link(args = {})
     email = args[:email]
     recovery_hash = args[:recovery_hash]

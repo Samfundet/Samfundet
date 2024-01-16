@@ -60,7 +60,8 @@ class AdmissionsAdmin::CampusController < AdmissionsAdmin::BaseController
     redirect_to action: :admin
   end
 
-  private
+private
+
   def campus_params
     params.require(:campus).permit(
       :name

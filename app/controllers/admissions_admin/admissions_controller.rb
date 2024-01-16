@@ -335,12 +335,23 @@ private
   end
 
   def total_accepted_applicants
+    accepted_applications = @admission.job_applications.select do |app|
+      interview = app.find_or_create_interview
+      interview.applicant_status == :accepted
+    end
+    accepted_applications = accepted_applications.map(&:applicant).uniq
+
+    # Old system
     total_applicants = @admission.job_applications.map(&:applicant).uniq
-    @total_accepted_applicants = total_applicants.select do |a|
+    total_accepted_applicants = total_applicants.select do |a|
       last_log_entry = LogEntry.where(admission: @admission, applicant: a).last
       next if last_log_entry.nil?
       application_is_accepted?(last_log_entry)
     end
+
+    # Combine old and new
+    all_accepted = total_accepted_applicants | accepted_applications
+    @total_accepted_applicants = all_accepted.uniq
   end
 
   def calculate_applicants_admitted_ratio
@@ -367,17 +378,23 @@ private
     @admission.groups.map do |group|
       @applicants[group] = { total: Set[], accepted: Set[] }
 
-      applicants = group.job_applications_in_admission(@admission).map(&:applicant).uniq
+      applicants = group.job_applications_in_admission(@admission)
       applicants.each do |app|
-        @applicants[group][:total].add app.id
+        @applicants[group][:total].add app.applicant.id
 
-        log_entries = LogEntry.where(admission_id: @admission.id, applicant_id: app.id, group_id: group.id)
-
+        # Old system
+        log_entries = LogEntry.where(admission_id: @admission.id, applicant_id: app.applicant.id, group_id: group.id)
         unless log_entries.empty?
           last_log = log_entries.last
           if application_is_accepted?(last_log)
-            @applicants[group][:accepted].add app.id
+            @applicants[group][:accepted].add app.applicant.id
           end
+        end
+
+        # New system
+        interview = app.find_or_create_interview
+        if interview.applicant_status == :accepted then
+          @applicants[group][:accepted].add app.applicant.id
         end
       end
 
