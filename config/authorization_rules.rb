@@ -67,7 +67,7 @@ authorization do
     has_permission_on :pages, to: [:new, :create, :destroy, :edit_non_content_fields, :graph, :history]
   end
 
-  role :mg_nestleder do
+  role :gu_nestleder do
     has_permission_on [
       :admissions,
       :admissions_admin_admissions,
