@@ -72,7 +72,8 @@ en:
     email_verification:
       login_email_unverified: "The E-mail address of %{name} is not verified. Please verify this e-mail address first."
       verification_sent: "Verification e-mail sent to %{email}."
-      verification_link_invalid: "The verification link provided is invalid."
+      verification_link_invalid: "The verification link provided is invalid. It is likely more than 1 hour old."
+      verification_info: "Please log in again, and you will be sent a new verification link."
       verification_success: "The E-mail address of %{name} was successfully verified. You can now log in as applicant."
       too_many: "Too many verification e-mails sent the last hour. Try again later."
       email_error: "An error has occurred. Verification email was not sent."

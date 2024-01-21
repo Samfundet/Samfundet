@@ -145,6 +145,7 @@ class ApplicantsController < ApplicationController
                         name: CGI.escapeHTML(@applicant.full_name))
     else
       flash[:error] = t('applicants.email_verification.verification_link_invalid')
+      flash[:message] = t('applicants.email_verification.verification_info')
     end
     redirect_to applicant_login_path
   end
