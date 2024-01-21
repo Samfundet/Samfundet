@@ -131,7 +131,7 @@ class Ability
     can :manage, CrowdFundingSupporter
   end
 
-  def mg_nestleder
+  def gu_nestleder
     # Needs manage permissions here to see statistics
     can :manage, [Admission, JobApplication]
   end

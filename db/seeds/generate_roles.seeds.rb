@@ -40,5 +40,5 @@ Role.create!(name: 'mg_layout', title: 'mg_layout', description: 'Denne rollen e
 Role.create!(name: 'mg_layout_sjef', title: 'mg_layout_sjef', description: 'Denne rollen er for sjefen av mg layout')
 Role.create!(name: 'mg_redaksjon', title: 'mg_redaksjon', description: 'Denne rollen er for medlemmer av mg redaksjonen')
 Role.create!(name: 'ksg_sulten', title: 'ksg_sulten', description: 'Denne rollen er for medlemmer av ksg for lyches reservasjonssystem')
-Role.create!(name: 'mg_nestleder', title: 'mg_nestleder', description: 'Denne rollen er for nestleder av MG som er opptaksansvarlig for hele huset og dermed har ekstra rettigheter i forbindelse med dette.')
+Role.create!(name: 'gu_nestleder', title: 'gu_nestleder', description: 'Denne rollen er for nestleder av GU som er opptaksansvarlig for hele huset og dermed har ekstra rettigheter i forbindelse med dette.')
 puts "Done generating roles."
