@@ -69,7 +69,8 @@
     email_verification:
       login_email_unverified: "E-post knyttet til %{name} er ikke bekreftet. Vennligst bekreft e-post adressen først."
       verification_sent: "E-post bekreftelse er sendt til %{email}"
-      verification_link_invalid: "Bekreftelseslenken er ugyldig."
+      verification_link_invalid: "Bekreftelseslenken er ugyldig. Den er trolig mer enn 1 time gammel."
+      verification_info: "Vennligst logg inn på nytt, så får du tilsendt en ny bekreftelseslenke på e-post."
       verification_success: "E-post knyttet til %{name} ble bekreftet. Du kan nå logge inn som søker."
       too_many: "For mange bekreftelsemail sendt den siste timen. Prøv igjen senere."
       email_error: "En feil har oppstått. E-post bekreftelse ble ikke sendt."

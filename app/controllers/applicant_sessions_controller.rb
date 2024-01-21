@@ -26,7 +26,7 @@ class ApplicantSessionsController < UserSessionsController
 
       existing_verification_hash = EmailVerification.find_by(applicant_id: applicant.id)
 
-      if existing_verification_hash && existing_verification_hash.count > 3 && existing_verification_hash.updated_at > Time.current - 1.minute
+      if existing_verification_hash && existing_verification_hash.count > 10 && existing_verification_hash.updated_at > Time.current - 1.hour
         existing_verification_hash.count += 1
         existing_verification_hash.save!
         flash[:message] = t('applicants.email_verification.too_many')
