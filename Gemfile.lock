@@ -103,7 +103,7 @@ GEM
       thor
     builder (3.2.4)
     byebug (9.0.6)
-    cancancan (2.3.0)
+    cancancan (3.5.0)
     capybara (3.39.2)
       addressable
       matrix
@@ -251,7 +251,6 @@ GEM
       open4 (~> 1.3.4)
       rake
     mini_mime (1.1.5)
-    mini_portile2 (2.8.5)
     minitest (5.20.0)
     multi_json (1.15.0)
     multi_test (1.1.0)
@@ -271,8 +270,7 @@ GEM
     net-smtp (0.4.0)
       net-protocol
     nio4r (2.6.1)
-    nokogiri (1.15.5)
-      mini_portile2 (~> 2.8.2)
+    nokogiri (1.15.5-aarch64-linux)
       racc (~> 1.4)
     notiffany (0.1.3)
       nenv (~> 0.1)
@@ -351,9 +349,9 @@ GEM
     render_async (2.1.11)
     route_downcaser (1.2.3)
       activesupport (>= 3.2)
-    route_translator (13.2.1)
-      actionpack (>= 5.2, < 7.1)
-      activesupport (>= 5.2, < 7.1)
+    route_translator (14.1.1)
+      actionpack (>= 6.1, < 7.2)
+      activesupport (>= 6.1, < 7.2)
     rspec (3.9.0)
       rspec-core (~> 3.9.0)
       rspec-expectations (~> 3.9.0)
@@ -444,11 +442,11 @@ GEM
     uglifier (3.0.4)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (1.6.1)
-    web-console (3.7.0)
-      actionview (>= 5.0)
-      activemodel (>= 5.0)
+    web-console (4.2.1)
+      actionview (>= 6.0.0)
+      activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
-      railties (>= 5.0)
+      railties (>= 6.0.0)
     webrat (0.7.3)
       nokogiri (>= 1.2.0)
       rack (>= 1.0)
@@ -463,7 +461,7 @@ GEM
     zeitwerk (2.6.12)
 
 PLATFORMS
-  ruby
+  aarch64-linux
 
 DEPENDENCIES
   activerecord-session_store (~> 2.0.0)
@@ -474,7 +472,7 @@ DEPENDENCIES
   binding_of_caller (~> 1.0.0)
   bourbon (~> 4.2.0)
   byebug (~> 9.0.0)
-  cancancan (~> 2.3.0)
+  cancancan (~> 3.5.0)
   cocoon (~> 1.2.0)
   coffee-rails (~> 4.2.0)
   cucumber-rails (~> 1.4.0)
@@ -511,7 +509,7 @@ DEPENDENCIES
   redcarpet (~> 3.5.0)
   render_async
   route_downcaser (~> 1.2.0)
-  route_translator (~> 13.2.0)
+  route_translator (~> 14.1.0)
   rspec (~> 3.9.0)
   rspec-rails (~> 3.9.0)
   rubocop (~> 0.79.0)
@@ -528,13 +526,13 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.1)
   table_print (~> 1.5.0)
   uglifier (~> 3.0.0)
-  web-console (~> 3.7.0)
+  web-console (~> 4.2.0)
   webrat (~> 0.7.0)
   webrick (~> 1.7)
   will_paginate (~> 3.1.0)
 
 RUBY VERSION
-   ruby 3.1.0p0
+   ruby 3.1.4p223
 
 BUNDLED WITH
    2.4.22

@@ -47,7 +47,7 @@ after :documents do
     name_en: Page::TICKETS_NAME,
     title_no: "Billetter",
     title_en: "Tickets",
-    content_no: "# Utsalgssteder for billetter\n #{Faker::Lorem.p ragraphs(number: 3).join("\n\n")} \n# Salgsbetingelser\n #{Faker::Lorem.paragraphs(number: 3).join("\n\n")}",
+    content_no: "# Utsalgssteder for billetter\n #{Faker::Lorem.paragraphs(number: 3).join("\n\n")} \n# Salgsbetingelser\n #{Faker::Lorem.paragraphs(number: 3).join("\n\n")}",
     content_en: "# Purchase areas for tickets\n #{Faker::Lorem.paragraphs(number: 3).join("\n\n")} \n# Purchase conditions\n #{Faker::Lorem.paragraphs(number: 3).join("\n\n")}",
     role_id: Role.super_user.id
   )

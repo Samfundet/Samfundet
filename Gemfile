@@ -5,7 +5,7 @@
 ###########################################
 
 # Specify ruby version that we use. Bundler gives an error when a different ruby is used.
-ruby '~> 3.1.0' # From .ruby-version.
+ruby '~> 3.1.4' # From .ruby-version.
 
 # The repository from which we're fetching our rubygems.
 source 'https://rubygems.org'
@@ -66,7 +66,7 @@ gem 'neat', '~> 1.7.4'
 gem 'uglifier', '~> 3.0.0'
 
 # CanCanCan for role-based access control. See app/models/ability.rb
-gem 'cancancan', '~> 2.3.0'
+gem 'cancancan', '~> 3.5.0'
 
 # formtastic is a Rails form builder plugin
 # with semantically rich and accessible markup.
@@ -82,7 +82,7 @@ gem 'icalendar', '~> 2.4.0'
 # For example, we can replace the path '/groups' with the paths
 # '/gjenger' and '/en/groups' which both point to the same page.
 # See: config/locales/routes/i18n-routes.yml
-gem 'route_translator', '~> 13.2.0'
+gem 'route_translator', '~> 14.1.0'
 
 # RedCarpet renders Markdown, a light-weight markup language, to HTML.
 # See: config/initializers/haml_markdown.rb
@@ -107,6 +107,7 @@ gem 'will_paginate', '~> 3.1.0'
 
 # for file uploads, see https://github.com/thoughtbot/paperclip
 gem 'paperclip', '~> 6.1.0'
+# gem 'kt-paperclip', '~> 7.2.2'  # TODO: switch to this active fork?
 
 # automatic compression of images uploaded via paperclip
 gem 'paperclip-compression', '~> 1.1.0'
@@ -139,7 +140,7 @@ gem 'render_async'
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'listen', '~> 3.4.0'
-  gem 'web-console', '~> 3.7.0'
+  gem 'web-console', '~> 4.2.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring', '~> 2.1.0'
