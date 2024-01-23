@@ -74,7 +74,7 @@ class PagesController < ApplicationController
       params[:page].slice!(:title_no, :title_en, :content_no, :content_en)
     end
 
-    if @page.update_attributes(page_params)
+    if @page.update(page_params)
       flash[:success] = t('pages.edit_success')
       redirect_to page_url @page
     else
