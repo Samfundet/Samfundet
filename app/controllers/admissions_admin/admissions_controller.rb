@@ -174,7 +174,7 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
   end
 
   def update
-    if @admission.update_attributes(admission_params)
+    if @admission.update(admission_params)
       flash[:success] = t('admissions_admin.admission_updated')
       redirect_to admissions_path
     else

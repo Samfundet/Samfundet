@@ -35,7 +35,7 @@ class GroupsController < ApplicationController
   def edit; end
 
   def update
-    if @group.update_attributes(group_params)
+    if @group.update(group_params)
       flash[:success] = 'Gjengen er oppdatert.'
       redirect_to admin_groups_path
     else
