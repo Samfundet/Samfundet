@@ -4,6 +4,6 @@ require 'uri'
 
 module URI
   def self.escape(url)
-    encode_www_form_component(url)
+    URI::DEFAULT_PARSER.escape(url)
   end
 end
