@@ -19,7 +19,7 @@ RUN ls \
 WORKDIR /Samfundet
 
 # Set manually (from '.bundler-version') because Dockerfile is unable to cat from file.
-RUN gem install bundler:1.17.3
+RUN gem install bundler:2.4.22
 
 # Copy dependency files into workdir (optimise docker cache layers)
 COPY Gemfile Gemfile.lock ./
