@@ -128,7 +128,7 @@ private
   end
 
   def build_link_graph
-    urlRegex = /(?<!\!)\[.*?\]\((.*?)\)/
+    urlRegex = /(?<!!)\[.*?\]\((.*?)\)/
 
     pages = Page.all
 
@@ -147,7 +147,7 @@ private
   # url_filter takes something that is supposed to be a link from an infopage
   # It then tries to sanitize and check what it points to and return the best guess.
   def url_filter(url)
-    nameRegex = /^#{Page::NAME_FORMAT}$/
+    nameRegex = /^#{Page::NAME_FORMAT}$/o
 
     # check if link matches name spec already
     return url if nameRegex.match url

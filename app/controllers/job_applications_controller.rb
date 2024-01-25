@@ -28,11 +28,7 @@ class JobApplicationsController < ApplicationController
       end
     else
       flash[:error] = t('job_applications.cannot_apply_after_deadline')
-      if @job_application.job
-        redirect_to @job_application.job
-      else
-        redirect_to admissions_path
-      end
+      redirect_to @job_application.job || admissions_path
     end
   end
 

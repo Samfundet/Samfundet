@@ -230,11 +230,11 @@ class Event < ApplicationRecord
   end
 
   def organizer_group_id
-    return organizer.id if organizer.is_a? Group
+    organizer.id if organizer.is_a? Group
   end
 
   def organizer_external_name
-    return organizer.name if organizer.is_a? ExternalOrganizer
+    organizer.name if organizer.is_a? ExternalOrganizer
   end
 
   def price

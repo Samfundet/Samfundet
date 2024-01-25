@@ -166,6 +166,6 @@ private
         :allergies,
         :internal_comment,
         :gdpr_checkbox
-    )
+      )
   end
 end
