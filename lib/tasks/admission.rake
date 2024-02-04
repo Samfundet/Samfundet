@@ -24,14 +24,18 @@ namespace :admission do
     puts "\nAnonymize interviews"
     Interview.all.each do |interview|
       interview.assign_attributes(comment: '', time: '01/Jan/2000 00:00:00 +0100', location: '')
-      if interview.priority == :wanted and interview.applicant_status == :declined
+
+      if interview.applicant_status == :declined
         interview.priority = :not_wanted
         interview.applicant_status = :rejected
-      end
-      if interview.priority == :reserved
+      elsif interview.priority == :wanted and interview.applicant_status != :accepted
+        interview.priority = :not_wanted
+        interview.applicant_status = :rejected
+      elsif interview.priority == :reserved
         if interview.applicant_status == :accepted
           interview.priority = :wanted
         else
+          interview.applicant_status = :rejected
           interview.priority = :not_wanted
         end
       end
