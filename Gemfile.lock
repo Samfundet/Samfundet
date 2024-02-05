@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/Samfundet/SamfundetAuth.git
-  revision: 6400ce62b5ea4e1d59ca825b68bcd32c8b7a7d51
+  revision: 7858699f44e8bc5c013308763c3a16bb67a86597
   branch: test-upgrade
   specs:
     samfundet_auth (0.2.0)
@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/Samfundet/SamfundetDomain.git
-  revision: f8c015305486da26c4b43feddf2bcff211ca41a4
+  revision: 3b9857c2c41286a6df34dae21aa88d3b22ca5d23
   branch: test-upgrade
   specs:
     samfundet_domain (0.1.0)
@@ -104,11 +104,11 @@ GEM
     builder (3.2.4)
     byebug (9.0.6)
     cancancan (3.5.0)
-    capybara (3.39.2)
+    capybara (3.40.0)
       addressable
       matrix
       mini_mime (>= 0.1.3)
-      nokogiri (~> 1.8)
+      nokogiri (~> 1.11)
       rack (>= 1.6.0)
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
@@ -261,7 +261,7 @@ GEM
       bourbon (>= 4.0)
       sass (>= 3.3)
     nenv (0.3.0)
-    net-imap (0.4.9.1)
+    net-imap (0.4.10)
       date
       net-protocol
     net-pop (0.1.2)
@@ -271,9 +271,9 @@ GEM
     net-smtp (0.4.0.1)
       net-protocol
     nio4r (2.7.0)
-    nokogiri (1.16.0-aarch64-linux)
+    nokogiri (1.16.2-aarch64-linux)
       racc (~> 1.4)
-    nokogiri (1.16.0-x86_64-linux)
+    nokogiri (1.16.2-x86_64-linux)
       racc (~> 1.4)
     notiffany (0.1.3)
       nenv (~> 0.1)
