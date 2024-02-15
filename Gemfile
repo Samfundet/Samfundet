@@ -103,7 +103,7 @@ gem 'samfundet_auth', git: 'https://github.com/Samfundet/SamfundetAuth.git', bra
 
 # will_paginate is an adaptive pagination plugin.
 # It makes pagination very simple.
-gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate', '~> 4.0.0'
 
 # for file uploads, see https://github.com/thoughtbot/paperclip
 gem 'paperclip', '~> 6.1.0'
