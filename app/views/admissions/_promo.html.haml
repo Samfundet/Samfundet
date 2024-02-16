@@ -1,5 +1,5 @@
-.youtube-wrapper
-  - if not @open_admissions.first.promo_video.empty?
+- if not @open_admissions.first.promo_video.empty?
+  .youtube-wrapper
     %iframe.youtube-embed{ src: @open_admissions.first.promo_video, frameborder: 0, allowfullscreen: true }
 
 %div.text-Align.pt-3
