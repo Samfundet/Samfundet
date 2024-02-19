@@ -28,21 +28,22 @@ en:
     statistics: "Statistics"
     groups_with_admission: "Groups with admission"
     groups_with_separate_admission: "Groups with separate admission"
+    other_groups_with_admissions: Other groups with admisssions
     separate_admission_information: "Click here for groups with separate admission"
 
     admin_applet:
       title: Admissions
 
     no_admissions:
-        header: "There are currently no admissions to positions at Samfundet"
-        ordinary_information: "Samfundet ordinairly has its admissions in the beginning of each semester. Keep an eye on this page!"
-        more_information: "For more information about samfundets groups"
-        motivation_text: |
-          We have our admissions in the beginning of each semester and it would be very much appreciated if you applied as a volunteer!
-          Studentersamfundet i Trondhjem is Norways largest student society and we have more to offer than any other city.
-          No matter what you're studying or what you might be interested in, we have a group that will suit you!
+      header: "There are currently no admissions to positions at Samfundet"
+      ordinary_information: "Samfundet ordinairly has its admissions in the beginning of each semester. Keep an eye on this page!"
+      more_information: "For more information about samfundets groups"
+      motivation_text: |
+        We have our admissions in the beginning of each semester and it would be very much appreciated if you applied as a volunteer!
+        Studentersamfundet i Trondhjem is Norways largest student society and we have more to offer than any other city.
+        No matter what you're studying or what you might be interested in, we have a group that will suit you!
 
-        see_applications_text: "You can see your applications"
-        see_applications_link: "here."
-        already_applied: "If you have already applied you can log in as applicant to prioritize and track your applications."
-        click_here: "click here."
+      see_applications_text: "You can see your applications"
+      see_applications_link: "here."
+      already_applied: "If you have already applied you can log in as applicant to prioritize and track your applications."
+      click_here: "click here."

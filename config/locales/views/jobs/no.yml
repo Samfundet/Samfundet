@@ -1,4 +1,4 @@
-'no':
+"no":
   jobs:
     job_deleted: "Vervet er slettet."
     job_updated: "Vervet er oppdatert."
@@ -31,4 +31,4 @@
     similar_jobs_not_applied_to: "Lignende stillinger du ikke har søkt på"
     gdpr: "All personinformasjon til søkere blir anonymisert 3 uker etter opptaksfristen."
     create_tags_example: "Eksempel: foto, react, kaffe, skribent"
-    
+    only_customized_admission: "For opptak med egendefinerte gjenger og kategorier"

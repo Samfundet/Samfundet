@@ -1,14 +1,31 @@
-- admission.group_types.sort_by(&:description).each do |group_type|
-  .samf-container.white.mb-3.pb-2.br-3.bxs
-    %h2.text-Align.p-1.bg-red.title.white= group_type.description
-    - group_type.groups.each do |group|
-      - group.jobs_in_admission(admission).sort_by(&:title).each do |job|
-        .m-3.pb-2.jobs{ id: "#{admission.to_param}/#{group.to_param}"}
-          %span.bullet{ class: job.is_officer ? "officer_position" : "non_officer_position"}
-          .flex-row.space-around.jobRow
-            %a{href: job_path(job), style:"flex-basis: 30%"}
-              = truncate job.title, length: 40
-            %div{style:"flex-basis: 30%;"}
-              = group_link group, abbreviate_treshold: 20
-            %div.description{style:"flex-basis: 30%;"}
-              #{job.teaser.first(75)}
+- if admission.customized_groups
+  - admission.custom_group_types.each do |group_type|
+    .samf-container.white.mb-3.pb-2.br-3.bxs
+      %h2.text-Align.p-1.bg-red.title.white= group_type=="" ? t('admissions.other_groups_with_admissions') : group_type
+      - admission.custom_group(group_type).each do |group|
+        - admission.jobs_in_custom_group(group).sort_by(&:group).each do |job|
+          .m-3.pb-2.jobs{ id: "#{admission.to_param}/#{group.to_param}"}
+            %span.bullet{ class: job.is_officer ? "officer_position" : "non_officer_position"}
+            .flex-row.space-around.jobRow
+              %a{href: job_path(job), style:"flex-basis: 30%"}
+                = truncate job.title, length: 40
+              %div{style:"flex-basis: 30%;"}
+                = link_to job.group.page do
+                  = job.group.name + (group=="" ? "" : " - " +  group)
+              %div.description{style:"flex-basis: 30%;"}
+                #{job.teaser.first(75)}
+- else
+  - admission.group_types.sort_by(&:description).each do |group_type|
+    .samf-container.white.mb-3.pb-2.br-3.bxs
+      %h2.text-Align.p-1.bg-red.title.white= group_type.description
+      - group_type.groups.each do |group|
+        - group.jobs_in_admission(admission).sort_by(&:title).each do |job|
+          .m-3.pb-2.jobs{ id: "#{admission.to_param}/#{group.to_param}"}
+            %span.bullet{ class: job.is_officer ? "officer_position" : "non_officer_position"}
+            .flex-row.space-around.jobRow
+              %a{href: job_path(job), style:"flex-basis: 30%"}
+                = truncate job.title, length: 40
+              %div{style:"flex-basis: 30%;"}
+                = group_link group, abbreviate_treshold: 20
+              %div.description{style:"flex-basis: 30%;"}
+                #{job.teaser.first(75)}

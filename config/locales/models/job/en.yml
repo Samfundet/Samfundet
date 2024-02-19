@@ -16,3 +16,6 @@ en:
         tag_titles: "Tags"
         default_motivation_text_no: "Default motivation text (Norsk)"
         default_motivation_text_en: "Default motivation text (Engelsk)"
+        custom_group: "Custom group name"
+        custom_group_type: "Custom group category"
+        only_customized_admission: "Only"
