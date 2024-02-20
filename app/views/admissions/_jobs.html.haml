@@ -3,7 +3,7 @@
     .samf-container.white.mb-3.pb-2.br-3.bxs
       %h2.text-Align.p-1.bg-red.title.white= group_type=="" ? t('admissions.other_groups_with_admissions') : group_type
       - admission.custom_group(group_type).each do |group|
-        - admission.jobs_in_custom_group(group).sort_by(&:group).each do |job|
+        - admission.jobs_in_custom_group(group,group_type).sort_by(&:group).each do |job|
           .m-3.pb-2.jobs{ id: "#{admission.to_param}/#{group.to_param}"}
             %span.bullet{ class: job.is_officer ? "officer_position" : "non_officer_position"}
             .flex-row.space-around.jobRow
