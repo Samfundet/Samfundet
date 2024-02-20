@@ -1,0 +1,61 @@
+%h1 Admin Merch
+.samf-button.small.mt-3.mb-3.plain
+  = link_to members_control_panel_path anchor: "merch-applet".parameterize do
+    = t("common.back")
+
+.product-admin
+  - @products.each do |product|
+    .product
+      = image_tag path_to_image(product.image_or_default), class: "picture"
+      .info
+        %p
+          = "#{t("name")}: #{product.name}"
+        %p
+          = "#{t("product.info.price")}: "
+          = number_to_currency(product.price, strip_insignificant_zeros: true)
+        %p
+          = "#{t("product.info.amount")}: "
+          - if product.has_variations
+            = product.product_variations.sum(:amount)
+          - else
+            = product.amount
+        %p
+          = product.release_time
+
+        .samf-button.small.plain
+          = link_to edit_product_path(product) do
+            = t("crud.edit")
+        .samf-button.small.red.mr-2
+          = link_to product_path(product), method: :delete, data: {confirm: "Are you sure"} do
+            = t("info_boxes.delete")
+      - if product.has_variations
+        .variations
+          %table
+            %thead
+              %tr
+                %th
+                  =t("product.info.variation.specification")
+                %th
+                  =t("product.info.variation.quantity")
+                %th
+            %tbody
+              - product.product_variations.each do |variation|
+                %tr
+                  %td
+                    =variation.name
+                  %td
+                    = variation.amount
+                  %td.flex.flex-row
+                    .samf-button.small.plain.mr-1
+                      = link_to edit_product_product_variation_path(product, variation) do
+                        = t("crud.edit")
+                    .samf-button.small.red
+                      = link_to "Delete",  product_product_variation_path(product, variation), method: :delete, data: { confirm: "Are you sure?" }
+          .samf-button.small.green.mr-1
+            = link_to new_product_variation_product_path(product) do
+              = t("crud.create")
+.flex.flex-justify-center
+  .samf-button.small.mt-3.green
+    = link_to new_product_path do
+      = t("crud.create")
+

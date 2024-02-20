@@ -1,0 +1,23 @@
+.product {
+  display: grid;
+  grid-template-columns: auto 50% 1fr;
+  align-items: center;
+  width: 100%;
+
+    .info {
+      height: fit-content;
+
+    }
+
+  :first-child {
+    align-self: start;
+  }
+
+  @include media($not-desktop) {
+    grid-template-columns: auto;
+
+    .info {
+      text-align: center;
+    }
+  }
+}

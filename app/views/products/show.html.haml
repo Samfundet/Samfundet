@@ -1,0 +1,26 @@
+.product
+  .samf-button.small.mt-3.mb-3.red
+    = link_to products_path do
+      = t("common.back")
+
+  = image_tag path_to_image(@product.image_or_default), class: "img"
+
+  .info
+    %h2
+      = @product.name
+    .variations
+      - if @product.product_variations.present?
+        Available variations:
+        - @product.product_variations.each do |variation|
+          - if variation.amount > 0
+            = variation
+
+    %span
+      = t("product.info.price")
+      = number_to_currency(@product.price, strip_insignificant_zeros: true)
+    - if @product.get_amount < 1
+      .sold-out
+        = t("product.index.sold_out")
+    - elsif @product.get_amount <= 5
+      .few-left
+        = t("product.index.few")

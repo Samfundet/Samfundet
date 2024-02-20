@@ -1,0 +1,34 @@
+=javascript_include_tag "product/add-to-cart", defer: true
+
+%div.mb-3
+  %h2.mb-2
+    = t("product.info.title")
+  = t("product.info.body")
+
+= link_to new_order_path do
+  %button.samf-button#shopping-cart-button
+    = t("product.index.shopping_cart")
+.products-list
+  - @products.each do |product|
+    .product{id: "product_#{product.id}"}
+      = link_to product_path(product) do
+        %h2.name
+          = product.name
+        = image_tag path_to_image(product.image_or_default)
+      .variations
+        - product.product_variations.each do |variation|
+          - if variation.amount > 0
+            %button{id: "var_#{variation.id}"}
+              = variation
+      %span
+        = number_to_currency(product.price, strip_insignificant_zeros: true)
+      - if (product.get_amount < 1)
+        .sold-out
+          = t("product.index.sold_out")
+      - elsif (product.get_amount <= 5)
+        .few-left
+          = t("product.index.few")
+      - if (product.get_amount > 0)
+        %button.samf-button.green.small.m-1.add-to-cart
+          = t("product.index.add_to_cart")
+      

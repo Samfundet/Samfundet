@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_06_185604) do
+ActiveRecord::Schema.define(version: 2023_11_16_183230) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -381,6 +381,19 @@ ActiveRecord::Schema.define(version: 2023_08_06_185604) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "order_products", force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "product_variation_id"
+    t.integer "order_id"
+    t.integer "amount"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.boolean "processed", default: false
+  end
+
   create_table "page_revisions", force: :cascade do |t|
     t.string "title_no"
     t.string "title_en"
@@ -429,6 +442,22 @@ ActiveRecord::Schema.define(version: 2023_08_06_185604) do
     t.integer "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "product_variations", force: :cascade do |t|
+    t.string "name"
+    t.integer "amount", default: 0
+    t.integer "product_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name_no"
+    t.string "name_en"
+    t.integer "price"
+    t.integer "image_id"
+    t.boolean "has_variations", default: true
+    t.integer "amount", default: 0
+    t.datetime "release_time"
   end
 
   create_table "registration_events", force: :cascade do |t|

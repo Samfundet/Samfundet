@@ -1,0 +1,8 @@
+en:
+  order:
+    new:
+      order: Order
+    process: Process order
+    confirm:
+      title: Thank you for your order
+      body: More info

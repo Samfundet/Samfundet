@@ -1,0 +1,28 @@
+'no':
+  product:
+    info:
+      title: Samfundet har klikk og hent. Du kan forhåndsbestille her ogås hente på samfundet!
+      body: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in mattis libero. Vivamus placerat feugiat nisi, quis feugiat mauris commodo sit amet. Nunc cursus vehicula augue eu convallis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Quisque et justo non eros fringilla ultrices. Integer et ipsum erat. Ut dignissim dolor eu diam tincidunt, eu faucibus ex commodo. Quisque aliquam sollicitudin pretium. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean justo enim, volutpat ut massa ac, lobortis consequat nunc. Etiam id libero porttitor risus volutpat aliquet nec lacinia enim.
+      price: Pris
+      amount: Antall
+      has_variations: Har variasjoner
+      variation:
+        specification: Spesifikasjon
+        quantity: Kvantitet
+    index:
+      few: Få igjen
+      sold_out: Utsolgt
+      add_to_cart: Velg
+      shopping_cart: Handlekurv
+    admin:
+      main_page: Merch side
+      admin_page: Administrer merch
+      form:
+        new: Opprett nytt produkt
+        edit: Rediger produkt
+        header: Produkt informasjon
+      form_variation:
+        header: Produkt variasjon informasjon
+        edit: Rediger produkt variasjon
+        new: Opprett product variasjon
+    no_merch: Det er for øyeblikket ikke noe merch tilgjengelig
