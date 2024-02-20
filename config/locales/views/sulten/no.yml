@@ -141,10 +141,6 @@
             name: "Lychesnitter"
             description: "Lychebrød med rødbethummus, ruccula, mango og pistou."
             allergies: "Allergener: Gluten (hvete), melk (pistou), sesam (hummus). Kan inneholde spor av peanøtter: hummus"
-          side_salad:
-            name: "Sidesalat"
-            description: "Med tomat og syltet rødløk. Vegansk"
-            allergies: "Allergener: Sulfitt (salatvinaigrette)"
           soup:
             name: "Suppe"
             description: "Varierer etter sesong. Spør en av våre servitører om dagens suppe. Serveres med Lychebrød og kryddersmør."
@@ -169,11 +165,6 @@
             recommendations: "Baren anbefaler: Brooklyn Lager"
         main_courses:
           title: "Hovedretter"
-          duck:
-            name: "Konfitert and"
-            description: "Med sellerirotpuré, aigre doux og asparges."
-            allergies: "Allergener: Melk (smør, fløte - sellerirotpuré), sulfitt (saus - Aigre Doux), selleri (saus - Aigre Doux)"
-            recommendations: "Baren anbefaler: Cantos"
           pie:
             name: "Soppai"
             description: "Kremet soppai med feta, toppes med ruccula. Vegetar. Kan serveres med glutenfri paibunn"
