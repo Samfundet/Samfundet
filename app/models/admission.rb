@@ -117,6 +117,20 @@ class Admission < ApplicationRecord
     Admission.active.any?
   end
 
+  def custom_group_types
+    jobs.map { |job| job.custom_group_type }.to_set.sort_by { |s| s=='' ?  'zzz' : s }
+  end
+
+  def custom_group(group_type)
+    jobs.filter { |job| job.custom_group_type == group_type }
+      .map(&:custom_group)
+      .to_set.sort_by { |s| s=='' ? 'zzz' : s }
+  end
+
+  def jobs_in_custom_group(group)
+    jobs.select { |job| job.custom_group==group }
+  end
+
   def appliable?
     (actual_application_deadline > Time.current) && (shown_from < Time.current)
   end
@@ -144,6 +158,7 @@ class Admission < ApplicationRecord
     end
   end
 end
+
 
 # == Schema Information
 #

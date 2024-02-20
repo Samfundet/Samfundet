@@ -14,6 +14,8 @@
     .flex-row
       != form.input :default_motivation_text_no, as: :text
       != form.input :default_motivation_text_en, as: :text
+    != form.input :custom_group_type, :placeholder => t('jobs.only_customized_admission')
+    != form.input :custom_group, :placeholder => t('jobs.only_customized_admission')
     != form.input :is_officer, as: :boolean
     != form.input :tag_titles, as: :string, :placeholder => t('jobs.create_tags_example')
   = form.actions do

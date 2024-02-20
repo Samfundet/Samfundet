@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_06_185604) do
+ActiveRecord::Schema.define(version: 2024_02_19_184330) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2023_08_06_185604) do
     t.datetime "actual_application_deadline"
     t.string "promo_video", default: "https://www.youtube.com/embed/T8MjwROd0dc"
     t.text "groups_with_separate_admission"
+    t.boolean "customized_groups", default: false
   end
 
   create_table "applicants", force: :cascade do |t|
@@ -353,6 +354,8 @@ ActiveRecord::Schema.define(version: 2023_08_06_185604) do
     t.datetime "updated_at", null: false
     t.text "default_motivation_text_no"
     t.text "default_motivation_text_en"
+    t.string "custom_group", default: ""
+    t.string "custom_group_type", default: ""
     t.index ["admission_id"], name: "index_jobs_on_admission_id"
   end
 

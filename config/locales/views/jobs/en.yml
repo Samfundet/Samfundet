@@ -31,3 +31,4 @@ en:
     similar_jobs_not_applied_to: "Similar jobs you havent applied to"
     gdpr: "All personal information to applicants gets anonymized 3 weeks after the admission deadline"
     create_tags_example: "Example: foto, react, coffee, writer"
+    only_customized_admission: "For admissions with custom groups"
