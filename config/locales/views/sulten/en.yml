@@ -141,10 +141,6 @@ en:
             name: "Lyche snitter"
             description: "Lyche bread with beetroot hummus, ruccula, mango and pistou. Vegetarian, can be made vegan."
             allergies: "Allergener: Gluten (wheat), milk (pistou), sesame (hummus). May contain traces of peanuts: hummus"
-          side_salad:
-            name: "Side salad"
-            description: "With tomato and pickled red onion. Vegan."
-            allergies: "Allergies: Sulfite (saladvinaigrette)"
           soup:
             name: "Soup"
             description: "Varies by season. Ask one of our waiters about today's soup. Served with Lyche bread and butter."
@@ -169,11 +165,6 @@ en:
             recommendations: "The bar recommends: Brooklyn Lager"
         main_courses:
           title: "Main courses"
-          duck:
-            name: "Duck Confit"
-            description: "With celery root puree, aigre doux and asparagus."
-            allergies: "Allergies: Milk (butter, cream - celery root puree), sulfite (sauce - Aigre Doux), celery (sauce - Aigre Doux)."
-            recommendations: "The bar recommends: Cantos"
           pie:
             name: "Mushroom pie"
             description: "Served with feta cheese. Vegetarian. Can be served with a gluten-free pie crust"
