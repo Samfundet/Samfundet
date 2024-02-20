@@ -20,15 +20,15 @@ At the same time we're going to create a factory method by creating a file calle
 
 FactoryGirl.define do
   factory :blog do
-    title_no "Test"
-    title_en "Test"
-    lead_paragraph_no "Test"
-    lead_paragraph_en "Test"
-    content_no "Test"
-    content_en "Test"
+    title_no 'Test'
+    title_en 'Test'
+    lead_paragraph_no 'Test'
+    lead_paragraph_en 'Test'
+    content_no 'Test'
+    content_en 'Test'
     publish_at Time.current
-    author_id "Test"
-    image_id "Test"
+    author_id 'Test'
+    image_id 'Test'
   end
 end
 ```
@@ -43,14 +43,14 @@ require 'rails_helper'
 
 describe Blog do
   before do
-      @member = create(:member)
+    @member = create(:member)
       @image = create(:image)
   end
 
   it 'should have a title_no greater than zero characters' do
-      expect do
-        create(:blog, title_no: "", author_id: @member.id, image_id: @image.id)
-      end.to raise_error(ActiveRecord::RecordInvalid)
+    expect do
+      create(:blog, title_no: '', author_id: @member.id, image_id: @image.id)
+    end.to raise_error(ActiveRecord::RecordInvalid)
   end
 end
 ```

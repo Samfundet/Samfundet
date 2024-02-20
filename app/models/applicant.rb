@@ -132,7 +132,7 @@ class Applicant < ApplicationRecord
   def self.unflagged_applicants(admission)
     where(disabled: false).select do |applicant|
       # If not wanted by any
-      !applicant.flagged?(admission) ||  applicant.reserved?(admission)
+      !applicant.flagged?(admission) || applicant.reserved?(admission)
     end
   end
 
@@ -153,7 +153,7 @@ class Applicant < ApplicationRecord
         applicant = where(disabled: false).find_by(phone: field)
       end
 
-      return applicant if applicant &&
+      applicant if applicant &&
                           BCrypt::Password.new(applicant.hashed_password) == password
     end
   end
@@ -199,7 +199,7 @@ class Applicant < ApplicationRecord
   end
 
   def top_priority_job_application_at_group_without_interview(admission, group)
-    job_applications.select { |application| application.job.admission == admission }.select { |ja| ja.job.group == group && !ja.interview.time?  && ja.withdrawn == false }.first
+    job_applications.select { |application| application.job.admission == admission }.select { |ja| ja.job.group == group && !ja.interview.time? && ja.withdrawn == false }.first
   end
 
 private

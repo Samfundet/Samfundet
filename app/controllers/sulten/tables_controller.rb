@@ -50,7 +50,7 @@ class Sulten::TablesController < Sulten::BaseController
     end
 
     # Save and update other attributes
-    if @table.save and @table.update_attributes(table_params)
+    if @table.save and @table.update(table_params)
       redirect_to sulten_tables_path
     else
       render :edit

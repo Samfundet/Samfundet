@@ -5,13 +5,13 @@
 ###########################################
 
 # Specify ruby version that we use. Bundler gives an error when a different ruby is used.
-ruby '~> 2.7.0' # From .ruby-version.
+ruby '~> 3.1.2' # From .ruby-version.
 
 # The repository from which we're fetching our rubygems.
 source 'https://rubygems.org'
 
 # Rails. Duh.
-gem 'rails', '~> 5.2.0'
+gem 'rails', '~> 6.1.0'
 
 # Memcache client
 gem 'dalli', '~> 2.7.0'
@@ -57,18 +57,20 @@ gem 'sass-rails', '~> 5.0.0'
 # Sass mixin library
 gem 'bourbon', '~> 4.2.0'
 
+gem 'webrick', '~> 1.7'
+
 # Semantic fluid grid framework
-gem 'neat', '~> 1.8.0'
+gem 'neat', '~> 1.7.4'
 
 # uglifier is a Ruby wrapper for UglifyJS, a JavaScript compressor.
 gem 'uglifier', '~> 3.0.0'
 
 # CanCanCan for role-based access control. See app/models/ability.rb
-gem 'cancancan', '~> 2.3.0'
+gem 'cancancan', '~> 3.5.0'
 
 # formtastic is a Rails form builder plugin
 # with semantically rich and accessible markup.
-gem 'formtastic', '~> 3.1.0'
+gem 'formtastic', '~> 5.0.0'
 
 # Haml is a templating language. It compiles to HTML.
 gem 'haml-rails', '~> 2.0.0'
@@ -80,7 +82,7 @@ gem 'icalendar', '~> 2.4.0'
 # For example, we can replace the path '/groups' with the paths
 # '/gjenger' and '/en/groups' which both point to the same page.
 # See: config/locales/routes/i18n-routes.yml
-gem 'route_translator', '~> 7.1.0'
+gem 'route_translator', '~> 14.1.0'
 
 # RedCarpet renders Markdown, a light-weight markup language, to HTML.
 # See: config/initializers/haml_markdown.rb
@@ -90,21 +92,22 @@ gem 'redcarpet', '~> 3.5.0'
 gem 'route_downcaser', '~> 1.2.0'
 
 # SamfundetDomain is a gem which provides the application with samfundets domain models.
-gem 'samfundet_domain', git: 'https://github.com/Samfundet/SamfundetDomain.git'
+gem 'samfundet_domain', git: 'https://github.com/Samfundet/SamfundetDomain.git', branch: 'test-upgrade'
 # gem 'samfundet_domain', git: 'https://github.com/Samfundet/SamfundetDomain.git', branch: 'update-ruby-version'
 # gem 'samfundet_domain', path: '../SamfundetDomain'
 
 # SamfundetAuth is a gem which provides the application with methods for authenticating against mdb2.
-gem 'samfundet_auth', git: 'https://github.com/Samfundet/SamfundetAuth.git'
+gem 'samfundet_auth', git: 'https://github.com/Samfundet/SamfundetAuth.git', branch: 'test-upgrade'
 # gem 'samfundet_auth', git: 'https://github.com/Samfundet/SamfundetAuth.git', branch: 'update-ruby-version'
 # gem 'samfundet_auth', path: '../SamfundetAuth'
 
 # will_paginate is an adaptive pagination plugin.
 # It makes pagination very simple.
-gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate', '~> 4.0.0'
 
 # for file uploads, see https://github.com/thoughtbot/paperclip
 gem 'paperclip', '~> 6.1.0'
+# gem 'kt-paperclip', '~> 7.2.2'  # TODO: switch to this active fork?
 
 # automatic compression of images uploaded via paperclip
 gem 'paperclip-compression', '~> 1.1.0'
@@ -123,7 +126,7 @@ gem 'pg_search', '~> 2.3.0'
 gem 'diff-lcs', '~> 1.2.5'
 
 # Middleware to send notifications when errors occur
-gem 'exception_notification', '~> 4.2.0'
+gem 'exception_notification', '~> 4.4', '>= 4.4.3'
 
 # Addon to exception_notification that sends exceptions to slack
 gem 'slack-notifier', '~> 1.5.0'
@@ -136,16 +139,16 @@ gem 'render_async'
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem 'listen', '~> 3.2.1'
-  gem 'web-console', '~> 3.7.0'
+  gem 'listen', '~> 3.4.0'
+  gem 'web-console', '~> 4.2.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring', '~> 2.1.0'
   gem 'spring-watcher-listen', '~> 2.0.1'
 
   # Gem to detect ruby style guide violations
-  gem 'rubocop', '~> 0.79.0'
-  gem 'rubocop-rails_config', '~> 0.9.1'
+  gem 'rubocop', '~> 1.57.0'
+  gem 'rubocop-rails_config', '~> 1.16.0'
 
   # annotate adds schema information from the database, in the form of
   # Ruby comments, to model files so that we can see which columns
@@ -160,7 +163,7 @@ group :development do
   # allows for features such as local / instance variable expection,
   # REPL debugging etc.
   gem 'better_errors', '~> 2.8.0'
-  gem 'binding_of_caller', '~> 0.8.0'
+  gem 'binding_of_caller', '~> 1.0.0'
 
   # rails-footnotes adds information useful for debugging to the bottom
   # of our web pages for easy reference.
@@ -193,7 +196,7 @@ group :development, :test do
   gem 'seedbank'
 
   # Faker is a library that generates fake data (names, email addresses, etc.)
-  gem 'faker', '~> 1.6.6'
+  gem 'faker', '~> 3.2'
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', '~> 9.0.0', platform: :mri

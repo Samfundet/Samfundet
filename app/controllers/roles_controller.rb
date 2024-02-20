@@ -42,7 +42,7 @@ class RolesController < ApplicationController
   def edit; end
 
   def update
-    if @role.update_attributes(role_params)
+    if @role.update(role_params)
       flash[:success] = 'Rollen er oppdatert.'
       redirect_to role_url @role
     else

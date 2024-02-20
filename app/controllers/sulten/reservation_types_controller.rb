@@ -21,7 +21,7 @@ class Sulten::ReservationTypesController < Sulten::BaseController
 
   def update
     @type = Sulten::ReservationType.find(params[:id])
-    if @type.update_attributes(reservation_type_params)
+    if @type.update(reservation_type_params)
       redirect_to sulten_reservation_types_path
     else
       render :edit

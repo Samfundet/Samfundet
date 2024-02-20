@@ -14,14 +14,14 @@ These methods are conditionally called in the `initialize(user)` on the ability 
 The following block of code describes how methods are being called to assign permissions depending on the users role.
 ```ruby
 @user.roles.each do |role|
-  self.send(role.title) if self.respond_to? role.title
+  send(role.title) if respond_to? role.title
 end
 ```
 Furthermore it is important to note that the `:manage` permission is interpreted as a wildcard matching all actions (`:index, :show, :edit` and so forth).
 Sor for safety *DO NOT* grant `:manage` privilges unless you are absolutely certain. Instead you should explicitly add each action like this
 
 ```ruby
-can [:index, :show], Event
+can %i[index show], Event
 ```
 
 ## Controllers

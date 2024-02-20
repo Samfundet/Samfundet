@@ -103,7 +103,7 @@ class EventsController < ApplicationController
 
   def update
     @event = Event.find params[:id]
-    if @event.update_attributes(event_params)
+    if @event.update(event_params)
       if (@event.price_type.eql? 'free_registration') && @event.registration_event.nil?
         @capacity = Integer(event_params[:capacity]) rescue 0
         @registration_event = RegistrationEvent.create(arrangement: @event, plasser: @capacity)

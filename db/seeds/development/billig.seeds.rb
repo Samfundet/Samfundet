@@ -34,7 +34,7 @@ Area.all.each do |area|
 
   puts "Creating events for #{area.name}."
   possible_number_of_events_per_area.sample.times do |time|
-      event_title = Faker::Lorem.sentence(1)
+      event_title = Faker::Lorem.sentence
       start_time =
         (rand 2).weeks.from_now +
         (rand 4).days +
@@ -127,10 +127,10 @@ Area.all.each do |area|
         publication_time: publication_time,
         non_billig_start_time: start_time,
         age_limit: age_limit.sample,
-        short_description_en: Faker::Lorem.sentence(12),
-        short_description_no: Faker::Lorem.sentence(12),
-        long_description_en: Faker::Lorem.sentence(100),
-        long_description_no: Faker::Lorem.sentence(100),
+        short_description_en: Faker::Lorem.sentence(word_count: 12),
+        short_description_no: Faker::Lorem.sentence(word_count: 12),
+        long_description_en: Faker::Lorem.sentence(word_count: 100),
+        long_description_no: Faker::Lorem.sentence(word_count: 100),
         status: status.sample,
         event_type: event_type.sample,
         banner_alignment: "hide", #banner_alignment.sample,

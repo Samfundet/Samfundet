@@ -44,7 +44,7 @@ after :organizers do
         group.jobs.create!(
           admission: a,
           title_no: Faker::Company.catch_phrase,
-          teaser_no: Faker::Lorem.sentence(1),
+          teaser_no: Faker::Lorem.sentence,
           description_no: "En fantastisk stilling du bare MÅ søke. " + ("lorem ipsum boller og brus" * 30),
           is_officer: (rand > 0.5)
         )

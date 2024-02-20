@@ -32,7 +32,7 @@ class Sulten::ClosedPeriodsController < Sulten::BaseController
   def edit; end
 
   def update
-    if @closed_period.update_attributes(sulten_closed_period_params)
+    if @closed_period.update(sulten_closed_period_params)
       flash[:success] = I18n.t('sulten.closed_periods.update_success')
       redirect_to sulten_closed_periods_path
     else

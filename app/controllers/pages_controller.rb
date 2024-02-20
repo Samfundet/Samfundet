@@ -74,7 +74,7 @@ class PagesController < ApplicationController
       params[:page].slice!(:title_no, :title_en, :content_no, :content_en)
     end
 
-    if @page.update_attributes(page_params)
+    if @page.update(page_params)
       flash[:success] = t('pages.edit_success')
       redirect_to page_url @page
     else
@@ -128,7 +128,7 @@ private
   end
 
   def build_link_graph
-    urlRegex = /(?<!\!)\[.*?\]\((.*?)\)/
+    urlRegex = /(?<!!)\[.*?\]\((.*?)\)/
 
     pages = Page.all
 
@@ -147,7 +147,7 @@ private
   # url_filter takes something that is supposed to be a link from an infopage
   # It then tries to sanitize and check what it points to and return the best guess.
   def url_filter(url)
-    nameRegex = /^#{Page::NAME_FORMAT}$/
+    nameRegex = /^#{Page::NAME_FORMAT}$/o
 
     # check if link matches name spec already
     return url if nameRegex.match url

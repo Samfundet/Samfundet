@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Page < ApplicationRecord
-  NAME_FORMAT = /_?[0-9]*-?[a-zA-Z][a-zA-Z0-9\-]*/
+  NAME_FORMAT = /_?[0-9]*-?[a-zA-Z][a-zA-Z0-9-]*/
   MENU_NAME = '_menu'
   INDEX_NAME = '_index'
   TICKETS_NAME = 'tickets'
@@ -11,8 +11,8 @@ class Page < ApplicationRecord
   extend LocalizedFields
   localized_fields :title, :name, :content
 
-  validates :name_no, format: { with: /\A#{NAME_FORMAT}\z/ }
-  validates :name_en, format: { with: /\A^#{NAME_FORMAT}\z/ }
+  validates :name_no, format: { with: /\A#{NAME_FORMAT}\z/o }
+  validates :name_en, format: { with: /\A^#{NAME_FORMAT}\z/o }
   validates :role, presence: true
   validates :name_no, uniqueness: true
   validates :name_en, uniqueness: true
@@ -41,7 +41,7 @@ class Page < ApplicationRecord
   after_save do |page|
     if @revision_fields_updated
       previous_version = revisions.last.try(:version) || 0
-      field_values = Hash[REVISION_FIELDS.map { |field| [field, send(field)] }]
+      field_values = REVISION_FIELDS.index_with { |field| send(field) }
 
       author = nil unless author.instance_of? Member
 

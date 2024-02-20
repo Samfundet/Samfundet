@@ -31,7 +31,7 @@ class EverythingClosedPeriodsController < ApplicationController
 
   def update
     @everything_closed_period = EverythingClosedPeriod.find(params[:id])
-    if @everything_closed_period.update_attributes(everything_closed_period_params)
+    if @everything_closed_period.update(everything_closed_period_params)
       flash[:success] = I18n.t('everything_closed_periods.update_success')
       redirect_to everything_closed_periods_path
     else

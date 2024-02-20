@@ -4,8 +4,8 @@ COLOR = %w[blue red white green black]
 
 2.times do
     InfoBox.create!(
-      title_no: Faker::Lorem.sentence(1),
-      title_en: Faker::Lorem.sentence(1),
+      title_no: Faker::Lorem.sentence,
+      title_en: Faker::Lorem.sentence,
       body_no: "les mer her",
       body_en: "read more here",
       image_id: Image.all.sample.id,
@@ -20,8 +20,8 @@ COLOR = %w[blue red white green black]
 end
 
 InfoBox.create!(
-  title_no: Faker::Lorem.sentence(1),
-  title_en: Faker::Lorem.sentence(1),
+  title_no: Faker::Lorem.sentence,
+  title_en: Faker::Lorem.sentence,
   body_no: "les mer her",
   body_en: "read more here",
   image_id: Image.all.sample.id,

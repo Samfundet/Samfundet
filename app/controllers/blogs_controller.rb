@@ -46,7 +46,7 @@ class BlogsController < ApplicationController
   def update
     @article = Blog.find(params[:id])
 
-    if @article.update_attributes(blog_params)
+    if @article.update(blog_params)
       flash[:success] = t('events.update_success')
       redirect_to @article
     else
