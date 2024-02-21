@@ -127,8 +127,8 @@ class Admission < ApplicationRecord
       .to_set.sort_by { |s| s=='' ? 'zzz' : s }
   end
 
-  def jobs_in_custom_group(group)
-    jobs.select { |job| job.custom_group==group }
+  def jobs_in_custom_group(group, group_type)
+    jobs.select { |job| job.custom_group==group && job.custom_group_type==group_type }
   end
 
   def appliable?
