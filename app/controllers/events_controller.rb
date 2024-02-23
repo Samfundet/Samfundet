@@ -188,6 +188,9 @@ class EventsController < ApplicationController
                       .map(&:to_i)
                       .uniq - [0]
 
+    @google_form_enabled = Rails.application.config.purchase_callback_google_form_enabled
+    @google_form_url = Rails.application.config.purchase_callback_google_form_url
+
     @references = split_tickets.join(', ') << '.'
     @pdf_url = Rails.application.config.billig_ticket_path.dup
     @sum = 0
