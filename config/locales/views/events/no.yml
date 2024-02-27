@@ -139,6 +139,7 @@
       ticket_purchased: "Du har kjøpt følgende billetter med referansenummer: %{refs}"
       download_tickets: Last ned billetter i PDF-format
       confirmation_mail_confirmation: Du vil også motta billetten(e) på epost.
+      purchase_survey_prompt: "Hvis du har tid, vennligst svar på denne korte anonyme undersøkelsen:"
 
       event: Arrangement
       time: Tidspunkt

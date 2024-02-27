@@ -133,6 +133,7 @@ en:
       ticket_purchased: "You have bought the following tickets with references: %{refs}"
       download_tickets: Download tickets as PDF
       confirmation_mail_confirmation: You will also receive your tickets on email.
+      purchase_survey_prompt: "If you have time, please answer this short anonymous survey:"
 
       event: Event
       time: When

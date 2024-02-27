@@ -56,6 +56,9 @@ Samfundet::Application.configure do
   config.billig_path = 'https://billettsalg-test.uka.no/pay'
   config.billig_ticket_path = 'https://billig.samfundet.no/pdf?'
 
+  config.purchase_callback_google_form_enabled = true
+  config.purchase_callback_google_form_url = "https://docs.google.com/forms/d/e/1FAIpQLSeEDyT86GA2LcQH9-ZCyIEC3m8AmFCIrgqC7atB8HENMOkgSQ/viewform?embedded=true"
+
   config.after_initialize do
     billig_table_prefix = 'billig.'
 
