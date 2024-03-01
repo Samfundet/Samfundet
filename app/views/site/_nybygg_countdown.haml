@@ -1,9 +1,7 @@
 .nybygg-countdown
   .title
     = t 'site.index.nybygg_opening_in'
-  .hidde
-    %span{ id: 'nybygg-countdown-date', 'data-date': @nybygg_countdown_date.strftime('%Y-%m-%d %H:%M:%S%z') }
-
+  %span{ id: 'nybygg-countdown-date', class: 'hidden', 'data-date': @nybygg_countdown_date.strftime('%Y-%m-%d %H:%M:%S%z') }
   - if @nybygg_diff >= 0
     .countdown
       .section
