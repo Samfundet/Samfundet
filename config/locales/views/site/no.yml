@@ -34,6 +34,12 @@
       corona: "Samfundet har stengt med umiddelbar virkning grunnet nye COVID-19-tiltak fra regjeringen.<br> For mer informasjon, klikk"
       corona2: "her"
 
+      nybygg_opening_in: "Nybygg åpner om"
+      nybygg_is_open: "Nybygg er åpent!"
+      days: "dager"
+      hours: "timer"
+      minutes: "minutter"
+      seconds: "sekunder"
 
       opening-hours-page-title: "aapningstider"
       all-opening-hours: "Alle åpningstider"
