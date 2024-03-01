@@ -11,15 +11,19 @@ class SiteController < ApplicationController
 
     # Nybygg countdown
     @nybygg_countdown_enabled = Rails.application.config.nybygg_countdown_enabled
-    @nybygg_countdown_date = Rails.application.config.nybygg_countdown_date.in_time_zone('Europe/Oslo')
 
-    # We calculate the required countdown values here in addition to JS for SEO reasons,
-    # as well as making the initial load more pleasant for users.
-    @nybygg_diff = (@nybygg_countdown_date.to_time - DateTime.current.to_time).to_i
-    @days_left = @nybygg_diff / 86400
-    @hours_left = (@nybygg_diff % 86400) / 3600
-    @minutes_left = (@nybygg_diff % 3600) / 60
-    @seconds_left = @nybygg_diff % 60
+    if @nybygg_countdown_enabled
+      # Convert from UTC to local timezone
+      @nybygg_countdown_date = Rails.application.config.nybygg_countdown_date.in_time_zone('Europe/Oslo')
+
+      # We calculate the required countdown values here in addition to JS for SEO reasons,
+      # as well as making the initial load more pleasant for users.
+      @nybygg_diff = (@nybygg_countdown_date.to_time - DateTime.current.to_time).to_i
+      @days_left = @nybygg_diff / 86400
+      @hours_left = (@nybygg_diff % 86400) / 3600
+      @minutes_left = (@nybygg_diff % 3600) / 60
+      @seconds_left = @nybygg_diff % 60
+    end
 
     @info_boxes = {}
     InfoBox.where('start_time <= ? and end_time >= ?', Time.current, Time.current).each do |box|
