@@ -7,7 +7,7 @@ class Image < ApplicationRecord
   # attr_accessible :title, :image_file, :uploader_id, :tagstring, :uploader
 
   has_attached_file :image_file,
-                    styles: { medium: 'x180>', large: 'x400>' },
+                    styles: { medium: 'x240>', large: 'x400>' },
                     convert_options: { medium: '-quality 80', large: '-quality 80' },
                     processors: Rails.env.development? ? %i[thumbnail] : %i[thumbnail compression],
                     url: '/upload/:class/:attachment/:id_partition/:style/:filename',
