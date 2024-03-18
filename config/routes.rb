@@ -15,9 +15,9 @@ Rails.application.routes.draw do
 
     resources :info_boxes
 
-    resources :crowd_funding_supporters, path: 'crowd-funding' do
-      get :admin, on: :collection
-    end
+    # resources :crowd_funding_supporters, path: 'crowd-funding' do
+    #   get :admin, on: :collection
+    # end
 
     #resources :search, only: [:new, :create, :search]
     ############################
