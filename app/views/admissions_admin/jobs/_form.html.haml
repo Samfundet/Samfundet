@@ -1,3 +1,6 @@
+= javascript_include_tag 'job_applications/prev_tags.js', defer: true
+%script src="http://code.jquery.com/jquery-1.11.0.min.js"
+
 = semantic_form_for [:admissions_admin, @job.admission, @job.group, @job] do |form|
   = form.inputs do
     .flex-row
@@ -18,5 +21,11 @@
     != form.input :custom_group, :placeholder => t('jobs.only_customized_admission')
     != form.input :is_officer, as: :boolean
     != form.input :tag_titles, as: :string, :placeholder => t('jobs.create_tags_example')
+    - if can? :manage, JobTag
+      .mt-3
+        %p{style:"margin-bottom: 0;"} Tags used in other places
+        .flex-row
+          - @job_tags.each do |tag|
+            .samf-button.plain.m-1.prev-tag-button= tag.title
   = form.actions do
     != form.action :submit
