@@ -14,7 +14,7 @@ source 'https://rubygems.org'
 gem 'rails', '~> 5.2.0'
 
 # Memcache client
-gem 'dalli', '~> 2.7.0'
+gem 'dalli', '~> 3.2.3'
 
 # Charts
 gem 'lazy_high_charts', '~> 1.5.0'
