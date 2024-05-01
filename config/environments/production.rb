@@ -71,7 +71,7 @@ Samfundet::Application.configure do
 
   # Note: nybygg_countdown_date is in UTC
   config.nybygg_countdown_enabled = true
-  config.nybygg_countdown_date = DateTime.new(2024, 8, 12, 14, 0, 0)
+  config.nybygg_countdown_date = DateTime.new(2024, 8, 10, 16, 0, 0)
 
   config.after_initialize do
     billig_table_prefix = 'billig.'
