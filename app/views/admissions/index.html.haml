@@ -7,6 +7,5 @@
 - else
   - @open_admissions.each do |admission|
     != render partial: "promo", locals: { admission: admission }
-  - @open_admissions.each do |admission|
     - cache [I18n.locale, admission] do
       != render(admission)
