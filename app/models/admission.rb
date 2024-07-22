@@ -175,4 +175,5 @@ end
 #  actual_application_deadline    :datetime
 #  promo_video                    :string           default("https://www.youtube.com/embed/T8MjwROd0dc")
 #  groups_with_separate_admission :text
+#  is_primary                     :boolean          default(false)
 #
