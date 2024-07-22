@@ -1,0 +1,36 @@
+#content.admissions.show {
+
+  .jobs{
+    &:not(:last-child) {
+      border-bottom: 1px solid #ddd;
+    }
+  }
+
+  .jobRow{
+    @include media($mobile) {
+      border-style: none;
+      border-width: 1px;
+      border-radius: 2em;
+      align-items: center;
+    }
+  }
+  .description {
+    @include media($mobile) {
+      display: none;
+    }
+  }
+
+  .youtube-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+
+    iframe.youtube-embed {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

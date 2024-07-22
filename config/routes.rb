@@ -87,7 +87,7 @@ Rails.application.routes.draw do
     ##  Routes for admissions ##
     ############################
 
-    resources :admissions, only: :index
+    resources :admissions, only: [:index, :show]
 
     # Everything closed period routes
     resources :everything_closed_periods, except: [:show]

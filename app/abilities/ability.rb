@@ -43,7 +43,7 @@ class Ability
     can [:create, :search], Search
 
     # Admission
-    can :index, Admission
+    can [:index, :show], Admission
     can :show, Job
 
     ## A guest should be able to create an Applicant and forget its password
