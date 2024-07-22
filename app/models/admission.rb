@@ -78,7 +78,7 @@ class Admission < ApplicationRecord
     end
   end
 
-  default_scope { order(shown_application_deadline: :desc) }
+  default_scope { order(is_primary: :desc, shown_application_deadline: :desc) }
 
   # We must use lambdas so that the time is not 'cached' on server start.
   scope :current, (lambda do
