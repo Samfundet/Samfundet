@@ -1,6 +1,6 @@
-- if not @open_admissions.first.promo_video.empty?
+- if not admission.promo_video.empty?
   .youtube-wrapper
-    %iframe.youtube-embed{ src: @open_admissions.first.promo_video, frameborder: 0, allowfullscreen: true }
+    %iframe.youtube-embed{ src: admission.promo_video, frameborder: 0, allowfullscreen: true }
 
 %div.text-Align.pt-3
   %div.flex-row.wrap.mb-3.samf-container.white.br-3.bxs{style:"align-items: center;"}
