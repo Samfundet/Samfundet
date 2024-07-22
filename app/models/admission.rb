@@ -86,6 +86,10 @@ class Admission < ApplicationRecord
     .order('user_priority_deadline DESC')
   end)
 
+  scope :primary, (lambda do
+    where('is_primary IS TRUE')
+  end)
+
   scope :appliable, (lambda do
     where('shown_from < ? and actual_application_deadline > ?',
           Time.current, Time.current)

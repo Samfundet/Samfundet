@@ -6,9 +6,18 @@ class AdmissionsController < ApplicationController
   layout 'admissions'
 
   def index
-    @open_admissions = Admission.appliable.includes(
+    # First check if we can find any active admissions marked as primary
+    @open_admissions = Admission.appliable.primary.includes(
       group_types: { groups: :jobs }
     )
+    if @open_admissions.empty?
+      # No active primary admissions found, now find non-primary
+      @open_admissions = Admission.appliable.includes(
+        group_types: { groups: :jobs }
+      )
+    end
+
+    # TODO: figure out logic of upcoming primary/non-primary admissions
     @closed_admissions = Admission.no_longer_appliable
     @upcoming_admissions = Admission.upcoming
   end
