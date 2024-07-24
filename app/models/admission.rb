@@ -143,6 +143,11 @@ class Admission < ApplicationRecord
     user_priority_deadline > Time.current
   end
 
+  # TODO: remove me when removing hack for hiding isfit-admissions in admin applet
+  def isfit?
+    title.downcase.include? "isfit"
+  end
+
   def interview_dates
     from = actual_application_deadline.to_date + 1.day
     to   = user_priority_deadline.to_date
