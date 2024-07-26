@@ -145,7 +145,7 @@ class Admission < ApplicationRecord
 
   # TODO: remove me when removing hack for hiding isfit-admissions in admin applet
   def isfit?
-    title.downcase.include? "isfit"
+    title.downcase.include? 'isfit'
   end
 
   def interview_dates
