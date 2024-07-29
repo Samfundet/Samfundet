@@ -99,3 +99,25 @@ en:
         --
         For more information about this semester's admission, go to:
         https://samfundet.no/en/admissions
+      email_subject_isfit: "We are delighted to see you apply for ISFiT!"
+      email_message_isfit: |
+        Hey %{firstname},
+
+        We are delighted to see you wanting to apply for ISFiT!
+
+        The following personal details have been registered on your account:
+
+        Name: %{name}
+        Phone number: %{phone}
+        E-mail: %{email}
+
+        If this info is incorrect, please send an e-mail to mg-web@samfundet.no
+
+        To continue registration, please follow the link below. The link is valid for 60 minutes:
+        %{verification_link}
+
+        If the link is invalid, try logging in again and you will receive a new verification link.
+
+        --
+        For more information about this semester's admission, go to:
+        https://samfundet.no/en/admissions

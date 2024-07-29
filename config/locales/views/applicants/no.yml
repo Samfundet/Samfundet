@@ -99,3 +99,25 @@
         --
         For mer informasjon om Samfundets opptak, gå til:
         https://samfundet.no/opptak
+      email_subject_isfit: "Så kult at du vil søke ISFiT!"
+      email_message_isfit: |
+        Hei %{firstname},
+
+        Så kult at du vil søke ISFiT!
+
+        Du er blitt registrert med følgende personalia:
+
+        Navn: %{name}
+        Telefon: %{phone}
+        E-post: %{email}
+
+        Om dette er feil, vennligst send en mail til mg-web@samfundet.no
+
+        For å fortsette registreringen, vennligst følg lenken nedenfor. Den er gyldig i 60 minutter:
+        %{verification_link}
+
+        Dersom lenken er ugyldig, prøv å logg inn på nytt og du får tilsendt en ny bekreftelseslenke.
+
+        --
+        For mer informasjon om Samfundets opptak, gå til:
+        https://samfundet.no/opptak

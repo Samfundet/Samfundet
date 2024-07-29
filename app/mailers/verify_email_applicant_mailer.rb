@@ -21,6 +21,6 @@ class VerifyEmailApplicantMailer < ActionMailer::Base
 
     @applicant = applicant
     @admission = admission
-    mail(to: applicant.email, subject: t('applicants.email_verification.email_subject'))
+    mail(to: applicant.email, subject: t((@admission.present? && @admission.title.downcase.include?('isfit')) ? 'applicants.email_verification.email_subject_isfit' : 'applicants.email_verification.email_subject'))
   end
 end
