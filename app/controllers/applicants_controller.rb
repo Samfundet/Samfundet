@@ -10,18 +10,20 @@ class ApplicantsController < ApplicationController
 
   def new
     @applicant = Applicant.new
+    @admission = params[:admission]
   end
 
   def create
     params[:applicant][:email].downcase!
     params[:applicant][:email_confirmation].downcase!
     @applicant = Applicant.new(applicant_params)
+    @admission = Admission.appliable.find_by_id(params[:admission])
 
     if @applicant.save
       flash[:success] = t('applicants.registration_success')
 
-      send_verification_email(@applicant)
-      redirect_to applicant_login_path
+      send_verification_email(@applicant, @admission)
+      redirect_to applicant_login_path(redirect_to: @admission.nil? ? nil : admission_path(@admission))
     else
       flash[:error] = t('applicants.registration_error')
       render :new
@@ -138,6 +140,7 @@ class ApplicantsController < ApplicationController
 
   def verify_email
     @applicant = Applicant.find(params[:applicant])
+    @admission = params[:admission]
     if @applicant.check_email_verification_hash(params[:hash])
       @applicant.verified = true
       @applicant.save!
@@ -147,7 +150,9 @@ class ApplicantsController < ApplicationController
       flash[:error] = t('applicants.email_verification.verification_link_invalid')
       flash[:message] = t('applicants.email_verification.verification_info')
     end
-    redirect_to applicant_login_path
+
+    # If admission provided, set redirect to the specified admission after login
+    redirect_to applicant_login_path(redirect_to: @admission.present? ? admission_path(@admission) : nil)
   end
 
   def steal_identity_applet; end
@@ -190,8 +195,8 @@ private
     params.require(:applicant).permit(:firstname, :surname, :phone, :campus_id, :email, :email_confirmation, :password, :password_confirmation, :interested_other_positions, :gdpr_checkbox)
   end
 
-  def send_verification_email(applicant)
-    VerifyEmailApplicantMailer.send_applicant_email_verification(applicant).deliver
+  def send_verification_email(applicant, admission = nil)
+    VerifyEmailApplicantMailer.send_applicant_email_verification(applicant, admission).deliver
     flash[:message] = t('applicants.email_verification.verification_sent',
                         email: CGI.escapeHTML(applicant.email))
   rescue Net::SMTPError

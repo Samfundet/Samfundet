@@ -25,10 +25,10 @@
             = t('jobs.your_applications')
       - else
         .flex-row.wrap.center
-          = link_to new_applicant_path do
+          = link_to new_applicant_path(admission: request.path == admissions_path ? nil : admission) do
             .samf-button.blue.mr-2.mb-2
               = t('applicants.register_as_an_applicant')
-          = link_to applicant_login_path do
+          = link_to applicant_login_path(redirect_to: request.path == admissions_path ? nil : admission_path(admission)) do
             .samf-button.plain
               = t('applicants.login_title')
 

@@ -5,4 +5,5 @@
     email: @applicant.email,
     verification_link: email_verification_link(email: @applicant.email,
                                               applicant_id: @applicant.id,
-                                              verification_hash: @new_verification_hash_value)).html_safe
+                                              verification_hash: @new_verification_hash_value,
+                                              admission_id: @admission)).html_safe

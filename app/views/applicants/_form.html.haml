@@ -2,6 +2,7 @@
 
 = semantic_form_for applicant, html: { class: 'soon-to-be-default-styling' } do |form|
   != hidden_field_tag "redirect_to", html_escape(@redirect_to) if @redirect_to
+  = hidden_field_tag "admission", html_escape(@admission) if @admission
   .center{style:"max-width:750px"}
     = form.inputs name: t("applicants.forms.register.personal_information") do
       .flex-row.wrap

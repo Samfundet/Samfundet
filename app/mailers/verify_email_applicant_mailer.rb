@@ -6,7 +6,7 @@ class VerifyEmailApplicantMailer < ActionMailer::Base
   default from: %("Samfundet" <mg-web@samfundet.no>),
           reply_to: 'mg-web@samfundet.no'
 
-  def send_applicant_email_verification(applicant)
+  def send_applicant_email_verification(applicant, admission = nil)
     @new_verification_hash_value = applicant.create_email_verification_hash
     existing_verification_hash = EmailVerification.find_by(applicant_id: applicant.id)
 
@@ -20,6 +20,7 @@ class VerifyEmailApplicantMailer < ActionMailer::Base
     end
 
     @applicant = applicant
+    @admission = admission
     mail(to: applicant.email, subject: t('applicants.email_verification.email_subject'))
   end
 end
