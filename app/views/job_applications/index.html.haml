@@ -21,7 +21,9 @@
 - else
   - @admissions.each_pair do |admission, job_applications|
     %h2
-      = t('jobs.applications_to') + " #{admission.title}"
+      = t('jobs.applications_to')
+      = link_to admission_path(admission) do
+        = admission.title
     - if admission.actual_application_deadline < Time.current && admission.user_priority_deadline > Time.current
       .flash.message
         Dette opptaket er stengt, men du kan fremdeles omprioritere dine søknader.
