@@ -1,4 +1,4 @@
-= t((@admission.present? && @admission.title.downcase.include?('isfit')) ? 'applicants.email_verification.email_message_isfit' : 'applicants.email_verification.email_message',
+= t((@admission.present? && @admission.isfit?) ? 'applicants.email_verification.email_message_isfit' : 'applicants.email_verification.email_message',
     firstname: @applicant.firstname,
     name: @applicant.full_name,
     phone: @applicant.phone,
