@@ -21,3 +21,4 @@ en:
         admin_priority_deadline: Priority deadline for groups
         groups_with_separate_admission: Groups with separate admission
         customized_groups: Custom groups
+        is_primary: Primary admission

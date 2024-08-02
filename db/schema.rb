@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_02_19_184330) do
+ActiveRecord::Schema.define(version: 2024_07_15_234401) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2024_02_19_184330) do
     t.string "promo_video", default: "https://www.youtube.com/embed/T8MjwROd0dc"
     t.text "groups_with_separate_admission"
     t.boolean "customized_groups", default: false
+    t.boolean "is_primary", default: false
   end
 
   create_table "applicants", force: :cascade do |t|

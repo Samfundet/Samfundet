@@ -2,6 +2,8 @@
 
   = hidden_field_tag "redirect_to", html_escape(redirect_to) if local_assigns[:redirect_to]
 
+  = hidden_field_tag "admission", html_escape(@admission) if @admission
+
   %p
     != text_field_tag "applicant_login_field", html_escape(local_assigns[:applicant_login_field]),
       size: login_text_input_width,

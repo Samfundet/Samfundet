@@ -46,6 +46,7 @@ en:
     processed_applications: "Processed"
     accepted_applicants: "Accepted"
     overview_title: "Admission Overview"
+    overview_go_to_admission: "Go to admission"
     overview_processed: "%{processed} of %{total} applications have been processed."
     overview_accepted: "%{accepted} of %{total} applicants have been accepted, and %{rejected} should receive rejection emails."
     overview_not_complete: "Some groups have not processed all their applications, so it is not possible to send emails yet."

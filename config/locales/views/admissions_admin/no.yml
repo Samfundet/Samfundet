@@ -47,6 +47,7 @@
     processed_applications: "Behandlet"
     accepted_applicants: "Tatt opp"
     overview_title: "Opptaksoversikt"
+    overview_go_to_admission: "Gå til opptak"
     overview_processed: "Totalt har %{processed} av %{total} søknader blitt behandlet."
     overview_accepted: "%{accepted} av %{total} søkere har blitt tatt opp, og %{rejected} skal per nå få avslag på epost."
     overview_not_complete: "Alle søknader er enda ikke behandlet. Det er derfor ikke mulig å sende avslagsepost enda."

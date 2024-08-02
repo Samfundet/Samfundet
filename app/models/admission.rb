@@ -78,12 +78,16 @@ class Admission < ApplicationRecord
     end
   end
 
-  default_scope { order(shown_application_deadline: :desc) }
+  default_scope { order(is_primary: :desc, shown_application_deadline: :desc) }
 
   # We must use lambdas so that the time is not 'cached' on server start.
   scope :current, (lambda do
     where('user_priority_deadline > ?', 2.weeks.ago)
     .order('user_priority_deadline DESC')
+  end)
+
+  scope :primary, (lambda do
+    where('is_primary IS TRUE')
   end)
 
   scope :appliable, (lambda do
@@ -139,6 +143,11 @@ class Admission < ApplicationRecord
     user_priority_deadline > Time.current
   end
 
+  # TODO: remove me when removing hack for hiding isfit-admissions in admin applet
+  def isfit?
+    title.downcase.include? 'isfit'
+  end
+
   def interview_dates
     from = actual_application_deadline.to_date + 1.day
     to   = user_priority_deadline.to_date
@@ -175,4 +184,5 @@ end
 #  actual_application_deadline    :datetime
 #  promo_video                    :string           default("https://www.youtube.com/embed/T8MjwROd0dc")
 #  groups_with_separate_admission :text
+#  is_primary                     :boolean          default(false)
 #
