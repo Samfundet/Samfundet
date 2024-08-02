@@ -26,7 +26,7 @@
         = admission.title
     - if admission.actual_application_deadline < Time.current && admission.user_priority_deadline > Time.current
       .flash.message
-        Dette opptaket er stengt, men du kan fremdeles omprioritere dine søknader.
+        = t('jobs.closed_but_can_reprioritize')
     - elsif admission.user_priority_deadline < Time.current
       .flash.error
         Dette er søknader fra et eldre opptak.
