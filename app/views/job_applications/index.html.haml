@@ -29,7 +29,7 @@
         = t('jobs.closed_but_can_reprioritize')
     - elsif admission.user_priority_deadline < Time.current
       .flash.error
-        Dette er søknader fra et eldre opptak.
+        = t('jobs.applications_from_old_admission')
     %h4.mb-3
       = t('jobs.repriorization_deadline') + ": " + admission.user_priority_deadline.to_s
     %table
