@@ -8,7 +8,7 @@
         = t('admissions.create_admission')
 
   - @admissions.each do |admission|
-    - if @is_limweb or (admission.isfit? and @is_isfit_admin) or (not admission.isfit? and (@is_nonisfit_admin or can? :manage, Admission))
+    - if @is_limweb or (admission.isfit? and @is_isfit_admin) or (not admission.isfit? and not @is_isfit_admin)
       = link_to admissions_admin_admission_path(admission) do
         .samf-button.plain.w100.mb-2
           %b= admission.title

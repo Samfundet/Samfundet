@@ -218,7 +218,6 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
 
     # TODO: Remove hack:
     # Used for hiding isfit admissions for non-isfiters, and hiding non-isfit admissions for isfiters
-    @is_nonisfit_admin = current_user.roles.where('title ILIKE ? AND title != ?', '%_opptaksansvarlig', 'isfit_opptaksansvarlig').present?
     @is_isfit_admin = current_user.roles.find_by(title: 'isfit_opptaksansvarlig').present?
     @is_limweb = current_user.roles.find_by(title: 'lim_web').present?
   end
