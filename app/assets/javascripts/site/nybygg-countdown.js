@@ -13,7 +13,8 @@
   function updateCountdown() {
     const diff = (openingDate - new Date()) / 1000;
     if (diff <= 0) {
-      window.location.reload();
+      setTimeout(() => window.location.reload(), 1000);
+      return;
     }
 
     const days = Math.floor(diff / 86400);
