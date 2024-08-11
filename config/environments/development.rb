@@ -63,7 +63,7 @@ Samfundet::Application.configure do
   config.purchase_callback_google_form_url = "https://docs.google.com/forms/d/e/1FAIpQLSeEDyT86GA2LcQH9-ZCyIEC3m8AmFCIrgqC7atB8HENMOkgSQ/viewform?embedded=true"
 
   # Note: nybygg_countdown_date is in UTC
-  config.nybygg_countdown_enabled = false
+  config.nybygg_countdown_enabled = true
   config.nybygg_countdown_date = DateTime.new(2024, 8, 10, 15, 0, 0)
 
   if !Rails.env.development?
