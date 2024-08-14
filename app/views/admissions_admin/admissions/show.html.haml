@@ -14,11 +14,11 @@
     .samf-button.plain.small.mb-2
       = t("admissions_admin.overview_go_to_admission")
 
-  = link_to admissions_admin_admission_show_interested_other_positions_path(@admission) do
-    .samf-button.blue.small.mb-2
-      = t("admissions_admin.show_interested_other_positions")+"..."
-
   - if can? :manage, Admission
+    = link_to admissions_admin_admission_show_interested_other_positions_path(@admission) do
+      .samf-button.blue.small.mb-2
+        = t("admissions_admin.show_interested_other_positions")+"..."
+
     = link_to admissions_admin_admission_show_applicants_missing_interviews_path(@admission) do
       .samf-button.red.mb-2
         = t("admissions_admin.show_less_three_interviews")
