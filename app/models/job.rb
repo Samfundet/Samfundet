@@ -23,7 +23,8 @@ class Job < ApplicationRecord
     group.jobs.where('admission_id = (?) AND id <> ?', admission_id, id)
   end
 
-  def similar_available_jobs
+  def similar_available_jobs(admission_id = nil)
+    admission_id ||= self.admission_id
     jobs = Job.where('admission_id = (?) AND id IN (SELECT DISTINCT job_id FROM job_tags_jobs WHERE job_tag_id IN (?))', admission_id, tags.collect(&:id))
 
     # Remove self from similar jobs

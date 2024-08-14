@@ -63,10 +63,10 @@
     %p
       = link_to check_box_tag("", "", @current_user.interested_other_positions), applicant_path(@current_user, applicant: { interested_other_positions: !@current_user.interested_other_positions }), method: :put, confirm: t('crud.confirm')
       = t('job_applications.offer_other_positions')
-    - if admission.appliable? && @current_user.similar_jobs_not_applied_to.any?
+    - if admission.appliable? && @current_user.similar_jobs_not_applied_to(admission.id).any?
       %h3= t('jobs.similar_jobs_not_applied_to')
       %ul
-        - @current_user.similar_jobs_not_applied_to.each do |similar_job|
+        - @current_user.similar_jobs_not_applied_to(admission.id).each do |similar_job|
           %li
             = link_to job_path(similar_job) do
               = similar_job.title

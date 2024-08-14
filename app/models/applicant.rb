@@ -84,8 +84,8 @@ class Applicant < ApplicationRecord
                     .find { |application| application.job.admission == admission }
   end
 
-  def similar_jobs_not_applied_to
-    similar_jobs = Set.new jobs.map(&:similar_available_jobs).flatten
+  def similar_jobs_not_applied_to(admission_id)
+    similar_jobs = Set.new jobs.map { |job| job.similar_available_jobs(admission_id) }.flatten
     similar_jobs - jobs
   end
 
