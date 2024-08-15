@@ -28,6 +28,7 @@ class AdmissionsAdminAbility
   def opptaksansvarlig
     can :show, Admission
     can :list, Admission
+    can :show_interested_other_positions, Applicant
   end
 
   Group.all.each do |group|
