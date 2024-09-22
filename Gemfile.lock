@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/Samfundet/SamfundetAuth.git
-  revision: 590ce69c8108095db96b2fe2fbd6ae8903b2daca
+  revision: 269e6d5ac7ed91dfba186af7b8ead1ddf638e9db
   branch: test-upgrade
   specs:
     samfundet_auth (0.3.0)
@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/Samfundet/SamfundetDomain.git
-  revision: 170ec61547202f7af6a9a63f5f308eb794dc8d7f
+  revision: 6a8e2f82c50644f28cf36502f09854fba033a2c8
   branch: test-upgrade
   specs:
     samfundet_domain (0.2.0)
