@@ -8,10 +8,10 @@ GIT
 
 GIT
   remote: https://github.com/Samfundet/SamfundetDomain.git
-  revision: 86132c24cc9db459eb2dce43905c663aba1ea0fc
+  revision: 3b9857c2c41286a6df34dae21aa88d3b22ca5d23
   branch: test-upgrade
   specs:
-    samfundet_domain (0.2.0)
+    samfundet_domain (0.1.0)
       rails (~> 6.1.0)
 
 GEM
