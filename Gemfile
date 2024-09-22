@@ -33,7 +33,7 @@ gem 'activerecord-session_store', '~> 2.0.0'
 # bcrypt() is a sophisticated and secure hash algorithm
 # designed by The OpenBSD project for hashing passwords.
 # bcrypt-ruby provides a simple wrapper for safely handling passwords.
-gem 'bcrypt', '~> 3.1.0'
+gem 'bcrypt', '~> 3.1.20'
 
 # we only use this gem for it's ujs capabilities.
 # jquery is the defacto DOM manipulation libraray
@@ -80,6 +80,11 @@ gem 'haml-rails', '~> 2.0.0'
 
 # icalendar is a library for dealing with iCalendar files.
 gem 'icalendar', '~> 2.4.0'
+
+gem 'racc', '~> 1.4', '>= 1.4.14'
+gem 'nio4r', '~> 2.7', '>= 2.7.3'
+gem 'websocket-driver', '~> 0.7.6'
+gem 'date', '~> 3.3', '>= 3.3.4'
 
 # rails-translate-routes lets us use localized routes.
 # For example, we can replace the path '/groups' with the paths
