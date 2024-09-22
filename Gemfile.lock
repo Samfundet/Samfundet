@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/Samfundet/SamfundetDomain.git
-  revision: cb2ad57925314a196e2e7d8e749a0b781ed8b0e9
+  revision: 86132c24cc9db459eb2dce43905c663aba1ea0fc
   branch: test-upgrade
   specs:
     samfundet_domain (0.2.0)
