@@ -11,7 +11,7 @@ ruby '~> 3.1.2' # From .ruby-version.
 source 'https://rubygems.org'
 
 # Rails. Duh.
-gem 'rails', '~> 6.1.0'
+gem 'rails', '~> 6.1.7.6'
 
 # Memcache client
 gem 'dalli', '~> 2.7.0'
