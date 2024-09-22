@@ -81,11 +81,6 @@ gem 'haml-rails', '~> 2.0.0'
 # icalendar is a library for dealing with iCalendar files.
 gem 'icalendar', '~> 2.4.0'
 
-gem 'racc', '~> 1.8', '>= 1.8.1'
-gem 'nio4r', '~> 2.7', '>= 2.7.3'
-gem 'websocket-driver', '~> 0.7.6'
-gem 'date', '~> 3.3', '>= 3.3.4'
-
 # rails-translate-routes lets us use localized routes.
 # For example, we can replace the path '/groups' with the paths
 # '/gjenger' and '/en/groups' which both point to the same page.
@@ -145,10 +140,19 @@ gem 'cocoon', '~> 1.2.0'
 # Render async allows easy async loading of partial views to improve page performance
 gem 'render_async'
 
+gem 'base64', '~> 0.2.0'
+
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'listen', '~> 3.4.0'
   gem 'web-console', '~> 4.2.0'
+
+  gem 'racc', '~> 1.8', '>= 1.8.1'
+  gem 'nio4r', '~> 2.7', '>= 2.7.3'
+  gem 'websocket-driver', '~> 0.7.6'
+  gem 'date', '~> 3.3', '>= 3.3.4'
+
+
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring', '~> 2.1.0'

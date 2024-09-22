@@ -1,14 +1,20 @@
 GIT
   remote: https://github.com/Samfundet/SamfundetAuth.git
-  revision: 4eead874fcb07b8a3c558b113aaa9e24ba0e81b8
+  revision: 1f5bc24e84efcbdd0fc57754dd2c5cc4c6c49e1c
   branch: test-upgrade
   specs:
     samfundet_auth (0.3.0)
+      actioncable (~> 6.1.7.8)
+      actionpack (~> 6.1.7.8)
+      actionview (~> 6.1.7.8)
+      nokogiri (~> 1.16.7)
+      racc (~> 1.8.1)
       rails (~> 6.1.0)
+      rails-dom-testing (~> 2.2.0)
 
 GIT
   remote: https://github.com/Samfundet/SamfundetDomain.git
-  revision: 6a8e2f82c50644f28cf36502f09854fba033a2c8
+  revision: b38a7f41337fca74a5c2c5e2f21e0c05cb3aabdf
   branch: test-upgrade
   specs:
     samfundet_domain (0.2.0)
@@ -493,6 +499,7 @@ DEPENDENCIES
   activerecord-session_store (~> 2.0.0)
   acts_as_list (~> 1.0.0)
   annotate (~> 3.1.0)
+  base64 (~> 0.2.0)
   bcrypt (~> 3.1, >= 3.1.20)
   better_errors (~> 2.8.0)
   binding_of_caller (~> 1.0.0)
