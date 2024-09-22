@@ -140,7 +140,7 @@ gem 'cocoon', '~> 1.2.0'
 # Render async allows easy async loading of partial views to improve page performance
 gem 'render_async'
 
-gem 'base64', '~> 0.2.0'
+gem 'base64', '~> 0.1.1'
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
