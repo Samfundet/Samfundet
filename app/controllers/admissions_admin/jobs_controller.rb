@@ -81,7 +81,9 @@ private
       :default_motivation_text_no,
       :default_motivation_text_en,
       :is_officer,
-      :tag_titles
+      :tag_titles,
+      :custom_group,
+      :custom_group_type
     )
   end
 

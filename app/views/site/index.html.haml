@@ -18,13 +18,15 @@
           .samf-button.black.center.small
             = t('site.index.add_banner_lock')
 
+= render 'nybygg_countdown'
+
 -# Crowdfunding link on front page
 
-= link_to crowd_funding_supporters_path do
-  .samf-container.small.red.text-Align
-    .mt-3.mb-3
-      = t("site.index.new_building_crowdfunding_description")
-      %b= t("site.index.new_building_crowdfunding_link")
+-# = link_to crowd_funding_supporters_path do
+-#   .samf-container.small.red.text-Align
+-#     .mt-3.mb-3
+-#       = t("site.index.new_building_crowdfunding_description")
+-#       %b= t("site.index.new_building_crowdfunding_link")
 
 
 = render 'hero_unit'

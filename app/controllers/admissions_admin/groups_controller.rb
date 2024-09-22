@@ -15,6 +15,8 @@ class AdmissionsAdmin::GroupsController < AdmissionsAdmin::BaseController
     @n_jobs = @jobs.length
     @n_applicants = @jobs.map(&:applicants).flatten.uniq.length
 
+    @custom_groups_jobs = @jobs.group_by { |job| job.custom_group_type }
+
     admission_start = @admission.shown_from.to_date
     admission_end = @admission.actual_application_deadline.to_date
     applications_per_day = (admission_start..admission_end).map do |day|

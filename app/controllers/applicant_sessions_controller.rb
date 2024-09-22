@@ -7,11 +7,13 @@ class ApplicantSessionsController < UserSessionsController
   def new
     @applicant = Applicant.new
     @redirect_to = params[:redirect_to] || request_referer_if_on_current_domain
+    @admission = params[:admission]
   end
 
   def create
     applicant = Applicant.authenticate(params[:applicant_login_field],
                                        params[:applicant_login_password])
+    admission = Admission.appliable.find_by_id(params[:admission_id])
 
     ## Authentication details were incorrect,
     if !applicant
@@ -26,12 +28,12 @@ class ApplicantSessionsController < UserSessionsController
 
       existing_verification_hash = EmailVerification.find_by(applicant_id: applicant.id)
 
-      if existing_verification_hash && existing_verification_hash.count > 3 && existing_verification_hash.updated_at > Time.current - 1.minute
+      if existing_verification_hash && existing_verification_hash.count > 10 && existing_verification_hash.updated_at > Time.current - 1.hour
         existing_verification_hash.count += 1
         existing_verification_hash.save!
         flash[:message] = t('applicants.email_verification.too_many')
       else
-        send_verification_email(applicant)
+        send_verification_email(applicant, admission)
       end
 
       redirect_to applicant_login_path
@@ -60,8 +62,8 @@ private
     invalidate_cached_current_user
   end
 
-  def send_verification_email(applicant)
-    VerifyEmailApplicantMailer.send_applicant_email_verification(applicant).deliver
+  def send_verification_email(applicant, admission = nil)
+    VerifyEmailApplicantMailer.send_applicant_email_verification(applicant, admission).deliver
     flash[:message] = t('applicants.email_verification.verification_sent',
                         email: CGI.escapeHTML(applicant.email))
   rescue Net::SMTPError

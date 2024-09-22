@@ -45,8 +45,10 @@ $(function() {
         ga('send', 'pageview');
         history.pushState(null, null, '#');
         popped = true;
+        const headerHeight = $('#header').outerHeight();
+
         $('html, body').animate({
-          scrollTop: $(findParentEvent(source)).offset().top
+          scrollTop: $(findParentEvent(source)).offset().top - headerHeight - 16
         }, 1000);
       });
 

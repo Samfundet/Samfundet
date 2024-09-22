@@ -20,7 +20,7 @@
     .flex-row
       %strong.mr-2= t("helpers.label.applicant.email") + ":"
       = applicant.email
-    - applicant.job_applications.each do |application|
+    - applicant.job_applications.select { |ja| ja.job.admission == @admission }.each do |application|
       %p
         = application.job.group.name
         \-

@@ -25,6 +25,9 @@
     search_placeholder: "Navn/ID/Epost"
     interested_other_positions_hint: "Er du interessert i å få tilbud om andre stillinger enn de du søker på?"
     forms:
+      admin:
+        edit_applicant: "Rediger søker '"
+        update_success: "Søkerinformasjon endret."
       register:
         heading: "Registrer meg som søker"
         submit: "Registrer meg"
@@ -69,7 +72,8 @@
     email_verification:
       login_email_unverified: "E-post knyttet til %{name} er ikke bekreftet. Vennligst bekreft e-post adressen først."
       verification_sent: "E-post bekreftelse er sendt til %{email}"
-      verification_link_invalid: "Bekreftelseslenken er ugyldig."
+      verification_link_invalid: "Bekreftelseslenken er ugyldig. Den er trolig mer enn 1 time gammel."
+      verification_info: "Vennligst logg inn på nytt, så får du tilsendt en ny bekreftelseslenke på e-post."
       verification_success: "E-post knyttet til %{name} ble bekreftet. Du kan nå logge inn som søker."
       too_many: "For mange bekreftelsemail sendt den siste timen. Prøv igjen senere."
       email_error: "En feil har oppstått. E-post bekreftelse ble ikke sendt."
@@ -78,6 +82,28 @@
         Hei %{firstname},
 
         Så kult at du vil søke Samfundet!
+
+        Du er blitt registrert med følgende personalia:
+
+        Navn: %{name}
+        Telefon: %{phone}
+        E-post: %{email}
+
+        Om dette er feil, vennligst send en mail til mg-web@samfundet.no
+
+        For å fortsette registreringen, vennligst følg lenken nedenfor. Den er gyldig i 60 minutter:
+        %{verification_link}
+
+        Dersom lenken er ugyldig, prøv å logg inn på nytt og du får tilsendt en ny bekreftelseslenke.
+
+        --
+        For mer informasjon om Samfundets opptak, gå til:
+        https://samfundet.no/opptak
+      email_subject_isfit: "Så kult at du vil søke ISFiT!"
+      email_message_isfit: |
+        Hei %{firstname},
+
+        Så kult at du vil søke ISFiT!
 
         Du er blitt registrert med følgende personalia:
 

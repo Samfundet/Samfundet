@@ -1,4 +1,4 @@
-'no':
+"no":
   helpers:
     models:
       job:
@@ -16,3 +16,6 @@
         tag_titles: "Tagger"
         default_motivation_text_no: "Standard motivasjonstekst (Norsk)"
         default_motivation_text_en: "Standard motivasjonstekst (Engelsk)"
+        custom_group: "Egendefinert gjengnavn"
+        custom_group_type: "Egendefinert gjengkategori"
+        only_customized_admission: "Only"

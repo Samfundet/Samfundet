@@ -1,0 +1,27 @@
+- if @nybygg_countdown_enabled
+  .nybygg-countdown#nybygg-countdown-date{ 'data-date': @nybygg_countdown_date.strftime('%Y-%m-%d %H:%M:%S%z') }
+    .title
+      = t 'site.index.nybygg_opening_in'
+    - if @nybygg_diff >= 0
+      .countdown
+        .section
+          .timer#nybygg-days
+            = @days_left
+          = t 'site.index.days'
+        .section
+          .timer#nybygg-hours
+            = @hours_left
+          = t 'site.index.hours'
+        .section
+          .timer#nybygg-minutes
+            = @minutes_left
+          = t 'site.index.minutes'
+        .section
+          .timer#nybygg-seconds
+            = @seconds_left
+          = t 'site.index.seconds'
+    - else
+      .open
+        = t 'site.index.nybygg_is_open'
+    -# %div{style: 'text-align: center; margin-top: 1rem'}
+    -#   = t('site.index.nybygg_opening_ceremony_notice')

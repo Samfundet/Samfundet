@@ -1,8 +1,8 @@
-'no':
+"no":
   admissions:
     admission_not_yet_open: "Opptaket klargjøres og åpner: "
     admission_promo: |
-      Over 1000 studenter bidrar allerede frivillig! Du kan være med å jobbe med blant annet lyd, lys, teater, snekring, IT, artistbooking, korsang, musikk og mye annet. Du kan lære mye av å jobbe på Samfundet, og du blir garantert kjent med mange andre studenter.
+      Over 1500 studenter bidrar allerede frivillig! Du kan være med å jobbe med blant annet lyd, lys, teater, snekring, IT, artistbooking, korsang, musikk og mye annet. Du kan lære mye av å jobbe på Samfundet, og du blir garantert kjent med mange andre studenter.
     application_deadline: "Søknadsfrist"
     back_to_overview: "Tilbake til stillingsoversikten"
     show_all_applications: "Vis alle søknader"
@@ -28,21 +28,22 @@
     statistics: "Statistikk"
     groups_with_admission: "Gjenger med opptak"
     groups_with_separate_admission: "Gjenger med separat opptak"
+    other_groups_with_admissions: Andre gjenger med opptak
     separate_admission_information: "Klikk her for gjenger med separat opptak"
 
     admin_applet:
       title: Opptak
 
     no_admissions:
-        header: "Det er for tiden ingen opptak på Samfundet"
-        ordinary_information: "Samfundet har sine ordinære opptak på starten av hvert semester. Følg med på denne siden!"
-        more_information: "For mer informasjon om samfundets gjenger"
-        motivation_text: |
-          Vi har opptak på starten av hvert semester og ønsker at du søker til oss som frivillig!
-          Studentersamfundet i Trondhjem er Norges største studentersamfund og vi har et tilbud andre byer bare kan drømme om.
-          Nesten uansett hvilken studiebakgrunn eller interesser du har, så finnes det en frivillig gjeng som søker nettopp deg!
+      header: "Det er for tiden ingen opptak på Samfundet"
+      ordinary_information: "Samfundet har sine ordinære opptak på starten av hvert semester. Følg med på denne siden!"
+      more_information: "For mer informasjon om samfundets gjenger"
+      motivation_text: |
+        Vi har opptak på starten av hvert semester og ønsker at du søker til oss som frivillig!
+        Studentersamfundet i Trondhjem er Norges største studentersamfund og vi har et tilbud andre byer bare kan drømme om.
+        Nesten uansett hvilken studiebakgrunn eller interesser du har, så finnes det en frivillig gjeng som søker nettopp deg!
 
-        see_applications_text: "Du kan se dine søknader"
-        see_applications_link: "her."
-        already_applied: "Hvis du allerede har søkt kan du logge inn som søker for å prioritere og følge med på dine søknader."
-        click_here: "klikk her."
+      see_applications_text: "Du kan se dine søknader"
+      see_applications_link: "her."
+      already_applied: "Hvis du allerede har søkt kan du logge inn som søker for å prioritere og følge med på dine søknader."
+      click_here: "klikk her."

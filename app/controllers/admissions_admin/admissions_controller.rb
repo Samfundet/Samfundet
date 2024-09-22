@@ -215,6 +215,11 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
 
   def admin_applet
     @admissions = Admission.current
+
+    # TODO: Remove hack:
+    # Used for hiding isfit admissions for non-isfiters, and hiding non-isfit admissions for isfiters
+    @is_isfit_admin = current_user.roles.find_by(title: 'isfit_opptaksansvarlig').present?
+    @is_limweb = current_user.roles.find_by(title: 'lim_web').present?
   end
 
 protected
@@ -224,7 +229,7 @@ protected
   end
 
   def admission_params
-    params.require(:admission).permit(:title, :shown_from, :shown_application_deadline, :actual_application_deadline, :user_priority_deadline, :admin_priority_deadline, :groups_with_separate_admission, :promo_video)
+    params.require(:admission).permit(:title, :shown_from, :shown_application_deadline, :actual_application_deadline, :user_priority_deadline, :admin_priority_deadline, :groups_with_separate_admission, :promo_video, :customized_groups, :is_primary)
   end
 
 private

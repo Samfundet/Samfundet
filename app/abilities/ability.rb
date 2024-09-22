@@ -43,7 +43,7 @@ class Ability
     can [:create, :search], Search
 
     # Admission
-    can :index, Admission
+    can [:index, :show_public], Admission
     can :show, Job
 
     ## A guest should be able to create an Applicant and forget its password
@@ -131,7 +131,7 @@ class Ability
     can :manage, CrowdFundingSupporter
   end
 
-  def mg_nestleder
+  def gu_nestleder
     # Needs manage permissions here to see statistics
     can :manage, [Admission, JobApplication]
   end

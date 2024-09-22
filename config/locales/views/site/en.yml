@@ -33,6 +33,13 @@ en:
       corona: "Samfundet has closed with immediate effect due to new COVID-19 regulations from the government.<br> For more information, click"
       corona2: "here"
 
+      nybygg_opening_in: "Nybygg is opening in"
+      nybygg_is_open: "Nybygg is open!"
+      nybygg_opening_ceremony_notice: "After the opening ceremony, there is a party free for all members, and 50 kr for non-members"
+      days: "days"
+      hours: "hours"
+      minutes: "minutes"
+      seconds: "seconds"
 
       opening-hours-page-title: "opening-hours"
       all-opening-hours: "All opening hours"

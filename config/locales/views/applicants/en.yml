@@ -25,6 +25,9 @@ en:
     search_placeholder: "Name/ID/Email"
     interested_other_positions_hint: "Are you interested in offers for other positions beyond the ones you will apply to?"
     forms:
+      admin:
+        edit_applicant: "Edit applicant '"
+        update_success: "Applicant information updated."
       register:
         heading: "Register me as applicant"
         submit: "Register me"
@@ -69,7 +72,8 @@ en:
     email_verification:
       login_email_unverified: "The E-mail address of %{name} is not verified. Please verify this e-mail address first."
       verification_sent: "Verification e-mail sent to %{email}."
-      verification_link_invalid: "The verification link provided is invalid."
+      verification_link_invalid: "The verification link provided is invalid. It is likely more than 1 hour old."
+      verification_info: "Please log in again, and you will be sent a new verification link."
       verification_success: "The E-mail address of %{name} was successfully verified. You can now log in as applicant."
       too_many: "Too many verification e-mails sent the last hour. Try again later."
       email_error: "An error has occurred. Verification email was not sent."
@@ -78,6 +82,28 @@ en:
         Hey %{firstname},
 
         We are delighted to see you wanting to apply for Samfundet!
+
+        The following personal details have been registered on your account:
+
+        Name: %{name}
+        Phone number: %{phone}
+        E-mail: %{email}
+
+        If this info is incorrect, please send an e-mail to mg-web@samfundet.no
+
+        To continue registration, please follow the link below. The link is valid for 60 minutes:
+        %{verification_link}
+
+        If the link is invalid, try logging in again and you will receive a new verification link.
+
+        --
+        For more information about this semester's admission, go to:
+        https://samfundet.no/en/admissions
+      email_subject_isfit: "We are delighted to see you apply for ISFiT!"
+      email_message_isfit: |
+        Hey %{firstname},
+
+        We are delighted to see you wanting to apply for ISFiT!
 
         The following personal details have been registered on your account:
 
