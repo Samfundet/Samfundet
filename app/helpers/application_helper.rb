@@ -39,8 +39,8 @@ module ApplicationHelper
     page_title
   end
 
-  def translate_and_capitalize(text, *args)
-    translate(text, *args).capitalize
+  def translate_and_capitalize(text, **options)
+    translate(text, **options).capitalize
   end
 
   def change_language
