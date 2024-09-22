@@ -5,9 +5,7 @@ require SamfundetAuth::Engine.root.join('app', 'models', 'role')
 class Role < ActiveRecord::Base
   # attr_accessible :group_id, :role_id, :passable
 
-  scope :passable, (lambda do
-    Role.where('passable = ?', true)
-  end)
+  scope :passable, -> { where(passable: true) }
 
   def members
     Member.find(members_roles.all.collect(&:member_id))
