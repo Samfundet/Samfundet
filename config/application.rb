@@ -16,6 +16,7 @@ module Samfundet
     config.autoload_paths += %W(#{config.root}/lib #{config.root}/lib/validators #{config.root}/app/abilities)
 
     config.hosts << "samfundet.no"
+    config.hosts << "www.samfundet.no"
     config.hosts << "navi.samfundet.no"
     config.hosts << "www-beta.samfundet.no"
     config.hosts << "www-bookworm.samfundet.no"
