@@ -47,6 +47,9 @@
 
       new_building_crowdfunding_description: "Studentersamfundet har innsamling til nybygg!"
       new_building_crowdfunding_link: "Les mer."
+
+      system_upgrade_instability_notice: "Grunnet oppgradering av våre tjenester, kan ustabilitet eller uforutsette problemer oppstå med nettsiden."
+      system_upgrade_instability_notice_link: "Kontakt oss dersom du opplever dette"
     notifications:
       membership:
         welcome: "Velkommen nye medlemmer!"
