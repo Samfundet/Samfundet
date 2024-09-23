@@ -37,7 +37,7 @@ gem 'bcrypt', '~> 3.1.0'
 gem 'jquery-rails', '~> 4.2.0'
 
 # jquery ui for datepicker etc.
-gem 'jquery-ui-rails', '~> 5.0.0'
+gem 'jquery-ui-rails', '~> 6.0.0'
 
 # jquery support for turbolinks
 gem 'jquery-turbolinks', '~> 2.1.0'
