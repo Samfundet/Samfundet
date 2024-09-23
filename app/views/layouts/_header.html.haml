@@ -104,7 +104,8 @@
       = link_to t("layouts.application.menu.opening_hours"), page_by_name_en("opening-hours"), class: "drawer-item"
     - if page_by_name_en("opening-hours") != "#"
       = link_to t("layouts.application.menu.photo"), "https://foto.samfundet.no", class: "drawer-item"
-    = link_to t("layouts.application.menu.new_building"), new_building_path, class: "drawer-item"
+    - if page_by_name_en("renting-areas") != "#"
+      = link_to t("layouts.application.menu.renting"), page_by_name_en("renting-areas"), class: "drawer-item"
 
   .header-item.info-drawer-hide-other
     = link_to t('layouts.application.menu.lyche'), sulten_path
