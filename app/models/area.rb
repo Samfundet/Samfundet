@@ -8,6 +8,8 @@ class Area < ApplicationRecord
 
   accepts_nested_attributes_for :standard_hours
 
+  validates_presence_of :name
+
   default_scope { includes(:page) }
 
   def today

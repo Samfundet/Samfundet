@@ -1,25 +1,3 @@
-GIT
-  remote: https://github.com/Samfundet/SamfundetAuth.git
-  revision: 8aa46b94a3b9d8c143bab7928d0e20ac1c94c4b1
-  branch: test-upgrade
-  specs:
-    samfundet_auth (0.3.0)
-      actioncable (~> 6.1.7.8)
-      actionpack (~> 6.1.7.8)
-      actionview (~> 6.1.7.8)
-      nokogiri (~> 1.16.7)
-      racc (~> 1.8.1)
-      rails (~> 6.1.0)
-      rails-dom-testing (~> 2.2.0)
-
-GIT
-  remote: https://github.com/Samfundet/SamfundetDomain.git
-  revision: b38a7f41337fca74a5c2c5e2f21e0c05cb3aabdf
-  branch: test-upgrade
-  specs:
-    samfundet_domain (0.2.0)
-      rails (~> 6.1.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -175,6 +153,7 @@ GEM
     faker (3.4.2)
       i18n (>= 1.8.11, < 2)
     ffi (1.17.0)
+    ffi (1.17.0-arm64-darwin)
     formatador (1.1.0)
     formtastic (5.0.0)
       actionpack (>= 6.0.0)
@@ -279,6 +258,8 @@ GEM
       net-protocol
     nio4r (2.7.3)
     nokogiri (1.16.7-aarch64-linux)
+      racc (~> 1.4)
+    nokogiri (1.16.7-arm64-darwin)
       racc (~> 1.4)
     nokogiri (1.16.7-x86_64-linux)
       racc (~> 1.4)
@@ -493,6 +474,7 @@ GEM
 
 PLATFORMS
   aarch64-linux
+  arm64-darwin-22
   x86_64-linux
 
 DEPENDENCIES
@@ -551,8 +533,6 @@ DEPENDENCIES
   rspec-rails (~> 3.9.0)
   rubocop (~> 1.57.0)
   rubocop-rails_config (~> 1.16.0)
-  samfundet_auth!
-  samfundet_domain!
   sass (~> 3.4.0)
   sass-rails (~> 5.0.0)
   seedbank

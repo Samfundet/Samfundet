@@ -9,7 +9,7 @@ if Rails.env.development?
   end
   
   # Invoke gem seedscripts
-  Rake::Task['samfundet_auth_engine:db:seed'].invoke
+  # Rake::Task['samfundet_auth_engine:db:seed'].invoke
   #Authorization.ignore_access_control(true)
-  Rake::Task['samfundet_domain_engine:db:seed'].invoke
+  # Rake::Task['samfundet_domain_engine:db:seed'].invoke
 end
