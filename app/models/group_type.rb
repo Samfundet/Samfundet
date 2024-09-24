@@ -4,8 +4,11 @@ class GroupType < ApplicationRecord
   has_many :groups, -> { order(:name) }
   has_many :jobs, through: :groups
 
+  validates :priority, presence: true
   validates :description, presence: true
   validates :description, uniqueness: true
+
+  default_scope { order(priority: :desc) }
 
   def <=>(other)
     priority <=> other.priority
