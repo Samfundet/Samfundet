@@ -3,6 +3,10 @@
 Samfundet::Application.configure do
   # Settings specified here will take precedence over those in config/environment.rb
 
+  # Define our database
+  config.member_database = :mdb2
+  config.member_table = :lim_medlemsinfo
+
   # Define our logger
   logger = ActiveSupport::Logger.new('/var/log/rails/staging.log')
 
@@ -94,8 +98,6 @@ Samfundet::Application.configure do
 end
 
 SamfundetAuth.setup do |config|
-  config.member_database = :mdb2
-  config.member_table = :lim_medlemsinfo
 end
 
 Paperclip.options[:command_path] = '/usr/bin/'

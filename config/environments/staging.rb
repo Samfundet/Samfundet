@@ -3,6 +3,10 @@
 Samfundet::Application.configure do
   # Settings specified here will take precedence over those in config/environment.rb
 
+  # Define our database
+  config.member_database = :mdb2
+  config.member_table = :lim_medlemsinfo
+
   # The production environment is meant for finished, "live" apps.
   # Code is not reloaded between requests
   config.cache_classes = true
@@ -87,11 +91,6 @@ Samfundet::Application.configure do
     RegistrationEvent.establish_connection(:paamelding)
     RegistrationEvent.table_name = paamelding_table_prefix + 'arrangementer'
   end
-end
-
-SamfundetAuth.setup do |config|
-  config.member_database = :mdb2
-  config.member_table = :lim_medlemsinfo
 end
 
 Paperclip.options[:command_path] = '/usr/bin/'
