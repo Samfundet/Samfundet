@@ -94,16 +94,6 @@ gem 'redcarpet', '~> 3.6.0'
 # route_downcaser adds transparent support for case-insensive routes by downcasing requested URLs.
 gem 'route_downcaser', '~> 1.2.0'
 
-# SamfundetDomain is a gem which provides the application with samfundets domain models.
-# gem 'samfundet_domain', git: 'https://github.com/Samfundet/SamfundetDomain.git', branch: 'test-upgrade'
-# gem 'samfundet_domain', git: 'https://github.com/Samfundet/SamfundetDomain.git', branch: 'update-ruby-version'
-# gem 'samfundet_domain', path: '../SamfundetDomain'
-
-# SamfundetAuth is a gem which provides the application with methods for authenticating against mdb2.
-# gem 'samfundet_auth', git: 'https://github.com/Samfundet/SamfundetAuth.git', branch: 'test-upgrade'
-# gem 'samfundet_auth', git: 'https://github.com/Samfundet/SamfundetAuth.git', branch: 'update-ruby-version'
-# gem 'samfundet_auth', path: '../SamfundetAuth'
-
 # will_paginate is an adaptive pagination plugin.
 # It makes pagination very simple.
 gem 'will_paginate', '~> 4.0.0'
