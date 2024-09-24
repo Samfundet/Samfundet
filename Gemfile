@@ -140,6 +140,7 @@ gem 'cocoon', '~> 1.2.0'
 # Render async allows easy async loading of partial views to improve page performance
 gem 'render_async'
 
+# Support for encoding and decoding binary data using Base64 representation
 gem 'base64', '~> 0.1.1'
 
 group :development do
