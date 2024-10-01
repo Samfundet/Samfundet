@@ -93,4 +93,7 @@ Samfundet::Application.configure do
   end
 end
 
+SamfundetAuth.setup do |config|
+end
+
 Paperclip.options[:command_path] = '/usr/bin/'
