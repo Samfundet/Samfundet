@@ -142,7 +142,7 @@
             description: "Lychebrød med rødbethummus, ruccula, mango og pistou."
             allergies: "Allergener: Gluten (hvete), melk (pistou), sesam (hummus). Kan inneholde spor av peanøtter: hummus"
           soup:
-            name: "Suppe"
+            name: "Månedens Suppe"
             description: "Varierer etter sesong. Spør en av våre servitører om dagens suppe. Serveres med Lychebrød og kryddersmør."
             allergies: "Allergener: Spør en av våre servitører"
         burgers:
@@ -150,36 +150,33 @@
           double: "Dobbel"
           lyche_burger:
             name: "Lycheburger"
-            ingredients: "Okse og n’duja kjøtt, servert med løkkompott, bacon, tomater, aioli, cheddar, salat og potet på siden. Burgeren kan serveres med glutenfritt brød, og kan serveres uten ost og pistou (melkeallergi)"
+            description: "Okse og n’duja kjøtt, servert med løkkompott, bacon, tomater, aioli, cheddar, salat og potet på siden. Burgeren kan serveres med glutenfritt brød, og kan serveres uten ost og pistou (melkeallergi)"
             allergies: "Allergener: Egg (burger, aioli, pistou - spor av egg i manchego), sennep (burger, aioli), sulfitt (burger, salatvinaigrette, løkkompott, aioli), gluten (hvete, rug, bygg): burgerbrød, selleri (burger peppermix), melk (burgerost, pistou). Det er svinekjøtt i selve burgerkaken."
-            recommendations: "Baren anbefaler: Hacienda lopez De Haro (rød)"
+            recommendations: "Baren anbefaler: Dahls pils"
           blue_cheese_burger:
             name: "Blåmuggburger"
-            ingredients: "Okse og n’duja kjøtt, servert med rips og rabarbra marmelade, tomater, aioli, blåmugg, salat og potet på siden. Burgeren kan serveres med glutenfritt brød, og kan serveres uten ost og pistou (melkeallergi)"
+            description: "Okse og n’duja kjøtt, servert med rips og rabarbra marmelade, tomater, aioli, blåmugg, salat og potet på siden. Burgeren kan serveres med glutenfritt brød, og kan serveres uten ost og pistou (melkeallergi)"
             allergies: "Allergener: Gluten (hvete, rug, bygg): burgerbrød, egg (burger, aioli, pistou - spor fra manchego), selleri (burger, peppermix), sennep (burger, aioli), sulfitt (burger, salatvinaigrette, aioli), melk (ost, pistou). Det er svinekjøtt i selve burgerkaken."
-            recommendations: "Baren anbefaler: Trippel"
           mushroom_burger:
-            name: "Søtpotetburger"
-            ingredients: "Søtpotet og bønneburger servert med syltet rødløk, aioli, tomat, manchego, salat og potet på siden. Burgeren kan serveres med glutenfritt brød, og kan serveres uten ost og pistou (melkeallergi). Vegetar, kan gjøres vegansk."
+            name: "Soppburger"
+            description: "Sopp- og bønneburger servert med granateplesirup, manchego, aioli, tomat, salat og potet på siden. Burgeren kan serveres med glutenfritt brød, og kan serveres uten ost og pistou (melkeallergi). Vegetar, kan gjøres vegansk."
             allergies: "Allergener: Gluten (hvete, rug, bygg): burgerbrød, sulfitt (salatvinaigrette, syltet rødløk, aioli), melk (pistou, manchego), sennep (aioli, burger), egg (aioli, manchego, pistou - spor i manchego)"
-            recommendations: "Baren anbefaler: Brooklyn Lager"
         main_courses:
           title: "Hovedretter"
           pie:
             name: "Soppai"
             description: "Kremet soppai med feta, toppes med ruccula. Vegetar. Kan serveres med glutenfri paibunn"
             allergies: "Allergener: Melk (smør, fløte, feta - i paien), gluten (paibunn)"
-            recommendations: "Baren anbefaler: jue de vie"
-          cod:
-            name: "Torsk med byggotto"
-            description: "Ovnsbakt torsk med byggotto med spinat og purre. Kan serveres uten byggotto"
-            allergies: "Allergener: Melk (byggotto), sulfitt (byggotto), fisk"
-            recommendations: "Baren anbefaler: Chardonnay / Einstock white ale"
-          cauliflower:
-            name: "Vegansk blomkål"
-            description: "Vegansk blomkål med couscoussalat, rødbethummus og sitronette dressing. Kan serveres uten hummus"
-            allergies: "Allergener: Sesam (hummus), kan inneholde spor av peanøtter (hummus - Tahini)"
-            recommendations: "Baren anbefaler: Aroa Laia"
+            recommendations: "Baren anbefaler: Jue de Vie"
+          moroccan_curry:
+            name: "Marokkansk Curry"
+            description: "En spennende marokkansk curry basert på shakshuka, med baba ganoush, hummus og appelsin. Serveres med lychebrød."
+            allergies: "Allergener: Sesam (hummus), sitrus, sulfitter"
+            recommendations: "Baren anbefaler: La Garnacha Olvidada"
+          mussels:
+            name: "Blåskjell"
+            description: "Deilige kokte blåskjell servert i en kremet hvitvinssaus toppet med persille. Serveres med lychebrød og kryddersmør."
+            allergies: "Allergener: Skalldyr, sulfitter, melk (laktosefri fløte)"
         desserts:
           title: "Dessert"
           ice_cream:
@@ -214,6 +211,7 @@
           glass: "Glass"
           bottle: "Flaske"
         errors: "Vi tar forbehold om at det kan oppstå feil i den digitale menyen."
+        milk: "Alt som inneholder melk er laktosefritt."
       reservation:
         info: |
           Bord må reserveres minst en dag i forveien. Mat kan forhåndsbestilles slik at dere ikke trenger å vente når dere kommer.
