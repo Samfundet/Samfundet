@@ -95,9 +95,9 @@ Samfundet::Application.configure do
     RegistrationEvent.establish_connection(:paamelding)
     RegistrationEvent.table_name = paamelding_table_prefix + 'arrangementer'
   end
-end
 
-SamfundetAuth.setup do |config|
+  Member.establish_connection(database_config[config.member_database.to_s])
+  Member.table_name = config.member_table.to_s
 end
 
 Paperclip.options[:command_path] = '/usr/bin/'
