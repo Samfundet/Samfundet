@@ -1,5 +1,8 @@
 # -*- encoding : utf-8 -*-
 # frozen_string_literal: true
+
+require './app/models/member'
+
 Samfundet::Application.configure do
   # Settings specified here will take precedence over those in config/environment.rb
 
@@ -96,6 +99,8 @@ Samfundet::Application.configure do
     RegistrationEvent.table_name = paamelding_table_prefix + 'arrangementer'
   end
 
+  database_path = "#{Rails.root}/config/database.yml"
+  database_config = YAML.load_file(database_path, aliases: true)
   Member.establish_connection(database_config[config.member_database.to_s])
   Member.table_name = config.member_table.to_s
 end
