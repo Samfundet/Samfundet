@@ -9,7 +9,7 @@ Samfundet::Application.configure do
   config.cache_classes = false
 
   # Whitelist docker compose ips (might not be needed).
-  config.web_console.whitelisted_ips = '172.22.0.1/16'
+  config.web_console.allowed_ips = '172.22.0.1/16'
 
   # Do not eager load code on boot.
   config.eager_load = false

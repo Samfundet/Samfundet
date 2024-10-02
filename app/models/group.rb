@@ -11,6 +11,7 @@ class Group < ApplicationRecord
 
   validates :name, :group_type, presence: true
   validates :name, uniqueness: true
+  validates_associated :group_type
 
   default_scope { order(:name).includes(:page) }
 

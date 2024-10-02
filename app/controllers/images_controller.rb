@@ -33,7 +33,7 @@ class ImagesController < ApplicationController
   def edit; end
 
   def update
-    if @image.update_attributes(image_params)
+    if @image.update(image_params)
       flash[:success] = t('images.update_success')
       redirect_to @image
     else

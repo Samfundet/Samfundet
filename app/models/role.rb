@@ -1,13 +1,23 @@
 # frozen_string_literal: true
 
-require SamfundetAuth::Engine.root.join('app', 'models', 'role')
+# require SamfundetAuth::Engine.root.join('app', 'models', 'role')
 
 class Role < ActiveRecord::Base
   # attr_accessible :group_id, :role_id, :passable
+  validates_format_of :title, with: /\A[a-z0-9_-]+\z/
+  validates_presence_of :name, :description
 
-  scope :passable, (lambda do
-    Role.where('passable = ?', true)
-  end)
+  attr_readonly :title
+
+  default_scope { order(:title) }
+
+  has_many :members_roles, dependent: :destroy
+  has_many :members, through: :members_roles
+  has_many :roles
+  belongs_to :group
+  belongs_to :role
+
+  scope :passable, -> { where(passable: true) }
 
   def members
     Member.find(members_roles.all.collect(&:member_id))

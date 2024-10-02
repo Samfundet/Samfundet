@@ -19,7 +19,7 @@ after :images do
         file = File.open(Rails.root.join('app', 'assets', 'files', 'dummy.pdf'))
         publication_date = 2.weeks.ago + (rand 2000).days
         Document.create!(
-            title: Faker::Lorem.sentence(2),
+            title: Faker::Lorem.sentence(word_count: 2),
             category_id: category.id,
             uploader_id: member.id,
             publication_date: publication_date,
@@ -31,17 +31,15 @@ after :images do
   puts "Creating blog articles"
   Member.all.sample(10).each do |member|
     title = Faker::Lorem.sentence
-    image = Image.all.sample
-
     puts "Creating blog article:  #{title}"
     member.blogs.create!(
       title_no: title,
       title_en: title,
-      content_no: Faker::Lorem.sentence(rand(50)) + "![#{image.title}](#{image.image_file(:medium)})" + Faker::Lorem.sentence(rand(20)),
-      content_en: Faker::Lorem.sentence(rand(50)) + "![#{image.title}](#{image.image_file(:medium)})" + Faker::Lorem.sentence(rand(20)),
+      content_no: "# Utsalgssteder for billetter\n#{Faker::Lorem.paragraphs(number: 3).join("\n\n")} \n# Salgsbetingelser\n#{Faker::Lorem.paragraphs(number: 3).join("\n\n")}",
+      content_en: "# Purchase areas for tickets\n#{Faker::Lorem.paragraphs(number: 3).join("\n\n")} \n# Purchase conditions\n#{Faker::Lorem.paragraphs(number: 3).join("\n\n")}",
       published: rand > 0.2,
-      lead_paragraph_no: Faker::Lorem.sentence(rand(5..10)),
-      lead_paragraph_en: Faker::Lorem.sentence(rand(5..10)),
+      lead_paragraph_no: Faker::Lorem.sentence(word_count: rand(5..10)),
+      lead_paragraph_en: Faker::Lorem.sentence(word_count: rand(5..10)),
       publish_at: rand(-2..1).weeks.from_now,
       image_id: Image.all.sample.id)
   end

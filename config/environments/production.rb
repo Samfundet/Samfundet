@@ -1,7 +1,14 @@
 # -*- encoding : utf-8 -*-
 # frozen_string_literal: true
+
+require './app/models/member'
+
 Samfundet::Application.configure do
   # Settings specified here will take precedence over those in config/environment.rb
+
+  # Define our database
+  config.member_database = :mdb2
+  config.member_table = :lim_medlemsinfo
 
   # Define our logger
   logger = ActiveSupport::Logger.new('/var/log/rails/staging.log')
@@ -91,11 +98,11 @@ Samfundet::Application.configure do
     RegistrationEvent.establish_connection(:paamelding)
     RegistrationEvent.table_name = paamelding_table_prefix + 'arrangementer'
   end
-end
 
-SamfundetAuth.setup do |config|
-  config.member_database = :mdb2
-  config.member_table = :lim_medlemsinfo
+  database_path = "#{Rails.root}/config/database.yml"
+  database_config = YAML.load_file(database_path, aliases: true)
+  Member.establish_connection(database_config[config.member_database.to_s])
+  Member.table_name = config.member_table.to_s
 end
 
 Paperclip.options[:command_path] = '/usr/bin/'

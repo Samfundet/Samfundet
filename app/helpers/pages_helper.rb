@@ -32,7 +32,7 @@ module PagesHelper
   end
 
   def expand_includes(text, seen = Set.new)
-    text.gsub(/%include (#{Page::NAME_FORMAT})%/) do
+    text.gsub(/%include (#{Page::NAME_FORMAT})%/o) do
       name = Regexp.last_match(1)
 
       # prevent infinite recursion by only allowing a page to be included once

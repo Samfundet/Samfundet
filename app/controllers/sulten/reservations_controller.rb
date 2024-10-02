@@ -133,7 +133,7 @@ class Sulten::ReservationsController < Sulten::BaseController
   def update
     @reservation = Sulten::Reservation.find params[:id]
 
-    if @reservation.update_attributes(reservation_params)
+    if @reservation.update(reservation_params)
       flash[:success] = t('helpers.models.sulten.reservation.success.update')
       redirect_to @reservation
     else
@@ -166,6 +166,6 @@ private
         :allergies,
         :internal_comment,
         :gdpr_checkbox
-    )
+      )
   end
 end

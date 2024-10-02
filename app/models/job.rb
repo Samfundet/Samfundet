@@ -101,7 +101,7 @@ class Job < ApplicationRecord
         .where(
             'interviews.applicant_status=? OR interviews.applicant_status=? OR interviews.applicant_status=?',
             :accepted, :declined, :rejected_m
-        )
+          )
   end
 
   def automatically_rejected_applications

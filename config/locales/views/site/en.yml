@@ -47,6 +47,8 @@ en:
       new_building_crowdfunding_description: "Studentersamfundet has a crowdfunding campaign for new building!"
       new_building_crowdfunding_link: "Read more."
 
+      system_upgrade_instability_notice: "Due to system upgrades, instability or unexpected issues may occur with the website."
+      system_upgrade_instability_notice_link: "Contact us if you experience this"
     notifications:
       membership:
         welcome: "Welcome new members!"

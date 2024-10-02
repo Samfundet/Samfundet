@@ -64,7 +64,7 @@ class ApplicationController < ActionController::Base
   def open_admission?
     open_admissions = Admission.appliable.primary.includes(
         group_types: { groups: :jobs }
-    )
+      )
     open_admissions and not open_admissions.empty?
   end
 

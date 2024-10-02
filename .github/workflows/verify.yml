@@ -22,7 +22,7 @@ jobs:
 
       - name: Setup initial files
         run: |
-          cp config/database.example.yml config/database.yml
+          cp config/database.docker.yml config/database.yml
           cp config/local_env.example.yml config/local_env.yml
           cp config/billig.example.yml config/billig.yml
           cp config/secrets.example.yml config/secrets.yml

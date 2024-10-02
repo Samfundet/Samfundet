@@ -57,7 +57,7 @@ class ApplicantsController < ApplicationController
       end
     end
 
-    if @applicant.update_attributes(applicant_params)
+    if @applicant.update(applicant_params)
       if @current_user.class == Applicant
         flash[:success] = t('applicants.update_success')
         redirect_to job_applications_path
@@ -120,7 +120,7 @@ class ApplicantsController < ApplicationController
     @applicant = Applicant.find(params[:id])
     new_data = params[:applicant]
     if @applicant.check_hash(params[:hash])
-      if @applicant.update_attributes(password: new_data[:password],
+      if @applicant.update(password: new_data[:password],
                                       password_confirmation: new_data[:password_confirmation])
         PasswordRecovery.find_by(applicant_id: @applicant.id).destroy
         flash[:success] = t('applicants.password_recovery.change_success')

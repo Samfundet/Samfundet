@@ -10,7 +10,7 @@ namespace :sulten do
           email: Faker::Internet.email,
           telephone: Faker::Base.numerify('########'),
           allergies: 'REDACTED'
-      )
+        )
       reservation.save(validate: false)
       print '-'
     end
@@ -76,7 +76,7 @@ namespace :sulten do
               table_id: tables.sample(1)[0].id,
               internal_comment: rand(0..5) == 0 ? Faker::Lorem.sentence(12) : nil,
               allergies: rand(0..5) == 0 ? Faker::Lorem.sentence(12) : nil
-          ).save(validate: false)
+            ).save(validate: false)
         end
       end
     end

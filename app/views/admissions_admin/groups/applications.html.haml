@@ -1,4 +1,4 @@
-- set_title T('job_applications.applications_for_group', :group_name => @group.name)
+- set_title T('job_applications.applications_for_group', group_name: @group.name)
 = javascript_include_tag 'applicants/interviews', defer: true
 
 = link_to admissions_admin_admission_group_path(@admission, @group) do

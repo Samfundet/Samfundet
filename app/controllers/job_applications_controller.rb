@@ -28,18 +28,14 @@ class JobApplicationsController < ApplicationController
       end
     else
       flash[:error] = t('job_applications.cannot_apply_after_deadline')
-      if @job_application.job
-        redirect_to @job_application.job
-      else
-        redirect_to admissions_path
-      end
+      redirect_to @job_application.job || admissions_path
     end
   end
 
   def update
     @job_application = JobApplication.find(params[:id])
     if @job_application.update(job_application_params)
-      @job_application.update_attributes(withdrawn: false)
+      @job_application.update(withdrawn: false)
       flash[:success] = t('job_applications.application_updated')
       if current_user.class == Applicant
         redirect_to job_applications_path
@@ -52,7 +48,7 @@ class JobApplicationsController < ApplicationController
   end
 
   def destroy
-    JobApplication.find(params[:id]).update_attributes(withdrawn: true)
+    JobApplication.find(params[:id]).update(withdrawn: true)
     flash[:success] = t('job_applications.application_deleted')
     if current_user.class == Applicant
       redirect_to job_applications_path

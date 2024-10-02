@@ -126,7 +126,7 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
           admission: @admission,
           applicant: r,
           sent_at: Time.now
-      )
+        )
       # Safely send emails
       begin
         rej.save!
@@ -168,13 +168,13 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
   def list
     @open_admissions = Admission.appliable.includes(
         group_types: { groups: :jobs }
-    )
+      )
     @closed_admissions = Admission.no_longer_appliable
     @upcoming_admissions = Admission.upcoming
   end
 
   def update
-    if @admission.update_attributes(admission_params)
+    if @admission.update(admission_params)
       flash[:success] = t('admissions_admin.admission_updated')
       redirect_to admissions_path
     else
