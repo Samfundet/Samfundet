@@ -21,8 +21,8 @@
                 = format '%s–%s',
                     I18n.l(hours.open_time, format: :time),
                     I18n.l(hours.close_time, format: :time)
-      = link_to @opening_hours_url do
-        .samf-button.center.mb-3
+      .samf-button.center.mb-3
+        = link_to @opening_hours_url do
           =  t('site.index.all-opening-hours')
       .pt-3
 
