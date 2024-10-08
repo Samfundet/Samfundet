@@ -241,7 +241,12 @@ class EventsController < ApplicationController
   end
 
   def ical
-    @events = Event.upcoming.active.published
+    @event_type = params[:event_type].to_s
+    if @event_type.empty?
+      @events = Event.upcoming.active.published
+    else
+      @events = Event.upcoming.active.published.where(event_type: @event_type)
+    end
   end
 
   def rss
