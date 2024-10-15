@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     #   get :admin, on: :collection
     # end
 
-    #resources :search, only: [:new, :create, :search]
+    # resources :search, only: [:new, :create, :search]
     ############################
     ##  Routes for events     ##
     ############################
@@ -53,7 +53,7 @@ Rails.application.routes.draw do
 
       collection do
         get "admin"
-        get "admin/graph", to:"pages#graph"
+        get "admin/graph", to: "pages#graph"
         post "preview"
       end
 
@@ -102,7 +102,7 @@ Rails.application.routes.draw do
     scope "/applicants" do
       # ApplicantSessionsController
       get "new", to: "applicant_sessions#new", as: :applicants_login
-      post "new" => "applicant_sessions#create",  as: :connect_applicant
+      post "new" => "applicant_sessions#create", as: :connect_applicant
       get "login", to: "user_sessions#new_applicant", as: :applicant_login
 
       # ApplicantsController
@@ -220,7 +220,7 @@ Rails.application.routes.draw do
       get "/menu" => "lyche#menu"
       get "/about" => "lyche#about"
       get "/contact" => "lyche#contact"
-      #get "/reservasjon" => "reservations#new"
+      # get "/reservasjon" => "reservations#new"
       get "/reservasjon_admin" => "reservations#admin_new"
       post "/reservasjon_admin" => "reservations#admin_create"
       get :admin, to: "admin#index"
@@ -228,7 +228,6 @@ Rails.application.routes.draw do
       get "reservations/archive" => "reservations#archive"
       get "reservations/export" => "reservations#export"
       get "/admin/index" => "admin#index", as: :lyche_admin
-
 
       resources :closed_periods, except: [:show]
       get "/closed_periods/arkiv" => "closed_periods#archive", as: :closed_periods_archive
@@ -239,9 +238,13 @@ Rails.application.routes.draw do
       end
 
       resources :tables
+
+      resources :menu, path: "/admin/menu", only: [:index], as: :admin_menu
+      resources :menu_items, path: "/admin/menu/item", only: [:new, :create, :edit, :update, :destroy]
+      resources :menu_categories, path: "admin/menu/categories", only: [:new, :create, :edit, :update, :destroy]
     end
 
-    #UKA 17 boksalg
+    # UKA 17 boksalg
     get '/bokhandel', to: redirect('https://samfundetbok.tabetalt.no/')
 
     get ":id" => "pages#show", :id => Page::NAME_FORMAT
@@ -250,4 +253,4 @@ end
 
 # Add Norwegian routes and prefix English ones with /en; this is handled
 # by the 'rails-translate-routes' gem
-#ActionController::Routing::Translator.translate_from_file('config/locales/routes/i18n-routes.yml')
+# ActionController::Routing::Translator.translate_from_file('config/locales/routes/i18n-routes.yml')

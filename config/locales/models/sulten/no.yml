@@ -48,3 +48,22 @@
             create: "en ny periode ble opprettet"
           errors:
             create: "perioden kunne ikke opprettes"
+        menu:
+          category:
+            success:
+              create: "Meny kategori ble opprettet"
+              update: "Meny kategori ble oppdatert"
+              destroy: "Meny kategori ble slettet"
+            error:
+              create: "Meny kategori kunne ikke opprettes"
+              update: "Meny kategori kunne ikke oppdateres"
+              destroy: "Meny kategori kunne ikke slettes"
+          item:
+            success:
+              create: "Retten ble opprettet"
+              update: "Retten ble oppdatert"
+              destroy: "Retten ble slettet"
+            error:
+              create: "Retten kunne ikke opprettes"
+              update: "Retten kunne ikke oppdateres"
+              destroy: "Retten kunne ikke slettes"

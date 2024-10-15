@@ -1,0 +1,11 @@
+= semantic_form_for @menu_category do |f|
+  %div{:style=>"flex-basis:100%;"}
+  = f.inputs do
+    .flex-row
+      = f.input :title_no, label: "#{t("sulten.admin.menu.items.th_title")} (#{t("pages.norwegian_fields")})"
+      = f.input :title_en, label: "#{t("sulten.admin.menu.items.th_title")} (#{t("pages.english_fields")})"
+    .flex-row
+      = f.input :order, label: t("sulten.admin.menu.categories.th_order"), hint: t("sulten.admin.menu.categories.hint")
+
+  = f.actions do
+    = f.action :submit, label: button_type

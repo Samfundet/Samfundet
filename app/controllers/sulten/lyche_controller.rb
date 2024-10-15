@@ -104,6 +104,7 @@ class Sulten::LycheController < Sulten::BaseController
 
   def menu
     area = Area.find_by_name('Lyche')
+    @categories = Sulten::MenuCategory.includes(:sulten_menu_items).order(:order)
     if area == nil
       @open_hours = []
     else

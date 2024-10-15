@@ -131,87 +131,10 @@
           Denne gis ved fremvisning av medlemskap.
         subtitle: "Velbekomme!"
         opening_hours: "Åpningstider"
-        starters:
-          title: "Småretter"
-          lyche_bread:
-            name: "Lychebrød"
-            description: "Serveres med en skål aioli på siden. Kan serveres med vegansk aioli eller kryddersmør istedet. Vegetar, kan gjøres vegansk"
-            allergies: "Allergener: Gluten (hvete), sulfitt og egg (aioli)"
-          lyche_snitter:
-            name: "Lychesnitter"
-            description: "Lychebrød med rødbethummus, ruccula, mango og pistou."
-            allergies: "Allergener: Gluten (hvete), melk (pistou), sesam (hummus). Kan inneholde spor av peanøtter: hummus"
-          soup:
-            name: "Månedens Suppe"
-            description: "Varierer etter sesong. Spør en av våre servitører om dagens suppe. Serveres med Lychebrød og kryddersmør."
-            allergies: "Allergener: Spør en av våre servitører"
-        burgers:
-          title: "Burgere"
-          double: "Dobbel"
-          lyche_burger:
-            name: "Lycheburger"
-            description: "Okse og n’duja kjøtt, servert med løkkompott, bacon, tomater, aioli, cheddar, salat og potet på siden. Burgeren kan serveres med glutenfritt brød, og kan serveres uten ost og pistou (melkeallergi)"
-            allergies: "Allergener: Egg (burger, aioli, pistou - spor av egg i manchego), sennep (burger, aioli), sulfitt (burger, salatvinaigrette, løkkompott, aioli), gluten (hvete, rug, bygg): burgerbrød, selleri (burger peppermix), melk (burgerost, pistou). Det er svinekjøtt i selve burgerkaken."
-            recommendations: "Baren anbefaler: Dahls pils"
-          blue_cheese_burger:
-            name: "Blåmuggburger"
-            description: "Okse og n’duja kjøtt, servert med rips og rabarbra marmelade, tomater, aioli, blåmugg, salat og potet på siden. Burgeren kan serveres med glutenfritt brød, og kan serveres uten ost og pistou (melkeallergi)"
-            allergies: "Allergener: Gluten (hvete, rug, bygg): burgerbrød, egg (burger, aioli, pistou - spor fra manchego), selleri (burger, peppermix), sennep (burger, aioli), sulfitt (burger, salatvinaigrette, aioli), melk (ost, pistou). Det er svinekjøtt i selve burgerkaken."
-          mushroom_burger:
-            name: "Soppburger"
-            description: "Sopp- og bønneburger servert med granateplesirup, manchego, aioli, tomat, salat og potet på siden. Burgeren kan serveres med glutenfritt brød, og kan serveres uten ost og pistou (melkeallergi). Vegetar, kan gjøres vegansk."
-            allergies: "Allergener: Gluten (hvete, rug, bygg): burgerbrød, sulfitt (salatvinaigrette, syltet rødløk, aioli), melk (pistou, manchego), sennep (aioli, burger), egg (aioli, manchego, pistou - spor i manchego)"
-        main_courses:
-          title: "Hovedretter"
-          pie:
-            name: "Soppai"
-            description: "Kremet soppai med feta, toppes med ruccula. Vegetar. Kan serveres med glutenfri paibunn"
-            allergies: "Allergener: Melk (smør, fløte, feta - i paien), gluten (paibunn)"
-            recommendations: "Baren anbefaler: Jue de Vie"
-          moroccan_curry:
-            name: "Marokkansk Curry"
-            description: "En spennende marokkansk curry basert på shakshuka, med baba ganoush, hummus og appelsin. Serveres med lychebrød."
-            allergies: "Allergener: Sesam (hummus), sitrus, sulfitter"
-            recommendations: "Baren anbefaler: La Garnacha Olvidada"
-          mussels:
-            name: "Blåskjell"
-            description: "Deilige kokte blåskjell servert i en kremet hvitvinssaus toppet med persille. Serveres med lychebrød og kryddersmør."
-            allergies: "Allergener: Skalldyr, sulfitter, melk (laktosefri fløte)"
-        desserts:
-          title: "Dessert"
-          ice_cream:
-            name: "Sorbet"
-            description: "Iskrem og/eller sorbet. Spør en av våre barservitører om dagens smaker."
-            allergies: "Allergener: Spør en av våre barservitører."
-          creme_catalana:
-            name: "Crème catalana"
-            description: "Crème brûlée med smak av appelsin og kanel."
-            allergies: "Allergener: Melk og egg (crème catalana)"
-        beer_on_tap:
-          title: "Øl på tapp"
-          weekend: "Helg"
-          weekday: "Ukedag"
-          special_beer: "Spesialøl fra daglighallen"
-          ask_bar: "Spør om type i baren"
-        bottled_beer:
-          title: "Øl på flaske"
-          glutenfree: "Glutenfri"
-          blue: "Blå"
-          red: "Rød"
-        alcopop:
-          title: "Rusbrus"
-          pear: "Pære"
-        alcohol_free:
-          title: "Alkoholfritt"
-          mineral_water: "Mineralvann"
-          choices: "Utvalg: Pepsi, Pepsi Max, Solo, 7up free, Eplemost"
-        wine:
-          white_wine: "Hvitvin"
-          red_wine: "Rødvin"
-          glass: "Glass"
-          bottle: "Flaske"
         errors: "Vi tar forbehold om at det kan oppstå feil i den digitale menyen."
         milk: "Alt som inneholder melk er laktosefritt."
+        recommendation: "Baren anbefaler: "
+        allergies: "Allergier: "
       reservation:
         info: |
           Bord må reserveres minst en dag i forveien. Mat kan forhåndsbestilles slik at dere ikke trenger å vente når dere kommer.
@@ -263,11 +186,35 @@
       contact:
         title: "Kontakt"
         description: |
-         Har du spørsmål, henvendelser, forslag til forbedring eller av andre årsaker ønsker å komme i kontakt med oss?
-         Her finner du kontaktinformasjonen vår. Reservasjoner gjøres enten via epost eller via reservasjonssystemet vårt.
-         Vi tar ikke imot reservasjoner på sosiale medier.
-         Du kan henvise deg til våre sosiale medier for informasjon.
+          Har du spørsmål, henvendelser, forslag til forbedring eller av andre årsaker ønsker å komme i kontakt med oss?
+          Her finner du kontaktinformasjonen vår. Reservasjoner gjøres enten via epost eller via reservasjonssystemet vårt.
+          Vi tar ikke imot reservasjoner på sosiale medier.
+          Du kan henvise deg til våre sosiale medier for informasjon.
         encouragement: "Vi håper å se deg i Lyche!"
         inquiries: "For generelle henvendelser:"
         address: "Addresse"
         email: "Epost"
+    admin:
+      menu:
+        title: "Lyche meny admin"
+        categories:
+          title: "Meny kategorier"
+          th_category: "Kategorier"
+          th_order: "Rekkefølge"
+          new: "Ny kategori"
+          delete: "Sletting av en kategori sletter alle tilhørende retter, er du sikker?"
+          edit: "Rediger kategori"
+          hint: "Meny rekkefølge, lavest til høyest"
+        items:
+          title: "Retter"
+          th_title: "Tittel"
+          description: "Beskrivelse"
+          allergies: "Allergier"
+          additional_info: "Tilleggsinformasjon"
+          recommendation: "Anbefaling"
+          price: "Pris"
+          price_member: "Pris (medlem)"
+          category: "Kategori"
+          new: "Ny rett"
+          edit: "Rediger rett"
+          hint: Står under tittle i menyen, for eksempel "dobbel burger"
