@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Sulten::MenuCategory < ApplicationRecord
-  has_many :sulten_menu_items, class_name: 'Sulten::MenuItem', foreign_key: 'category_id', dependent: :destroy
+  has_many :sulten_menu_items, -> { order :order, :title_no }, class_name: 'Sulten::MenuItem', foreign_key: 'category_id', dependent: :destroy
 
   validates :title_no, :title_en, presence: true
 

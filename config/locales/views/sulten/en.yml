@@ -205,9 +205,10 @@ en:
           new: "New category"
           delete: "Deleting a category also deletes all belonging items, are you sure?"
           edit: "Edit category"
-          hint: "Menu order, lowest to highest"
+          hint: "Menu order, lowest to highest, no value is last"
         items:
           title: "Items"
+          body: "The order in the table is the shown order of the menu"
           th_title: "Title"
           description: "Description"
           allergies: "Allergies"

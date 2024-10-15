@@ -60,6 +60,7 @@ class Sulten::MenuItemsController < Sulten::BaseController
                   :recommendation,
                   :price,
                   :price_member,
-                  :category_id)
+                  :category_id,
+                  :order)
   end
 end

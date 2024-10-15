@@ -5,7 +5,7 @@ class Sulten::MenuController < Sulten::BaseController
 
   def index
     @categories = Sulten::MenuCategory.all
-    @items = Sulten::MenuItem.order(:category_id).includes(:sulten_menu_category).all
+    @items = Sulten::MenuItem.order(:category_id, :order, :title_no).includes(:sulten_menu_category).all
   end
 
   private

@@ -204,9 +204,10 @@
           new: "Ny kategori"
           delete: "Sletting av en kategori sletter alle tilhørende retter, er du sikker?"
           edit: "Rediger kategori"
-          hint: "Meny rekkefølge, lavest til høyest"
+          hint: "Meny rekkefølge, lavest til høyest, ingen verdi er sist"
         items:
           title: "Retter"
+          body: "Rekkfølgen i tabbelen etterligner faktisk rekkefølge i menyen"
           th_title: "Tittel"
           description: "Beskrivelse"
           allergies: "Allergier"

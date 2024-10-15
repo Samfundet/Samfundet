@@ -11,6 +11,7 @@ Sulten::MenuCategory.create(:title_en => "Dessert", :title_no => "Dessert", :ord
   allergies = Faker::Food.allergen
   additional_info = rand(0..4) == 0 ? "Additional Info" : nil
   recommendation = rand(0..2) == 0 ? Faker::Beer.name : nil
+  order = rand(0..5) == 0 ? nil : rand(0..5)
   Sulten::MenuItem.create(
     :title_no => food,
     :title_en => food,
@@ -24,5 +25,6 @@ Sulten::MenuCategory.create(:title_en => "Dessert", :title_no => "Dessert", :ord
     :price_member => Faker::Commerce.price,
     :additional_info_no => additional_info,
     :additional_info_en => additional_info,
+    :order => order
   )
 end

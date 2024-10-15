@@ -33,7 +33,8 @@
   = link_to new_sulten_menu_category_path do
     = t('sulten.admin.menu.categories.new')
 
-%h2= t("sulten.admin.menu.items.title")
+%h2.mt-3= t("sulten.admin.menu.items.title")
+%p.m-0= t("sulten.admin.menu.items.body")
 
 %table
   %thead
@@ -46,6 +47,7 @@
       %th= t("sulten.admin.menu.items.price")
       %th= t("sulten.admin.menu.items.price_member")
       %th= t("sulten.admin.menu.items.category")
+      %th= t("sulten.admin.menu.categories.th_order")
       %th
       %th
 
@@ -68,6 +70,8 @@
           = item.price_member
         %td
           = item.sulten_menu_category.title
+        %td
+          = item.order
         %td
           = link_to edit_sulten_menu_item_path(item) do
             %button.samf-button.blue.small
