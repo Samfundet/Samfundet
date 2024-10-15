@@ -1,3 +1,4 @@
+
 /*
   Samfundet Button
 */
@@ -10,10 +11,9 @@
   width: max-content;
   color: white;
   background-color: $samfundet-red;
-  box-shadow: 1px 1px 5px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 1px 5px 3px rgba(0,0,0,0.1);
   border-radius: .25em;
   transition: .2s;
-
   a {
     color: white;
   }
@@ -22,58 +22,48 @@
     cursor: not-allowed;
   }
 }
-
 .samf-button:hover:not([disabled]) {
   filter: brightness(120%);
   transform: translateY(-1px);
   transition: .2s;
-  box-shadow: 1px 2px 8px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 2px 8px 3px rgba(0,0,0,0.1);
 }
-
 // Button Variants
 .samf-button.small {
   padding: 4px 12px 4px 12px;
   font-size: .9em;
   text-transform: uppercase;
 }
-
 .samf-button.blue {
   color: white;
   background-color: #337ab7;
 }
-
 .samf-button.green {
   color: white;
   background-color: #4ab74c;
 }
-
 .samf-button.orange {
   color: white;
   background-color: #e0a014;
 }
-
 .samf-button.white {
   color: black;
   background-color: white;
 }
-
 .samf-button.gray {
   color: white;
   background-color: $samfundet-medium-grey;
 }
-
 .samf-button.white:hover {
   color: #333;
   background-color: #eee;
   filter: brightness(100%);
 }
-
 .samf-button.black {
   color: white;
   background-color: black;
   border: 1px solid #444;
 }
-
 .samf-button.plain {
   color: black;
   background-color: transparent;
@@ -86,11 +76,9 @@
     color: black;
   }
 }
-
 .samf-button.plain.small {
   padding: 3px 11px 3px 11px;
 }
-
 .samf-button.plain:hover {
   transform: none;
   color: $samfundet-red;

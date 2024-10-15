@@ -3,14 +3,14 @@
 authorization do
   role :ksg_sulten do
     has_permission_on [
-                        :sulten_tables,
-                        :sulten_reservations,
-                        :sulten_reservation_types,
-                        :sulten_admin,
-                        :sulten_closed_periods,
-                        :sulten_menu_items,
-                        :sulten_menu_categories,
-                      ], to: :manage
+      :sulten_tables,
+      :sulten_reservations,
+      :sulten_reservation_types,
+      :sulten_admin,
+      :sulten_closed_periods,
+      :sulten_menu_items,
+      :sulten_menu_categories,
+    ], to: :manage
   end
 
   role :lim_web do
@@ -19,39 +19,41 @@ authorization do
     has_permission_on :authorization_usages, to: :read
 
     has_permission_on [
-                        :admissions,
-                        :admissions_admin_admissions,
-                        :admissions_admin_groups,
-                        :admissions_admin_interviews,
-                        :admissions_admin_jobs,
-                        :admissions_admin_job_applications,
-                        :admissions_admin_log_entries,
-                        :admissions_admin_applicants,
-                        :applicants,
-                        :applicant_sessions,
-                        :areas,
-                        :documents,
-                        :everything_closed_periods,
-                        :front_page_locks,
-                        :groups,
-                        :images,
-                        :jobs,
-                        :job_applications,
-                        :members_roles,
-                        :member_sessions,
-                        :pages,
-                        :roles,
-                        :user_sessions,
-                        :sulten_tables,
-                        :sulten_reservations,
-                        :sulten_reservation_types,
-                        :sulten_admin,
-                        :sulten_closed_periods,
-                        :contact,
-                        :admissions_admin_campus,
-                        :info_boxes,
-                        :crowd_funding_supporters
-                      ], to: :manage
+      :admissions,
+      :admissions_admin_admissions,
+      :admissions_admin_groups,
+      :admissions_admin_interviews,
+      :admissions_admin_jobs,
+      :admissions_admin_job_applications,
+      :admissions_admin_log_entries,
+      :admissions_admin_applicants,
+      :applicants,
+      :applicant_sessions,
+      :areas,
+      :documents,
+      :everything_closed_periods,
+      :front_page_locks,
+      :groups,
+      :images,
+      :jobs,
+      :job_applications,
+      :members_roles,
+      :member_sessions,
+      :pages,
+      :roles,
+      :user_sessions,
+      :sulten_tables,
+      :sulten_reservations,
+      :sulten_reservation_types,
+      :sulten_admin,
+      :sulten_closed_periods,
+      :contact,
+      :admissions_admin_campus,
+      :info_boxes,
+      :crowd_funding_supporters,
+      :sulten_menu_items,
+      :sulten_menu_categories,
+    ], to: :manage
 
     has_permission_on :admissions_admin_groups, to: :reject_calls
     has_permission_on :roles, to: :one_year_old
@@ -71,14 +73,14 @@ authorization do
 
   role :gu_nestleder do
     has_permission_on [
-                        :admissions,
-                        :admissions_admin_admissions,
-                        :admissions_admin_groups,
-                        :admissions_admin_interviews,
-                        :admissions_admin_jobs,
-                        :admissions_admin_job_applications,
-                        :admissions_admin_log_entries
-                      ], to: :manage
+      :admissions,
+      :admissions_admin_admissions,
+      :admissions_admin_groups,
+      :admissions_admin_interviews,
+      :admissions_admin_jobs,
+      :admissions_admin_job_applications,
+      :admissions_admin_log_entries
+    ], to: :manage
     has_permission_on :admissions_admin_applicants, to: [:show_interested_other_positions, :show_unflagged_applicants]
     has_permission_on :admissions_admin_job_applications, to: [:hidden_create, :withdraw_job_application]
     has_permission_on :job_applications, to: [:update, :delete]
@@ -121,12 +123,12 @@ authorization do
 
   role :mg_redaksjon do
     has_permission_on [
-                        :areas,
-                        :pages,
-                        :everything_closed_periods,
-                        :front_page_locks,
-                        :info_boxes,
-                      ], to: :manage
+      :areas,
+      :pages,
+      :everything_closed_periods,
+      :front_page_locks,
+      :info_boxes,
+    ], to: :manage
     has_permission_on [:images, :info_boxes,], to: [:read]
     has_permission_on :pages, to: [:read, :update, :edit_non_content_fields]
   end
@@ -190,7 +192,7 @@ end
 privileges do
   # default privilege hierarchies to facilitate RESTful Rails apps
   privilege :manage, includes: [:create, :read, :update, :delete, :clear]
-  privilege :read, includes: [:index, :show, :search]
+  privilege :read,   includes: [:index, :show, :search]
   privilege :create, includes: :new
   privilege :update, includes: :edit
   privilege :delete, includes: :destroy
