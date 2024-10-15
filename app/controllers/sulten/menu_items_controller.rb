@@ -45,7 +45,7 @@ class Sulten::MenuItemsController < Sulten::BaseController
     redirect_to sulten_admin_menu_index_path
   end
 
-  private
+private
 
   def menu_item_params
     params.require(:sulten_menu_item)

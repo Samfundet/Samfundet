@@ -38,14 +38,14 @@ class Sulten::MenuCategoriesController < Sulten::BaseController
   def destroy
     @menu_category = Sulten::MenuCategory.find(params[:id])
     if @menu_category.destroy
-      flash[:success] = t("helpers.models.sulten.menu.category.success.destroy")
+      flash[:success] = t('helpers.models.sulten.menu.category.success.destroy')
     else
       flash.now[:error] = t('helpers.models.sulten.menu.category.error.destroy')
     end
     redirect_to sulten_admin_menu_index_path
   end
 
-  private
+private
 
   def menu_category_params
     params.require(:sulten_menu_category).permit(:title_no, :title_en, :order)

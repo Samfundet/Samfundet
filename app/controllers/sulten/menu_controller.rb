@@ -8,7 +8,7 @@ class Sulten::MenuController < Sulten::BaseController
     @items = Sulten::MenuItem.order(:category_id, :order, :title_no).includes(:sulten_menu_category).all
   end
 
-  private
+private
 
   def authorize
     authorize! :manage, Sulten::MenuItem, Sulten::MenuCategory
