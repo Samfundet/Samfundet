@@ -53,9 +53,9 @@
         %td
           = item.title
         %td
-          = item.description
+          = truncate(item.description, length: 15)
         %td
-          = item.allergies
+          = truncate(item.allergies, length: 20)
         %td
           = item.additional_info
         %td

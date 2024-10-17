@@ -67,11 +67,14 @@
               .item-description
                 - if item.additional_info
                   = item.additional_info
+                  %br
+                  %br
                 = item.description
                 %br
                 %br
                 %i= "#{t("sulten.lyche.menu.allergies")} #{item.allergies}"
                 - if item.recommendation
+                  %br
                   %br
                   %i= "#{t("sulten.lyche.menu.recommendation")} #{item.recommendation}"
 
