@@ -8,7 +8,7 @@ Sulten::MenuCategory.create(:title_en => "Dessert", :title_no => "Dessert", :ord
 12.times.each do |i|
   food = Faker::Food.dish
   description = Faker::Food.description
-  allergies = Faker::Food.allergen
+  allergens = Faker::Food.allergen
   additional_info = rand(0..4) == 0 ? "Additional Info" : nil
   recommendation = rand(0..2) == 0 ? Faker::Beer.name : nil
   order = rand(0..5) == 0 ? nil : rand(0..5)
@@ -17,8 +17,8 @@ Sulten::MenuCategory.create(:title_en => "Dessert", :title_no => "Dessert", :ord
     :title_en => food,
     :description_no => description,
     :description_en => description,
-    :allergens_no => allergies,
-    :allergens_en => allergies,
+    :allergens_no => allergens,
+    :allergens_en => allergens,
     :recommendation => recommendation,
     :category_id => Sulten::MenuCategory.all.sample.id,
     :price => Faker::Commerce.price,
