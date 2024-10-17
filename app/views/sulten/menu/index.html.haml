@@ -34,7 +34,7 @@
     = t('sulten.admin.menu.categories.new')
 
 %h2.mt-3= t("sulten.admin.menu.items.title")
-%p.m-0= t("sulten.admin.menu.items.body")
+%p.m-0.mb-1= t("sulten.admin.menu.items.body")
 
 %table
   %thead
@@ -81,6 +81,9 @@
             %button.samf-button.red.small
               = t("crud.destroy")
 
-%button.samf-button.green.mt-2
-  = link_to new_sulten_menu_item_path do
-    = t("sulten.admin.menu.items.new")
+- if @categories.empty?
+  %p.mt-1.text-Align= t("sulten.admin.menu.items.no_categories")
+- else
+  %button.samf-button.green.mt-2
+    = link_to new_sulten_menu_item_path do
+      = t("sulten.admin.menu.items.new")

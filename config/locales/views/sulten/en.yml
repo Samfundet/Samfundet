@@ -220,3 +220,4 @@ en:
           new: "New item"
           edit: "Edit item"
           hint: Appears underneath title in menu, for example "dobble burger"
+          no_categories: "To create an item there must first be categories"

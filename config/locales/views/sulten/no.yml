@@ -219,3 +219,4 @@
           new: "Ny rett"
           edit: "Rediger rett"
           hint: Står under tittle i menyen, for eksempel "dobbel burger"
+          no_categories: "For å kunne opprette retter må det først lages kategorier"
