@@ -1,6 +1,5 @@
-.samf-button.plain.mb-3
-  = link_to members_control_panel_path anchor: "sulten-applet".parameterize do
-    = t("common.back")
+= link_to members_control_panel_path, anchor: "sulten-applet".parameterize, class: "samf-button plain mb-3 block" do
+  = t("common.back")
 
 %h1= t('sulten.admin.menu.title')
 
@@ -21,17 +20,14 @@
         %td
           = category.order
         %td
-          = link_to edit_sulten_menu_category_path(category) do
-            %button.samf-button.blue.small
-              = t("crud.edit")
+          = link_to edit_sulten_menu_category_path(category), class: "samf-button blue small" do
+            = t("crud.edit")
         %td
-          = link_to sulten_menu_category_path(category), method: :delete, data: { confirm:t('sulten.admin.menu.categories.delete') } do
-            %button.samf-button.red.small
-              = t("crud.destroy")
+          = link_to sulten_menu_category_path(category), class: "samf-button red small", method: :delete, data: { confirm:t('sulten.admin.menu.categories.delete') } do
+            = t("crud.destroy")
 
-%button.samf-button.green.mt-2
-  = link_to new_sulten_menu_category_path do
-    = t('sulten.admin.menu.categories.new')
+= link_to new_sulten_menu_category_path, class: "samf-button green mt-2 block" do
+  = t('sulten.admin.menu.categories.new')
 
 %h2.mt-3= t("sulten.admin.menu.items.title")
 %p.m-0.mb-1= t("sulten.admin.menu.items.body")
@@ -73,17 +69,14 @@
         %td
           = item.order
         %td
-          = link_to edit_sulten_menu_item_path(item) do
-            %button.samf-button.blue.small
-              = t("crud.edit")
+          = link_to edit_sulten_menu_item_path(item), class: "samf-button blue small" do
+            = t("crud.edit")
         %td
-          = link_to sulten_menu_item_path(item), method: :delete, data: { confirm: t('crud.confirm') } do
-            %button.samf-button.red.small
-              = t("crud.destroy")
+          = link_to sulten_menu_item_path(item), class: "samf-button red small", method: :delete, data: { confirm: t('crud.confirm') } do
+            = t("crud.destroy")
 
 - if @categories.empty?
   %p.mt-1.text-Align= t("sulten.admin.menu.items.no_categories")
 - else
-  %button.samf-button.green.mt-2
-    = link_to new_sulten_menu_item_path do
-      = t("sulten.admin.menu.items.new")
+  = link_to new_sulten_menu_item_path, class: "samf-button green mt-2 block" do
+    = t("sulten.admin.menu.items.new")
