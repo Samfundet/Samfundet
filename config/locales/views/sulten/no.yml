@@ -134,7 +134,8 @@
         errors: "Vi tar forbehold om at det kan oppstå feil i den digitale menyen."
         milk: "Alt som inneholder melk er laktosefritt."
         recommendation: "Baren anbefaler: "
-        allergies: "Allergier: "
+        allergies: "Allergener: "
+        empty_menu: "Menyen er for øyeblikket tom, hør med din servitør"
       reservation:
         info: |
           Bord må reserveres minst en dag i forveien. Mat kan forhåndsbestilles slik at dere ikke trenger å vente når dere kommer.

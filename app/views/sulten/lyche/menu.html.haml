@@ -51,7 +51,6 @@
               %br
               %br
 
-        -# Starters
         - @categories.each do |category|
           .lyche-menu-category
             .lyche-menu-category-detail.left
@@ -78,6 +77,10 @@
 
         %br
         .menu-note
+          - if @categories.empty?
+            = t("sulten.lyche.menu.empty_menu")
+            %br
+            %br
           = t("sulten.lyche.menu.milk")
 
         %br

@@ -135,6 +135,7 @@ en:
         milk: "Everything with milk is lactose free."
         recommendation: "The bar recommends: "
         allergies: "Allergies: "
+        empty_menu: "The menu is currently empty, please contact your server"
       reservation:
         info: |
           Tables must be reserved at least one day in advance. Food can be pre-ordered so you do not have to wait when you arrive.
