@@ -1,0 +1,6 @@
+= link_to sulten_admin_menu_index_path, class: "samf-button plain mb-3 block" do
+  = t("common.back")
+    
+%h1= t("sulten.admin.menu.items.edit")
+
+= render 'sulten/menu/item_form', menu_item: @menu_item, button_type: t("crud.edit")

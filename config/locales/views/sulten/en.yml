@@ -131,87 +131,11 @@ en:
           The discount is given upon presentation of a membership card.
         subtitle: "You're welcome!"
         opening_hours: "Opening hours"
-        starters:
-          title: "Starters"
-          lyche_bread:
-            name: "Lyche bread"
-            description: "Served with some aioli on the side. Can be served with vegan aioli or spiced butter instead. Vegetarian, can be made vegan."
-            allergies: "Allergies: Gluten (wheat), sulfite and eggs (aioli)"
-          lyche_snitter:
-            name: "Lyche snitter"
-            description: "Lyche bread with beetroot hummus, ruccula, mango and pistou. Vegetarian, can be made vegan."
-            allergies: "Allergener: Gluten (wheat), milk (pistou), sesame (hummus). May contain traces of peanuts: hummus"
-          soup:
-            name: "Soup of the Month"
-            description: "Varies by season. Ask one of our waiters about today's soup. Served with Lyche bread and butter."
-            allergies: "Allergies: Ask one of our waiters"
-        burgers:
-          title: "Burgers"
-          double: "Double"
-          lyche_burger:
-            name: "Lyche burger"
-            description: "Bull and n’duja meat, served with onion compote, bacon, tomatoes, aioli, cheddar, salad and potatoes on the side. The burger can be served with gluten-free bread, and can be served without cheese and pistol (milk allergy)."
-            allergies: "Allergies: Egg (burger, aioli, pistou - traces of egg in Manchego), mustard (burger, aioli), sulfite (burger, saladvinaigrette, onion compote, aioli), gluten (wheat, rye, barley): bun, celery (burger pepper mix), milk (burger cheese, pistou). The meat patty contains pork."
-            recommendations: "The bar recommends: Dahls Beer"
-          blue_cheese_burger:
-            name: "Blue cheese burger"
-            description: "Bull and n’duja meat, served with currant and rhubarb marmalade, tomatoes, aioli, bluecheese, salad and potato on the side. The burger can be served with gluten-free bread, and can be served without cheese and pistol (milk allergy)."
-            allergies: "Allergies: Gluten (wheat, rye, barley): bun, egg (burger, aioli, pistou - traces from Manchego), celery (burger, pepper mix), mustard (burger, aioli), sulfite (burger, saladvinaigrette, aioli), milk (cheese, pistou). The meat patty contains pork."
-          mushroom_burger:
-            name: "Mushroom Burger"
-            description: "Mushroom and bean burger, pomegranate sirup, aioli, tomato, manchego, salad and potato on the side. The burger can be served with gluten-free bread, and can be served without cheese and pistol (milk allergy). Vegetarian, can be made vegan."
-            allergies: "Allergies: Gluten (wheat, rye, barley): bun, sulfite (saladvinaigrette, pickled red onion, aioli), milk (pistou, Manchego), mustard (aioli, burger), egg (sioli, pistou - traces in Manchego), Manchego."
-        main_courses:
-          title: "Main courses"
-          pie:
-            name: "Mushroom pie"
-            description: "Served with feta cheese. Vegetarian. Can be served with a gluten-free pie crust"
-            allergies: "Allergies: Milk (butter, cream, feta - in the pie), gluten (pie crust)"
-            recommendations: "The bar recommends: Ju de Vie"
-          moroccan_curry:
-            name: "Moroccan Curry"
-            description: "An exciting Moroccan curry based on shakshuka, with baba ganoush, hummus, and orange. Served with lyche bread."
-            allergies: "Allergies: Sesame (hummus), citrus, sulfites"
-            recommendations: "The bar recommends: La Garnacha Olvidada"
-          mussels:
-            name: "Mussels"
-            description: "Delicious cooked mussels served in a creamy white wine sauce topped with parsley. Served with lyche bread and spiced butter."
-            allergies: "Allergies: Shellfish, sulfites, milk (lactose-free cream)"
-        desserts:
-          title: "Dessert"
-          ice_cream:
-            name: "Sorbet"
-            description: "Ice cream and/or sorbet. Ask one of our waiters about today's flavors."
-            allergies: "Allergies: Ask one of our waiters."
-          creme_catalana:
-            name: "Crème catalana"
-            description: "Crème brûlée with flavors of orange and cinnamon."
-            allergies: "Allergies: Milk and eggs (crème catalana)"
-        beer_on_tap:
-          title: "Beer on tap"
-          weekend: "Weekend"
-          weekday: "Weekday"
-          special_beer: "A special beer from daglighallen"
-          ask_bar: "Ask about type at the bar"
-        bottled_beer:
-          title: "Bottled beer"
-          glutenfree: "Gluten free"
-          blue: "Blue"
-          red: "Red"
-        alcopop:
-          title: "Alcopop"
-          pear: "Pear"
-        alcohol_free:
-          title: "Alcohol free"
-          mineral_water: "Mineral water"
-          choices: "Selection: Pepsi, Pepsi Max, Solo, 7up free, Apple juice"
-        wine:
-          white_wine: "White wine"
-          red_wine: "Red wine"
-          glass: "Glass"
-          bottle: "Bottle"
         errors: "The digital menu might not be up to date."
         milk: "Everything with milk is lactose free."
+        recommendation: "The bar recommends: "
+        allergens: "Allergens: "
+        empty_menu: "The menu is currently empty, please contact your server"
       reservation:
         info: |
           Tables must be reserved at least one day in advance. Food can be pre-ordered so you do not have to wait when you arrive.
@@ -272,3 +196,29 @@ en:
         inquiries: "For general inquiries:"
         address: "Address"
         email: "Email"
+    admin:
+      menu:
+        title: "Lyche Menu Admin"
+        categories:
+          title: "Menu categories"
+          th_category: "Categories"
+          th_order: "Order"
+          new: "New category"
+          delete: "Deleting a category also deletes all belonging items, are you sure?"
+          edit: "Edit category"
+          hint: "Menu order, lowest to highest, no value is last"
+        items:
+          title: "Items"
+          body: "The order in the table is the shown order of the menu"
+          th_title: "Title"
+          description: "Description"
+          allergens: "Allergens"
+          additional_info: "Additional information"
+          recommendation: "Recommendation"
+          price: "Price"
+          price_member: "Price member"
+          category: "Category"
+          new: "New item"
+          edit: "Edit item"
+          hint: Appears underneath title in menu, for example "dobble burger"
+          no_categories: "To create an item there must first be categories"

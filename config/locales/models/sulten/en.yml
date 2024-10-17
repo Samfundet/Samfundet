@@ -48,3 +48,22 @@ en:
             create: "the period was successfully created"
           errors:
             create: "the period could not be created"
+        menu:
+          category:
+            success:
+              create: "Menu category was successfully created"
+              update: "Menu category was successfully updated"
+              destroy: "Menu category was successfully deleted"
+            error:
+              create: "Menu category could not be created"
+              update: "Menu category could not be updated"
+              destroy: "Menu category could not be deleted"
+          item:
+            success:
+              create: "Menu item was successfully created"
+              update: "Menu item was successfully updated"
+              destroy: "Menu item was successfully deleted"
+            error:
+              create: "Menu item could not be created"
+              update: "Menu item could not be updated"
+              destroy: "Menu item could not be deleted"
