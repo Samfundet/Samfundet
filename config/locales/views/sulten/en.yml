@@ -134,7 +134,7 @@ en:
         errors: "The digital menu might not be up to date."
         milk: "Everything with milk is lactose free."
         recommendation: "The bar recommends: "
-        allergies: "Allergies: "
+        allergens: "Allergens: "
         empty_menu: "The menu is currently empty, please contact your server"
       reservation:
         info: |
@@ -212,7 +212,7 @@ en:
           body: "The order in the table is the shown order of the menu"
           th_title: "Title"
           description: "Description"
-          allergies: "Allergies"
+          allergens: "Allergens"
           additional_info: "Additional information"
           recommendation: "Recommendation"
           price: "Price"

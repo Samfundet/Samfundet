@@ -37,7 +37,7 @@
     %tr
       %th= t("sulten.admin.menu.items.th_title")
       %th= t("sulten.admin.menu.items.description")
-      %th= t("sulten.admin.menu.items.allergies")
+      %th= t("sulten.admin.menu.items.allergens")
       %th= t('sulten.admin.menu.items.additional_info')
       %th= t("sulten.admin.menu.items.recommendation")
       %th= t("sulten.admin.menu.items.price")
@@ -55,7 +55,7 @@
         %td
           = truncate(item.description, length: 15)
         %td
-          = truncate(item.allergies, length: 20)
+          = truncate(item.allergens, length: 20)
         %td
           = item.additional_info
         %td

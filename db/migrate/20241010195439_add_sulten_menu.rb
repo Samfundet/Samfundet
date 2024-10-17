@@ -5,8 +5,8 @@ class AddSultenMenu < ActiveRecord::Migration[6.1]
       t.string :title_en
       t.text :description_no
       t.text :description_en
-      t.string :allergies_no
-      t.string :allergies_en
+      t.string :allergens_no
+      t.string :allergens_en
       t.string :additional_info_no, null: true
       t.string :additional_info_en, null: true
       t.string :recommendation, null: true

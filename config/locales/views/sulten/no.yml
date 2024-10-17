@@ -134,7 +134,7 @@
         errors: "Vi tar forbehold om at det kan oppstå feil i den digitale menyen."
         milk: "Alt som inneholder melk er laktosefritt."
         recommendation: "Baren anbefaler: "
-        allergies: "Allergener: "
+        allergens: "Allergener: "
         empty_menu: "Menyen er for øyeblikket tom, hør med din servitør"
       reservation:
         info: |
@@ -211,7 +211,7 @@
           body: "Rekkfølgen i tabbelen etterligner faktisk rekkefølge i menyen"
           th_title: "Tittel"
           description: "Beskrivelse"
-          allergies: "Allergier"
+          allergens: "Allergener"
           additional_info: "Tilleggsinformasjon"
           recommendation: "Anbefaling"
           price: "Pris"
