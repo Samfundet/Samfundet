@@ -10,11 +10,12 @@ class Sulten::MenuItemsController < Sulten::BaseController
 
   def create
     @menu_item = Sulten::MenuItem.new(menu_item_params)
-    if @menu_item.save
+    begin
+      @menu_item.save!
       flash[:success] = t('helpers.models.sulten.menu.item.success.create')
       redirect_to sulten_admin_menu_index_path
-    else
-      flash.now[:error] = t('helpers.models.sulten.menu.item.error.create')
+    rescue StandardError => _e
+      flash[:error] = t('helpers.models.sulten.menu.item.error.create')
       render 'sulten/menu/new_item'
     end
   end

@@ -579,6 +579,7 @@ ActiveRecord::Schema.define(version: 2024_10_10_195439) do
   add_foreign_key "rejection_emails", "applicants", name: "rejection_emails_applicant_id_fk"
   add_foreign_key "roles", "groups", name: "roles_group_id_fk"
   add_foreign_key "roles", "roles", name: "roles_role_id_fk"
+  add_foreign_key "sulten_menu_items", "sulten_menu_categories", column: "category_id"
   add_foreign_key "sulten_neighbour_tables", "sulten_tables", column: "neighbour_id"
   add_foreign_key "sulten_neighbour_tables", "sulten_tables", column: "table_id"
 end
