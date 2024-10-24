@@ -1,3 +1,4 @@
+.anchor-applet#sulten-applet
 .top
   %h2
     = t("LYCHE")
@@ -5,5 +6,9 @@
   %ul
     %li
       = link_to sulten_admin_path do
-        .samf-button.plain.w100
+        .samf-button.green.w100.mb-2
           = t("Admin")
+    %li
+      = link_to sulten_admin_menu_index_path do
+        .samf-button.plain.w100
+          = t("sulten.lyche.header_menu.menu")

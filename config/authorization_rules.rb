@@ -8,6 +8,8 @@ authorization do
       :sulten_reservation_types,
       :sulten_admin,
       :sulten_closed_periods,
+      :sulten_menu_items,
+      :sulten_menu_categories,
     ], to: :manage
   end
 
@@ -48,7 +50,9 @@ authorization do
       :contact,
       :admissions_admin_campus,
       :info_boxes,
-      :crowd_funding_supporters
+      :crowd_funding_supporters,
+      :sulten_menu_items,
+      :sulten_menu_categories,
     ], to: :manage
 
     has_permission_on :admissions_admin_groups, to: :reject_calls

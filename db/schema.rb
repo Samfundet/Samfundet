@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_07_15_234401) do
+ActiveRecord::Schema.define(version: 2024_10_10_195439) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -486,6 +486,29 @@ ActiveRecord::Schema.define(version: 2024_07_15_234401) do
     t.datetime "closed_to"
   end
 
+  create_table "sulten_menu_categories", force: :cascade do |t|
+    t.string "title_en"
+    t.string "title_no"
+    t.integer "order"
+  end
+
+  create_table "sulten_menu_items", force: :cascade do |t|
+    t.string "title_no"
+    t.string "title_en"
+    t.text "description_no"
+    t.text "description_en"
+    t.string "allergens_no"
+    t.string "allergens_en"
+    t.string "additional_info_no"
+    t.string "additional_info_en"
+    t.string "recommendation"
+    t.integer "price"
+    t.integer "price_member"
+    t.bigint "category_id"
+    t.integer "order"
+    t.index ["category_id"], name: "index_sulten_menu_items_on_category_id"
+  end
+
   create_table "sulten_neighbour_tables", force: :cascade do |t|
     t.integer "table_id"
     t.integer "neighbour_id"
@@ -556,6 +579,7 @@ ActiveRecord::Schema.define(version: 2024_07_15_234401) do
   add_foreign_key "rejection_emails", "applicants", name: "rejection_emails_applicant_id_fk"
   add_foreign_key "roles", "groups", name: "roles_group_id_fk"
   add_foreign_key "roles", "roles", name: "roles_role_id_fk"
+  add_foreign_key "sulten_menu_items", "sulten_menu_categories", column: "category_id"
   add_foreign_key "sulten_neighbour_tables", "sulten_tables", column: "neighbour_id"
   add_foreign_key "sulten_neighbour_tables", "sulten_tables", column: "table_id"
 end

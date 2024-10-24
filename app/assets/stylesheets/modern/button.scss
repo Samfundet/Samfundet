@@ -71,6 +71,10 @@
   box-shadow: none;
   // Reduce padding equivalent to border to match size of other buttons
   padding: 6px 19px 6px 19px;
+
+  a {
+    color: black;
+  }
 }
 .samf-button.plain.small {
   padding: 3px 11px 3px 11px;
@@ -80,4 +84,7 @@
   color: $samfundet-red;
   border: 1px solid $samfundet-red;
   transition: 0s;
+}
+.samf-button.block {
+  display: block;
 }

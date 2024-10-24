@@ -1,0 +1,26 @@
+= semantic_form_for @menu_item do |f|
+  %div{:style=>"flex-basis:100%;"}
+    = f.inputs do
+      .flex-row
+        = f.input :title_no, label: "#{t("sulten.admin.menu.items.th_title")} (#{t("pages.norwegian_fields")})"
+        = f.input :title_en, label: "#{t("sulten.admin.menu.items.th_title")} (#{t("pages.english_fields")})"
+      .flex-row
+        = f.input :description_no, label: "#{t("sulten.admin.menu.items.description")} (#{t("pages.norwegian_fields")})"
+        = f.input :description_en, label: "#{t("sulten.admin.menu.items.description")} (#{t("pages.english_fields")})"
+      .flex-row
+        = f.input :allergens_no, label: "#{t("sulten.admin.menu.items.allergens")} (#{t("pages.norwegian_fields")})"
+        = f.input :allergens_en, label: "#{t("sulten.admin.menu.items.allergens")} (#{t("pages.english_fields")})"
+      .flex-row
+        = f.input :additional_info_no, label: "#{t("sulten.admin.menu.items.additional_info")} (#{t("pages.norwegian_fields")})", hint: t("sulten.admin.menu.items.hint")
+        = f.input :additional_info_en, label: "#{t("sulten.admin.menu.items.additional_info")} (#{t("pages.english_fields")})"
+      .flex-row
+        = f.input :recommendation, label: t("sulten.admin.menu.items.recommendation")
+      .flex-row
+        = f.input :price_member, label: t("sulten.admin.menu.items.price_member")
+        = f.input :price, label: t('sulten.admin.menu.items.price')
+      .flex-row
+        = f.input :category_id, as: :select, collection: Sulten::MenuCategory.order(:order), label: t("sulten.admin.menu.items.category"), required: true
+        = f.input :order, label: t("sulten.admin.menu.categories.th_order"), hint: t("sulten.admin.menu.categories.hint")
+
+    = f.actions do
+      = f.action :submit, label: button_type

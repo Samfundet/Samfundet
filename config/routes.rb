@@ -239,6 +239,10 @@ Rails.application.routes.draw do
       end
 
       resources :tables
+
+      resources :menu, path: "/admin/menu", only: [:index], as: :admin_menu
+      resources :menu_items, path: "/admin/menu/item", only: [:new, :create, :edit, :update, :destroy]
+      resources :menu_categories, path: "admin/menu/categories", only: [:new, :create, :edit, :update, :destroy]
     end
 
     #UKA 17 boksalg
