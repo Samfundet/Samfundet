@@ -208,7 +208,7 @@
           hint: "Meny rekkefølge, lavest til høyest, ingen verdi er sist"
         items:
           title: "Retter"
-          body: "Rekkfølgen i tabbelen etterligner faktisk rekkefølge i menyen"
+          body: "Rekkfølgen i tabellen etterligner faktisk rekkefølge i menyen"
           th_title: "Tittel"
           description: "Beskrivelse"
           allergens: "Allergener"
