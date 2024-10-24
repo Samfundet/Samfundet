@@ -65,7 +65,7 @@
                 .item-price
                   = "#{item.price_member},- / #{item.price},-"
               .item-description
-                - if item.additional_info
+                - unless item.additional_info.blank?
                   = item.additional_info
                   %br
                   %br
@@ -73,7 +73,7 @@
                 %br
                 %br
                 %i= "#{t("sulten.lyche.menu.allergens")} #{item.allergens}"
-                - if item.recommendation
+                - unless item.recommendation.blank?
                   %br
                   %br
                   %i= "#{t("sulten.lyche.menu.recommendation")} #{item.recommendation}"
