@@ -27,12 +27,13 @@ class Sulten::MenuItemsController < Sulten::BaseController
 
   def update
     @menu_item = Sulten::MenuItem.find(params[:id])
-    if @menu_item.update(menu_item_params)
+    begin
+      @menu_item.update!(menu_item_params)
       flash[:success] = t('helpers.models.sulten.menu.item.success.update')
       redirect_to sulten_admin_menu_index_path
-    else
-      flash.now[:error] = t('helpers.models.sulten.menu.item.error.update')
-      render 'sulten/menu/edit_item'
+    rescue StandardError => _e
+      flash[:error] = t('helpers.models.sulten.menu.item.error.create')
+      render 'sulten/menu/new_item'
     end
   end
 
