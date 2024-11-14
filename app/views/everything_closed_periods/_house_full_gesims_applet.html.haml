@@ -1,0 +1,15 @@
+
+.top
+    %h2
+        = "Gesimsen"
+.options
+   
+    .samf-smart-box.mb-3
+        = link_to toggle_house_full_gesims_path, method: :post, class: "samf-button green w100" do
+            = @enabled ? "Skru av" : "Skru på"
+    - if @enabled
+        %p
+            = "Gesimsen viser nå at huset er fullt."
+    - else
+        %p
+            = "Skru på for å vise at huset er fullt på gesimsen."
