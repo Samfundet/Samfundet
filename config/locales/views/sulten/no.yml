@@ -137,10 +137,10 @@
         allergens: "Allergener: "
         empty_menu: "Menyen er for øyeblikket tom, hør med din servitør"
       reservation:
-        info: |
-          Bord må reserveres minst en dag i forveien. Mat kan forhåndsbestilles slik at dere ikke trenger å vente når dere kommer.
-          Merk at flertallet av personer må være medlem for å reservere og at alle må være over 20 år etter kl 20:00 i helger.
+        info: Bord må reserveres minst en dag i forveien. Merk at alle må være over 20 år etter kl 20:00 i helger.
         development: "Reservasjonssystemet vårt er fortsatt under utvikling, og vi ber om forbehold om at feil kan forekomme. Klikk her for å bestille via epost:"
+        email_time_limit: "(NB! Reservasjoner over epost anbefales å sendes inn minst 48 timer i forveien for å få svar)"
+        capacity: "Vi har maksimalkapasitet på 24 personer per reservasjon"
         closed_period: "Lyche holder stengt i perioden "
         one_day_future: "Reservasjoner må dessverre opprettes minst en dag i forveien."
         closed_day: "Lyche er dessverre stengt denne dagen 😢"
