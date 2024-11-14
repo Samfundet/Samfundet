@@ -137,10 +137,10 @@ en:
         allergens: "Allergens: "
         empty_menu: "The menu is currently empty, please contact your server"
       reservation:
-        info: |
-          Tables must be reserved at least one day in advance. Food can be pre-ordered so you do not have to wait when you arrive.
-          Note that the majority of people must be a member of the Student Society to reserve and that all must be over 20 years after 20:00 on weekends.
+        info: Tables must be reserved at least one day in advance. Please note that all guests must be over 20 years of age after 8:00 PM on weekends.
         development: "Our reservation system is still under development, and reservation errors may therefore occur. Click here to order via email:"
+        email_time_limit: "(NB! We recommend sending email reservations at least 48 hours in advance to receive a response)"
+        capacity: "We have a max capacity of 24 people per reservation"
         closed_period: "Lyche is closed during the period "
         one_day_future: "Reservations must unfortunately be made at least one day in advance."
         closed_day: "Lyche is unfortunately closed on this day 😢"
