@@ -1,0 +1,6 @@
+- if @open_now and @earliest_open_time and @latest_close_time
+  .open_banner_container
+    .open_banner
+      = t('areas.open_today')
+      %span.open_time
+        = "#{@earliest_open_time.strftime('%H')}–#{@latest_close_time.strftime('%H')}"
