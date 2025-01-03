@@ -9,6 +9,8 @@ class SiteController < ApplicationController
     @upcoming_events = Event.front_page_events(11)
     @banner_event = @upcoming_events.shift
 
+    @open_now = Area.joins(:standard_hours).any? { |a| a.open_now? }
+
     # Nybygg countdown
     @nybygg_countdown_enabled = Rails.application.config.nybygg_countdown_enabled
 

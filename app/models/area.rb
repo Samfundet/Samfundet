@@ -87,6 +87,10 @@ class Area < ApplicationRecord
 
     open_hours
   end
+
+  def open_now?
+    today&.open_now?
+  end
 end
 
 # == Schema Information
