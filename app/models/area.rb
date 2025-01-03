@@ -88,10 +88,6 @@ class Area < ApplicationRecord
     open_hours
   end
 
-  def open_now?
-    today&.open_now?
-  end
-
   def open_today?
     today&.open
   end
