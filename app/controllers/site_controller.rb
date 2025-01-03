@@ -10,6 +10,8 @@ class SiteController < ApplicationController
     @banner_event = @upcoming_events.shift
 
     @open_now = Area.joins(:standard_hours).any? { |a| a.open_now? }
+    @earliest_open_time = Area.joins(:standard_hours).map(&:earliest_open_time).compact.min
+    @latest_close_time = Area.joins(:standard_hours).map(&:latest_close_time).compact.max
 
     # Nybygg countdown
     @nybygg_countdown_enabled = Rails.application.config.nybygg_countdown_enabled

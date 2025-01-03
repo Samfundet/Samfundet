@@ -25,6 +25,15 @@ class StandardHour < ApplicationRecord
     close_time_today = Time.parse(close_time.strftime('%H:%M:%S'))
     open && now >= open_time_today && now <= close_time_today
   end
+
+  def adjusted_close_time
+    # Adjust for times that go past midnight
+    if close_time < open_time
+      close_time + 1.day
+    else
+      close_time
+    end
+  end
 end
 
 # == Schema Information
