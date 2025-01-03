@@ -9,6 +9,7 @@ en:
     closing_time: "Closing time"
     open: "Open?"
     open_today: "Open today!"
+    open_now: "Open now!"
     save: "save"
     change_venue: "Change venue"
 

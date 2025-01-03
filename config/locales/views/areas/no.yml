@@ -9,6 +9,7 @@
     closing_time: "Stengetid"
     open: "Åpen?"
     open_today: "Åpent i dag!"
+    open_now: "Åpent nå!"
     save: "Lagre"
     change_venue: "Endre lokale"
 
