@@ -21,9 +21,7 @@ class StandardHour < ApplicationRecord
 
   def open_now?
     now = Time.current
-    open_time_today = Time.parse(open_time.strftime('%H:%M:%S'))
-    close_time_today = Time.parse(close_time.strftime('%H:%M:%S'))
-    open && now >= open_time_today && now <= close_time_today
+    open && now >= Time.parse(open_time.strftime('%H:%M:%S')) && now <= Time.parse(close_time.strftime('%H:%M:%S'))
   end
 
   def adjusted_close_time
