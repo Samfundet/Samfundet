@@ -18,6 +18,20 @@ class StandardHour < ApplicationRecord
   scope :today, lambda {
     where(day: (Time.current - 4.hours).strftime('%A').downcase)
   }
+
+  def open_now?
+    now = Time.current
+    open && now >= Time.parse(open_time.strftime('%H:%M:%S')) && now <= Time.parse(close_time.strftime('%H:%M:%S'))
+  end
+
+  def adjusted_close_time
+    # Adjust for times that go past midnight
+    if close_time < open_time
+      close_time + 1.day
+    else
+      close_time
+    end
+  end
 end
 
 # == Schema Information

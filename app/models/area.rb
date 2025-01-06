@@ -87,6 +87,22 @@ class Area < ApplicationRecord
 
     open_hours
   end
+
+  def open_now?
+    today&.open_now?
+  end
+
+  def open_today?
+    today&.open
+  end
+
+  def earliest_open_time
+    standard_hours.open_today.minimum(:open_time)
+  end
+
+  def latest_close_time
+    standard_hours.open_today.map(&:adjusted_close_time).max
+  end
 end
 
 # == Schema Information

@@ -26,6 +26,7 @@
     - cache [I18n.locale, 'titlebar', request.fullpath, current_user, Time.current.to_date] do
       = render 'layouts/header'
     #site-header-offset
+      = render 'layouts/open_banner'
       = yield :admissions_frontpage_highjack
       = yield :banner_image
       -# cache [I18n.locale, 'titlebar', request.fullpath, current_user, Time.current.to_date] do
