@@ -5,7 +5,7 @@
     .cobweb
     .spider
 
-#header{ class: "#{params[:controller]} #{controller.action_name} #{@open_now or @open_today ? 'scroll-border' : ''}" }
+#header{ class: "#{params[:controller]} #{controller.action_name} #{(@open_now or @open_today) ? 'scroll-border' : ''}" }
 
   #header-items-mobile
     = link_to root_path do
