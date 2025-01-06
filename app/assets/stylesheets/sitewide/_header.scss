@@ -16,11 +16,7 @@
   border-bottom: 1px solid rgb(50, 50, 50);
   color: white;
 
-  transition: border-bottom-color 0.1s ease-in;
 
-  &.scroll-border:not(.scrolled) {
-    border-bottom-color: transparent;
-  }
 }
 
 #header-items, #header-items-mobile, #header-popup-menu {
