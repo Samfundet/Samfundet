@@ -44,20 +44,20 @@
       %h1.ml-2.mt-1= t("pages.index.samfundsmotet")
     %div
       %p= t("pages.index.samfundsmote_description")
-      %p= t("pages.index.samfundsmote_current")
-      - samfundsmoter = ['På leting etter sannheten, 31/8', 'Modis India, 7/9', 'Skeiv i kirka, 14/9', 'Kvinnehelse, 21/9', 'Festmøte: Cassa Rossa, 28/9', 'Palestina - Midtøstens løvetannbarn, 5/10', 'Festmøte: Studentopprør, 12/10', 'ISFiT Presents: Dommedag, 19/10', 'Atomvåpen med ICAN, 26/10', 'Presidentvalg med Sirkus USA, 2/11', 'Festmøte: Klubbaften, 9/11']
-      %ul.toc_list{style: "font-weight: 300"}
-        - samfundsmoter.each do |meeting|
-          %li= meeting
-      .flex-row.wrap
-        - if page_by_name_en("organization") != "#"
-          = link_to page_by_name_en("organization"), class: "samf-button red m-2 w100-mobile" do
-            = t("pages.index.samfundet_organization")
-        = link_to documents_path, class: "samf-button plain m-2 w100-mobile" do
-          = t("pages.index.documents")
-        - if page_by_name_en("history") != "#"
-          = link_to page_by_name_en("history"), class: "samf-button plain m-2 w100-mobile" do
-            = t("pages.index.samfundet_history")
+      -# %p= t("pages.index.samfundsmote_current")
+      -# - samfundsmoter = ['På leting etter sannheten, 31/8', 'Modis India, 7/9', 'Skeiv i kirka, 14/9', 'Kvinnehelse, 21/9', 'Festmøte: Cassa Rossa, 28/9', 'Palestina - Midtøstens løvetannbarn, 5/10', 'Festmøte: Studentopprør, 12/10', 'ISFiT Presents: Dommedag, 19/10', 'Atomvåpen med ICAN, 26/10', 'Presidentvalg med Sirkus USA, 2/11', 'Festmøte: Klubbaften, 9/11']
+      -# %ul.toc_list{style: "font-weight: 300"}
+      -#   - samfundsmoter.each do |meeting|
+      -#     %li= meeting
+      -# .flex-row.wrap
+      -#   - if page_by_name_en("organization") != "#"
+      -#     = link_to page_by_name_en("organization"), class: "samf-button red m-2 w100-mobile" do
+      -#       = t("pages.index.samfundet_organization")
+      -#   = link_to documents_path, class: "samf-button plain m-2 w100-mobile" do
+      -#     = t("pages.index.documents")
+      -#   - if page_by_name_en("history") != "#"
+      -#     = link_to page_by_name_en("history"), class: "samf-button plain m-2 w100-mobile" do
+      -#       = t("pages.index.samfundet_history")
 
 
   .category-title.mt-3= t("pages.index.venue_title")
