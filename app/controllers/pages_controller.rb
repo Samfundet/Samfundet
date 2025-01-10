@@ -23,6 +23,10 @@ class PagesController < ApplicationController
       Lyche
       Daglighallen
       Rundhallen
+      Vollan
+      Vuelie
+      Skala
+      Sitatet
     ]
     @areas = Area.all.select {
         |a| supported_venues.include? a.name
