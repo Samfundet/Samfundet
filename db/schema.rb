@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_10_10_195439) do
+ActiveRecord::Schema.define(version: 2025_01_16_215548) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -227,6 +227,7 @@ ActiveRecord::Schema.define(version: 2024_10_10_195439) do
     t.string "youtube_embed"
     t.string "codeword", default: ""
     t.string "registration_link"
+    t.string "external_organizer_link"
     t.index ["billig_event_id"], name: "index_events_on_billig_event_id", unique: true
   end
 

@@ -45,6 +45,9 @@
         %datalist#external_organizers
           - ExternalOrganizer.order(:name).each do |o|
             %option{ value: o.name }
+    .flex-row
+      = f.input :external_organizer_link, label: t('events.external_organizer_link'), value: @event.external_organizer_link, as: :string, hint: t('events.forms.labels.external_organizer_link')
+
 
   .flex-row
     %div{:style=>"flex-basis:100%;"}
