@@ -83,6 +83,9 @@ en:
       group: Group
       external: External
 
+    external_organizer_link: Link to external organizer
+    external_organizer_notice: Organized by an external organizer, not the groups at Samfundet. Inquiries can be directed to
+
     active: Active
     archived: Archived
     canceled: Canceled
@@ -205,6 +208,7 @@ en:
         capacity: Capacity
         registration: Registration link
         registration_hint: For external registration forms, the registration link must be added here
+        external_organizer_link: If external organizer is chosen, they can be linked to here
 
       existing_image: Select existing image
       upload_image: Upload new image
