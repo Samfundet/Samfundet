@@ -44,11 +44,11 @@
       %h1.ml-2.mt-1= t("pages.index.samfundsmotet")
     %div
       %p= t("pages.index.samfundsmote_description")
-      -# %p= t("pages.index.samfundsmote_current")
-      -# - samfundsmoter = ['På leting etter sannheten, 31/8', 'Modis India, 7/9', 'Skeiv i kirka, 14/9', 'Kvinnehelse, 21/9', 'Festmøte: Cassa Rossa, 28/9', 'Palestina - Midtøstens løvetannbarn, 5/10', 'Festmøte: Studentopprør, 12/10', 'ISFiT Presents: Dommedag, 19/10', 'Atomvåpen med ICAN, 26/10', 'Presidentvalg med Sirkus USA, 2/11', 'Festmøte: Klubbaften, 9/11']
-      -# %ul.toc_list{style: "font-weight: 300"}
-      -#   - samfundsmoter.each do |meeting|
-      -#     %li= meeting
+      %p= t("pages.index.samfundsmote_current")
+      - samfundsmoter = ['Hvorfor sover vi?, 11/1', 'Avkolonisering av akademia, 18/1', 'Syria - hva nå?, 25/1', 'Livet etter selvmord med Solveig Kloppen, 1/2', 'Arbeiderpartiets fall, 8/2', 'Festmøte: Sopp, 15/2', 'Sidsel Wold: En beretning om Israel, 22/2', 'Ledervalg, 25/2', 'Sportsvasking, FIFAaaeen!, 1/3', 'Festmøte: Kvinnekamp, 8/3', 'Hjelp, jeg skal bli konsulent?!, 29/3', 'Er 1.5-gradersmålet dødt?, 5/4', 'Generalforsamling, 30/4', 'ISFiT presidentvalg, 23/04', 'Festmøte: De Sorte Faars Ridder Skab, 3/5', 'Festmøte: 17. mai, 17/5' ]
+      %ul.toc_list{style: "font-weight: 300"}
+        - samfundsmoter.each do |meeting|
+          %li= meeting
       .flex-row.wrap
         - if page_by_name_en("organization") != "#"
           = link_to page_by_name_en("organization"), class: "samf-button red m-2 w100-mobile" do
