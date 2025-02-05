@@ -331,7 +331,7 @@
   justify-content: center;
   align-items: center;
 
-  #info-button.enabled { 
+  #info-button.enabled, #venues-button.enabled {
     a {
       border-bottom: 2px solid $samfundet-red;
       padding-bottom: 4px;
@@ -359,7 +359,7 @@
     height: 32px;
   }
 
-  #info-drawer {
+  #info-drawer, #venues-drawer {
     display: flex;
     flex-direction: column;
     gap: .5em;
@@ -378,12 +378,11 @@
       margin-bottom: 2em;
     }
   }
-  .info-drawer-hide-other {
+  .info-drawer-hide-other,  .venues-drawer-hide-other {
     &.hidden {
       display: none;
     }
   }
-
 }
 
 #header-popup-menu.open {
