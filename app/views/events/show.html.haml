@@ -50,6 +50,13 @@
       %td.pr-2.bw-r.thin= t('events.age_limit')
       %td.p-2= t_event_age_limit(@event)
 
+- if @event.external_organizer? and !@event.external_organizer_link.empty?
+  .samf-container.small.red.text-Align.mt-2
+    .mt-3.mb-3
+      = t('events.external_organizer_notice')
+      %a{href: @event.external_organizer_link, style: 'color: white; text-decoration: underline'}
+        = @event.organizer_external_name
+
 .text-Align.mb-3.pt-3.pb-3
   = render "buy_button", event: @event, button_only: false
 
