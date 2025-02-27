@@ -10,7 +10,8 @@ class BilligEvent < ApplicationRecord
   # attr_accessible :a4_ticket_layout, :dave_id, :dave_time_id, :event_location, :event_name, :event_note, :event_time, :event_type, :external_id, :organisation, :receipt_ticket_layout, :sale_from, :sale_to, :tp_ticket_layout, :hidden
 
   def describe
-    I18n.l(event_time, format: :short) + ' - ' + event_name
+    # Changed from format: short -> to whatever this is because arrangerende ikke kan bruke kalender
+    I18n.l(event_time, format: '%A, %d %b %Y %H:%M') + ' - ' + event_name
   end
 
   def netsale_billig_ticket_groups
