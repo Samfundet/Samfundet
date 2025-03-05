@@ -298,6 +298,7 @@ private
       :codeword,
       :registration_link,
       :capacity,
+      :external_organizer_link,
       price_groups_attributes: %i(name price id _destroy)
     )
   end

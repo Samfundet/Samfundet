@@ -87,6 +87,9 @@
       group: Gjeng
       external: Ekstern
 
+    external_organizer_link: Link til ekstern arrangør
+    external_organizer_notice: Arrangeres i regi av ekstern arrangør, ikke gjengene på Samfundet. Henvendelser kan rettes mot
+
     active: Aktiv
     archived: Arkivert
     canceled: Avlyst
@@ -211,6 +214,7 @@
         capacity: Plasser
         registration: Påmeldingslink
         registration_hint: Ved eksternt påmeldingsskjema må påmeldingslinken legges til her
+        external_organizer_link: Om ekstern arrangør er valgt, kan de lenkes til her
 
       existing_image: Velg eksisterende bilde
       upload_image: Last opp nytt bilde
