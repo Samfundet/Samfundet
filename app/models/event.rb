@@ -237,6 +237,10 @@ class Event < ApplicationRecord
     organizer.name if organizer.is_a? ExternalOrganizer
   end
 
+  def external_organizer?
+    organizer.is_a? ExternalOrganizer
+  end
+
   def price
     case price_type
     when 'included'
@@ -401,4 +405,5 @@ end
 #  codeword              :string           default("")
 #  feedback_survey_id    :integer
 #  has_survey            :boolean
+#  external_organizer_link          :string
 #
