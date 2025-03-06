@@ -4,7 +4,7 @@ module EventHelper
   def organizer_link(event)
     if event.organizer.is_a? Group
       group_link(event.organizer)
-    elsif event.external_organizer? and event.external_organizer_link
+    elsif event.external_organizer? and event.external_organizer_link and !event.external_organizer_link.empty?
       render 'events/external_organizer_link', event: event
     else
       event.organizer.name

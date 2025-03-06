@@ -50,7 +50,7 @@
       %td.pr-2.bw-r.thin= t('events.age_limit')
       %td.p-2= t_event_age_limit(@event)
 
-- if @event.external_organizer? and @event.external_organizer_link
+- if @event.external_organizer? and @event.external_organizer_link and !event.external_organizer_link.empty?
   .samf-container.small.red.text-Align.mt-2
     .mt-3.mb-3
       = t('events.external_organizer_notice')
