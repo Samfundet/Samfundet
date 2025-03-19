@@ -20,8 +20,11 @@
     %br
     - unless @closed_periods.empty?
       %i
-        = t("sulten.lyche.reservation.closed_period") + " "
-        = @closed_periods.map{ |c| l(c.closed_from, format: :short_date) + "–" + l(c.closed_to, format: :short_date)}.join(', ')
+        = t("sulten.lyche.reservation.closed_period_1") + " "
+        = @closed_periods.map{ |c| l(c.closed_from, format: :short_date) + "–" + l(c.closed_to, format: :short_date)}.join(', ') + "."
+        = t("sulten.lyche.reservation.closed_period_2") + " "
+        = mail_to "lyche@samfundet.no"
+        = t("sulten.lyche.reservation.closed_period_3")
 
   - if @must_be_in_future
     = semantic_form_for @reservation, :html => { :class => "custom-form lyche_form"} do |f|
