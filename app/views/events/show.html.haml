@@ -54,7 +54,7 @@
   = render "buy_button", event: @event, button_only: false
 
 - if @event.external_organizer? and @event.external_organizer_link and !@event.external_organizer_link.empty?
-  .samf-container.small.red.text-Align.mt-2
+  .samf-container.small.red.text-Align.m-3
     .mt-3.mb-3
       = t('events.external_organizer_notice')
       %a{href: @event.external_organizer_link, style: 'color: white; text-decoration: underline'}
