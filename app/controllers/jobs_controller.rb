@@ -6,6 +6,12 @@ class JobsController < ApplicationController
 
   def show
     @job = Job.find(params[:id])
+
+    # hack to stop search engines indexing old positions
+    if @job.admission.very_old?
+      redirect_to root_path
+    end
+
     @available_jobs_in_same_group = @job.available_jobs_in_same_group
     @similar_available_jobs = @job.similar_available_jobs
 
