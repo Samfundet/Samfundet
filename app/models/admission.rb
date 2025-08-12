@@ -139,6 +139,10 @@ class Admission < ApplicationRecord
     (actual_application_deadline > Time.current) && (shown_from < Time.current)
   end
 
+  def very_old?
+    not appliable? and admin_priority_deadline < 30.days.ago
+  end
+
   def prioritize?
     user_priority_deadline > Time.current
   end
