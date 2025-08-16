@@ -20,7 +20,7 @@ class ApplicantsController < ApplicationController
     @admission = Admission.appliable.find_by_id(params[:admission])
 
     if @applicant.email.include?('@microsoft.') or @applicant.email.include?('@live.') or @applicant.email.include?('@outlook.') or @applicant.email.include?('@hotmail.')
-      flash[:error] = (t("applicants.forms.register.microsoft_warning"))
+      flash[:error] = t("applicants.forms.register.microsoft_warning")
       render :new
       return
     end
