@@ -19,6 +19,12 @@ class ApplicantsController < ApplicationController
     @applicant = Applicant.new(applicant_params)
     @admission = Admission.appliable.find_by_id(params[:admission])
 
+    if @applicant.email.include?('@microsoft.') or @applicant.email.include?('@live.') or @applicant.email.include?('@outlook.') or @applicant.email.include?('@hotmail.')
+      flash[:error] = (t("applicants.forms.register.microsoft_warning"))
+      render :new
+      return
+    end
+
     if @applicant.save
       flash[:success] = t('applicants.registration_success')
 
