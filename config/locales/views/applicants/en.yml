@@ -32,7 +32,7 @@ en:
         heading: "Register me as applicant"
         submit: "Register me"
         ntnu_warning: "Your email contains @ntnu.no, are you sure you didn't mean @stud.ntnu.no?"
-        microsoft_warning: "We are currently having issues delivering emails to Microsoft-owned emails. Please use another another email provider, such as Gmail. If you need support, contact mg-web@samfundet.no"
+        microsoft_warning: "We are currently having issues delivering emails to Microsoft-owned emails. Please use another another email provider, such as Gmail or your student mail. If you need support, contact mg-web@samfundet.no"
         personal_information: "Personal information"
         login_information: "Log in information"
         password_information: "Password information"
