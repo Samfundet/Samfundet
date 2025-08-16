@@ -32,7 +32,7 @@
         heading: "Registrer meg som søker"
         submit: "Registrer meg"
         ntnu_warning: "E-posten din inneholder @ntnu.no, er du sikker på at du ikke mente @stud.ntnu.no?"
-        microsoft_warning: "Vi har for øyeblikket problemer med å levere epost til Microsoft-eide e-postadresser. Vennligst bruk en annen e-postleverandør, for eksempel Gmail eller din studentmail. Om du trenger støtte, ta kontakt med mg-web@samfundet.no"
+        microsoft_warning: "Vi har for øyeblikket problemer med å levere epost til Microsoft-eide e-postadresser. Vennligst bruk en annen e-postleverandør, for eksempel Gmail. Om du trenger støtte, ta kontakt med mg-web@samfundet.no"
         personal_information: "Personalia"
         login_information: "Påloggingsinformasjon"
         password_information: "Passordinformasjon"
