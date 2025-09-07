@@ -27,6 +27,7 @@
     updated_at: "Sist oppdatert"
     history_for: "Historikk for %{name}"
     hide_menu: "Skjul meny"
+    strategy: "Strategi"
 
     index:
       title: Om Samfundet
