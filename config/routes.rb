@@ -192,6 +192,7 @@ Rails.application.routes.draw do
     get "login", to: "user_sessions#new", as: :login
 
     get "brosjyre", to: "site#brochure"
+    get "strategi", to: "site#strategy"
     get "/valgundersokelse", to: "site#generic_redirect"
 
     post "logout" => "user_sessions#destroy", as: :logout

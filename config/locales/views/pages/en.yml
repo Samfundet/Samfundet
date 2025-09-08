@@ -27,6 +27,7 @@ en:
     updated_at: "Last updated"
     history_for: "Revision history for %{name}"
     hide_menu: "Hide menu"
+    strategy: "Strategy"
 
     index:
       title: About Samfundet
