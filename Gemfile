@@ -201,9 +201,6 @@ group :development, :test do
   # Faker is a library that generates fake data (names, email addresses, etc.)
   gem 'faker', '~> 3.2'
 
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', '~> 9.0.0', platform: :mri
-
   # RSpec is a unit testing framework.
   # rspec-rails integrates RSpec (v2) and Rails (v3).
   gem 'rails-controller-testing', '~> 1.0.0'
