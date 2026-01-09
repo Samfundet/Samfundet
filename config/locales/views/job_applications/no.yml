@@ -1,5 +1,6 @@
 'no':
   job_applications:
+    application_info_link: "Les om når og hvordan du får svar på søknaden din"
     mine: "Mine søknader"
     hide_withdrawn_applications: "Skjul trekte søknader"
     applications_for_group: "Søknader på stillinger i %{group_name}"
