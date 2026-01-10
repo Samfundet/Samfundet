@@ -66,6 +66,8 @@ Samfundet::Application.configure do
     arguments: '-i'
   }
 
+  config.enable_microsoft_email_filter = false
+
   config.billig_path = 'https://billettsalg-staging.samfundet.no/pay'
   config.billig_ticket_path = 'https://billig.samfundet.no/pdf?'
 

@@ -56,6 +56,8 @@ Samfundet::Application.configure do
   # set delivery method to :smtp, :sendmail or :test
   config.action_mailer.delivery_method = :letter_opener
 
+  config.enable_microsoft_email_filter = false
+
   config.billig_path = 'http://localhost:4567/pay'
   config.billig_ticket_path = 'https://billig.samfundet.no/pdf?'
 
