@@ -19,7 +19,7 @@ class ApplicantsController < ApplicationController
     @applicant = Applicant.new(applicant_params)
     @admission = Admission.appliable.find_by_id(params[:admission])
 
-    if @applicant.email.include?('@microsoft.') or @applicant.email.include?('@live.') or @applicant.email.include?('@outlook.') or @applicant.email.include?('@hotmail.')
+    if Rails.application.config.enable_microsoft_email_filter and microsoft_mail?(@applicant.email)
       flash[:error] = t('applicants.forms.register.microsoft_warning')
       render :new
       return
@@ -207,6 +207,11 @@ private
                         email: CGI.escapeHTML(applicant.email))
   rescue Net::SMTPError
     flash[:error] = t('applicants.email_verification.email_error')
+  end
+
+  def microsoft_mail?(email)
+    microsoft_domains = %w[@microsoft. @live. @outlook. @hotmail.]
+    microsoft_domains.any? { |domain| email.include?(domain) }
   end
 
   include PendingApplications
