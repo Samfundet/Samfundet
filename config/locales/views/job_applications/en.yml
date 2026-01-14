@@ -1,5 +1,6 @@
 en:
   job_applications:
+    application_info_link: "Read about when and how you will receive a response to your application"
     mine: "My applications"
     hide_withdrawn_applications: "Hide withdrawn applications"
     applications_for_group: "Applications for %{group_name}"
