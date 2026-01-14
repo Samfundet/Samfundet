@@ -10,7 +10,7 @@ namespace :admission do
       applicant.assign_attributes(
         firstname: Faker::Name.first_name,
         surname: Faker::Name.last_name,
-        phone: Faker::Base.numerify('########'),
+        phone: Faker::Base.numerify('++++000 ########++++'),
         email: Faker::Internet.email,
         password: password,
         password_confirmation: password,
