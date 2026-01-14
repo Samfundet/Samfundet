@@ -5,13 +5,13 @@
 ###########################################
 
 # Specify ruby version that we use. Bundler gives an error when a different ruby is used.
-ruby '~> 3.1.2' # From .ruby-version.
+ruby '~> 3.3.8' # From .ruby-version.
 
 # The repository from which we're fetching our rubygems.
 source 'https://rubygems.org'
 
 # Rails. Duh.
-gem 'rails', '~> 6.1.7.6'
+gem 'rails', '~> 7.2.2'
 
 # Memcache client
 gem 'dalli', '~> 2.7.0'
@@ -109,7 +109,7 @@ gem 'paperclip-compression', '~> 1.1.0'
 gem 'date_validator', '~> 0.9.0'
 
 # PostgreSQL adapter. See: config/database.yml
-gem 'pg', '~> 1.1.0'
+gem 'pg', '~> 1.4.0'
 
 # Provides PostgreSQL fulltext search. Contains wrappers for tsvectors
 # and enables searching in nested attributes.
@@ -135,7 +135,7 @@ gem 'base64', '~> 0.1.1'
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem 'listen', '~> 3.4.0'
+  gem 'listen', '~> 3.5.0'
   gem 'web-console', '~> 4.2.0'
 
   gem 'racc', '~> 1.8', '>= 1.8.1'
@@ -156,7 +156,7 @@ group :development do
   # annotate adds schema information from the database, in the form of
   # Ruby comments, to model files so that we can see which columns
   # are actually in the database.
-  gem 'annotate', '~> 3.1.0'
+  gem 'annotate', '~> 3.2.0'
 
   # Easier preview of mail in development
   gem 'letter_opener', '~> 1.7.0'

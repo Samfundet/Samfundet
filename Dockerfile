@@ -1,5 +1,5 @@
 # Set manually (from '.ruby-version') because Dockerfile is unable to cat from file.
-FROM ruby:3.1.4-bookworm
+FROM ruby:3.3-trixie
 
 # Docker example.
 # https://docs.docker.com/samples/rails/
