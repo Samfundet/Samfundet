@@ -16,7 +16,8 @@
       != form.input :email, input_html: { type: "email", value: @applicant_login_email }
       != form.input :email_confirmation, input_html: { type: "email", value: "" }
       %p.ntnu_warning= t("applicants.forms.register.ntnu_warning")
-      %p.microsoft_warning= t("applicants.forms.register.microsoft_warning")
+      - if Rails.application.config.enable_microsoft_email_filter
+        %p.microsoft_warning= t("applicants.forms.register.microsoft_warning")
       != form.input :password, input_html: { value: "" }
       != form.input :password_confirmation, input_html: { value: "" }
 

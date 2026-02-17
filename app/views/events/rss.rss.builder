@@ -23,6 +23,7 @@ xml.rss version: '2.0' do
         xml.guid event_url(event)
         xml.category t("events.#{event.event_type}")
         xml.pubDate event.start_time.to_formatted_s(:rfc822)
+        xml.endDate event.end_time.to_formatted_s(:rfc822)
       end
     end
   end

@@ -87,7 +87,6 @@ GEM
       sass (~> 3.4)
       thor
     builder (3.3.0)
-    byebug (9.0.6)
     cancancan (3.5.0)
     capybara (3.40.0)
       addressable
@@ -487,7 +486,6 @@ DEPENDENCIES
   binding_of_caller (~> 1.0.0)
   bourbon (~> 4.2.0)
   bundler (~> 2.4, >= 2.4.22)
-  byebug (~> 9.0.0)
   cancancan (~> 3.5.0)
   cocoon (~> 1.2.0)
   coffee-rails (~> 4.2.0)

@@ -14,7 +14,10 @@
 %h3
   = t("jobs.gdpr")
 
-%br
+- if page_by_name_en('application-info') != "#"
+  %p
+    = link_to t('job_applications.application_info_link'), page_by_name_en('application-info')
+
 - if @admissions.empty?
   %p
     = t('jobs.no_applications')
