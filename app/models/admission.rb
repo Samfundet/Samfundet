@@ -10,14 +10,12 @@ class Admission < ApplicationRecord
   validates :title, :shown_from, :shown_application_deadline,
             :actual_application_deadline, :user_priority_deadline,
             :admin_priority_deadline, presence: true
-  validates :shown_from,
-            :shown_application_deadline,
-            :actual_application_deadline,
-            :user_priority_deadline,
-            :admin_priority_deadline,
-            format: { with: /\A[0-3][0-9].[01][0-9].[0-9]{4,4}  # The date.
-                     \                                  # A space.
-                     [0-2][0-9]:[0-5][0-9]\Z/x } # The time.
+
+  DATETIME_FORMAT = /\A[0-3][0-9]\.[01][0-9]\.[0-9]{4} [0-2][0-9]:[0-5][0-9]\z/
+  validates :title, :shown_from, :shown_application_deadline,
+            :actual_application_deadline, :user_priority_deadline,
+            :admin_priority_deadline, presence: true
+  validate :datetime_attributes_have_valid_format_or_type
 
   validates :promo_video, url: true, if: :promo_video_empty?
 
@@ -168,6 +166,28 @@ class Admission < ApplicationRecord
       super
     else
       "#{id}-#{title.parameterize}"
+    end
+  end
+end
+
+def datetime_attributes_have_valid_format_or_type
+  attrs = %i[
+      shown_from shown_application_deadline actual_application_deadline
+      user_priority_deadline admin_priority_deadline
+    ]
+
+  attrs.each do |attr|
+    value = public_send(attr)
+    next if value.nil?
+
+    if value.is_a?(String)
+      unless value.match?(DATETIME_FORMAT)
+        errors.add(attr, I18n.t('helpers.models.admission.errors.invalid_datetime_format'))
+      end
+    elsif !(value.is_a?(Time) || value.is_a?(Date) || value.is_a?(DateTime) ||
+      defined?(ActiveSupport::TimeWithZone) && value.is_a?(ActiveSupport::TimeWithZone))
+      # If it's neither a String nor a known time/date object, mark invalid.
+      errors.add(attr, I18n.t('helpers.models.admission.errors.invalid_datetime_type'))
     end
   end
 end

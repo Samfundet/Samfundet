@@ -3,7 +3,7 @@ after :areas do
 
   puts('Creating groups')
 
-  [GroupType, Group, Area].each do |model|
+  [GroupType, Group].each do |model|
     tasks << Proc.new do
       model.delete_all
     end
