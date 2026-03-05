@@ -27,6 +27,7 @@ en:
       my_group: My group
     admin:
       faq: Frequently Asked Questions
+      samf4_login: Samfundet 4 login
     show:
       find_member_roles: Get roles of all members
       search_member: Search by member

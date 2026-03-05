@@ -5,9 +5,13 @@
 .name
   = @wise_words
 
-= link_to page_by_name("intern-faq") do
-  .samf-button.small.plain.center
-    = t('navigation.admin.faq')
+.flex.flex-justify-center
+  .samf-button.small.plain.m-1
+    = link_to page_by_name("intern-faq") do
+      = t('navigation.admin.faq')
+  .samf-button.small.plain.m-1
+    = link_to "www.samfundet4.no/login" do
+      = t('navigation.admin.samf4_login')
 
 %br
 
