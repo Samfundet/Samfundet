@@ -1,5 +1,9 @@
 # Set manually (from '.ruby-version') because Dockerfile is unable to cat from file.
-FROM ruby:3.3.10-trixie
+FROM debian:trixie
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    ruby-dev \
+    libgmp-dev
 
 # Docker example.
 # https://docs.docker.com/samples/rails/
