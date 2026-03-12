@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 xml.instruct! :xml, version: '1.0'
-xml.rss version: '2.0', 'xmlns:media' => 'http://search.yahoo.com/mrss/' do
+xml.rss version: '2.0', 'xmlns:media' => 'http://search.yahoo.com/mrss/', 'xmlns:event' => 'http://samfundet.no/rss/event/' do
   xml.channel do
     xml.title t('events.rss_title')
     xml.description t('events.rss_title')
@@ -27,7 +27,7 @@ xml.rss version: '2.0', 'xmlns:media' => 'http://search.yahoo.com/mrss/' do
         xml.guid event_url(event)
         xml.category t("events.#{event.event_type}")
         xml.pubDate event.start_time.to_formatted_s(:rfc822)
-        xml.endDate event.end_time.to_formatted_s(:rfc822)
+        xml.event :endDate, event.end_time.to_formatted_s(:rfc822)
       end
     end
   end
