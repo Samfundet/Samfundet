@@ -10,20 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2025_01_16_215548) do
-
+ActiveRecord::Schema[7.2].define(version: 2025_01_16_215548) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "admissions", force: :cascade do |t|
     t.string "title"
-    t.datetime "shown_application_deadline"
-    t.datetime "user_priority_deadline"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.datetime "shown_from"
-    t.datetime "admin_priority_deadline"
-    t.datetime "actual_application_deadline"
+    t.datetime "shown_application_deadline", precision: nil
+    t.datetime "user_priority_deadline", precision: nil
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.datetime "shown_from", precision: nil
+    t.datetime "admin_priority_deadline", precision: nil
+    t.datetime "actual_application_deadline", precision: nil
     t.string "promo_video", default: "https://www.youtube.com/embed/T8MjwROd0dc"
     t.text "groups_with_separate_admission"
     t.boolean "customized_groups", default: false
@@ -36,8 +35,8 @@ ActiveRecord::Schema.define(version: 2025_01_16_215548) do
     t.string "email"
     t.string "hashed_password"
     t.string "phone"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.boolean "interested_other_positions"
     t.boolean "disabled", default: false
     t.integer "campus_id"
@@ -47,8 +46,8 @@ ActiveRecord::Schema.define(version: 2025_01_16_215548) do
   create_table "areas", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.integer "page_id"
   end
 
@@ -59,16 +58,16 @@ ActiveRecord::Schema.define(version: 2025_01_16_215548) do
     t.string "event_location"
     t.string "event_name"
     t.string "event_note"
-    t.datetime "event_time"
+    t.datetime "event_time", precision: nil
     t.string "event_type"
     t.integer "external_id"
     t.integer "organisation"
     t.integer "receipt_ticket_layout"
-    t.datetime "sale_from"
-    t.datetime "sale_to"
+    t.datetime "sale_from", precision: nil
+    t.datetime "sale_to", precision: nil
     t.integer "tp_ticket_layout"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.boolean "hidden"
   end
 
@@ -76,18 +75,18 @@ ActiveRecord::Schema.define(version: 2025_01_16_215548) do
     t.string "error"
     t.integer "price_group"
     t.integer "number_of_tickets"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
   end
 
   create_table "billig_payment_errors", id: false, force: :cascade do |t|
     t.string "error"
-    t.datetime "failed"
+    t.datetime "failed", precision: nil
     t.string "message"
     t.integer "owner_cardno"
     t.string "owner_email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
   end
 
   create_table "billig_price_groups", primary_key: "price_group", force: :cascade do |t|
@@ -97,8 +96,8 @@ ActiveRecord::Schema.define(version: 2025_01_16_215548) do
     t.integer "price"
     t.string "price_group_name"
     t.integer "ticket_group"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
   end
 
   create_table "billig_purchases", primary_key: "purchase", force: :cascade do |t|
@@ -118,16 +117,16 @@ ActiveRecord::Schema.define(version: 2025_01_16_215548) do
     t.integer "num"
     t.integer "num_sold"
     t.string "ticket_group_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.integer "ticket_limit"
   end
 
   create_table "billig_tickets", primary_key: "ticket", force: :cascade do |t|
     t.integer "price_group", null: false
     t.integer "purchase", null: false
-    t.datetime "used"
-    t.datetime "refunded"
+    t.datetime "used", precision: nil
+    t.datetime "refunded", precision: nil
     t.boolean "on_card", null: false
     t.text "refunder"
     t.integer "point_of_refund"
@@ -138,9 +137,9 @@ ActiveRecord::Schema.define(version: 2025_01_16_215548) do
     t.text "content_no"
     t.integer "author_id"
     t.boolean "published"
-    t.datetime "publish_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "publish_at", precision: nil
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.integer "image_id"
     t.text "lead_paragraph_no"
     t.string "title_en"
@@ -150,8 +149,8 @@ ActiveRecord::Schema.define(version: 2025_01_16_215548) do
 
   create_table "campus", force: :cascade do |t|
     t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.boolean "active", default: true
   end
 
@@ -176,29 +175,29 @@ ActiveRecord::Schema.define(version: 2025_01_16_215548) do
     t.string "file_file_name"
     t.string "file_content_type"
     t.integer "file_file_size"
-    t.datetime "file_updated_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "file_updated_at", precision: nil
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
   end
 
   create_table "email_verifications", force: :cascade do |t|
     t.string "verification_hash", null: false
     t.integer "count", default: 1, null: false
     t.integer "applicant_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
   end
 
   create_table "events", force: :cascade do |t|
     t.string "non_billig_title_no"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.datetime "non_billig_start_time"
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.datetime "non_billig_start_time", precision: nil
     t.text "short_description_no"
     t.text "long_description_no"
     t.integer "organizer_id", null: false
     t.integer "area_id", null: false
-    t.datetime "publication_time"
+    t.datetime "publication_time", precision: nil
     t.string "age_limit"
     t.string "spotify_uri"
     t.string "event_type"
@@ -233,8 +232,8 @@ ActiveRecord::Schema.define(version: 2025_01_16_215548) do
 
   create_table "everything_closed_periods", force: :cascade do |t|
     t.text "message_no"
-    t.datetime "closed_from"
-    t.datetime "closed_to"
+    t.datetime "closed_from", precision: nil
+    t.datetime "closed_to", precision: nil
     t.text "message_en"
     t.text "event_message_no"
     t.text "event_message_en"
@@ -246,8 +245,8 @@ ActiveRecord::Schema.define(version: 2025_01_16_215548) do
 
   create_table "front_page_locks", force: :cascade do |t|
     t.integer "lockable_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.integer "position"
     t.string "lockable_type"
     t.index ["lockable_id"], name: "index_front_page_events_on_event_id"
@@ -257,8 +256,8 @@ ActiveRecord::Schema.define(version: 2025_01_16_215548) do
   create_table "group_types", force: :cascade do |t|
     t.string "description", null: false
     t.integer "priority", default: 0, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
   end
 
   create_table "groups", force: :cascade do |t|
@@ -266,8 +265,8 @@ ActiveRecord::Schema.define(version: 2025_01_16_215548) do
     t.string "abbreviation"
     t.string "website"
     t.integer "group_type_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.text "short_description"
     t.text "long_description"
     t.integer "page_id"
@@ -279,9 +278,9 @@ ActiveRecord::Schema.define(version: 2025_01_16_215548) do
     t.string "image_file_file_name"
     t.string "image_file_content_type"
     t.integer "image_file_file_size"
-    t.datetime "image_file_updated_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "image_file_updated_at", precision: nil
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
   end
 
   create_table "images_tags", id: false, force: :cascade do |t|
@@ -299,19 +298,19 @@ ActiveRecord::Schema.define(version: 2025_01_16_215548) do
     t.integer "image_id"
     t.boolean "image_state"
     t.string "color"
-    t.datetime "start_time"
-    t.datetime "end_time"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "start_time", precision: nil
+    t.datetime "end_time", precision: nil
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.integer "position"
   end
 
   create_table "interviews", force: :cascade do |t|
-    t.datetime "time"
+    t.datetime "time", precision: nil
     t.string "priority", limit: 10
     t.integer "job_application_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "location"
     t.text "comment"
     t.string "applicant_status"
@@ -324,8 +323,8 @@ ActiveRecord::Schema.define(version: 2025_01_16_215548) do
     t.integer "priority"
     t.integer "applicant_id"
     t.integer "job_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.boolean "withdrawn", default: false
     t.index ["job_id"], name: "index_job_applications_on_job_id"
     t.index ["withdrawn"], name: "index_job_applications_on_withdrawn"
@@ -333,8 +332,8 @@ ActiveRecord::Schema.define(version: 2025_01_16_215548) do
 
   create_table "job_tags", force: :cascade do |t|
     t.string "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
   end
 
   create_table "job_tags_jobs", id: false, force: :cascade do |t|
@@ -352,8 +351,8 @@ ActiveRecord::Schema.define(version: 2025_01_16_215548) do
     t.text "description_en"
     t.text "description_no"
     t.boolean "is_officer"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.text "default_motivation_text_no"
     t.text "default_motivation_text_en"
     t.string "custom_group", default: ""
@@ -366,8 +365,8 @@ ActiveRecord::Schema.define(version: 2025_01_16_215548) do
     t.integer "admission_id"
     t.integer "group_id"
     t.integer "applicant_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.integer "member_id"
   end
 
@@ -382,8 +381,8 @@ ActiveRecord::Schema.define(version: 2025_01_16_215548) do
   create_table "members_roles", force: :cascade do |t|
     t.integer "member_id"
     t.integer "role_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
   end
 
   create_table "page_revisions", force: :cascade do |t|
@@ -395,16 +394,16 @@ ActiveRecord::Schema.define(version: 2025_01_16_215548) do
     t.integer "page_id", null: false
     t.integer "version", default: 1, null: false
     t.integer "member_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["page_id", "version"], name: "index_page_revisions_on_page_id_and_version", unique: true
   end
 
   create_table "pages", force: :cascade do |t|
     t.string "name_no", limit: 60, null: false
     t.integer "role_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "name_en", null: false
     t.boolean "hide_menu", default: false
     t.index ["name_en"], name: "index_documents_on_name_en", unique: true
@@ -414,17 +413,17 @@ ActiveRecord::Schema.define(version: 2025_01_16_215548) do
   create_table "password_recoveries", force: :cascade do |t|
     t.string "recovery_hash"
     t.integer "applicant_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
   end
 
   create_table "pg_search_documents", force: :cascade do |t|
     t.text "content"
     t.string "searchable_type"
     t.bigint "searchable_id"
-    t.datetime "publish_at", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "publish_at", precision: nil, null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id"
   end
 
@@ -432,8 +431,8 @@ ActiveRecord::Schema.define(version: 2025_01_16_215548) do
     t.string "name"
     t.integer "price"
     t.integer "event_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
   end
 
   create_table "registration_events", force: :cascade do |t|
@@ -444,7 +443,7 @@ ActiveRecord::Schema.define(version: 2025_01_16_215548) do
   create_table "rejection_emails", force: :cascade do |t|
     t.integer "admission_id"
     t.integer "applicant_id"
-    t.datetime "sent_at", null: false
+    t.datetime "sent_at", precision: nil, null: false
   end
 
   create_table "roles", force: :cascade do |t|
@@ -454,16 +453,16 @@ ActiveRecord::Schema.define(version: 2025_01_16_215548) do
     t.boolean "show_in_hierarchy", default: false
     t.integer "role_id"
     t.integer "group_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.boolean "passable", default: false
   end
 
   create_table "sessions", force: :cascade do |t|
     t.string "session_id", null: false
     t.text "data"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["session_id"], name: "index_sessions_on_session_id"
     t.index ["updated_at"], name: "index_sessions_on_updated_at"
   end
@@ -474,8 +473,8 @@ ActiveRecord::Schema.define(version: 2025_01_16_215548) do
     t.time "close_time"
     t.integer "area_id"
     t.string "day"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["area_id"], name: "index_standard_hours_on_area_id"
     t.index ["day"], name: "index_standard_hours_on_day"
   end
@@ -483,8 +482,8 @@ ActiveRecord::Schema.define(version: 2025_01_16_215548) do
   create_table "sulten_closed_periods", id: :serial, force: :cascade do |t|
     t.string "message_no"
     t.string "message_en"
-    t.datetime "closed_from"
-    t.datetime "closed_to"
+    t.datetime "closed_from", precision: nil
+    t.datetime "closed_to", precision: nil
   end
 
   create_table "sulten_menu_categories", force: :cascade do |t|
@@ -517,13 +516,13 @@ ActiveRecord::Schema.define(version: 2025_01_16_215548) do
 
   create_table "sulten_reservation_types", force: :cascade do |t|
     t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.text "description"
   end
 
   create_table "sulten_reservations", force: :cascade do |t|
-    t.datetime "reservation_from"
+    t.datetime "reservation_from", precision: nil
     t.integer "people"
     t.integer "table_id"
     t.integer "reservation_type_id"
@@ -532,16 +531,16 @@ ActiveRecord::Schema.define(version: 2025_01_16_215548) do
     t.string "email"
     t.string "allergies"
     t.string "internal_comment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.datetime "reservation_to"
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.datetime "reservation_to", precision: nil
   end
 
   create_table "sulten_table_reservation_types", force: :cascade do |t|
     t.integer "table_id"
     t.integer "reservation_type_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
   end
 
   create_table "sulten_tables", force: :cascade do |t|
@@ -549,14 +548,14 @@ ActiveRecord::Schema.define(version: 2025_01_16_215548) do
     t.integer "capacity"
     t.text "comment"
     t.boolean "available"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
   end
 
   create_table "tags", force: :cascade do |t|
     t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
   end
 
   add_foreign_key "blogs", "images", name: "blog_articles_image_id_fk"
