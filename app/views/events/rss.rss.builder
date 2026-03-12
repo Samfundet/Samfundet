@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 xml.instruct! :xml, version: '1.0'
-xml.rss version: '2.0' do
+xml.rss version: '2.0', 'xmlns:media' => 'http://search.yahoo.com/mrss/' do
   xml.channel do
     xml.title t('events.rss_title')
     xml.description t('events.rss_title')
