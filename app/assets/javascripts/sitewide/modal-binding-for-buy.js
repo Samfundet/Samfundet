@@ -199,7 +199,6 @@ $(function() {
       var ticketFeeSum = ticketFee * totalTickets;
       $('.ticket-fee-row .sum').html(ticketFeeSum);
       $('.ticket-fee-row .count').html(totalTickets);
-      totalCost += ticketFeeSum;
 
       // Set the total cost and total tickets in the summary's html
       var totalTicketsHtml = 0

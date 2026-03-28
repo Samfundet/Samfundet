@@ -107,6 +107,7 @@
     buy_title: Kjøp billett til %{event_title}
     ticketless: "Billettløst på medlemskortet ditt:"
     member_notice: "Merk at medlemsbilletter kun kan benyttes av Samfundets medlemmer. Ta med medlemskort!"
+    ticket_fee_notice: "Denne avgiften er inkludert i billettprisen og refunderes ikke."
     paperticket: "Digital billett til e-post:"
     confirm_email: "Bekreft e-post:"
     about_ticket: "Om billettyper:"
