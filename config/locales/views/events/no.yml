@@ -102,6 +102,7 @@
     purchase: Kjøp billett
     sold_out: Utsolgt
     currency_unit: ",-"
+    ticket_fee: Billettavgift
 
     buy_title: Kjøp billett til %{event_title}
     ticketless: "Billettløst på medlemskortet ditt:"

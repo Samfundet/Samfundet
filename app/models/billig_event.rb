@@ -7,7 +7,7 @@ class BilligEvent < ApplicationRecord
   scope :sale_applicable, -> { where("hidden = 'f' AND sale_to > ?", Time.current) }
 
   self.primary_key = :event
-  # attr_accessible :a4_ticket_layout, :dave_id, :dave_time_id, :event_location, :event_name, :event_note, :event_time, :event_type, :external_id, :organisation, :receipt_ticket_layout, :sale_from, :sale_to, :tp_ticket_layout, :hidden
+  # attr_accessible :a4_ticket_layout, :dave_id, :dave_time_id, :event_location, :event_name, :event_note, :event_time, :event_type, :external_id, :organisation, :receipt_ticket_layout, :sale_from, :sale_to, :tp_ticket_layout, :hidden, :ticket_fee
 
   def describe
     # Changed from format: short -> to whatever this is because arrangerende ikke kan bruke kalender
@@ -54,4 +54,5 @@ end
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
 #  hidden                :boolean
+#  ticket_fee            :integer
 #

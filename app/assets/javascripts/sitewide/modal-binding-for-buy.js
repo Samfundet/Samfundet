@@ -151,6 +151,7 @@ $(function() {
       var ticketGroupTickets = 0;
       var ticketGroupLimit = ticketLimits[ticketGroupIndex];
       var numberOfPriceGroups = 0;
+      var ticketFee = parseInt($('.ticket-fee-row .ticket-fee').data('fee') || 0);
 
       // Get the number of tickets chosen in current ticket group
       $('select.' + ticketGroupId).each(function() {
@@ -193,6 +194,12 @@ $(function() {
       $('.price-group-row select').each(function() {
         totalTickets += (+$(this).val());
       });
+
+      // Update the ticket fee total sum
+      var ticketFeeSum = ticketFee * totalTickets;
+      $('.ticket-fee-row .sum').html(ticketFeeSum);
+      $('.ticket-fee-row .count').html(totalTickets);
+      totalCost += ticketFeeSum;
 
       // Set the total cost and total tickets in the summary's html
       var totalTicketsHtml = 0

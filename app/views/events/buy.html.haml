@@ -72,6 +72,17 @@
             %th.ticket-limit-hd{colspan: 3}
               = t('events.sold_out')
 
+      - if @event.ticket_fee > 0
+        %tr.ticket-fee-row
+          %td.ticket-fee{data: {fee: @event.ticket_fee}}
+            = t('events.ticket_fee')
+          %td{class: currency_unit_class}
+            = @event.ticket_fee
+          %td.count
+            = "0"
+          %td.sum{class: currency_unit_class}
+            = "0"
+
       -# Order summary for all ticket groups
       %tr.ticket-summary-row
         %td
