@@ -89,7 +89,8 @@
         %td.totalSum.ticket-data{class: currency_unit_class}
           = "0"
 
-    .ticket-fee-notice= "* " + t("events.ticket_fee_notice")
+    - if @event.ticket_fee > 0
+      .ticket-fee-notice= "* " + t("events.ticket_fee_notice")
     .member-notice= t("events.member_notice")
 
     %hr

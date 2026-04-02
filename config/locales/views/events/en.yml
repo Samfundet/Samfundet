@@ -98,7 +98,7 @@ en:
     purchase: Purchase ticket
     sold_out: Sold out
     currency_unit: " NOK"
-    ticket_fee: Ticket fee
+    ticket_fee: Including ticket fee
 
     buy_title: Buy ticket for %{event_title}
     ticketless: "Ticketless on your membership card:"
