@@ -12,10 +12,11 @@
     -# Data fields to extract in JavaScript
     - ticket_table_data = "data-default-ticket-limit"
     - ticket_group_data = ["data-has-ticket-limit", "data-ticket-limit"]
+    -# Translate currency in billig.css.scss
+    - currency_unit_class = "currency-unit-#{I18n.locale}"
 
     %table.ticket-table{ticket_table_data => "#{BilligTicketGroup::DEFAULT_TICKET_LIMIT}"}
-      -# Translate currency and ticket unit in billig.css.scss
-      - currency_unit_class = "td-currency-unit-#{I18n.locale}"
+      -# Translate ticket unit in billig.css.scss
       - ticket_unit_class = "td-ticket-unit-#{I18n.locale}"
 
       -# Iterate through all the ticket groups
@@ -60,7 +61,7 @@
               %tr.price-group-row
                 %td
                   = price_group.price_group_name
-                %td.price{data: {price: price_group.price}, class: currency_unit_class}
+                %td.price{data: {price: price_group.price, fee: [price_group.price, @event.ticket_fee].min}, class: currency_unit_class}
                   = "#{price_group.price}"
                 %td
                   = select_tag "price_#{price_group.price_group.to_s}_count",
@@ -71,13 +72,6 @@
           - else
             %th.ticket-limit-hd{colspan: 3}
               = t('events.sold_out')
-
-      - if @event.ticket_fee > 0
-        %tr.ticket-fee-row
-          %td.ticket-fee{data: {fee: @event.ticket_fee}, colspan: 3}
-            = t('events.ticket_fee') + "*"
-          %td.sum{class: currency_unit_class}
-            = "0"
 
       -# Order summary for all ticket groups
       %tr.ticket-summary-row
@@ -90,7 +84,9 @@
           = "0"
 
     - if @event.ticket_fee > 0
-      .ticket-fee-notice= "* " + t("events.ticket_fee_notice")
+      .ticket-fee-notice.hidden
+        = t("events.ticket_fee_notice")
+        %span.ticket-fee-sum{class: currency_unit_class}= "0"
     .member-notice= t("events.member_notice")
 
     %hr

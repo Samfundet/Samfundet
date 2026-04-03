@@ -102,12 +102,11 @@
     purchase: Kjøp billett
     sold_out: Utsolgt
     currency_unit: ",-"
-    ticket_fee: Hvorav billettavgift
 
     buy_title: Kjøp billett til %{event_title}
     ticketless: "Billettløst på medlemskortet ditt:"
     member_notice: "Merk at medlemsbilletter kun kan benyttes av Samfundets medlemmer. Ta med medlemskort!"
-    ticket_fee_notice: "Denne avgiften er inkludert i billettprisen og refunderes ikke."
+    ticket_fee_notice: "Totalprisen inkluderer en ikke-refunderbar billettavgift på"
     paperticket: "Digital billett til e-post:"
     confirm_email: "Bekreft e-post:"
     about_ticket: "Om billettyper:"

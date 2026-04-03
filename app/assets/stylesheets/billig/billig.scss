@@ -81,15 +81,6 @@
       border-top: initial;
     }
 
-    .td-currency-unit-no::after {
-      position: absolute;
-      content: " ,-";
-    }
-
-    .td-currency-unit-en::after {
-      content: " NOK";
-    }
-
     .td-ticket-unit-no::after {
       content: " stk.";
     }
@@ -97,12 +88,24 @@
     .td-ticket-unit-en::after {
       content: " pcs.";
     }
+  }
 
+  .currency-unit-no::after {
+    position: absolute;
+    content: " ,-";
+  }
+
+  .currency-unit-en::after {
+    content: " NOK";
   }
 
   .ticket-fee-notice {
     margin-top: 0.75em;
     color: #666;
+
+    &.hidden {
+      visibility: hidden;
+    }
   }
 
   .member-notice {

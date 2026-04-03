@@ -185,11 +185,13 @@ $(function() {
       $('.price-group-row').each(function() {
         let count = $(this).find('select').val();
         let price = $(this).find('.price').data('price');
+        let fee = $(this).find('.price').data('fee');
         $(this).find('.sum').html(count * price);
-        ticketFeeSum += count * Math.min(price, ticketFee);
+        ticketFeeSum += count * fee;
       });
 
-      $('.ticket-fee-row .sum').html(ticketFeeSum);
+      $('.ticket-fee-notice').toggleClass('hidden', ticketFeeSum === 0);
+      $('.ticket-fee-sum').html(ticketFeeSum);
 
       // Get the total cost of all tickets
       $('.price-group-row .sum').each(function() {
