@@ -152,7 +152,6 @@ $(function() {
       var ticketGroupTickets = 0;
       var ticketGroupLimit = ticketLimits[ticketGroupIndex];
       var numberOfPriceGroups = 0;
-      var ticketFee = parseInt($('.ticket-fee-row .ticket-fee').data('fee') || 0);
 
       // Get the number of tickets chosen in current ticket group
       $('select.' + ticketGroupId).each(function() {
@@ -185,7 +184,7 @@ $(function() {
       $('.price-group-row').each(function() {
         let count = $(this).find('select').val();
         let price = $(this).find('.price').data('price');
-        let fee = $(this).find('.price').data('fee');
+        let fee = $(this).find('.price').data('fee') || 0;
         $(this).find('.sum').html(count * price);
         ticketFeeSum += count * fee;
       });

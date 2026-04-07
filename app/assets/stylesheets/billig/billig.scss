@@ -71,14 +71,9 @@
     }
 
     .ticket-group-row:not(:first-child) th,
-    .ticket-fee-row td,
     .ticket-summary-row td {
       border-top: solid 1px;
       border-top-color: $samfundet-black;
-    }
-
-    .ticket-fee-row ~ .ticket-summary-row td {
-      border-top: initial;
     }
 
     .td-ticket-unit-no::after {
