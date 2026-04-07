@@ -88,6 +88,10 @@ class Event < ApplicationRecord
     billig_event.try(:event_time) || non_billig_start_time
   end
 
+  def ticket_fee
+    billig_event.try(:ticket_fee) || 0
+  end
+
   def end_time
     start_time + duration.minutes
   end
