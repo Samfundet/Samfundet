@@ -28,6 +28,7 @@
     history_for: "Historikk for %{name}"
     hide_menu: "Skjul meny"
     strategy: "Strategi"
+    ethical_guidelines: "Etiske retningslinjer"
 
     index:
       title: Om Samfundet
