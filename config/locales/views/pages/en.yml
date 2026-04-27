@@ -28,6 +28,7 @@ en:
     history_for: "Revision history for %{name}"
     hide_menu: "Hide menu"
     strategy: "Strategy"
+    ethical_guidelines: "Ethical guidelines"
 
     index:
       title: About Samfundet

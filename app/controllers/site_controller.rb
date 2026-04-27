@@ -72,6 +72,11 @@ class SiteController < ApplicationController
     send_file(pdf_filename, filename: 'samfundet-strategi.pdf', disposition: 'inline', type: 'application/pdf')
   end
 
+  def ethical_guidelines
+    pdf_filename = File.join(Rails.root, 'app/assets/files/etiske-retningslinjer.pdf')
+    send_file(pdf_filename, filename: 'samfundet-etiske-retningslinjer.pdf', disposition: 'inline', type: 'application/pdf')
+  end
+
   def generic_redirect
     redirect_to 'https://no.surveymonkey.com/r/samfundet-valgundersokelse'
   end
