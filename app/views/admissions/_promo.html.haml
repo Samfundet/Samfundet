@@ -14,8 +14,9 @@
         %p{style: "font-size: 1em; color: #aaa;"}
           Utvidet til
           = l admission.actual_application_deadline, format: :short
-    .center.p-3{:style=>"max-width: 500px;"}
-      = simple_format t('admissions.admission_promo')
+    - if admission.is_primary
+      .center.p-3{:style=>"max-width: 500px;"}
+        = simple_format t('admissions.admission_promo')
 
 
     .flex-row.w100.center.p-3.mb-3
