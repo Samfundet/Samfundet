@@ -1,5 +1,16 @@
 
 #content.pages {
+  &:has(> .main-menu) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+
+    > :not(.main-menu):not(.content) { grid-column: 1 / -1; }
+
+    @media screen and (min-width: 769px) {
+      grid-template-columns: 27.49666345% minmax(0, 1fr);
+      column-gap: 2.3576516%;
+    }
+  }
 
   .pages-index {
 
@@ -76,8 +87,9 @@
     cursor: pointer;
 
 
-    @include span-columns(12);
-    @include media($tablet-desktop) {
+    display: flow-root;
+    width: 100%;
+    @media screen and (min-width: 769px) {
       display: none;
       background-color: transparent;
     }
@@ -95,11 +107,13 @@
 
   .content {
 
-    @include span-columns(12);
-    @include omega();
-    @include media($tablet-desktop) {
+    display: flow-root;
+    width: 100%;
+    margin-right: 0;
+    @media screen and (min-width: 769px) {
       padding: 0 1.7em;
-      @include span-columns(8.5 of 12);
+      min-width: 0;
+      width: 100%;
     }
 
     h1 {
@@ -110,13 +124,13 @@
         padding-top: 0;
       }
 
-      @include media($mobile-and-tablet-portrait) {
+      @media screen and (max-width: 768px) {
         font-size: 30px;
       }
     }
 
     h2 {
-      @include media($mobile-and-tablet-portrait) {
+      @media screen and (max-width: 768px) {
         font-size: 27px;
       }
     }
@@ -145,7 +159,7 @@
       width: auto;
       background-size: contain;
 
-      @include media($mobile) {
+      @media screen and (max-width: 480px) {
         max-height: none;
         max-width: 100%;
       }

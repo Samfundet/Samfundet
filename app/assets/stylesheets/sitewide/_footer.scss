@@ -1,34 +1,16 @@
-// Based on a [blog post by Ryan Fait](http://ryanfait.com/resources/footer-stick-to-bottom-of-page/).
-//
-// Must be mixed into the top level of your stylesheet.
-//
-// Footer element must be outside of root wrapper element.
-//
-// Footer must be a fixed height.
+html, body { min-height: 100%; }
 
-@mixin sticky-footer($footer-height,
-    $root-selector: unquote("#sticky-footer-wrapper"),
-    $root-footer-selector: unquote("#sticky-footer-wrapper-footer"),
-    $footer-selector: unquote("#footer")) {
+body.modern-design {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 
-  html, body {
-    height: 100%; }
-  #{$root-selector} {
-    clear: both;
-    min-height: 100%;
-    height: auto !important;
-    height: 100%;
-    margin-bottom: -$footer-height;
-    #{$root-footer-selector} {
-      height: $footer-height; } }
-  #{$footer-selector} {
-    clear: both;
-    position: relative;
-    height: $footer-height; } }
-
-@include sticky-footer(280px);
+  #site-header-offset { flex: 1 0 auto; }
+  #footer, #sponsors, #footer-separator { flex: none; }
+}
 
 #footer {
+    min-height: 280px;
     background-color: #f5f5f5;
     color: #555;
     font-weight: $font-weight-normal;
@@ -50,16 +32,20 @@
     #footer-wrapper {
         padding-top: 35px;
 
-        @include outer-container;
-      
+        display: grid;
+        grid-template-columns: 40.2913699% minmax(0, 1fr);
+        column-gap: 2.3576516%;
+        max-width: 1200px;
+        margin-inline: auto;
+
         ul {
             list-style-type: none;
             padding-left: 0;
         }
-        
+
         #social {
             text-align: right;
-            @include span-columns(5);
+            min-width: 0;
 
             li {
               margin: 2px 0;
@@ -69,13 +55,13 @@
         img {
             margin-left: 3px;
             width: 24px;
-            height: 24px;  
+            height: 24px;
             vertical-align: middle;
         }
 
         #contact {
             text-align: left;
-            @include span-columns(7);
+            min-width: 0;
 
             li {
               margin: 5px 0;
@@ -83,6 +69,7 @@
         }
 
         #contact-editors{
+            grid-column: 1 / -1;
             text-align: center;
             ul {
                 margin-bottom: 8px;
@@ -109,7 +96,7 @@
   padding-top: 1em;
   background-color: rgba(255,255,255,0.9);
   z-index: 1;
-  @include media($mobile) {
+  @media screen and (max-width: 480px) {
     flex-direction: column;
   }
 
@@ -184,7 +171,7 @@
         height: 60px;
         width: 120px;
 
-        background-position: center; 
+        background-position: center;
         background-repeat: no-repeat;
         background-size: 120px;
 

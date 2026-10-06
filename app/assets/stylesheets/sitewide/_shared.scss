@@ -1,3 +1,6 @@
+html { box-sizing: border-box; }
+*, *::before, *::after { box-sizing: inherit; }
+
 @mixin emph-link($color) {
     text-decoration: none;
     font-weight: $font-weight-normal;
@@ -47,7 +50,7 @@ h1 {
   line-height: 1;
   margin-bottom: 8px;
   padding-top: 0px;
-  @include media($mobile-and-tablet-portrait) {
+  @media screen and (max-width: 768px) {
     font-size: 1.5em;
   }
 }
@@ -64,7 +67,7 @@ h2, h3, h4, h5, h6 {
 
 h2 {
   font-size: 1.5em;
-  @include media($mobile-and-tablet-portrait) {
+  @media screen and (max-width: 768px) {
     font-size: 1.25em;
   }
 }
@@ -89,7 +92,7 @@ input[type=submit] {
   min-height: 100%;
 }
 
-.clearfix { 
+.clearfix {
     &:after {
         content: "";
         display: table;
@@ -133,7 +136,7 @@ input[type=submit] {
     margin-bottom: 10px;
 }
 
-@include media($desktop) {
+@media screen and (min-width: 1025px) {
   .rwd-break {
     display: none;
   }

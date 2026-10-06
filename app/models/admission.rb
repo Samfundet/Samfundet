@@ -10,14 +10,6 @@ class Admission < ApplicationRecord
   validates :title, :shown_from, :shown_application_deadline,
             :actual_application_deadline, :user_priority_deadline,
             :admin_priority_deadline, presence: true
-  validates :shown_from,
-            :shown_application_deadline,
-            :actual_application_deadline,
-            :user_priority_deadline,
-            :admin_priority_deadline,
-            format: { with: /\A[0-3][0-9].[01][0-9].[0-9]{4,4}  # The date.
-                     \                                  # A space.
-                     [0-2][0-9]:[0-5][0-9]\Z/x } # The time.
 
   validates :promo_video, url: true, if: :promo_video_empty?
 

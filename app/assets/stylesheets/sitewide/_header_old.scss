@@ -16,24 +16,25 @@ h3 {
 #header {
     margin: 15px 0;
 
-    @include span-columns(12);
-    @include omega();
+    display: flow-root;
+    width: 100%;
+    margin-right: 0;
 
     ul {
         padding-left: 0;
         list-style-type: none;
         text-align: center;
 
-        @include media($mobile-and-tablet-portrait) {
+        @media screen and (max-width: 768px) {
             margin: 10px 0;
         }
 
-        @include media($desktop) {
+        @media screen and (min-width: 1025px) {
             display: -ms-flexbox;
             -ms-box-orient: horizontal;
 
-            @include display-flex();
-            @include flex-flow("row wrap");
+            display: flex;
+            flex-flow: row wrap;
 
             margin: 16px 0;
         }
@@ -41,8 +42,8 @@ h3 {
         li {
             margin: 3px 0;
 
-            @include media($tablet-desktop) {
-                @include flex(1);
+            @media screen and (min-width: 769px) {
+                flex: 1;
             }
 
             a {
@@ -53,7 +54,7 @@ h3 {
                 text-transform: uppercase;
                 font-weight: $font-weight-medium;
 
-                @include media($mobile-and-tablet-portrait) {
+                @media screen and (max-width: 768px) {
                     width: 100%;
                     padding: 4px 0;
                 }
@@ -75,38 +76,47 @@ h3 {
         background-repeat: no-repeat;
         background-size: 50px;
 
-        @include media($tablet-desktop) {
+        @media screen and (min-width: 769px) {
             height: 60px;
             width: 60px;
             background-size: 60px;
 
-            margin: 0 auto; 
+            margin: 0 auto;
             background-position: center;
         }
     }
 
     #dropdown-header {
-        @include span-columns(12);
-        @include omega();
+        display: flow-root;
+        width: 100%;
+        margin-right: 0;
 
         .icon-wrapper {
-            @include span-columns(2 of 12);
-            @include media($tablet-desktop) { display: none; }
+            float: left;
+            display: block;
+            width: 14.70195700%;
+            margin-right: 2.35765160%;
+            &:last-child { margin-right: 0; }
+            @media screen and (min-width: 769px) { display: none; }
         }
 
         .dropdown-button-wrapper {
-            @include span-columns(5 of 12);
+            float: left;
+            display: block;
+            width: 40.29136990%;
+            margin-right: 2.35765160%;
+            &:last-child { margin-right: 0; }
 
             height: 60px;
 
-            @include display-flex();
+            display: flex;
             -webkit-align-items: center;
             align-items: center;
 
             -webkit-justify-content: center;
             justify-content: center;
 
-            @include media($tablet-desktop) {
+            @media screen and (min-width: 769px) {
                 display: none;
             }
 
@@ -121,12 +131,12 @@ h3 {
     }
 
     .dropdown-content-wrapper {
-        @include media($mobile-and-tablet-portrait) {
+        @media screen and (max-width: 768px) {
             max-height: 0px;
             overflow: hidden;
-            @include transition(max-height, 0.7s);
+            transition: max-height 0.7s;
 
-            &.max-height { 
+            &.max-height {
                 margin-top: 20px;
             }
 
@@ -139,19 +149,24 @@ h3 {
             }
         }
 
-        @include span-columns(12);
-        @include omega();
+        display: flow-root;
+        width: 100%;
+        margin-right: 0;
 
         & > .icon-wrapper {
             display: none;
 
-            @include media($tablet-desktop) {
-                @include span-columns(2 of 12);
+            @media screen and (min-width: 769px) {
+                float: left;
+                display: block;
+                width: 14.70195700%;
+                margin-right: 2.35765160%;
+                &:last-child { margin-right: 0; }
             }
         }
 
         &.opening-hours {
-            @include media($tablet-desktop) {
+            @media screen and (min-width: 769px) {
                 display: none;
             }
 
@@ -180,7 +195,7 @@ h3 {
             table {
                 margin: 20px auto;
 
-                @include media($not-mobile) {
+                @media screen and (min-width: 481px) {
                     width: auto;
                     min-width: 250px;
                 }
@@ -213,35 +228,52 @@ h3 {
         }
 
         .left-list {
-            @include span-columns(6 of 12);
-            ul { 
+            float: left;
+            display: block;
+            width: 48.82117420%;
+            margin-right: 2.35765160%;
+            &:last-child { margin-right: 0; }
+            ul {
                 text-align: center;
             }
             padding-right: 5px;
 
-            @include media($tablet-desktop) {
-                @include span-columns(5 of 12);
+            @media screen and (min-width: 769px) {
+                float: left;
+                display: block;
+                width: 40.29136990%;
+                margin-right: 2.35765160%;
+                &:last-child { margin-right: 0; }
             }
         }
 
         .right-list {
-            @include span-columns(6 of 12); 
+            float: left;
+            display: block;
+            width: 48.82117420%;
+            margin-right: 2.35765160%;
+            &:last-child { margin-right: 0; }
             ul { text-align: center; }
             padding-left: 5px;
 
-            @include media($tablet-desktop) { 
-                @include span-columns(5 of 12);
+            @media screen and (min-width: 769px) {
+                float: left;
+                display: block;
+                width: 40.29136990%;
+                margin-right: 2.35765160%;
+                &:last-child { margin-right: 0; }
             }
-            @include omega(); 
+            margin-right: 0;
         }
     }
 
     #sub-nav {
         display: none;
 
-        @include media($tablet-desktop) {
-            @include span-columns(12);
-            @include omega();
+        @media screen and (min-width: 769px) {
+            display: flow-root;
+            width: 100%;
+            margin-right: 0;
         }
     }
 
@@ -290,9 +322,10 @@ h3 {
 }
 
 #content {
-  @include span-columns(12);
-  @include omega();
-  @include media($tablet-desktop) {
+  display: flow-root;
+  width: 100%;
+  margin-right: 0;
+  @media screen and (min-width: 769px) {
     padding: 1em;
   }
 }

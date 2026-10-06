@@ -8,6 +8,9 @@ Bundler.require(*Rails.groups)
 
 module Samfundet
   class Application < Rails::Application
+    # Use the Rails 7.1 cache format instead of the deprecated 6.1 default.
+    config.active_support.cache_format_version = 7.1
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

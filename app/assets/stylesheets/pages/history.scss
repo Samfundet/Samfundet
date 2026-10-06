@@ -1,41 +1,32 @@
-
 ins {
-    background: #8F8;
-    text-decoration: none;
+  background: #8F8;
+  text-decoration: none;
 }
 
 del {
-    background: #F88;
-    text-decoration: line-through;
+  background: #F88;
+  text-decoration: line-through;
 }
 
 .revision {
-    .header {
-        @include span-columns(12 of 12);
+  .header {
+    display: grid;
+    grid-template-columns: 14.701957% minmax(0, 1fr);
+    gap: 2.3576516%;
+    background: #DDD;
+    margin-top: 10px;
+    padding: 10px;
 
-        background: #DDD;
-        margin-top: 10px;
-        padding: 10px;
+    .expand-button a { font-size: 200%; }
+    .meta-info { text-align: right; min-width: 0; }
+  }
 
-        .expand-button {
-            @include span-columns(2 of 12);
+  .changes {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2.3576516%;
+  }
 
-            a {
-                font-size: 200%;
-            }
-        }
-
-        .meta-info {
-            @include span-columns(10 of 12);
-            text-align: right;
-        }
-    }
-
-    pre {
-        white-space: pre-wrap;
-    }
-
-    .language {
-        @include span-columns(6 of 12);
-    }
+  pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+  .language { min-width: 0; }
 }

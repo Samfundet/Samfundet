@@ -63,7 +63,8 @@
   }
 
   .image-actions {
-    @include span-columns(12);
+    display: flow-root;
+    width: 100%;
   }
 }
 

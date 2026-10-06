@@ -4,7 +4,8 @@
 
 .login-form {
   text-align: center;
-  @include span-columns(12);
+  display: flow-root;
+  width: 100%;
 
   form {
     input[type=text], input[type=password] {
@@ -12,7 +13,7 @@
       font-size: 20px;
       border: 1px solid rgba(0, 0, 0, 0.5);
 
-      @include media($mobile-and-tablet-portrait) {
+      @media screen and (max-width: 768px) {
         width: 100%;
       }
     }
@@ -22,9 +23,13 @@
     }
   }
 
-  @include media($not-mobile) {
+  @media screen and (min-width: 481px) {
     &.open-admission {
-      @include span-columns(6);
+      float: left;
+      display: block;
+      width: 48.82117420%;
+      margin-right: 2.35765160%;
+      &:last-child { margin-right: 0; }
 
       &.member {
         text-align: right;
