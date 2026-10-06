@@ -98,12 +98,11 @@ gem 'route_downcaser', '~> 1.2.0'
 # It makes pagination very simple.
 gem 'will_paginate', '~> 4.0.0'
 
-# for file uploads, see https://github.com/thoughtbot/paperclip
-gem 'paperclip', '~> 6.1.0'
-# gem 'kt-paperclip', '~> 7.2.2'  # TODO: switch to this active fork?
+# Maintained Paperclip fork for file uploads: https://github.com/kreeti/kt-paperclip
+gem 'kt-paperclip', '= 8.0.0'
 
 # automatic compression of images uploaded via paperclip
-gem 'paperclip-compression', '~> 1.1.0'
+gem 'kt-paperclip-compression', '~> 1.2.2', require: 'paperclip-compression'
 
 # A simple date validator for Rails 3.
 gem 'date_validator', '~> 0.12.0'
