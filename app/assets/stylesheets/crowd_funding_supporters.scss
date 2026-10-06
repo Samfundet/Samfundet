@@ -5,7 +5,7 @@
   ul {
     list-style: circle;
   }
-  @include media($mobile) {
+  @media screen and (max-width: 480px) {
     grid-template-columns: 100%;
   }
 }
@@ -16,7 +16,7 @@
     font-weight: bold;
   }
 
-  @include media($mobile) {
+  @media screen and (max-width: 480px) {
   justify-self: center;
     order: -1;
   }

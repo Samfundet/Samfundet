@@ -1,26 +1,37 @@
 .form {
-  .pages-input {
-    @include span-columns(12);
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 2.3576516%;
 
-    @include media($not-mobile) {
-      @include span-columns(6 of 12);
+  > form {
+    flex: 1 1 100%;
+    min-width: 0;
+  }
+
+  .pages-input {
+    display: flow-root;
+    width: 100%;
+
+    @media screen and (min-width: 481px) {
+      width: 48.82117420%;
     }
   }
 
   .pages-preview {
     display: none;
 
-    @include media($not-mobile) {
+    @media screen and (min-width: 481px) {
       display: block;
 
-      @include span-columns(6 of 12);
-      @include omega();
+      width: 48.82117420%;
+      margin-right: 0;
     }
   }
 
   .pages-submition {
-    @include span-columns(12);
-    @include omega();
+    display: flow-root;
+    width: 100%;
+    margin-right: 0;
   }
 
   .preview-container {
@@ -53,7 +64,7 @@
   h1 {
     margin: 0;
 
-    @include media($tablet-desktop) {
+    @media screen and (min-width: 769px) {
       padding: 15px 0;
     }
   }

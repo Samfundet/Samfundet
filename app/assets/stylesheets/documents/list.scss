@@ -5,7 +5,7 @@
         margin: 0;
 
         &:not(.documents_list_root) {
-            @include transition(max-height, 0.7s, ease-in-out);
+            transition: max-height 0.7s ease-in-out;
             overflow: hidden;
             opacity: 0.5;
             max-height: 0px;
@@ -28,7 +28,7 @@
         }
 
         &:not(.sublist) {
-            @include media($mobile) {
+            @media screen and (max-width: 480px) {
                 border-bottom: 1px dotted rgba(0, 0, 0, 0.3);
             }
         }
@@ -48,12 +48,12 @@
             display: inline-block;
             color: $samfundet-black;
             margin-right: 5px;
-            @include transition(transform, 0.3s);
+            transition: transform 0.3s;
         }
     }
     li.sublist.active > strong {
         &::before {
-            @include transform(rotate(405deg));
+            transform: rotate(405deg);
         }
     }
 

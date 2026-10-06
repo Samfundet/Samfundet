@@ -140,7 +140,7 @@
     .chevron {
       filter: brightness(90%);
     }
-    
+
   }
 
   // Highlight during admission
@@ -207,7 +207,7 @@
           }
         }
       }
-      
+
     }
   }
 
@@ -338,10 +338,10 @@
     a {
       border-bottom: 2px solid $samfundet-red;
       padding-bottom: 4px;
-      .chevron { 
-        transform: rotate(180deg); 
+      .chevron {
+        transform: rotate(180deg);
       }
-    } 
+    }
   }
 
   .header-item {
@@ -354,7 +354,7 @@
   .username {
     margin: 0;
   }
-  
+
   .change-language {
     margin-left: 0;
     margin-bottom: .5em;
@@ -422,7 +422,7 @@
     z-index: 10;
     pointer-events: none !important;
 
-    @include media($mobile) {
+    @media screen and (max-width: 480px) {
       width: 128px;
       height: 128px;
     }
@@ -439,7 +439,7 @@
     z-index: 10;
     pointer-events: none !important;
 
-    @include media($mobile) {
+    @media screen and (max-width: 480px) {
       display: none;
     }
   }

@@ -29,7 +29,7 @@ $grid_col_total_width: $grid_col_width + $grid_col_margin;
 
 .row {
   @include col(18);
-  @include clearfix; }
+  display: flow-root; }
 
 .col {
   margin: 0 30px 40px 0; }

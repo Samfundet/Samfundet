@@ -48,7 +48,7 @@ gem 'jquery-tablesorter', '~> 1.27.0'
 # CoffeeScript is a scripting language. It compiles to JavaScript.
 gem 'coffee-rails', '~> 4.2.0'
 
-# Compile SCSS with Dart Sass; legacy Bourbon/Neat SCSS is vendored.
+# Compile SCSS with Dart Sass.
 gem 'dartsass-rails', '~> 0.5'
 
 # Keep the existing asset pipeline for JavaScript and generated CSS.
