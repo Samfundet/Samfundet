@@ -106,10 +106,10 @@ gem 'paperclip', '~> 6.1.0'
 gem 'paperclip-compression', '~> 1.1.0'
 
 # A simple date validator for Rails 3.
-gem 'date_validator', '~> 0.9.0'
+gem 'date_validator', '~> 0.12.0'
 
 # PostgreSQL adapter. See: config/database.yml
-gem 'pg', '~> 1.2.3'
+gem 'pg', '~> 1.5'
 
 # Provides PostgreSQL fulltext search. Contains wrappers for tsvectors
 # and enables searching in nested attributes.
@@ -135,15 +135,13 @@ gem 'base64', '~> 0.1.1'
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem 'listen', '~> 3.4.0'
+  gem 'listen', '~> 3.5'
   gem 'web-console', '~> 4.2.0'
 
   gem 'racc', '~> 1.8', '>= 1.8.1'
   gem 'nio4r', '~> 2.7', '>= 2.7.3'
   gem 'websocket-driver', '~> 0.7.6'
   gem 'date', '~> 3.3', '>= 3.3.4'
-
-
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring', '~> 2.1.0'
