@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+set -e
+cd "$(dirname "$0")/.."
+
+# Build before starting Rails, then keep CSS up to date as SCSS changes.
+bundle exec rails dartsass:build
+bundle exec rails dartsass:watch &
+sass_pid=$!
+server_pid=
+cleanup() {
+  kill "$sass_pid" ${server_pid:+"$server_pid"} 2>/dev/null || true
+  wait "$sass_pid" 2>/dev/null || true
+  if [ -n "$server_pid" ]; then
+    wait "$server_pid" 2>/dev/null || true
+  fi
+}
+trap cleanup EXIT
+trap 'exit 130' INT
+trap 'exit 143' TERM
+bundle exec rails server "$@" &
+server_pid=$!
+wait "$server_pid"

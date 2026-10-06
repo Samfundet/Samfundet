@@ -5,7 +5,7 @@ all:
 
 .PHONY: run
 run:
-	bundle exec rails server
+	./bin/dev
 
 .PHONY: copy-config-files
 copy-config-files:

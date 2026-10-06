@@ -30,6 +30,8 @@ nbproject
 .byebug_history
 
 public/assets/
+app/assets/builds/*
+!app/assets/builds/.gitkeep
 public/javascripts/all.js
 public/stylesheets/all.css
 public/upload/

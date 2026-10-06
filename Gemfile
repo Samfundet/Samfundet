@@ -51,19 +51,14 @@ gem 'jquery-tablesorter', '~> 1.27.0'
 # CoffeeScript is a scripting language. It compiles to JavaScript.
 gem 'coffee-rails', '~> 4.2.0'
 
-# Explicitly request sass version
-gem 'sass', '~> 3.4.0'
+# Compile SCSS with Dart Sass; legacy Bourbon/Neat SCSS is vendored.
+gem 'dartsass-rails', '~> 0.5'
 
-# Sass is a stylesheet language. It compiles to CSS.
-gem 'sass-rails', '~> 5.0.0'
-
-# Sass mixin library
-gem 'bourbon', '~> 4.2.0'
+# Keep the existing asset pipeline for JavaScript and generated CSS.
+gem 'sprockets', '~> 3.7'
+gem 'sprockets-rails', '~> 3.5'
 
 gem 'webrick', '~> 1.7'
-
-# Semantic fluid grid framework
-gem 'neat', '~> 1.7.4'
 
 # uglifier is a Ruby wrapper for UglifyJS, a JavaScript compressor.
 gem 'uglifier', '~> 3.0.0'
