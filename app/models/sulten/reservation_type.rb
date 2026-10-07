@@ -2,6 +2,7 @@
 
 class Sulten::ReservationType < ApplicationRecord
   has_many :reservations
+  has_many :table_reservation_types
   has_many :tables, through: :table_reservation_types
 
   def to_s

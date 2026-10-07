@@ -20,13 +20,13 @@ class Sulten::Reservation < ApplicationRecord
   validates :email, email: true
 
   before_validation(on: :create) do
-    unless [30, 60, 90, 120, 180].include? reservation_duration.to_i
-      errors.add(:reservation_duration, I18n.t('helpers.models.sulten.reservation.errors.check_reservation_duration'))
+    if reservation_from.nil?
+      errors.add(:reservation_from, I18n.t('helpers.models.sulten.reservation.errors.invalid_reservation_format'))
       throw(:abort)
     end
 
-    if reservation_from.nil?
-      errors.add(:reservation_from, I18n.t('helpers.models.sulten.reservation.errors.invalid_reservation_format'))
+    unless [30, 60, 90, 120, 180].include? reservation_duration.to_i
+      errors.add(:reservation_duration, I18n.t('helpers.models.sulten.reservation.errors.check_reservation_duration'))
       throw(:abort)
     end
 
@@ -176,7 +176,7 @@ class Sulten::Reservation < ApplicationRecord
 
   def self.find_available_times(date, people, type_id)
     duration = 120
-    now = Time.parse(date)
+    now = Time.zone.parse(date)
     reservation_open = now.change(hour: 16, min: 0, sec: 0)
     if (date.to_datetime).friday? or (date.to_datetime).saturday? or (date.to_datetime).sunday?
       reservation_close = now.change(hour: 20, min: 0, sec: 0)

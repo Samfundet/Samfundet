@@ -82,7 +82,7 @@ class Job < ApplicationRecord
         .joins(:interview)
     unprocessed = unprocessed.select { |u| u.interview.applicant_status.blank? }
     # Must add those without an interview model too
-    no_interview_model_created = job_applications - job_applications.joins(:interview)
+    no_interview_model_created = active_applications - job_applications.joins(:interview)
     unprocessed + no_interview_model_created
   end
 

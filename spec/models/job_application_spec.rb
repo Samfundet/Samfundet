@@ -28,6 +28,6 @@ describe JobApplication do
     interview = job_application.find_or_create_interview
     job_application.destroy
 
-    expect(JobApplication.find_by(id: interview.id)).to be_nil
+    expect(Interview.find_by(id: interview.id)).to be_nil
   end
 end
