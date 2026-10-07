@@ -30,5 +30,21 @@ describe Group, 'short_name' do
 end
 
 describe Group, '#interviews' do
-  xit 'should maybe be rewritten'
+  it 'returns only interviews for applications to jobs in this group' do
+    group = create(:group)
+    job = create(:job, group: group)
+    application = create(:job_application, job: job)
+    interview = create(:interview, job_application: application, priority: :wanted)
+    create(:interview, priority: :wanted)
+
+    expect(group.interviews).to contain_exactly(interview)
+  end
+
+  it 'returns no interviews when its jobs have no applications' do
+    group = create(:group)
+    create(:job, group: group)
+    create(:interview, priority: :wanted)
+
+    expect(group.interviews).to be_empty
+  end
 end

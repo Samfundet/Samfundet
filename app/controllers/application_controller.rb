@@ -70,7 +70,7 @@ class ApplicationController < ActionController::Base
 
   def permission_denied
     if request.xhr?
-      render nothing: true, status: 401
+      render body: nil, status: 401
     else
       if logged_in?
         flash[:error] = t('common.no_access')
@@ -103,6 +103,8 @@ protected
   end
 
   def request_referer_if_on_current_domain
-    request.referer if request.referer&.include?(request.host)
+    request.referer if request.referer && URI.parse(request.referer).host == request.host
+  rescue URI::InvalidURIError
+    nil
   end
 end

@@ -126,18 +126,20 @@ describe GroupsController do
         expect(assigns(:group)).to eq group
       end
       it 'does not save the new group' do
+        original_name = group.name
+        original_abbreviation = group.abbreviation
         attributes = attributes_for(:group, name: '', abbreviation: 'sm')
         post :update, params: { id: group.id, group: attributes }
         group.reload
-        expect(group.name).to_not eq ''
-        expect(group.abbreviation).to_not eq 'sm'
+        expect(group.name).to eq(original_name)
+        expect(group.abbreviation).to eq(original_abbreviation)
       end
       it 're-renders the new template' do
         post :update, params: { id: group.id, group: invalid_attributes }
         expect(response).to render_template :edit
       end
       it 'displays flash error' do
-        post :create, params: { id: group.id, group: invalid_attributes }
+        post :update, params: { id: group.id, group: invalid_attributes }
         expect(flash[:error]).to match(I18n.t('common.fields_missing_error'))
       end
     end

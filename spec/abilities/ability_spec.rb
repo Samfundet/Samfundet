@@ -37,7 +37,9 @@ describe 'ability' do
 
       let(:other_job_application) { create(:job_application) }
       context 'other job application' do
-        it { is_expected.to_not be_able_to([:index, :create, :update, :destroy, :down, :up], other_job_application) }
+        %i[index create update destroy down up].each do |action|
+          it { is_expected.not_to be_able_to(action, other_job_application) }
+        end
       end
 
       context 'update itself' do

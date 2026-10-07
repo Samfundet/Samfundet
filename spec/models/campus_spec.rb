@@ -17,7 +17,7 @@ require 'pp'
 describe Campus do
   it 'should show name when calling the to_s function' do
     campus = create(:campus)
-    expect(campus.to_s).to be(campus.name)
+    expect(campus.to_s).to eq(campus.name)
   end
 
   it 'should not have any applicants if just created' do
@@ -36,11 +36,7 @@ describe Campus do
     admission.jobs << job
     _ = create(:job_application, job: job, applicant: applicant)
 
-    # number_of_applicants_given_admission returns a dictionary.
-    # Calling first returns an array [key, value], so accessing the second value
-    # returns the actual number we're looking for.
-    # TODO: Improve this test.
-    number_of_applicants = Campus.number_of_applicants_given_admission(admission).first.second
+    number_of_applicants = Campus.number_of_applicants_given_admission(admission)[applicant.campus.id]
 
     expect(number_of_applicants).to eq(1)
   end
@@ -56,5 +52,19 @@ describe Campus do
     number_of_applicants = Campus.number_of_applicants_current_admission[campus.id]
 
     expect(number_of_applicants).to eq(1)
+  end
+end
+
+RSpec.describe Campus do
+  it 'counts applicants once even when they apply for multiple jobs' do
+    admission = create(:admission)
+    applicant = create(:applicant)
+    2.times { create(:job_application, applicant: applicant, job: create(:job, admission: admission)) }
+    counts = Campus.number_of_applicants_given_admission(admission)
+    expect(counts[applicant.campus_id]).to eq(1)
+    expect(counts[-1]).to eq(0)
+  end
+  it 'reports no current applicants when there is no current admission' do
+    expect(Campus.number_of_applicants_current_admission).to eq(0)
   end
 end

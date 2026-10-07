@@ -14,8 +14,8 @@ class AdmissionsAdmin::InterviewsController < AdmissionsAdmin::BaseController
     respond_to do |format|
       format.ics do
         event = Icalendar::Event.new
-        event.start = interview.time.strftime('%Y%m%dT%H%M%S')
-        event.end = (interview.time + 30.minutes).strftime('%Y%m%dT%H%M%S')
+        event.dtstart = interview.time.utc
+        event.dtend = (interview.time + 30.minutes).utc
         event.summary = I18n.t('interviews.ical_summary',
                                group: interview.job_application.job.group)
         event.description = I18n.t('interviews.ical_description',
@@ -23,9 +23,9 @@ class AdmissionsAdmin::InterviewsController < AdmissionsAdmin::BaseController
                                    group: interview.job_application.job.group)
 
         calendar = Icalendar::Calendar.new
-        calendar.add event
+        calendar.add_event event
         calendar.publish
-        render text: calendar.to_ical
+        render plain: calendar.to_ical, content_type: 'text/calendar'
       end
     end
   end
@@ -82,7 +82,7 @@ class AdmissionsAdmin::InterviewsController < AdmissionsAdmin::BaseController
     end
   rescue StandardError => ex
     if request.xhr?
-      render text: ex.to_s, status: 500
+      render plain: ex.to_s, status: 500
     else
       flash[:error] = ex.to_s
       redirect_to admissions_admin_admission_group_job_path(@interview.job_application.job.admission,

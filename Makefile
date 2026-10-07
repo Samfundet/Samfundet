@@ -28,7 +28,7 @@ format:
 
 .PHONY: test
 test:
-	rspec .
+	COVERAGE_MINIMUM=95 bundle exec rspec
 
 .PHONY: deploy-production
 deploy-production:

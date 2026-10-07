@@ -2,6 +2,6 @@
 
 module DateHelper
   def ldate(date, hash = {})
-    date ? l(date, hash) : nil
+    date ? l(date, **hash) : nil
   end
 end

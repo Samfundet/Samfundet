@@ -85,7 +85,7 @@ class Interview < ApplicationRecord
     if I18n.locale == :no
       APPLICANT_STATUS_NO[applicant_status]
     elsif I18n.locale == :en
-      APPLICANT_STATUS_NO[applicant_status]
+      APPLICANT_STATUS_EN[applicant_status]
     end
   end
 
