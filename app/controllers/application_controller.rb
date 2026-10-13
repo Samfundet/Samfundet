@@ -70,7 +70,7 @@ class ApplicationController < ActionController::Base
 
   def permission_denied
     if request.xhr?
-      render body: nil, status: 401
+      head :unauthorized
     else
       if logged_in?
         flash[:error] = t('common.no_access')
