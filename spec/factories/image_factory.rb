@@ -14,13 +14,14 @@
 #  created_at              :datetime         not null
 #  updated_at              :datetime         not null
 #
-include ActionDispatch::TestProcess
-
 FactoryBot.define do
   factory :image do
-    title { 'Tittel' }
+    sequence(:title) { |n| "Tittel #{n}" }
     image_file do
-      fixture_file_upload Rails.root.join('app', 'assets', 'images', 'banner-images', 'kitteh.jpeg')
+      Rack::Test::UploadedFile.new(
+        Rails.root.join('app/assets/images/banner-images/kitteh.jpeg').to_s,
+        'image/jpeg'
+      )
     end
   end
 end

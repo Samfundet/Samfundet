@@ -12,7 +12,9 @@ describe 'sulten ability' do
 
     context 'creating reservations' do
       it { is_expected.to be_able_to([:create, :success, :available], Sulten::Reservation) }
-      it { is_expected.to_not be_able_to([:update, :destroy], Sulten::Reservation) }
+      %i[update destroy].each do |action|
+        it { is_expected.not_to be_able_to(action, Sulten::Reservation) }
+      end
       it { is_expected.to_not be_able_to(:update, Sulten::Table) }
     end
   end

@@ -10,11 +10,11 @@ module PagesHelper
       when '='
         h(change.new_element)
       when '+'
-        "<ins>#{h(change.new_element)}</ins>"
+        "<ins>#{h(change.new_element)}</ins>".html_safe
       when '-'
-        "<del>#{h(change.old_element)}</del>"
+        "<del>#{h(change.old_element)}</del>".html_safe
       when '!'
-        "<del>#{h(change.old_element)}</del><ins>#{h(change.new_element)}</ins>"
+        "<del>#{h(change.old_element)}</del><ins>#{h(change.new_element)}</ins>".html_safe
       end
     end)
   end
