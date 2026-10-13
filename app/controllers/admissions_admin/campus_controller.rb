@@ -29,7 +29,6 @@ class AdmissionsAdmin::CampusController < AdmissionsAdmin::BaseController
 
   def show
     @campus = Campus.find(params[:id])
-    render :edit
   end
 
   def update
