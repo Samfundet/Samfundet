@@ -23,7 +23,7 @@ class AdmissionsAdmin::InterviewsController < AdmissionsAdmin::BaseController
                                    group: interview.job_application.job.group)
 
         calendar = Icalendar::Calendar.new
-        calendar.add_event event
+        calendar.add_event(event)
         calendar.publish
         render plain: calendar.to_ical, content_type: 'text/calendar'
       end
