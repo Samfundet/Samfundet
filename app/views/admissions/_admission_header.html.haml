@@ -1,5 +1,5 @@
 #admission-header
-  - if admission_video and not @open_admissions.first.promo_video.empty?
+  - if admission_video && @open_admissions.first&.promo_video.present?
     .youtube-video
       %iframe{ src: @open_admissions.first.promo_video, frameborder: 0, allowfullscreen: true }
   .flex-row.center.mt-2.mb-3

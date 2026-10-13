@@ -1,4 +1,4 @@
-after :organizers do
+after :generate_roles do
   admission_title = "Høstopptak 2010"
 
   puts "Creating admissions"
@@ -27,6 +27,7 @@ after :organizers do
     actual_application_deadline: 2.weeks.from_now + 4.hours,
     user_priority_deadline: 3.weeks.from_now,
     admin_priority_deadline: 3.weeks.from_now + 1.hour,
+    is_primary: true,
     promo_video: "https://www.youtube.com/embed/T8MjwROd0dc"
   )
   puts "Done creating admission"
