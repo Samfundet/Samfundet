@@ -193,6 +193,7 @@ Rails.application.routes.draw do
 
     get "brosjyre", to: "site#brochure"
     get "strategi", to: "site#strategy"
+    get "etiske-retningslinjer", to: "site#ethical_guidelines"
     get "/valgundersokelse", to: "site#generic_redirect"
 
     post "logout" => "user_sessions#destroy", as: :logout

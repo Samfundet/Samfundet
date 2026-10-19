@@ -134,7 +134,7 @@ en:
         errors: "The digital menu might not be up to date."
         milk: "Everything with milk is lactose free."
         recommendation: "The bar recommends: "
-        allergens: "Allergens: "
+        allergens: "Contains: "
         empty_menu: "The menu is currently empty, please contact your server"
       reservation:
         info: Tables must be reserved at least one day in advance. Please note that all guests must be over 20 years of age after 8:00 PM on weekends.
@@ -214,7 +214,7 @@ en:
           body: "The order in the table is the shown order of the menu"
           th_title: "Title"
           description: "Description"
-          allergens: "Allergens"
+          allergens: "Contains (allergens)"
           additional_info: "Additional information"
           recommendation: "Recommendation"
           price: "Price"

@@ -144,6 +144,7 @@ $(function() {
       // Keep track of sums related to ALL ticket groups
       var totalTickets = 0;
       var totalCost = 0;
+      let ticketFeeSum = 0;
 
       // Variables that relate to the ticket group that fired the change event
       var ticketGroupId = $(this).attr('class');
@@ -181,8 +182,15 @@ $(function() {
 
       // Set the cost of the tickets in each price group's html
       $('.price-group-row').each(function() {
-        $(this).find('.sum').html($(this).find('select').val() * $(this).find('.price').data('price'));
+        let count = $(this).find('select').val();
+        let price = $(this).find('.price').data('price');
+        let fee = $(this).find('.price').data('fee') || 0;
+        $(this).find('.sum').html(count * price);
+        ticketFeeSum += count * fee;
       });
+
+      $('.ticket-fee-notice').toggleClass('hidden', ticketFeeSum === 0);
+      $('.ticket-fee-sum').html(ticketFeeSum);
 
       // Get the total cost of all tickets
       $('.price-group-row .sum').each(function() {

@@ -134,7 +134,7 @@
         errors: "Vi tar forbehold om at det kan oppstå feil i den digitale menyen."
         milk: "Alt som inneholder melk er laktosefritt."
         recommendation: "Baren anbefaler: "
-        allergens: "Allergener: "
+        allergens: "Inneholder: "
         empty_menu: "Menyen er for øyeblikket tom, hør med din servitør"
       reservation:
         info: Bord må reserveres minst en dag i forveien. Merk at alle må være over 20 år etter kl 20:00 i helger.
@@ -213,7 +213,7 @@
           body: "Rekkfølgen i tabellen etterligner faktisk rekkefølge i menyen"
           th_title: "Tittel"
           description: "Beskrivelse"
-          allergens: "Allergener"
+          allergens: "Inneholder (allergener)"
           additional_info: "Tilleggsinformasjon"
           recommendation: "Anbefaling"
           price: "Pris"

@@ -45,7 +45,8 @@
     %div
       %p= t("pages.index.samfundsmote_description")
       %p= t("pages.index.samfundsmote_current")
-      - samfundsmoter = ['Trump 2.0 - 30/8', 'Livepodcast: Bak Nyhetene med Elin Ludvigsen - 6/9', 'Festmøte: Protect the Dolls - 13/9', 'Norsk pønkhistorie - 1/11', 'EU-debatt - 8/11', 'Når velvære blir vare - 15/11']
+      - samfundsmoter = ['Status Ukraina - 29.08', 'I asken av 22. Juli - 05.09', 'Festmøte: Pride i et progressivt Ungarn - 12.09', 'Fordummende skrålling - 19.09', 'Helse-Norge rakner! - 26.09', 'Naiver-stokes-ligningene og OpenAi - 03.10', 'Naive nordmenn i korrupt kongerike - 10.10', 'Oljefondet for fremtiden: Hva skal vi bruke pengene på? - 17.10', 'Var det grønne skiftet en løgn? - 29.10', 'Festmøte: Studentopprør - 31.10', '(rek)Tor Grande om campussamling på NTNU - 07.11', 'Ekstremisme og kvinnesyn - 14.11']
+
       %ul.toc_list{style: "font-weight: 300"}
         - samfundsmoter.each do |meeting|
           %li= meeting
@@ -60,6 +61,8 @@
             = t("pages.index.samfundet_history")
         = link_to strategi_path, class: "samf-button plain m-2 w100-mobile" do
           = t("pages.strategy")
+        = link_to etiske_retningslinjer_path, class: "samf-button plain m-2 w100-mobile" do
+          = t("pages.ethical_guidelines")
 
 
   .category-title.mt-3= t("pages.index.venue_title")
