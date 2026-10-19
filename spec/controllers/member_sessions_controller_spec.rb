@@ -49,3 +49,15 @@ describe MemberSessionsController do
     end
   end
 end
+
+RSpec.describe MemberSessionsController, type: :controller do
+  let(:member) { create(:member, passord: 'password') }
+  it 'honors a local redirect after successful authentication' do
+    post :create, params: { member_login_id: member.mail, member_password: 'password', redirect_to: '/local-page' }
+    expect(response).to redirect_to('/local-page')
+  end
+  it 'rejects external redirects after successful authentication' do
+    post :create, params: { member_login_id: member.mail, member_password: 'password', redirect_to: 'https://attacker.example/' }
+    expect(response).to redirect_to(root_path)
+  end
+end

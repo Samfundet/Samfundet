@@ -5,15 +5,11 @@ require 'rails_helper'
 describe JobsController do
   describe 'GET #show' do
     let(:job) { create(:job) }
-    let(:similar_job) { create(:job) }
+    let(:similar_job) { create(:job, group: job.group, admission: job.admission) }
 
     before do
-      # @job = create(:job)
-      # @similar_job = create(:job)
-      allow(Job).to receive(:find) { job }
-      allow(job).to receive(:similar_available_jobs) { [similar_job] }
-      allow(job).to receive(:available_jobs_in_same_group) { [similar_job] }
-      job.similar_available_jobs
+      job.tag_titles = 'shared'
+      similar_job.tag_titles = 'shared'
     end
 
     it 'renders the new template with admissions layout' do

@@ -25,26 +25,32 @@ describe ApplicantsController do
           post :create, params: { applicant: valid_attributes }
         end.to change(Applicant, :count).by(1)
       end
-      it 'logs in the created applicant' do
-        post :create, params: { applicant: valid_attributes }
+      it 'sends a verification email without signing in the new applicant' do
+        expect do
+          post :create, params: { applicant: valid_attributes }
+        end.to change { ActionMailer::Base.deliveries.count }.by(1)
 
-        expect(assigns(:applicant)).to eq controller.current_user
+        expect(controller.current_user).to be_nil
+        expect(assigns(:applicant)).not_to be_verified
+        expect(assigns(:applicant).email_verification).to be_present
+        expect(ActionMailer::Base.deliveries.last.to).to eq([valid_attributes[:email]])
       end
 
       context 'with pending application' do
         let(:application) { create(:job_application) }
-        it 'saves the pending application' do
+        it 'preserves the pending application until the applicant can sign in' do
           post :create, params: { applicant: valid_attributes }, session: { pending_application: application }
 
-          expect(assigns(:applicant).job_applications).to include(application)
-          expect(response).to redirect_to job_applications_path
+          expect(assigns(:applicant).job_applications).to be_empty
+          expect(session[:pending_application]).to eq(application)
+          expect(response).to redirect_to applicant_login_path
         end
       end
       context 'without pending application' do
-        it 'redirects to admissions path' do
+        it 'redirects to login to await email verification' do
           post :create, params: { applicant: valid_attributes }
 
-          expect(response).to redirect_to admissions_path
+          expect(response).to redirect_to applicant_login_path
         end
       end
     end

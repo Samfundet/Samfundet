@@ -4,8 +4,6 @@ require 'rails_helper'
 
 describe RolesController do
   let(:user) { create(:member) }
-  # let(:parent_role) { create(:role)}
-  # let(:child_role) { create(:role, role_id: parent_role.id)}
   context 'logged in as regular user with some roles' do
     before do
       @parent_role = create(:role)
@@ -29,10 +27,11 @@ describe RolesController do
     end
 
     describe 'GET #show' do
-      xit 'renders the show layout' do
-        # get :show, params: { id: @parent_role.id, locale: 'en' }
-        #
-        # expect(response).to render_template(:show)
+      it 'renders the child role that the user can manage' do
+        get :show, params: { id: @child_role.id }
+
+        expect(response).to render_template(:show)
+        expect(assigns(:role)).to eq(@child_role)
       end
     end
   end
@@ -77,7 +76,7 @@ describe RolesController do
       end
       context 'with invalid attributes' do
         let(:invalid_attributes) { attributes_for(:role, name: '') }
-        it 'saves the new role' do
+        it 'does not save the new role' do
           expect do
             post :create, params: { role: invalid_attributes }
           end.to_not change(Role, :count)
@@ -89,7 +88,7 @@ describe RolesController do
           expect(response).to render_template(:new)
         end
 
-        it 'displays flash success' do
+        it 'displays flash error' do
           post :create, params: { role: invalid_attributes }
 
           expect(flash[:error]).to match(I18n.t('common.fields_missing_error'))
@@ -152,11 +151,13 @@ describe RolesController do
         end
 
         it 'does not updates role attributes' do
+          original_name = role.name
+          original_description = role.description
           post :update, params: { id: role.id, role: invalid_attributes }
 
           role.reload
-          expect(role.name).to_not eq 'foobar'
-          expect(role.description).to_not eq 'This is a desc'
+          expect(role.name).to eq(original_name)
+          expect(role.description).to eq(original_description)
         end
 
         it 'redirects to the role path' do
