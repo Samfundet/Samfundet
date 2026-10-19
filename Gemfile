@@ -202,9 +202,9 @@ group :development, :test do
   gem 'faker', '~> 3.2'
 
   # RSpec is a unit testing framework.
-  # rspec-rails integrates RSpec with Rails; version 5 supports Rails 6.1.
+  # rspec-rails 6 supports Rails 6.1 and later.
   gem 'rails-controller-testing', '~> 1.0.0'
-  gem 'rspec-rails', '~> 5.1.0'
+  gem 'rspec-rails', '~> 6.1.0'
 end
 
 group :test do
@@ -213,14 +213,14 @@ group :test do
 
   # database_cleaner ensures a clean DB state during tests;
   # we use it with Cucumber.
-  gem 'database_cleaner', '~> 1.8.0'
+  gem 'database_cleaner', '~> 2.1.0'
 
   # launchy is an application launcher; it's required for the
   # 'Then show me the page' action in Cucumber
   gem 'launchy', '~> 2.4.0'
 
   # The RSpec testing framework.
-  gem 'rspec', '~> 3.12.0'
+  gem 'rspec', '~> 3.13.0'
 
   # Factories for testing
   gem 'factory_bot_rails', '~> 5.1.0'

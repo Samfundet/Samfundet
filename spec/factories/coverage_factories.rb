@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
-
 FactoryBot.define do
   factory :area do
     sequence(:name) { |n| "Area #{n}" }
