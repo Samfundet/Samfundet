@@ -1,4 +1,4 @@
-- if not admission.promo_video.empty?
+- if admission.promo_video.present?
   .youtube-wrapper
     %iframe.youtube-embed{ src: admission.promo_video, frameborder: 0, allowfullscreen: true }
 

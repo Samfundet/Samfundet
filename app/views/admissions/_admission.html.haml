@@ -1,6 +1,6 @@
 != render partial: "jobs", locals: { admission: admission }
 
-- unless admission.groups_with_separate_admission.empty?
+- if admission.groups_with_separate_admission.present?
   %div{class:'separate-admission', id:'separate_admission'}
     .samf-container.white.mt-3
       %h2.text-Align.p-1.bg-red.title.white= t('admissions.groups_with_separate_admission')

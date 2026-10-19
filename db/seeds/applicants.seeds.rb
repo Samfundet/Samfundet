@@ -1,4 +1,4 @@
-after :generate_roles do
+after :admissions do
   def distinct_emails(how_many)
     emails = Set.new
     emails << Faker::Internet.email while emails.count < how_many
@@ -62,7 +62,7 @@ after :generate_roles do
           job: job
         )
         job_application.created_at = Faker::Time.between(from: 1.week.ago, to: 2.weeks.from_now)
-        job_application.save
+        job_application.save!
         Interview.create!(
             time: Faker::Time.between(from: 1.weeks.from_now, to: 2.weeks.from_now),
             priority: Interview::PRIORITIES_NO.keys.sample,
