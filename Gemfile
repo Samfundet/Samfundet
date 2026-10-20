@@ -116,7 +116,7 @@ gem 'pg', '~> 1.4.0'
 gem 'pg_search', '~> 2.3.0'
 
 # Diff library used in history for information pages
-gem 'diff-lcs', '~> 1.2.5'
+gem 'diff-lcs', '~> 1.6.0'
 
 # Middleware to send notifications when errors occur
 gem 'exception_notification', '~> 4.4', '>= 4.4.3'

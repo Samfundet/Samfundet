@@ -6,7 +6,9 @@ module ApplicationHelper
 
   def disable_robots
     content_for(:head) do
-      haml_tag :meta, name: 'robots', content: 'noindex'
+      capture_haml do
+        haml_tag :meta, name: 'robots', content: 'noindex'
+      end
     end
   end
 
