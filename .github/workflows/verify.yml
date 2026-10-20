@@ -31,7 +31,7 @@ jobs:
         run: docker compose build
 
       - name: Setup db
-        run: docker compose run --rm app bundle exec bash -c "rails db:environment:set RAILS_ENV=development; bundle exec rake db:drop db:create db:migrate db:seed"
+        run: docker compose run --rm app bundle exec bash -c "bundle exec rake db:create && RAILS_ENV=development bundle exec rake db:environment:set && bundle exec rake db:drop db:create db:migrate db:seed"
 
       - name: Start containers
         run: docker compose up -d; sleep 5; # Detatched to prevent infinite process. Give it a few seconds to boot.
