@@ -41,7 +41,7 @@ Area.all.each do |area|
         (rand 5.hours.to_i)
       publication_time = 1.weeks.ago + (rand 10).days
 
-      price_t = price_type.sample
+      price_t = BilligPriceGroup.exists? ? price_type.sample : 'billig'
 
       case price_t
       when 'included'

@@ -391,11 +391,11 @@ if [ `ls Samfundet/README.md` ] ; then # Simple check if an arbitrary file exist
     if [ $? == 0 ]; then
         if [ $IS_UBUNTU == 0 ]; then
             sudo docker compose build
-            sudo docker compose run --rm app bundle exec bash -c "rails db:environment:set RAILS_ENV=development; bundle exec rake db:drop db:create db:migrate db:seed"
+            sudo docker compose run --rm app bundle exec bash -c "bundle exec rake db:create && RAILS_ENV=development bundle exec rake db:environment:set && bundle exec rake db:drop db:create db:migrate db:seed"
         elif [ $IS_MAC == 0 ]; then
             # Mac doesn't need to use sudo.
             docker compose build
-            docker compose run --rm app bundle exec bash -c "rails db:environment:set RAILS_ENV=development; bundle exec rake db:drop db:create db:migrate db:seed"
+            docker compose run --rm app bundle exec bash -c "bundle exec rake db:create && RAILS_ENV=development bundle exec rake db:environment:set && bundle exec rake db:drop db:create db:migrate db:seed"
         fi
     fi
 fi
