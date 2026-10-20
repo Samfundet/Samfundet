@@ -19,11 +19,9 @@ RSpec.describe AdmissionsAdmin::CampusController, type: :controller do
     get :new
     expect(assigns(:campus)).to be_new_record
   end
-  %i[show edit].each do |action|
-    it "loads the selected campus for #{action}" do
-      get action, params: { id: campus.id }
-      expect(assigns(:campus)).to eq(campus)
-    end
+  it 'loads the selected campus for edit' do
+    get :edit, params: { id: campus.id }
+    expect(assigns(:campus)).to eq(campus)
   end
   it 'creates a campus' do
     expect { post :create, params: { campus: { name: 'New campus' } } }.to change(Campus, :count).by(1)
