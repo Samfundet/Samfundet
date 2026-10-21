@@ -43,7 +43,7 @@ jobs:
         run: docker compose exec -e RAILS_ENV=test app bundle exec rails db:prepare
 
       - name: Run RSpec with 95 percent line coverage
-        run: docker compose exec -e COVERAGE_MINIMUM=95 app bundle exec rspec
+        run: docker compose exec -e RAILS_ENV=test -e COVERAGE_MINIMUM=95 app bundle exec rspec
       
       - name: Run linting (rubocop)
         run: docker compose exec app bundle exec rubocop --parallel # Will fail if container has exited due to error.
