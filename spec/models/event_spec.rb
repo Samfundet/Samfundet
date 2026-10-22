@@ -48,9 +48,9 @@ require 'rspec'
 require 'rails_helper'
 
 describe Event do
-  it 'should throw exception when created without a publication time' do
-    expect do
-      create(:event, publication_time: nil)
-    end.to raise_error(ActiveRecord::RecordInvalid)
+  it 'requires a publication time' do
+    event = build(:event, publication_time: nil)
+    expect(event).not_to be_valid
+    expect(event.errors[:publication_time]).to be_present
   end
 end

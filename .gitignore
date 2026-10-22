@@ -21,6 +21,7 @@ config/local_env.yml
 log
 tmp/**
 *cache*
+!spec/**/*_spec.rb
 
 nbproject
 *.idea

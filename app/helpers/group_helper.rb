@@ -18,9 +18,9 @@ module GroupHelper
       job = Job.new(group: group)
       job_application = JobApplication.new(job: job)
       job_interview = Interview.new(job_application: job_application)
-      if permitted_to?(:manage, job) &&
-         permitted_to?(:manage, job_application) &&
-         permitted_to?(:manage, job_interview)
+      if can?(:manage, job) &&
+         can?(:manage, job_application) &&
+         can?(:manage, job_interview)
         return true
       end
     end

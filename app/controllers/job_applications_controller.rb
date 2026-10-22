@@ -72,7 +72,7 @@ private
       @job_application.send "move_#{direction}"
       @job_application.save!
     elsif request.xhr?
-      render text: t('job_applications.cannot_prioritize_after_deadline'), status: 500
+      render plain: t('job_applications.cannot_prioritize_after_deadline'), status: 500
       return
     else
       flash[:error] = t('job_applications.cannot_prioritize_after_deadline')

@@ -59,7 +59,7 @@ class BilligService < Sinatra::Base
           )
         end
       end
-      redirect 'http://localhost:3000/en/events/purchase_callback?bsession=' << bsession
+      redirect "http://localhost:3000/en/events/purchase_callback?bsession=#{bsession}"
     else
       tickets = []
 

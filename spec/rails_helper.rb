@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
-ENV['RAILS_ENV'] ||= 'test'
+# Docker defaults to development; specs must load the test gem group and database.
+abort('The Rails environment is running in production mode!') if ENV['RAILS_ENV'] == 'production'
+ENV['RAILS_ENV'] = 'test'
+require 'spec_helper'
 require File.expand_path('../../config/environment', __FILE__)
 # Prevent database truncation if the environment is production
 abort('The Rails environment is running in production mode!') if Rails.env.production?
-require 'spec_helper'
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -35,6 +37,7 @@ RSpec.configure do |config|
   config.use_transactional_examples = false
 
   config.include FactoryBot::Syntax::Methods
+  config.include ActiveSupport::Testing::TimeHelpers
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction

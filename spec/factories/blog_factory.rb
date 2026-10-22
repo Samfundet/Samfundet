@@ -27,7 +27,7 @@ FactoryBot.define do
     content_no { 'Test' }
     content_en { 'Test' }
     publish_at { Time.current }
-    author_id { 'Test' }
-    image_id { 'Test' }
+    association :author, factory: :member
+    image
   end
 end
