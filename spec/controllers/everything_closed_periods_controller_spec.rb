@@ -36,7 +36,7 @@ RSpec.describe EverythingClosedPeriodsController, type: :controller do
     expect(response).to redirect_to(everything_closed_periods_path)
   end
   it 'preserves the persisted record on invalid updates' do
-    original = record.attributes
+    original = record.reload.attributes
     patch :update, params: { id: record.id, everything_closed_period: { message_en: '' } }
     expect(record.reload.attributes).to eq(original)
     expect(response).to render_template('edit')
