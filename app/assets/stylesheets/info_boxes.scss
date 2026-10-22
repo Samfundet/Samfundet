@@ -9,7 +9,7 @@
   justify-content: center;
 
 
-  @include media($mobile-and-tablet-portrait) {
+  @media screen and (max-width: 768px) {
     flex-direction: column;
     margin-left: 0;
     margin-right: 0;
@@ -30,7 +30,7 @@
     overflow: hidden;
     filter: brightness(100%);
 
-    @include media($mobile) {
+    @media screen and (max-width: 480px) {
       height: 150px;
     }
   }
@@ -58,7 +58,7 @@
     flex-basis: 50%;
     align-items: center;
 
-    @include media($mobile-and-tablet-portrait) {
+    @media screen and (max-width: 768px) {
      // flex-basis: 100%;
     }
 
@@ -67,12 +67,12 @@
       font-size: 1.75em;
       cursor: pointer;
 
-      @include media($mobile-and-tablet-portrait) {
+      @media screen and (max-width: 768px) {
         font-size: 1.5em;
         //margin-bottom: 1em;
         //margin-top: 1em;
       }
-      @include media($mobile) {
+      @media screen and (max-width: 480px) {
         font-size: 1.5em;
         text-align: center;
       }
@@ -86,7 +86,7 @@
       max-height: 100px;
       overflow: hidden;
 
-      @include media($mobile) {
+      @media screen and (max-width: 480px) {
         display: none;
       }
     }

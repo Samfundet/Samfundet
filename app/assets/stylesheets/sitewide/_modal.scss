@@ -1,7 +1,7 @@
 .modal {
     width: 90% !important;
 
-    @include media($tablet-desktop) {
+    @media screen and (min-width: 769px) {
         max-width: 800px !important;
     }
 }

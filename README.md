@@ -244,8 +244,13 @@ bundle exec rails db:setup
 You are now ready to start the server. Run
 
 ```bash
-make run # which executes 'bundle exec rails server'
+make run # builds CSS and starts Rails together with the Dart Sass watcher
 ```
+
+To compile stylesheets without starting the server, run
+`bundle exec rails dartsass:build`. Deployment's `assets:precompile` task also builds the CSS.
+Generated files in `app/assets/builds` are ignored by Git. Layouts and responsive
+styles use native CSS.
 
 <br>
 <br>

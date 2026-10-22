@@ -10,7 +10,7 @@
     right: 0px;
 
     .ribbon {
-      @include transform(rotate(45deg));
+      transform: rotate(45deg);
 
       font-size: 18px;
       color: #FFFFFF;
@@ -41,7 +41,7 @@
     right: 0px;
 
     .ribbon {
-      @include transform(rotate(45deg));
+      transform: rotate(45deg);
 
       font-size: 18px;
       color: #FFFFFF;

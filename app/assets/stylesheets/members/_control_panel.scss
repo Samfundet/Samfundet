@@ -10,7 +10,7 @@
     color: $samfundet-medium-grey;
     margin-bottom: 1em;
     font-size: 1.25em;
-    @include media($mobile) {
+    @media screen and (max-width: 480px) {
       margin-bottom: 2em;
     }
   }

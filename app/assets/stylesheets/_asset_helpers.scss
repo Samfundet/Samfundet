@@ -1,0 +1,12 @@
+@use "sass:string";
+
+// Sprockets resolves relative CSS URLs to fingerprinted assets after the build.
+@function asset-url($path) {
+  @if $path == "" {
+    @return url("");
+  }
+  @if string.index($path, "/assets/") == 1 {
+    $path: string.slice($path, 9);
+  }
+  @return url("#{$path}");
+}

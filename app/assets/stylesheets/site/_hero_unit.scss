@@ -6,11 +6,12 @@
   text-align: center;
 
   margin-bottom: 20px;
-  @include media($tablet-desktop) {
+  @media screen and (min-width: 769px) {
     margin-bottom: 0px;
   }
 
-  @include span-columns(12);
+  display: flow-root;
+  width: 100%;
 
   h2 {
     text-transform: uppercase;
@@ -46,13 +47,13 @@
     display: flex;
     flex-direction: row;
 
-    @include media($mobile-and-tablet-portrait) {
+    @media screen and (max-width: 768px) {
       flex-direction: column;
     }
     #opening-hours-button {
       display: block;
 
-      @include media($tablet-desktop) {
+      @media screen and (min-width: 769px) {
         display: none;
       }
 
@@ -73,14 +74,14 @@
       padding-left: 1em;
       padding-right: 1em;
 
-      @include media($mobile-and-tablet-portrait) {
+      @media screen and (max-width: 768px) {
         flex: 1;
         margin-top: 1em;
         margin-bottom: 1em;
         padding-left: .2em;
         padding-right: .2em;
       }
-      
+
       .hero-section-title {
         text-align: center;
         text-transform: uppercase;
@@ -93,7 +94,7 @@
         margin: 20px auto;
         width: 100%;
 
-        @include media($not-mobile) {
+        @media screen and (min-width: 481px) {
           width: auto;
           min-width: 250px;
         }
@@ -102,7 +103,7 @@
           padding: 3px 5px;
           vertical-align: top;
 
-          @include media($not-mobile) {
+          @media screen and (min-width: 481px) {
             padding: 3px 10px;
           }
         }
@@ -146,10 +147,10 @@
       padding-bottom: 10px;
     }
 
-    @include media($mobile) {
+    @media screen and (max-width: 480px) {
       display: None;
     }
-    @include media($not-mobile) {
+    @media screen and (min-width: 481px) {
       display: block !important;
     }
 
@@ -166,7 +167,7 @@
       }
     }
     .date-today {
-      @include media($tablet-desktop) {
+      @media screen and (min-width: 769px) {
         display: none;
       }
     }

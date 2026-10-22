@@ -2,7 +2,7 @@
 
 .documents {
     ul.document-list {
-        @include media($tablet-desktop) {
+        @media screen and (min-width: 769px) {
             column-count: 3;
             -webkit-column-count: 3;
             -moz-column-count: 3;

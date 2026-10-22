@@ -1,5 +1,5 @@
 # Set manually (from '.ruby-version') because Dockerfile is unable to cat from file.
-FROM ruby:3.1.4-bookworm
+FROM ruby:3.3.12-bookworm
 
 # Docker example.
 # https://docs.docker.com/samples/rails/
@@ -33,8 +33,9 @@ COPY . /Samfundet
 # Set environment.
 ENV RAILS_ENV=development
 
-# Compile assets (might not be needed).
-RUN bundle exec rake assets:precompile
+# Check SCSS compilation without creating a stale development asset manifest.
+# bin/dev rebuilds after Docker Compose mounts the local source directory.
+RUN bundle exec rails dartsass:build
 
 # Expose port.
 EXPOSE 3000
@@ -42,5 +43,5 @@ EXPOSE 3000
 # Enables us to run code before the final command.
 ENTRYPOINT ["/Samfundet/entrypoint.sh"]
 
-# Start server listening on all interfaces.
-CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0", "-p", "3000"]
+# Build CSS, watch SCSS changes, and start Rails on all interfaces.
+CMD ["bash", "bin/dev", "-b", "0.0.0.0", "-p", "3000"]

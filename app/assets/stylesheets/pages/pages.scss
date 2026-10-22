@@ -27,7 +27,8 @@
 }
 
 .admin-choices {
-  @include span-columns(12);
+  display: flow-root;
+  width: 100%;
   margin-bottom: 15px;
 
   ul {

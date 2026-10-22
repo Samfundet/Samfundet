@@ -5,13 +5,13 @@
 ###########################################
 
 # Specify ruby version that we use. Bundler gives an error when a different ruby is used.
-ruby '~> 3.1.2' # From .ruby-version.
+ruby '~> 3.3.12' # From .ruby-version.
 
 # The repository from which we're fetching our rubygems.
 source 'https://rubygems.org'
 
 # Rails. Duh.
-gem 'rails', '~> 6.1.7.6'
+gem 'rails', '~> 7.1.0'
 
 # Memcache client
 gem 'dalli', '~> 2.7.0'
@@ -42,28 +42,20 @@ gem 'jquery-rails', '~> 4.2.0'
 # jquery ui for datepicker etc.
 gem 'jquery-ui-rails', '~> 5.0.0'
 
-# jquery support for turbolinks
-gem 'jquery-turbolinks', '~> 2.1.0'
-
 # used for sorting tables in the admission
 gem 'jquery-tablesorter', '~> 1.27.0'
 
 # CoffeeScript is a scripting language. It compiles to JavaScript.
 gem 'coffee-rails', '~> 4.2.0'
 
-# Explicitly request sass version
-gem 'sass', '~> 3.4.0'
+# Compile SCSS with Dart Sass.
+gem 'dartsass-rails', '~> 0.5'
 
-# Sass is a stylesheet language. It compiles to CSS.
-gem 'sass-rails', '~> 5.0.0'
-
-# Sass mixin library
-gem 'bourbon', '~> 4.2.0'
+# Keep the existing asset pipeline for JavaScript and generated CSS.
+gem 'sprockets', '~> 3.7'
+gem 'sprockets-rails', '~> 3.5'
 
 gem 'webrick', '~> 1.7'
-
-# Semantic fluid grid framework
-gem 'neat', '~> 1.7.4'
 
 # uglifier is a Ruby wrapper for UglifyJS, a JavaScript compressor.
 gem 'uglifier', '~> 3.0.0'
@@ -98,18 +90,17 @@ gem 'route_downcaser', '~> 1.2.0'
 # It makes pagination very simple.
 gem 'will_paginate', '~> 4.0.0'
 
-# for file uploads, see https://github.com/thoughtbot/paperclip
-gem 'paperclip', '~> 6.1.0'
-# gem 'kt-paperclip', '~> 7.2.2'  # TODO: switch to this active fork?
+# Maintained Paperclip fork for file uploads: https://github.com/kreeti/kt-paperclip
+gem 'kt-paperclip', '= 8.0.0'
 
 # automatic compression of images uploaded via paperclip
-gem 'paperclip-compression', '~> 1.1.0'
+gem 'kt-paperclip-compression', '~> 1.2.2', require: 'paperclip-compression'
 
 # A simple date validator for Rails 3.
-gem 'date_validator', '~> 0.9.0'
+gem 'date_validator', '~> 0.12.0'
 
 # PostgreSQL adapter. See: config/database.yml
-gem 'pg', '~> 1.1.0'
+gem 'pg', '~> 1.5'
 
 # Provides PostgreSQL fulltext search. Contains wrappers for tsvectors
 # and enables searching in nested attributes.
@@ -135,15 +126,13 @@ gem 'base64', '~> 0.1.1'
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem 'listen', '~> 3.4.0'
+  gem 'listen', '~> 3.5'
   gem 'web-console', '~> 4.2.0'
 
   gem 'racc', '~> 1.8', '>= 1.8.1'
   gem 'nio4r', '~> 2.7', '>= 2.7.3'
   gem 'websocket-driver', '~> 0.7.6'
   gem 'date', '~> 3.3', '>= 3.3.4'
-
-
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring', '~> 2.1.0'
@@ -156,7 +145,7 @@ group :development do
   # annotate adds schema information from the database, in the form of
   # Ruby comments, to model files so that we can see which columns
   # are actually in the database.
-  gem 'annotate', '~> 3.1.0'
+  gem 'annotate', '~> 3.2.0'
 
   # Easier preview of mail in development
   gem 'letter_opener', '~> 1.7.0'

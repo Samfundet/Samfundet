@@ -1,7 +1,7 @@
 .banner {
   $banner-height: 400px;
 
-  display: block;
+  display: flow-root;
   width: 100%;
 
   #banner-image-link {
@@ -10,7 +10,7 @@
     .banner-image {
       @include autoscale-picture($banner-height);
 
-      @include media($mobile) {
+      @media screen and (max-width: 480px) {
         @include autoscale-picture(200px);
       }
 
@@ -18,7 +18,7 @@
         position: relative;
         height: $banner-height;
 
-        @include media($mobile) {
+        @media screen and (max-width: 480px) {
           height: 200px;
         }
 

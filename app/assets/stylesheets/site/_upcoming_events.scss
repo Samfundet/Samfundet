@@ -20,7 +20,7 @@
     border: 1px solid rgb(230, 230, 230);
     overflow: hidden;
 
-    @include media($mobile-and-tablet-portrait) {
+    @media screen and (max-width: 768px) {
       flex-basis: 100%;
       margin-left: 0;
       margin-right: 0;
@@ -40,7 +40,7 @@
       overflow: hidden;
       filter: brightness(100%);
 
-      @include media($mobile) {
+      @media screen and (max-width: 480px) {
         height: 150px;
       }
     }
@@ -100,7 +100,7 @@
             color: black;
           }
 
-          @include media($mobile) {
+          @media screen and (max-width: 480px) {
             font-size: 1em;
           }
         }
@@ -130,7 +130,7 @@
 }
 
 .banner-event-mobile {
-  @include media($tablet-desktop) {
+  @media screen and (min-width: 769px) {
     display: none;
   }
 }

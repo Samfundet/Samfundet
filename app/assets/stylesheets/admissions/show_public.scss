@@ -7,7 +7,7 @@
   }
 
   .jobRow{
-    @include media($mobile) {
+    @media screen and (max-width: 480px) {
       border-style: none;
       border-width: 1px;
       border-radius: 2em;
@@ -15,7 +15,7 @@
     }
   }
   .description {
-    @include media($mobile) {
+    @media screen and (max-width: 480px) {
       display: none;
     }
   }

@@ -25,12 +25,13 @@ td.link {
 }
 
 #admission-header {
-  @include span-columns(12);
+  display: flow-root;
+  width: 100%;
 
   #header-image {
     @include autoscale-picture(200px, 'opptaksamfundet_130.png');
 
-    @include media($tablet-desktop) {
+    @media screen and (min-width: 769px) {
         @include autoscale-picture(400px, 'opptaksamfundet_130.png');
     }
   }

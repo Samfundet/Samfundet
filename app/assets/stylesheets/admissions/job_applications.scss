@@ -7,14 +7,19 @@
 
   .section {
     margin-top: 20px;
-    @include span-columns(12);
+    display: flow-root;
+    width: 100%;
 
     .content {
       margin-bottom: 20px;
 
-      @include media($tablet-desktop){
-        @include shift(2);
-        @include span-columns(8);
+      @media screen and (min-width: 769px) {
+        margin-left: 17.05960860%;
+        float: left;
+        display: block;
+        width: 65.88078280%;
+        margin-right: 2.35765160%;
+        &:last-child { margin-right: 0; }
       }
 
       h3 {
@@ -29,21 +34,23 @@
         table{
           margin: 20px 0 55px 0;
           width: 50%;
-          @include shift(3);
+          margin-left: 25.58941290%;
         }
       }
     }
 
     .log{
-      @include media($tablet-desktop){
-        @include span-columns(12);
+      @media screen and (min-width: 769px) {
+        display: flow-root;
+        width: 100%;
         margin-top: 20px;
       }
     }
 
     .soknader{
-      @include media($tablet-desktop){
-        @include span-columns(12);
+      @media screen and (min-width: 769px) {
+        display: flow-root;
+        width: 100%;
       }
     .display-none{
         display:none;
@@ -55,13 +62,14 @@
 .separate-admission {
     text-align: center;
     float: left;
-    display: block;
+    display: flow-root;
     width: 100%;
 }
 
 .jobs.show {
   .section {
-    @include span-columns(12);
+    display: flow-root;
+    width: 100%;
 
     .top {
       text-align: center;
@@ -73,20 +81,25 @@
       font-size: 1.1em;
       margin-bottom: 40px;
 
-      @include media($not-mobile) {
-        @include shift(1);
-        @include span-columns(10);
-        @include omega;
+      @media screen and (min-width: 481px) {
+        margin-left: 8.52980430%;
+        float: left;
+        display: block;
+        width: 82.94039140%;
+        margin-right: 2.35765160%;
+        &:last-child { margin-right: 0; }
+        margin-right: 0;
       }
     }
 
     #job-application {
-      @include span-columns(12);
+      display: flow-root;
+      width: 100%;
 
       background-color: $samfundet-light-grey;
       padding: 5px 20px;
 
-      @include media($not-mobile) {
+      @media screen and (min-width: 481px) {
         padding: 5px 0;
       }
 
@@ -95,9 +108,13 @@
       }
 
       #apply-description {
-        @include media($not-mobile) {
-          @include shift(1);
-          @include span-columns(5);
+        @media screen and (min-width: 481px) {
+          margin-left: 8.52980430%;
+          float: left;
+          display: block;
+          width: 40.29136990%;
+          margin-right: 2.35765160%;
+          &:last-child { margin-right: 0; }
         }
 
         p {
@@ -109,8 +126,12 @@
         background-color: rgb(188,188,188);
       }
       .textarea-wrapper {
-        @include media($not-mobile) {
-          @include span-columns(5);
+        @media screen and (min-width: 481px) {
+          float: left;
+          display: block;
+          width: 40.29136990%;
+          margin-right: 2.35765160%;
+          &:last-child { margin-right: 0; }
         }
 
         textarea {
@@ -123,7 +144,7 @@
         .submit-button-container {
           text-align: right;
 
-          @include media($not-mobile) {
+          @media screen and (min-width: 481px) {
             text-align: left;
           }
         }
@@ -131,23 +152,32 @@
     }
 
     .other-jobs {
-      @include span-columns(12);
+      display: flow-root;
+      width: 100%;
       padding-right: 20px;
       padding-left: 20px;
 
-      @include media($not-mobile) {
+      @media screen and (min-width: 481px) {
         padding-right: 0;
         padding-left: 0;
 
-        @include shift(1);
-        @include span-columns(10);
+        margin-left: 8.52980430%;
+        float: left;
+        display: block;
+        width: 82.94039140%;
+        margin-right: 2.35765160%;
+        &:last-child { margin-right: 0; }
       }
 
       .similar-jobs, .same-group-jobs {
         margin-bottom: 40px;
 
-        @include media($not-mobile) {
-          @include span-columns(5);
+        @media screen and (min-width: 481px) {
+          float: left;
+          display: block;
+          width: 40.29136990%;
+          margin-right: 2.35765160%;
+          &:last-child { margin-right: 0; }
           margin-right: 0px;
           width: 50%;
         }
@@ -164,7 +194,8 @@
     }
 
     .col.max {
-      @include span-columns(12);
+      display: flow-root;
+      width: 100%;
     }
   }
 
