@@ -36,7 +36,7 @@ RSpec.describe Sulten::ClosedPeriodsController, type: :controller do
     expect(response).to redirect_to(sulten_closed_periods_path)
   end
   it 'preserves the persisted record on invalid updates' do
-    original = record.attributes
+    original = record.reload.attributes
     patch :update, params: { id: record.id, sulten_closed_period: { closed_to: 10.days.ago } }
     expect(record.reload.attributes).to eq(original)
     expect(response).to render_template('edit')

@@ -3,7 +3,7 @@
 Use the project's Ruby 3.3.8 runtime and install dependencies with `bundle install`.
 PostgreSQL must be available with the credentials in `config/database.yml`.
 
-Create or reload the isolated test database from the schema (without loading seeds):
+Prepare the isolated test database from the schema (without loading seeds):
 
 ```sh
 RAILS_ENV=test bundle exec rails db:create db:schema:load

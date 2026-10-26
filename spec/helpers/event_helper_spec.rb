@@ -51,7 +51,6 @@ RSpec.describe EventHelper, type: :helper do
       end
     end
   end
-
   describe '#organizer_link' do
     it 'links groups and renders linked external organizers' do
       group = Group.new
