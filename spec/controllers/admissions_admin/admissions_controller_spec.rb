@@ -45,6 +45,24 @@ RSpec.describe AdmissionsAdmin::AdmissionsController, type: :controller do
     expect(admission.reload.title).to eq(title)
     expect(response).to render_template(:edit)
   end
+  it 'renders empty statistics with zero-filled days and hours without creating interviews' do
+    get :statistics, params: { id: admission.id }
+    expect(assigns(:ratio)).to eq(0)
+    expect(assigns(:applications_per_day).map(&:last)).to all(eq(0))
+    expect(assigns(:applications_per_hour)).to eq((0..23).map { |hour| [format('%02d', hour), 0] })
+  end
+  it 'counts chart timestamps in the database timezone and limits the daily chart to the admission dates' do
+    job = create(:job, admission: admission)
+    day = admission.shown_from.to_date + 1.day
+    create(:job_application, job: job, created_at: Time.utc(day.year, day.month, day.day, 23, 30))
+    create(:job_application, job: job, created_at: admission.shown_from - 2.days)
+
+    expect { get :statistics, params: { id: admission.id } }.not_to change(Interview, :count)
+    expect(assigns(:applications_per_day).to_h[day]).to eq(1)
+    expect(assigns(:applications_per_day).map(&:last).sum).to eq(1)
+    expect(assigns(:applications_per_hour).to_h['23']).to be >= 1
+    expect(assigns(:applications_per_hour).map(&:last).sum).to eq(2)
+  end
   it 'shows the groups available to the current administrator' do
     group = create(:group)
     get :show, params: { id: admission.id }
@@ -106,6 +124,67 @@ RSpec.describe AdmissionsAdmin::AdmissionsController, type: :controller do
       expect(assigns(:missing)).to eq([rejected.applicant.id])
       get :rejection_email_list, params: { id: admission.id }
       expect(assigns(:rejection_emails).map(&:applicant)).to eq([accepted.applicant])
+    end
+  end
+  describe 'bulk statistics calculations' do
+    let(:group) { create(:group) }
+    let(:job) { create(:job, admission: admission, group: group) }
+    let(:member) { create(:member) }
+
+    def log_outcome(applicant, target_group, text, time)
+      LogEntry.create!(admission: admission, applicant: applicant, group: target_group,
+                       member: member, log: text, created_at: time)
+    end
+
+    it 'deduplicates applicants across jobs and combines latest legacy outcomes with interviews' do
+      application = create(:job_application, job: job)
+      applicant = application.applicant
+      application.create_interview!(applicant_status: :accepted)
+      create(:job_application, job: create(:job, admission: admission, group: group), applicant: applicant, withdrawn: true)
+      other_group = create(:group)
+      create(:job_application, job: create(:job, admission: admission, group: other_group), applicant: applicant)
+      legacy = create(:job_application, job: job).applicant
+      log_outcome(legacy, group, LogEntry.acceptance_log_entry, 2.hours.ago)
+      log_outcome(legacy, other_group, 'Declined', 1.hour.ago)
+      declined = create(:job_application, job: job).applicant
+      log_outcome(declined, group, LogEntry.acceptance_log_entry, 2.hours.ago)
+      log_outcome(declined, group, 'Declined', 1.hour.ago)
+      create(:job_application, applicant: applicant) # Another admission must not contribute.
+
+      expect { get :statistics, params: { id: admission.id } }.not_to change(Interview, :count)
+      expect(assigns(:total_applicants)).to eq(Set[applicant.id, legacy.id, declined.id])
+      expect(assigns(:total_accepted_applicants).map(&:id).to_set).to eq(Set[applicant.id])
+      expect(assigns(:applicants)[group][:accepted]).to eq(Set[applicant.id, legacy.id])
+      expect(assigns(:applicants)[other_group][:accepted]).to be_empty
+      expect(assigns(:application_counts_per_group)).to eq(group.id => 4, other_group.id => 1)
+      expect(assigns(:campus_count).values.sum).to eq(3)
+      expect(assigns(:ratio)).to be_within(0.001).of(100.0 / 3)
+    end
+
+    it 'returns zero ratios for an admission and group without applications' do
+      job
+      get :statistics, params: { id: admission.id }
+      expect(assigns(:ratio)).to eq(0)
+      expect(assigns(:applicants)[group][:ratio]).to eq(0)
+      expect(assigns(:campus_count)[123]).to eq(0)
+    end
+
+    it 'does not add queries as the number of applications and groups grows' do
+      create(:job_application, job: job)
+      measure = lambda do
+        queries = []
+        subscriber = ->(_name, _start, _finish, _id, payload) { queries << payload[:sql] unless payload[:name] == 'SCHEMA' }
+        ActiveSupport::Notifications.subscribed(subscriber, 'sql.active_record') do
+          ActiveRecord::Base.uncached do
+            @controller = described_class.new
+            get :statistics, params: { id: admission.id }
+          end
+        end
+        queries.size
+      end
+      original_count = measure.call
+      3.times { create(:job_application, job: create(:job, admission: admission)) }
+      expect(measure.call).to eq(original_count)
     end
   end
 end

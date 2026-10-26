@@ -186,19 +186,14 @@ class AdmissionsAdmin::AdmissionsController < AdmissionsAdmin::BaseController
   def statistics
     @campuses = Campus.order(:name)
     @campus_count = Campus.number_of_applicants_given_admission(@admission)
-
     count_unique_applicants_in_groups
-    calculate_applicants_admitted_ratio
-    total_accepted_applicants
 
     sort_admissions
     admin_applet
 
 
-    @applications_per_group = @admission.groups.map do |group|
-      count = group.jobs.where(admission_id: @admission.id).map do |job|
-        job.job_applications.count
-      end.sum
+    @applications_per_group = @applicants.keys.map do |group|
+      count = @application_counts_per_group[group.id]
       ["#{group.name} - #{count}", count]
     end
 
@@ -265,15 +260,51 @@ private
   end
 
 
+  # Bulk reads keep the query count independent of the number of applications.
+  def count_unique_applicants_in_groups
+    groups = @admission.groups.to_a
+    @applicants = groups.to_h { |group| [group, { total: Set.new, accepted: Set.new }] }
+    groups_by_id = groups.index_by(&:id)
+    @total_applicants = Set.new
+    accepted_applicant_ids = Set.new
+    @application_counts_per_group = Hash.new(0)
+
+    # LogEntry.last uses created_at ordering. Include id to resolve tied timestamps.
+    latest_logs = {}
+    latest_group_logs = {}
+    LogEntry.where(admission_id: @admission.id).reorder(:created_at, :id)
+      .pluck(:applicant_id, :group_id, :log).each do |applicant_id, group_id, log|
+      latest_logs[applicant_id] = log
+      latest_group_logs[[applicant_id, group_id]] = log
+    end
+    acceptance_log = LogEntry.acceptance_log_entry
+
+    JobApplication.joins(:job).left_joins(:interview).where(jobs: { admission_id: @admission.id })
+      .pluck(:applicant_id, 'jobs.group_id', 'interviews.applicant_status').each do |applicant_id, group_id, status|
+      @total_applicants.add(applicant_id)
+      @application_counts_per_group[group_id] += 1
+      accepted = status == 'accepted'
+      accepted_applicant_ids.add(applicant_id) if accepted || latest_logs[applicant_id] == acceptance_log
+
+      counts = @applicants.fetch(groups_by_id.fetch(group_id))
+      counts[:total].add(applicant_id)
+      if accepted || latest_group_logs[[applicant_id, group_id]] == acceptance_log
+        counts[:accepted].add(applicant_id)
+      end
+    end
+
+    @applicants.each_value do |counts|
+      counts[:ratio] = counts[:total].empty? ? 0 : counts[:accepted].size.fdiv(counts[:total].size) * 100
+    end
+    @total_accepted_applicants = Applicant.where(id: accepted_applicant_ids.to_a).to_a
+    @ratio = @total_applicants.empty? ? 0 : accepted_applicant_ids.size.fdiv(@total_applicants.size) * 100
+  end
+
   def applications_per_day_chart
     admission_start = @admission.shown_from.to_date
     admission_end = @admission.actual_application_deadline.to_date
-    applications_per_day = (admission_start..admission_end).map do |day|
-      @admission.job_applications.where('DATE(job_applications.created_at) = ?',
-                                        day).count
-    end
-
-    @applications_per_day = (admission_start..admission_end).zip(applications_per_day)
+    counts = @admission.job_applications.group(Arel.sql('DATE(job_applications.created_at)')).count
+    @applications_per_day = (admission_start..admission_end).map { |day| [day, counts.fetch(day, 0)] }
 
     @applications_per_day_chart = LazyHighCharts::HighChart.new('graph') do |f|
       f.series(data: @applications_per_day, type: 'spline', name: t('admissions_admin.applications'))
@@ -284,11 +315,8 @@ private
 
   def applications_per_hour_chart
     hours = (0..23).to_a.map { |x| format('%02d', x) }
-    applications_per_hour = hours.map do |hour|
-      @admission.job_applications.where('extract(hour from job_applications.created_at) = ?', hour).count
-    end
-
-    @applications_per_hour = (hours).zip(applications_per_hour)
+    counts = @admission.job_applications.group(Arel.sql('EXTRACT(hour FROM job_applications.created_at)')).count.transform_keys(&:to_i)
+    @applications_per_hour = hours.map { |hour| [hour, counts.fetch(hour.to_i, 0)] }
 
     @applications_per_hour_chart = LazyHighCharts::HighChart.new('graph') do |f|
       f.series(data: @applications_per_hour, type: 'spline', name: t('admissions_admin.applications'))
@@ -336,74 +364,6 @@ private
           color: 'black',
         }
       })
-    end
-  end
-
-  def total_accepted_applicants
-    accepted_applications = @admission.job_applications.select do |app|
-      interview = app.find_or_create_interview
-      interview.applicant_status == :accepted
-    end
-    accepted_applications = accepted_applications.map(&:applicant).uniq
-
-    # Old system
-    total_applicants = @admission.job_applications.map(&:applicant).uniq
-    total_accepted_applicants = total_applicants.select do |a|
-      last_log_entry = LogEntry.where(admission: @admission, applicant: a).last
-      next if last_log_entry.nil?
-      application_is_accepted?(last_log_entry)
-    end
-
-    # Combine old and new
-    all_accepted = total_accepted_applicants | accepted_applications
-    @total_accepted_applicants = all_accepted.uniq
-  end
-
-  def calculate_applicants_admitted_ratio
-    @total_applicants = @admission.job_applications.map(&:applicant).uniq
-    @ratio = total_accepted_applicants.count.to_f / @total_applicants.count * 100
-  end
-
-  def calculate_group_applicants_admitted_ratio(accepted_total_hash)
-    accepted = accepted_total_hash[:accepted]
-    total = accepted_total_hash[:total]
-
-    if total.empty?
-      accepted_total_hash[:ratio] = 0
-    else
-      accepted_total_hash[:ratio] = accepted.count.to_f / total.count * 100
-    end
-  end
-
-  # Count unique applicants and how many of those were actually admitted to Samfundet
-  # This is done both for Samfundet as a whole and for each group
-  def count_unique_applicants_in_groups
-    @applicants = {}
-
-    @admission.groups.map do |group|
-      @applicants[group] = { total: Set[], accepted: Set[] }
-
-      applicants = group.job_applications_in_admission(@admission)
-      applicants.each do |app|
-        @applicants[group][:total].add app.applicant.id
-
-        # Old system
-        log_entries = LogEntry.where(admission_id: @admission.id, applicant_id: app.applicant.id, group_id: group.id)
-        unless log_entries.empty?
-          last_log = log_entries.last
-          if application_is_accepted?(last_log)
-            @applicants[group][:accepted].add app.applicant.id
-          end
-        end
-
-        # New system
-        interview = app.find_or_create_interview
-        if interview.applicant_status == :accepted then
-          @applicants[group][:accepted].add app.applicant.id
-        end
-      end
-
-      calculate_group_applicants_admitted_ratio(@applicants[group])
     end
   end
 end

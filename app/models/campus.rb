@@ -12,17 +12,12 @@ class Campus < ApplicationRecord
   end
 
   def self.number_of_applicants_given_admission(admission)
-    # Find all job applications of the current admission, get the unique user_id and group by campus_id.
-    current = admission
-    if current.nil?
-      0
-    else
-      applicant_ids = current.job_applications.pluck(:applicant_id)
-      campus_count = {}
-      Applicant.where(id: applicant_ids).pluck(:campus_id).group_by { |i| i }.each { |k, v| campus_count[k] = v.length }
-      campus_count.default = 0
-      campus_count
-    end
+    return 0 if admission.nil?
+
+    applicant_ids = admission.job_applications.select(:applicant_id)
+    counts = Applicant.where(id: applicant_ids).group(:campus_id).count
+    counts.default = 0
+    counts
   end
 
   def self.number_of_applicants_current_admission
