@@ -20,7 +20,7 @@ gem 'dalli', '~> 2.7.0'
 gem 'lazy_high_charts', '~> 1.5.0'
 
 # Bundler
-gem 'bundler', '~> 2.4', '>= 2.4.22'
+gem 'bundler', '~> 2.6.7'
 
 # acts_as_list provides the means to sort and reorder a list of objects
 # with respect to a column in the database, e.g. to sort and reorder a list
