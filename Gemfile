@@ -22,6 +22,9 @@ gem 'lazy_high_charts', '~> 1.5.0'
 # Bundler
 gem 'bundler', '~> 2.6.7'
 
+# Rails 7.2 MemCacheStore is incompatible with connection_pool 3.x.
+gem 'connection_pool', '~> 2.5'
+
 # acts_as_list provides the means to sort and reorder a list of objects
 # with respect to a column in the database, e.g. to sort and reorder a list
 # of job applications based on the priority set by the applicant.
