@@ -6,9 +6,7 @@ module ApplicationHelper
 
   def disable_robots
     content_for(:head) do
-      capture_haml do
-        haml_tag :meta, name: 'robots', content: 'noindex'
-      end
+      tag.meta(name: 'robots', content: 'noindex')
     end
   end
 
@@ -18,21 +16,17 @@ module ApplicationHelper
 
   def set_open_graph_params(open_graph)
     content_for(:open_graph) do
-      capture_haml do
-        open_graph.each do |property, content|
-          haml_tag :meta, property: "og:#{property}", content: content
-        end
-      end
+      safe_join(open_graph.map do |property, content|
+        tag.meta(property: "og:#{property}", content: content)
+      end)
     end
   end
 
   def set_twitter_params(twitter)
     content_for(:twitter) do
-      capture_haml do
-        twitter.each do |name, content|
-          haml_tag :meta, name: "twitter:#{name}", content: content
-        end
-      end
+      safe_join(twitter.map do |name, content|
+        tag.meta(name: "twitter:#{name}", content: content)
+      end)
     end
   end
 
@@ -91,11 +85,9 @@ module ApplicationHelper
   end
 
   def background_image_helper(css_class, image, options = {})
-    capture_haml do
-      haml_tag :div, class: css_class,
-                     style: "background-image: url(#{asset_path(image.url(options[:size]))})" do
-        yield if block_given?
-      end
+    content_tag :div, class: css_class,
+                      style: "background-image: url(#{asset_path(image.url(options[:size]))})" do
+      yield if block_given?
     end
   end
 
