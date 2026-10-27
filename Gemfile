@@ -11,7 +11,7 @@ ruby '~> 3.3.8' # From .ruby-version.
 source 'https://rubygems.org'
 
 # Rails. Duh.
-gem 'rails', '~> 7.2.2'
+gem 'rails', '~> 7.2.4'
 
 # Memcache client
 gem 'dalli', '~> 2.7.0'
@@ -24,6 +24,9 @@ gem 'bundler', '~> 2.6.7'
 
 # Rails 7.2 MemCacheStore is incompatible with connection_pool 3.x.
 gem 'connection_pool', '~> 2.5'
+
+# Rails 7.2 is incompatible with Minitest 6.x.
+gem 'minitest', '~> 5.1'
 
 # acts_as_list provides the means to sort and reorder a list of objects
 # with respect to a column in the database, e.g. to sort and reorder a list
@@ -149,8 +152,8 @@ group :development do
 
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring', '~> 2.1.0'
-  gem 'spring-watcher-listen', '~> 2.0.1'
+  gem 'spring', '~> 4.7'
+  gem 'spring-watcher-listen', '~> 2.1'
 
   # Gem to detect ruby style guide violations
   gem 'rubocop', '~> 1.57.0'
