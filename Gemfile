@@ -82,7 +82,8 @@ gem 'cancancan', '~> 3.5.0'
 gem 'formtastic', '~> 5.0.0'
 
 # Haml is a templating language. It compiles to HTML.
-gem 'haml-rails', '~> 2.0.0'
+gem 'haml-rails', '~> 3.1'
+gem 'haml', '~> 6.4'
 
 # icalendar is a library for dealing with iCalendar files.
 gem 'icalendar', '~> 2.4.0'
