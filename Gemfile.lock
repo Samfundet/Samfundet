@@ -283,8 +283,7 @@ GEM
     mimemagic (0.3.10)
       nokogiri (~> 1)
       rake
-    mina (0.3.8)
-      open4 (~> 1.3.4)
+    mina (1.2.5)
       rake
     mini_mime (1.1.5)
     minitest (6.0.6)
@@ -313,7 +312,6 @@ GEM
     notiffany (0.1.3)
       nenv (~> 0.1)
       shellany (~> 0.0)
-    open4 (1.3.4)
     os (1.0.1)
     paperclip (6.1.0)
       activemodel (>= 4.2.0)
@@ -588,7 +586,7 @@ DEPENDENCIES
   lazy_high_charts (~> 1.5.0)
   letter_opener (~> 1.7.0)
   listen (~> 3.5.0)
-  mina (~> 0.3.0)
+  mina (~> 1.2.5)
   neat (~> 1.7.4)
   nio4r (~> 2.7, >= 2.7.3)
   paperclip (~> 6.1.0)
