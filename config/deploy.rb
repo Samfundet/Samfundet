@@ -24,8 +24,8 @@ set :keep_releases, 3
 
 # Retain shared data across releases.
 # mina/bundler also shares vendor/bundle.
-# Before the first deploy, copy current/config/credentials into
-# shared/config/credentials so existing credentials survive release cleanup.
+# Credentials are copied into shared storage before Mina replaces the checkout
+# directory with a symlink.
 set :shared_dirs, (fetch(:shared_dirs, []) + %w[log public/upload config/credentials]).uniq
 set :shared_files, (fetch(:shared_files, []) + %w[
   config/database.yml
@@ -100,6 +100,7 @@ task :run_mina do
     command 'umask 002'
 
     invoke :'git:clone'
+    invoke :'deploy:preserve_credentials'
     invoke :'deploy:link_shared_paths'
     invoke :'bundle:install'
     invoke :'rails:db_migrate'
@@ -113,6 +114,28 @@ task :run_mina do
 end
 
 namespace :deploy do
+  desc 'Preserve existing credentials before linking shared paths'
+  task :preserve_credentials do
+    shared_credentials = "#{fetch(:shared_path)}/config/credentials"
+    current_credentials = "#{fetch(:current_path)}/config/credentials"
+
+    command %(mkdir -p "#{shared_credentials}")
+    # Recover files from the current release on the first deployment. Skip an
+    # existing shared symlink to avoid copying the directory onto itself.
+    command %(
+      if [ -d "#{current_credentials}" ] && [ ! "#{current_credentials}" -ef "#{shared_credentials}" ]; then
+        cp -an "#{current_credentials}/." "#{shared_credentials}/"
+      fi
+    )
+    # Mina removes the checkout directory when linking shared paths. Save files
+    # supplied by Git too, while keeping existing shared credentials intact.
+    command %(
+      if [ -d ./config/credentials ]; then
+        cp -an ./config/credentials/. "#{shared_credentials}/"
+      fi
+    )
+  end
+
   desc 'Deploy staging environment'
   task :staging do
     invoke :'environment:staging'
