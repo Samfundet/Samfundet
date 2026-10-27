@@ -22,6 +22,15 @@ set :ssh_options, '-o StrictHostKeyChecking=no'
 set :execution_mode, :system
 set :keep_releases, 3
 
+# Rails and asset gem upgrades can change compiled output without changing the
+# asset source directories Mina checks by default.
+set :asset_dirs, (fetch(:asset_dirs, []) + %w[
+  Gemfile
+  Gemfile.lock
+  config/application.rb
+  config/initializers/assets.rb
+]).uniq
+
 # Retain shared data across releases.
 # mina/bundler also shares vendor/bundle.
 # Credentials are copied into shared storage before Mina replaces the checkout
