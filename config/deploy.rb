@@ -58,8 +58,8 @@ namespace :environment do
     set :rails_env, 'production'
     set :deploy_to, '/var/www/samfundet.no/www-rails/'
 
-    # Leave the production Ruby/Bundler setup unchanged.
-    set :bundle_bin, 'bundle'
+    # Use the same Ruby launcher as staging, bypassing Bundler's Ruby 3.1 shebang.
+    set :bundle_bin, '/usr/bin/ruby /usr/local/bin/bundle'
   end
 end
 
