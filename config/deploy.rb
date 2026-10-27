@@ -24,7 +24,9 @@ set :keep_releases, 3
 
 # Retain shared data across releases.
 # mina/bundler also shares vendor/bundle.
-set :shared_dirs, (fetch(:shared_dirs, []) + %w[log public/upload]).uniq
+# Before the first deploy, copy current/config/credentials into
+# shared/config/credentials so existing credentials survive release cleanup.
+set :shared_dirs, (fetch(:shared_dirs, []) + %w[log public/upload config/credentials]).uniq
 set :shared_files, (fetch(:shared_files, []) + %w[
   config/database.yml
   config/billig.yml
@@ -68,6 +70,9 @@ namespace :setup do
 
     command %(mkdir -p "#{root}/shared/config")
     command %(chmod 770 "#{root}/shared/config")
+
+    command %(mkdir -p "#{root}/shared/config/credentials")
+    command %(chmod 770 "#{root}/shared/config/credentials")
 
     command %(mkdir -p "#{root}/shared/public/upload")
     command %(chmod 775 "#{root}/shared/public/upload")
