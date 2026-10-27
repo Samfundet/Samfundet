@@ -61,6 +61,10 @@ docs/diagrams/
 .history
 .env
 
+# Rails credentials encryption keys
+/config/master.key
+/config/credentials/*.key
+
 ### VisualStudioCode ###
 # ignore everything unless explicitly added ('!' prefixed)
 .vscode/**/*
