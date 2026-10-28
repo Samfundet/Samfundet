@@ -133,14 +133,14 @@ namespace :deploy do
     # existing shared symlink to avoid copying the directory onto itself.
     command %(
       if [ -d "#{current_credentials}" ] && [ ! "#{current_credentials}" -ef "#{shared_credentials}" ]; then
-        cp -an "#{current_credentials}/." "#{shared_credentials}/"
+        cp -rn "#{current_credentials}/." "#{shared_credentials}/"
       fi
     )
     # Mina removes the checkout directory when linking shared paths. Save files
     # supplied by Git too, while keeping existing shared credentials intact.
     command %(
       if [ -d ./config/credentials ]; then
-        cp -an ./config/credentials/. "#{shared_credentials}/"
+        cp -rn ./config/credentials/. "#{shared_credentials}/"
       fi
     )
   end
