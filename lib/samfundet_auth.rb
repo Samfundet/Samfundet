@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'active_support/configurable'
-require 'samfundet_auth/engine'
 require './app/models/member'
 
 module SamfundetAuth
