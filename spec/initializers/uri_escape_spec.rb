@@ -3,6 +3,8 @@
 require 'spec_helper'
 require_relative '../../config/initializers/uri_escape'
 
+# These calls deliberately exercise the legacy API supplied by our compatibility shim.
+# rubocop:disable Lint/UriEscapeUnescape
 RSpec.describe 'URI.escape compatibility' do
   it 'escapes spaces and Unicode as UTF-8 bytes' do
     expect(URI.escape('https://samfundet.no/blå sal')).to eq('https://samfundet.no/bl%C3%A5%20sal')
@@ -21,3 +23,4 @@ RSpec.describe 'URI.escape compatibility' do
     expect(URI.escape('https://samfundet.no/<event>"')).to eq('https://samfundet.no/%3Cevent%3E%22')
   end
 end
+# rubocop:enable Lint/UriEscapeUnescape
