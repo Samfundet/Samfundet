@@ -67,7 +67,7 @@ Samfundet::Application.configure do
   # these options are only needed if you choose smtp delivery
   config.action_mailer.sendmail_settings = {
     location: '/usr/sbin/sendmail',
-    arguments: '-i'
+    arguments: %w[-i]
   }
 
   config.enable_microsoft_email_filter = true
