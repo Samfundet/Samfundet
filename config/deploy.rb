@@ -114,9 +114,13 @@ task :run_mina do
     invoke :'bundle:install'
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
+    # Mina creates the build directory before the umask above takes effect, and
+    # some tools ignore the umask. Let other deployers clean up this release.
+    command 'chmod -R g+w .'
     invoke :'deploy:cleanup'
 
     on :launch do
+      command 'umask 002'
       invoke :'passenger:restart'
     end
   end
