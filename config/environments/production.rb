@@ -108,3 +108,7 @@ Samfundet::Application.configure do
 end
 
 Paperclip.options[:command_path] = '/usr/bin/'
+
+# Ensure uploads are group-writable (lim-web).
+# This prevents uploads from breaking whenever a different person deploys.
+File.umask(0o002)
