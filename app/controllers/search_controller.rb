@@ -5,8 +5,12 @@ class SearchController < ApplicationController
   skip_authorization_check
 
   def search
-    @search = if params[:search]
-                Search.new(params[:search])
+    @search = case params[:search]
+              when ActionController::Parameters
+                Search.new(query: params[:search][:query])
+              when String
+                # Allow plain links such as /search?search=foo
+                Search.new(query: params[:search])
               else
                 Search.new
               end

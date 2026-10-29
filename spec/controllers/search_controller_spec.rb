@@ -17,4 +17,13 @@ RSpec.describe SearchController, type: :controller do
     expect(assigns(:search).query).to eq('concert')
     expect(assigns(:results)).to eq([])
   end
+  it 'accepts the query as a plain search parameter' do
+    results = double('search result relation')
+    allow(PgSearch).to receive(:multisearch).with('concert').and_return(results)
+    allow(results).to receive(:where).and_return(results)
+    allow(results).to receive(:paginate).and_return([])
+    get :search, params: { search: 'concert' }
+    expect(assigns(:search).query).to eq('concert')
+    expect(response).to have_http_status(:ok)
+  end
 end
