@@ -28,6 +28,7 @@ services:
     environment:
       POSTGRES_USER: samfundet
       POSTGRES_PASSWORD: samfundet
+      BROWSER: echo
     depends_on:
       - db
     ports:

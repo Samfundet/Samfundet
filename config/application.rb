@@ -99,9 +99,10 @@ module Samfundet
     Formtastic::FormBuilder.use_required_attribute = true
     Formtastic::FormBuilder.perform_browser_validations = true
 
-    # Time columns will become time zone aware in Rails 5.1. This still causes `String`s to be parsed as if they were in `Time.zone`, and `Time`s to be converted to `Time.zone`.
-    # To keep the old behavior, you must add the following to your initializer:
-    config.active_record.time_zone_aware_types = [:datetime]
+    # Billig uses PostgreSQL timestamptz, while website timestamps use datetime.
+    # Include both explicitly: early database connections in production/staging
+    # can cause this setting to overwrite Rails' automatic timestamptz addition.
+    config.active_record.time_zone_aware_types = [:datetime, :timestamptz]
   end
 
   Haml::Template.options[:format] = :html5

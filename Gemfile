@@ -5,13 +5,13 @@
 ###########################################
 
 # Specify ruby version that we use. Bundler gives an error when a different ruby is used.
-ruby '~> 3.1.2' # From .ruby-version.
+ruby '~> 3.3.8' # From .ruby-version.
 
 # The repository from which we're fetching our rubygems.
 source 'https://rubygems.org'
 
 # Rails. Duh.
-gem 'rails', '~> 6.1.7.6'
+gem 'rails', '~> 7.2.4'
 
 # Memcache client
 gem 'dalli', '~> 2.7.0'
@@ -20,7 +20,13 @@ gem 'dalli', '~> 2.7.0'
 gem 'lazy_high_charts', '~> 1.5.0'
 
 # Bundler
-gem 'bundler', '~> 2.4', '>= 2.4.22'
+gem 'bundler', '~> 2.6.7'
+
+# Rails 7.2 MemCacheStore is incompatible with connection_pool 3.x.
+gem 'connection_pool', '~> 2.5'
+
+# Rails 7.2 is incompatible with Minitest 6.x.
+gem 'minitest', '~> 5.1'
 
 # acts_as_list provides the means to sort and reorder a list of objects
 # with respect to a column in the database, e.g. to sort and reorder a list
@@ -76,7 +82,8 @@ gem 'cancancan', '~> 3.5.0'
 gem 'formtastic', '~> 5.0.0'
 
 # Haml is a templating language. It compiles to HTML.
-gem 'haml-rails', '~> 2.0.0'
+gem 'haml-rails', '~> 3.1'
+gem 'haml', '~> 6.4'
 
 # icalendar is a library for dealing with iCalendar files.
 gem 'icalendar', '~> 2.4.0'
@@ -109,14 +116,14 @@ gem 'paperclip-compression', '~> 1.1.0'
 gem 'date_validator', '~> 0.9.0'
 
 # PostgreSQL adapter. See: config/database.yml
-gem 'pg', '~> 1.1.0'
+gem 'pg', '~> 1.4.0'
 
 # Provides PostgreSQL fulltext search. Contains wrappers for tsvectors
 # and enables searching in nested attributes.
 gem 'pg_search', '~> 2.3.0'
 
 # Diff library used in history for information pages
-gem 'diff-lcs', '~> 1.2.5'
+gem 'diff-lcs', '~> 1.6.0'
 
 # Middleware to send notifications when errors occur
 gem 'exception_notification', '~> 4.4', '>= 4.4.3'
@@ -135,7 +142,7 @@ gem 'base64', '~> 0.1.1'
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem 'listen', '~> 3.4.0'
+  gem 'listen', '~> 3.5.0'
   gem 'web-console', '~> 4.2.0'
 
   gem 'racc', '~> 1.8', '>= 1.8.1'
@@ -146,8 +153,8 @@ group :development do
 
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring', '~> 2.1.0'
-  gem 'spring-watcher-listen', '~> 2.0.1'
+  gem 'spring', '~> 4.7'
+  gem 'spring-watcher-listen', '~> 2.1'
 
   # Gem to detect ruby style guide violations
   gem 'rubocop', '~> 1.57.0'
@@ -156,7 +163,7 @@ group :development do
   # annotate adds schema information from the database, in the form of
   # Ruby comments, to model files so that we can see which columns
   # are actually in the database.
-  gem 'annotate', '~> 3.1.0'
+  gem 'annotate', '~> 3.2.0'
 
   # Easier preview of mail in development
   gem 'letter_opener', '~> 1.7.0'
@@ -182,7 +189,7 @@ group :development do
   gem 'rb-fsevent', '~> 0.10.3', require: false
 
   # Simple command execution over SSH. Lightweight deployment tool.
-  gem 'mina', '~> 0.3.0'
+  gem 'mina', '~> 1.2.5'
 
   # A DSL for quickly creating web applications in Ruby with minimal effort.
   gem 'sinatra', '~> 2.0.8'
@@ -202,9 +209,9 @@ group :development, :test do
   gem 'faker', '~> 3.2'
 
   # RSpec is a unit testing framework.
-  # rspec-rails integrates RSpec with Rails; version 5 supports Rails 6.1.
+  # rspec-rails 6 supports Rails 6.1 and later.
   gem 'rails-controller-testing', '~> 1.0.0'
-  gem 'rspec-rails', '~> 5.1.0'
+  gem 'rspec-rails', '~> 6.1.0'
 end
 
 group :test do
@@ -213,14 +220,14 @@ group :test do
 
   # database_cleaner ensures a clean DB state during tests;
   # we use it with Cucumber.
-  gem 'database_cleaner', '~> 1.8.0'
+  gem 'database_cleaner', '~> 2.1.0'
 
   # launchy is an application launcher; it's required for the
   # 'Then show me the page' action in Cucumber
   gem 'launchy', '~> 2.4.0'
 
   # The RSpec testing framework.
-  gem 'rspec', '~> 3.12.0'
+  gem 'rspec', '~> 3.13.0'
 
   # Factories for testing
   gem 'factory_bot_rails', '~> 5.1.0'

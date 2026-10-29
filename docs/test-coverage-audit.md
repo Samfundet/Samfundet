@@ -1,6 +1,6 @@
 # Test coverage audit
 
-Verified on Ruby 3.1.2: **750 examples, 0 failures, 0 pending; 95.16% line coverage (3,363 / 3,534 lines)**. The run passed with `COVERAGE_MINIMUM=95`.
+Verified on Ruby 3.3.8: **750 examples, 0 failures, 0 pending; 95.16% line coverage (3,363 / 3,534 lines)**. The run passed with `COVERAGE_MINIMUM=95`.
 
 All originally tracked RSpec files were read and reviewed, including the previously undiscovered user-session file. New specs cover controllers, models, helpers, abilities, mailers through actual delivery, the custom input, and library utilities.
 

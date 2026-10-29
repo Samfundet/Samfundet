@@ -14,8 +14,7 @@ class Sulten::Reservation < ApplicationRecord
   validates :gdpr_checkbox, acceptance: true
 
   validate :check_opening_hours,
-           :reservation_is_one_day_in_future,
-           :email, on: :create, unless: :admin_access
+           :reservation_is_one_day_in_future, on: :create, unless: :admin_access
 
   validates :email, email: true
 

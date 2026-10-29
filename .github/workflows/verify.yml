@@ -40,7 +40,7 @@ jobs:
         run: docker compose exec app echo # Will fail if container has exited due to error.
 
       - name: Prepare test database
-        run: docker compose exec -e RAILS_ENV=test app bundle exec rails db:prepare
+        run: docker compose exec -e RAILS_ENV=test app bundle exec rails db:create db:schema:load
 
       - name: Run RSpec with 95 percent line coverage
         run: docker compose exec -e RAILS_ENV=test -e COVERAGE_MINIMUM=95 app bundle exec rspec

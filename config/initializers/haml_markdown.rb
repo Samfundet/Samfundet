@@ -1,6 +1,7 @@
 # -*- encoding : utf-8 -*-
 # frozen_string_literal: true
 
+require 'haml'
 require 'redcarpet'
 
 class CustomRenderer < Redcarpet::Render::HTML
@@ -14,14 +15,19 @@ class CustomRenderer < Redcarpet::Render::HTML
 end
 
 
-module Haml::Filters
+class Haml::Filters::Markdown
+  # Haml 6 compiles filters to Temple expressions. Keep the same renderer for
+  # template filters and direct calls from PagesHelper.
+  def compile(node)
+    text = node.value[:text]
+    if Haml::Util.contains_interpolation?(text)
+      [:dynamic, "::Haml::Filters::Markdown.render(#{Haml::Util.unescape_interpolation(text)})"]
+    else
+      [:static, self.class.render(text)]
+    end
+  end
 
-  remove_filter("Markdown") #remove the existing Markdown filter
-
-  module Markdown # the contents of this are as before, but without the lazy_require call
-
-    include Haml::Filters::Base
-
+  class << self
     def render(text)
       markdown.render(text)
     end
