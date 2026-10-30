@@ -15,7 +15,7 @@
     members: "Medlemmer"
     date_assigned: "Dato tildelt rollen"
     one_year_old: "Har hatt rollen i mer enn ett år"
-    member_autocomplete_label: "Navn / ID / Brukernavn / E-postadresse"
+    member_autocomplete_label: "Navn / ID / E-postadresse"
     add_member_submit: "Legg til medlem"
     pass: "Viderefør rolle"
     pass_description: "Du har en eller flere roller som kan videreføres til en annen person."
