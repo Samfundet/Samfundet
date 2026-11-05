@@ -2,7 +2,7 @@
   = form.inputs do
     != form.input :name
     != form.input :abbreviation
-    != form.input :page, member_label: :name
+    != form.input :page, collection: Page.all.map { |page| [page.name, page.id] }
     != form.input :website
     != form.input :group_type
   = form.actions do

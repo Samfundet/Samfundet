@@ -8,7 +8,7 @@
   = f.inputs name: "Reservasjon" do
     .flex-row
       = f.input :reservation_from, label: t("sulten.reservation.form.from"), input_html: { class: "datetimepicker", value: @reservation.reservation_from.to_s}, as: :string
-      = f.input :reservation_duration, label: t("sulten.reservation.form.duration"), collection: [30, 60, 90, 120, 180], member_label: proc{|d| "#{d} minutter"}
+      = f.input :reservation_duration, label: t("sulten.reservation.form.duration"), collection: [30, 60, 90, 120, 180].map { |duration| ["#{duration} minutter", duration] }
     .flex-row
       = f.input :table, label: t("sulten.reservation.table"), collection: Sulten::Table.all.order(:number)
       = f.input :people, label: t("sulten.reservation.people"),as: :number

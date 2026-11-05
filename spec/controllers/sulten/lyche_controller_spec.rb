@@ -27,6 +27,16 @@ RSpec.describe Sulten::LycheController, type: :controller do
     expect(assigns(:reservation)).to be_new_record
     expect(assigns(:times)).to be_nil
   end
+  context 'when rendering the reservation form' do
+    render_views
+
+    it 'renders the guest-count choices' do
+      get :reservation
+
+      expect(response).to have_http_status(:ok)
+      expect(response.body).to include('<option value="1">1 </option>')
+    end
+  end
   it 'rejects reservation dates earlier than tomorrow' do
     get :reservation, params: { sulten_reservation: { reservation_from: Date.current.to_s } }
     expect(assigns(:must_be_in_future)).to be(true)

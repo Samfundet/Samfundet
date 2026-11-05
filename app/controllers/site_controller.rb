@@ -41,7 +41,8 @@ class SiteController < ApplicationController
       end
     end
 
-    @opening_hours_url = page_url(Page.find_by_name(t('site.index.opening-hours-page-title')))
+    opening_hours_page = Page.find_by_name(t('site.index.opening-hours-page-title'))
+    @opening_hours_url = page_url(opening_hours_page) if opening_hours_page
     open_admissions = Admission.appliable.includes(
         group_types: { groups: :jobs }
       )

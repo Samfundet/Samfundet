@@ -13,6 +13,13 @@ RSpec.describe SiteController, type: :controller do
     expect(assigns(:open_admission)).to be(false)
     expect(assigns(:info_boxes)).to eq({})
   end
+  it 'does not require the opening hours page to exist' do
+    allow(Page).to receive(:find_by_name).and_return(nil)
+
+    get :index
+
+    expect(assigns(:opening_hours_url)).to be_nil
+  end
   it 'uses the first frontpage event as banner and groups active info boxes by position' do
     event = create(:event, publication_time: 1.day.ago)
     image = event.image

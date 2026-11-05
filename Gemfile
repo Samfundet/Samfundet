@@ -11,7 +11,7 @@ ruby '~> 3.3.8' # From .ruby-version.
 source 'https://rubygems.org'
 
 # Rails. Duh.
-gem 'rails', '~> 7.2.4'
+gem 'rails', '~> 8.1.4'
 
 # Memcache client
 gem 'dalli', '~> 2.7.0'
@@ -92,7 +92,7 @@ gem 'icalendar', '~> 2.4.0'
 # For example, we can replace the path '/groups' with the paths
 # '/gjenger' and '/en/groups' which both point to the same page.
 # See: config/locales/routes/i18n-routes.yml
-gem 'route_translator', '~> 14.1.0'
+gem 'route_translator', '~> 16.2.0'
 
 # RedCarpet renders Markdown, a light-weight markup language, to HTML.
 # See: config/initializers/haml_markdown.rb
@@ -159,11 +159,6 @@ group :development do
   # Gem to detect ruby style guide violations
   gem 'rubocop', '~> 1.57.0'
   gem 'rubocop-rails_config', '~> 1.16.0'
-
-  # annotate adds schema information from the database, in the form of
-  # Ruby comments, to model files so that we can see which columns
-  # are actually in the database.
-  gem 'annotate', '~> 3.2.0'
 
   # Easier preview of mail in development
   gem 'letter_opener', '~> 1.7.0'
