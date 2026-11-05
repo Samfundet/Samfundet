@@ -131,8 +131,6 @@ Rails.application.routes.draw do
     end
 
     resources :jobs, only: :show
-    resources :members, only: [:control_panel, :show_roles]
-
     resources :roles, only: [:index, :show, :new, :create, :edit, :update] do
       post :pass, on: :member
       resources :members_roles, only: [:create, :destroy]
@@ -148,7 +146,7 @@ Rails.application.routes.draw do
         get :activate, to: "campus#activate"
         get :destroy, to: "campus#destroy"
       end
-      resources :admissions, only: [:show, :new, :create, :edit, :update, :list] do
+      resources :admissions, only: [:show, :new, :create, :edit, :update] do
 
         get :statistics, on: :member
         get :overview, on: :member
